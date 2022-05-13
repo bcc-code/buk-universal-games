@@ -1,6 +1,6 @@
 resource "google_secret_manager_secret" "default" {
   for_each  = var.environment-secrets
-  secret_id = "${var.application-name}-${var.environment-name}-${each.key}"
+  secret_id = "${var.service-name}-${each.key}"
   replication {
     automatic = true
   }

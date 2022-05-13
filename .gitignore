@@ -3,3 +3,4 @@
 .terraform.lock.hcl
 *secrets.auto.tfvars
 tmp/
+obj/

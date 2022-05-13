@@ -3,7 +3,7 @@ data "google_project" "project" {
 }
 
 resource "google_cloud_run_service" "default" {
-  name     = "${var.application-name}-${var.environment-name}"
+  name     = var.service-name
   location = var.gcp-location
 
   template {

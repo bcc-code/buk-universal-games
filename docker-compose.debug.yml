@@ -1,0 +1,16 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP .NET Core service.
+
+version: '3.4'
+
+services:
+  bukuniversalgamesapi:
+    image: bukuniversalgamesapi
+    build:
+      context: .
+      dockerfile: backend/Buk.UniversalGames.Api/Dockerfile
+    ports:
+      - 5125:5125
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - ~/.vsdbg:/remote_debugger:rw

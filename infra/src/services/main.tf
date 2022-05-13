@@ -19,11 +19,12 @@ provider "google" {
 
 locals {
   environment-name-uppercase = upper(var.environment-name)
+  api-service-name = "buk-universal-games-api-${var.environment-name}"
 }
 
 module "buk-universal-games-api" {
   source                       = "./cloud-run-api"
-  application-name             = "buk-universal-games-api"
+  service-name                 = local.api-service-name
   # sql-instance-connection-name = module.postgres-instance.connection-name
   gcp-location                 = var.gcp-location
   environment-name             = var.environment-name

@@ -13,8 +13,11 @@ module "github-secrets" {
   secrets = {
     GOOGLE_CREDENTIALS       = base64decode(google_service_account_key.github-build-key.private_key)
     GOOGLE_PROJECT_ID        = var.gcp-project-id
+    GOOGLE_REGION            = var.gcp-location
     "${local.environment-name-uppercase}_REGISTRY_BASE_URL"        = "${google_artifact_registry_repository.default.location}-docker.pkg.dev"
     "${local.environment-name-uppercase}_REGISTRY_NAME"            = google_artifact_registry_repository.default.name
+    "${local.environment-name-uppercase}_API_SERVICE_NAME"        = "${local.api-service-name}"
+    
     # SQL_INSTANCE_CONNECTION  = module.postgres-instance.connection-name
     # ORGS_SERVICE_NAME        = module.orgs-api.service.name
     # ORGS_SERVICE_REGION      = module.orgs-api.service.location

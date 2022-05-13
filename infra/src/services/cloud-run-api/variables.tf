@@ -7,10 +7,10 @@ variable "environment-name" {
 variable "service-account-email" {
   type = string
 }
-variable "application-name" {
+
+variable "service-name" {
   type = string
 }
-
 variable "max-scale" {
   type    = string
   default = "10"
