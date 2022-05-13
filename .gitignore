@@ -1,2 +1,5 @@
-**/*secrets.auto.tfvars
-**/.terragrunt-cache/*
+.terragrunt-cache
+.terraform
+.terraform.lock.hcl
+*secrets.auto.tfvars
+tmp/

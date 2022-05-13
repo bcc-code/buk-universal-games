@@ -1,15 +1,26 @@
 terraform {
-  source = "${path_relative_from_include()}/../src"
+
+  extra_arguments "custom_vars" {
+    commands = [
+      "apply",
+      "plan",
+      "import",
+      "push",
+      "refresh"
+    ]
+
+    required_var_files = ["${get_parent_terragrunt_dir()}/common.tfvars"]
+  }
 }
 
 remote_state {
   backend = "gcs"
   config = {
-    bucket = "buk-universal-games-terraform-state"
-    prefix = path_relative_to_include()
+    bucket = "bcc-core-terraform-state"
+    prefix = "buk-universal-games_${replace(path_relative_to_include(),"/","-")}"
   }
 }
 
 inputs = {
-  environment-name = path_relative_to_include()
+  environment-name =  element(split("/", path_relative_to_include()),0)
 }
