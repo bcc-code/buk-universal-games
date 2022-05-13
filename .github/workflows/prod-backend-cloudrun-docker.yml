@@ -52,6 +52,7 @@ on:
 env:
   PROJECT_ID: ${{ secrets.GOOGLE_PROJECT_ID }} 
   GAR_LOCATION: ${{ secrets.PROD_REGISTRY_BASE_URL }} 
+  GAR_NAME: ${{ secrets.PROD_REGISTRY_NAME }} 
   SERVICE:  ${{ secrets.PROD_API_SERVICE_NAME }} 
   REGION: ${{ secrets.GOOGLE_REGION }} 
   
@@ -86,10 +87,13 @@ jobs:
         run: |-
           gcloud --quiet auth configure-docker ${{ env.GAR_LOCATION }}
 
-      - name: Build and Push Container
-        run: |-
-          docker build -f backend/Buk.UniversalGames.Api/Dockerfile -t "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }}" ./
-          docker push "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }}"
+
+      - name: Build and push container image to registry
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: ${{ env.GAR_LOCATION }}/${{ env.PROJECT_ID }}/${{ env.GAR_NAME }}/buk-universal-games-api-prod:${{ github.sha }}
+          file: backend/Buk.UniversalGames.Api/Dockerfile
 
       # END - Docker auth and build
 
