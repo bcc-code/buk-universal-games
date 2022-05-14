@@ -2,8 +2,8 @@
 
 ## Running Locally
 
-Run `docker-compose up --build`
-Visit http://localhost:5125/weatherforecast
+Run `docker-compose up --build`  
+Visit http://localhost:5125/
 
 ### Accessing Database
 
