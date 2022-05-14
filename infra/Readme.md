@@ -21,21 +21,17 @@
    1. Go to https://github.com/settings/tokens
    2. Click "Generate new token"
    3. Select "repo" scope and generate token
-   4. Create file: ```src/secrets.auto.tfvars``` and paste: ```github-token = "{YOUR_GENERATED_TOKEN}"```
-4. In the repository, navigate to the directory where you want to deploy the infrastructure:
+   4. Create file: ```evn/secrets.tfvars``` and paste: 
+    
     ```
-    cd env/dev
+    github-token = "{YOUR_GENERATED_TOKEN}"
+    db-remote-admin-pw = "{PW_FOR_REMOTE_ADMIN}" 
     ```
-5. Run the following commands to deploy the infrastructure:
+
+3. Run the following commands to deploy the infrastructure:
     ```
-    terragrunt init
-    terragrunt apply
+    ./init_prod.bat 
+    ./apply_prod.bat
     ```
 
 
-#### Connect to the Postgres instance
-
-1. Download [Cloud SQL Auth proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy)
-2. Start Cloud SQL Auth proxy with
-    ```cloud_sql_proxy -instances=<GCP_PROJECT_ID>:<GCP_LOCATION>:<DB_INSTANCE_NAME>=tcp:<PORT>```
-3. Connect to the DB using your favourite SQL client, the host is ```localhost:<PORT>```
