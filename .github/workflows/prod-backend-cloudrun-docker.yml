@@ -45,9 +45,11 @@
 name: Build and Deploy Backend to Cloud Run
 
 on:
+  workflow_dispatch:
   push:
     paths:
         - 'backend/**'
+        - '.github/workflows/prod-backend-cloudrun-docker.yml'
     branches:
       - master
 
