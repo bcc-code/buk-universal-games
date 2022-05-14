@@ -14,6 +14,12 @@ builder.Services.AddDbContext<DataContext>();
 
 var app = builder.Build();
 
+if (!app.Environment.IsDevelopment())
+{
+    app.UsePathBase("/api");
+    app.UseHttpsRedirection();
+}
+
 // Automatically migrate database
 if (app.Environment.IsDevelopment())
 {
@@ -22,10 +28,8 @@ if (app.Environment.IsDevelopment())
 var db = app.Services.CreateScope().ServiceProvider.GetService<DataContext>()!.Database;
 await db.MigrateAsync();
 
-if (!app.Environment.IsDevelopment())
-{
-    app.UsePathBase("/api");
-}
+app.UseRouting();
+
 app.UseStaticFiles();
 
 app.UseSwagger();
