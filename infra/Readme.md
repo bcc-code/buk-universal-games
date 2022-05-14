@@ -35,3 +35,7 @@
     ```
 
 
+## Notes:
+
+* GCP load balancing / certificates quite complicated
+* Provisioning of certificate / domain slow
