@@ -1,0 +1,52 @@
+name: Build and Deploy Frontend to GCP Bucket
+
+on:
+  push:
+    paths:
+      - 'frontend/**'
+    branches:
+      - master
+
+env:
+  PROJECT_ID: ${{ secrets.GOOGLE_PROJECT_ID }} 
+  BUCKET:  ${{ secrets.PROD_SITE_BUCKET_NAME }} 
+  REGION: ${{ secrets.GOOGLE_REGION }} 
+  
+# defaults:
+#   run:
+#     working-directory: backend/Buk.UniversalGames.Api
+
+jobs:
+  deploy:
+    # Add 'id-token' with the intended permissions for workload identity federation
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+       # NOTE: Alternative option - authentication via credentials json
+      - name: Google Auth
+        id: auth
+        uses: 'google-github-actions/auth@v0'
+        with:
+          credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
+
+      # BEGIN - Docker auth and build (NOTE: If you already have a container image, these Docker steps can be omitted)
+
+      # Authenticate Docker to Google Cloud Artifact Registry
+      - name: Build Frontend
+        shell: bash
+        run: |-
+          cd frontend
+          npm run build
+
+
+      - id: 'Upload Files to GCP'
+        uses: 'google-github-actions/upload-cloud-storage@v0'
+        with:
+          path: '/frontend/dist'
+          destination: '${{ env.BUCKET }}'

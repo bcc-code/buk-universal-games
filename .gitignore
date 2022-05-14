@@ -8,3 +8,4 @@ obj/
 bin/
 .data/database
 gcp-remote-admin.json
+node_modules/
