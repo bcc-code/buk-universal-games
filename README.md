@@ -19,7 +19,6 @@ Visit http://localhost:5125/
      * Password: `password`
 5. Database tables can be found under `buk-universal-games->Schemas->public`
 
-
 ## Adding Database Migrations
 
 In backend/Buk.UniversalGames.Api:
@@ -29,7 +28,7 @@ In backend/Buk.UniversalGames.Api:
 
 Migrations are automatically applied when the a new version of the application is deployed.
 
-## Connect to the remote Postgres instance
+## Connect to the Remote Postgres Instance
 
 1. Generate a credentials key for the "remote-admin" user in Google Cloud Console
 2. Paste this key into 'credentials/gcp-remote-admin.json'
