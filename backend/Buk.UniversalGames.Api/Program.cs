@@ -22,10 +22,18 @@ if (app.Environment.IsDevelopment())
 var db = app.Services.CreateScope().ServiceProvider.GetService<DataContext>()!.Database;
 await db.MigrateAsync();
 
+if (!app.Environment.IsDevelopment())
+{
+    app.UsePathBase("/api");
+}
+app.UseStaticFiles();
+
 app.UseSwagger();
 app.UseSwaggerUI();
 
 app.Map("/", () => Results.Redirect("/swagger"));
+
+
 
 
 app.UseAuthorization();
