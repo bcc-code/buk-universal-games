@@ -25,7 +25,7 @@ await db.MigrateAsync();
 app.UseSwagger();
 app.UseSwaggerUI();
 
-app.Map("/", b => Results.Redirect("~/swagger"));
+app.Map("/", () => Results.Redirect("/swagger"));
 
 
 app.UseAuthorization();
