@@ -23,7 +23,8 @@ resource "google_project_service" "default" {
     "compute.googleapis.com",
     "run.googleapis.com",
     "artifactregistry.googleapis.com",
-    "secretmanager.googleapis.com"
+    "secretmanager.googleapis.com",
+    "sqladmin.googleapis.com"
     ] )
   project = var.gcp-project-id
   service = each.key
