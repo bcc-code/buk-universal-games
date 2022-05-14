@@ -22,12 +22,11 @@ if (app.Environment.IsDevelopment())
 var db = app.Services.CreateScope().ServiceProvider.GetService<DataContext>()!.Database;
 await db.MigrateAsync();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
+
+app.Map("/", b => Results.Redirect("~/swagger"));
+
 
 app.UseAuthorization();
 
