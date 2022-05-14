@@ -57,6 +57,7 @@ module "buk-universal-games-site" {
   gcp-location                 = var.gcp-location
   environment-name             = var.environment-name
   domain-name                  = var.domain-name
+  cors                         = ["https://${var.domain-name}", "${module.buk-universal-games-api.service.status[0].url}"]
 }
 
 module "buk-universal-games-api" {

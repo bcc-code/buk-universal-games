@@ -12,3 +12,8 @@ variable "service-name" {
 variable "domain-name" {
   type = string
 }
+
+variable "cors" {
+  default = []
+  type    = list(string)
+}

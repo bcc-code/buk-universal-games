@@ -26,7 +26,6 @@ variable "environment-variables" {
   default = {}
   type    = map(string)
 }
-
 variable "environment-secrets" {
   default = {}
   type    = map(string)
