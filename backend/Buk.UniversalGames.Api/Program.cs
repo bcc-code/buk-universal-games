@@ -35,7 +35,7 @@ app.UseStaticFiles();
 app.UseSwagger();
 app.UseSwaggerUI();
 
-app.Map("/", () => Results.Redirect("/swagger"));
+app.Map("~/", () => Results.Redirect("~/swagger"));
 
 
 
