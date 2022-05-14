@@ -29,14 +29,9 @@ variable "db-remote-admin-pw" {
   type = string
 }
 
+variable "domain-name" {
+  type = string
+}
 
-
-# variable "domain-name" {
-#   type = string
-# }
-
-# variable "db-tier" {
-#   type = string
-# }
 
 

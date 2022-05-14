@@ -27,6 +27,13 @@ resource "google_service_account_iam_member" "github-build-use-compute-account" 
   member             = "serviceAccount:${google_service_account.github-build.email}"
 }
 
+resource "google_storage_bucket_iam_member" "member" {
+  bucket = module.buk-universal-games-site.bucket.name
+  role = "roles/storage.admin"
+  member  = "serviceAccount:${google_service_account.github-build.email}"
+}
+
+
 # /* Permissions for performing SQL migrations from github actions */
 # resource "google_project_iam_member" "github-build-cloudsql-access" {
 #   project = var.gcp-project-id

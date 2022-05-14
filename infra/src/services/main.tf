@@ -24,6 +24,7 @@ provider "google" {
 locals {
   environment-name-uppercase = upper(var.environment-name)
   api-service-name = "buk-universal-games-api-${var.environment-name}"
+  site-service-name = "buk-universal-games-ui-${var.environment-name}"
 }
 
 module "postgres-instance" {
@@ -50,6 +51,13 @@ module "buk-universal-games-db" {
   superuser-name = module.postgres-instance.terraform-username
 }
 
+module "buk-universal-games-site" {
+  source                       = "./gcp-static-site"
+  service-name                 = local.site-service-name
+  gcp-location                 = var.gcp-location
+  environment-name             = var.environment-name
+  domain-name                  = var.domain-name
+}
 
 module "buk-universal-games-api" {
   source                       = "./cloud-run-api"
