@@ -18,7 +18,13 @@ provider "google" {
 }
 
 resource "google_project_service" "default" {
-  for_each = toset( ["iam.googleapis.com", "compute.googleapis.com","run.googleapis.com","artifactregistry.googleapis.com"] )
+  for_each = toset( [
+    "iam.googleapis.com", 
+    "compute.googleapis.com",
+    "run.googleapis.com",
+    "artifactregistry.googleapis.com",
+    "secretmanager.googleapis.com"
+    ] )
   project = var.gcp-project-id
   service = each.key
 

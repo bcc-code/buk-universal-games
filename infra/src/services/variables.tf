@@ -21,6 +21,11 @@ variable "github-token" {
   sensitive = true
 }
 
+variable "db-tier" {
+  type = string
+}
+
+
 # variable "domain-name" {
 #   type = string
 # }

@@ -10,3 +10,36 @@ services:
       dockerfile: backend/Buk.UniversalGames.Api/Dockerfile
     ports:
       - 5125:5125
+    environment:
+      - POSTGRES_PORT=5433
+      - POSTGRES_DB=buk-universal-games
+      - POSTGRES_USER=pguser
+      - POSTGRES_HOST=host.docker.internal
+      - POSTGRES_PASSWORD=password
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - ~/.vsdbg:/remote_debugger:rw
+    depends_on:
+      - database
+  
+  database:
+    container_name: bukuniversalgames_database
+    image: postgis/postgis:13-master
+    volumes:
+      - ./data/database:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=pguser
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=buk-universal-games
+    ports:
+      - "5433:5432"
+
+  pgadmin: #connect using host.docker.internal as host on windows
+      container_name: bukuniversalgames_pgadmin4
+      image: dpage/pgadmin4
+      restart: always
+      environment:
+        - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+        - PGADMIN_DEFAULT_PASSWORD=password
+      ports:
+        - "5051:80"

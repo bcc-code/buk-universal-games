@@ -1,3 +1,6 @@
+using Buk.UniversalGames.Api;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,7 +10,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext<DataContext>();
+
 var app = builder.Build();
+
+// Automatically migrate database
+if (app.Environment.IsDevelopment())
+{
+    await Task.Delay(5000); //wait for DB to start up
+}
+var db = app.Services.CreateScope().ServiceProvider.GetService<DataContext>()!.Database;
+await db.MigrateAsync();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
