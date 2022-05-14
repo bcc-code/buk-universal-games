@@ -1,9 +1,11 @@
 name: Build and Deploy Frontend to GCP Bucket
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - 'frontend/**'
+      - '.github/workflows/prod-frontend-google-cdn.yml'
     branches:
       - master
 
