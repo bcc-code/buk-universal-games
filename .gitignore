@@ -4,5 +4,5 @@
 *secrets.auto.tfvars
 tmp/
 obj/
-data/database
+.data/database
 bin/

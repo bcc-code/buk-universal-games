@@ -13,7 +13,7 @@ public class DataContext : DbContext
         var dbUser = Environment.GetEnvironmentVariable("POSTGRES_USER");
         var dbHost = Environment.GetEnvironmentVariable("POSTGRES_HOST");
         var dbPassword = Environment.GetEnvironmentVariable("POSTGRES_PASSWORD");
-        var connectionString = $"Host={dbHost}:{dbPort};Database={dbName};Username={dbUser};Password={dbPassword};Timeout=300;CommandTimeout=300";
+        var connectionString = $"Host={dbHost}{((dbPort != "5432") ? ":" + (dbPort ?? "") : "")};Database={dbName};Username={dbUser};Password={dbPassword};Timeout=300;CommandTimeout=300";
         return connectionString;
     }
 
