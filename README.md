@@ -27,8 +27,9 @@ In backend/Buk.UniversalGames.Api:
 `dotnet tool install --global dotnet-ef`  
 `dotnet ef migrations add [Migration Name]`
 
+Migrations are automatically applied when the a new version of the application is deployed.
 
-#### Connect to the remote Postgres instance
+## Connect to the remote Postgres instance
 
 1. Generate a credentials key for the "remote-admin" user in Google Cloud Console
 2. Paste this key into 'credentials/gcp-remote-admin.json'
