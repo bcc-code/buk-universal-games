@@ -53,3 +53,18 @@ resource "postgresql_grant" "super-admin-database-access" {
   object_type = "database"
   privileges  = ["CREATE", "CONNECT"]
 }
+
+resource "postgresql_grant" "remote-admin-table-access" {
+  database    = postgresql_database.default.name
+  role        = "remote-admin"
+  schema      = "public"
+  object_type = "table"
+  privileges  = ["SELECT", "INSERT", "UPDATE", "DELETE", "TRUNCATE", "REFERENCES", "TRIGGER"]
+}
+
+resource "postgresql_grant" "remote-admin-database-access" {
+  database    = postgresql_database.default.name
+  role        = "remote-admin"
+  object_type = "database"
+  privileges  = ["CREATE", "CONNECT"]
+}

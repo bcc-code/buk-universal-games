@@ -1,0 +1,13 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP .NET Core service.
+
+version: '3.4'
+
+services:
+  cloudsqlproxy:
+    container_name: "cloud-sql-proxy"
+    image: gcr.io/cloudsql-docker/gce-proxy
+    volumes:
+      - ./credentials/gcp-remote-admin.json:/config
+    ports:
+      - 5434:5432
+    command: "/cloud_sql_proxy -instances=buk-universal-games:europe-west4:buk-universal-games-postgres-prod=tcp:0.0.0.0:5432 -credential_file=/config"

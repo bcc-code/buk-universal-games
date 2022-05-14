@@ -14,3 +14,6 @@ variable "instance-name" {
 variable "db-tier" {
   type = string
 }
+variable "db-remote-admin-pw" {
+  type = string
+}

@@ -2,7 +2,9 @@
 .terraform
 .terraform.lock.hcl
 *secrets.auto.tfvars
+secrets.tfvars
 tmp/
 obj/
-.data/database
 bin/
+.data/database
+gcp-remote-admin.json

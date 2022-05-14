@@ -33,6 +33,7 @@ module "postgres-instance" {
   environment-name      = var.environment-name
   service-account-email = google_service_account.github-build.email
   db-tier               = var.db-tier
+  db-remote-admin-pw    = var.db-remote-admin-pw
 }
 
 provider "postgresql" {

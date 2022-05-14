@@ -14,8 +14,20 @@ resource "random_password" "terraform-user-password" {
   override_special = "!#*()-_=+[]:?"
 }
 
+resource "random_password" "remote-admin-password" {
+  length           = 32
+  special          = true
+  override_special = "!#*()-_=+[]:?"
+}
+
 resource "google_sql_user" "terraform-user" {
   name     = "terraform-user"
   instance = google_sql_database_instance.default.name
   password = random_password.terraform-user-password.result
+}
+
+resource "google_sql_user" "remote-admin" {
+  name     = "remote-admin"
+  instance = google_sql_database_instance.default.name
+  password = coalesce(var.db-remote-admin-pw, random_password.remote-admin-password.result) # Ensure password isn't blank!
 }

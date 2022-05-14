@@ -9,7 +9,7 @@ terraform {
       "refresh"
     ]
 
-    required_var_files = ["${get_parent_terragrunt_dir()}/common.tfvars"]
+    required_var_files = ["${get_parent_terragrunt_dir()}/common.tfvars", "${get_parent_terragrunt_dir()}/secrets.tfvars"]
   }
 }
 
