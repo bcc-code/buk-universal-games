@@ -14,14 +14,26 @@ services:
       - POSTGRES_PORT=5432
       - POSTGRES_DB=buk-universal-games
       - POSTGRES_USER=admin
-      - POSTGRES_HOST=host.docker.internal
+      - POSTGRES_HOST=database
       - POSTGRES_PASSWORD=password
       - ASPNETCORE_ENVIRONMENT=Development
+      - REDIS_CONNECTION_STRING=redis:6379
+      - ENVIRONMENT_NAME=local
     volumes:
       - ~/.vsdbg:/remote_debugger:rw
     depends_on:
       - database
+     # - redis
     restart: on-failure:5
+
+  redis:
+    image: redis:6.2-alpine
+    restart: always
+    # ports:
+    #   - '6379:6379'
+  #  command: redis-server --requirepass redispw
+  #   # volumes: 
+  #   #   - .data/cache:/data
 
   
   database:
