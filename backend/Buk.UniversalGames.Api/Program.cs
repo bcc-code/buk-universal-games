@@ -1,5 +1,6 @@
 using Buk.UniversalGames.Api;
 using Microsoft.EntityFrameworkCore;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,19 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<DataContext>();
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = builder.Configuration.GetValue<string>("REDIS_CONNECTION_STRING");
+    options.InstanceName =  builder.Configuration.GetValue<string>("ENVIRONMENT_NAME");
+});
+
+// Ensure cookies work across all container instances
+//var redis = ConnectionMultiplexer.Connect(builder.Configuration.GetValue<string>("REDIS_CONNECTION_STRING"));
+// builder.Services.AddDataProtection().PersistKeysToStackExchangeRedis(redis, "wp-proxy-dataprotection-keys");
+
+builder.Services.AddMemoryCache();
+
+
 
 var app = builder.Build();
 

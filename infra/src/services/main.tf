@@ -71,9 +71,10 @@ module "buk-universal-games-api" {
     POSTGRES_PASSWORD   = module.buk-universal-games-db.db-password
   }
   environment-variables = {
-    POSTGRES_HOST   = "/cloudsql/${module.postgres-instance.connection-name}"
-    POSTGRES_PORT   = 5432
-    POSTGRES_USER   = module.buk-universal-games-db.db-username
-    POSTGRES_DB     = module.buk-universal-games-db.db-name
+    POSTGRES_HOST     = "/cloudsql/${module.postgres-instance.connection-name}"
+    POSTGRES_PORT     = 5432
+    POSTGRES_USER     = module.buk-universal-games-db.db-username
+    POSTGRES_DB       = module.buk-universal-games-db.db-name
+    ENVIRONMENT_NAME  = var.environment-name
   }
 }
