@@ -1,0 +1,57 @@
+
+name: Build and Deploy Directus to Cloud Run
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+        - 'backend/**'
+        - '.github/workflows/prod-directus-cloudrun-docker.yml'
+    branches:
+      - master
+
+env:
+  PROJECT_ID: ${{ secrets.GOOGLE_PROJECT_ID }} 
+  GAR_LOCATION: ${{ secrets.PROD_REGISTRY_BASE_URL }} 
+  SERVICE:  ${{ secrets.PROD_DIRECTUS_SERVICE_NAME }} 
+  REGION: ${{ secrets.GOOGLE_REGION }} 
+  
+# defaults:
+#   run:
+#     working-directory: backend/Buk.UniversalGames.Api
+
+jobs:
+  deploy:
+    # Add 'id-token' with the intended permissions for workload identity federation
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+       # NOTE: Alternative option - authentication via credentials json
+      - name: Google Auth
+        id: auth
+        uses: 'google-github-actions/auth@v0'
+        with:
+          credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
+
+
+      # END - Docker auth and build
+
+      - name: Deploy to Cloud Run
+        id: deploy
+        uses: google-github-actions/deploy-cloudrun@v0
+        with:
+          service: ${{ env.SERVICE }}
+          region: ${{ env.REGION }}
+          # NOTE: If using a pre-built image, update the image name here
+          image: directus/directus:latest
+          flags: --port=8055
+
+      # If required, use the Cloud Run url output in later steps
+      - name: Show Output
+        run: echo ${{ steps.deploy.outputs.url }}
