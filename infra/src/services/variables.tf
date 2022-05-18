@@ -27,6 +27,7 @@ variable "db-tier" {
 
 variable "db-remote-admin-pw" {
   type = string
+  sensitive   = true
 }
 
 variable "domain-name" {

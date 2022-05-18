@@ -46,6 +46,10 @@ resource "google_compute_url_map" "default" {
       service = module.buk-universal-games-api.backend-service.id
     }
     path_rule {
+      paths   = ["/directus/*", "/directus"]
+      service = module.buk-universal-games-directus.backend-service.id
+    }
+    path_rule {
       paths   = ["/*", "/"]
       service = module.buk-universal-games-site.backend-service.id
     }

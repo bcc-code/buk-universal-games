@@ -37,3 +37,9 @@ variable "environment-secrets" {
 variable "vpc-serverless-connector-name" {
   type = string
 }
+
+variable "docker-image" {
+  type = string
+  default = "us-docker.pkg.dev/cloudrun/container/hello"
+  
+}

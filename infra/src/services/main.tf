@@ -25,6 +25,7 @@ locals {
   environment-name-uppercase = upper(var.environment-name)
   api-service-name = "buk-universal-games-api-${var.environment-name}"
   site-service-name = "buk-universal-games-ui-${var.environment-name}"
+  directus-service-name = "buk-universal-games-directus-${var.environment-name}"
 }
 
 module "postgres-instance" {
@@ -97,5 +98,41 @@ module "buk-universal-games-api" {
     POSTGRES_DB       = module.buk-universal-games-db.db-name
     ENVIRONMENT_NAME  = var.environment-name
     REDIS_CONNECTION_STRING = "${module.redis-cache.service.host}:${module.redis-cache.service.port}"
+  }
+}
+
+resource "random_uuid" "directus-key" {
+}
+resource "random_uuid" "directus-secret" {
+}
+
+
+module "buk-universal-games-directus" {
+  source                       = "./cloud-run-api"
+  service-name                 = local.directus-service-name
+  docker-image                 = "directus/directus:latest"
+  sql-instance-connection-name = module.postgres-instance.connection-name
+  vpc-serverless-connector-name = google_vpc_access_connector.vpc-connector.name
+  gcp-location                 = var.gcp-location
+  gcp-project-id               = var.gcp-project-id
+  environment-name             = var.environment-name
+  service-account-email        = google_service_account.github-build.email
+  environment-secrets = {
+    DB_PASSWORD       = module.buk-universal-games-db.db-password
+    ADMIN_PASSWORD    = var.db-remote-admin-pw
+  }
+  environment-variables = {
+    KEY               = random_uuid.directus-key.result
+    SECRET            = random_uuid.directus-secret.result
+    ADMIN_EMAIL       = "admin@admin.com"    
+    DB_CLIENT         = "pg"
+    DB_HOST           = "/cloudsql/${module.postgres-instance.connection-name}"
+    DB_PORT           = 5432
+    DB_USER           = module.buk-universal-games-db.db-username
+    DB_DATABASE       = module.buk-universal-games-db.db-name
+    CACHE_ENABLED     = true
+    CACHE_STORE       = "redis"
+    CACHE_REDIS       = "redis://{module.redis-cache.service.host}:${module.redis-cache.service.port}"
+    PUBLIC_URL        = "https://${var.domain-name}/directus"
   }
 }

@@ -9,7 +9,7 @@ resource "google_cloud_run_service" "default" {
   template {
     spec {
       containers {
-        image = "us-docker.pkg.dev/cloudrun/container/hello"
+        image = var.docker-image
 
         dynamic "env" {
           for_each = google_secret_manager_secret.default
