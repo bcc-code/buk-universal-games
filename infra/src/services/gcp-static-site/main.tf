@@ -3,7 +3,7 @@ resource "google_storage_bucket" "static-site" {
   location      = var.gcp-location
   force_destroy = true
 
-  uniform_bucket_level_access = false
+  uniform_bucket_level_access = true
 
   website {
     main_page_suffix = "index.html"
@@ -17,8 +17,8 @@ resource "google_storage_bucket" "static-site" {
   }
 }
 
-resource "google_storage_bucket_access_control" "public_rule" {
+resource "google_storage_bucket_iam_member" "public_rule" {
   bucket = google_storage_bucket.static-site.name
-  role   = "READER"
-  entity = "allUsers"
+  role   = "roles/storage.objectViewer"
+  member = "allUsers"
 }

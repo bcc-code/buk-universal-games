@@ -36,9 +36,9 @@ resource "google_cloud_run_service" "default" {
     }
     metadata {
       annotations = {
-        "autoscaling.knative.dev/maxScale"      = var.max-scale
-        "run.googleapis.com/cloudsql-instances" = var.sql-instance-connection-name
-        "run.googleapis.com/vpc-access-connector" = element(tolist(module.serverless_connector.connector_ids), 1)
+        "autoscaling.knative.dev/maxScale"        = var.max-scale
+        "run.googleapis.com/cloudsql-instances"   = var.sql-instance-connection-name
+        "run.googleapis.com/vpc-access-connector" = var.vpc-serverless-connector-name
         "run.googleapis.com/vpc-access-egress"    = "private-ranges-only"
       }
     }
@@ -67,7 +67,9 @@ resource "google_cloud_run_service" "default" {
     latest_revision = true
   }
   autogenerate_revision_name = true
-  depends_on                 = [google_secret_manager_secret_iam_member.secret-access]
+  depends_on                 = [
+    google_secret_manager_secret_iam_member.secret-access
+  ]
 }
 
 resource "google_cloud_run_service_iam_member" "noauth" {

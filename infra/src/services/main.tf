@@ -25,8 +25,6 @@ locals {
   environment-name-uppercase = upper(var.environment-name)
   api-service-name = "buk-universal-games-api-${var.environment-name}"
   site-service-name = "buk-universal-games-ui-${var.environment-name}"
-  serverless-network-name = "buk-universal-games-vpc-network"
-  serverless-subnet-name = "buk-universal-games-vpc-subnet"
 }
 
 module "postgres-instance" {
@@ -67,15 +65,28 @@ module "buk-universal-games-site" {
   cors                         = ["https://${var.domain-name}", "${module.buk-universal-games-api.service.status[0].url}"]
 }
 
+resource "google_vpc_access_connector" "vpc-connector" {
+  provider        = google-beta
+  name            = "vpc-serverless-${var.environment-name}"
+  project         = var.gcp-project-id
+  # region          = var.gcp-location
+  ip_cidr_range   = "10.8.0.0/28" # var.vpc-ip-range
+  network         = "default" # var.vpc-network-name
+  machine_type    = "e2-micro"
+  min_instances   = 2
+  max_instances   = 3
+}
+
+
 module "buk-universal-games-api" {
   source                       = "./cloud-run-api"
   service-name                 = local.api-service-name
   sql-instance-connection-name = module.postgres-instance.connection-name
+  vpc-serverless-connector-name = google_vpc_access_connector.vpc-connector.name
   gcp-location                 = var.gcp-location
   gcp-project-id               = var.gcp-project-id
   environment-name             = var.environment-name
   service-account-email        = google_service_account.github-build.email
-  vpc-subnet-name              = local.serverless-subnet-name
   environment-secrets = {
     POSTGRES_PASSWORD   = module.buk-universal-games-db.db-password
   }
@@ -87,7 +98,4 @@ module "buk-universal-games-api" {
     ENVIRONMENT_NAME  = var.environment-name
     REDIS_CONNECTION_STRING = "${module.redis-cache.service.host}:${module.redis-cache.service.port}"
   }
-  depends_on = [
-    google_compute_subnetwork.serverless-subnet
-  ]
 }

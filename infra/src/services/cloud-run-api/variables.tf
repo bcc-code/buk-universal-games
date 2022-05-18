@@ -34,6 +34,6 @@ variable "environment-secrets" {
   type    = map(string)
 }
 
-variable "vpc-subnet-name" {
-  type    = string
+variable "vpc-serverless-connector-name" {
+  type = string
 }
