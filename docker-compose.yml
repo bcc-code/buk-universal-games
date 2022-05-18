@@ -25,15 +25,14 @@ services:
       - database
      # - redis
     restart: on-failure:5
+    networks:
+        - buk-universal-games
 
   redis:
     image: redis:6.2-alpine
-    restart: always
-    # ports:
-    #   - '6379:6379'
-  #  command: redis-server --requirepass redispw
-  #   # volumes: 
-  #   #   - .data/cache:/data
+    restart: always    
+    networks:
+        - buk-universal-games
 
   
   database:
@@ -47,6 +46,8 @@ services:
       - POSTGRES_DB=buk-universal-games
     ports:
       - "5432:5432"
+    networks:
+        - buk-universal-games
 
   pgadmin: #connect using host.docker.internal as host on windows
       container_name: bukuniversalgames_pgadmin4
@@ -58,3 +59,48 @@ services:
         - PGADMIN_DEFAULT_PASSWORD=password
       ports:
         - "5126:80"
+      networks:
+        - buk-universal-games
+
+  directus:
+    container_name: bukuniversalgames_directus
+    image: directus/directus:latest
+    ports:
+      - 5127:8055
+    volumes:
+      # By default, uploads are stored in /directus/uploads
+      # Always make sure your volumes matches the storage root when using
+      # local driver
+      - ./uploads:/directus/uploads
+      # Make sure to also mount the volume when using SQLite
+      # - ./database:/directus/database
+      # If you want to load extensions from the host
+      # - ./extensions:/directus/extensions
+
+      - ./directus/extensions/authentication_hook/dist/:/directus/extensions/hooks/authentication_hook
+      - ./directus/snapshots/:/directus/snapshots
+    networks:
+        - buk-universal-games
+    depends_on:
+      - redis
+      - database
+    environment:
+      KEY: '255d861b-5ea1-5996-9aa3-922530ec40b1'
+      SECRET: '6116487b-cda1-52c2-b5b5-c8022c45e263'
+
+      DB_CLIENT: 'pg'
+      DB_HOST: 'database'
+      DB_PORT: '5432'
+      DB_DATABASE: 'buk-universal-games'
+      DB_USER: 'admin'
+      DB_PASSWORD: 'password'
+
+      CACHE_ENABLED: 'true'
+      CACHE_STORE: 'redis'
+      CACHE_REDIS: 'redis://redis:6379'
+
+      ADMIN_EMAIL: 'admin@admin.com'
+      ADMIN_PASSWORD: 'password'
+
+networks:
+  buk-universal-games:
