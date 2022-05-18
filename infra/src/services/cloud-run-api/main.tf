@@ -38,6 +38,8 @@ resource "google_cloud_run_service" "default" {
       annotations = {
         "autoscaling.knative.dev/maxScale"      = var.max-scale
         "run.googleapis.com/cloudsql-instances" = var.sql-instance-connection-name
+        "run.googleapis.com/vpc-access-connector" = element(tolist(module.serverless_connector.connector_ids), 1)
+        "run.googleapis.com/vpc-access-egress"    = "private-ranges-only"
       }
     }
   }

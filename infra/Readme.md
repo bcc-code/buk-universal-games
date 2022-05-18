@@ -11,11 +11,13 @@
 2. [Terragrunt](https://terragrunt.gruntwork.io/docs/getting-started/install/)
 3. [gcloud cli](https://cloud.google.com/sdk/docs/install)
 
+(see `install.sh`)
+
 ## Deploying
 
 1. Login to your Google Cloud account:
     ```
-    gcloud auth application-default login
+    gcloud auth application-default login --no-launch-browser
     ```
 2. Generate GitHub personal access token
    1. Go to https://github.com/settings/tokens

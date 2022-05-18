@@ -25,6 +25,8 @@ locals {
   environment-name-uppercase = upper(var.environment-name)
   api-service-name = "buk-universal-games-api-${var.environment-name}"
   site-service-name = "buk-universal-games-ui-${var.environment-name}"
+  serverless-network-name = "buk-universal-games-vpc-network"
+  serverless-subnet-name = "buk-universal-games-vpc-subnet"
 }
 
 module "postgres-instance" {
@@ -51,6 +53,11 @@ module "buk-universal-games-db" {
   superuser-name = module.postgres-instance.terraform-username
 }
 
+module "redis-cache" {
+  source                       = "./redis-cache"
+}
+
+
 module "buk-universal-games-site" {
   source                       = "./gcp-static-site"
   service-name                 = local.site-service-name
@@ -65,8 +72,10 @@ module "buk-universal-games-api" {
   service-name                 = local.api-service-name
   sql-instance-connection-name = module.postgres-instance.connection-name
   gcp-location                 = var.gcp-location
+  gcp-project-id               = var.gcp-project-id
   environment-name             = var.environment-name
   service-account-email        = google_service_account.github-build.email
+  vpc-subnet-name              = local.serverless-subnet-name
   environment-secrets = {
     POSTGRES_PASSWORD   = module.buk-universal-games-db.db-password
   }
@@ -76,5 +85,9 @@ module "buk-universal-games-api" {
     POSTGRES_USER     = module.buk-universal-games-db.db-username
     POSTGRES_DB       = module.buk-universal-games-db.db-name
     ENVIRONMENT_NAME  = var.environment-name
+    REDIS_CONNECTION_STRING = "${module.redis-cache.service.host}:${module.redis-cache.service.port}"
   }
+  depends_on = [
+    google_compute_subnetwork.serverless-subnet
+  ]
 }

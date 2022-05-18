@@ -1,6 +1,9 @@
 variable "gcp-location" {
   type = string
 }
+variable "gcp-project-id" {
+  type = string
+}
 variable "environment-name" {
   type = string
 }
@@ -29,4 +32,8 @@ variable "environment-variables" {
 variable "environment-secrets" {
   default = {}
   type    = map(string)
+}
+
+variable "vpc-subnet-name" {
+  type    = string
 }

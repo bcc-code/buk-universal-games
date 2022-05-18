@@ -26,7 +26,8 @@ resource "google_project_service" "default" {
     "secretmanager.googleapis.com",
     "sqladmin.googleapis.com",
     "redis.googleapis.com",
-    "vpcaccess.googleapis.com"
+    "vpcaccess.googleapis.com",
+    "servicenetworking.googleapis.com"
     ] )
   project = var.gcp-project-id
   service = each.key
