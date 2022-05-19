@@ -11,3 +11,4 @@ gcp-remote-admin.json
 node_modules/
 dist/
 package-lock.json
+backend/.vs/
