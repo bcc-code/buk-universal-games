@@ -63,7 +63,7 @@ module "buk-universal-games-site" {
   gcp-location                 = var.gcp-location
   environment-name             = var.environment-name
   domain-name                  = var.domain-name
-  cors                         = ["https://${var.domain-name}", "${module.buk-universal-games-api.service.status[0].url}"]
+  cors                         = ["https://${var.domain-name}", "${module.buk-universal-games-api.service.status[0].url}", "${module.buk-universal-games-directus.service.status[0].url}"]
 }
 
 resource "google_vpc_access_connector" "vpc-connector" {
@@ -110,7 +110,6 @@ resource "random_uuid" "directus-secret" {
 module "buk-universal-games-directus" {
   source                       = "./cloud-run-api"
   service-name                 = local.directus-service-name
-  docker-image                 = "directus/directus:latest"
   sql-instance-connection-name = module.postgres-instance.connection-name
   vpc-serverless-connector-name = google_vpc_access_connector.vpc-connector.name
   gcp-location                 = var.gcp-location
@@ -132,7 +131,7 @@ module "buk-universal-games-directus" {
     DB_DATABASE       = module.buk-universal-games-db.db-name
     CACHE_ENABLED     = true
     CACHE_STORE       = "redis"
-    CACHE_REDIS       = "redis://{module.redis-cache.service.host}:${module.redis-cache.service.port}"
-    PUBLIC_URL        = "https://${var.domain-name}/directus"
+    CACHE_REDIS       = "redis://${module.redis-cache.service.host}:${module.redis-cache.service.port}"
+    # PUBLIC_URL        = "https://${var.domain-name}/directus"
   }
 }

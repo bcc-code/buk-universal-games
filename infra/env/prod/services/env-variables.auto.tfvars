@@ -1,2 +1,2 @@
-domain-name     = "buk-universal-games.bcc.no"
+domain-name     = "universalgames.buk.no"
 db-tier         = "db-g1-small"

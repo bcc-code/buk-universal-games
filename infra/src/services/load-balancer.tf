@@ -46,8 +46,14 @@ resource "google_compute_url_map" "default" {
       service = module.buk-universal-games-api.backend-service.id
     }
     path_rule {
-      paths   = ["/directus/*", "/directus"]
-      service = module.buk-universal-games-directus.backend-service.id
+      paths   = ["/admin/*", "/admin"]
+      # service = module.buk-universal-games-directus.backend-service.id
+      url_redirect {
+        https_redirect         = false
+        path_redirect          = "${module.buk-universal-games-directus.service.status[0].url}/"
+        redirect_response_code = "MOVED_PERMANENTLY_DEFAULT"
+        strip_query            = false
+      }
     }
     path_rule {
       paths   = ["/*", "/"]
