@@ -50,10 +50,10 @@ public class DataContext : DbContext
         builder.Entity<Sticker>().HasIndex(t => t.Code);
 
         builder.Entity<StickerScan>().HasKey(t => t.StickerScanId);
-        builder.Entity<StickerScan>().Property(e => e.At).HasDefaultValueSql("now()");
+        builder.Entity<StickerScan>().Property(e => e.At).HasColumnType("timestamp without time zone");
 
         builder.Entity<Point>().HasKey(t => t.PointId);
-        builder.Entity<Point>().Property(e => e.Added).HasDefaultValueSql("now()");
+        builder.Entity<Point>().Property(e => e.Added).HasColumnType("timestamp without time zone");
 
         builder.Entity<Game>().HasKey(t => t.GameId);
 

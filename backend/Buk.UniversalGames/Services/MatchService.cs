@@ -3,11 +3,11 @@ using Microsoft.Extensions.Logging;
 
 namespace Buk.UniversalGames.Services
 {
-    public class GameService : IStickerService
+    public class MatchService : IMatchService
     {
-        private readonly ILogger<GameService> _logger;
+        private readonly ILogger<MatchService> _logger;
 
-        public GameService(ILogger<GameService> logger)
+        public MatchService(ILogger<MatchService> logger)
         {
             _logger = logger;
         }

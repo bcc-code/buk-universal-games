@@ -1,4 +1,6 @@
 ﻿using Buk.UniversalGames.Data.Interfaces;
+using Buk.UniversalGames.Data.Models;
+using Buk.UniversalGames.Data.Models.Internal;
 using Buk.UniversalGames.Data.Repositories;
 using Microsoft.Extensions.Logging;
 
@@ -13,6 +15,16 @@ namespace Buk.UniversalGames.Data.CacheRepositories
         {
             _logger = logger;
             _data = new StickerDataRepository(dataContext);
+        }
+
+        public Sticker? GetStickerByCode(string code)
+        {
+            return _data.GetStickerByCode(code);
+        }
+
+        public StickerScanResult LogStickerScanning(Team team, Sticker sticker)
+        {
+            return _data.LogStickerScanning(team, sticker);
         }
     }
 }

@@ -1,5 +1,6 @@
 using Buk.UniversalGames.Api.Exceptions;
 using Buk.UniversalGames.Interfaces;
+using Buk.UniversalGames.Library.Cultures;
 using Buk.UniversalGames.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,7 +24,7 @@ public class StartController : ControllerBase
     {
         var team = _leagueService.GetTeamByCode(code);
         if (team == null)
-            return new ExceptionResult("Unknown team code", 403);
+            return new ExceptionResult(Strings.UnknownTeamCode, 403);
 
         var league = team.LeagueId.HasValue ? _leagueService.GetLeague(team.LeagueId.Value) : null;
 

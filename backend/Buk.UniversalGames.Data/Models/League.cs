@@ -9,7 +9,7 @@ public class League {
     [JsonPropertyName("id")]
     public int LeagueId { get; set; }
 
-    public string? Name{ get; set; }
+    public string Name{ get; set; }
 
 
     [JsonIgnore]

@@ -1,5 +1,6 @@
 ﻿using Buk.UniversalGames.Api.Exceptions;
 using Buk.UniversalGames.Interfaces;
+using Buk.UniversalGames.Library.Cultures;
 using Buk.UniversalGames.Library.Enums;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -32,15 +33,17 @@ namespace Buk.UniversalGames.Api.Authorization
                 var code = (context.RouteData.Values["code"] ?? "").ToString();
                 if (string.IsNullOrEmpty(code))
                 {
-                    context.Result = new ExceptionResult("No team code specified", 403);
+                    context.Result = new ExceptionResult(Strings.MissingTeamCode, 403);
                 }
                 else
                 {
-                    var user = _leagueService.GetTeamByCode(code);
-                    if(user == null)
-                        context.Result = new ExceptionResult("Unknown team code", 403);
-                    else if(!_types.Contains(user.Type))
-                        context.Result = new ExceptionResult("Team unauthorized for this request", 403);
+                    var team = _leagueService.GetTeamByCode(code);
+                    if(team == null)
+                        context.Result = new ExceptionResult(Strings.UnknownTeamCode, 403);
+                    else if(!_types.Contains(team.Type))
+                        context.Result = new ExceptionResult(Strings.TeamUnathorized, 403);
+
+                    context.HttpContext.Items["ValidatedTeam"] = team;
                 }
             }
         }

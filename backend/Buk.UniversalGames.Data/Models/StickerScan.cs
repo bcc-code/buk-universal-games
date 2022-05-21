@@ -12,7 +12,7 @@ public class StickerScan {
     public int StickerId { get; set; }
 
     public int TeamId { get; set; }
-    
+
     public DateTime At { get; set; }
 
     [JsonIgnore]
