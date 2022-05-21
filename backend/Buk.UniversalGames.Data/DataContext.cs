@@ -42,9 +42,6 @@ public class DataContext : DbContext
         builder.HasPostgresEnum<TeamType>();
 
         builder.Entity<League>().HasKey(t => t.LeagueId);
-        builder.Entity<League>().HasData(new League { LeagueId = 1, Name = "B-liga", Location = "Oslofjord Arena"});
-        builder.Entity<League>().HasData(new League { LeagueId = 2, Name = "U-liga", Location = "Mellom hotellbyggene"});
-        builder.Entity<League>().HasData(new League { LeagueId = 3, Name = "K-liga", Location = "Strandsonen"});
 
         builder.Entity<Team>().HasKey(t => t.TeamId);
 

@@ -5,5 +5,6 @@
         Unknown = 0,
         Participant = 1,
         Admin = 2,
+        SystemAdmin = 3
     }
 }

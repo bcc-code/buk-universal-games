@@ -4,6 +4,7 @@ using Buk.UniversalGames.Data;
 using Buk.UniversalGames.Library.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -12,9 +13,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Buk.UniversalGames.Api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220520191027_SkipLeagueSeeding")]
+    partial class SkipLeagueSeeding
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,7 +24,7 @@ namespace Buk.UniversalGames.Api.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.HasPostgresEnum(modelBuilder, "game_type", new[] { "unknown", "water", "wood", "fire", "earth", "metal" });
-            NpgsqlModelBuilderExtensions.HasPostgresEnum(modelBuilder, "team_type", new[] { "unknown", "participant", "admin", "system_admin" });
+            NpgsqlModelBuilderExtensions.HasPostgresEnum(modelBuilder, "team_type", new[] { "unknown", "participant", "admin" });
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("Buk.UniversalGames.Data.Models.Game", b =>

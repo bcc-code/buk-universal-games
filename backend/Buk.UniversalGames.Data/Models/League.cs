@@ -11,8 +11,6 @@ public class League {
 
     public string Name{ get; set; }
 
-    public string Location { get; set; }
-
 
     [JsonIgnore]
     public virtual List<Team> Teams { get; set; }

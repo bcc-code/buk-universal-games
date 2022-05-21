@@ -1,6 +1,6 @@
 using Buk.UniversalGames.Data;
+using Buk.UniversalGames.Data.CacheRepositories;
 using Buk.UniversalGames.Data.Interfaces;
-using Buk.UniversalGames.Data.Repositories;
 using Buk.UniversalGames.Services;
 using Buk.UniversalGames.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +16,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<ILeagueService, LeagueService>();
 
-builder.Services.AddScoped<ILeagueRepository, LeagueRepository>();
+builder.Services.AddScoped<ILeagueRepository, LeagueCacheRepository>();
+builder.Services.AddScoped<ITeamRepository, TeamCacheRepository>();
 
 builder.Services.AddDbContext<DataContext>();
 builder.Services.AddStackExchangeRedisCache(options =>
@@ -30,7 +31,6 @@ builder.Services.AddStackExchangeRedisCache(options =>
 // builder.Services.AddDataProtection().PersistKeysToStackExchangeRedis(redis, "wp-proxy-dataprotection-keys");
 
 builder.Services.AddMemoryCache();
-
 
 
 var app = builder.Build();
@@ -57,9 +57,6 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.Map("~/", () => Results.Redirect("~/swagger"));
-
-
-
 
 app.UseAuthorization();
 
