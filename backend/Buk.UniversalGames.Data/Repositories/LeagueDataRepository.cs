@@ -19,8 +19,7 @@ namespace Buk.UniversalGames.Data.Repositories
 
         public IEnumerable<Team> GetTeams(int leagueId)
         {
-            return new List<Team>();
-            //return _db.Teams.Where(s => s.LeagueId == leagueId).ToList();
+            return _db.Teams.Where(s => s.LeagueId == leagueId).ToList();
         }
     }
 }

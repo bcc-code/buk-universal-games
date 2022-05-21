@@ -14,8 +14,7 @@ namespace Buk.UniversalGames.Data.Repositories
 
         public Team? GetTeamByCode(string code)
         {
-            return null;
-            //return _db.Teams.FirstOrDefault(t=>t.Code == code);
+            return _db.Teams.FirstOrDefault(t=>t.Code == code);
         }
     }
 }
