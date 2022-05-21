@@ -21,13 +21,13 @@ public class LeaguesController : ControllerBase
     }
 
     [HttpGet]
-    public IEnumerable<League> All()
+    public ActionResult<List<League>> All()
     {
         return _leagueService.GetLeagues();
     }
 
     [HttpGet("{leagueId}/Teams")]
-    public IEnumerable<Team> GetTeams(int leagueId)
+    public ActionResult<List<Team>> GetTeams(int leagueId)
     {
         return _leagueService.GetTeams(leagueId);
     }

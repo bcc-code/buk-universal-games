@@ -16,12 +16,22 @@ namespace Buk.UniversalGames.Services
             _leagueRepository = leagueRepository;
         }
 
-        public IEnumerable<League> GetLeagues()
+        public League? GetLeague(int leagueId)
+        {
+            return _leagueRepository.GetLeague(leagueId);
+        }
+
+        public List<League> GetLeagues()
         {
             return _leagueRepository.GetLeagues();
         }
 
-        public IEnumerable<Team> GetTeams(int leagueId)
+        public Team? GetTeamByCode(string code)
+        {
+            return _leagueRepository.GetTeamByCode(code);
+        }
+
+        public List<Team> GetTeams(int leagueId)
         {
             return _leagueRepository.GetTeams(leagueId);
         }

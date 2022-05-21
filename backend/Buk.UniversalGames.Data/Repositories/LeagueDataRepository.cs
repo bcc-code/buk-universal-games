@@ -12,12 +12,22 @@ namespace Buk.UniversalGames.Data.Repositories
             _db = db;
         }
 
-        public IEnumerable<League> GetLeagues()
+        public League? GetLeague(int leagueId)
+        {
+            return _db.Leagues.FirstOrDefault(s => s.LeagueId == leagueId);
+        }
+
+        public List<League> GetLeagues()
         {
             return _db.Leagues.ToList();
         }
 
-        public IEnumerable<Team> GetTeams(int leagueId)
+        public Team? GetTeamByCode(string code)
+        {
+            return _db.Teams.FirstOrDefault(s => s.Code == code);
+        }
+
+        public List<Team> GetTeams(int leagueId)
         {
             return _db.Teams.Where(s => s.LeagueId == leagueId).ToList();
         }

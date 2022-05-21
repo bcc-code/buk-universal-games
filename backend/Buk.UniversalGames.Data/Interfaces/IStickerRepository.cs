@@ -2,8 +2,8 @@
 
 namespace Buk.UniversalGames.Data.Interfaces
 {
-    public interface ITeamRepository
+    public interface IStickerRepository
     {
-        Team? GetTeamByCode(string code);
+        
     }
 }

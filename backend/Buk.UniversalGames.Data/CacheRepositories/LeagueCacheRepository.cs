@@ -8,22 +8,32 @@ namespace Buk.UniversalGames.Data.CacheRepositories
     public class LeagueCacheRepository : ILeagueRepository
     {
         private readonly ILogger<LeagueCacheRepository> _logger;
-        private readonly LeagueDataRepository _leagueRepository;
+        private readonly LeagueDataRepository _data;
 
         public LeagueCacheRepository(ILogger<LeagueCacheRepository> logger, DataContext dataContext)
         {
             _logger = logger;
-            _leagueRepository = new LeagueDataRepository(dataContext);
+            _data = new LeagueDataRepository(dataContext);
         }
 
-        public IEnumerable<League> GetLeagues()
+        public League? GetLeague(int leagueId)
         {
-            return _leagueRepository.GetLeagues();
+            return _data.GetLeague(leagueId);
         }
 
-        public IEnumerable<Team> GetTeams(int leagueId)
+        public List<League> GetLeagues()
         {
-            return _leagueRepository.GetTeams(leagueId);
+            return _data.GetLeagues();
+        }
+
+        public Team? GetTeamByCode(string code)
+        {
+            return _data.GetTeamByCode(code);
+        }
+
+        public List<Team> GetTeams(int leagueId)
+        {
+            return _data.GetTeams(leagueId);
         }
     }
 }

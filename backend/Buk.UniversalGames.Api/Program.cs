@@ -15,9 +15,14 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<ILeagueService, LeagueService>();
+builder.Services.AddScoped<IMatchService, StickerService>();
+builder.Services.AddScoped<IStickerService, GameService>();
+builder.Services.AddScoped<IScoreService, ScoreService>();
 
 builder.Services.AddScoped<ILeagueRepository, LeagueCacheRepository>();
-builder.Services.AddScoped<ITeamRepository, TeamCacheRepository>();
+builder.Services.AddScoped<IMatchRepository, MatchCacheRepository>();
+builder.Services.AddScoped<IStickerRepository, StickerCacheRepository>();
+builder.Services.AddScoped<IScoreRepository, ScoreCacheRepository>();
 
 builder.Services.AddDbContext<DataContext>();
 builder.Services.AddStackExchangeRedisCache(options =>

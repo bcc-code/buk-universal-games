@@ -4,8 +4,12 @@ namespace Buk.UniversalGames.Data.Interfaces
 {
     public interface ILeagueRepository
     {
-        IEnumerable<League> GetLeagues();
+        League? GetLeague(int leagueId);
 
-        IEnumerable<Team> GetTeams(int leagueId);
+        List<League> GetLeagues();
+
+        Team? GetTeamByCode(string code);
+
+        List<Team> GetTeams(int leagueId);
     }
 }

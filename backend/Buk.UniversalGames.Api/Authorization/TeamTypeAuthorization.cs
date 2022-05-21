@@ -1,5 +1,5 @@
-﻿using System.Security.Claims;
-using Buk.UniversalGames.Data.Interfaces;
+﻿using Buk.UniversalGames.Api.Exceptions;
+using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Enums;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -17,12 +17,12 @@ namespace Buk.UniversalGames.Api.Authorization
     public class TeamTypeFilter : IAuthorizationFilter
     {
         readonly TeamType[] _types;
-        readonly ITeamRepository _teamRepository;
+        readonly ILeagueService _leagueService;
 
-        public TeamTypeFilter(TeamType[] types, ITeamRepository teamRepository)
+        public TeamTypeFilter(TeamType[] types, ILeagueService leagueService)
         {
             _types = types;
-            _teamRepository = teamRepository;
+            _leagueService = leagueService;
         }
 
         public void OnAuthorization(AuthorizationFilterContext context)
@@ -32,15 +32,15 @@ namespace Buk.UniversalGames.Api.Authorization
                 var code = (context.RouteData.Values["code"] ?? "").ToString();
                 if (string.IsNullOrEmpty(code))
                 {
-                    context.Result = new UnauthorizedResult("No team code specified", 403);
+                    context.Result = new ExceptionResult("No team code specified", 403);
                 }
                 else
                 {
-                    var user = _teamRepository.GetTeamByCode(code);
+                    var user = _leagueService.GetTeamByCode(code);
                     if(user == null)
-                        context.Result = new UnauthorizedResult("Unknown team code", 403);
+                        context.Result = new ExceptionResult("Unknown team code", 403);
                     else if(!_types.Contains(user.Type))
-                        context.Result = new UnauthorizedResult("Team unauthorized for this request", 403);
+                        context.Result = new ExceptionResult("Team unauthorized for this request", 403);
                 }
             }
         }
