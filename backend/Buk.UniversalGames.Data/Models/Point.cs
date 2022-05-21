@@ -21,8 +21,8 @@ public class Point {
 
     public DateTime Added { get; set; }
 
-    [JsonIgnore]
-    public virtual Team Team { get; set; }
+   // [JsonIgnore]
+  //  public virtual Team Team { get; set; }
     [JsonIgnore]
     public virtual Game? Game { get; set; }
     [JsonIgnore]

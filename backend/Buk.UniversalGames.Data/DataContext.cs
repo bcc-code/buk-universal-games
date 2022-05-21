@@ -8,7 +8,7 @@ namespace Buk.UniversalGames.Data;
 public class DataContext : DbContext
 {
     public DbSet<League> Leagues{ get; set; }
-    public DbSet<Team> Teams { get; set; }
+    //public DbSet<Team> Teams { get; set; }
     public DbSet<Sticker> Stickers { get; set; }
     public DbSet<StickerScan> StickerScans { get; set; }
     public DbSet<Point> Points{ get; set; }
@@ -43,7 +43,7 @@ public class DataContext : DbContext
 
         builder.Entity<League>().HasKey(t => t.LeagueId);
 
-        builder.Entity<Team>().HasKey(t => t.TeamId);
+        //builder.Entity<Team>().HasKey(t => t.TeamId);
 
         builder.Entity<Sticker>().HasKey(t => t.StickerId);
 
