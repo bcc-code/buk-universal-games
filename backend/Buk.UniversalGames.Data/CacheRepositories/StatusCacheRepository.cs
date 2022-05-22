@@ -1,5 +1,6 @@
 ﻿using Buk.UniversalGames.Data.Interfaces;
 using Buk.UniversalGames.Data.Models;
+using Buk.UniversalGames.Data.Models.Internal;
 using Buk.UniversalGames.Data.Repositories;
 using Microsoft.Extensions.Logging;
 
@@ -21,7 +22,7 @@ namespace Buk.UniversalGames.Data.CacheRepositories
             return _data.GetTeamPoints(team);
         }
 
-        public List<Point> GetLeaguePoints(int leagueId)
+        public List<TeamPoint> GetLeaguePoints(int leagueId)
         {
             return _data.GetLeaguePoints(leagueId);
         }

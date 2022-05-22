@@ -23,6 +23,7 @@ namespace Buk.UniversalGames.Services
             return new TeamStatus
             {
                 TeamId = team.TeamId,
+                Team = team.Name,
                 Points = points.Sum(s => s.Points),
                 Stickers = points.Count(s => s.StickerId.GetValueOrDefault() > 0),
                 StatusAt = DateTime.Now
@@ -35,13 +36,15 @@ namespace Buk.UniversalGames.Services
 
             return points.GroupBy(s => new
                 {
-                    s.TeamId,
+                    s.Point.TeamId,
+                    s.Team,
                 })
                 .Select(s => new TeamStatus
                 {
                     TeamId = s.Key.TeamId,
-                    Points = s.Sum(s => s.Points),
-                    Stickers = s.Count(s => s.StickerId.GetValueOrDefault() > 0),
+                    Team = s.Key.Team,
+                    Points = s.Sum(s => s.Point.Points),
+                    Stickers = s.Count(s => s.Point.StickerId.GetValueOrDefault() > 0),
                     StatusAt = DateTime.Now
                 })
                 .OrderByDescending(s => s.Points)

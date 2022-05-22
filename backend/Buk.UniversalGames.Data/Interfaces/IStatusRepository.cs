@@ -1,4 +1,5 @@
 ﻿using Buk.UniversalGames.Data.Models;
+using Buk.UniversalGames.Data.Models.Internal;
 
 namespace Buk.UniversalGames.Data.Interfaces
 {
@@ -6,6 +7,6 @@ namespace Buk.UniversalGames.Data.Interfaces
     {
         List<Point> GetTeamPoints(Team team);
 
-        List<Point> GetLeaguePoints(int leagueId);
+        List<TeamPoint> GetLeaguePoints(int leagueId);
     }
 }
