@@ -20,11 +20,11 @@ public class Match {
     public int WinnerId { get; set; }
 
     [JsonIgnore]
-    public virtual Team Team1Team { get; set; }
+    public Team Team1Team { get; set; }
     [JsonIgnore]
-    public virtual Team Team2Team { get; set; }
+    public Team Team2Team { get; set; }
     [JsonIgnore]
-    public virtual Game Game { get; set; }
+    public Game Game { get; set; }
     [JsonIgnore]
-    public virtual Team WinnerTeam { get; set; }
+    public Team WinnerTeam { get; set; }
 }

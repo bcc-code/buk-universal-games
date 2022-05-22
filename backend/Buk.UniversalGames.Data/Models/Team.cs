@@ -16,12 +16,13 @@ public class Team
 
     public int? LeagueId { get; set; }
 
+    [JsonIgnore]
     public TeamType Type { get; set; }
 
     [JsonIgnore]
-    public virtual League? League { get; set; }
+    public League? League { get; set; }
     [JsonIgnore]
-    public virtual List<Point> Points { get; set; }
+    public List<Point> Points { get; set; }
     [JsonIgnore]
-    public virtual List<StickerScan> StickerScans { get; set; }
+    public List<StickerScan> StickerScans { get; set; }
 }

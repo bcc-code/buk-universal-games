@@ -22,11 +22,11 @@ public class Point {
     public DateTime Added { get; set; }
 
     [JsonIgnore]
-    public virtual Team Team { get; set; }
+    public Team Team { get; set; }
     [JsonIgnore]
-    public virtual Game? Game { get; set; }
+    public Game? Game { get; set; }
     [JsonIgnore]
-    public virtual Match? Match { get; set; }
+    public Match? Match { get; set; }
     [JsonIgnore]
-    public virtual Sticker? Sticker { get; set; }
+    public Sticker? Sticker { get; set; }
 }

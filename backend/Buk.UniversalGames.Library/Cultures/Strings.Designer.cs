@@ -61,7 +61,7 @@ namespace Buk.UniversalGames.Library.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to minutter.
+        ///   Looks up a localized string similar to minutes.
         /// </summary>
         public static string Minutes {
             get {
@@ -115,11 +115,20 @@ namespace Buk.UniversalGames.Library.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to sekunder.
+        ///   Looks up a localized string similar to seconds.
         /// </summary>
         public static string Seconds {
             get {
                 return ResourceManager.GetString("Seconds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This team is not part of a league.
+        /// </summary>
+        public static string TeamNotPartOfALeague {
+            get {
+                return ResourceManager.GetString("TeamNotPartOfALeague", resourceCulture);
             }
         }
         

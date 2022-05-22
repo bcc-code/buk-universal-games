@@ -13,7 +13,7 @@ public class League {
 
 
     [JsonIgnore]
-    public virtual List<Team> Teams { get; set; }
+    public List<Team> Teams { get; set; }
     [JsonIgnore]
-    public virtual List<Sticker> Stickers { get; set; }
+    public List<Sticker> Stickers { get; set; }
 }

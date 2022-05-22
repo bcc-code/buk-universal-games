@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Minutes" xml:space="preserve">
-    <value>minutter</value>
+    <value>minutes</value>
   </data>
   <data name="MissingTeamCode" xml:space="preserve">
     <value>No team code specified</value>
@@ -136,7 +136,10 @@
     <value>Nice! You found a new sticker and {points} points to your team!</value>
   </data>
   <data name="Seconds" xml:space="preserve">
-    <value>sekunder</value>
+    <value>seconds</value>
+  </data>
+  <data name="TeamNotPartOfALeague" xml:space="preserve">
+    <value>This team is not part of a league</value>
   </data>
   <data name="TeamUnathorized" xml:space="preserve">
     <value>Sorry, your team does not have access to this feature</value>

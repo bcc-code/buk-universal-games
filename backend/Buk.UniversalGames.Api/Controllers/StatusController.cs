@@ -1,6 +1,8 @@
 using Buk.UniversalGames.Api.Authorization;
+using Buk.UniversalGames.Api.Exceptions;
 using Buk.UniversalGames.Data.Models;
 using Buk.UniversalGames.Interfaces;
+using Buk.UniversalGames.Library.Cultures;
 using Buk.UniversalGames.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,5 +27,16 @@ public class StatusController : ControllerBase
     {
         var team = HttpContext.Items["ValidatedTeam"] as Team;
         return _statusService.GetTeamStatus(team);
+    }
+
+    [HttpGet("League")]
+    public ActionResult<List<TeamStatus>> LeagueStatus()
+    {
+        var team = HttpContext.Items["ValidatedTeam"] as Team;
+
+        if(!team.LeagueId.HasValue)
+            return new ExceptionResult(Strings.TeamNotPartOfALeague, 403);
+
+        return _statusService.GetLeagueStatus(team.LeagueId.Value);
     }
 }

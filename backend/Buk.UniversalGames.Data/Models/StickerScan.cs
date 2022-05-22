@@ -16,7 +16,7 @@ public class StickerScan {
     public DateTime At { get; set; }
 
     [JsonIgnore]
-    public virtual Team Team { get; set; }
+    public Team Team { get; set; }
     [JsonIgnore]
-    public virtual Sticker Sticker { get; set; }
+    public Sticker Sticker { get; set; }
 }

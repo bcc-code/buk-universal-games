@@ -16,6 +16,6 @@ public class Sticker {
     public int Points{ get; set; }
 
     [JsonIgnore]
-    public virtual League League { get; set; }
+    public League League { get; set; }
 
 }

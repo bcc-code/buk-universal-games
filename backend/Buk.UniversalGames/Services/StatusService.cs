@@ -28,5 +28,24 @@ namespace Buk.UniversalGames.Services
                 StatusAt = DateTime.Now
             };
         }
+
+        public List<TeamStatus> GetLeagueStatus(int leagueId)
+        {
+            var points = _statusRepository.GetLeaguePoints(leagueId);
+
+            return points.GroupBy(s => new
+                {
+                    s.TeamId,
+                })
+                .Select(s => new TeamStatus
+                {
+                    TeamId = s.Key.TeamId,
+                    Points = s.Sum(s => s.Points),
+                    Stickers = s.Count(s => s.StickerId.GetValueOrDefault() > 0),
+                    StatusAt = DateTime.Now
+                })
+                .OrderByDescending(s => s.Points)
+                .ToList();
+        }
     }
 }
