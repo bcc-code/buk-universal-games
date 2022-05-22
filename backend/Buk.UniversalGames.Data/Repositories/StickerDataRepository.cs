@@ -22,15 +22,16 @@ namespace Buk.UniversalGames.Data.Repositories
 
         public StickerScanResult LogStickerScanning(Team team, Sticker sticker)
         {
-            var scans = _db.StickerScans.GroupBy(s => new
-            {
-                s.TeamId,
-                s.StickerId
-            }).Select(s => new StickerScannedBeforeInfo
-            {
-                LastScan = s.Max(s=>s.At),
-                Scans = s.Count()
-            }).FirstOrDefault();
+            var scans = _db.StickerScans
+                .Where(s => s.TeamId == team.TeamId && s.StickerId == sticker.StickerId)
+                .GroupBy(s => new
+                {
+                    s.StickerId
+                }).Select(s => new StickerScannedBeforeInfo
+                {
+                    LastScan = s.Max(s => s.At),
+                    Scans = s.Count()
+                }).FirstOrDefault();
 
             var scan = new StickerScan
             {

@@ -19,12 +19,12 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ILeagueService, LeagueService>();
 builder.Services.AddScoped<IMatchService, MatchService>();
 builder.Services.AddScoped<IStickerService, StickerService>();
-builder.Services.AddScoped<IScoreService, ScoreService>();
+builder.Services.AddScoped<IStatusService, StatusService>();
 
 builder.Services.AddScoped<ILeagueRepository, LeagueCacheRepository>();
 builder.Services.AddScoped<IMatchRepository, MatchCacheRepository>();
 builder.Services.AddScoped<IStickerRepository, StickerCacheRepository>();
-builder.Services.AddScoped<IScoreRepository, ScoreCacheRepository>();
+builder.Services.AddScoped<IStatusRepository, StatusCacheRepository>();
 
 builder.Services.AddDbContext<DataContext>();
 builder.Services.AddStackExchangeRedisCache(options =>
