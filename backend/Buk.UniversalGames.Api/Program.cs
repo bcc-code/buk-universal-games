@@ -17,12 +17,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<ILeagueService, LeagueService>();
-builder.Services.AddScoped<IMatchService, MatchService>();
+builder.Services.AddScoped<IGameService, GameService>();
 builder.Services.AddScoped<IStickerService, StickerService>();
 builder.Services.AddScoped<IStatusService, StatusService>();
 
 builder.Services.AddScoped<ILeagueRepository, LeagueCacheRepository>();
-builder.Services.AddScoped<IMatchRepository, MatchCacheRepository>();
+builder.Services.AddScoped<IGameRepository, GameCacheRepository>();
 builder.Services.AddScoped<IStickerRepository, StickerCacheRepository>();
 builder.Services.AddScoped<IStatusRepository, StatusCacheRepository>();
 

@@ -2,8 +2,8 @@
 
 namespace Buk.UniversalGames.Data.Interfaces
 {
-    public interface IMatchRepository
+    public interface IGameRepository
     {
-        
+        List<Game> GetGames();
     }
 }

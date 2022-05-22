@@ -19,6 +19,8 @@ public class Team
     [JsonIgnore]
     public TeamType Type { get; set; }
 
+    public virtual string TeamType => Type.ToString();
+
     [JsonIgnore]
     public League? League { get; set; }
     [JsonIgnore]
