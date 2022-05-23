@@ -5,7 +5,13 @@ resource "google_sql_database_instance" "default" {
 
   settings {
     tier = var.db-tier
+    backup_configuration {
+      enabled                        = true
+      location                       = "europe-west3"
+      point_in_time_recovery_enabled = true
+    }
   }
+
 }
 
 resource "random_password" "terraform-user-password" {

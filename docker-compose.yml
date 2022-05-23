@@ -47,7 +47,7 @@ services:
     ports:
       - "5432:5432"
     networks:
-        - buk-universal-games
+      - buk-universal-games
 
   pgadmin: #connect using host.docker.internal as host on windows
       container_name: bukuniversalgames_pgadmin4
@@ -80,7 +80,7 @@ services:
       - ./directus/extensions/authentication_hook/dist/:/directus/extensions/hooks/authentication_hook
       - ./directus/snapshots/:/directus/snapshots
     networks:
-        - buk-universal-games
+      - buk-universal-games
     depends_on:
       - redis
       - database

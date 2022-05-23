@@ -16,7 +16,7 @@ terraform {
 remote_state {
   backend = "gcs"
   config = {
-    bucket = "bcc-core-terraform-state"
+    bucket = "buk-universal-games-ioc-state"
     prefix = "buk-universal-games_${replace(path_relative_to_include(),"/","-")}"
   }
 }

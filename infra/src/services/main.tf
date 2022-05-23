@@ -30,7 +30,7 @@ locals {
 
 module "postgres-instance" {
   source                = "./gcp-postgres-instance"
-  instance-name         = "buk-universal-games-postgres"
+  instance-name         = "buk-universal-games-pgsql"
   gcp-location          = var.gcp-location
   environment-name      = var.environment-name
   service-account-email = google_service_account.github-build.email
@@ -48,7 +48,7 @@ provider "postgresql" {
 
 module "buk-universal-games-db" {
   source         = "./postgres-db"
-  db-name        = "buk-universal-games"
+  db-name        = "buk-universal-games-${var.environment-name}"
   superuser-name = module.postgres-instance.terraform-username
 }
 
@@ -70,7 +70,7 @@ resource "google_vpc_access_connector" "vpc-connector" {
   provider        = google-beta
   name            = "vpc-serverless-${var.environment-name}"
   project         = var.gcp-project-id
-  # region          = var.gcp-location
+  region          = var.gcp-location
   ip_cidr_range   = "10.8.0.0/28" # var.vpc-ip-range
   network         = "default" # var.vpc-network-name
   machine_type    = "e2-micro"
