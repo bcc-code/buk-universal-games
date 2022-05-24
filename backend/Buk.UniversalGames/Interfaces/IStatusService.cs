@@ -5,8 +5,8 @@ namespace Buk.UniversalGames.Interfaces
 {
     public interface IStatusService
     {
-        TeamStatus GetTeamStatus(Team team);
+        TeamStatusReport GetTeamStatus(Team team);
 
-        List<TeamStatus> GetLeagueStatus(int leagueId);
+        LeagueStatusReport GetLeagueStatus(int leagueId);
     }
 }

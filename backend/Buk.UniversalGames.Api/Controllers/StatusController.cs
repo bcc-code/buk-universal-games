@@ -23,14 +23,14 @@ public class StatusController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult<TeamStatus> Status()
+    public ActionResult<TeamStatusReport> Status()
     {
         var team = HttpContext.Items["ValidatedTeam"] as Team;
         return _statusService.GetTeamStatus(team);
     }
 
     [HttpGet("League")]
-    public ActionResult<List<TeamStatus>> LeagueStatus()
+    public ActionResult<LeagueStatusReport> LeagueStatus()
     {
         var team = HttpContext.Items["ValidatedTeam"] as Team;
 

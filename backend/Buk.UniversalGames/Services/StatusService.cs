@@ -1,5 +1,6 @@
 ﻿using Buk.UniversalGames.Data.Interfaces;
 using Buk.UniversalGames.Data.Models;
+using Buk.UniversalGames.Data.Models.Internal;
 using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Models;
 using Microsoft.Extensions.Logging;
@@ -17,38 +18,22 @@ namespace Buk.UniversalGames.Services
             _statusRepository = statusRepository;
         }
 
-        public TeamStatus GetTeamStatus(Team team)
+        public TeamStatusReport GetTeamStatus(Team team)
         {
-            var points = _statusRepository.GetTeamPoints(team);
-            return new TeamStatus
+            return new TeamStatusReport
             {
-                TeamId = team.TeamId,
-                Team = team.Name,
-                Points = points.Sum(s => s.Points),
-                Stickers = points.Count(s => s.StickerId.GetValueOrDefault() > 0),
+                Status = _statusRepository.GetTeamStatus(team),
                 StatusAt = DateTime.Now
             };
         }
 
-        public List<TeamStatus> GetLeagueStatus(int leagueId)
+        public LeagueStatusReport GetLeagueStatus(int leagueId)
         {
-            var points = _statusRepository.GetLeaguePoints(leagueId);
-
-            return points.GroupBy(s => new
-                {
-                    s.Point.TeamId,
-                    s.Team,
-                })
-                .Select(s => new TeamStatus
-                {
-                    TeamId = s.Key.TeamId,
-                    Team = s.Key.Team,
-                    Points = s.Sum(s => s.Point.Points),
-                    Stickers = s.Count(s => s.Point.StickerId.GetValueOrDefault() > 0),
-                    StatusAt = DateTime.Now
-                })
-                .OrderByDescending(s => s.Points)
-                .ToList();
+            return new LeagueStatusReport
+            {
+                Status = _statusRepository.GetLeagueStatus(leagueId),
+                StatusAt = DateTime.Now
+            };
         }
     }
 }

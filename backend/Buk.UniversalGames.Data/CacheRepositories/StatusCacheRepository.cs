@@ -17,14 +17,14 @@ namespace Buk.UniversalGames.Data.CacheRepositories
             _data = new StatusDataRepository(dataContext);
         }
 
-        public List<Point> GetTeamPoints(Team team)
+        public TeamStatus GetTeamStatus(Team team)
         {
-            return _data.GetTeamPoints(team);
+            return _data.GetTeamStatus(team);
         }
 
-        public List<TeamPoint> GetLeaguePoints(int leagueId)
+        public List<TeamStatus> GetLeagueStatus(int leagueId)
         {
-            return _data.GetLeaguePoints(leagueId);
+            return _data.GetLeagueStatus(leagueId);
         }
     }
 }

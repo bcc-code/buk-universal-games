@@ -1,4 +1,4 @@
-﻿namespace Buk.UniversalGames.Models
+﻿namespace Buk.UniversalGames.Data.Models.Internal
 {
     public class TeamStatus
     {
@@ -6,6 +6,5 @@
         public string Team { get; set; }
         public int Points { get; set; }
         public int Stickers { get; set; }
-        public DateTime StatusAt { get; set; }
     }
 }

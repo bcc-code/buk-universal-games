@@ -36,7 +36,7 @@ public class LeaguesController : ControllerBase
     }
 
     [HttpGet("{leagueId}/Status")]
-    public ActionResult<List<TeamStatus>> GetLeagueStatus(int leagueId)
+    public ActionResult<LeagueStatusReport> GetLeagueStatus(int leagueId)
     {
         return _statusService.GetLeagueStatus(leagueId);
     }
