@@ -26,5 +26,10 @@ namespace Buk.UniversalGames.Services
         {
             return _gameRepository.GetMatches(team);
         }
+
+        public List<MatchListItem> GetGameMatches(int leagueId, int gameId)
+        {
+            return _gameRepository.GetGameMatches(leagueId, gameId);
+        }
     }
 }

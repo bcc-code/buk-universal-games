@@ -26,5 +26,10 @@ namespace Buk.UniversalGames.Data.CacheRepositories
         {
             return _data.GetMatches(team);
         }
+
+        public List<MatchListItem> GetGameMatches(int leagueId, int gameId)
+        {
+            return _data.GetGameMatches(leagueId, gameId);
+        }
     }
 }

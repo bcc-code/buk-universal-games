@@ -1,5 +1,6 @@
 using Buk.UniversalGames.Api.Authorization;
 using Buk.UniversalGames.Data.Models;
+using Buk.UniversalGames.Data.Models.Internal;
 using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Enums;
 using Buk.UniversalGames.Models;
@@ -15,12 +16,14 @@ public class LeaguesController : ControllerBase
     private readonly ILogger<LeaguesController> _logger;
     private readonly ILeagueService _leagueService;
     private readonly IStatusService _statusService;
+    private readonly IGameService _gameService;
 
-    public LeaguesController(ILogger<LeaguesController> logger, ILeagueService leagueService , IStatusService statusService)
+    public LeaguesController(ILogger<LeaguesController> logger, ILeagueService leagueService , IStatusService statusService, IGameService gameService)
     {
         _logger = logger;
         _leagueService = leagueService;
         _statusService = statusService;
+        _gameService = gameService;
     }
 
     [HttpGet]
@@ -39,5 +42,11 @@ public class LeaguesController : ControllerBase
     public ActionResult<LeagueStatusReport> GetLeagueStatus(int leagueId)
     {
         return _statusService.GetLeagueStatus(leagueId);
+    }
+
+    [HttpGet("{leagueId}/Game/{gameId}/Matches")]
+    public ActionResult<List<MatchListItem>> GetGameMatches(int leagueId, int gameId)
+    {
+        return _gameService.GetGameMatches(leagueId, gameId);
     }
 }
