@@ -1,8 +1,6 @@
-﻿using System.Text.RegularExpressions;
-using Buk.UniversalGames.Data.Interfaces;
+﻿using Buk.UniversalGames.Data.Interfaces;
 using Buk.UniversalGames.Data.Models;
 using Buk.UniversalGames.Data.Models.Internal;
-using Microsoft.EntityFrameworkCore.Internal;
 
 namespace Buk.UniversalGames.Data.Repositories
 {

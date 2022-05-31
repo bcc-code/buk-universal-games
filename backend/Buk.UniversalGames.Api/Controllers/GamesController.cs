@@ -1,5 +1,6 @@
 using Buk.UniversalGames.Api.Authorization;
 using Buk.UniversalGames.Data.Models;
+using Buk.UniversalGames.Data.Models.Internal;
 using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Enums;
 using Microsoft.AspNetCore.Mvc;
@@ -24,5 +25,13 @@ public class GamesController : ControllerBase
     public ActionResult<List<Game>> GetGames()
     {
         return _gameService.GetGames();
+    }
+
+    [TeamType(TeamType.Participant)]
+    [HttpGet("Matches")]
+    public ActionResult<List<MatchListItem>> GetMatches()
+    {
+        var team = HttpContext.Items["ValidatedTeam"] as Team;
+        return _gameService.GetMatches(team);
     }
 }

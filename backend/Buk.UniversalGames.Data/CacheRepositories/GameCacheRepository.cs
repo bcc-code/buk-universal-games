@@ -1,5 +1,6 @@
 ﻿using Buk.UniversalGames.Data.Interfaces;
 using Buk.UniversalGames.Data.Models;
+using Buk.UniversalGames.Data.Models.Internal;
 using Buk.UniversalGames.Data.Repositories;
 using Microsoft.Extensions.Logging;
 
@@ -19,6 +20,11 @@ namespace Buk.UniversalGames.Data.CacheRepositories
         public List<Game> GetGames()
         {
             return _data.GetGames();
+        }
+
+        public List<MatchListItem> GetMatches(Team team)
+        {
+            return _data.GetMatches(team);
         }
     }
 }

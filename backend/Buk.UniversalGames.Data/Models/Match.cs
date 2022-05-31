@@ -17,14 +17,14 @@ public class Match {
 
     public DateTime Start { get; set; }
 
-    public int WinnerId { get; set; }
+    public int? WinnerId { get; set; }
 
     [JsonIgnore]
-    public Team Team1Team { get; set; }
+    public Team Team1 { get; set; }
     [JsonIgnore]
-    public Team Team2Team { get; set; }
+    public Team Team2 { get; set; }
     [JsonIgnore]
     public Game Game { get; set; }
     [JsonIgnore]
-    public Team WinnerTeam { get; set; }
+    public Team? Winner { get; set; }
 }

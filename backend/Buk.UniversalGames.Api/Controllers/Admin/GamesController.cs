@@ -1,5 +1,4 @@
 using Buk.UniversalGames.Api.Authorization;
-using Buk.UniversalGames.Data.Models;
 using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Enums;
 using Microsoft.AspNetCore.Mvc;

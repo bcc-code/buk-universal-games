@@ -2,7 +2,6 @@
 using Buk.UniversalGames.Data.Interfaces;
 using Buk.UniversalGames.Data.Models;
 using Buk.UniversalGames.Data.Models.Internal;
-using Buk.UniversalGames.Library.Exceptions;
 
 namespace Buk.UniversalGames.Data.Repositories
 {
