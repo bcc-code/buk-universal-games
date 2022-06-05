@@ -1,6 +1,5 @@
 ﻿using Buk.UniversalGames.Data.Interfaces;
 using Buk.UniversalGames.Data.Models;
-using Buk.UniversalGames.Data.Models.Internal;
 using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Models;
 using Microsoft.Extensions.Logging;

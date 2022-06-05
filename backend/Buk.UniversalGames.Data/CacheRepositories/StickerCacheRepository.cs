@@ -26,5 +26,20 @@ namespace Buk.UniversalGames.Data.CacheRepositories
         {
             return _data.LogStickerScanning(team, sticker);
         }
+
+        public Sticker? GetSticker(int stickerId)
+        {
+            return _data.GetSticker(stickerId);
+        }
+
+        public Sticker? GetSticker(string stickerCode)
+        {
+            return _data.GetSticker(stickerCode);
+        }
+
+        public List<Sticker> GetStickers(int leagueId)
+        {
+            return _data.GetStickers(leagueId);
+        }
     }
 }

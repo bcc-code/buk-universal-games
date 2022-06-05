@@ -8,5 +8,11 @@ namespace Buk.UniversalGames.Data.Interfaces
         Sticker? GetStickerByCode(string code);
 
         StickerScanResult LogStickerScanning(Team team, Sticker sticker);
+
+        Sticker? GetSticker(int stickerId9);
+
+        Sticker? GetSticker(string stickerCode);
+
+        List<Sticker> GetStickers(int leagueId);
     }
 }

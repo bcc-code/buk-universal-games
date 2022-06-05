@@ -20,6 +20,7 @@ public class StickersController : ControllerBase
         _stickerService = stickerService;
     }
 
+
     [HttpGet("{stickerCode}/Scan")]
     public ActionResult<ScanResult> Scan(string stickerCode)
     {

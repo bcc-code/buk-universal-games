@@ -5,6 +5,7 @@ using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Cultures;
 using Buk.UniversalGames.Library.Enums;
 using Buk.UniversalGames.Library.Exceptions;
+using Buk.UniversalGames.Library.Helpers;
 using Buk.UniversalGames.Models;
 using Microsoft.Extensions.Logging;
 
@@ -93,6 +94,17 @@ namespace Buk.UniversalGames.Services
                     Points = 0,
                 };
             }
+        }
+
+        public List<Sticker> GetStickers(int leagueId)
+        {
+            return _stickerRepository.GetStickers(leagueId);
+        }
+
+        public byte[]? GetStickerQRById(int stickerId, int size = 20)
+        {
+            var sticker = _stickerRepository.GetSticker(stickerId);
+            return sticker != null ? StickerHelper.GetQRImage(sticker.Code, size) : null;
         }
     }
 }

@@ -61,5 +61,21 @@ namespace Buk.UniversalGames.Data.Repositories
                 Point = point,
             };
         }
+
+        public Sticker? GetSticker(int stickerId)
+        {;
+            return _db.Stickers.FirstOrDefault(s => s.StickerId == stickerId);
+        }
+
+        public Sticker GetSticker(string stickerCode)
+        {
+            return _db.Stickers.FirstOrDefault(s => s.Code == stickerCode);
+        }
+
+        public List<Sticker> GetStickers(int leagueId)
+        {
+
+            return _db.Stickers.Where(s => s.LeagueId == leagueId).ToList();
+        }
     }
 }
