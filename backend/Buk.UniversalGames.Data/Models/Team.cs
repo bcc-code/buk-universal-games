@@ -14,6 +14,8 @@ public class Team
 
     public string Code { get; set; }
 
+    public string Color { get; set; }
+
     public int? LeagueId { get; set; }
 
     [JsonIgnore]
