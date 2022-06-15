@@ -5,8 +5,6 @@ using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Cultures;
 using Buk.UniversalGames.Library.Exceptions;
 using Microsoft.Extensions.Logging;
-using NPOI.HSSF.Util;
-using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 
 namespace Buk.UniversalGames.Services
@@ -61,8 +59,6 @@ namespace Buk.UniversalGames.Services
                 var leagues = _leagueRepository.GetLeagues();
                 var games = _gameRepository.GetGames().ToDictionary(s => s.GameId);
 
-                var rowIndex = 0;
-
                 var font = xlsWorkbook.CreateFont();
                 font.FontHeightInPoints = 11;
                 font.FontName = "Calibri";
@@ -75,6 +71,7 @@ namespace Buk.UniversalGames.Services
                 {
                     var xlsSheet = xlsWorkbook.CreateSheet(league.Name);
 
+                    var rowIndex = 0;
                     var row = xlsSheet.CreateRow(rowIndex);
 
                     var cell = row.CreateCell(0);
