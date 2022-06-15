@@ -11,5 +11,9 @@ namespace Buk.UniversalGames.Interfaces
         Team? GetTeamByCode(string code);
 
         List<Team> GetTeams(int leagueId);
+
+        byte[] ExportTeams();
+
+        byte[] ExportStatus();
     }
 }

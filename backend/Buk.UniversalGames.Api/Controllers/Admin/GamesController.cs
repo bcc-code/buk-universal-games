@@ -1,9 +1,7 @@
 using Buk.UniversalGames.Api.Authorization;
-using Buk.UniversalGames.Data.Models;
 using Buk.UniversalGames.Data.Models.Internal;
 using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Enums;
-using Buk.UniversalGames.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Buk.UniversalGames.Api.Controllers.Admin;
