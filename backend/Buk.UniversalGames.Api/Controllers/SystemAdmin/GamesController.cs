@@ -19,7 +19,7 @@ public class GamesController : ControllerBase
         _gameService = gameService;
     }
 
-    [HttpGet]
+    [HttpGet("Matches")]
     public IActionResult GetLeagues()
     {
         var xls = _gameService.GetMatchExport();
