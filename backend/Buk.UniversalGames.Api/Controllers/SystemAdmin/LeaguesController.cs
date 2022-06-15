@@ -19,8 +19,8 @@ public class LeaguesController : ControllerBase
         _leagueService = leagueService;
     }
 
-    [HttpGet]
-    public IActionResult GetLeagues()
+    [HttpGet("Teams")]
+    public IActionResult GetTeams()
     {
         var xls = _leagueService.ExportTeams();
         return File(xls, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");

@@ -2,8 +2,8 @@
 using Buk.UniversalGames.Data.Models;
 using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Helpers;
-using IronXL;
 using Microsoft.Extensions.Logging;
+using NPOI.XSSF.UserModel;
 
 namespace Buk.UniversalGames.Services
 {
@@ -42,76 +42,125 @@ namespace Buk.UniversalGames.Services
 
         public byte[] ExportTeams()
         {
-            var xlsWorkbook = WorkBook.Create(ExcelFileFormat.XLSX);
-            xlsWorkbook.Metadata.Author = "UBG";
-
-            var xlsSheet = xlsWorkbook.CreateWorkSheet("Teams");
-            
-            xlsSheet["A1"].Value = "ID";
-            xlsSheet["A1"].Style.Font.Bold = true;
-            xlsSheet["B1"].Value = "League";
-            xlsSheet["B1"].Style.Font.Bold = true;
-            xlsSheet["C1"].Value = "Team";
-            xlsSheet["C1"].Style.Font.Bold = true;
-            xlsSheet["D1"].Value = "Code";
-            xlsSheet["D1"].Style.Font.Bold = true;
-            xlsSheet["E1"].Value = "Start link";
-            xlsSheet["E1"].Style.Font.Bold = true;
-
-            var leagues = GetLeagues();
-
-            var index = 2;
-            foreach (var league in leagues)
+            using (var stream = new MemoryStream())
             {
-                var teams = GetTeams(league.LeagueId);
+                var xlsWorkbook = new XSSFWorkbook();
 
-                foreach (var team in teams)
+                var rowIndex = 0;
+
+                var font = xlsWorkbook.CreateFont();
+                font.FontHeightInPoints = 11;
+                font.FontName = "Calibri";
+                font.IsBold = true;
+
+                var style = xlsWorkbook.CreateCellStyle();
+                style.SetFont(font);
+
+                var xlsSheet = xlsWorkbook.CreateSheet("Teams");
+                var row = xlsSheet.CreateRow(rowIndex);
+
+                var cell = row.CreateCell(0);
+                cell.CellStyle = style;
+                cell.SetCellValue("ID");
+
+                cell = row.CreateCell(1);
+                cell.CellStyle = style;
+                cell.SetCellValue("League");
+
+                cell = row.CreateCell(2);
+                cell.CellStyle = style;
+                cell.SetCellValue("Team");
+
+                cell = row.CreateCell(3);
+                cell.CellStyle = style;
+                cell.SetCellValue("Code");
+
+                cell = row.CreateCell(4);
+                cell.CellStyle = style;
+                cell.SetCellValue("Start Link");
+
+                var leagues = GetLeagues();
+
+                rowIndex++;
+                foreach (var league in leagues)
                 {
-                    xlsSheet["A" + index].Value = team.TeamId;
-                    xlsSheet["B" + index].Value = league.Name;
-                    xlsSheet["C" + index].Value = team.Name;
-                    xlsSheet["D" + index].Value = team.Code;
-                    xlsSheet["E" + index].Value = TeamHelper.GetStartLink(team.Code);
-                    index++;
-                }
-            }
+                    var teams = GetTeams(league.LeagueId);
 
-            return xlsWorkbook.ToByteArray();
+                    foreach (var team in teams)
+                    {
+                        row = xlsSheet.CreateRow(rowIndex);
+                        row.CreateCell(0).SetCellValue(team.TeamId);
+                        row.CreateCell(1).SetCellValue(league.Name);
+                        row.CreateCell(2).SetCellValue(team.Name);
+                        row.CreateCell(3).SetCellValue(team.Code);
+                        row.CreateCell(4).SetCellValue(TeamHelper.GetStartLink(team.Code));
+
+                        rowIndex++;
+                    }
+                }
+
+                xlsWorkbook.Write(stream);
+                return stream.ToArray();
+            }
         }
 
         public byte[] ExportStatus()
         {
-            var xlsWorkbook = WorkBook.Create(ExcelFileFormat.XLSX);
-            xlsWorkbook.Metadata.Author = "UBG";
-
-            var leagues = _leagueRepository.GetLeagues();
-
-            foreach (var league in leagues)
+            using (var stream = new MemoryStream())
             {
-                var xlsSheet = xlsWorkbook.CreateWorkSheet(league.Name);
-                xlsSheet["A1"].Value = "Position";
-                xlsSheet["A1"].Style.Font.Bold = true;
-                xlsSheet["B1"].Value = "Team";
-                xlsSheet["B1"].Style.Font.Bold = true;
-                xlsSheet["C1"].Value = "Points";
-                xlsSheet["C1"].Style.Font.Bold = true;
-                xlsSheet["D1"].Value = "Stickers";
-                xlsSheet["D1"].Style.Font.Bold = true;
+                var xlsWorkbook = new XSSFWorkbook();
 
-                var statuses = _statusRepository.GetLeagueStatus(league.LeagueId);
+                var font = xlsWorkbook.CreateFont();
+                font.FontHeightInPoints = 11;
+                font.FontName = "Calibri";
+                font.IsBold = true;
 
-                var index = 2;
-                foreach (var status in statuses)
+                var style = xlsWorkbook.CreateCellStyle();
+                style.SetFont(font);
+
+                var leagues = _leagueRepository.GetLeagues();
+
+                foreach (var league in leagues)
                 {
-                    xlsSheet["A" + index].Value = index - 1;
-                    xlsSheet["B" + index].Value = status.Team;
-                    xlsSheet["C" + index].Value = status.Points;
-                    xlsSheet["D" + index].Value = status.Stickers;
-                    index++;
-                }
-            }
+                    var xlsSheet = xlsWorkbook.CreateSheet(league.Name);
 
-            return xlsWorkbook.ToByteArray();
+                    var rowIndex = 0;
+                    var row = xlsSheet.CreateRow(rowIndex);
+
+                    var cell = row.CreateCell(0);
+                    cell.CellStyle = style;
+                    cell.SetCellValue("Position");
+
+                    cell = row.CreateCell(1);
+                    cell.CellStyle = style;
+                    cell.SetCellValue("Team");
+
+                    cell = row.CreateCell(2);
+                    cell.CellStyle = style;
+                    cell.SetCellValue("Points");
+
+                    cell = row.CreateCell(3);
+                    cell.CellStyle = style;
+                    cell.SetCellValue("Stickers");
+
+                    var statuses = _statusRepository.GetLeagueStatus(league.LeagueId);
+
+                    rowIndex ++;
+                    foreach (var status in statuses)
+                    {
+                        row = xlsSheet.CreateRow(rowIndex);
+                        row.CreateCell(0).SetCellValue(rowIndex-1);
+                        row.CreateCell(1).SetCellValue(status.Team);
+                        row.CreateCell(2).SetCellValue(status.Points);
+                        row.CreateCell(3).SetCellValue(status.Stickers);
+
+                        rowIndex++;
+                    }
+                }
+
+                xlsWorkbook.Write(stream);
+                return stream.ToArray();
+            }
         }
     }
 }

@@ -4,8 +4,10 @@ using Buk.UniversalGames.Data.Models.Internal;
 using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Cultures;
 using Buk.UniversalGames.Library.Exceptions;
-using IronXL;
 using Microsoft.Extensions.Logging;
+using NPOI.HSSF.Util;
+using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
 
 namespace Buk.UniversalGames.Services
 {
@@ -52,46 +54,77 @@ namespace Buk.UniversalGames.Services
 
         public byte[] GetMatchExport()
         {
-            var xlsWorkbook = WorkBook.Create(ExcelFileFormat.XLSX);
-            xlsWorkbook.Metadata.Author = "UBG";
-
-            var leagues = _leagueRepository.GetLeagues();
-            var games = _gameRepository.GetGames().ToDictionary(s => s.GameId);
-
-            foreach (var league in leagues)
+            using (var stream = new MemoryStream())
             {
-                var xlsSheet = xlsWorkbook.CreateWorkSheet(league.Name);
-                xlsSheet["A1"].Value = "ID";
-                xlsSheet["A1"].Style.Font.Bold = true;
-                xlsSheet["B1"].Value = "Game";
-                xlsSheet["B1"].Style.Font.Bold = true;
-                xlsSheet["C1"].Value = "Team1";
-                xlsSheet["C1"].Style.Font.Bold = true;
-                xlsSheet["D1"].Value = "Team2";
-                xlsSheet["D1"].Style.Font.Bold = true;
-                xlsSheet["E1"].Value = "Start";
-                xlsSheet["E1"].Style.Font.Bold = true;
-                xlsSheet["F1"].Value = "Winner";
-                xlsSheet["F1"].Style.Font.Bold = true;
+                var xlsWorkbook = new XSSFWorkbook();
 
-                var matches = _gameRepository.GetGameMatches(league.LeagueId).OrderBy(s=>s.Start).ThenBy(s=>s.GameId).ToList();
+                var leagues = _leagueRepository.GetLeagues();
+                var games = _gameRepository.GetGames().ToDictionary(s => s.GameId);
 
-                var index = 2;
-                foreach (var match in matches)
+                var rowIndex = 0;
+
+                var font = xlsWorkbook.CreateFont();
+                font.FontHeightInPoints = 11;
+                font.FontName = "Calibri";
+                font.IsBold = true;
+
+                var style = xlsWorkbook.CreateCellStyle();
+                style.SetFont(font);
+
+                foreach (var league in leagues)
                 {
-                    var game = games[match.GameId];
+                    var xlsSheet = xlsWorkbook.CreateSheet(league.Name);
 
-                    xlsSheet["A" + index].Value = match.MatchId;
-                    xlsSheet["B" + index].Value = game.GameType;
-                    xlsSheet["C" + index].Value = match.Team1;
-                    xlsSheet["D" + index].Value = match.Team2;
-                    xlsSheet["E" + index].Value = match.Start;
-                    xlsSheet["F" + index].Value = match.Winner;
-                    index++;
+                    var row = xlsSheet.CreateRow(rowIndex);
+
+                    var cell = row.CreateCell(0);
+                    cell.CellStyle = style;
+                    cell.SetCellValue("ID");
+
+                    cell = row.CreateCell(1);
+                    cell.CellStyle = style;
+                    cell.SetCellValue("Game");
+
+                    cell = row.CreateCell(2);
+                    cell.CellStyle = style;
+                    cell.SetCellValue("Team1");
+
+                    cell = row.CreateCell(3);
+                    cell.CellStyle = style;
+                    cell.SetCellValue("Team2");
+
+                    cell = row.CreateCell(4);
+                    cell.CellStyle = style;
+                    cell.SetCellValue("Start");
+
+                    cell = row.CreateCell(5);
+                    cell.CellStyle = style;
+                    cell.SetCellValue("Winner");
+
+                    var matches = _gameRepository.GetGameMatches(league.LeagueId).OrderBy(s => s.Start)
+                        .ThenBy(s => s.GameId).ToList();
+
+                    rowIndex++;
+
+                    foreach (var match in matches)
+                    {
+                        var game = games[match.GameId];
+
+                        row = xlsSheet.CreateRow(rowIndex);
+                        row.CreateCell(0).SetCellValue(match.MatchId);
+                        row.CreateCell(1).SetCellValue(game.GameType);
+                        row.CreateCell(2).SetCellValue(match.Team1);
+                        row.CreateCell(3).SetCellValue(match.Team2);
+                        row.CreateCell(4).SetCellValue(match.Start);
+                        row.CreateCell(5).SetCellValue(match.Winner);
+
+                        rowIndex++;
+                    }
                 }
-            }
 
-            return xlsWorkbook.ToByteArray();
+                xlsWorkbook.Write(stream);
+                return stream.ToArray();
+            }
         }
     }
 }
