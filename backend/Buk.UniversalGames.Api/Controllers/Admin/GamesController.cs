@@ -3,12 +3,14 @@ using Buk.UniversalGames.Data.Models;
 using Buk.UniversalGames.Data.Models.Internal;
 using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Enums;
+using Buk.UniversalGames.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Buk.UniversalGames.Api.Controllers;
+namespace Buk.UniversalGames.Api.Controllers.Admin;
 
 [ApiController]
-[Route("{code}/[controller]")]
+[TeamType(TeamType.Admin,TeamType.SystemAdmin)]
+[Route("{code}/Admin/[controller]")]
 public class GamesController : ControllerBase
 {
     private readonly ILogger<GamesController> _logger;
@@ -20,18 +22,9 @@ public class GamesController : ControllerBase
         _gameService = gameService;
     }
 
-    [TeamType(TeamType.Participant, TeamType.Admin, TeamType.SystemAdmin)]
-    [HttpGet]
-    public ActionResult<List<Game>> GetGames()
+    [HttpGet("{matchId}/Winner/{teamId}")]
+    public ActionResult<MatchWinnerResult> SetMatchWinner(int matchId, int teamId)
     {
-        return _gameService.GetGames();
-    }
-
-    [TeamType(TeamType.Participant)]
-    [HttpGet("Matches")]
-    public ActionResult<List<MatchListItem>> GetMatches()
-    {
-        var team = HttpContext.Items["ValidatedTeam"] as Team;
-        return _gameService.GetMatches(team.TeamId);
+        return _gameService.SetMatchWinner(matchId, teamId);
     }
 }

@@ -49,4 +49,10 @@ public class LeaguesController : ControllerBase
     {
         return _gameService.GetGameMatches(leagueId, gameId);
     }
+
+    [HttpGet("{leagueId}/Matches")]
+    public ActionResult<List<MatchListItem>> GetAllMatches(int leagueId)
+    {
+        return _gameService.GetGameMatches(leagueId);
+    }
 }

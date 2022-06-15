@@ -7,8 +7,10 @@ namespace Buk.UniversalGames.Data.Interfaces
     {
         List<Game> GetGames();
 
-        List<MatchListItem> GetMatches(Team team);
+        List<MatchListItem> GetMatches(int teamId);
 
-        List<MatchListItem> GetGameMatches(int leagueId, int gameId);
+        List<MatchListItem> GetGameMatches(int leagueId, int? gameId = null);
+      
+        MatchWinnerResult SetMatchWinner(Game game, int matchId, int winnerTeamId);
     }
 }

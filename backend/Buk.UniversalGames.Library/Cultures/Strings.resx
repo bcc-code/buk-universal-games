@@ -144,6 +144,12 @@
   <data name="TeamUnathorized" xml:space="preserve">
     <value>Sorry, your team does not have access to this feature</value>
   </data>
+  <data name="UnknownGame" xml:space="preserve">
+    <value>Sorry, specified game is not found</value>
+  </data>
+  <data name="UnknownMatchId" xml:space="preserve">
+    <value>Sorry, specified match is not found</value>
+  </data>
   <data name="UnknownStickerCode" xml:space="preserve">
     <value>Sorry, this is not a valid sticker key</value>
   </data>

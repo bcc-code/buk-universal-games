@@ -142,6 +142,24 @@ namespace Buk.UniversalGames.Library.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sorry, specified game is not found.
+        /// </summary>
+        public static string UnknownGame {
+            get {
+                return ResourceManager.GetString("UnknownGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry, specified match is not found.
+        /// </summary>
+        public static string UnknownMatchId {
+            get {
+                return ResourceManager.GetString("UnknownMatchId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sorry, this is not a valid sticker key.
         /// </summary>
         public static string UnknownStickerCode {

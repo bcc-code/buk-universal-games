@@ -22,14 +22,19 @@ namespace Buk.UniversalGames.Data.CacheRepositories
             return _data.GetGames();
         }
 
-        public List<MatchListItem> GetMatches(Team team)
+        public List<MatchListItem> GetMatches(int teamId)
         {
-            return _data.GetMatches(team);
+            return _data.GetMatches(teamId);
         }
 
-        public List<MatchListItem> GetGameMatches(int leagueId, int gameId)
+        public List<MatchListItem> GetGameMatches(int leagueId, int? gameId = null)
         {
             return _data.GetGameMatches(leagueId, gameId);
+        }
+
+        public MatchWinnerResult SetMatchWinner(Game game, int matchId, int winnerTeamId)
+        {
+            return _data.SetMatchWinner(game, matchId, winnerTeamId);
         }
     }
 }
