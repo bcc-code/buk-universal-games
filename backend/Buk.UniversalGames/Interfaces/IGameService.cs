@@ -12,5 +12,7 @@ namespace Buk.UniversalGames.Interfaces
         List<MatchListItem> GetGameMatches(int leagueId, int? gameId = null);
 
         MatchWinnerResult SetMatchWinner(int matchId, int winnerTeamId);
+
+        byte[] GetMatchExport();
     }
 }
