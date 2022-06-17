@@ -9,6 +9,11 @@ namespace Buk.UniversalGames.Library.Helpers
             return $"https://universalgames.buk.no/#/scan/{stickerCode}";
         }
 
+        public static string GetStickerQRLInk(string stickerCode, int size = 20)
+        {
+            return $"https://universalgames.buk.no/api/QR/{stickerCode}/{size}";
+        }
+
         public static byte[]? GetQRImage(string stickerCode, int size = 20)
         {
             var link = GetStickerLink(stickerCode);

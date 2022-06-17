@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace Buk.UniversalGames.Api.Controllers;
 
 [ApiController]
-[Participant]
 [Route("{code}/[controller]")]
 public class StickersController : ControllerBase
 {
@@ -20,7 +19,7 @@ public class StickersController : ControllerBase
         _stickerService = stickerService;
     }
 
-
+    [Participant]
     [HttpGet("{stickerCode}/Scan")]
     public ActionResult<ScanResult> Scan(string stickerCode)
     {

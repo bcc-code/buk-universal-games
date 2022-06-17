@@ -8,6 +8,7 @@ using Buk.UniversalGames.Library.Exceptions;
 using Buk.UniversalGames.Library.Helpers;
 using Buk.UniversalGames.Models;
 using Microsoft.Extensions.Logging;
+using NPOI.XSSF.UserModel;
 
 namespace Buk.UniversalGames.Services
 {
@@ -15,11 +16,13 @@ namespace Buk.UniversalGames.Services
     {
         private readonly ILogger<StickerService> _logger;
         private readonly IStickerRepository _stickerRepository;
+        private readonly ILeagueRepository _leagueRepository;
 
-        public StickerService(ILogger<StickerService> logger, IStickerRepository stickerRepository)
+        public StickerService(ILogger<StickerService> logger, IStickerRepository stickerRepository, ILeagueRepository leagueRepository)
         {
             _logger = logger;
             _stickerRepository = stickerRepository;
+            _leagueRepository = leagueRepository;
         }
 
         public ScanResult ScanSticker(Team team, string code)
@@ -101,10 +104,69 @@ namespace Buk.UniversalGames.Services
             return _stickerRepository.GetStickers(leagueId);
         }
 
-        public byte[]? GetStickerQRById(int stickerId, int size = 20)
+        public byte[]? GetStickerQR(string stickerCode, int size = 20)
         {
-            var sticker = _stickerRepository.GetSticker(stickerId);
+            var sticker = _stickerRepository.GetSticker(stickerCode);
             return sticker != null ? StickerHelper.GetQRImage(sticker.Code, size) : null;
+        }
+
+        public byte[] ExportStickers()
+        {
+            using (var stream = new MemoryStream())
+            {
+                var xlsWorkbook = new XSSFWorkbook();
+
+                var font = xlsWorkbook.CreateFont();
+                font.FontHeightInPoints = 11;
+                font.FontName = "Calibri";
+                font.IsBold = true;
+
+                var style = xlsWorkbook.CreateCellStyle();
+                style.SetFont(font);
+
+                var leagues = _leagueRepository.GetLeagues();
+
+                foreach (var league in leagues)
+                {
+                    var xlsSheet = xlsWorkbook.CreateSheet(league.Name);
+
+                    var rowIndex = 0;
+                    var row = xlsSheet.CreateRow(rowIndex);
+
+                    var cell = row.CreateCell(0);
+                    cell.CellStyle = style;
+                    cell.SetCellValue("League");
+
+                    cell = row.CreateCell(1);
+                    cell.CellStyle = style;
+                    cell.SetCellValue("Code");
+
+                    cell = row.CreateCell(2);
+                    cell.CellStyle = style;
+                    cell.SetCellValue("ScanLink");
+
+                    cell = row.CreateCell(3);
+                    cell.CellStyle = style;
+                    cell.SetCellValue("QR Image");
+
+                    var stickers = _stickerRepository.GetStickers(league.LeagueId);
+
+                    rowIndex++;
+                    foreach (var sticker in stickers)
+                    {
+                        row = xlsSheet.CreateRow(rowIndex);
+                        row.CreateCell(0).SetCellValue(league.Name);
+                        row.CreateCell(1).SetCellValue(sticker.Code);
+                        row.CreateCell(2).SetCellValue(StickerHelper.GetStickerLink(sticker.Code));
+                        row.CreateCell(3).SetCellValue(StickerHelper.GetStickerQRLInk(sticker.Code, 20));
+
+                        rowIndex++;
+                    }
+                }
+
+                xlsWorkbook.Write(stream);
+                return stream.ToArray();
+            }
         }
     }
 }

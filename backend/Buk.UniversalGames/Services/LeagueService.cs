@@ -149,7 +149,7 @@ namespace Buk.UniversalGames.Services
                     foreach (var status in statuses)
                     {
                         row = xlsSheet.CreateRow(rowIndex);
-                        row.CreateCell(0).SetCellValue(rowIndex-1);
+                        row.CreateCell(0).SetCellValue(rowIndex);
                         row.CreateCell(1).SetCellValue(status.Team);
                         row.CreateCell(2).SetCellValue(status.Points);
                         row.CreateCell(3).SetCellValue(status.Stickers);

@@ -9,6 +9,8 @@ namespace Buk.UniversalGames.Interfaces
 
         List<Sticker> GetStickers(int leagueId);
 
-        byte[]? GetStickerQRById(int stickerId, int size = 20);
+        byte[]? GetStickerQR(string stickerCode, int size = 20);
+
+        byte[] ExportStickers();
     }
 }
