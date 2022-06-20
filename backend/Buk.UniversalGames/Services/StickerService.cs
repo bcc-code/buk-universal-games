@@ -158,7 +158,7 @@ namespace Buk.UniversalGames.Services
                         row.CreateCell(0).SetCellValue(league.Name);
                         row.CreateCell(1).SetCellValue(sticker.Code);
                         row.CreateCell(2).SetCellValue(StickerHelper.GetStickerLink(sticker.Code));
-                        row.CreateCell(3).SetCellValue(StickerHelper.GetStickerQRLInk(sticker.Code, 20));
+                        row.CreateCell(3).SetCellValue(StickerHelper.GetStickerQRLInk(sticker.Code));
 
                         rowIndex++;
                     }

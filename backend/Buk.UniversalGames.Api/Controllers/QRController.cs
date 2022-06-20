@@ -19,12 +19,12 @@ public class QRController : ControllerBase
     }
 
 
-    [HttpGet("{stickerCode}/{size}")]
-    public IActionResult GetStickerQR(string stickerCode, int size = 20)
+    [HttpGet("{stickerCode}")]
+    public IActionResult GetStickerQR(string stickerCode)
     {
-        var qr = _stickerService.GetStickerQR(stickerCode, size);
+        var qr = _stickerService.GetStickerQR(stickerCode, 20);
         if (qr == null)
             throw new BadRequestException(Strings.UnknownStickerCode);
-        return File(qr, "image/jpeg");
+        return File(qr, "image/png");
     }
 }
