@@ -26,9 +26,11 @@ namespace Buk.UniversalGames.Library.Helpers
             var qrCode = new PngByteQRCode(qrCodeData);
             var bytes = qrCode.GetGraphic(size, new byte[]{153,78,62,255}, new byte[]{0,0,0,0});
 
-            using var bytesToBitmapStream = new MemoryStream(bytes);
-            var bitmap = new Bitmap(bytesToBitmapStream);
-
+            Bitmap bitmap;
+            using (var stream = new MemoryStream(bytes))
+            {
+                bitmap = new Bitmap(stream);
+            }
             return bytes;
 
           /*  var graphics = Graphics.FromImage(bitmap);
