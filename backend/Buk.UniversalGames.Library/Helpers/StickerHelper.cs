@@ -1,4 +1,8 @@
 ﻿using QRCoder;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Advanced;
+using SixLabors.ImageSharp.Formats.Png;
+using SixLabors.ImageSharp.PixelFormats;
 
 namespace Buk.UniversalGames.Library.Helpers
 {
@@ -22,7 +26,18 @@ namespace Buk.UniversalGames.Library.Helpers
             var qrCodeData = qrGenerator.CreateQrCode(link, QRCodeGenerator.ECCLevel.Q);
 
             var qrCode = new PngByteQRCode(qrCodeData);
-            return qrCode.GetGraphic(size, new byte[]{153,78,62,255}, new byte[]{0,0,0,0});
+            var bytes = qrCode.GetGraphic(size, new byte[]{153,78,62,255}, new byte[]{0,0,0,0});
+
+            var image = Image.Load<Rgba32>(bytes);
+
+            using (var stream = new MemoryStream())
+            {
+                var imageEncoder = image.GetConfiguration().ImageFormatsManager.FindEncoder(PngFormat.Instance);
+                image.Save(stream, imageEncoder);
+                return stream.ToArray();
+            }
+
+
 
         
                 
