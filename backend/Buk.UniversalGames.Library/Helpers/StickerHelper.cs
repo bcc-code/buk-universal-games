@@ -26,9 +26,9 @@ namespace Buk.UniversalGames.Library.Helpers
             var qrGenerator = new QRCodeGenerator();
             var qrCodeData = qrGenerator.CreateQrCode(link, QRCodeGenerator.ECCLevel.Q);
             var qrCode = new QRCode(qrCodeData);
-            var bitmap = qrCode.GetGraphic(size, Color.FromArgb(255,153,78,62), Color.FromArgb(0,0,0,0), Images.logo, 25);
+            var bitmap = qrCode.GetGraphic(size); //, Color.FromArgb(255,153,78,62), Color.FromArgb(0,0,0,0), Images.logo, 25);
 
-            var graphics = Graphics.FromImage(bitmap);
+           /* var graphics = Graphics.FromImage(bitmap);
             graphics.SmoothingMode = SmoothingMode.AntiAlias;
             graphics.TextRenderingHint = TextRenderingHint.AntiAliasGridFit;
 
@@ -38,7 +38,7 @@ namespace Buk.UniversalGames.Library.Helpers
 
             var rectangle = new Rectangle(75, bitmap.Height-85, bitmap.Width-150, 70);
             graphics.DrawString(GetStickerLink(stickerCode), new Font("Tahoma", 16, FontStyle.Bold), Brushes.Black, rectangle, stringFormat);
-            graphics.Flush();
+            graphics.Flush();*/
             
             byte[] result;
             using (var stream = new MemoryStream())
