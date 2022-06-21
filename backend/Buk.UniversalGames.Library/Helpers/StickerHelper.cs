@@ -1,5 +1,4 @@
 ﻿using System.Drawing;
-using System.Drawing.Imaging;
 using QRCoder;
 
 namespace Buk.UniversalGames.Library.Helpers

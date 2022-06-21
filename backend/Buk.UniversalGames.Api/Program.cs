@@ -51,14 +51,15 @@ if (!app.Environment.IsDevelopment())
 app.UseExceptionHandler(c => c.Run(async context =>
 {
     var exception = context.Features.Get<IExceptionHandlerFeature>().Error;
-    if (exception is BadRequestException)
-    {
+   // if (exception is BadRequestException)
+    //{
         context.Response.StatusCode = 403;
         await context.Response.WriteAsJsonAsync(new
         {
-            Error = exception.Message
+            Error = exception.Message,
+            InnerException = exception.InnerException,
         });
-    }
+//    }
 }));
 
 // Automatically migrate database
