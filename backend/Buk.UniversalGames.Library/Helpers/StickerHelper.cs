@@ -26,13 +26,25 @@ namespace Buk.UniversalGames.Library.Helpers
             var qrGenerator = new QRCodeGenerator();
             var qrCodeData = qrGenerator.CreateQrCode(link, QRCodeGenerator.ECCLevel.Q);
 
-            var qrCode = new BitmapByteQRCode(qrCodeData);
-            return qrCode.GetGraphic(size);
+            var qrCode = new PngByteQRCode(qrCodeData);
+            var bytes = qrCode.GetGraphic(size, new byte[]{153,78,62,255}, new byte[]{0,0,0,0});
 
-   /*         var qrCode = new QRCode(qrCodeData);
+            using var bytesToBitmapStream = new MemoryStream(bytes);
+            var bitmap = new Bitmap(bytesToBitmapStream);
+
+            var graphics = Graphics.FromImage(bitmap);
+
+            using var bitmapToBytesStream = new MemoryStream();
+            bitmap.Save(bitmapToBytesStream, ImageFormat.Png);
+            return bitmapToBytesStream.ToArray();
+
+
+
+
+            /*         var qrCode = new QRCode(qrCodeData);
             var bitmap = qrCode.GetGraphic(size); //, Color.FromArgb(255,153,78,62), Color.FromArgb(0,0,0,0), Images.logo, 25);
    */
-           /* var graphics = Graphics.FromImage(bitmap);
+          /*  var graphics = Graphics.FromImage(bitmap);
             graphics.SmoothingMode = SmoothingMode.AntiAlias;
             graphics.TextRenderingHint = TextRenderingHint.AntiAliasGridFit;
 
