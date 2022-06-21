@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Cultures;
 using Buk.UniversalGames.Library.Exceptions;
@@ -27,11 +28,15 @@ public class QRController : ControllerBase
         try
         {
             qr = _stickerService.GetStickerQR(stickerCode, 20);
-            throw new BadRequestException("Yo - this whent wrong");
         }
         catch (Exception ex)
         {
-            return new JsonResult(ex.Message);
+            return new JsonResult(new 
+            {
+                Message = ex.Message,
+                InnerException = ex.InnerException,
+                StackTrace = ex.StackTrace
+            });
         }
 
         if (qr == null)
