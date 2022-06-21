@@ -22,7 +22,18 @@ public class QRController : ControllerBase
     [HttpGet("{stickerCode}")]
     public IActionResult GetStickerQR(string stickerCode)
     {
-        var qr = _stickerService.GetStickerQR(stickerCode, 20);
+        byte[]? qr = null;
+        
+        try
+        {
+            qr = _stickerService.GetStickerQR(stickerCode, 20);
+            throw new BadRequestException("Yo - this whent wrong");
+        }
+        catch (Exception ex)
+        {
+            return new JsonResult(ex.Message);
+        }
+
         if (qr == null)
             throw new BadRequestException(Strings.UnknownStickerCode);
         return File(qr, "image/png");
