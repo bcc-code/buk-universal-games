@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Cultures;
 using Buk.UniversalGames.Library.Exceptions;
@@ -23,22 +22,7 @@ public class QRController : ControllerBase
     [HttpGet("{stickerCode}")]
     public IActionResult GetStickerQR(string stickerCode)
     {
-        byte[]? qr = null;
-        
-        try
-        {
-            qr = _stickerService.GetStickerQR(stickerCode, 20);
-        }
-        catch (Exception ex)
-        {
-            return new JsonResult(new 
-            {
-                Message = ex.Message,
-                InnerException = ex.InnerException,
-                StackTrace = ex.StackTrace
-            });
-        }
-
+        var qr = _stickerService.GetStickerQR(stickerCode, 20);
         if (qr == null)
             throw new BadRequestException(Strings.UnknownStickerCode);
         return File(qr, "image/png");

@@ -29,11 +29,13 @@ namespace Buk.UniversalGames.Library.Helpers
             using var bytesToBitmapStream = new MemoryStream(bytes);
             var bitmap = new Bitmap(bytesToBitmapStream);
 
-            var graphics = Graphics.FromImage(bitmap);
+            return bytes;
+
+          /*  var graphics = Graphics.FromImage(bitmap);
 
             using var bitmapToBytesStream = new MemoryStream();
             bitmap.Save(bitmapToBytesStream, ImageFormat.Png);
-            return bitmapToBytesStream.ToArray();
+            return bitmapToBytesStream.ToArray();*/
 
 
 
