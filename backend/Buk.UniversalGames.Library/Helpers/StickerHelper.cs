@@ -38,8 +38,11 @@ namespace Buk.UniversalGames.Library.Helpers
             {
                 using (var image = new MagickImage(stream))
                 {
+
+                    /*
                     var settings = new MagickReadSettings
                     {
+                        Font = "Tahoma",
                         FontPointsize = 57,
                         TextGravity = Gravity.Center,
                         Height = 70,
@@ -51,13 +54,14 @@ namespace Buk.UniversalGames.Library.Helpers
                     {
                         image.Composite(caption, 0, image.Height - 145, CompositeOperator.Over);
                     }
+                    */
 
                     if (logoStream != null)
                     {
                         using (var logo = new MagickImage(logoStream))
                         {
                             logo.Resize((int) (image.Width * 0.25), (int) (image.Height * 0.25));
-                            image.Composite(logo, image.Width / 2 - logo.Width / 2 , image.Height / 2 - logo.Height / 2, CompositeOperator.Over);
+                            image.Composite(logo, (int) (image.Width / 2 - logo.Width / 2) , (int)(image.Height / 2 - logo.Height / 2), CompositeOperator.Over);
                         }
                     }
 
