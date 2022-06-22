@@ -40,7 +40,6 @@ namespace Buk.UniversalGames.Library.Helpers
                 {
                     var settings = new MagickReadSettings
                     {
-                        Font = "Tahoma",
                         FontPointsize = 57,
                         TextGravity = Gravity.Center,
                         Height = 70,
@@ -58,7 +57,7 @@ namespace Buk.UniversalGames.Library.Helpers
                         using (var logo = new MagickImage(logoStream))
                         {
                             logo.Resize((int) (image.Width * 0.25), (int) (image.Height * 0.25));
-                            image.Composite(logo, (int) (image.Width / 2 - logo.Width / 2) , (int)(image.Height / 2 - logo.Height / 2), CompositeOperator.Over);
+                            image.Composite(logo, image.Width / 2 - logo.Width / 2 , image.Height / 2 - logo.Height / 2, CompositeOperator.Over);
                         }
                     }
 
