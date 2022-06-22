@@ -1,8 +1,6 @@
-﻿using QRCoder;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.Advanced;
-using SixLabors.ImageSharp.Formats.Png;
-using SixLabors.ImageSharp.PixelFormats;
+﻿using System.Reflection;
+using ImageMagick;
+using QRCoder;
 
 namespace Buk.UniversalGames.Library.Helpers
 {
@@ -18,62 +16,56 @@ namespace Buk.UniversalGames.Library.Helpers
             return $"https://universalgames.buk.no/api/QR/{stickerCode}";
         }
 
-        public static byte[]? GetQRImage(string stickerCode, int size = 20)
+        public static byte[]? GetQRImage(string stickerCode, int size = 40)
         {
+            // get qr link
             var link = GetStickerLink(stickerCode);
 
+            // generate qr
             var qrGenerator = new QRCodeGenerator();
             var qrCodeData = qrGenerator.CreateQrCode(link, QRCodeGenerator.ECCLevel.Q);
 
             var qrCode = new PngByteQRCode(qrCodeData);
-            var bytes = qrCode.GetGraphic(size, new byte[]{153,78,62,255}, new byte[]{0,0,0,0});
+            var bytes = qrCode.GetGraphic(size, new byte[]{92,31,34,255}, new byte[]{0,0,0,0});
 
-            var image = Image.Load<Rgba32>(bytes);
+            var assembly = Assembly.GetExecutingAssembly();
 
-            using (var stream = new MemoryStream())
+            // prepare logo
+            var logoStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(@"Buk.UniversalGames.Library.Resources.logo.png");
+
+
+            using (var stream = new MemoryStream(bytes))
             {
-                var imageEncoder = image.GetConfiguration().ImageFormatsManager.FindEncoder(PngFormat.Instance);
-                image.Save(stream, imageEncoder);
-                return stream.ToArray();
+                using (var image = new MagickImage(stream))
+                {
+                    var settings = new MagickReadSettings
+                    {
+                        Font = "Tahoma",
+                        FontPointsize = 57,
+                        TextGravity = Gravity.Center,
+                        Height = 70,
+                        Width = image.Width,
+                        BackgroundColor = MagickColors.Transparent,
+                    };
+
+                    using (var caption = new MagickImage($"caption:{link}", settings))
+                    {
+                        image.Composite(caption, 0, image.Height - 145, CompositeOperator.Over);
+                    }
+
+                    if (logoStream != null)
+                    {
+                        using (var logo = new MagickImage(logoStream))
+                        {
+                            logo.Resize((int) (image.Width * 0.25), (int) (image.Height * 0.25));
+                            image.Composite(logo, (int) (image.Width / 2 - logo.Width / 2) , (int)(image.Height / 2 - logo.Height / 2), CompositeOperator.Over);
+                        }
+                    }
+
+
+                    return image.ToByteArray(MagickFormat.Png);
+                }
             }
-
-
-
-        
-                
-
-
-            /*  
-
-              using var bitmapToBytesStream = new MemoryStream();
-              bitmap.Save(bitmapToBytesStream, ImageFormat.Png);
-              return bitmapToBytesStream.ToArray();*/
-
-
-
-
-            /*         var qrCode = new QRCode(qrCodeData);
-            var bitmap = qrCode.GetGraphic(size); //, Color.FromArgb(255,153,78,62), Color.FromArgb(0,0,0,0), Images.logo, 25);
-   */
-            /*  var graphics = Graphics.FromImage(bitmap);
-              graphics.SmoothingMode = SmoothingMode.AntiAlias;
-              graphics.TextRenderingHint = TextRenderingHint.AntiAliasGridFit;
-
-              var stringFormat = new StringFormat();
-              stringFormat.Alignment = StringAlignment.Center;
-              stringFormat.LineAlignment = StringAlignment.Center;
-
-              var rectangle = new Rectangle(75, bitmap.Height-85, bitmap.Width-150, 70);
-              graphics.DrawString(GetStickerLink(stickerCode), new Font("Tahoma", 16, FontStyle.Bold), Brushes.Black, rectangle, stringFormat);
-              graphics.Flush();*/
-
-            /*   byte[] result;
-               using (var stream = new MemoryStream())
-               {
-                   bitmap.Save(stream, ImageFormat.Png);
-                   result = stream.ToArray();
-               }
-               return result;*/
-            ;        }
+        }
     }
 }
