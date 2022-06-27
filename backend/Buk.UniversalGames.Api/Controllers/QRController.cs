@@ -27,4 +27,12 @@ public class QRController : ControllerBase
             throw new BadRequestException(Strings.UnknownStickerCode);
         return File(qr, "image/png");
     }
+
+    [HttpGet("Fonts")]
+    public ActionResult<string[]> GetFonts()
+    {
+        var path = Environment.GetFolderPath(Environment.SpecialFolder.Fonts);
+        var files = Directory.GetFiles(path);
+        return files;
+    }
 }
