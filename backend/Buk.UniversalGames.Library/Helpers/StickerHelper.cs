@@ -37,9 +37,9 @@ namespace Buk.UniversalGames.Library.Helpers
             {
                 using (var image = new MagickImage(stream))
                 {
+                    /*
                     var settings = new MagickReadSettings
                     {
-                        Font = "Calibri",
                         FontPointsize = 57,
                         TextGravity = Gravity.Center,
                         Height = 70,
@@ -51,7 +51,7 @@ namespace Buk.UniversalGames.Library.Helpers
                     {
                         image.Composite(caption, 0, image.Height - 145, CompositeOperator.Over);
                     }
-
+                    */
                     if (logoStream != null)
                     {
                         using (var logo = new MagickImage(logoStream))
