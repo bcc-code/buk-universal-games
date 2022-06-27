@@ -26,23 +26,20 @@ namespace Buk.UniversalGames.Library.Helpers
             var qrCodeData = qrGenerator.CreateQrCode(link, QRCodeGenerator.ECCLevel.Q);
 
             var qrCode = new PngByteQRCode(qrCodeData);
-            var bytes = qrCode.GetGraphic(size, new byte[]{92,31,34,255}, new byte[]{0,0,0,0});
+            var bytes = qrCode.GetGraphic(size, new byte[]{90,32,39,255}, new byte[]{0,0,0,0});
 
             var assembly = Assembly.GetExecutingAssembly();
 
             // prepare logo
             var logoStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(@"Buk.UniversalGames.Library.Resources.logo.png");
 
-
             using (var stream = new MemoryStream(bytes))
             {
                 using (var image = new MagickImage(stream))
                 {
-
-                    /*
                     var settings = new MagickReadSettings
                     {
-                        Font = "Tahoma",
+                        Font = "Calibri",
                         FontPointsize = 57,
                         TextGravity = Gravity.Center,
                         Height = 70,
@@ -54,7 +51,6 @@ namespace Buk.UniversalGames.Library.Helpers
                     {
                         image.Composite(caption, 0, image.Height - 145, CompositeOperator.Over);
                     }
-                    */
 
                     if (logoStream != null)
                     {
