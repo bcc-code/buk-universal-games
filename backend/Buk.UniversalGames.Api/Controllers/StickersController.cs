@@ -20,7 +20,7 @@ public class StickersController : ControllerBase
     }
 
     [Participant]
-    [HttpGet("{stickerCode}/Scan")]
+    [HttpPost("{stickerCode}/Scan")]
     public ActionResult<ScanResult> Scan(string stickerCode)
     {
         var team = HttpContext.Items["ValidatedTeam"] as Team;

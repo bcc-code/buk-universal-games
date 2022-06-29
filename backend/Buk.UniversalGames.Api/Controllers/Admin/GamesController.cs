@@ -20,7 +20,7 @@ public class GamesController : ControllerBase
         _gameService = gameService;
     }
 
-    [HttpGet("{matchId}/Winner/{teamId}")]
+    [HttpPost("{matchId}/Winner/{teamId}")]
     public ActionResult<MatchWinnerResult> SetMatchWinner(int matchId, int teamId)
     {
         return _gameService.SetMatchWinner(matchId, teamId);
