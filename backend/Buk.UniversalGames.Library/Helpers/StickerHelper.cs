@@ -16,7 +16,7 @@ namespace Buk.UniversalGames.Library.Helpers
             return $"https://universalgames.buk.no/api/QR/{stickerCode}";
         }
 
-        public static byte[]? GetQRImage(string stickerCode, int size = 40)
+        public static byte[]? GetQRImage(string stickerCode, string color,  int size = 40)
         {
             // get qr link
             var link = GetStickerLink(stickerCode);
@@ -26,7 +26,10 @@ namespace Buk.UniversalGames.Library.Helpers
             var qrCodeData = qrGenerator.CreateQrCode(link, QRCodeGenerator.ECCLevel.Q);
 
             var qrCode = new PngByteQRCode(qrCodeData);
-            var bytes = qrCode.GetGraphic(size, new byte[]{90,32,39,255}, new byte[]{0,0,0,0});
+
+            var colorValues = color.Split(",");
+
+            var bytes = qrCode.GetGraphic(size, new byte[] { byte.Parse(colorValues[0]), byte.Parse(colorValues[1]), byte.Parse(colorValues[2]), 255}, new byte[]{0,0,0,0});
 
             var assembly = Assembly.GetExecutingAssembly();
 
@@ -37,21 +40,6 @@ namespace Buk.UniversalGames.Library.Helpers
             {
                 using (var image = new MagickImage(stream))
                 {
-                    /*
-                    var settings = new MagickReadSettings
-                    {
-                        FontPointsize = 57,
-                        TextGravity = Gravity.Center,
-                        Height = 70,
-                        Width = image.Width,
-                        BackgroundColor = MagickColors.Transparent,
-                    };
-
-                    using (var caption = new MagickImage($"caption:{link}", settings))
-                    {
-                        image.Composite(caption, 0, image.Height - 145, CompositeOperator.Over);
-                    }
-                    */
                     if (logoStream != null)
                     {
                         using (var logo = new MagickImage(logoStream))

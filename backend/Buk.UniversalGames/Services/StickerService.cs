@@ -107,7 +107,11 @@ namespace Buk.UniversalGames.Services
         public byte[]? GetStickerQR(string stickerCode, int size = 40)
         {
             var sticker = _stickerRepository.GetSticker(stickerCode);
-            return sticker != null ? StickerHelper.GetQRImage(sticker.Code, size) : null;
+            if (sticker == null)
+                return null;
+
+            var league = _leagueRepository.GetLeague(sticker.LeagueId);
+            return StickerHelper.GetQRImage(sticker.Code, league?.Color ?? "90,32,39", size);
         }
 
         public byte[] ExportStickers()
