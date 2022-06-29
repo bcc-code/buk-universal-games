@@ -72,5 +72,18 @@ namespace Buk.UniversalGames.Data.Repositories
 
             return _db.Stickers.Where(s => s.LeagueId == leagueId).ToList();
         }
+
+        public void SetRandomStickerPoints()
+        {
+            var random = new Random();
+
+            var stickers = _db.Stickers.ToList();
+            foreach (var sticker in stickers)
+            {
+                sticker.Points = random.Next(100, 200);
+            }
+
+            _db.SaveChanges();
+        }
     }
 }

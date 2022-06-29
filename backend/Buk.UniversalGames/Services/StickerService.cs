@@ -172,5 +172,10 @@ namespace Buk.UniversalGames.Services
                 return stream.ToArray();
             }
         }
+
+        public void SetRandomStickerPoints()
+        {
+            _stickerRepository.SetRandomStickerPoints();
+        }
     }
 }
