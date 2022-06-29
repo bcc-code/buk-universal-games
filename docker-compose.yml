@@ -23,7 +23,7 @@ services:
       - ~/.vsdbg:/remote_debugger:rw
     depends_on:
       - database
-     # - redis
+      - redis
     restart: on-failure:5
     networks:
         - buk-universal-games
@@ -31,6 +31,8 @@ services:
   redis:
     image: redis:6.2-alpine
     restart: always    
+    ports:
+      - 6379:6379
     networks:
         - buk-universal-games
 

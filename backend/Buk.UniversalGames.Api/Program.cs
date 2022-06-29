@@ -26,6 +26,8 @@ builder.Services.AddScoped<IGameRepository, GameCacheRepository>();
 builder.Services.AddScoped<IStickerRepository, StickerCacheRepository>();
 builder.Services.AddScoped<IStatusRepository, StatusCacheRepository>();
 
+builder.Services.AddSingleton<ICacheContext, CacheContext>();
+
 builder.Services.AddDbContext<DataContext>();
 builder.Services.AddStackExchangeRedisCache(options =>
 {

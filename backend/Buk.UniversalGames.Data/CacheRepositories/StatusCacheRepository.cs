@@ -10,11 +10,13 @@ namespace Buk.UniversalGames.Data.CacheRepositories
     {
         private readonly ILogger<StatusCacheRepository> _logger;
         private readonly StatusDataRepository _data;
+        private readonly ICacheContext _cache;
 
-        public StatusCacheRepository(ILogger<StatusCacheRepository> logger, DataContext dataContext)
+        public StatusCacheRepository(ILogger<StatusCacheRepository> logger, DataContext dataContext, ICacheContext cache)
         {
             _logger = logger;
             _data = new StatusDataRepository(dataContext);
+            _cache = cache;
         }
 
         public TeamStatus GetTeamStatus(Team team)
@@ -24,7 +26,15 @@ namespace Buk.UniversalGames.Data.CacheRepositories
 
         public List<TeamStatus> GetLeagueStatus(int leagueId)
         {
-            return _data.GetLeagueStatus(leagueId);
+            var cacheKey = $"LeagueStatus_{leagueId}";
+            var leagueStatus = _cache.Get<List<TeamStatus>>(cacheKey);
+
+            if (leagueStatus == null)
+            {
+                leagueStatus = _data.GetLeagueStatus(leagueId); 
+                _cache.Set(cacheKey, leagueStatus);
+            }
+            return leagueStatus;
         }
     }
 }
