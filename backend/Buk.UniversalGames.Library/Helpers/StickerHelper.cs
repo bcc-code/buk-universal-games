@@ -27,11 +27,7 @@ namespace Buk.UniversalGames.Library.Helpers
 
             var qrCode = new PngByteQRCode(qrCodeData);
 
-            var colorValues = color.Split(",");
-
-            var bytes = qrCode.GetGraphic(size, new byte[] { byte.Parse(colorValues[0]), byte.Parse(colorValues[1]), byte.Parse(colorValues[2]), 255}, new byte[]{0,0,0,0});
-
-            var assembly = Assembly.GetExecutingAssembly();
+            var bytes = qrCode.GetGraphic(size, new byte[] { 90, 32, 39, 255 }, new byte[] { 0, 0, 0, 0 });
 
             // prepare logo
             var logoStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(@"Buk.UniversalGames.Library.Resources.logo.png");
@@ -40,15 +36,22 @@ namespace Buk.UniversalGames.Library.Helpers
             {
                 using (var image = new MagickImage(stream))
                 {
+                    image.Draw(new DrawableFillColor(new MagickColor(color)),
+
+                        new DrawableCircle(image.Width / 2,
+                            image.Height / 2,
+                            (image.Width / 2) + 185,
+                            (image.Height / 2) + 1)
+                    );
+
                     if (logoStream != null)
                     {
                         using (var logo = new MagickImage(logoStream))
                         {
-                            logo.Resize((int) (image.Width * 0.25), (int) (image.Height * 0.25));
-                            image.Composite(logo, (int) (image.Width / 2 - logo.Width / 2) , (int)(image.Height / 2 - logo.Height / 2), CompositeOperator.Over);
+                            logo.Resize((int) (image.Width * 0.20), (int) (image.Height * 0.20));
+                            image.Composite(logo, (image.Width / 2 - logo.Width / 2) , (image.Height / 2 - logo.Height / 2), CompositeOperator.Over);
                         }
                     }
-
 
                     return image.ToByteArray(MagickFormat.Png);
                 }

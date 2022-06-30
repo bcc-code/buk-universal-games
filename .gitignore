@@ -12,3 +12,4 @@ node_modules/
 dist/
 package-lock.json
 backend/.vs/
+backend/Buk.UniversalGames.Api/Buk.UniversalGames.Api.csproj.user
