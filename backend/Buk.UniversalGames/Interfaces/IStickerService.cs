@@ -12,5 +12,7 @@ namespace Buk.UniversalGames.Interfaces
         byte[]? GetStickerQR(string stickerCode, int size = 40);
 
         byte[] ExportStickers();
+
+        void SetRandomStickerPoints();
     }
 }

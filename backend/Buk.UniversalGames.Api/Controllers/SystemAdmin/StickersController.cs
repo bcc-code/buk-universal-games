@@ -32,4 +32,10 @@ public class StickersController : ControllerBase
     {
         return _stickerService.GetStickers(leagueId);
     }
+
+    [HttpPost("SetRandomStickerPoints")]
+    public void SetRandomStickerPoints()
+    {
+        _stickerService.SetRandomStickerPoints();
+    }
 }

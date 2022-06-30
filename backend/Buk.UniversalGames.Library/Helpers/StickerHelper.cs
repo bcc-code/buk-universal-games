@@ -16,7 +16,7 @@ namespace Buk.UniversalGames.Library.Helpers
             return $"https://universalgames.buk.no/api/QR/{stickerCode}";
         }
 
-        public static byte[]? GetQRImage(string stickerCode, int size = 40)
+        public static byte[]? GetQRImage(string stickerCode, string color,  int size = 40)
         {
             // get qr link
             var link = GetStickerLink(stickerCode);
@@ -26,9 +26,8 @@ namespace Buk.UniversalGames.Library.Helpers
             var qrCodeData = qrGenerator.CreateQrCode(link, QRCodeGenerator.ECCLevel.Q);
 
             var qrCode = new PngByteQRCode(qrCodeData);
-            var bytes = qrCode.GetGraphic(size, new byte[]{90,32,39,255}, new byte[]{0,0,0,0});
 
-            var assembly = Assembly.GetExecutingAssembly();
+            var bytes = qrCode.GetGraphic(size, new byte[] { 90, 32, 39, 255 }, new byte[] { 0, 0, 0, 0 });
 
             // prepare logo
             var logoStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(@"Buk.UniversalGames.Library.Resources.logo.png");
@@ -37,30 +36,22 @@ namespace Buk.UniversalGames.Library.Helpers
             {
                 using (var image = new MagickImage(stream))
                 {
-                    /*
-                    var settings = new MagickReadSettings
-                    {
-                        FontPointsize = 57,
-                        TextGravity = Gravity.Center,
-                        Height = 70,
-                        Width = image.Width,
-                        BackgroundColor = MagickColors.Transparent,
-                    };
+                    image.Draw(new DrawableFillColor(new MagickColor(color)),
 
-                    using (var caption = new MagickImage($"caption:{link}", settings))
-                    {
-                        image.Composite(caption, 0, image.Height - 145, CompositeOperator.Over);
-                    }
-                    */
+                        new DrawableCircle(image.Width / 2,
+                            image.Height / 2,
+                            (image.Width / 2) + 185,
+                            (image.Height / 2) + 1)
+                    );
+
                     if (logoStream != null)
                     {
                         using (var logo = new MagickImage(logoStream))
                         {
-                            logo.Resize((int) (image.Width * 0.25), (int) (image.Height * 0.25));
-                            image.Composite(logo, (int) (image.Width / 2 - logo.Width / 2) , (int)(image.Height / 2 - logo.Height / 2), CompositeOperator.Over);
+                            logo.Resize((int) (image.Width * 0.20), (int) (image.Height * 0.20));
+                            image.Composite(logo, (image.Width / 2 - logo.Width / 2) , (image.Height / 2 - logo.Height / 2), CompositeOperator.Over);
                         }
                     }
-
 
                     return image.ToByteArray(MagickFormat.Png);
                 }

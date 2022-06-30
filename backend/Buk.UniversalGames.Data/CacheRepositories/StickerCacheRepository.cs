@@ -36,5 +36,10 @@ namespace Buk.UniversalGames.Data.CacheRepositories
         {
             return _data.GetStickers(leagueId);
         }
+
+        public void SetRandomStickerPoints()
+        {
+            _data.SetRandomStickerPoints();
+        }
     }
 }

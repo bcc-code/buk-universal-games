@@ -12,5 +12,7 @@ namespace Buk.UniversalGames.Data.Interfaces
         Sticker? GetSticker(string stickerCode);
 
         List<Sticker> GetStickers(int leagueId);
+
+        void SetRandomStickerPoints();
     }
 }
