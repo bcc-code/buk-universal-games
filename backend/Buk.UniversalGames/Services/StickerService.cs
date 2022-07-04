@@ -106,7 +106,7 @@ namespace Buk.UniversalGames.Services
 
         public byte[]? GetStickerQR(string stickerCode, int size = 40)
         {
-            var sticker = _stickerRepository.GetSticker(stickerCode);
+            var sticker = _stickerRepository.GetStickerByCode(stickerCode);
             if (sticker == null)
                 return null;
 

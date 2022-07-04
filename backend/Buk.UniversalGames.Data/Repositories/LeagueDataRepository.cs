@@ -22,6 +22,11 @@ namespace Buk.UniversalGames.Data.Repositories
             return _db.Leagues.ToList();
         }
 
+        public Team? GetTeam(int teamId)
+        {
+            return _db.Teams.FirstOrDefault(s => s.TeamId == teamId);
+        }
+
         public Team? GetTeamByCode(string code)
         {
             return _db.Teams.FirstOrDefault(s => s.Code == code);

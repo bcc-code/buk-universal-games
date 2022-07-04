@@ -12,7 +12,6 @@ public class Game {
 
     public string Name{ get; set; }
 
-    [JsonIgnore]
     public GameType Type{ get; set; }
 
     public virtual string GameType => Type.ToString();

@@ -27,9 +27,9 @@ namespace Buk.UniversalGames.Services
             return _gameRepository.GetGames();
         }
 
-        public List<MatchListItem> GetMatches(int teamId)
+        public List<MatchListItem> GetMatches(Team team)
         {
-            return _gameRepository.GetMatches(teamId);
+            return _gameRepository.GetMatches(team);
         }
 
         public List<MatchListItem> GetGameMatches(int leagueId, int? gameId = null)
@@ -39,7 +39,11 @@ namespace Buk.UniversalGames.Services
 
         public MatchWinnerResult SetMatchWinner(int matchId, int winnerTeamId)
         {
-            var match = GetMatches(winnerTeamId).FirstOrDefault(s=>s.MatchId == matchId);
+            var team = _leagueRepository.GetTeam(winnerTeamId);
+            if (team == null)
+                throw new BadRequestException(Strings.UnknownTeam);
+
+            var match = GetMatches(team).FirstOrDefault(s=>s.MatchId == matchId);
             if (match == null)
                 throw new BadRequestException(Strings.UnknownMatchId);
 
@@ -47,7 +51,7 @@ namespace Buk.UniversalGames.Services
             if(game == null)
                 throw new BadRequestException(Strings.UnknownGame);
 
-            return _gameRepository.SetMatchWinner(game, matchId, winnerTeamId);
+            return _gameRepository.SetMatchWinner(game, matchId, team);
         }
 
         public byte[] GetMatchExport()

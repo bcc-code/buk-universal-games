@@ -30,5 +30,10 @@ namespace Buk.UniversalGames.Data
 
             return value;
         }
+
+        public void Remove(string key)
+        {
+            _cache.Remove(key);
+        }
     }
 }

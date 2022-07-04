@@ -29,11 +29,19 @@ builder.Services.AddScoped<IStatusRepository, StatusCacheRepository>();
 builder.Services.AddSingleton<ICacheContext, CacheContext>();
 
 builder.Services.AddDbContext<DataContext>();
-builder.Services.AddStackExchangeRedisCache(options =>
+
+if (builder.Environment.IsDevelopment())
 {
-    options.Configuration = builder.Configuration.GetValue<string>("REDIS_CONNECTION_STRING");
-    options.InstanceName =  builder.Configuration.GetValue<string>("ENVIRONMENT_NAME");
-});
+    builder.Services.AddDistributedMemoryCache();
+}
+else
+{
+    builder.Services.AddStackExchangeRedisCache(options =>
+    {
+        options.Configuration = builder.Configuration.GetValue<string>("REDIS_CONNECTION_STRING");
+        options.InstanceName = builder.Configuration.GetValue<string>("ENVIRONMENT_NAME");
+    });
+}
 
 // Ensure cookies work across all container instances
 //var redis = ConnectionMultiplexer.Connect(builder.Configuration.GetValue<string>("REDIS_CONNECTION_STRING"));

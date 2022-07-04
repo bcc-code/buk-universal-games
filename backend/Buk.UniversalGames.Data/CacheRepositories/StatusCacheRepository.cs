@@ -19,18 +19,26 @@ namespace Buk.UniversalGames.Data.CacheRepositories
             _cache = cache;
         }
 
-        public TeamStatus GetTeamStatus(Team team)
+        public TeamStatus? GetTeamStatus(Team team)
         {
-            return _data.GetTeamStatus(team);
+            // we want league status always calculated and set in cache, so get league status
+            var leagueStatuses = GetLeagueStatus(team.LeagueId.GetValueOrDefault());
+
+            // find team status
+            var status = leagueStatuses.FirstOrDefault(s=>s.TeamId == team.TeamId);
+
+            // fallback to calculation
+            return status ?? _data.GetTeamStatus(team);
         }
 
         public List<TeamStatus> GetLeagueStatus(int leagueId)
         {
+            // get from cache
             var cacheKey = $"LeagueStatus_{leagueId}";
             var leagueStatus = _cache.Get<List<TeamStatus>>(cacheKey);
-
             if (leagueStatus == null)
             {
+                // fallback to db and set in cache
                 leagueStatus = _data.GetLeagueStatus(leagueId); 
                 _cache.Set(cacheKey, leagueStatus);
             }

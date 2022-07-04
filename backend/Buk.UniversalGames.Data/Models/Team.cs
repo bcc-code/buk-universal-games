@@ -18,7 +18,6 @@ public class Team
 
     public int? LeagueId { get; set; }
 
-    [JsonIgnore]
     public TeamType Type { get; set; }
 
     public virtual string TeamType => Type.ToString();

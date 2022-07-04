@@ -13,7 +13,7 @@ namespace Buk.UniversalGames.Data.Repositories
             _db = db;
         }
 
-        public TeamStatus GetTeamStatus(Team team)
+        public TeamStatus? GetTeamStatus(Team team)
         {
             var points = _db.Points.Where(p => p.TeamId == team.TeamId).ToList();
             return new TeamStatus

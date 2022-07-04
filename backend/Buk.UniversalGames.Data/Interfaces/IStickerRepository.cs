@@ -9,8 +9,6 @@ namespace Buk.UniversalGames.Data.Interfaces
 
         StickerScanResult LogStickerScanning(Team team, Sticker sticker);
 
-        Sticker? GetSticker(string stickerCode);
-
         List<Sticker> GetStickers(int leagueId);
 
         void SetRandomStickerPoints();

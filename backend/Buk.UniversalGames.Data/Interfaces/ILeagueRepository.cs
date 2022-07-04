@@ -8,6 +8,8 @@ namespace Buk.UniversalGames.Data.Interfaces
 
         List<League> GetLeagues();
 
+        Team? GetTeam(int teamId);
+
         Team? GetTeamByCode(string code);
 
         List<Team> GetTeams(int leagueId);

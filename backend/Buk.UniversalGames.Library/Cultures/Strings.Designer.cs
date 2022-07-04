@@ -169,6 +169,15 @@ namespace Buk.UniversalGames.Library.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sorry, specified team id is not valid.
+        /// </summary>
+        public static string UnknownTeam {
+            get {
+                return ResourceManager.GetString("UnknownTeam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sorry, your team key is not valid.
         /// </summary>
         public static string UnknownTeamCode {

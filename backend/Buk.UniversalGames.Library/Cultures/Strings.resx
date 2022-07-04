@@ -153,6 +153,9 @@
   <data name="UnknownStickerCode" xml:space="preserve">
     <value>Sorry, this is not a valid sticker key</value>
   </data>
+  <data name="UnknownTeam" xml:space="preserve">
+    <value>Sorry, specified team id is not valid</value>
+  </data>
   <data name="UnknownTeamCode" xml:space="preserve">
     <value>Sorry, your team key is not valid</value>
   </data>

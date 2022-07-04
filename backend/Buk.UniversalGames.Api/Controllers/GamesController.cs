@@ -32,6 +32,6 @@ public class GamesController : ControllerBase
     public ActionResult<List<MatchListItem>> GetMatches()
     {
         var team = HttpContext.Items["ValidatedTeam"] as Team;
-        return _gameService.GetMatches(team.TeamId);
+        return _gameService.GetMatches(team);
     }
 }

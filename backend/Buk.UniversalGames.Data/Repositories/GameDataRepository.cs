@@ -20,11 +20,11 @@ namespace Buk.UniversalGames.Data.Repositories
             return _db.Games.ToList();
         }
 
-        public List<MatchListItem> GetMatches(int teamId)
+        public List<MatchListItem> GetMatches(Team team)
         {
             return (from match in _db.Matches
-                where match.Team1Id == teamId || match.Team2Id == teamId
-                join team1 in _db.Teams on match.Team1Id equals team1.TeamId
+                where match.Team1Id == team.TeamId || match.Team2Id == team.TeamId
+                    join team1 in _db.Teams on match.Team1Id equals team1.TeamId
                 join team2 in _db.Teams on match.Team2Id equals team2.TeamId
                 orderby match.Start
                 select new MatchListItem
@@ -65,7 +65,7 @@ namespace Buk.UniversalGames.Data.Repositories
                     }).ToList();
         }
 
-        public MatchWinnerResult SetMatchWinner(Game game, int matchId, int winnerTeamId)
+        public MatchWinnerResult SetMatchWinner(Game game, int matchId, Team team)
         {
             var match = _db.Matches.FirstOrDefault(s => s.MatchId == matchId);
 
@@ -74,8 +74,8 @@ namespace Buk.UniversalGames.Data.Repositories
 
             var points = _db.Points.Where(s => s.MatchId == matchId).ToList();
 
-            if (match.WinnerId.GetValueOrDefault() != winnerTeamId)
-                match.WinnerId = winnerTeamId;
+            if (match.WinnerId.GetValueOrDefault() != team.TeamId)
+                match.WinnerId = team.TeamId;
 
             Point? winnerPoint = null;
             Point? looserPoint = null;
@@ -84,7 +84,7 @@ namespace Buk.UniversalGames.Data.Repositories
             {
                 foreach (var point in points)
                 {
-                    if (point.TeamId == winnerTeamId)
+                    if (point.TeamId == team.TeamId)
                     {
                         point.Points = game.WinnerPoints;
                         winnerPoint = point;
@@ -100,7 +100,7 @@ namespace Buk.UniversalGames.Data.Repositories
             {
                 winnerPoint = new Point
                 {
-                    TeamId = winnerTeamId,
+                    TeamId = team.TeamId,
                     Points = game.WinnerPoints,
                     MatchId = matchId,
                     GameId = game.GameId,
@@ -108,7 +108,7 @@ namespace Buk.UniversalGames.Data.Repositories
                 };
                 _db.Points.Add(winnerPoint);
 
-                var looserTeamId = match.Team1Id == winnerTeamId ? match.Team2Id : match.Team1Id;
+                var looserTeamId = match.Team1Id == team.TeamId ? match.Team2Id : match.Team1Id;
 
                 looserPoint = new Point
                 {
