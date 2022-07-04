@@ -44,5 +44,17 @@ namespace Buk.UniversalGames.Data.CacheRepositories
             }
             return leagueStatus;
         }
+
+        public void ClearStatus(List<League> leagues)
+        {
+            _data.ClearStatus(leagues);
+
+            foreach (var league in leagues)
+            {
+                // clear match lists for league and league status
+                _cache.Remove($"Matches_{league.LeagueId}");
+                _cache.Remove($"LeagueStatus_{league.LeagueId}");
+            }
+        }
     }
 }

@@ -8,5 +8,7 @@ namespace Buk.UniversalGames.Data.Interfaces
         TeamStatus? GetTeamStatus(Team team);
 
         List<TeamStatus> GetLeagueStatus(int leagueId);
+
+        void ClearStatus(List<League> leagues);
     }
 }

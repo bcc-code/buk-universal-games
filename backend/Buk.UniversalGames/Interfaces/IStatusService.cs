@@ -8,5 +8,7 @@ namespace Buk.UniversalGames.Interfaces
         TeamStatusReport GetTeamStatus(Team team);
 
         LeagueStatusReport GetLeagueStatus(int leagueId);
+
+        void ClearStatusAndMatches();
     }
 }

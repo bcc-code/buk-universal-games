@@ -10,11 +10,13 @@ namespace Buk.UniversalGames.Services
     {
         private readonly ILogger<StatusService> _logger;
         private readonly IStatusRepository _statusRepository;
+        private readonly ILeagueRepository _leagueLeagueRepository;
 
-        public StatusService(ILogger<StatusService> logger, IStatusRepository statusRepository)
+        public StatusService(ILogger<StatusService> logger, IStatusRepository statusRepository, ILeagueRepository leagueLeagueRepository)
         {
             _logger = logger;
             _statusRepository = statusRepository;
+            _leagueLeagueRepository = leagueLeagueRepository;
         }
 
         public TeamStatusReport GetTeamStatus(Team team)
@@ -33,6 +35,12 @@ namespace Buk.UniversalGames.Services
                 Status = _statusRepository.GetLeagueStatus(leagueId),
                 StatusAt = DateTime.Now
             };
+        }
+
+        public void ClearStatusAndMatches()
+        {
+            var leagues = _leagueLeagueRepository.GetLeagues();
+            _statusRepository.ClearStatus(leagues);
         }
     }
 }

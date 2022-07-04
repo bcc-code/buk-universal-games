@@ -1,6 +1,7 @@
 ﻿using Buk.UniversalGames.Data.Interfaces;
 using Buk.UniversalGames.Data.Models;
 using Buk.UniversalGames.Data.Models.Internal;
+using Microsoft.EntityFrameworkCore;
 
 namespace Buk.UniversalGames.Data.Repositories
 {
@@ -41,6 +42,13 @@ namespace Buk.UniversalGames.Data.Repositories
                         Stickers = grouped.Count(s => s.StickerId != null)
                     }
                 ).OrderByDescending(s=>s.Points).ThenBy(s=>s.Team).ToList();
+        }
+
+        public void ClearStatus(List<League> leagues)
+        {
+            _db.Database.ExecuteSqlRaw("TRUNCATE TABLE points");
+            _db.Database.ExecuteSqlRaw("TRUNCATE TABLE sticker_scans");
+            _db.Database.ExecuteSqlRaw("UPDATE matches SET winner_id = NULL");
         }
     }
 }
