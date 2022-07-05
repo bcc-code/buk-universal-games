@@ -1,5 +1,7 @@
 <template>
-  <LoginPage />
+  <main>
+    <LoginPage />
+  </main>
 </template>
 
 <script>
@@ -28,6 +30,12 @@ export default {
 
   body {
     margin: 0;
+    background-color: var(--dark);
+  }
+
+  main {
+    max-width: 480px;
+    margin: 0 auto;
   }
 
   img {
