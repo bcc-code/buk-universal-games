@@ -9,6 +9,17 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var UBGCorsPolicy = "UBGCorsPolicy";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: UBGCorsPolicy,
+        policy =>
+        {
+            policy.WithOrigins("https://localhost:8080")
+                  .WithMethods("GET", "POST", "OPTIONS");
+        });
+});
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -80,6 +91,8 @@ var db = app.Services.CreateScope().ServiceProvider.GetService<DataContext>()!.D
 await db.MigrateAsync();
 
 app.UseRouting();
+
+app.UseCors(UBGCorsPolicy);
 
 app.UseStaticFiles();
 
