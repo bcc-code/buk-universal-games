@@ -30,6 +30,7 @@ export default {
 
   body {
     margin: 0;
+    font-size: 16px;
     background-color: var(--dark);
   }
 
@@ -49,6 +50,7 @@ export default {
     padding: .75em;
     text-align: center;
     border: none;
+    font-size: 1em;
   }
 
   .btn-primary {
