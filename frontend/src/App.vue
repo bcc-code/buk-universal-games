@@ -1,27 +1,35 @@
 <template>
   <main>
-    <LoginPage />
+    <router-view :key="$route.fullPath"></router-view>
   </main>
 </template>
 
 <script>
-import LoginPage from './components/LoginPage.vue'
 
 export default {
   name: 'App',
-  components: {
-    LoginPage
-  }
 }
 </script>
 
 <style>
+
+  @font-face {
+    font-family: 'ClashGrotesk-Semibold';
+    src: url('./assets/fonts/ClashGrotesk-Semibold.otf') format('truetype');
+        font-weight: 600;
+        font-display: swap;
+        font-style: normal;
+  }
+
   *, *:before, *:after {
     box-sizing: inherit;
   }
 
   :root {
     --dark: #2D001C;
+    --gray-1: #E5E5E5;
+    --gray-2: #B6B6B6;
+    --green: #21F7AA;
   }
 
   html {
@@ -35,8 +43,10 @@ export default {
   }
 
   main {
+    height: 100vh;
     max-width: 480px;
     margin: 0 auto;
+    background-color: var(--gray-1);
   }
 
   img {
@@ -52,6 +62,17 @@ export default {
     border: none;
     font-size: 1em;
   }
+
+  h1,
+  p {
+    margin: 0;
+  }
+
+  h1 {
+    font-family: 'ClashGrotesk-Semibold';
+    font-size: 1.5em;
+  }
+
 
   .btn-primary {
     background-color: var(--dark);
