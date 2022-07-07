@@ -15,7 +15,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: UBGCorsPolicy,
         policy =>
         {
-            policy.WithOrigins("https://localhost:8080")
+            policy.WithOrigins("http://localhost:8080")
                   .WithMethods("GET", "POST", "OPTIONS");
         });
 });
