@@ -4,7 +4,7 @@ export function getData(url, data) {
 
     const teamCode = myGetTeamCodeFunction()
 
-    const response = fetch(rootUrl + teamCode + url + ".json", {
+    const response = fetch(rootUrl + teamCode + url, {
       method: "GET", // *GET, POST, PUT, DELETE, etc.
       headers: {
         Accept: "application/json",
