@@ -10,36 +10,26 @@
 </template>
 
 <script>
-import { getData } from "../libs/apiHelper"
-
 
 export default {
   name: 'LoginPage',
   data() {
     return {
         image: require("@/assets/bg.png"),
-        teamCode: null,
+        teamCode: "6EZ1FOV",
         loginError: null
     }
   },
   methods: {
     async login() {
-        console.log("teamcode", this.teamCode)
+        window.localStorage.setItem('teamCode', this.teamCode);
 
-        let loginData = await getData("/Start")
-          .then(r => r.json())
-          .then(r => {
-              return r; 
-          })
+        let loginData = await this.$store.dispatch("getLoginData")
 
         console.log("login data", loginData)
 
-        let pls = true;
-        if(pls) {
-          //navigate
+        if(loginData) {
           this.$router.push({name: 'LeagueList'})
-          console.log("routere", this.$router)
-
         } else 
           this.loginError = "Sorry..."
     }

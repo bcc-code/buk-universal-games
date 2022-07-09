@@ -1,6 +1,6 @@
 <template>
   <section class="user-page-layout">
-    <h1 class="login-msg">{{title}}</h1>
+    <h1 class="login-msg"> BUK {{ $store.state.loginData.team }} </h1>
     <slot />
     <UserMenu />
   </section>
@@ -15,6 +15,11 @@ export default {
   data() {
     return {
         title: "Tittel"
+    }
+  },
+  mounted() {
+    if(Object.keys(this.$store.state.loginData).length === 0) {
+       this.$store.dispatch("getLoginData")
     }
   },
   methods: {

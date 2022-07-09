@@ -1,6 +1,6 @@
 <template>
   <UserPageLayout>
-    <p>Hello</p>
+    hello
   </UserPageLayout>
 </template>
 
@@ -9,11 +9,16 @@ import UserPageLayout from '../components/UserPageLayout.vue'
 
 export default {
   name: 'LoginPage',
+  props: {
+    data: String,
+  },
   components: { UserPageLayout },
   data() {
     return {
-        loginError: "Hello"
+        loginError: "Hello",
     }
+  },
+  mounted() {
   },
   methods: {
 
