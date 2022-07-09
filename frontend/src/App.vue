@@ -21,6 +21,13 @@ export default {
         font-style: normal;
   }
 
+  @font-face {
+    font-family: 'ClashGrotesk-Medium';
+    src: url('./assets/fonts/ClashGrotesk-Medium.otf') format('truetype');
+        font-display: swap;
+        font-style: normal;
+  }
+
   *, *:before, *:after {
     box-sizing: inherit;
   }
@@ -40,7 +47,7 @@ export default {
     margin: 0;
     font-size: 16px;
     background-color: var(--dark);
-    font-family: sans-serif;
+    font-family: 'ClashGrotesk-Medium';
   }
 
   main {
