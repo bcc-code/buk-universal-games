@@ -13,7 +13,10 @@
       ></button>
     </div>
     <div class="user-menu-btn-big-wrapper">
-      <button class="user-menu-btn-big" v-html="scanIcon"></button>
+      <label class="user-menu-btn-big" for="camera">
+        <p v-html="scanIcon"></p>
+        <input type="file" id="camera" name="camera" accept="image/*" capture="camera" />
+      </label>
     </div>
     <div class="user-menu-btn-small-wrapper">
       <button
@@ -54,6 +57,11 @@ export default {
 </script>
 
 <style scoped>
+
+input[type="file"] {
+  display: none;
+}
+
 .user-menu {
   display: flex;
   justify-content: space-between;
