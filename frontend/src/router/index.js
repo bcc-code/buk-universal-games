@@ -1,6 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Login from "../pages/LoginPage.vue";
 import LeagueList from "../pages/LeagueList.vue";
+import MatchList from "../pages/MatchList.vue";
+import GameInfo from "../pages/GameInfo.vue";
+import Map from "../pages/Map.vue";
 
 const routes = [
   {
@@ -12,6 +15,21 @@ const routes = [
     path: "/league-list",
     name: "LeagueList",
     component: LeagueList,
+  },
+  {
+    path: "/match-list",
+    name: "MatchList",
+    component: MatchList,
+  },
+  {
+    path: "/game-info",
+    name: "GameInfo",
+    component: GameInfo,
+  },
+  {
+    path: "/map",
+    name: "Map",
+    component: Map,
   },
 ];
 

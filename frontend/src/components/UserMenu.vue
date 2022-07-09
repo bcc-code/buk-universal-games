@@ -1,15 +1,31 @@
 <template>
   <section class="user-menu">
     <div class="user-menu-btn-small-wrapper">
-      <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'LeagueList' }" v-html="homeIcon"></button>
-      <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'x' }" v-html="calendarIcon"></button>
+      <button
+        :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'LeagueList' }"
+        v-html="homeIcon"
+        @click="$router.push({ name: 'LeagueList' })"
+      ></button>
+      <button
+        :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'MatchList' }"
+        v-html="calendarIcon"
+        @click="$router.push({ name: 'MatchList' })"
+      ></button>
     </div>
     <div class="user-menu-btn-big-wrapper">
       <button class="user-menu-btn-big" v-html="scanIcon"></button>
     </div>
     <div class="user-menu-btn-small-wrapper">
-      <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'x' }" v-html="ballIcon"></button>
-      <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'x' }" v-html="placeIcon"></button>
+      <button
+        :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'GameInfo' }"
+        v-html="ballIcon"
+        @click="$router.push({ name: 'GameInfo' })"
+      ></button>
+      <button
+        :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'Map' }"
+        v-html="placeIcon"
+        @click="$router.push({ name: 'Map' })"
+      ></button>
     </div>
   </section>
 </template>
