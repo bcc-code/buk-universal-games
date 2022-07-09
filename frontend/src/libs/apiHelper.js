@@ -33,8 +33,5 @@ export function getData(url, data) {
 
 function myGetTeamCodeFunction() {
     // Get from local storage
-
-    console.log("window.localStorage.getItem('teamCode');", window.localStorage.getItem('teamCode'))
-
     return window.localStorage.getItem('teamCode');
 }
