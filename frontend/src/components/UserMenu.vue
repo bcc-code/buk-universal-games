@@ -1,137 +1,90 @@
 <template>
   <section class="user-menu">
     <div class="user-menu-btn-small-wrapper">
-        <button class="user-menu-btn-small">
-            <svg :class="{'selected-component' : $route.name == 'LeagueList'}" width="27" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M17.3923 5.16234L13.0196 1.2987C11.0519 -0.4329 8.07851 -0.4329 6.11081 1.2987L1.73814 5.16234C0.634037 6.13636 0 7.53247 0 9.00433V15.8874C0 18.1602 1.83652 20.0108 4.09938 20.0108H15.0311C17.2939 20.0108 19.1304 18.1602 19.1304 15.8874V9.00433C19.1304 7.54329 18.4964 6.13636 17.3923 5.16234ZM13.6646 16.7532C13.6646 17.197 13.2929 17.5649 12.8447 17.5649C12.3965 17.5649 12.0248 17.197 12.0248 16.7532V13.5065C12.0248 12.1645 10.9207 11.0714 9.56522 11.0714C8.20969 11.0714 7.10559 12.1645 7.10559 13.5065V16.7532C7.10559 17.197 6.73391 17.5649 6.28571 17.5649C5.83752 17.5649 5.46584 17.197 5.46584 16.7532V13.5065C5.46584 11.2662 7.30236 9.44805 9.56522 9.44805C11.8281 9.44805 13.6646 11.2662 13.6646 13.5065V16.7532Z" fill="currentColor"/>
-            </svg>
-        </button>
-        <button class="user-menu-btn-small">
-            <svg :class="{'selected-component' : $route.name == 'x'}" width="27" height="24" viewBox="0 0 27 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0_122_4121)">
-                <path d="M19.0079 4.82759C19.5746 4.82759 20.0446 4.35862 20.0446 3.7931V1.03448C20.0446 0.468966 19.5746 0 19.0079 0C18.4411 0 17.9711 0.468966 17.9711 1.03448V3.7931C17.9711 4.35862 18.4411 4.82759 19.0079 4.82759Z" fill="currentColor"/>
-                <path d="M7.94878 4.82759C8.51555 4.82759 8.98557 4.35862 8.98557 3.7931V1.03448C8.98557 0.468966 8.51555 0 7.94878 0C7.382 0 6.91199 0.468966 6.91199 1.03448V3.7931C6.91199 4.35862 7.382 4.82759 7.94878 4.82759Z" fill="currentColor"/>
-                <path d="M22.1182 1.42068V3.7931C22.1182 5.50344 20.722 6.89654 19.0078 6.89654C17.2936 6.89654 15.8974 5.50344 15.8974 3.7931V1.3793H11.0591V3.7931C11.0591 5.50344 9.66288 6.89654 7.94872 6.89654C6.23456 6.89654 4.83835 5.50344 4.83835 3.7931V1.42068C2.1427 1.59999 0 3.82068 0 6.55172V14.8276C0 17.6827 2.32241 20 5.18395 20H21.7726C24.6341 20 26.9565 17.6827 26.9565 14.8276V6.55172C26.9565 3.82068 24.8138 1.59999 22.1182 1.42068ZM6.56633 15.1724H9.3311C9.89788 15.1724 10.3679 15.6414 10.3679 16.2069C10.3679 16.7724 9.89788 17.2414 9.3311 17.2414H6.56633C5.23924 17.2414 4.14716 16.1517 4.14716 14.8276V13.4483C4.14716 12.1241 5.23924 11.0345 6.56633 11.0345H7.94872C8.14225 11.0345 8.29431 10.8827 8.29431 10.6896C8.29431 10.4965 8.14225 10.3448 7.94872 10.3448H5.18395C4.61717 10.3448 4.14716 9.87585 4.14716 9.31034C4.14716 8.74482 4.61717 8.27585 5.18395 8.27585H7.94872C9.27581 8.27585 10.3679 9.36551 10.3679 10.6896C10.3679 12.0138 9.27581 13.1034 7.94872 13.1034H6.56633C6.3728 13.1034 6.22074 13.2552 6.22074 13.4483V14.8276C6.22074 15.0207 6.3728 15.1724 6.56633 15.1724ZM14.515 16.8965C14.515 17.4621 14.045 17.931 13.4783 17.931C12.9115 17.931 12.4415 17.4621 12.4415 16.8965V7.1862C12.4415 6.62068 12.9115 6.15172 13.4783 6.15172C14.045 6.15172 14.515 6.62068 14.515 7.1862V16.8965ZM22.8094 16.2069C22.8094 16.7724 22.3394 17.2414 21.7726 17.2414C21.2058 17.2414 20.7358 16.7724 20.7358 16.2069V14.4827H19.0078C17.6807 14.4827 16.5886 13.3931 16.5886 12.069V9.31034C16.5886 8.74482 17.0586 8.27585 17.6254 8.27585C18.1922 8.27585 18.6622 8.74482 18.6622 9.31034V12.069C18.6622 12.2621 18.8143 12.4138 19.0078 12.4138H20.7358V9.31034C20.7358 8.74482 21.2058 8.27585 21.7726 8.27585C22.3394 8.27585 22.8094 8.74482 22.8094 9.31034V16.2069Z" fill="currentColor"/>
-                </g>
-                <defs>
-                <clipPath id="clip0_122_4121">
-                <rect width="26.9565" height="20" fill="white"/>
-                </clipPath>
-                </defs>
-            </svg>
-        </button>
+      <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'LeagueList' }" v-html="homeIcon"></button>
+      <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'x' }" v-html="calendarIcon"></button>
     </div>
     <div class="user-menu-btn-big-wrapper">
-        <button class="user-menu-btn-big">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8.3796 4.5C8.93189 4.49966 9.37932 4.05166 9.37898 3.49938C9.37863 2.94709 8.93064 2.49966 8.37835 2.5L6.69745 2.50105C4.31359 2.50377 2.38184 4.43657 2.38184 6.82095V8.77791C2.38184 9.33019 2.82955 9.77791 3.38184 9.77791C3.93412 9.77791 4.38184 9.33019 4.38184 8.77791V6.82095C4.38184 5.54076 5.41904 4.50251 6.69974 4.50105L8.3796 4.5Z" fill="currentColor"/>
-                <path d="M14.7812 3.5C14.7812 2.94772 15.229 2.5 15.7812 2.5H17.425C19.8064 2.5 21.7501 4.44372 21.7501 6.82514V8.77791C21.7501 9.33019 21.3024 9.77791 20.7501 9.77791C20.1978 9.77791 19.7501 9.33019 19.7501 8.77791V6.82514C19.7501 5.54829 18.7018 4.5 17.425 4.5H15.7812C15.229 4.5 14.7812 4.05228 14.7812 3.5Z" fill="currentColor"/>
-                <path d="M0.5 13.0137C0.5 12.4614 0.947715 12.0137 1.5 12.0137H22.6315C23.1838 12.0137 23.6315 12.4614 23.6315 13.0137C23.6315 13.566 23.1838 14.0137 22.6315 14.0137H21.7501V17.5446C21.7501 19.9248 19.8066 21.8698 17.425 21.8698H15.7812C15.229 21.8698 14.7812 21.4221 14.7812 20.8698C14.7812 20.3175 15.229 19.8698 15.7812 19.8698H17.425C18.7016 19.8698 19.7501 18.8206 19.7501 17.5446V14.0137H4.38184V17.5488C4.38184 18.8288 5.41876 19.867 6.69922 19.8687L8.3796 19.8698C8.93189 19.8701 9.37932 20.3181 9.37898 20.8704C9.37863 21.4227 8.93064 21.8701 8.37835 21.8698L6.69797 21.8687C4.31411 21.866 2.38184 19.9332 2.38184 17.5488V14.0137H1.5C0.947715 14.0137 0.5 13.566 0.5 13.0137Z" fill="currentColor"/>
-            </svg>
-        </button>
+      <button class="user-menu-btn-big" v-html="scanIcon"></button>
     </div>
     <div class="user-menu-btn-small-wrapper">
-        <button class="user-menu-btn-small">
-            <svg :class="{'selected-component' : $route.name == 'x'}" width="27" height="24" viewBox="0 0 27 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0_122_4112)">
-                <path d="M16.0062 2.91301L16.4694 2.34688C14.8842 0.998447 12.9593 0.195565 10.8904 0.0102844L10.7668 1.24549C10.9315 2.32629 11.4359 4.20998 12.9285 5.97014L15.9959 2.90272L16.0062 2.91301Z" fill="currentColor"/>
-                <path d="M18.7854 9.23316H20C19.8353 7.07155 18.9912 5.06435 17.5708 3.4277L17.1487 3.94237L14.0298 7.06126C14.9974 7.87444 16.5826 8.90377 18.7854 9.23316Z" fill="currentColor"/>
-                <path d="M9.76837 8.6876L9.99482 8.91405L11.8476 7.06125C10.0051 4.94081 9.4081 2.62481 9.23311 1.37931C9.23311 1.31755 9.23311 1.25579 9.23311 1.19403L9.34634 0C7.16415 0.144107 5.12606 0.967576 3.47913 2.38806L3.99379 2.90273L9.76837 8.6773V8.6876Z" fill="currentColor"/>
-                <path d="M1.36902 9.24343C2.62481 9.41842 4.93052 10.0154 7.05095 11.8579L8.90376 10.0051L8.6773 9.77868L2.90273 4.00411L2.38806 3.48944C0.988162 5.1055 0.164694 7.09212 0 9.22284H1.26608C1.26608 9.22284 1.33814 9.22284 1.36902 9.23314V9.24343Z" fill="currentColor"/>
-                <path d="M11.3948 12.4962L9.99486 11.0963L8.15234 12.9388C9.11992 14.0607 10.3757 15.965 10.7566 18.631C10.7566 18.6722 10.7566 18.703 10.7566 18.7442V20.0103C12.8873 19.8456 14.8842 19.0221 16.5106 17.6325L15.9959 17.1179L11.3845 12.5064L11.3948 12.4962Z" fill="currentColor"/>
-                <path d="M18.7339 10.7772C18.7339 10.7772 18.6619 10.7772 18.6207 10.7772C15.9547 10.3963 14.0504 9.14052 12.9284 8.17294L11.0859 10.0155L12.4858 11.4154L17.0973 16.0268L17.6119 16.5414C19.0118 14.9151 19.8353 12.9182 20 10.7772H18.7442H18.7339Z" fill="currentColor"/>
-                <path d="M3.99384 17.0973L3.53064 17.6737C5.1467 19.0324 7.11273 19.8456 9.22287 20V18.7957C8.89348 16.5929 7.87444 14.9974 7.05097 14.0298L3.98355 17.0973H3.99384Z" fill="currentColor"/>
-                <path d="M1.20432 10.7771H0C0.164694 12.9285 1.00875 14.9562 2.42923 16.5826L2.84097 16.0679L5.95986 12.9387C4.1791 11.4256 2.26454 10.9315 1.19403 10.7668L1.20432 10.7771Z" fill="currentColor"/>
-                </g>
-                <defs>
-                <clipPath id="clip0_122_4112">
-                <rect width="20" height="20" fill="white"/>
-                </clipPath>
-                </defs>
-            </svg>
-        </button>
-        <button class="user-menu-btn-small">
-            <svg :class="{'selected-component' : $route.name == 'x'}" width="27" height="24" viewBox="0 0 27 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0_122_4107)">
-                <path d="M8.26087 10.5374C9.58542 10.5374 10.6592 9.4759 10.6592 8.16648C10.6592 6.85706 9.58542 5.79556 8.26087 5.79556C6.93631 5.79556 5.86255 6.85706 5.86255 8.16648C5.86255 9.4759 6.93631 10.5374 8.26087 10.5374Z" fill="currentColor"/>
-                <path d="M13.7504 2.06532C11.9916 0.516325 9.62525 -0.221293 7.25891 0.0526791C3.12314 0.5374 0 4.16227 0 8.47207C0 10.5058 0.746143 12.4657 2.09986 13.9937L6.85386 19.3677C7.20561 19.7682 7.71725 20 8.26087 20C8.80449 20 9.31613 19.7682 9.66788 19.3677L14.4219 13.9937C15.7756 12.4657 16.5217 10.5058 16.5217 8.47207V8.16648C16.5217 5.83772 15.5091 3.61432 13.7504 2.06532ZM8.26087 12.118C6.05442 12.118 4.26367 10.3477 4.26367 8.16648C4.26367 5.98524 6.05442 4.21496 8.26087 4.21496C10.4673 4.21496 12.2581 5.98524 12.2581 8.16648C12.2581 10.3477 10.4673 12.118 8.26087 12.118Z" fill="currentColor"/>
-                </g>
-                <defs>
-                <clipPath id="clip0_122_4107">
-                <rect width="16.5217" height="20" fill="white"/>
-                </clipPath>
-                </defs>
-            </svg>
-        </button>
+      <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'x' }" v-html="ballIcon"></button>
+      <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'x' }" v-html="placeIcon"></button>
     </div>
   </section>
 </template>
 
 <script>
+import { ballIcon } from "@/assets/icons/ball.svg.ts";
+import { homeIcon } from "@/assets/icons/home.svg.ts";
+import { calendarIcon } from "@/assets/icons/calendar.svg.ts";
+import { placeIcon } from "@/assets/icons/place.svg.ts";
+import { scanIcon } from "@/assets/icons/scan.svg.ts";
+
 export default {
-  name: 'UserMenu',
+  name: "UserMenu",
   data() {
     return {
-        loginError: "Meny"
-    }
+      ballIcon,
+      homeIcon,
+      calendarIcon,
+      placeIcon,
+      scanIcon,
+      loginError: "Meny",
+    };
   },
-  methods: {
-
-  }
-}
+  methods: {},
+};
 </script>
 
 <style scoped>
-    .user-menu {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 2em;
-        position: relative;
-        background-color: transparent;
-        background-color: white;
-    }
+.user-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em;
+  position: relative;
+  background-color: transparent;
+  background-color: white;
+}
 
+button {
+  background-color: inherit;
+}
 
-    button {
-        background-color: inherit;
-    }
+.user-menu-btn-small-wrapper {
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+}
 
-    .user-menu-btn-small-wrapper {
-        display: flex;
-        width: 50%;
-        justify-content: space-between;
-    }
+.user-menu-btn-small {
+  align-self: flex-start;
+  padding: 0;
+  color: var(--gray-2);
+}
 
-    .user-menu-btn-small {
-        align-self: flex-start;
-        padding: 0;
-        color: var(--gray-2);
-    }
-    
+.user-menu-btn-big-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
-    .user-menu-btn-big-wrapper {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
+.user-menu-btn-big {
+  position: absolute;
+  height: 5em;
+  width: 5em;
+  top: -1.5em;
+  background-color: var(--dark);
+  color: white;
+  border-radius: 10em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid white;
+}
 
-    .user-menu-btn-big {
-        position: absolute;
-        height: 5em;
-        width: 5em;
-        top: -1.5em;
-        background-color: var(--dark);
-        color: white;
-        border-radius: 10em;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 5px solid white;
-    }
-
-    .selected-component {
-        color: var(--green);
-    }
-
+.selected-component {
+  color: var(--green);
+}
 </style>
