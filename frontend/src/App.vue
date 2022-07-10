@@ -40,6 +40,7 @@ export default {
     margin: 0;
     font-size: 16px;
     background-color: var(--dark);
+    font-family: sans-serif;
   }
 
   main {
@@ -69,7 +70,7 @@ export default {
   }
 
   h1 {
-    font-family: 'ClashGrotesk-Semibold';
+    font-family: 'ClashGrotesk-Semibold', sans-serif;
     font-size: 1.5em;
   }
 
