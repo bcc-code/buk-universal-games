@@ -15,7 +15,7 @@
     <div class="user-menu-btn-big-wrapper">
       <label class="user-menu-btn-big" for="camera">
         <p v-html="scanIcon"></p>
-        <input type="file" id="camera" name="camera" accept="image/*" capture="camera" />
+        <input type="file" id="camera" name="camera" accept="image/*" capture="environment" />
       </label>
     </div>
     <div class="user-menu-btn-small-wrapper">
