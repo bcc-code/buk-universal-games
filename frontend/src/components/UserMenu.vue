@@ -1,5 +1,5 @@
 <template>
-  <section class="user-menu">
+  <nav class="user-menu">
     <div class="user-menu-btn-small-wrapper">
       <button
         :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'LeagueList' }"
@@ -27,7 +27,7 @@
         @click="$router.push({ name: 'Map' })"
       ></button>
     </div>
-  </section>
+  </nav>
 </template>
 
 <script>
