@@ -3,6 +3,19 @@
     <section class="user-section">
       <PointsAndStickers :points="teamStatus?.status?.points" :stickers="teamStatus?.status?.stickers" :refresh="() => getTeamStatus()"/>
     </section>
+    <section class="league-title">
+        <div class="league-title-column">
+        </div>
+        <div class="league-title-column">
+            <h2 class="league-title-text">Team</h2>
+        </div>
+        <div class="league-title-column">
+            <h2 class="league-title-text">Stickers </h2>
+        </div>
+        <div class="league-title-column">
+            <h2 class="league-title-text">Points</h2>
+        </div>
+    </section>
     <section class="user-section" v-for="(status, i) in leagueStatus" :key="status.id">
       <LeageListItem :class="{'card-light' : i > 4}" :index="i+1" :team="status.team" :stickers="status.stickers" :points="status.points  " />
     </section>
@@ -54,5 +67,31 @@ export default {
   .user-section {
     padding: .25em 0;
   }
+
+  .league-title {
+      padding: 0 1em;
+      border-radius: .75em;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+  }
+
+  .league-title-column {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+  }
+
+  .league-title-column:nth-last-child(-n + 2) {
+    align-items: flex-end;
+  }
+
+  .league-title-text {
+      font-size: .85em;
+      color: var(--gray-2);
+      margin: 1em 0 0;
+  }
+
 
 </style>

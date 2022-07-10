@@ -67,7 +67,7 @@ export default {
     }
 
     .card-dark-text {
-        font-size: 1em;
+        font-size: .85em;
         color: inherit;
     }
 
