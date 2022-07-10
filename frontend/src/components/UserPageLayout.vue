@@ -1,7 +1,7 @@
 <template>
   <section class="user-page-layout">
-    <h1 class="login-msg">BUK {{ $store.state.loginData.team }}</h1>
     <div class="content-area">
+      <h1 class="title">BUK {{ $store.state.loginData.team }}</h1>
       <slot />
     </div>
     <UserMenu />
@@ -40,5 +40,9 @@ export default {
   height: 100%;
   overflow: auto;
   padding: 2em;
+}
+
+.title {
+  padding-bottom: 1em;
 }
 </style>
