@@ -1,6 +1,6 @@
 <template>
   <UserPageLayout>
-    <header class="banner">Banner</header>
+    <PointsAndStickers :points="teamStatus?.status?.points" :stickers="teamStatus?.status?.stickers" :refresh="() => refreshPoints()"/>
 
     <h2>Games</h2>
 
@@ -33,6 +33,7 @@
 
 <script>
 import UserPageLayout from "@/components/UserPageLayout.vue";
+import PointsAndStickers from "@/components/PointsAndStickers.vue";
 import { getData } from "@/libs/apiHelper";
 import { gameEarthIcon } from "@/assets/icons/game-earth.svg.ts";
 import { gameFireIcon } from "@/assets/icons/game-fire.svg.ts";
@@ -45,7 +46,7 @@ export default {
   props: {
     data: String,
   },
-  components: { UserPageLayout },
+  components: { UserPageLayout, PointsAndStickers },
   data() {
     return {
       loginError: "Game Info",
@@ -59,6 +60,11 @@ export default {
         Water: gameWaterIcon,
       },
     };
+  },
+  created() {
+    if(Object.keys(this.$store.state.teamStatus).length === 0) {
+       this.refreshPoints() 
+    }
   },
   mounted() {
     // Only get live data every 30 seconds
@@ -123,7 +129,15 @@ export default {
 
       return null;
     },
+    refreshPoints() {
+      this.$store.dispatch("getTeamStatus")
+    }
   },
+  computed: {
+    teamStatus() {
+      return this?.$store.state.teamStatus
+    }
+  }
 };
 </script>
 
