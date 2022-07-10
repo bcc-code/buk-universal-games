@@ -1,38 +1,44 @@
 <template>
   <section class="user-page-layout">
-    <h1 class="login-msg"> BUK {{ $store.state.loginData.team }} </h1>
-    <slot />
+    <h1 class="login-msg">BUK {{ $store.state.loginData.team }}</h1>
+    <div class="content-area">
+      <slot />
+    </div>
     <UserMenu />
   </section>
 </template>
 
 <script>
-import UserMenu from '../components/UserMenu.vue'
+import UserMenu from "../components/UserMenu.vue";
 
 export default {
-  name: 'UserPageLayout',
+  name: "UserPageLayout",
   components: { UserMenu },
   data() {
     return {
-        title: "Tittel"
-    }
+      title: "Tittel",
+    };
   },
   mounted() {
-    if(Object.keys(this.$store.state.loginData).length === 0) {
-       this.$store.dispatch("getLoginData")
+    if (Object.keys(this.$store.state.loginData).length === 0) {
+      this.$store.dispatch("getLoginData");
     }
   },
-  methods: {
-
-  }
-}
+  methods: {},
+};
 </script>
 
 <style scoped>
-    .user-page-layout {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        justify-content: space-between;
-    }
+.user-page-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.content-area {
+  height: 100%;
+  overflow: auto;
+  padding: 2em;
+}
 </style>
