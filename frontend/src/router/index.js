@@ -3,6 +3,7 @@ import Login from "../pages/LoginPage.vue";
 import LeagueList from "../pages/LeagueList.vue";
 import MatchList from "../pages/MatchList.vue";
 import GameInfo from "../pages/GameInfo.vue";
+import GameInfoDetail from "../pages/GameInfoDetail.vue";
 import Map from "../pages/Map.vue";
 
 const routes = [
@@ -25,6 +26,12 @@ const routes = [
     path: "/game-info",
     name: "GameInfo",
     component: GameInfo,
+  },
+  {
+    path: "/game-info-detail",
+    name: "GameInfoDetail",
+    component: GameInfoDetail,
+    props: true
   },
   {
     path: "/map",
