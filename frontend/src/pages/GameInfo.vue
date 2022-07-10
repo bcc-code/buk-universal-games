@@ -5,29 +5,25 @@
     <h2>Games</h2>
 
     <ul v-if="loading" class="games games-loading">
-      <li class="game">
-        <span class="game-icon" v-html="icons.Metal"></span>
-        <h3 class="game-title">Loading ...</h3>
-      </li>
-      <li class="game">
-        <span class="game-icon" v-html="icons.Metal"></span>
-        <h3 class="game-title">Loading ...</h3>
-      </li>
-      <li class="game">
-        <span class="game-icon" v-html="icons.Metal"></span>
-        <h3 class="game-title">Loading ...</h3>
-      </li>
-      <li class="game">
-        <span class="game-icon" v-html="icons.Metal"></span>
-        <h3 class="game-title">Loading ...</h3>
-      </li>
-      <li class="game">
-        <span class="game-icon" v-html="icons.Metal"></span>
-        <h3 class="game-title">Loading ...</h3>
+      <li v-for="i in [0, 1, 2, 3, 4]" :key="i" class="game">
+        <span class="game-icon"></span>
+        <h3 class="game-title">Loading</h3>
       </li>
     </ul>
     <ul v-else class="games">
-      <li class="game" v-for="game in games" :key="game.id">
+      <li
+        class="game"
+        v-for="game in games"
+        :key="game.id"
+        @click="
+          $router.push({
+            name: 'GameInfoDetail',
+            params: {
+              game: JSON.stringify(game),
+            },
+          })
+        "
+      >
         <span class="game-icon" v-html="icons[game.name]"></span>
         <h3 class="game-title">{{ game.name }}</h3>
       </li>
@@ -65,18 +61,69 @@ export default {
     };
   },
   mounted() {
-    getData("/Games")
-      .then((r) => r.json())
-      .then((r) => {
-        this.games = r;
-        this.loading = false;
-      })
-      .catch((e) => {
-        this.loading = false;
-        console.error(e);
-      });
+    // Only get live data every 30 seconds
+    if (this.checkSavedGamesAge() === null || this.checkSavedGamesAge() > 30) {
+      this.getLiveGames();
+    } else {
+      this.getSavedGames(true);
+    }
   },
-  methods: {},
+  methods: {
+    getLiveGames() {
+      getData("/Games")
+        .then((r) => r.json())
+        .then((r) => {
+          if (r.error) {
+            throw r.error;
+          }
+
+          this.games = r;
+          this.loading = false;
+          this.saveGames(r);
+        })
+        .catch((e) => {
+          console.error(e);
+          this.getSavedGames(true);
+        });
+    },
+    saveGames(data) {
+      window.localStorage.setItem(
+        "gamesData",
+        JSON.stringify({
+          timestamp: new Date().getTime(),
+          data,
+        })
+      );
+    },
+    getSavedGames(use) {
+      let savedGames = window.localStorage.getItem("gamesData");
+
+      if (savedGames) {
+        try {
+          savedGames = JSON.parse(savedGames);
+
+          if (use) {
+            this.games = savedGames.data;
+            this.loading = false;
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      }
+
+      return savedGames;
+    },
+    checkSavedGamesAge() {
+      const savedGames = this.getSavedGames(false);
+
+      if (savedGames) {
+        const secondsSinceSaved = (new Date().getTime() - savedGames.timestamp) / 1000;
+        return Math.floor(secondsSinceSaved);
+      }
+
+      return null;
+    },
+  },
 };
 </script>
 
@@ -110,10 +157,6 @@ export default {
   justify-content: center;
 }
 
-.games-loading .game {
-  background-color: var(--gray-2);
-}
-
 .games .game .game-title {
   margin: 1rem 0 0;
   font-weight: 400;
@@ -124,5 +167,33 @@ export default {
   width: 2em;
   height: 2em;
   overflow: hidden;
+}
+
+.games-loading .game {
+  background-color: var(--dark);
+  background-repeat: no-repeat;
+  background-size: 10em 100%;
+  background-image: linear-gradient(to right, var(--dark) 0%, hsl(323, 50%, 33%) 50%, var(--dark) 100%);
+  animation-duration: 750ms;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: shimmer;
+  animation-timing-function: linear;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -12em 0;
+  }
+
+  100% {
+    background-position: 12em 0;
+  }
+}
+
+.games-loading .game .game-title,
+.games-loading .game .game-icon {
+  color: hsl(323, 50%, 33%);
+  background-color: hsl(323, 50%, 33%);
 }
 </style>
