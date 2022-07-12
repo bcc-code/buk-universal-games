@@ -14,6 +14,10 @@ const routes = [
     component: Login,
   },
   {
+    path: "/start/:code",
+    redirect: { name: 'LeagueList' }
+  },
+  {
     path: "/:code/league-list",
     name: "LeagueList",
     component: LeagueList,
