@@ -1,3 +1,5 @@
+GIT_SSH_COMMAND='ssh -i ~/.ssh/line-github -o IdentitiesOnly=yes' git pull
+
 # BUK Universal Games
 
 ## Running Locally
