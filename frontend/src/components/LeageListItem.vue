@@ -1,10 +1,13 @@
 <template>
     <section class="card card-dark">
-        <div class="card-dark-column">
+        <div class="card-dark-column index">
             <h2 class="card-dark-text">{{ index }}</h2>
         </div>
         <div class="card-dark-column">
-            <h2 class="card-dark-text">{{ team }}</h2>
+            <div class="card-row">
+                <span class="buk-icon" v-html="bukIcon"></span>
+                <h2 class="card-dark-text">{{ team }}</h2>
+            </div>
         </div>
         <div class="card-dark-column">
             <h2 class="card-dark-text"> {{ stickers }} </h2>
@@ -16,6 +19,8 @@
 </template>
 
 <script>
+import { bukIcon } from "@/assets/icons/buk-icon.svg.ts";
+
 export default {
   name: 'LeageListItem',
   props: {
@@ -24,6 +29,11 @@ export default {
     points: Number,
     stickers: Number,
   },
+    data() {
+        return {
+            bukIcon
+        }
+  },
 }
 </script>
 
@@ -31,7 +41,6 @@ export default {
     button {
         background-color: inherit;
     }
-
 
     .card {
         padding: 0 1em;
@@ -42,6 +51,11 @@ export default {
         align-items: center;
     }
 
+    .card-row {
+        display: flex;
+        align-items: center;
+    }
+    
     .card-dark {
         background-color: var(--dark);
         color: white;
@@ -75,5 +89,13 @@ export default {
         border-left: 1px solid rgba(255, 255, 255, 0.3);
         border-radius: 0;
         padding: .15em .15em .15em .65em;
+    }
+
+    .buk-icon {
+        margin-right: .75em;
+    }
+
+    .index {
+        width: 25%;
     }
 </style>
