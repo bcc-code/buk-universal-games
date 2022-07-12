@@ -5,6 +5,7 @@ import MatchList from "../pages/MatchList.vue";
 import GameInfo from "../pages/GameInfo.vue";
 import GameInfoDetail from "../pages/GameInfoDetail.vue";
 import Map from "../pages/Map.vue";
+import store from '@/store'
 
 const routes = [
   {
@@ -13,28 +14,28 @@ const routes = [
     component: Login,
   },
   {
-    path: "/league-list",
+    path: "/:code/league-list",
     name: "LeagueList",
     component: LeagueList,
   },
   {
-    path: "/match-list",
+    path: "/:code/match-list",
     name: "MatchList",
     component: MatchList,
   },
   {
-    path: "/game-info",
+    path: "/:code/game-info",
     name: "GameInfo",
     component: GameInfo,
   },
   {
-    path: "/game-info-detail",
+    path: "/:code/game-info-detail",
     name: "GameInfoDetail",
     component: GameInfoDetail,
     props: true
   },
   {
-    path: "/map",
+    path: "/:code/map",
     name: "Map",
     component: Map,
   },
@@ -44,6 +45,19 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes,
 });
+
+router.beforeEach(async (to, from, next) => {
+  if (to.params.code) {
+    window.localStorage.setItem("teamCode", to.params.code);
+    const loginData = await store.dispatch("getLoginData")
+
+    if (!loginData) {
+      next({ name: 'Login' })
+    }
+  }
+
+  next()
+})
 
 
 export default router;
