@@ -4,7 +4,7 @@
       <PointsAndStickers :points="teamStatus?.status?.points" :stickers="teamStatus?.status?.stickers" :refresh="() => getTeamStatus()"/>
     </section>
     <section class="league-title">
-        <div class="league-title-column">
+        <div class="league-title-column index-column">
         </div>
         <div class="league-title-column">
             <h2 class="league-title-text">Team</h2>
@@ -87,5 +87,8 @@ export default {
       margin: 1em 0 0;
   }
 
+  .index-column {
+      width: 25%;
+  }
 
 </style>

@@ -1,6 +1,6 @@
 <template>
     <section class="card card-dark">
-        <div class="card-dark-column index">
+        <div class="card-dark-column index-column">
             <h2 class="card-dark-text">{{ index }}</h2>
         </div>
         <div class="card-dark-column">
@@ -95,7 +95,7 @@ export default {
         margin-right: .75em;
     }
 
-    .index {
+    .index-column {
         width: 25%;
     }
 </style>
