@@ -8,6 +8,8 @@ const store = createStore({
     loginData: {},
     teamStatus: {},
     leagueStatus: {},
+    matches: [],
+    games: []
   },
   mutations: {
     setLoginData(state, data) {
@@ -18,6 +20,12 @@ const store = createStore({
     },
     setLeagueStatus(state, data) {
         state.leagueStatus = data
+    },
+    setMatches(state, data) {
+        state.matches = data
+    },
+    setGames(state, data) {
+        state.games = data
     }
 },
   actions: {
@@ -62,6 +70,34 @@ const store = createStore({
 
         ctx.commit("setLeagueStatus", leagueStatus)
         return leagueStatus
+    },
+    async getMatches(ctx) {
+        let matches = await getData("/Games/Matches")
+        .then(r => {
+          if(r.status == 200) {
+            return r.json()
+          }
+        })
+        .then(r => {
+            return r; 
+        })
+
+        ctx.commit("setMatches", matches)
+        return matches
+    },
+    async getGames(ctx) {
+        let games = await getData("/Games")
+        .then(r => {
+          if(r.status == 200) {
+            return r.json()
+          }
+        })
+        .then(r => {
+            return r; 
+        })
+
+        ctx.commit("setGames", games)
+        return games
     }
   },
 });
