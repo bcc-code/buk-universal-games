@@ -81,9 +81,12 @@ export default {
     font-size: 1.5em;
   }
 
-
   .btn-primary {
     background-color: var(--dark);
     color: white;
+  }
+
+  .user-section {
+    padding: .25em 0;
   }
 </style>

@@ -33,8 +33,6 @@ export default {
     data: String,
   },
   components: { UserPageLayout, PointsAndStickers, LeageListItem },
-  data() {
-  },
   created() {
     if(Object.keys(this.$store.state.teamStatus).length === 0) {
        this.getTeamStatus() 
@@ -63,11 +61,7 @@ export default {
 }
 </script>
 
-<style>
-  .user-section {
-    padding: .25em 0;
-  }
-
+<style scoped>
   .league-title {
       padding: 0 1em;
       border-radius: .75em;
