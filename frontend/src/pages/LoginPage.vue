@@ -1,59 +1,60 @@
 <template>
-  <section class="bg" :style="{
-    'background-image': `url(${image})`,
-    }">
-    <img src="../assets/logo.png" alt="" class="logo">
-    <input type="text" placeholder="Team code" v-model="teamCode">
-    <button class="btn-primary" @click="login">Login</button>
-    <p v-if="loginError" class="login-msg">{{loginError}}</p>
+  <section
+    class="bg"
+    :style="{
+      'background-image': `url(${image})`,
+    }"
+  >
+    <img src="../assets/logo.png" alt="" class="logo" />
+    <input type="text" placeholder="Team code" v-model="teamCode" />
+    <router-link v-if="teamCode.length > 3" class="btn-primary" :to="loginUrl">Login</router-link>
+    <p v-if="loginError" class="login-msg">{{ loginError }}</p>
   </section>
 </template>
 
 <script>
-
 export default {
-  name: 'LoginPage',
+  name: "LoginPage",
   data() {
     return {
-        image: require("@/assets/bg.png"),
-        teamCode: "6EZ1FOV",
-        loginError: null
-    }
+      image: require("@/assets/bg.png"),
+      teamCode: "6EZ1FOV",
+      loginError: null,
+    };
   },
-  methods: {
-    async login() {
-        window.localStorage.setItem('teamCode', this.teamCode);
+  computed: {
+    loginUrl() {
+      let url = "/";
 
-        let loginData = await this.$store.dispatch("getLoginData")
+      if (this.teamCode) {
+        url = "/" + this.teamCode + "/league-list";
+      }
 
-        console.log("login data", loginData)
-
-        if(loginData) {
-          this.$router.push({name: 'LeagueList'})
-        } else 
-          this.loginError = "Sorry..."
-    }
-  }
-}
+      return url;
+    },
+  },
+};
 </script>
 
 <style scoped>
-    .bg {
-        height: 100vh;
-        background-size: cover;
-        background-position: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 1em;
-    }
+.bg {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1em;
+}
 
-    button {
-        margin: 1em 0;
-    }
+.btn-primary {
+  margin: 1em auto;
+  width: 100%;
+  text-decoration: none;
+}
 
-    .login-msg {
-      color: white;
-      text-align: center;
-    }
+.login-msg {
+  color: white;
+  text-align: center;
+}
 </style>

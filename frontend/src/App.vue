@@ -63,7 +63,8 @@ export default {
   }
 
   button,
-  input {
+  input,
+  .btn-primary {
     border-radius: .5em;
     padding: .75em;
     text-align: center;
