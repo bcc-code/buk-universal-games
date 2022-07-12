@@ -1,7 +1,14 @@
-const http = require('http');
+var https = require('https');
 const request = require('request');
 
-http.createServer(function (req, res) {
+const fs = require('fs');
+
+const options = {
+    key: fs.readFileSync('key.pem'),
+    cert: fs.readFileSync('cert.pem')
+};
+
+const app = function (req, res) {
     if (req.url.startsWith('/api')) {
         console.log(req.url)
         const apiURL = 'https://universalgames.buk.no/' + req.url;
@@ -14,6 +21,7 @@ http.createServer(function (req, res) {
         res.write(`URL must start with /api`);
         res.end();
     }
-}).listen(3000);
+}
 
 
+https.createServer(options, app).listen(3000);

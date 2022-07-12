@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "http": "^0.0.1-security",
+    "https": "^1.0.0",
     "request": "^2.88.2"
   }
 }
