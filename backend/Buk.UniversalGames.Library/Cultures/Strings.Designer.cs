@@ -106,6 +106,15 @@ namespace Buk.UniversalGames.Library.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Too bad! Sticker is scanned {times} times allready!.
+        /// </summary>
+        public static string ScanErrorScannedBeforeTooBad {
+            get {
+                return ResourceManager.GetString("ScanErrorScannedBeforeTooBad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sorry, another teammate scanned this sticker {time} {unit} ago.
         /// </summary>
         public static string ScanErrorScannedLastTime {
@@ -115,11 +124,47 @@ namespace Buk.UniversalGames.Library.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sticker was scanned {time} {unit} ago!.
+        /// </summary>
+        public static string ScanErrorScannedLastTime2 {
+            get {
+                return ResourceManager.GetString("ScanErrorScannedLastTime2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Awesome! Sticker not scanned before and {points} added to your team!.
+        /// </summary>
+        public static string ScanSuccessPointsAwesomeInfo {
+            get {
+                return ResourceManager.GetString("ScanSuccessPointsAwesomeInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Great! Your team got {points} new points!.
+        /// </summary>
+        public static string ScanSuccessPointsGreatInfo {
+            get {
+                return ResourceManager.GetString("ScanSuccessPointsGreatInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nice! You found a new sticker and {points} points to your team!.
         /// </summary>
-        public static string ScanSuccessPointsInfo {
+        public static string ScanSuccessPointsNiceInfo {
             get {
-                return ResourceManager.GetString("ScanSuccessPointsInfo", resourceCulture);
+                return ResourceManager.GetString("ScanSuccessPointsNiceInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Perfect! {points} added to your team!.
+        /// </summary>
+        public static string ScanSuccessPointsPerfectInfo {
+            get {
+                return ResourceManager.GetString("ScanSuccessPointsPerfectInfo", resourceCulture);
             }
         }
         

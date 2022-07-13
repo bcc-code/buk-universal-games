@@ -2,6 +2,9 @@
 {
     public enum StickerScanSuccessResponses
     {
-        PointsAdded = 0,
+        PointsAddedNice = 0,
+        PointsAddedPerfect = 1,
+        PointsAddedAwesome = 2,
+        PointsAddedGreat = 3
     }
 }

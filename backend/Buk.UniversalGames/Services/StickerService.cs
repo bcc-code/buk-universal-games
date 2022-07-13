@@ -51,8 +51,17 @@ namespace Buk.UniversalGames.Services
 
                 switch (responseType)
                 {
-                    case StickerScanSuccessResponses.PointsAdded:
-                        message = Strings.ScanSuccessPointsInfo.Replace("{points}", sticker.Points.ToString());
+                    case StickerScanSuccessResponses.PointsAddedAwesome:
+                        message = Strings.ScanSuccessPointsAwesomeInfo.Replace("{points}", sticker.Points.ToString());
+                        break;
+                    case StickerScanSuccessResponses.PointsAddedNice:
+                        message = Strings.ScanSuccessPointsNiceInfo.Replace("{points}", sticker.Points.ToString());
+                        break;
+                    case StickerScanSuccessResponses.PointsAddedPerfect:
+                        message = Strings.ScanSuccessPointsPerfectInfo.Replace("{points}", sticker.Points.ToString());
+                        break;
+                    case StickerScanSuccessResponses.PointsAddedGreat:
+                        message = Strings.ScanSuccessPointsGreatInfo.Replace("{points}", sticker.Points.ToString());
                         break;
                 }
 
@@ -77,15 +86,24 @@ namespace Buk.UniversalGames.Services
                     case StickerScanScannedResponses.ScannedTimes: 
                         message = Strings.ScanErrorScannedBefore.Replace("{times}", ex.ScanCheckResult.Scans.ToString());
                         break;
+                    case StickerScanScannedResponses.ScannedTimeTooBad:
+                        message = Strings.ScanErrorScannedBeforeTooBad.Replace("{times}", ex.ScanCheckResult.Scans.ToString());
+                        break;
                     case StickerScanScannedResponses.SinceScanned:
+                    case StickerScanScannedResponses.SinceScanned2:
                         var timespan = DateTime.Now - ex.ScanCheckResult.LastScan;
                         var minutes = (int)Math.Ceiling(timespan.TotalMinutes);
+
+                        message = responseType == StickerScanScannedResponses.SinceScanned
+                            ? Strings.ScanErrorScannedLastTime
+                            : Strings.ScanErrorScannedLastTime2;
+
                         if (minutes > 1)
-                            message = Strings.ScanErrorScannedLastTime.Replace("{time}", minutes.ToString()).Replace("{unit}", Strings.Minutes);
+                            message = message.Replace("{time}", minutes.ToString()).Replace("{unit}", Strings.Minutes);
                         else
                         {
                             var seconds = (int)Math.Ceiling(timespan.TotalSeconds);
-                            message = Strings.ScanErrorScannedLastTime.Replace("{time}", seconds.ToString()).Replace("{unit}", Strings.Seconds);
+                            message = message.Replace("{time}", seconds.ToString()).Replace("{unit}", Strings.Seconds);
                         }
                         break;
                 }
