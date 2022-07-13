@@ -14,6 +14,7 @@ public class DataContext : DbContext
     public DbSet<Point> Points{ get; set; }
     public DbSet<Game> Games { get; set; }
     public DbSet<Match> Matches { get; set; }
+    public DbSet<Settings> Settings { get; set; }
 
     static DataContext()
     {
@@ -58,6 +59,8 @@ public class DataContext : DbContext
         builder.Entity<Game>().HasKey(t => t.GameId);
 
         builder.Entity<Match>().HasKey(t => t.MatchId);
+
+        builder.Entity<Settings>().HasKey(t => t.Key);
 
         base.OnModelCreating(builder);
     }

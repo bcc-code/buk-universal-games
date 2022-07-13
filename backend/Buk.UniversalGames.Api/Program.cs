@@ -31,11 +31,13 @@ builder.Services.AddScoped<ILeagueService, LeagueService>();
 builder.Services.AddScoped<IGameService, GameService>();
 builder.Services.AddScoped<IStickerService, StickerService>();
 builder.Services.AddScoped<IStatusService, StatusService>();
+builder.Services.AddScoped<ISettingsService, SettingsService>();
 
 builder.Services.AddScoped<ILeagueRepository, LeagueCacheRepository>();
 builder.Services.AddScoped<IGameRepository, GameCacheRepository>();
 builder.Services.AddScoped<IStickerRepository, StickerCacheRepository>();
 builder.Services.AddScoped<IStatusRepository, StatusCacheRepository>();
+builder.Services.AddScoped<ISettingsRepository, SettingsCacheRepository>();
 
 builder.Services.AddSingleton<ICacheContext, CacheContext>();
 

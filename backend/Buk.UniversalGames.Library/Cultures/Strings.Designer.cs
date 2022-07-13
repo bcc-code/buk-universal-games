@@ -61,6 +61,15 @@ namespace Buk.UniversalGames.Library.Cultures {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to To keep things exciting, highscore is now hidden until the final..
+        /// </summary>
+        public static string HighScoreHidden {
+            get {
+                return ResourceManager.GetString("HighScoreHidden", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to minutes.
         /// </summary>
         public static string Minutes {

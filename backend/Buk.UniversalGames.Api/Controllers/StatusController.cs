@@ -15,11 +15,13 @@ public class StatusController : ControllerBase
 {
     private readonly ILogger<StatusController> _logger;
     private readonly IStatusService _statusService;
+    private readonly ISettingsService _settingsService;
 
-    public StatusController(ILogger<StatusController> logger, IStatusService statusService)
+    public StatusController(ILogger<StatusController> logger, IStatusService statusService, ISettingsService settingsService)
     {
         _logger = logger;
         _statusService = statusService;
+        _settingsService = settingsService;
     }
 
     [HttpGet]
@@ -36,6 +38,14 @@ public class StatusController : ControllerBase
 
         if(!team.LeagueId.HasValue)
             return new ExceptionResult(Strings.TeamNotPartOfALeague, 403);
+
+        var hideHighScore = _settingsService.GetSettings("hide_highscore");
+        if (hideHighScore != null)
+        {
+            DateTime.TryParse(hideHighScore, out var hideHighScoreDate);
+            if (hideHighScoreDate != DateTime.MinValue && hideHighScoreDate < DateTime.Now)
+                return new ExceptionResult(Strings.HighScoreHidden, 406);
+        }
 
         return _statusService.GetLeagueStatus(team.LeagueId.Value);
     }
