@@ -1,7 +1,7 @@
 <template>
   <section :class="{ root: true, hidden: !show, scanning }">
-    <!-- <input type="file" name="" id="" v-on:change="loadFile" />
-    <img ref="imgElement" :src="image" alt="" /> -->
+    <input type="file" name="" id="" v-on:change="loadFile" />
+    <img ref="imgElement" :src="image" alt="" />
     <div v-if="!scanning">
       <div>Scan res: {{ results }}</div>
     </div>
@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import { Html5Qrcode } from "html5-qrcode";
+
 export default {
   name: "CameraScanner",
   data() {
@@ -23,16 +25,34 @@ export default {
     };
   },
   methods: {
-    // loadFile(event) {
-    //   this.image = URL.createObjectURL(event.target.files[0]);
-    // },
+    loadFile(event) {
+      this.image = URL.createObjectURL(event.target.files[0]);
+
+      // const scanner = new window.Html5QrcodeScanner("reader", { fps: 10, qrbox: 250, facingMode: "environment" });
+
+      const html5QrCode = new Html5Qrcode(/* element id */ "reader");
+      this.scanner = html5QrCode;
+
+      const image = event.target.files[0];
+      html5QrCode
+        .scanFile(image, true)
+        .then((decodedText) => {
+          // success, use decodedText
+          console.log(decodedText);
+          this.results = decodedText;
+        })
+        .catch((err) => {
+          // failure, handle it.
+          console.log(`Error scanning file. Reason: ${err}`);
+        });
+    },
 
     start() {
       this.show = true;
-      this.scanning = true;
+      // this.scanning = true;
 
-      this.scanner = new window.Html5QrcodeScanner("reader", { fps: 10, qrbox: 250, facingMode: "environment" });
-      this.scanner.render(this.onScanSuccess);
+      // this.scanner = new window.Html5QrcodeScanner("reader", { fps: 10, qrbox: 250, facingMode: "environment" });
+      // this.scanner.render(this.onScanSuccess);
     },
 
     close() {
@@ -80,7 +100,14 @@ export default {
 }
 
 .scanning #reader {
-  height: 100%;
+  /* height: 100%; */
+  height: 100px;
   opacity: 1;
+}
+
+img {
+  width: 250px;
+  height: auto;
+  max-width: 100%;
 }
 </style>
