@@ -21,8 +21,14 @@ const routes = [
     redirect: { name: 'LeagueList' }
   },
   {
+    // TODO: Google Docs and QR code example are contradictive, which one is correct?
+    path: "/scan/:stickerCode",
+    name: "ScanProcessing1",
+    component: ScanProcessing,
+  },
+  {
     path: "/sticker/:stickerCode",
-    name: "ScanProcessing",
+    name: "ScanProcessing2",
     component: ScanProcessing,
   },
   {
