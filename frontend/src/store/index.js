@@ -10,16 +10,23 @@ const store = createStore({
     leagueStatus: {},
     matches: [],
     games: []
+    scanning: {
+      handlingURL: false,
+      stickerCode: null
+    }
   },
   mutations: {
     setLoginData(state, data) {
-        state.loginData = data
+      state.loginData = data
     },
     setTeamStatus(state, data) {
-        state.teamStatus = data
+      state.teamStatus = data
     },
     setLeagueStatus(state, data) {
-        state.leagueStatus = data
+      state.leagueStatus = data
+    },
+    setScanning(state, data) {
+      state.scanning = data
     },
     setMatches(state, data) {
         state.matches = data
@@ -27,45 +34,45 @@ const store = createStore({
     setGames(state, data) {
         state.games = data
     }
-},
+  },
   actions: {
     async getLoginData(ctx) {
-        let loginData = await initData("Start/")
+      let loginData = await initData("Start/")
         .then(r => {
-          if(r.status == 200) {
+          if (r.status == 200) {
             return r.json()
           }
         })
         .then(r => {
-            return r; 
+          return r;
         })
 
-        ctx.commit("setLoginData", loginData)
-        return loginData
+      ctx.commit("setLoginData", loginData)
+      return loginData
     },
     async getTeamStatus(ctx) {
-        let teamStatus = await getData("/Status/")
+      let teamStatus = await getData("/Status/")
         .then(r => {
-          if(r.status == 200) {
+          if (r.status == 200) {
             return r.json()
           }
         })
         .then(r => {
-            return r; 
+          return r;
         })
 
-        ctx.commit("setTeamStatus", teamStatus)
-        return teamStatus
+      ctx.commit("setTeamStatus", teamStatus)
+      return teamStatus
     },
     async getLeagueStatus(ctx) {
-        let leagueStatus = await getData("/Status/League")
+      let leagueStatus = await getData("/Status/League")
         .then(r => {
-          if(r.status == 200) {
+          if (r.status == 200) {
             return r.json()
           }
         })
         .then(r => {
-            return r; 
+          return r;
         })
 
         ctx.commit("setLeagueStatus", leagueStatus)

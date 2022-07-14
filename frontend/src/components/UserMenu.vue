@@ -13,10 +13,10 @@
       ></button>
     </div>
     <div class="user-menu-btn-big-wrapper">
-      <label class="user-menu-btn-big" for="camera">
+      <button class="user-menu-btn-big" v-on:click="$refs.cameraScanner.start()">
         <p v-html="scanIcon"></p>
-        <input type="file" id="camera" name="camera" accept="image/*" capture="environment" />
-      </label>
+        <!-- <input type="file" id="camera" name="camera" accept="image/*" capture="environment" /> -->
+      </button>
     </div>
     <div class="user-menu-btn-small-wrapper">
       <button
@@ -31,9 +31,12 @@
       ></button>
     </div>
   </nav>
+  <CameraScanner ref="cameraScanner"></CameraScanner>
 </template>
 
 <script>
+import CameraScanner from "@/components/CameraScanner.vue";
+
 import { ballIcon } from "@/assets/icons/ball.svg.ts";
 import { homeIcon } from "@/assets/icons/home.svg.ts";
 import { calendarIcon } from "@/assets/icons/calendar.svg.ts";
@@ -42,6 +45,9 @@ import { scanIcon } from "@/assets/icons/scan.svg.ts";
 
 export default {
   name: "UserMenu",
+  components: {
+    CameraScanner,
+  },
   data() {
     return {
       ballIcon,
@@ -57,7 +63,6 @@ export default {
 </script>
 
 <style scoped>
-
 input[type="file"] {
   display: none;
 }

@@ -1,11 +1,14 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import Login from "../pages/LoginPage.vue";
-import LeagueList from "../pages/LeagueList.vue";
-import MatchList from "../pages/MatchList.vue";
-import GameInfo from "../pages/GameInfo.vue";
-import GameInfoDetail from "../pages/GameInfoDetail.vue";
-import Map from "../pages/Map.vue";
+import Login from "@/pages/LoginPage.vue";
+import LeagueList from "@/pages/LeagueList.vue";
+import MatchList from "@/pages/MatchList.vue";
+import GameInfo from "@/pages/GameInfo.vue";
+import GameInfoDetail from "@/pages/GameInfoDetail.vue";
+import ScanResult from "@/pages/ScanResult.vue";
+import ScanProcessing from "@/pages/ScanProcessing.vue";
+import Map from "@/pages/Map.vue";
 import store from '@/store'
+// import { postStickerCode } from '@/libs/apiHelper'
 
 const routes = [
   {
@@ -16,6 +19,17 @@ const routes = [
   {
     path: "/start/:code",
     redirect: { name: 'LeagueList' }
+  },
+  {
+    path: "/sticker/:stickerCode",
+    name: "ScanProcessing",
+    component: ScanProcessing,
+  },
+  {
+    path: "/:code/sticker-scan-result",
+    name: "ScanResult",
+    component: ScanResult,
+    props: true
   },
   {
     path: "/:code/league-list",
@@ -51,11 +65,16 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
+  if (to.params.stickerCode) {
+    store.commit('setScanning', { handlingURL: true, stickerCode: to.params.stickerCode })
+  }
+
   if (to.params.code) {
     window.localStorage.setItem("teamCode", to.params.code);
     const loginData = await store.dispatch("getLoginData")
 
     if (!loginData) {
+      window.alert("Please login first");
       next({ name: 'Login' })
     }
   }
