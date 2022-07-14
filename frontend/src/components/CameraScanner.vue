@@ -1,11 +1,14 @@
 <template>
   <section :class="{ root: true, hidden: !show, scanning }">
-    <input type="file" name="" id="" v-on:change="loadFile" />
-    <img ref="imgElement" :src="image" alt="" />
-    <div v-if="!scanning">
-      <div>Scan res: {{ results }}</div>
+    <button class="close" v-on:click="close">X</button>
+
+    <input type="file" ref="fileInput" v-on:change="loadFile" capture="environment" accept="image/*" />
+    <button class="btn-primary scan" v-on:click="$refs.fileInput.click">Scan QR code</button>
+    <img v-if="image" ref="imgElement" :src="image" alt="" />
+    <div v-if="!scanning" class="scan-result">
+      <a v-if="resultIsLink" :href="result">{{ result }}</a>
+      <p v-else>{{ result }}</p>
     </div>
-    <button class="btn-primary" v-on:click="close">Close</button>
     <div id="reader"></div>
   </section>
 </template>
@@ -17,8 +20,9 @@ export default {
   name: "CameraScanner",
   data() {
     return {
-      image: "/favicon.ico",
-      results: "",
+      image: null,
+      result: "",
+      resultIsLink: false,
       scanner: null,
       show: false,
       scanning: false,
@@ -39,34 +43,37 @@ export default {
         .then((decodedText) => {
           // success, use decodedText
           console.log(decodedText);
-          this.results = decodedText;
+          this.result = decodedText;
+          this.resultIsLink = this.result.includes("http");
+
+          if (this.resultIsLink) {
+            setTimeout(() => {
+              window.open(this.result, "_blank").focus();
+            }, 250);
+          }
         })
         .catch((err) => {
           // failure, handle it.
+          this.result = "Please try scanning the QR code again, we couldn't read it.";
+          this.resultIsLink = false;
           console.log(`Error scanning file. Reason: ${err}`);
         });
     },
 
     start() {
       this.show = true;
-      // this.scanning = true;
 
-      // this.scanner = new window.Html5QrcodeScanner("reader", { fps: 10, qrbox: 250, facingMode: "environment" });
-      // this.scanner.render(this.onScanSuccess);
+      if (this.$refs.fileInput) {
+        this.$refs.fileInput.click();
+      }
     },
 
     close() {
       this.show = false;
-      this.scanner.clear();
-    },
 
-    onScanSuccess(decodedText, decodedResult) {
-      console.log(`Scan result: ${decodedText}`, decodedResult);
-
-      this.results = decodedText + "\n";
-      this.scanner.clear(); // Stop scanning
-
-      this.scanning = false;
+      if (this.scanner) {
+        this.scanner.clear();
+      }
     },
   },
 };
@@ -97,6 +104,7 @@ export default {
   width: 100%;
   height: 1px;
   opacity: 0;
+  margin-bottom: auto;
 }
 
 .scanning #reader {
@@ -106,8 +114,33 @@ export default {
 }
 
 img {
-  width: 250px;
+  width: 128px;
   height: auto;
   max-width: 100%;
+}
+
+.close {
+  margin-top: 1em;
+  margin-right: 1em;
+  margin-bottom: auto;
+  margin-left: auto;
+  width: 3em;
+  height: 3em;
+  line-height: 1;
+}
+
+.scan {
+  margin-bottom: 2em;
+}
+
+.scan-result {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+input[type="file"] {
+  width: 1px;
+  height: 1px;
+  opacity: 0;
 }
 </style>

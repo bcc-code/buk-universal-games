@@ -70,6 +70,7 @@ export default {
     text-align: center;
     border: none;
     font-size: 1em;
+    font: inherit;
   }
 
   h1,
