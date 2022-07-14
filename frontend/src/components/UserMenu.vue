@@ -72,7 +72,11 @@ input[type="file"] {
   justify-content: space-between;
   align-items: center;
   padding: 2em;
-  position: relative;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
   background-color: transparent;
   background-color: white;
 }
