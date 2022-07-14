@@ -9,7 +9,7 @@ const store = createStore({
     teamStatus: {},
     leagueStatus: {},
     matches: [],
-    games: []
+    games: [],
     scanning: {
       handlingURL: false,
       stickerCode: null
@@ -29,10 +29,10 @@ const store = createStore({
       state.scanning = data
     },
     setMatches(state, data) {
-        state.matches = data
+      state.matches = data
     },
     setGames(state, data) {
-        state.games = data
+      state.games = data
     }
   },
   actions: {
@@ -75,36 +75,36 @@ const store = createStore({
           return r;
         })
 
-        ctx.commit("setLeagueStatus", leagueStatus)
-        return leagueStatus
+      ctx.commit("setLeagueStatus", leagueStatus)
+      return leagueStatus
     },
     async getMatches(ctx) {
-        let matches = await getData("/Games/Matches")
+      let matches = await getData("/Games/Matches")
         .then(r => {
-          if(r.status == 200) {
+          if (r.status == 200) {
             return r.json()
           }
         })
         .then(r => {
-            return r; 
+          return r;
         })
 
-        ctx.commit("setMatches", matches)
-        return matches
+      ctx.commit("setMatches", matches)
+      return matches
     },
     async getGames(ctx) {
-        let games = await getData("/Games")
+      let games = await getData("/Games")
         .then(r => {
-          if(r.status == 200) {
+          if (r.status == 200) {
             return r.json()
           }
         })
         .then(r => {
-            return r; 
+          return r;
         })
 
-        ctx.commit("setGames", games)
-        return games
+      ctx.commit("setGames", games)
+      return games
     }
   },
 });
