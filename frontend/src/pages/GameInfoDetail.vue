@@ -56,8 +56,6 @@ export default {
     };
   },
   mounted() {
-    console.log("game data", this.game);
-
     if (this.game) {
       this.gameParsed = JSON.parse(this.game);
     } else {

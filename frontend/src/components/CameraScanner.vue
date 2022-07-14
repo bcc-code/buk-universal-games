@@ -32,28 +32,22 @@ export default {
     loadFile(event) {
       this.image = URL.createObjectURL(event.target.files[0]);
 
-      // const scanner = new window.Html5QrcodeScanner("reader", { fps: 10, qrbox: 250, facingMode: "environment" });
-
-      const html5QrCode = new Html5Qrcode(/* element id */ "reader");
+      const html5QrCode = new Html5Qrcode("reader");
       this.scanner = html5QrCode;
 
       const image = event.target.files[0];
       html5QrCode
         .scanFile(image, true)
         .then((decodedText) => {
-          // success, use decodedText
-          console.log(decodedText);
+          console.log("QR CODE SCAN RES", decodedText);
           this.result = decodedText;
           this.resultIsLink = this.result.includes("http");
 
           if (this.resultIsLink) {
-            setTimeout(() => {
-              window.open(this.result, "_blank").focus();
-            }, 250);
+            window.location.href = this.result;
           }
         })
         .catch((err) => {
-          // failure, handle it.
           this.result = "Please try scanning the QR code again, we couldn't read it.";
           this.resultIsLink = false;
           console.log(`Error scanning file. Reason: ${err}`);
