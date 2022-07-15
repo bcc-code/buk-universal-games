@@ -10,6 +10,7 @@
   "dependencies": {
     "core-js": "^3.8.3",
     "html5-qrcode": "^2.2.1",
+    "pinch-zoom-js": "^2.3.4",
     "vue": "^3.2.13",
     "vue-router": "^4.1.1",
     "vuex": "^4.0.2"
