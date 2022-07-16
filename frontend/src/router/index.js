@@ -7,6 +7,7 @@ import GameInfoDetail from "@/pages/GameInfoDetail.vue";
 import ScanResult from "@/pages/ScanResult.vue";
 import ScanProcessing from "@/pages/ScanProcessing.vue";
 import Map from "@/pages/Map.vue";
+import AdminGame from "@/pages/AdminGame.vue";
 import store from '@/store'
 // import { postStickerCode } from '@/libs/apiHelper'
 
@@ -19,6 +20,12 @@ const routes = [
   {
     path: "/start/:code",
     redirect: { name: 'LeagueList' }
+  },
+  {
+    path: "/admin/AdminGame",
+    name: "AdminGame",
+    component: AdminGame,
+    props: true
   },
   {
     // TODO: Google Docs and QR code example are contradictive, which one is correct?
