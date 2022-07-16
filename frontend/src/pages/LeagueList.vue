@@ -65,10 +65,8 @@ export default {
   .league-title {
       padding: 0 1em;
       border-radius: .75em;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
+      display: grid;
+      grid-template-columns: 2fr 8fr 3fr 3fr;
   }
 
   .league-title-column {

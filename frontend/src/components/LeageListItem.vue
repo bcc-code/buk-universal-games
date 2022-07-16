@@ -45,15 +45,14 @@ export default {
     .card {
         padding: 0 1em;
         border-radius: .75em;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+        display: grid;
+        grid-template-columns: 5% 65% 15% 15%;
     }
 
     .card-row {
         display: flex;
         align-items: center;
+        width: 100%;
     }
     
     .card-dark {
@@ -83,6 +82,9 @@ export default {
     .card-dark-text {
         font-size: .85em;
         color: inherit;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
     }
 
     .card-btn {
