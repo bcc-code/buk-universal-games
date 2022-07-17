@@ -1,8 +1,28 @@
 <template>
-  <UserPageLayout>
+  <AdminPageLayout>
     <nav>
-      <button @click="$router.push({ name: 'GameInfo' })">&lt;</button>
-      <button @click="$router.push({ name: 'GameInfo' })">⠇</button>
+      <button
+        @click="
+          $router.push({
+            name: 'AdminGames',
+          })
+        "
+      >
+        &lt;
+      </button>
+      <button
+        @click="
+          $router.push({
+            name: 'GameInfoDetail',
+            params: {
+              game: JSON.stringify(gameParsed),
+              code: $store.state.loginData.code,
+            },
+          })
+        "
+      >
+        Game-info
+      </button>
     </nav>
 
     <h3>Games</h3>
@@ -26,11 +46,11 @@
       <button class="btn btn-success">Winner</button>
       <button class="btn btn-blank">Loser</button>
     </div>
-  </UserPageLayout>
+  </AdminPageLayout>
 </template>
 
 <script>
-import UserPageLayout from "@/components/UserPageLayout.vue";
+import AdminPageLayout from "@/components/AdminPageLayout.vue";
 // import { getData } from "@/libs/apiHelper";
 import { gameEarthIcon } from "@/assets/icons/game-earth.svg.ts";
 import { gameFireIcon } from "@/assets/icons/game-fire.svg.ts";
@@ -43,7 +63,7 @@ export default {
   props: {
     game: String,
   },
-  components: { UserPageLayout },
+  components: { AdminPageLayout },
   data() {
     return {
       loginError: "Game Info",

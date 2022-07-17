@@ -4,30 +4,29 @@
       <button
         :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'LeagueList' }"
         v-html="homeIcon"
-        @click="$router.push({ name: 'LeagueList' })"
+        @click="$router.push({ name: 'LeagueList', params: { code: $store.state.loginData.code } })"
       ></button>
       <button
         :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'MatchList' }"
         v-html="calendarIcon"
-        @click="$router.push({ name: 'MatchList' })"
+        @click="$router.push({ name: 'MatchList', params: { code: $store.state.loginData.code } })"
       ></button>
     </div>
     <div class="user-menu-btn-big-wrapper">
       <button class="user-menu-btn-big" v-on:click="$refs.cameraScanner.start()">
         <p v-html="scanIcon"></p>
-        <!-- <input type="file" id="camera" name="camera" accept="image/*" capture="environment" /> -->
       </button>
     </div>
     <div class="user-menu-btn-small-wrapper">
       <button
         :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'GameInfo' }"
         v-html="ballIcon"
-        @click="$router.push({ name: 'GameInfo' })"
+        @click="$router.push({ name: 'GameInfo', params: { code: $store.state.loginData.code } })"
       ></button>
       <button
         :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'Map' }"
         v-html="placeIcon"
-        @click="$router.push({ name: 'Map' })"
+        @click="$router.push({ name: 'Map', params: { code: $store.state.loginData.code } })"
       ></button>
     </div>
   </nav>
@@ -55,7 +54,6 @@ export default {
       calendarIcon,
       placeIcon,
       scanIcon,
-      loginError: "Meny",
     };
   },
   methods: {},
