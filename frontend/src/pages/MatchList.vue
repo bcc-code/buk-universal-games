@@ -36,11 +36,11 @@ export default {
     };
   },
   created() {
-    if(Object.keys(this.$store.state.matches).length === 0) {
+    if(!this.$store.state.matches) {
        this.getMatches() 
     }
 
-    if(Object.keys(this.$store.state.games).length === 0) {
+    if(!this.$store.state.games) {
        this.getGames() 
     }
   },
