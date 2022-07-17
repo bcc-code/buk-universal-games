@@ -8,6 +8,9 @@ import ScanResult from "@/pages/ScanResult.vue";
 import ScanProcessing from "@/pages/ScanProcessing.vue";
 import Map from "@/pages/Map.vue";
 import AdminGame from "@/pages/AdminGame.vue";
+import AdminLeagueStatus from "@/pages/AdminLeagueStatus.vue";
+import AdminGames from "@/pages/AdminGames.vue";
+import AdminMatchListGame from "@/pages/AdminMatchListGame.vue";
 import store from '@/store'
 // import { postStickerCode } from '@/libs/apiHelper'
 
@@ -20,6 +23,24 @@ const routes = [
   {
     path: "/start/:code",
     redirect: { name: 'LeagueList' }
+  },
+  {
+    path: "/admin/AdminLeagueStatus",
+    name: "AdminLeagueStatus",
+    component: AdminLeagueStatus,
+    props: true
+  },
+  {
+    path: "/admin/AdminGames",
+    name: "AdminGames",
+    component: AdminGames,
+    props: true
+  },
+  {
+    path: "/admin/AdminMatchListGame",
+    name: "AdminMatchListGame",
+    component: AdminMatchListGame,
+    props: true
   },
   {
     path: "/admin/AdminGame",

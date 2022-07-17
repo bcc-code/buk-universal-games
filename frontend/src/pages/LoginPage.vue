@@ -30,7 +30,7 @@ export default {
         url = "/" + this.teamCode + "/league-list";
 
         if (this.teamCode === "admin") {
-          url = "/admin/AdminGame";
+          url = "/admin/AdminLeagueStatus";
         }
       }
 
