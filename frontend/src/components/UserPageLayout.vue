@@ -40,10 +40,10 @@ export default {
 .content-area {
   height: 100%;
   overflow: auto;
-  padding: 2em;
+  padding: 2em 1em;
 }
 
 .title {
-  padding-bottom: 1em;
+  padding-bottom: .5em;
 }
 </style>

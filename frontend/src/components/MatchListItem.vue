@@ -32,10 +32,10 @@ export default {
     }
 
     .card {
-        padding: 0 1em;
+        padding: .25em .5em;
         border-radius: .75em;
         display: grid;
-        grid-template-columns: 15% 75% 10%;
+        grid-template-columns: 15% 70% 15%;
     }
 
 

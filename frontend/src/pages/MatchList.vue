@@ -72,10 +72,10 @@ export default {
 
 <style scoped>
   .match-title {
-      padding: 0 1em;
+      padding: 0 .5em;
       border-radius: .75em;
       display: grid;
-      grid-template-columns: 15% 75% 10%;
+      grid-template-columns: 15% 70% 15%;
   }
 
   .match-title-column {
