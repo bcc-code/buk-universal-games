@@ -17,9 +17,9 @@
         @click="$router.push({ name: 'AdminGames' })"
       ></button>
       <button
-        :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'Map' }"
+        :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'AdminMap' }"
         v-html="placeIcon"
-        @click="$router.push({ name: 'Map', params: { code: 'admin' } })"
+        @click="$router.push({ name: 'AdminMap' })"
       ></button>
     </div>
   </nav>

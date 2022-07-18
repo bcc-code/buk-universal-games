@@ -3,17 +3,17 @@
     <div ref="map" class="map-wrapper">
       <img src="/images/map.jpg" alt="" />
     </div>
-    <UserMenu />
+    <AdminMenu />
   </div>
 </template>
 
 <script>
-import UserMenu from "@/components/UserMenu.vue";
+import AdminMenu from "@/components/AdminMenu.vue";
 import PinchZoom from "pinch-zoom-js";
 
 export default {
   name: "MapPage",
-  components: { UserMenu },
+  components: { AdminMenu },
   data() {
     return {
       loginError: "Map",
