@@ -62,10 +62,6 @@ export default {
 </script>
 
 <style scoped>
-  .league-list {
-    margin-bottom: 5em;
-  }
-
   .league-title {
       padding: 0 1em;
       border-radius: .75em;

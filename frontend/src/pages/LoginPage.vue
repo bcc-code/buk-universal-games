@@ -18,7 +18,7 @@ export default {
   data() {
     return {
       image: require("@/assets/bg.png"),
-      teamCode: "6EZ1FOV",
+      teamCode: "8PB3P5N",
       loginError: null,
     };
   },
@@ -42,7 +42,7 @@ export default {
 
 <style scoped>
 .bg {
-  height: 100vh;
+  height: 100%;
   background-size: cover;
   background-position: center;
   display: flex;

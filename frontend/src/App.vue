@@ -41,6 +41,7 @@ export default {
 
 html {
   box-sizing: border-box;
+  height: 100%;
 }
 
 body {
@@ -48,13 +49,18 @@ body {
   font-size: 16px;
   background-color: var(--dark);
   font-family: "ClashGrotesk-Medium";
+  height: 100%;
 }
 
 main {
-  height: 100vh;
+  height: 100%;
   max-width: 480px;
   margin: 0 auto;
   background-color: var(--gray-1);
+}
+
+#app {
+  height: 100%;
 }
 
 img {
