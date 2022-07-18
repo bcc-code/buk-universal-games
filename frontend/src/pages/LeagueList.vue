@@ -17,7 +17,7 @@
         </div>
     </section>
     <section class="user-section" v-for="(status, i) in leagueStatus" :key="status.id">
-      <LeageListItem :class="{'card-light' : i > 4}" :index="i+1" :team="status.team" :stickers="status.stickers" :points="status.points  " />
+      <LeageListItem :class="{'card-light' : i > 4, 'green-font' : status.teamId == teamStatus.status.teamId}" :index="i+1" :team="status.team" :stickers="status.stickers" :points="status.points  " />
     </section>
   </UserPageLayout>
 </template>
@@ -55,7 +55,8 @@ export default {
       return this?.$store.state.teamStatus
     },
     leagueStatus() {
-      return this?.$store.state.leagueStatus.status?.slice(0, 10)
+      // return this?.$store.state.leagueStatus.status?.slice(0, 10)
+      return this?.$store.state.leagueStatus.status
     }
   }
 }
@@ -88,5 +89,8 @@ export default {
   .index-column {
       width: 25%;
   }
-
+  
+  .green-font {
+    color: var(--green);
+  }
 </style>
