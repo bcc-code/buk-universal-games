@@ -11,6 +11,7 @@ import AdminGame from "@/pages/AdminGame.vue";
 import AdminLeagueStatus from "@/pages/AdminLeagueStatus.vue";
 import AdminGames from "@/pages/AdminGames.vue";
 import AdminMatchListGame from "@/pages/AdminMatchListGame.vue";
+import AdminMap from "@/pages/AdminMap.vue";
 import store from '@/store'
 // import { postStickerCode } from '@/libs/apiHelper'
 
@@ -47,6 +48,11 @@ const routes = [
     name: "AdminGame",
     component: AdminGame,
     props: true
+  },
+  {
+    path: "/admin/map",
+    name: "AdminMap",
+    component: AdminMap,
   },
   {
     // TODO: Google Docs and QR code example are contradictive, which one is correct?
@@ -108,8 +114,12 @@ router.beforeEach(async (to, from, next) => {
     const loginData = await store.dispatch("getLoginData")
 
     if (!loginData) {
-      window.alert("Please login first");
+      window.alert("Ugyldig kode");
       next({ name: 'Login' })
+    }
+
+    if (loginData.access === 'Admin') {
+      next({ name: 'AdminLeagueStatus' })
     }
   }
 

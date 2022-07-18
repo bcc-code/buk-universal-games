@@ -28,10 +28,6 @@ export default {
 
       if (this.teamCode) {
         url = "/" + this.teamCode + "/league-list";
-
-        if (this.teamCode === "admin") {
-          url = "/admin/AdminLeagueStatus";
-        }
       }
 
       return url;
