@@ -34,7 +34,7 @@ export default {
   flex-direction: column;
   height: 100%;
   justify-content: space-between;
-  padding-bottom: 6em;
+  padding-bottom: 5em;
 }
 
 .content-area {

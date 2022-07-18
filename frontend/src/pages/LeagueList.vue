@@ -1,5 +1,5 @@
 <template>
-  <UserPageLayout>
+  <UserPageLayout class="league-list">
     <section class="user-section">
       <PointsAndStickers :points="teamStatus?.status?.points" :stickers="teamStatus?.status?.stickers" :refresh="() => getTeamStatus()"/>
     </section>
@@ -62,6 +62,10 @@ export default {
 </script>
 
 <style scoped>
+  .league-list {
+    margin-bottom: 5em;
+  }
+
   .league-title {
       padding: 0 1em;
       border-radius: .75em;
