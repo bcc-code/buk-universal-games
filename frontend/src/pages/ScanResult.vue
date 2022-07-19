@@ -14,7 +14,8 @@
       </div>
     </div>
     <div v-else>
-      <p>Noe gikk galt ... Vennligst prøv igjen</p>
+      <p>Something went wrong ...</p>
+      <p>Make sure you are scanning a QR code belonging to your league.</p>
     </div>
   </UserPageLayout>
 </template>
