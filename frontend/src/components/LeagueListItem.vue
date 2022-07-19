@@ -46,7 +46,7 @@ export default {
         padding: 0 1em;
         border-radius: .75em;
         display: grid;
-        grid-template-columns: 5% 65% 15% 15%;
+        grid-template-columns: 10% 60% 15% 15%;
     }
 
     .card-row {

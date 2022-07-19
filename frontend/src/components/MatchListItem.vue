@@ -35,7 +35,7 @@ export default {
         padding: .25em .5em;
         border-radius: .75em;
         display: grid;
-        grid-template-columns: 15% 70% 15%;
+        grid-template-columns: 20% 65% 15%;
     }
 
 
