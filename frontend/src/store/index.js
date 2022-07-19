@@ -10,6 +10,7 @@ const store = createStore({
     leagueStatus: {},
     adminLeagues: [],
     adminLeagueStatus: {},
+    adminLeagueSelected: 4,
     matches: [],
     games: [],
     scanning: {
@@ -32,6 +33,9 @@ const store = createStore({
     },
     setAdminLeagueStatus(state, data) {
       state.adminLeagueStatus = data
+    },
+    setAdminLeagueSelected(state, data) {
+      state.adminLeagueSelected = data
     },
     setScanning(state, data) {
       state.scanning = data
@@ -86,9 +90,11 @@ const store = createStore({
       ctx.commit("setLeagueStatus", leagueStatus)
       return leagueStatus
     },
-    async getAdminLeagueStatus(ctx, id) {
-      console.log("id", id)
-      let leagueStatus = await getData("/Admin/Leagues/" + 4 + "/Status")
+    async getAdminLeagueStatus(ctx) {
+      if(!ctx.state.adminLeagueSelected)
+        return
+
+      let leagueStatus = await getData("/Admin/Leagues/" + ctx.state.adminLeagueSelected + "/Status")
         .then(r => {
           if (r.status == 200) {
             return r.json()
@@ -114,6 +120,9 @@ const store = createStore({
 
       ctx.commit("setAdminLeagues", leagues)
       return leagues
+    },
+    async setAdminLeagueSelected(ctx, id) {
+      return ctx.commit("setAdminLeagueSelected", id)
     },
     async getMatches(ctx) {
       let matches = await getData("/Games/Matches")
