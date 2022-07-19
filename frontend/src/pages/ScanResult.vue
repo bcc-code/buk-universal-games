@@ -57,10 +57,10 @@ export default {
         this.resultParsed = JSON.parse(this.result);
 
         if (this.resultParsed.success) {
-          this.headingText = "Sticker ble lagt til";
+          this.headingText = "Sticker added";
           this.headingIcon = bukSmileIcon;
         } else {
-          this.headingText = "Sticker ble ikke lagt til";
+          this.headingText = "Sticker not added";
           this.headingIcon = bukSadIcon;
         }
       } catch (error) {
