@@ -22,7 +22,7 @@
 import { bukIcon } from "@/assets/icons/buk-icon.svg.ts";
 
 export default {
-  name: 'LeageListItem',
+  name: 'LeagueListItem',
   props: {
     index: Number,
     team: String,

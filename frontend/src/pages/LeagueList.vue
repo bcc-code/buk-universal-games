@@ -17,7 +17,7 @@
         </div>
     </section>
     <section class="user-section" v-for="(status, i) in leagueStatus" :key="status.id">
-      <LeageListItem :class="{'card-light' : i > 4, 'green-font' : status.teamId == teamStatus.status.teamId}" :index="i+1" :team="status.team" :stickers="status.stickers" :points="status.points  " />
+      <LeagueListItem :class="{'card-light' : i > 4, 'green-font' : status.teamId == teamStatus.status.teamId}" :index="i+1" :team="status.team" :stickers="status.stickers" :points="status.points  " />
     </section>
   </UserPageLayout>
 </template>
@@ -25,14 +25,14 @@
 <script>
 import UserPageLayout from '../components/UserPageLayout.vue'
 import PointsAndStickers from '../components/PointsAndStickers.vue'
-import LeageListItem from '../components/LeageListItem.vue'
+import LeagueListItem from '../components/LeagueListItem.vue'
 
 export default {
   name: 'LoginPage',
   props: {
     data: String,
   },
-  components: { UserPageLayout, PointsAndStickers, LeageListItem },
+  components: { UserPageLayout, PointsAndStickers, LeagueListItem },
   created() {
     if(Object.keys(this.$store.state.teamStatus).length === 0) {
        this.getTeamStatus() 

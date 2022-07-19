@@ -17,7 +17,7 @@
         </div>
     </section>
     <section class="user-section" v-for="(status, i) in adminLeagueStatus" :key="status.id">
-      <LeageListItem
+      <LeagueListItem
         :class="{ 'card-light': i > 4 }"
         :index="i + 1"
         :team="status.team"
@@ -30,12 +30,12 @@
 
 <script>
 import AdminPageLayout from "@/components/AdminPageLayout.vue";
-import LeageListItem from "@/components/LeageListItem.vue";
+import LeagueListItem from "@/components/LeagueListItem.vue";
 import AdminLeagueCard from "@/components/AdminLeagueCard.vue";
 
 export default {
   name: "AdminLeagueStatus",
-  components: { AdminPageLayout, LeageListItem, AdminLeagueCard },
+  components: { AdminPageLayout, LeagueListItem, AdminLeagueCard },
   created() {
     if(!this.$store.state.adminLeagues.length) {
        this.getAdminLeagues() 
