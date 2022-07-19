@@ -16,6 +16,13 @@ namespace Buk.UniversalGames.Data
         public T? Get<T>(string key)
         {
             var value = _cache.GetString(key);
+
+            var cacheKeys = GetCacheKeys();
+            if (!cacheKeys.Contains(key))
+            {
+                cacheKeys.Add(key);
+                SetCacheKeys(cacheKeys);
+            }
             return value != null ? JsonSerializer.Deserialize<T>(value) : default;
         }
 
