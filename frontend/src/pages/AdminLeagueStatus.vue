@@ -1,7 +1,7 @@
 <template>
   <AdminPageLayout title="League status">
     <section class="leagues">
-      <AdminLeagueCard v-for="league in adminLeagues" :key="league.id" :name="league.name"/>
+      <AdminLeagueCard v-for="league in adminLeagues" :class="{'green-font' : league.id == $store.state.adminLeagueSelected}" :key="league.id" :name="league.name" @click="selectLeague(league.id)"/>
     </section>
     <section class="league-title">
         <div class="league-title-column index-column">
@@ -36,9 +36,6 @@ import AdminLeagueCard from "@/components/AdminLeagueCard.vue";
 export default {
   name: "AdminLeagueStatus",
   components: { AdminPageLayout, LeageListItem, AdminLeagueCard },
-  data() {
-    return {};
-  },
   created() {
     if(!this.$store.state.adminLeagues.length) {
        this.getAdminLeagues() 
@@ -54,7 +51,11 @@ export default {
     },
     getAdminLeagueStatus() {
       this.$store.dispatch("getAdminLeagueStatus")
-    }
+    },
+    async selectLeague(id) {
+      await this.$store.dispatch("setAdminLeagueSelected", id)
+      this.getAdminLeagueStatus()
+    },
   },
   computed: {
     adminLeagueStatus() {
@@ -62,7 +63,6 @@ export default {
       return this?.$store.state.adminLeagueStatus.status
     },
     adminLeagues() {
-      console.log("this?.$store.state.adminLeagues", this?.$store.state.adminLeagues)
       return this?.$store.state.adminLeagues
     }
   }
@@ -98,6 +98,7 @@ export default {
     width: 100%;
   }
 
-
-
+  .green-font {
+    color: var(--green);
+  }
 </style>
