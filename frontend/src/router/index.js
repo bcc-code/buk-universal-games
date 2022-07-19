@@ -105,6 +105,8 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
+  let nextOptions = null;
+
   if (to.params.stickerCode) {
     store.commit('setScanning', { handlingURL: true, stickerCode: to.params.stickerCode })
   }
@@ -115,15 +117,15 @@ router.beforeEach(async (to, from, next) => {
 
     if (!loginData) {
       window.alert("Ugyldig kode");
-      next({ name: 'Login' })
+      nextOptions = { name: 'Login' }
     }
 
-    if (loginData.access === 'Admin') {
-      next({ name: 'AdminLeagueStatus' })
+    if (loginData && loginData.access === 'Admin') {
+      nextOptions = { name: 'AdminLeagueStatus' }
     }
   }
 
-  next()
+  next(nextOptions)
 })
 
 
