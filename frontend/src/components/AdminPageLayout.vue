@@ -36,7 +36,7 @@ export default {
 .content-area {
   height: 100%;
   overflow: auto;
-  padding: 2em;
+  padding: 1em;
 }
 
 .title {
