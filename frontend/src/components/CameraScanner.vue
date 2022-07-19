@@ -41,7 +41,7 @@ export default {
         .then((decodedText) => {
           console.log("QR CODE SCAN RES", decodedText);
           this.result = decodedText;
-          this.resultIsLink = this.result.includes("http");
+          this.resultIsLink = this.result.includes("http") && this.result.includes("buk.no");
 
           if (this.resultIsLink) {
             window.location.href = this.result;
