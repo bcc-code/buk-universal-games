@@ -37,6 +37,7 @@ export default {
   --gray-1: #e5e5e5;
   --gray-2: #b6b6b6;
   --green: #21f7aa;
+  --red: #ff334c;
 }
 
 html {
