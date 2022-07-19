@@ -18,6 +18,10 @@ public class Game {
 
     public string Description { get; set; } = "";
 
+    public string ParticipantsInfo { get; set; } = "";
+
+    public string SafetyInfo { get; set; } = "";
+
     public int WinnerPoints{ get; set; }
 
     public int LooserPoints { get; set; }

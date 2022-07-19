@@ -21,9 +21,5 @@ public class Sticker {
     public League League { get; set; }
 
     [NotMapped]
-    public string Link
-    {
-        get { return StickerHelper.GetStickerLink(Code); }
-    }
-
+    public string Link => LinkHelper.GetStickerLink(Code);
 }
