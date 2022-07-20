@@ -13,7 +13,7 @@
           $router.push({
             name: 'GameInfoDetail',
             params: {
-              game: JSON.stringify(gameParsed),
+              game: JSON.stringify(game),
               code: $store.state.loginData.code,
             },
           })
@@ -23,10 +23,10 @@
       </button>
     </nav>
 
-    <h3>Games</h3>
+    <h3>Game</h3>
     <h2>
-      <span class="icon" v-html="icons[gameParsed.name]"></span>
-      <span>{{ gameParsed.name }}</span>
+      <span class="icon" v-html="icons[game.name]"></span>
+      <span>{{ game.name }}</span>
     </h2>
 
     <ul>
@@ -48,7 +48,6 @@
       <button class="btn btn-success">Winner</button>
       <button class="btn btn-blank">Loser</button>
     </div>
-    {{matchParsed}}
   </AdminPageLayout>
 </template>
 
@@ -64,14 +63,14 @@ import { gameWaterIcon } from "@/assets/icons/game-water.svg.ts";
 export default {
   name: "LoginPage",
   props: {
-    game: String,
     match: String
   },
   components: { AdminPageLayout },
   data() {
     return {
       loginError: "Game Info",
-      gameParsed: {},
+      // gameParsed: {},
+      game: {},
       matchParsed: {},
       loading: true,
       selectedTeam: null,
@@ -84,6 +83,11 @@ export default {
       },
     };
   },
+  created() {
+    if(!this.$store.state.games.length) {
+       this.getGames() 
+    }
+  },
   mounted() {
     // const tmpGame = {
     //   name: "Water",
@@ -92,6 +96,7 @@ export default {
 
     if(this.match) {
       this.matchParsed = JSON.parse(this.match)
+      this.game = this.whichGame(this.matchParsed.gameId)
     } else {
       this.$router.back()
     }
@@ -104,7 +109,20 @@ export default {
     //   this.$router.push({ name: "Login" });
     // }
   },
-  methods: {},
+  methods: {
+    getGames() {
+      this.$store.dispatch("getGames")
+    },
+    whichGame(id) {
+      let game = this.games.find(game => game.id == id)
+      return game
+    },
+  },
+  computed: {
+    games() {
+      return this?.$store.state.games
+    },
+  },
 };
 </script>
 
@@ -147,6 +165,7 @@ ul li {
   align-items: center;
   background-color: var(--gray-2);
   border-radius: 1em;
+  text-align: center;
 }
 
 ul li.selected {
