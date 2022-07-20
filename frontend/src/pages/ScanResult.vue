@@ -14,7 +14,8 @@
       </div>
     </div>
     <div v-else>
-      <p>Noe gikk galt ... Vennligst prøv igjen</p>
+      <p>Something went wrong ...</p>
+      <p>Make sure you are scanning a QR code belonging to your league.</p>
     </div>
   </UserPageLayout>
 </template>
@@ -57,10 +58,10 @@ export default {
         this.resultParsed = JSON.parse(this.result);
 
         if (this.resultParsed.success) {
-          this.headingText = "Sticker ble lagt til";
+          this.headingText = "Sticker added";
           this.headingIcon = bukSmileIcon;
         } else {
-          this.headingText = "Sticker ble ikke lagt til";
+          this.headingText = "Sticker not added";
           this.headingIcon = bukSadIcon;
         }
       } catch (error) {
