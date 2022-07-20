@@ -31,22 +31,24 @@
 
     <ul>
       <li
-        :class="{ selected: matchParsed?.team1 === selectedTeam }"
-        v-on:click="selectedTeam = matchParsed?.team1"
+        :class="{ selected: matchParsed?.team1Id === selectedTeam,
+                  winner: matchParsed?.team1Id ===  matchParsed?.winnerId }"
+        v-on:click="selectedTeam = matchParsed?.team1Id"
       >
         {{ matchParsed?.team1 }}
       </li>
       <li
-        :class="{ selected: matchParsed?.team2 === selectedTeam }"
-        v-on:click="selectedTeam = matchParsed?.team2"
+        :class="{ selected: matchParsed?.team2Id === selectedTeam,
+                  winner: matchParsed?.team2Id ===  matchParsed?.winnerId }"
+        v-on:click="selectedTeam = matchParsed?.team2Id"
       >
         {{ matchParsed?.team2 }}
       </li>
     </ul>
 
     <div class="buttons">
-      <button class="btn btn-success">Winner</button>
-      <button class="btn btn-blank">Loser</button>
+      <button class="btn btn-success" @click="setWinner">Set winner</button>
+      <!-- <button class="btn btn-blank">Loser</button> -->
     </div>
   </AdminPageLayout>
 </template>
@@ -117,6 +119,12 @@ export default {
       let game = this.games.find(game => game.id == id)
       return game
     },
+    async setWinner() {
+      let payload = {matchId: this.matchParsed.matchId, teamId: this.selectedTeam}
+      await this.$store.dispatch("setWinner", payload)
+      this.$store.dispatch("getAdminLeagueStatus")
+      this.$store.dispatch("getAdminMatches")
+    }
   },
   computed: {
     games() {
@@ -166,6 +174,11 @@ ul li {
   background-color: var(--gray-2);
   border-radius: 1em;
   text-align: center;
+}
+
+ul li.winner {
+  color: var(--dark);
+  background-color: var(--green);
 }
 
 ul li.selected {

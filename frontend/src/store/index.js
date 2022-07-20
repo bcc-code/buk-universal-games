@@ -1,5 +1,5 @@
 import { createStore } from "vuex";
-import { initData, getData } from "../libs/apiHelper"
+import { initData, getData, postData } from "../libs/apiHelper"
 
 const store = createStore({
   modules: {
@@ -169,6 +169,10 @@ const store = createStore({
 
       ctx.commit("setGames", games)
       return games
+    },
+    async setWinner(ctx, payload) {
+      let winner = await postData("/Admin/Games/" + payload.matchId + "/Winner/" + payload.teamId)
+      return winner
     }
   },
 });
