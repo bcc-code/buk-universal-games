@@ -3,9 +3,7 @@
     <nav>
       <button
         @click="
-          $router.push({
-            name: 'AdminGames',
-          })
+          $router.back()
         "
       >
         &lt;
