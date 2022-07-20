@@ -24,6 +24,25 @@ export function getData(url, data) {
   })
 }
 
+export function postData(url) {
+  const teamCode = myGetTeamCodeFunction()
+  return fetch(rootUrl + teamCode + url, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+    },
+  })
+    .then((r) => r.json())
+    .then((r) => {
+      console.log("POST data response OK", r);
+      return r
+    })
+    .catch((e) => {
+      console.log("POST data response ERROR", e);
+      return e
+    });
+}
+
 export function postStickerCode(stickerCode) {
   const teamCode = myGetTeamCodeFunction()
   return fetch(`${rootUrl}${teamCode}/stickers/${stickerCode}/scan`, {
