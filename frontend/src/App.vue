@@ -71,7 +71,8 @@ img {
 
 button,
 input,
-.btn-primary {
+.btn-primary,
+.btn {
   border-radius: 0.5em;
   padding: 0.75em;
   text-align: center;

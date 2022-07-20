@@ -1,13 +1,7 @@
 <template>
   <AdminPageLayout>
     <nav>
-      <button
-        @click="
-          $router.back()
-        "
-      >
-        &lt;
-      </button>
+      <button @click="$router.back()">&lt;</button>
       <button
         @click="
           $router.push({
@@ -31,23 +25,33 @@
 
     <ul>
       <li
-        :class="{ selected: matchParsed?.team1Id === selectedTeam,
-                  winner: matchParsed?.team1Id ===  matchParsed?.winnerId }"
+        :class="{
+          selected: matchParsed?.team1Id === selectedTeam,
+          winner: matchParsed?.team1Id === matchParsed?.winnerId,
+          loser: matchParsed?.team2Id === matchParsed?.winnerId,
+        }"
         v-on:click="selectedTeam = matchParsed?.team1Id"
       >
-        {{ matchParsed?.team1 }}
+        <p>{{ matchParsed?.team1 }}</p>
+        <span class="tag" v-if="matchParsed?.team1Id === matchParsed?.winnerId">Winner</span>
+        <span class="tag" v-else-if="!!matchParsed?.winnerId">Loser</span>
       </li>
       <li
-        :class="{ selected: matchParsed?.team2Id === selectedTeam,
-                  winner: matchParsed?.team2Id ===  matchParsed?.winnerId }"
+        :class="{
+          selected: matchParsed?.team2Id === selectedTeam,
+          winner: matchParsed?.team2Id === matchParsed?.winnerId,
+          loser: matchParsed?.team1Id === matchParsed?.winnerId,
+        }"
         v-on:click="selectedTeam = matchParsed?.team2Id"
       >
-        {{ matchParsed?.team2 }}
+        <p>{{ matchParsed?.team2 }}</p>
+        <span class="tag" v-if="matchParsed?.team2Id === matchParsed?.winnerId">Winner</span>
+        <span class="tag" v-else-if="!!matchParsed?.winnerId">Loser</span>
       </li>
     </ul>
 
     <div class="buttons">
-      <button class="btn btn-success" @click="setWinner">Set winner</button>
+      <button :class="{ 'btn-blank': true, 'btn-success': !!selectedTeam }" @click="setWinner">Set winner</button>
       <!-- <button class="btn btn-blank">Loser</button> -->
     </div>
   </AdminPageLayout>
@@ -65,7 +69,7 @@ import { gameWaterIcon } from "@/assets/icons/game-water.svg.ts";
 export default {
   name: "LoginPage",
   props: {
-    match: String
+    match: String,
   },
   components: { AdminPageLayout },
   data() {
@@ -86,8 +90,8 @@ export default {
     };
   },
   created() {
-    if(!this.$store.state.games.length) {
-       this.getGames() 
+    if (!this.$store.state.games.length) {
+      this.getGames();
     }
   },
   mounted() {
@@ -96,11 +100,10 @@ export default {
     //   teams: [{ name: "Sandefjord" }, { name: "Ottowa" }],
     // };
 
-    if(this.match) {
-      this.matchParsed = JSON.parse(this.match)
-      this.game = this.whichGame(this.matchParsed.gameId)
+    if (this.match) {
+      this.init(this.match);
     } else {
-      this.$router.back()
+      this.$router.back();
     }
 
     // // if (this.game) {
@@ -112,23 +115,33 @@ export default {
     // }
   },
   methods: {
-    getGames() {
-      this.$store.dispatch("getGames")
+    init(matchJson) {
+      this.matchParsed = JSON.parse(matchJson);
+      this.game = this.getGameById(this.matchParsed.gameId);
     },
-    whichGame(id) {
-      let game = this.games.find(game => game.id == id)
-      return game
+    getGames() {
+      this.$store.dispatch("getGames");
+    },
+    getGameById(id) {
+      const game = this.games.find((game) => game.id == id);
+      return game;
     },
     async setWinner() {
-      let payload = {matchId: this.matchParsed.matchId, teamId: this.selectedTeam}
-      await this.$store.dispatch("setWinner", payload)
-      this.$store.dispatch("getAdminLeagueStatus")
-      this.$store.dispatch("getAdminMatches")
-    }
+      if (this.selectedTeam) {
+        const payload = { matchId: this.matchParsed.matchId, teamId: this.selectedTeam };
+        await this.$store.dispatch("setWinner", payload);
+        this.$store.dispatch("getAdminLeagueStatus");
+        this.$store.dispatch("getAdminMatches");
+        this.matchParsed.winnerId = this.selectedTeam;
+        this.selectedTeam = null;
+      } else {
+        alert("Please select a team");
+      }
+    },
   },
   computed: {
     games() {
-      return this?.$store.state.games
+      return this?.$store.state.games;
     },
   },
 };
@@ -171,19 +184,45 @@ ul li {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--gray-2);
+  background-color: #fff;
   border-radius: 1em;
   text-align: center;
+  position: relative;
+  box-shadow: 0 0.5em 1em -0.5em rgba(0, 0, 0, 0.1);
 }
 
 ul li.winner {
-  color: var(--dark);
-  background-color: var(--green);
+  /* color: #fff;
+  background-color: var(--dark); */
 }
 
 ul li.selected {
   color: #fff;
   background-color: var(--dark);
+  /* background-color: #fff; */
+}
+
+/* ul li.winner.selected {
+
+} */
+
+ul li .tag {
+  position: absolute;
+  bottom: 1em;
+  left: 1em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  padding: 0.25em 0.5em;
+}
+
+ul li.winner .tag {
+  color: #000;
+  background-color: var(--green);
+}
+
+ul li.loser .tag {
+  color: #000;
+  background-color: var(--red);
 }
 
 .buttons {
@@ -194,5 +233,10 @@ ul li.selected {
 
 .buttons button {
   width: 100%;
+}
+
+.btn-success {
+  /* box-shadow: 0 0.5em 2em -0.5em hsla(158, 93%, 10%, 0.2); */
+  border: 2px solid hsl(158, 93%, 40%);
 }
 </style>
