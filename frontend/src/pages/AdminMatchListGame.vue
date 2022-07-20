@@ -61,6 +61,12 @@ export default {
       let game = this.games.find(game => game.id == id)
       return game
     },
+    matchClicked(match) {
+      this.$router.push({name: 'AdminGame', params: {
+          match: JSON.stringify(match)
+        }
+      })
+    }
   },
   computed: {
     adminLeagues() {

@@ -31,12 +31,16 @@
 
     <ul>
       <li
-        v-for="team in gameParsed.teams"
-        :key="team.name"
-        :class="{ selected: team.name === selectedTeam }"
-        v-on:click="selectedTeam = team.name"
+        :class="{ selected: matchParsed?.team1 === selectedTeam }"
+        v-on:click="selectedTeam = matchParsed?.team1"
       >
-        {{ team.name }}
+        {{ matchParsed?.team1 }}
+      </li>
+      <li
+        :class="{ selected: matchParsed?.team2 === selectedTeam }"
+        v-on:click="selectedTeam = matchParsed?.team2"
+      >
+        {{ matchParsed?.team2 }}
       </li>
     </ul>
 
@@ -44,6 +48,7 @@
       <button class="btn btn-success">Winner</button>
       <button class="btn btn-blank">Loser</button>
     </div>
+    {{matchParsed}}
   </AdminPageLayout>
 </template>
 
@@ -60,12 +65,14 @@ export default {
   name: "LoginPage",
   props: {
     game: String,
+    match: String
   },
   components: { AdminPageLayout },
   data() {
     return {
       loginError: "Game Info",
       gameParsed: {},
+      matchParsed: {},
       loading: true,
       selectedTeam: null,
       icons: {
@@ -78,18 +85,24 @@ export default {
     };
   },
   mounted() {
-    const tmpGame = {
-      name: "Water",
-      teams: [{ name: "Sandefjord" }, { name: "Ottowa" }],
-    };
+    // const tmpGame = {
+    //   name: "Water",
+    //   teams: [{ name: "Sandefjord" }, { name: "Ottowa" }],
+    // };
 
-    // if (this.game) {
-    if (tmpGame) {
-      // this.gameParsed = JSON.parse(this.game);
-      this.gameParsed = tmpGame;
+    if(this.match) {
+      this.matchParsed = JSON.parse(this.match)
     } else {
-      this.$router.push({ name: "Login" });
+      this.$router.back()
     }
+
+    // // if (this.game) {
+    // if (tmpGame) {
+    //   // this.gameParsed = JSON.parse(this.game);
+    //   this.gameParsed = tmpGame;
+    // } else {
+    //   this.$router.push({ name: "Login" });
+    // }
   },
   methods: {},
 };
