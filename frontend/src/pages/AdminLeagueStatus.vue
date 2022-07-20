@@ -55,6 +55,10 @@ export default {
     async selectLeague(id) {
       await this.$store.dispatch("setAdminLeagueSelected", id)
       this.getAdminLeagueStatus()
+      this.getMatches()
+    },
+    getMatches() {
+      this.$store.dispatch("getAdminMatches")
     },
   },
   computed: {
