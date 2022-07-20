@@ -9,6 +9,7 @@ import ScanProcessing from "@/pages/ScanProcessing.vue";
 import Map from "@/pages/Map.vue";
 import AdminGame from "@/pages/AdminGame.vue";
 import AdminLeagueStatus from "@/pages/AdminLeagueStatus.vue";
+import AdminSelectLeague from "@/pages/AdminSelectLeague.vue";
 import AdminGames from "@/pages/AdminGames.vue";
 import AdminMatchListGame from "@/pages/AdminMatchListGame.vue";
 import AdminMap from "@/pages/AdminMap.vue";
@@ -29,6 +30,12 @@ const routes = [
     path: "/admin/AdminLeagueStatus",
     name: "AdminLeagueStatus",
     component: AdminLeagueStatus,
+    props: true
+  },
+  {
+    path: "/admin/AdminSelectLeague",
+    name: "AdminSelectLeague",
+    component: AdminSelectLeague,
     props: true
   },
   {
@@ -121,7 +128,8 @@ router.beforeEach(async (to, from, next) => {
     }
 
     if (loginData && loginData.access === 'Admin') {
-      nextOptions = { name: 'AdminLeagueStatus' }
+      // nextOptions = { name: 'AdminLeagueStatus' }
+      nextOptions = { name: 'AdminSelectLeague' }
     }
   }
 
