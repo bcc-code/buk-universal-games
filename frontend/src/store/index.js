@@ -1,6 +1,8 @@
 import { createStore } from "vuex";
 import { initData, getData, postData } from "../libs/apiHelper"
 
+const storageKeyPrefix = 'buk-universal-games-';
+
 const store = createStore({
   modules: {
   },
@@ -13,7 +15,8 @@ const store = createStore({
     adminLeagueSelected: 4,
     matches: [],
     adminMatches: [],
-    games: [],
+    games: getSavedData("games", []),
+    gamesLoading: true,
     scanning: {
       handlingURL: false,
       stickerCode: null
@@ -49,6 +52,9 @@ const store = createStore({
     },
     setGames(state, data) {
       state.games = data
+    },
+    setGamesLoading(state, data) {
+      state.gamesLoading = data
     }
   },
   actions: {
@@ -95,7 +101,7 @@ const store = createStore({
       return leagueStatus
     },
     async getAdminLeagueStatus(ctx) {
-      if(!ctx.state.adminLeagueSelected)
+      if (!ctx.state.adminLeagueSelected)
         return
 
       let leagueStatus = await getData("/Admin/Leagues/" + ctx.state.adminLeagueSelected + "/Status")
@@ -157,17 +163,38 @@ const store = createStore({
       return matches
     },
     async getGames(ctx) {
-      let games = await getData("/Games")
-        .then(r => {
-          if (r.status == 200) {
-            return r.json()
-          }
-        })
-        .then(r => {
-          return r;
-        })
+      const savedDataAge = getSavedDataAge('games')
+      let games
+      ctx.commit('setGamesLoading', true)
 
+      if (savedDataAge === null || savedDataAge > 30) {
+        games = await getData("/Games")
+          .then(r => {
+            if (r.status == 200) {
+              return r.json()
+            }
+          })
+          .then(r => {
+            if (r.error) {
+              throw r.error;
+            }
+
+            saveData('games', r)
+
+            return r;
+          }).catch(e => {
+            console.error(e)
+          })
+      }
+
+      if (!games) {
+        games = getSavedData('games', [])
+      }
+
+      console.log(games)
       ctx.commit("setGames", games)
+      ctx.commit('setGamesLoading', false)
+
       return games
     },
     async setWinner(ctx, payload) {
@@ -176,5 +203,45 @@ const store = createStore({
     }
   },
 });
+
+function getSavedData(storageKey, fallbackValue) {
+  const savedData = window.localStorage.getItem(storageKeyPrefix + storageKey);
+  let data = fallbackValue
+
+  if (savedData) {
+    try {
+      data = JSON.parse(savedData).data
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  return data
+}
+
+function saveData(storageKey, data) {
+  window.localStorage.setItem(storageKeyPrefix + storageKey, JSON.stringify({
+    timestamp: new Date().getTime(),
+    data
+  }));
+}
+
+// Gets age in seconds
+function getSavedDataAge(storageKey) {
+  let age = null;
+  const savedData = window.localStorage.getItem(storageKeyPrefix + storageKey);
+
+  if (savedData) {
+    try {
+      const savedDataParsed = JSON.parse(savedData)
+      const secondsSinceSaved = (new Date().getTime() - savedDataParsed.timestamp) / 1000;
+      age = Math.floor(secondsSinceSaved);
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  return age;
+}
 
 export default store;

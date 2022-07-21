@@ -36,7 +36,7 @@ import { gameWoodIcon } from "@/assets/icons/game-wood.svg.ts";
 import { gameWaterIcon } from "@/assets/icons/game-water.svg.ts";
 
 export default {
-  name: "LoginPage",
+  name: "GameInfoDetail",
   props: {
     game: String,
   },

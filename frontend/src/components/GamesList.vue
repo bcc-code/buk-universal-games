@@ -5,6 +5,9 @@
       <h3 class="game-title">Loading</h3>
     </li>
   </ul>
+  <div v-else-if="games.length === 0">
+    <p>Something went wrong, please try again later ...</p>
+  </div>
   <ul v-else class="games">
     <li
       class="game"
