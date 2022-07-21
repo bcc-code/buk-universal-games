@@ -5,18 +5,20 @@
       <button @click="$router.back()">⠇</button>
     </nav>
 
-    <h3>Games</h3>
-    <h2>
-      <span class="icon" v-html="icons[gameParsed.name]"></span>
-      <span>{{ gameParsed.name }}</span>
-    </h2>
+    <header>
+      <h3>Games</h3>
+      <h2>
+        <span class="icon" v-html="icons[gameParsed.name]"></span>
+        <span>{{ gameParsed.name }}</span>
+      </h2>
 
-    <header class="banner" style="background-image: url('/images/illustrations/activity.svg')">
-      <div>
-        <p>W: {{ gameParsed.winnerPoints }}pt</p>
-      </div>
-      <div>
-        <p>L: {{ gameParsed.looserPoints }}pt</p>
+      <div class="banner" :style="{ 'background-image': `url(${bannerImage})` }">
+        <div>
+          <p>W: {{ gameParsed.winnerPoints }}pt</p>
+        </div>
+        <div>
+          <p>L: {{ gameParsed.looserPoints }}pt</p>
+        </div>
       </div>
     </header>
 
@@ -28,7 +30,6 @@
 
 <script>
 import UserPageLayout from "@/components/UserPageLayout.vue";
-// import { getData } from "@/libs/apiHelper";
 import { gameEarthIcon } from "@/assets/icons/game-earth.svg.ts";
 import { gameFireIcon } from "@/assets/icons/game-fire.svg.ts";
 import { gameMetalIcon } from "@/assets/icons/game-metal.svg.ts";
@@ -43,9 +44,8 @@ export default {
   components: { UserPageLayout },
   data() {
     return {
-      loginError: "Game Info",
       gameParsed: {},
-      loading: true,
+      bannerImage: "/images/illustrations/Universal-BUK-Games-Water.svg",
       icons: {
         Earth: gameEarthIcon,
         Fire: gameFireIcon,
@@ -58,6 +58,7 @@ export default {
   mounted() {
     if (this.game) {
       this.gameParsed = JSON.parse(this.game);
+      this.bannerImage = `/images/illustrations/Universal-BUK-Games-${this.gameParsed.name}.svg`;
     } else {
       this.$router.back();
     }
@@ -92,5 +93,12 @@ nav {
 .description {
   color: #555;
   line-height: 1.5;
+  white-space: break-spaces;
+}
+
+header h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
 }
 </style>
