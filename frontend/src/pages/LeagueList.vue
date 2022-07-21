@@ -1,7 +1,11 @@
 <template>
   <UserPageLayout class="league-list">
     <section class="user-section">
-      <PointsAndStickers :points="teamStatus?.status?.points" :stickers="teamStatus?.status?.stickers" :refresh="() => getTeamStatus()"/>
+      <PointsAndStickers
+        :points="teamStatus?.status?.points"
+        :stickers="teamStatus?.status?.stickers"
+        :refresh="() => getTeamStatus(true)"
+      />
     </section>
     <section class="league-title">
         <div class="league-title-column index-column">
@@ -17,7 +21,13 @@
         </div>
     </section>
     <section class="user-section" v-for="(status, i) in leagueStatus" :key="status.id">
-      <LeagueListItem :class="{'card-light' : i > 4, 'green-font' : status.teamId == teamStatus.status.teamId}" :index="i+1" :team="status.team" :stickers="status.stickers" :points="status.points  " />
+      <LeagueListItem
+        :class="{ 'card-light': i > 4, 'green-font': status.teamId == teamStatus?.status?.teamId }"
+        :index="i + 1"
+        :team="status.team"
+        :stickers="status.stickers"
+        :points="status.points"
+      />
     </section>
   </UserPageLayout>
 </template>
@@ -34,17 +44,17 @@ export default {
   },
   components: { UserPageLayout, PointsAndStickers, LeagueListItem },
   created() {
-    if(Object.keys(this.$store.state.teamStatus).length === 0) {
-       this.getTeamStatus() 
+    if (Object.keys(this.$store.state.teamStatus).length === 0) {
+      this.getTeamStatus(false);
     }
 
-    if(Object.keys(this.$store.state.leagueStatus).length === 0) {
-       this.getLeagueStatus() 
+    if (Object.keys(this.$store.state.leagueStatus).length === 0) {
+      this.getLeagueStatus();
     }
   },
   methods: {
-    getTeamStatus() {
-      this.$store.dispatch("getTeamStatus")
+    getTeamStatus(override) {
+      this.$store.dispatch("getTeamStatus", override);
     },
     getLeagueStatus() {
       this.$store.dispatch("getLeagueStatus")

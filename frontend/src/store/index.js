@@ -8,12 +8,12 @@ const store = createStore({
   },
   state: {
     loginData: {},
-    teamStatus: {},
-    leagueStatus: {},
+    teamStatus: getSavedData("teamStatus", {}),
+    leagueStatus: getSavedData("leagueStatus", {}),
     adminLeagues: [],
     adminLeagueStatus: {},
     adminLeagueSelected: 4,
-    matches: [],
+    matches: getSavedData("matches", []),
     adminMatches: [],
     games: getSavedData("games", []),
     gamesLoading: true,
@@ -72,32 +72,70 @@ const store = createStore({
       ctx.commit("setLoginData", loginData)
       return loginData
     },
-    async getTeamStatus(ctx) {
-      let teamStatus = await getData("/Status/")
-        .then(r => {
-          if (r.status == 200) {
-            return r.json()
-          }
-        })
-        .then(r => {
-          return r;
-        })
+    async getTeamStatus(ctx, override) {
+      const savedDataAge = getSavedDataAge('teamStatus')
+      let teamStatus
+
+      // Allow override every 5 seconds
+      if (savedDataAge === null || savedDataAge > 30 || (savedDataAge > 5 && override)) {
+        teamStatus = await getData("/Status/")
+          .then(r => {
+            if (r.status == 200) {
+              return r.json()
+            }
+          })
+          .then(r => {
+            if (r.error) {
+              throw r.error;
+            }
+
+            saveData('teamStatus', r)
+
+            return r;
+          }).catch(e => {
+            console.error(e)
+          })
+      }
+
+      if (!teamStatus) {
+        teamStatus = getSavedData('teamStatus', {})
+      }
 
       ctx.commit("setTeamStatus", teamStatus)
+
       return teamStatus
+
     },
     async getLeagueStatus(ctx) {
-      let leagueStatus = await getData("/Status/League")
-        .then(r => {
-          if (r.status == 200) {
-            return r.json()
-          }
-        })
-        .then(r => {
-          return r;
-        })
+      const savedDataAge = getSavedDataAge('leagueStatus')
+      let leagueStatus
+
+      if (savedDataAge === null || savedDataAge > 30) {
+        leagueStatus = await getData("/Status/League")
+          .then(r => {
+            if (r.status == 200) {
+              return r.json()
+            }
+          })
+          .then(r => {
+            if (r.error) {
+              throw r.error;
+            }
+
+            saveData('leagueStatus', r)
+
+            return r;
+          }).catch(e => {
+            console.error(e)
+          })
+      }
+
+      if (!leagueStatus) {
+        leagueStatus = getSavedData('leagueStatus', {})
+      }
 
       ctx.commit("setLeagueStatus", leagueStatus)
+
       return leagueStatus
     },
     async getAdminLeagueStatus(ctx) {
@@ -149,17 +187,35 @@ const store = createStore({
       return matches
     },
     async getMatches(ctx) {
-      let matches = await getData("/Games/Matches")
-        .then(r => {
-          if (r.status == 200) {
-            return r.json()
-          }
-        })
-        .then(r => {
-          return r;
-        })
+      const savedDataAge = getSavedDataAge('matches')
+      let matches
+
+      if (savedDataAge === null || savedDataAge > 30) {
+        matches = await getData("/Games/Matches")
+          .then(r => {
+            if (r.status == 200) {
+              return r.json()
+            }
+          })
+          .then(r => {
+            if (r.error) {
+              throw r.error;
+            }
+
+            saveData('matches', r)
+
+            return r;
+          }).catch(e => {
+            console.error(e)
+          })
+      }
+
+      if (!matches) {
+        matches = getSavedData('matches', [])
+      }
 
       ctx.commit("setMatches", matches)
+
       return matches
     },
     async getGames(ctx) {
@@ -191,7 +247,6 @@ const store = createStore({
         games = getSavedData('games', [])
       }
 
-      console.log(games)
       ctx.commit("setGames", games)
       ctx.commit('setGamesLoading', false)
 

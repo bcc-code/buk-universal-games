@@ -79,7 +79,7 @@ export default {
   },
   methods: {
     refreshPoints() {
-      this.$store.dispatch("getTeamStatus");
+      this.$store.dispatch("getTeamStatus", true);
     },
   },
   computed: {
