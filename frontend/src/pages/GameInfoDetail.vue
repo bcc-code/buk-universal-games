@@ -1,8 +1,8 @@
 <template>
   <UserPageLayout>
     <nav>
-      <button @click="$router.push({ name: 'GameInfo' })">&lt;</button>
-      <button @click="$router.push({ name: 'GameInfo' })">⠇</button>
+      <button @click="$router.back()">&lt;</button>
+      <button @click="$router.back()">⠇</button>
     </nav>
 
     <h3>Games</h3>
@@ -59,7 +59,7 @@ export default {
     if (this.game) {
       this.gameParsed = JSON.parse(this.game);
     } else {
-      this.$router.push({ name: "GameInfo" });
+      this.$router.back();
     }
   },
   methods: {},

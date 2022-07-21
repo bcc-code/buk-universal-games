@@ -57,6 +57,12 @@ const routes = [
     props: true
   },
   {
+    path: "/admin/game-info-detail",
+    name: "AdminGameInfoDetail",
+    component: GameInfoDetail,
+    props: true
+  },
+  {
     path: "/admin/map",
     name: "AdminMap",
     component: AdminMap,

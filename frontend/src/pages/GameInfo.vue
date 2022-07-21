@@ -4,7 +4,7 @@
 
     <h2>Games</h2>
 
-    <GamesList :games="$store.state.games" :loading="$store.state.gamesLoading"></GamesList>
+    <GamesList :games="$store.state.games" :loading="$store.state.gamesLoading" @clicked="gameClicked"></GamesList>
   </UserPageLayout>
 </template>
 
@@ -26,6 +26,15 @@ export default {
   methods: {
     refreshPoints() {
       this.$store.dispatch("getTeamStatus", true);
+    },
+    gameClicked(game) {
+      this.$router.push({
+        name: "GameInfoDetail",
+        params: {
+          code: this.$store.state.loginData.code,
+          game: JSON.stringify(game),
+        },
+      });
     },
   },
   computed: {
