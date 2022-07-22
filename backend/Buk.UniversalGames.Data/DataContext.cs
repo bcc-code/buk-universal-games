@@ -23,6 +23,10 @@ public class DataContext : DbContext
     }
 
     public static string GetConnectionString() {
+        var connectionString = Environment.GetEnvironmentVariable("AZURE_POSTGRESQL_CONNECTIONSTRING");
+        if (!string.IsNullOrEmpty(connectionString)){
+            return connectionString;
+        }
         var dbPort = Environment.GetEnvironmentVariable("POSTGRES_PORT");
         var dbName = Environment.GetEnvironmentVariable("POSTGRES_DB");
         var dbUser = Environment.GetEnvironmentVariable("POSTGRES_USER");
