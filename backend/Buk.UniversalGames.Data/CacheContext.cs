@@ -16,22 +16,15 @@ namespace Buk.UniversalGames.Data
         public T? Get<T>(string key)
         {
             var value = _cache.GetString(key);
-
-            var cacheKeys = GetCacheKeys();
-            if (!cacheKeys.Contains(key))
-            {
-                cacheKeys.Add(key);
-                SetCacheKeys(cacheKeys);
-            }
             return value != null ? JsonSerializer.Deserialize<T>(value) : default;
         }
 
-        public T Set<T>(string key, T value, int expirationHours = 24, int slidingMinutes = 60)
+        public T Set<T>(string key, T value)
         {
             var timeOut = new DistributedCacheEntryOptions
             {
-                AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(expirationHours),
-                SlidingExpiration = TimeSpan.FromMinutes(slidingMinutes)
+                AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(250),
+                SlidingExpiration = TimeSpan.FromHours(250)
             };
 
             _cache.SetString(key, JsonSerializer.Serialize(value), timeOut);
@@ -73,8 +66,8 @@ namespace Buk.UniversalGames.Data
         {
             var timeOut = new DistributedCacheEntryOptions
             {
-                AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1000),
-                SlidingExpiration = TimeSpan.FromMinutes(1440)
+                AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(250),
+                SlidingExpiration = TimeSpan.FromHours(250),
             };
 
             var keysString = String.Join('|', keys);
