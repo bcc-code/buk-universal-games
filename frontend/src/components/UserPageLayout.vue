@@ -1,19 +1,27 @@
 <template>
   <section class="user-page-layout">
     <div class="content-area">
-      <h1 class="title">BUK {{ $store.state.loginData.team }}</h1>
+      <h1 v-if="showTitle" class="title">BUK {{ $store.state.loginData.team }}</h1>
       <slot />
     </div>
-    <UserMenu />
+    <AdminMenu v-if="$store.state.loginData.access === 'Admin'" />
+    <UserMenu v-else />
   </section>
 </template>
 
 <script>
 import UserMenu from "../components/UserMenu.vue";
+import AdminMenu from "../components/AdminMenu.vue";
 
 export default {
   name: "UserPageLayout",
-  components: { UserMenu },
+  components: {
+    AdminMenu,
+    UserMenu,
+  },
+  props: {
+    showTitle: Boolean,
+  },
   data() {
     return {
       title: "Tittel",
@@ -44,6 +52,6 @@ export default {
 }
 
 .title {
-  padding-bottom: .5em;
+  padding-bottom: 0.5em;
 }
 </style>

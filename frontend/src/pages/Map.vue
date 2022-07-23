@@ -1,7 +1,7 @@
 <template>
   <div class="root">
     <div ref="map" class="map-wrapper">
-      <img src="/images/map.jpg" alt="" />
+      <img :src="`/images/map-${$store.state.loginData.league.substring(0, 1).toUpperCase()}-liga.png`" alt="" />
     </div>
     <UserMenu />
   </div>

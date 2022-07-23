@@ -1,5 +1,5 @@
 <template>
-  <UserPageLayout>
+  <UserPageLayout :showTitle="false">
     <nav>
       <button @click="$router.back()">&lt;</button>
       <button @click="$router.back()">⠇</button>
