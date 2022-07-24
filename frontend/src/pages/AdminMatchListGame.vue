@@ -20,15 +20,20 @@
         <h2 class="match-title-text">Start</h2>
       </div>
     </section>
-    <section class="user-section" v-for="match in adminMatches" :key="match.id">
-      <MatchListItem
-        :game="whichGame(match.gameId)?.name"
-        :team1="match.team1"
-        :team2="match.team2"
-        :start="match.start"
-        :winner="match.winner"
-        :clickFunc="() => matchClicked(match)"
-      />
+    <section class="user-section">
+      <div class="user-section-single" v-for="matchGroupKey in Object.keys(adminMatchGroups)" :key="matchGroupKey">
+        <p class="user-section-single-seperator" v-if="Object.keys(adminMatchGroups)[0] !== matchGroupKey">{{ matchGroupKey }}</p>
+        <MatchListItem
+          v-for="match in adminMatchGroups[matchGroupKey].matches"
+          :key="match.id"
+          :game="whichGame(match.gameId)?.name"
+          :team1="match.team1"
+          :team2="match.team2"
+          :start="match.start"
+          :winner="match.winner"
+          :clickFunc="() => matchClicked(match)"
+        />
+      </div>
     </section>
   </AdminPageLayout>
 </template>
@@ -91,8 +96,23 @@ export default {
     adminLeagues() {
       return this?.$store.state.adminLeagues;
     },
-    adminMatches() {
-      return this?.$store.state.adminMatches;
+    adminMatchGroups() {
+      const matchGroups = [];
+
+      this?.$store.state.adminMatches.forEach((match) => {
+        if (matchGroups[match.start]) {
+          matchGroups[match.start].matches.push(match);
+        } else {
+          matchGroups[match.start] = {
+            id: match.start,
+            matches: [match],
+          };
+        }
+      });
+
+      console.log(matchGroups);
+
+      return matchGroups;
     },
     games() {
       return this?.$store.state.games;
@@ -128,5 +148,48 @@ export default {
 
 .green-font {
   color: var(--green);
+}
+
+.user-section,
+.user-section-single {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-section {
+  gap: 4em;
+  padding-bottom: 10em;
+}
+
+.user-section-single {
+  gap: 1em;
+}
+
+.user-section-single-seperator {
+  text-align: center;
+  margin: auto;
+  padding: 1rem;
+  font-weight: 700;
+  font-size: 2em;
+  position: relative;
+}
+
+.user-section-single-seperator::before,
+.user-section-single-seperator::after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50%;
+  height: 1px;
+  background-color: var(--gray-2);
+}
+
+.user-section-single-seperator::before {
+  left: -50%;
+}
+
+.user-section-single-seperator::after {
+  right: -50%;
 }
 </style>
