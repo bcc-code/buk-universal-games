@@ -30,23 +30,23 @@ export default {
     };
   },
   created() {
-    if(!this.$store.state.adminLeagues.length) {
-       this.getAdminLeagues() 
+    if (!this.$store.state.adminLeagues.length) {
+      this.getAdminLeagues();
     }
   },
   methods: {
     getAdminLeagues() {
-      this.$store.dispatch("getAdminLeagues")
+      this.$store.dispatch("getAdminLeagues");
     },
     async selectLeague(id) {
-      await this.$store.dispatch("setAdminLeagueSelected", id)
-      this.$router.push({ name: 'AdminLeagueStatus' })
+      await this.$store.dispatch("setAdminLeagueSelected", id);
+      this.$router.push({ name: "AdminLeagueStatus" });
     },
   },
   computed: {
     adminLeagues() {
-      return this?.$store.state.adminLeagues
-    }
+      return this?.$store.state.adminLeagues;
+    },
   },
 };
 </script>
@@ -63,6 +63,6 @@ export default {
 }
 
 .league-card {
-    margin: .25em 0;
+  margin: 0.25em 0;
 }
 </style>
