@@ -1,7 +1,7 @@
 <template>
   <AdminPageLayout title="Match list">
     <section class="leagues">
-      <AdminLeagueCard
+      <AdminLeagueSelector
         v-for="league in adminLeagues"
         :class="{ 'green-font': league.id == $store.state.adminLeagueSelected }"
         :key="league.id"
@@ -36,11 +36,15 @@
 <script>
 import AdminPageLayout from "@/components/AdminPageLayout.vue";
 import MatchListItem from "@/components/MatchListItem.vue";
-import AdminLeagueCard from "@/components/AdminLeagueCard.vue";
+import AdminLeagueSelector from "@/components/AdminLeagueSelector.vue";
 
 export default {
   name: "AdminMatchListGame",
-  components: { AdminPageLayout, MatchListItem, AdminLeagueCard },
+  components: {
+    AdminPageLayout,
+    MatchListItem,
+    AdminLeagueSelector,
+  },
   created() {
     if (!this.$store.state.adminLeagues.length) {
       this.getAdminLeagues();

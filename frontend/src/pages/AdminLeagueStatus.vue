@@ -31,11 +31,11 @@
 <script>
 import AdminPageLayout from "@/components/AdminPageLayout.vue";
 import LeagueListItem from "@/components/LeagueListItem.vue";
-import AdminLeagueCard from "@/components/AdminLeagueCard.vue";
+import AdminLeagueSelector from "@/components/AdminLeagueSelector.vue";
 
 export default {
   name: "AdminLeagueStatus",
-  components: { AdminPageLayout, LeagueListItem, AdminLeagueCard },
+  components: { AdminPageLayout, LeagueListItem, AdminLeagueSelector },
   created() {
     if(!this.$store.state.adminLeagues.length) {
        this.getAdminLeagues() 

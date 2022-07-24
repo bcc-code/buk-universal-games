@@ -7,17 +7,23 @@
   >
     <img src="../assets/logo.png" alt="" class="logo" />
     <section class="leagues">
-        <AdminLeagueCard v-for="league in adminLeagues" class="league-card" :key="league.id" :name="league.name" @click="selectLeague(league.id)"/>
+      <AdminLeagueSelector
+        v-for="league in adminLeagues"
+        class="league-card"
+        :key="league.id"
+        :name="league.name"
+        @click="selectLeague(league.id)"
+      />
     </section>
   </section>
 </template>
 
 <script>
-import AdminLeagueCard from "@/components/AdminLeagueCard.vue";
+import AdminLeagueSelector from "@/components/AdminLeagueSelector.vue";
 
 export default {
   name: "AdminSelectLeague",
-  components: {AdminLeagueCard},
+  components: { AdminLeagueSelector },
   data() {
     return {
       image: require("@/assets/bg.png"),
