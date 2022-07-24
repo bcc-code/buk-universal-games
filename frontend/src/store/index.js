@@ -13,6 +13,7 @@ const store = createStore({
     adminLeagues: [],
     adminLeagueStatus: {},
     adminLeagueSelected: 4,
+    adminFilterGameSelected: null,
     matches: getSavedData("matches", []),
     adminMatches: [],
     games: getSavedData("games", []),
@@ -55,6 +56,12 @@ const store = createStore({
     },
     setGamesLoading(state, data) {
       state.gamesLoading = data
+    },
+    setAdminFilterGameSelected(state, data) {
+      state.adminFilterGameSelected = data
+    },
+    resetAdminFilterGameSelected(state) {
+      state.adminFilterGameSelected = null
     }
   },
   actions: {

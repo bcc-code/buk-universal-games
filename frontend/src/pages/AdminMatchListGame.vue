@@ -1,13 +1,35 @@
 <template>
   <AdminPageLayout title="Match list">
-    <section class="leagues">
-      <AdminLeagueSelector
-        v-for="league in adminLeagues"
-        :class="{ 'green-font': league.id == $store.state.adminLeagueSelected }"
-        :key="league.id"
-        :name="league.name"
-        @click="selectLeague(league.id)"
-      />
+    <section class="filters">
+      <div class="filter">
+        <p>League:</p>
+        <div class="single-filter">
+          <AdminLeagueSelector
+            v-for="league in adminLeagues"
+            :class="{ 'green-font': league.id === $store.state.adminLeagueSelected }"
+            :key="league.id"
+            :name="league.name"
+            @click="selectLeague(league.id)"
+          />
+        </div>
+      </div>
+      <div class="filter">
+        <p>Game type:</p>
+        <div class="single-filter">
+          <AdminLeagueSelector
+            name="All"
+            :class="{ 'green-font': $store.state.adminFilterGameSelected === null }"
+            @click="$store.commit('resetAdminFilterGameSelected')"
+          />
+          <AdminLeagueSelector
+            v-for="game in games"
+            :key="game.id"
+            :class="{ 'green-font': game.id === $store.state.adminFilterGameSelected }"
+            :name="game.name"
+            @click="$store.commit('setAdminFilterGameSelected', game.id)"
+          />
+        </div>
+      </div>
     </section>
     <section class="match-title">
       <div class="match-title-column">
@@ -26,7 +48,7 @@
         <MatchListItem
           v-for="match in adminMatchGroups[matchGroupKey].matches"
           :key="match.id"
-          :game="whichGame(match.gameId)?.name"
+          :game="getGameById(match.gameId)?.name"
           :team1="match.team1"
           :team2="match.team2"
           :start="match.start"
@@ -79,7 +101,7 @@ export default {
     getGames() {
       this.$store.dispatch("getGames");
     },
-    whichGame(id) {
+    getGameById(id) {
       let game = this.games.find((game) => game.id == id);
       return game;
     },
@@ -100,17 +122,23 @@ export default {
       const matchGroups = [];
 
       this?.$store.state.adminMatches.forEach((match) => {
-        if (matchGroups[match.start]) {
-          matchGroups[match.start].matches.push(match);
-        } else {
-          matchGroups[match.start] = {
-            id: match.start,
-            matches: [match],
-          };
+        let shouldPush = true;
+
+        if (this?.$store.state.adminFilterGameSelected !== null && match.gameId !== this?.$store.state.adminFilterGameSelected) {
+          shouldPush = false;
+        }
+
+        if (shouldPush) {
+          if (matchGroups[match.start]) {
+            shouldPush && matchGroups[match.start].matches.push(match);
+          } else {
+            matchGroups[match.start] = {
+              id: match.start,
+              matches: [match],
+            };
+          }
         }
       });
-
-      console.log(matchGroups);
 
       return matchGroups;
     },
@@ -141,9 +169,29 @@ export default {
   margin: 1em 0 0;
 }
 
-.leagues {
+.filters {
   display: flex;
   width: 100%;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.filters .filter {
+  display: flex;
+  flex-direction: column;
+}
+
+/* .filters > p {
+  white-space: nowrap;
+}
+*/
+
+.single-filter {
+  display: flex;
+  align-items: center;
+  /* background-color: red; */
+  width: 100%;
+  overflow: auto;
 }
 
 .green-font {
