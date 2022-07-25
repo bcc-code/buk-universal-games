@@ -71,11 +71,11 @@ export default {
         width: 100%;
     }
 
-    .card-dark-column:nth-child(-n + 2) {
+    .card-dark-column:nth-child(-n + 3) {
         align-items: flex-start;
     }
 
-    .card-dark-column:nth-last-child(-n + 2) {
+    .card-dark-column:nth-last-child(-n + 1) {
         align-items: flex-end;
     }
 
