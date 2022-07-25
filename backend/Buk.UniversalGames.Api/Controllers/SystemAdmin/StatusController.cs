@@ -19,7 +19,7 @@ public class StatusController : ControllerBase
         _statusService = statusService;
     }
 
-    [HttpPost("ClearStatusAndMatches")]
+    [HttpGet("ClearStatusAndMatches")]
     public void ClearStatusAndMatches()
     {
         _statusService.ClearStatusAndMatches();

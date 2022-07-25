@@ -29,14 +29,14 @@ public class CacheController : ControllerBase
         _statusRepository = statusRepository;
     }
 
-    [HttpPost("ClearCache")]
+    [HttpGet("ClearCache")]
     public IActionResult ClearCache()
     {
         _cache.Clear();
         return Ok();
     }
 
-    [HttpPost("PreCache")]
+    [HttpGet("PreCache")]
     public IActionResult PreCache()
     {
         var leagues = _leagueRepository.GetLeagues();
