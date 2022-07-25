@@ -37,7 +37,7 @@ jobs:
           push: true
           tags: bccplatform.azurecr.io/buk-universal-games-dev-api:${{ github.sha }},latest
           file: ./backend/Buk.UniversalGames.Api/Dockerfile
-          context: ./
+          context: .
 
 
   deploy:
