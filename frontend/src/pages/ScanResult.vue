@@ -66,6 +66,7 @@ export default {
         }
 
         this.loading = false;
+        this.refresh();
       } catch (error) {
         this.loading = false;
         console.error(error);
