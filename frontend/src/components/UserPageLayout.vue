@@ -40,15 +40,16 @@ export default {
 .user-page-layout {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  width: 100%;
+  /* height: 100%; */
   justify-content: space-between;
   padding-bottom: 5em;
 }
 
 .content-area {
-  height: 100%;
-  overflow: auto;
-  padding: 2em 1em;
+  width: 100%;
+  height: auto;
+  padding: 2em 1em 10em;
 }
 
 .title {

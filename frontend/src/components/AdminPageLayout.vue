@@ -29,14 +29,15 @@ export default {
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 100%;
   justify-content: space-between;
   padding-bottom: 5em;
 }
 
 .content-area {
-  height: 100%;
-  overflow: auto;
-  padding: 1em;
+  width: 100%;
+  padding: 1em 1em 10em;
+  background-color: var(--gray-1);
 }
 
 .title {

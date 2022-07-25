@@ -1,7 +1,13 @@
 <template>
   <div class="root">
-    <div ref="map" class="map-wrapper">
-      <img src="/images/map.jpg" alt="" />
+    <div ref="mapB" class="map-wrapper">
+      <img src="/images/map-B-liga.png" alt="" />
+    </div>
+    <div ref="mapU" class="map-wrapper">
+      <img src="/images/map-U-liga.png" alt="" />
+    </div>
+    <div ref="mapK" class="map-wrapper">
+      <img src="/images/map-K-liga.png" alt="" />
     </div>
     <AdminMenu />
   </div>
@@ -9,7 +15,6 @@
 
 <script>
 import AdminMenu from "@/components/AdminMenu.vue";
-import PinchZoom from "pinch-zoom-js";
 
 export default {
   name: "MapPage",
@@ -19,14 +24,7 @@ export default {
       loginError: "Map",
     };
   },
-  mounted() {
-    new PinchZoom(this.$refs.map, {
-      minZoom: 1,
-      maxZoom: 10,
-      animationDuration: 150,
-      tapZoomFactor: 5,
-    });
-  },
+  mounted() {},
   methods: {},
 };
 </script>
@@ -34,16 +32,21 @@ export default {
 <style scoped>
 .root {
   width: 100%;
-  height: 100%;
+  background-color: #5fa46e;
+  background-image: linear-gradient(135deg, #5fa46e, #118144);
+  padding-top: 1em;
+  padding-bottom: 10em;
 }
 .map-wrapper {
   width: 100%;
   height: 100%;
+  display: block;
+  padding-bottom: 1em;
 }
 
 .map-wrapper img {
-  width: 100%;
   height: 100%;
-  object-fit: cover;
+  width: 100%;
+  object-fit: contain;
 }
 </style>
