@@ -13,3 +13,5 @@ dist/
 package-lock.json
 backend/.vs/
 backend/Buk.UniversalGames.Api/Buk.UniversalGames.Api.csproj.user
+.vs/buk-universal-games/v16/.suo
+.vs/slnx.sqlite
