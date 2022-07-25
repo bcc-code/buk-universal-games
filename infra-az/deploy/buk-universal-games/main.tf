@@ -233,7 +233,7 @@ module "api_container_app" {
     }
     template          = {
       containers      = [{
-        image         = "hello-world:latest"
+        image         = "bccplatform.azurecr.io/universal-games-api:latest" #"hello-world:latest"
         name          = "universal-games-api"
         env           = [{
             name        = "APP_PORT"
@@ -281,6 +281,18 @@ module "api_container_app" {
   }
 }
 
+# Generate password
+resource "random_password" "directus_admin_pw" {
+  length           = 32
+  special          = true
+  override_special = "!#*()-_=+[]:?"
+}
+
+resource "random_uuid" "directus_key" {
+}
+resource "random_uuid" "directus_secret" {
+}
+
 # Directus Container App
 module "directus_container_app" {
   source                           = "../../modules/container_apps"
@@ -301,6 +313,24 @@ module "directus_container_app" {
         appProtocol    = "http"
         appPort        = 8055
       }
+      secrets          = [
+        {
+          name    = "postgresql-password"
+          value   =  module.postgresql_db.db_user_password
+        },
+        {
+          name    = "redis-connection-string"
+          value   =  azurerm_redis_cache.redis_cache.primary_connection_string
+        },
+        {
+          name    = "directus-admin-user-pw"
+          value   =  random_password.directus_admin_pw.result
+        },
+        {
+          name    = "directus-storage-secret"
+          value   =  random_uuid.directus_secret.result
+        }
+      ]
     }
     template          = {
       containers      = [{
@@ -309,7 +339,61 @@ module "directus_container_app" {
         env           = [{
           name        = "APP_PORT"
           value       = 8055
-        }]
+        },
+        {
+          name        = "KEY"
+          value   = random_uuid.directus_key.result
+        },
+        {
+          name        = "SECRET"
+          secretRef   = "directus-storage-secret"
+        },
+        {
+          name        = "ADMIN_EMAIL"
+          value       = "it@bcc.no"
+        },
+        {
+          name        = "ADMIN_PASSWORD"
+          secretRef   = "directus-admin-user-pw"
+        },
+        {
+          name        = "DB_CLIENT"
+          value       = "pg"
+        },
+        {
+          name        = "DB_HOST"
+          value       = data.azurerm_postgresql_flexible_server.postgresql_server.fqdn
+        },
+        {
+          name        = "DB_PORT"
+          value       = 5432
+        },
+        {
+          name        = "DB_DATABASE"
+          value       = module.postgresql_db.db_name
+        },
+        {
+          name        = "DB_USER"
+          value       = module.postgresql_db.db_user_username
+        },
+        {
+          name        = "DB_PASSWORD"
+          secretRef   = "postgresql-password"
+        },
+        {
+          name        = "CACHE_ENABLED"
+          value       = true
+        },
+        {
+          name        = "CACHE_STORE"
+          value       = "redis"
+        },
+        {
+          name        = "CACHE_REDIS"
+          secretRef   = "redis-connection-string"
+        }
+        
+        ]
         resources     = {
           cpu         = 0.5
           memory      = "1Gi"
