@@ -2,11 +2,10 @@
   <UserPageLayout :showTitle="false">
     <nav>
       <button @click="$router.back()">&lt;</button>
-      <button @click="$router.back()">⠇</button>
+      <h3>Games</h3>
     </nav>
 
     <header>
-      <h3>Games</h3>
       <h2>
         <span class="icon" v-html="icons[gameParsed.name]"></span>
         <span>{{ gameParsed.name }}</span>
@@ -25,6 +24,14 @@
     <p class="description">
       {{ gameParsed.description }}
     </p>
+    <p class="description">
+      <span v-html="groupIcon"></span>
+      {{ gameParsed.participantsInfo }}
+    </p>
+    <p class="description">
+      <span v-html="circleInfoIcon"></span>
+      {{ gameParsed.safetyInfo }}
+    </p>
   </UserPageLayout>
 </template>
 
@@ -35,6 +42,8 @@ import { gameFireIcon } from "@/assets/icons/game-fire.svg.ts";
 import { gameMetalIcon } from "@/assets/icons/game-metal.svg.ts";
 import { gameWoodIcon } from "@/assets/icons/game-wood.svg.ts";
 import { gameWaterIcon } from "@/assets/icons/game-water.svg.ts";
+import { circleInfoIcon } from "@/assets/icons/circle-info.svg.ts";
+import { groupIcon } from "@/assets/icons/group.svg.ts";
 
 export default {
   name: "GameInfoDetail",
@@ -53,6 +62,8 @@ export default {
         Wood: gameWoodIcon,
         Water: gameWaterIcon,
       },
+      circleInfoIcon,
+      groupIcon
     };
   },
   mounted() {
@@ -73,7 +84,7 @@ export default {
   padding: 2em;
   height: 20em;
   border-radius: 1em;
-  margin: 2em auto;
+  margin: 1.5em auto;
   background-color: var(--dark);
   color: #fff;
   display: flex;
@@ -86,19 +97,24 @@ export default {
 
 nav {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+}
+
+nav h3 {
+  padding: 0 .75em;
 }
 
 .description {
   color: #555;
   line-height: 1.5;
   white-space: break-spaces;
+  margin: 1.5em 0;
 }
 
 header h2 {
   display: flex;
   align-items: center;
   gap: 0.5em;
+  margin: .5em 0;
 }
 </style>
