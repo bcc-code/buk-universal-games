@@ -233,7 +233,7 @@ module "api_container_app" {
     }
     template          = {
       containers      = [{
-        image         = "bccplatform.azurecr.io/universal-games-api:latest" #"hello-world:latest"
+        image         = "bccplatform.azurecr.io/buk-universal-games-dev-api:latest" #"hello-world:latest"
         name          = "universal-games-api"
         env           = [{
             name        = "APP_PORT"
@@ -367,6 +367,10 @@ module "directus_container_app" {
         {
           name        = "DB_PORT"
           value       = 5432
+        },
+        {
+          name        = "DB_SSL"
+          value       = true
         },
         {
           name        = "DB_DATABASE"
