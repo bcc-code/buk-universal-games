@@ -6,7 +6,7 @@
     <div class="card-dark-column">
       <div class="card-row">
         <span class="buk-icon" v-html="bukIcon"></span>
-        <h2 class="card-dark-text">{{ team }}</h2>
+        <h2 class="card-dark-text hide-text-overflow">{{ team }}</h2>
       </div>
     </div>
     <div class="card-dark-column">
@@ -70,13 +70,13 @@ button {
   color: var(--dark);
 }
 
-    .card-dark-column:nth-child(-n + 3) {
-        align-items: flex-start;
-    }
+.card-dark-column:nth-child(-n + 3) {
+  align-items: flex-start;
+}
 
-    .card-dark-column:nth-last-child(-n + 1) {
-        align-items: flex-end;
-    }
+.card-dark-column:nth-last-child(-n + 1) {
+  align-items: flex-end;
+}
 
 .card-dark-column:nth-last-child(-n + 2) {
   align-items: flex-end;
@@ -85,9 +85,12 @@ button {
 .card-dark-text {
   font-size: 0.85em;
   color: inherit;
+  white-space: nowrap;
+}
+
+.hide-text-overflow {
   text-overflow: ellipsis;
   overflow: hidden;
-  white-space: nowrap;
 }
 
 .card-btn {
@@ -98,10 +101,6 @@ button {
 
 .buk-icon {
   margin-right: 0.75em;
-}
-
-.index-column {
-  width: 25%;
 }
 
 .loading {
