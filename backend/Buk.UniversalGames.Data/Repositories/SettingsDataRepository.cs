@@ -1,4 +1,5 @@
 ﻿using Buk.UniversalGames.Data.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Buk.UniversalGames.Data.Repositories
 {
@@ -11,9 +12,9 @@ namespace Buk.UniversalGames.Data.Repositories
             _db = db;
         }
 
-        public string? GetSettings(string key)
+        public async Task<string?> GetSettings(string key)
         {
-            return _db.Settings.FirstOrDefault(s => s.Key == key)?.Value;
+            return (await _db.Settings.FirstOrDefaultAsync(s => s.Key == key))?.Value;
         }
     }
 }

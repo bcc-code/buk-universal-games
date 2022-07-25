@@ -25,21 +25,21 @@ public class StatusController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult<TeamStatusReport> Status()
+    public async Task<ActionResult<TeamStatusReport>> Status()
     {
         var team = HttpContext.Items["ValidatedTeam"] as Team;
-        return _statusService.GetTeamStatus(team);
+        return await _statusService.GetTeamStatus(team);
     }
 
     [HttpGet("League")]
-    public ActionResult<LeagueStatusReport> LeagueStatus()
+    public async Task<ActionResult<LeagueStatusReport>> LeagueStatus()
     {
         var team = HttpContext.Items["ValidatedTeam"] as Team;
 
         if(!team.LeagueId.HasValue)
             return new ExceptionResult(Strings.TeamNotPartOfALeague, 403);
 
-        var hideHighScore = _settingsService.GetSettings("hide_highscore");
+        var hideHighScore = await _settingsService.GetSettings("hide_highscore");
         if (hideHighScore != null)
         {
             DateTime.TryParse(hideHighScore, out var hideHighScoreDate);
@@ -47,6 +47,6 @@ public class StatusController : ControllerBase
                 return new ExceptionResult(Strings.HighScoreHidden, 406);
         }
 
-        return _statusService.GetLeagueStatus(team.LeagueId.Value);
+        return await _statusService.GetLeagueStatus(team.LeagueId.Value);
     }
 }

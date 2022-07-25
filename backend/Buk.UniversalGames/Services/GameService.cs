@@ -22,46 +22,46 @@ namespace Buk.UniversalGames.Services
             _leagueRepository = leagueRepository;
         }
 
-        public List<Game> GetGames()
+        public async Task<List<Game>> GetGames()
         {
-            return _gameRepository.GetGames();
+            return await _gameRepository.GetGames();
         }
 
-        public List<MatchListItem> GetMatches(Team team)
+        public async Task<List<MatchListItem>> GetMatches(Team team)
         {
-            return _gameRepository.GetMatches(team);
+            return await _gameRepository.GetMatches(team);
         }
 
-        public List<MatchListItem> GetGameMatches(int leagueId, int? gameId = null)
+        public async Task<List<MatchListItem>> GetGameMatches(int leagueId, int? gameId = null)
         {
-            return _gameRepository.GetGameMatches(leagueId, gameId);
+            return await _gameRepository.GetGameMatches(leagueId, gameId);
         }
 
-        public MatchWinnerResult SetMatchWinner(int matchId, int winnerTeamId)
+        public async Task<MatchWinnerResult> SetMatchWinner(int matchId, int winnerTeamId)
         {
-            var team = _leagueRepository.GetTeam(winnerTeamId);
+            var team = await _leagueRepository.GetTeam(winnerTeamId);
             if (team == null)
                 throw new BadRequestException(Strings.UnknownTeam);
 
-            var match = GetMatches(team).FirstOrDefault(s=>s.MatchId == matchId);
+            var match = (await GetMatches(team)).FirstOrDefault(s=>s.MatchId == matchId);
             if (match == null)
                 throw new BadRequestException(Strings.UnknownMatchId);
 
-            var game = GetGames().FirstOrDefault(s => s.GameId == match.GameId);
+            var game = (await GetGames()).FirstOrDefault(s => s.GameId == match.GameId);
             if(game == null)
                 throw new BadRequestException(Strings.UnknownGame);
 
-            return _gameRepository.SetMatchWinner(game, matchId, team);
+            return await _gameRepository.SetMatchWinner(game, matchId, team);
         }
 
-        public byte[] GetMatchExport()
+        public async Task<byte[]> GetMatchExport()
         {
             using (var stream = new MemoryStream())
             {
                 var xlsWorkbook = new XSSFWorkbook();
 
-                var leagues = _leagueRepository.GetLeagues();
-                var games = _gameRepository.GetGames().ToDictionary(s => s.GameId);
+                var leagues = await _leagueRepository.GetLeagues();
+                var games = (await _gameRepository.GetGames()).ToDictionary(s => s.GameId);
 
                 var font = xlsWorkbook.CreateFont();
                 font.FontHeightInPoints = 11;
@@ -102,7 +102,7 @@ namespace Buk.UniversalGames.Services
                     cell.CellStyle = style;
                     cell.SetCellValue("Winner");
 
-                    var matches = _gameRepository.GetGameMatches(league.LeagueId).OrderBy(s => s.Start)
+                    var matches = (await _gameRepository.GetGameMatches(league.LeagueId)).OrderBy(s => s.Start)
                         .ThenBy(s => s.GameId).ToList();
 
                     rowIndex++;

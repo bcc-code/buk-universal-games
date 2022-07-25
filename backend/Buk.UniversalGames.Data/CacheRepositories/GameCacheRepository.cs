@@ -19,33 +19,33 @@ namespace Buk.UniversalGames.Data.CacheRepositories
             _cache = cache;
         }
 
-        public List<Game> GetGames()
+        public async Task<List<Game>> GetGames()
         {
             // get from cache
             var cacheKey = "Games";
-            var result = _cache.Get<List<Game>>(cacheKey);
+            var result = await _cache.Get<List<Game>>(cacheKey);
             if (result == null)
             {
                 // fallback to db and set in cache
-                result = _data.GetGames();
-                _cache.Set(cacheKey, result);
+                result = await _data.GetGames();
+                await _cache.Set(cacheKey, result);
             }
             return result;
         }
 
-        public List<MatchListItem> GetMatches(Team team)
+        public async Task<List<MatchListItem>> GetMatches(Team team)
         {
-            return GetGameMatches(team.LeagueId.GetValueOrDefault()).Where(s => s.Team1Id == team.TeamId || s.Team2Id == team.TeamId).ToList();
+            return (await GetGameMatches(team.LeagueId.GetValueOrDefault())).Where(s => s.Team1Id == team.TeamId || s.Team2Id == team.TeamId).ToList();
         }
 
-        public List<MatchListItem> GetGameMatches(int leagueId, int? gameId = null)
+        public async Task<List<MatchListItem>> GetGameMatches(int leagueId, int? gameId = null)
         {
             var cacheKey = $"Matches_{leagueId}";
-            var matches = _cache.Get<List<MatchListItem>>(cacheKey);
+            var matches = await _cache.Get<List<MatchListItem>>(cacheKey);
             if (matches == null)
             {
-                matches = _data.GetGameMatches(leagueId);
-                _cache.Set(cacheKey, matches);
+                matches = await _data.GetGameMatches(leagueId);
+                await _cache.Set(cacheKey, matches);
             }
 
             if (gameId == null)
@@ -53,13 +53,13 @@ namespace Buk.UniversalGames.Data.CacheRepositories
             return matches.Where(s => s.GameId == gameId.GetValueOrDefault()).ToList();
         }
 
-        public MatchWinnerResult SetMatchWinner(Game game, int matchId, Team team)
+        public async Task<MatchWinnerResult> SetMatchWinner(Game game, int matchId, Team team)
         {
-            var result = _data.SetMatchWinner(game, matchId, team);
+            var result = await _data.SetMatchWinner(game, matchId, team);
 
             // clear match lists for league and league status
-            _cache.Remove($"Matches_{team.LeagueId.GetValueOrDefault()}");
-            _cache.Remove($"LeagueStatus_{team.LeagueId.GetValueOrDefault()}");
+            await _cache.Remove($"Matches_{team.LeagueId.GetValueOrDefault()}");
+            await _cache.Remove($"LeagueStatus_{team.LeagueId.GetValueOrDefault()}");
 
             return result;
         }

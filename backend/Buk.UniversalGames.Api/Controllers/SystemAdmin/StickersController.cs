@@ -21,21 +21,21 @@ public class StickersController : ControllerBase
     }
 
     [HttpGet]
-    public IActionResult GetStickers()
+    public async Task<IActionResult> GetStickers()
     {
-        var xls = _stickerService.ExportStickers();
+        var xls = await _stickerService.ExportStickers();
         return File(xls, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
     }
 
     [HttpGet("{leagueId}")]
-    public ActionResult<List<Sticker>> GetStickers(int leagueId)
+    public async Task<ActionResult<List<Sticker>>> GetStickers(int leagueId)
     {
-        return _stickerService.GetStickers(leagueId);
+        return await _stickerService.GetStickers(leagueId);
     }
 
     [HttpPost("SetRandomStickerPoints")]
-    public void SetRandomStickerPoints()
+    public async Task SetRandomStickerPoints()
     {
-        _stickerService.SetRandomStickerPoints();
+        await _stickerService.SetRandomStickerPoints();
     }
 }

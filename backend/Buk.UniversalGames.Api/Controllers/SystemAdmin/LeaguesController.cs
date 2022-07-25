@@ -20,16 +20,16 @@ public class LeaguesController : ControllerBase
     }
 
     [HttpGet("Teams")]
-    public IActionResult GetTeams()
+    public async Task<IActionResult> GetTeams()
     {
-        var xls = _leagueService.ExportTeams();
+        var xls = await _leagueService.ExportTeams();
         return File(xls, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
     }
 
     [HttpGet("Status")]
-    public IActionResult GetStatus()
+    public async Task<IActionResult> GetStatus()
     {
-        var xls = _leagueService.ExportStatus();
+        var xls = await _leagueService.ExportStatus();
         return File(xls, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
     }
 }

@@ -20,9 +20,9 @@ public class GamesController : ControllerBase
     }
 
     [HttpGet("Matches")]
-    public IActionResult GetLeagues()
+    public async Task<IActionResult> GetLeagues()
     {
-        var xls = _gameService.GetMatchExport();
+        var xls = await _gameService.GetMatchExport();
         return File(xls, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
     }
 }

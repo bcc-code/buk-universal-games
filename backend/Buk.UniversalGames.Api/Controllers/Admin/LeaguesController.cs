@@ -27,32 +27,32 @@ public class LeaguesController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult<List<League>> GetLeagues()
+    public async Task<ActionResult<List<League>>> GetLeagues()
     {
-        return _leagueService.GetLeagues();
+        return await _leagueService.GetLeagues();
     }
 
     [HttpGet("{leagueId}/Teams")]
-    public ActionResult<List<Team>> GetTeams(int leagueId)
+    public async Task<ActionResult<List<Team>>> GetTeams(int leagueId)
     {
-        return _leagueService.GetTeams(leagueId);
+        return await _leagueService.GetTeams(leagueId);
     }
 
     [HttpGet("{leagueId}/Status")]
-    public ActionResult<LeagueStatusReport> GetLeagueStatus(int leagueId)
+    public async Task<ActionResult<LeagueStatusReport>> GetLeagueStatus(int leagueId)
     {
-        return _statusService.GetLeagueStatus(leagueId);
+        return await _statusService.GetLeagueStatus(leagueId);
     }
 
     [HttpGet("{leagueId}/Game/{gameId}/Matches")]
-    public ActionResult<List<MatchListItem>> GetGameMatches(int leagueId, int gameId)
+    public async Task<ActionResult<List<MatchListItem>>> GetGameMatches(int leagueId, int gameId)
     {
-        return _gameService.GetGameMatches(leagueId, gameId);
+        return await _gameService.GetGameMatches(leagueId, gameId);
     }
 
     [HttpGet("{leagueId}/Matches")]
-    public ActionResult<List<MatchListItem>> GetAllMatches(int leagueId)
+    public async Task<ActionResult<List<MatchListItem>>> GetAllMatches(int leagueId)
     {
-        return _gameService.GetGameMatches(leagueId);
+        return await _gameService.GetGameMatches(leagueId);
     }
 }

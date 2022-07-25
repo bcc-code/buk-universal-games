@@ -1,5 +1,6 @@
 ﻿using Buk.UniversalGames.Data.Interfaces;
 using Buk.UniversalGames.Data.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Buk.UniversalGames.Data.Repositories
 {
@@ -12,29 +13,29 @@ namespace Buk.UniversalGames.Data.Repositories
             _db = db;
         }
 
-        public League? GetLeague(int leagueId)
+        public async Task<League?> GetLeague(int leagueId)
         {
-            return _db.Leagues.FirstOrDefault(s => s.LeagueId == leagueId);
+            return await _db.Leagues.FirstOrDefaultAsync(s => s.LeagueId == leagueId);
         }
 
-        public List<League> GetLeagues()
+        public async Task<List<League>> GetLeagues()
         {
-            return _db.Leagues.ToList();
+            return await _db.Leagues.ToListAsync();
         }
 
-        public Team? GetTeam(int teamId)
+        public async Task<Team?> GetTeam(int teamId)
         {
-            return _db.Teams.FirstOrDefault(s => s.TeamId == teamId);
+            return await _db.Teams.FirstOrDefaultAsync(s => s.TeamId == teamId);
         }
 
-        public Team? GetTeamByCode(string code)
+        public async Task<Team?> GetTeamByCode(string code)
         {
-            return _db.Teams.FirstOrDefault(s => s.Code == code);
+            return await _db.Teams.FirstOrDefaultAsync(s => s.Code == code);
         }
 
-        public List<Team> GetTeams(int leagueId)
+        public async Task<List<Team>> GetTeams(int leagueId)
         {
-            return _db.Teams.Where(s => s.LeagueId == leagueId).ToList();
+            return await _db.Teams.Where(s => s.LeagueId == leagueId).ToListAsync();
         }
     }
 }

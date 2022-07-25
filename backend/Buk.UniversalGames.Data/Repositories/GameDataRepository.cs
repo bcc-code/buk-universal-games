@@ -3,6 +3,7 @@ using Buk.UniversalGames.Data.Models;
 using Buk.UniversalGames.Data.Models.Internal;
 using Buk.UniversalGames.Library.Cultures;
 using Buk.UniversalGames.Library.Exceptions;
+using Microsoft.EntityFrameworkCore;
 
 namespace Buk.UniversalGames.Data.Repositories
 {
@@ -15,14 +16,14 @@ namespace Buk.UniversalGames.Data.Repositories
             _db = db;
         }
 
-        public List<Game> GetGames()
+        public async Task<List<Game>> GetGames()
         {
-            return _db.Games.ToList();
+            return await _db.Games.ToListAsync();
         }
 
-        public List<MatchListItem> GetMatches(Team team)
+        public async Task<List<MatchListItem>> GetMatches(Team team)
         {
-            return (from match in _db.Matches
+            return await (from match in _db.Matches
                 where match.Team1Id == team.TeamId || match.Team2Id == team.TeamId
                     join team1 in _db.Teams on match.Team1Id equals team1.TeamId
                 join team2 in _db.Teams on match.Team2Id equals team2.TeamId
@@ -38,11 +39,11 @@ namespace Buk.UniversalGames.Data.Repositories
                     WinnerId = match.WinnerId.GetValueOrDefault(),
                     Winner = match.WinnerId.HasValue ? (match.WinnerId.Value == match.Team1Id ? team1.Name : team2.Name) : "",
                     Start = match.Start.ToShortTimeString(),
-                }).ToList();
+                }).ToListAsync();
         }
-        public List<MatchListItem> GetGameMatches(int leagueId, int? gameId = null)
+        public async Task<List<MatchListItem>> GetGameMatches(int leagueId, int? gameId = null)
         {
-            return (from match in _db.Matches
+            return await (from match in _db.Matches
                     where !gameId.HasValue || match.GameId == gameId.Value
                     join team1 in _db.Teams on match.Team1Id equals team1.TeamId
                     where team1.LeagueId == leagueId
@@ -62,17 +63,17 @@ namespace Buk.UniversalGames.Data.Repositories
                         WinnerId = match.WinnerId.GetValueOrDefault(),
                         Winner = match.WinnerId.HasValue ? (match.WinnerId.Value == match.Team1Id ? team1.Name : team2.Name) : "",
                         Start = match.Start.ToShortTimeString(),
-                    }).ToList();
+                    }).ToListAsync();
         }
 
-        public MatchWinnerResult SetMatchWinner(Game game, int matchId, Team team)
+        public async Task<MatchWinnerResult> SetMatchWinner(Game game, int matchId, Team team)
         {
-            var match = _db.Matches.FirstOrDefault(s => s.MatchId == matchId);
+            var match = await _db.Matches.FirstOrDefaultAsync(s => s.MatchId == matchId);
 
             if(match == null)
                 throw new BadRequestException(Strings.UnknownMatchId);
 
-            var points = _db.Points.Where(s => s.MatchId == matchId).ToList();
+            var points = await _db.Points.Where(s => s.MatchId == matchId).ToListAsync();
 
             if (match.WinnerId.GetValueOrDefault() != team.TeamId)
                 match.WinnerId = team.TeamId;
@@ -106,7 +107,7 @@ namespace Buk.UniversalGames.Data.Repositories
                     GameId = game.GameId,
                     Added = DateTime.Now,
                 };
-                _db.Points.Add(winnerPoint);
+                await _db.Points.AddAsync(winnerPoint);
 
                 var looserTeamId = match.Team1Id == team.TeamId ? match.Team2Id : match.Team1Id;
 
@@ -118,10 +119,10 @@ namespace Buk.UniversalGames.Data.Repositories
                     GameId = game.GameId,
                     Added = DateTime.Now
                 };
-                _db.Points.Add(looserPoint);
+                await _db.Points.AddAsync(looserPoint);
             }
 
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
 
             return new MatchWinnerResult
             {

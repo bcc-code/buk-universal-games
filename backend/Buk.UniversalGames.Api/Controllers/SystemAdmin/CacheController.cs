@@ -1,7 +1,6 @@
 using Buk.UniversalGames.Api.Authorization;
 using Buk.UniversalGames.Data;
 using Buk.UniversalGames.Data.Interfaces;
-using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Enums;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,24 +29,24 @@ public class CacheController : ControllerBase
     }
 
     [HttpGet("ClearCache")]
-    public IActionResult ClearCache()
+    public async Task<IActionResult> ClearCache()
     {
-        _cache.Clear();
+        await _cache.Clear();
         return Ok();
     }
 
     [HttpGet("PreCache")]
-    public IActionResult PreCache()
+    public async Task<IActionResult> PreCache()
     {
-        var leagues = _leagueRepository.GetLeagues();
-        var games = _gameRepository.GetGames();
+        var leagues = await _leagueRepository.GetLeagues();
+        var games = await _gameRepository.GetGames();
 
         foreach (var league in leagues)
         {
-            _leagueRepository.GetTeams(league.LeagueId);
-            _gameRepository.GetGameMatches(league.LeagueId);
-            _stickerRepository.GetStickers(league.LeagueId);
-            _statusRepository.GetLeagueStatus(league.LeagueId);
+            await _leagueRepository.GetTeams(league.LeagueId);
+            await _gameRepository.GetGameMatches(league.LeagueId);
+            await _stickerRepository.GetStickers(league.LeagueId);
+            await _statusRepository.GetLeagueStatus(league.LeagueId);
         }
         return Ok();
     }
