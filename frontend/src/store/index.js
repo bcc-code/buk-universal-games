@@ -83,7 +83,6 @@ const store = createStore({
       const savedDataAge = getSavedDataAge('teamStatus')
       let teamStatus
 
-      // Allow override every 5 seconds
       if (savedDataAge === null || savedDataAge > 30 || (savedDataAge > 5 && override)) {
         teamStatus = await getData("/Status/")
           .then(r => {
@@ -113,11 +112,11 @@ const store = createStore({
       return teamStatus
 
     },
-    async getLeagueStatus(ctx) {
+    async getLeagueStatus(ctx, override) {
       const savedDataAge = getSavedDataAge('leagueStatus')
       let leagueStatus
 
-      if (savedDataAge === null || savedDataAge > 30) {
+      if (savedDataAge === null || savedDataAge > 30 || (savedDataAge > 5 && override)) {
         leagueStatus = await getData("/Status/League")
           .then(r => {
             if (r.status == 200) {
@@ -193,11 +192,11 @@ const store = createStore({
       ctx.commit("setAdminMatches", matches)
       return matches
     },
-    async getMatches(ctx) {
+    async getMatches(ctx, override) {
       const savedDataAge = getSavedDataAge('matches')
       let matches
 
-      if (savedDataAge === null || savedDataAge > 30) {
+      if (savedDataAge === null || savedDataAge > 30 || (savedDataAge > 5 && override)) {
         matches = await getData("/Games/Matches")
           .then(r => {
             if (r.status == 200) {
