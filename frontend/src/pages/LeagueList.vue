@@ -2,9 +2,10 @@
   <UserPageLayout class="league-list">
     <section class="user-section">
       <PointsAndStickers
+        :loading="loading"
         :points="teamStatus?.status?.points"
         :stickers="teamStatus?.status?.stickers"
-        :refresh="() => getTeamStatus(true)"
+        :refresh="refresh"
       />
     </section>
     <section class="league-title">
@@ -19,15 +20,30 @@
         <h2 class="league-title-text">Points</h2>
       </div>
     </section>
-    <section class="user-section" v-for="(status, i) in leagueStatus" :key="status.id">
-      <LeagueListItem
-        :class="{ 'card-light': i > 4, 'green-font': status.teamId == teamStatus?.status?.teamId }"
-        :index="i + 1"
-        :team="status.team"
-        :stickers="status.stickers"
-        :points="status.points"
-      />
-    </section>
+    <div v-if="loading">
+      <section class="user-section" v-for="i in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]" :key="i">
+        <LeagueListItem
+          :class="{ 'card-light': i > 4 }"
+          :index="i + 1"
+          :team="'Team ' + (i + 1)"
+          :stickers="Math.ceil(100 / (i + 1))"
+          :points="Math.ceil(10000 / (i + 1))"
+          :loading="loading"
+        />
+      </section>
+    </div>
+    <div v-else>
+      <section class="user-section" v-for="(status, i) in leagueStatus" :key="status.id">
+        <LeagueListItem
+          :class="{ 'card-light': i > 4, 'green-font': status.teamId == teamStatus?.status?.teamId }"
+          :index="i + 1"
+          :team="status.team"
+          :stickers="status.stickers"
+          :points="status.points"
+          :loading="loading"
+        />
+      </section>
+    </div>
   </UserPageLayout>
 </template>
 
@@ -42,21 +58,43 @@ export default {
     data: String,
   },
   components: { UserPageLayout, PointsAndStickers, LeagueListItem },
+  data() {
+    return {
+      loading: false,
+    };
+  },
   created() {
     if (Object.keys(this.$store.state.teamStatus).length === 0) {
+      this.loading = true;
       this.getTeamStatus(false);
     }
 
     if (Object.keys(this.$store.state.leagueStatus).length === 0) {
-      this.getLeagueStatus();
+      this.loading = true;
+      this.getLeagueStatus(false);
+    }
+
+    if (this.loading) {
+      setTimeout(() => {
+        this.loading = false;
+      }, 500);
     }
   },
   methods: {
     getTeamStatus(override) {
       this.$store.dispatch("getTeamStatus", override);
     },
-    getLeagueStatus() {
-      this.$store.dispatch("getLeagueStatus");
+    getLeagueStatus(override) {
+      this.$store.dispatch("getLeagueStatus", override);
+    },
+    refresh() {
+      this.loading = true;
+      this.getTeamStatus(true);
+      this.getLeagueStatus(true);
+
+      setTimeout(() => {
+        this.loading = false;
+      }, 1000);
     },
   },
   computed: {
@@ -64,7 +102,6 @@ export default {
       return this?.$store.state.teamStatus;
     },
     leagueStatus() {
-      // return this?.$store.state.leagueStatus.status?.slice(0, 10)
       return this?.$store.state.leagueStatus.status;
     },
   },

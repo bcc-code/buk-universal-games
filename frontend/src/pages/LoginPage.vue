@@ -5,10 +5,12 @@
       'background-image': `url(${image})`,
     }"
   >
-    <img src="../assets/logo.png" alt="" class="logo" />
-    <input type="text" placeholder="Team code" v-model="teamCode" />
-    <router-link v-if="teamCode.length > 3" class="btn-primary" :to="loginUrl">Login</router-link>
-    <p v-if="loginError" class="login-msg">{{ loginError }}</p>
+    <div class="content">
+      <img src="../assets/logo.png" alt="" class="logo" />
+      <input type="text" placeholder="Team code" v-model="teamCode" />
+      <router-link v-if="teamCode.length > 3" class="btn-primary" :to="loginUrl">Login</router-link>
+      <p v-if="loginError" class="login-msg">{{ loginError }}</p>
+    </div>
   </section>
 </template>
 
@@ -38,13 +40,18 @@ export default {
 
 <style scoped>
 .bg {
-  height: 100%;
   background-size: cover;
   background-position: center;
+  padding: 1em 2em;
+  min-height: 100%;
+}
+
+.content {
+  padding-top: 10em;
+  padding-bottom: 10em;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 1em;
 }
 
 .btn-primary {

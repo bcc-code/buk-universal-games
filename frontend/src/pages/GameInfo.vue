@@ -1,6 +1,11 @@
 <template>
   <UserPageLayout>
-    <PointsAndStickers :points="teamStatus?.status?.points" :stickers="teamStatus?.status?.stickers" :refresh="() => refreshPoints()" />
+    <PointsAndStickers
+      :points="teamStatus?.status?.points"
+      :stickers="teamStatus?.status?.stickers"
+      :refresh="refresh"
+      :loading="$store.state.gamesLoading"
+    />
 
     <h2>Games</h2>
 
@@ -20,12 +25,17 @@ export default {
     this.$store.dispatch("getGames");
 
     if (Object.keys(this.$store.state.teamStatus).length === 0) {
-      this.refreshPoints();
+      this.refresh();
     }
   },
   methods: {
-    refreshPoints() {
+    refresh() {
       this.$store.dispatch("getTeamStatus", true);
+      this.$store.commit("setGamesLoading", true);
+
+      setTimeout(() => {
+        this.$store.commit("setGamesLoading", false);
+      }, 500);
     },
     gameClicked(game) {
       this.$router.push({
