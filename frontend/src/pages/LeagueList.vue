@@ -64,21 +64,8 @@ export default {
     };
   },
   created() {
-    if (Object.keys(this.$store.state.teamStatus).length === 0) {
-      this.loading = true;
-      this.getTeamStatus(false);
-    }
-
-    if (Object.keys(this.$store.state.leagueStatus).length === 0) {
-      this.loading = true;
-      this.getLeagueStatus(false);
-    }
-
-    if (this.loading) {
-      setTimeout(() => {
-        this.loading = false;
-      }, 500);
-    }
+    this.getTeamStatus(false);
+    this.getLeagueStatus(false);
   },
   methods: {
     getTeamStatus(override) {
