@@ -17,9 +17,9 @@ namespace Buk.UniversalGames.Data.CacheRepositories
             _cache = cache;
         }
 
-        public string? GetSettings(string key)
+        public async Task<string?> GetSettings(string key)
         {
-            return _data.GetSettings(key);
+            return await _data.GetSettings(key);
         }
     }
 }

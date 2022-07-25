@@ -22,16 +22,16 @@ public class GamesController : ControllerBase
 
     [TeamType(TeamType.Participant, TeamType.Admin, TeamType.SystemAdmin)]
     [HttpGet]
-    public ActionResult<List<Game>> GetGames()
+    public async Task<ActionResult<List<Game>>> GetGames()
     {
-        return _gameService.GetGames();
+        return await _gameService.GetGames();
     }
 
     [TeamType(TeamType.Participant)]
     [HttpGet("Matches")]
-    public ActionResult<List<MatchListItem>> GetMatches()
+    public async Task<ActionResult<List<MatchListItem>>> GetMatches()
     {
         var team = HttpContext.Items["ValidatedTeam"] as Team;
-        return _gameService.GetMatches(team);
+        return await _gameService.GetMatches(team);
     }
 }

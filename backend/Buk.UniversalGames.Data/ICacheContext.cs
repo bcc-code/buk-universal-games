@@ -2,9 +2,9 @@
 {
     public interface ICacheContext
     {
-        T? Get<T>(string key);
-        T Set<T>(string key, T value);
-        void Remove(string key);
-        void Clear();
+        Task<T?> Get<T>(string key);
+        Task<T> Set<T>(string key, T value);
+        Task Remove(string key);
+        Task Clear();
     }
 }

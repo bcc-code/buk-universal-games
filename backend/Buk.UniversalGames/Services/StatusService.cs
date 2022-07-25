@@ -19,28 +19,28 @@ namespace Buk.UniversalGames.Services
             _leagueLeagueRepository = leagueLeagueRepository;
         }
 
-        public TeamStatusReport GetTeamStatus(Team team)
+        public async Task<TeamStatusReport> GetTeamStatus(Team team)
         {
             return new TeamStatusReport
             {
-                Status = _statusRepository.GetTeamStatus(team),
+                Status = await _statusRepository.GetTeamStatus(team),
                 StatusAt = DateTime.Now
             };
         }
 
-        public LeagueStatusReport GetLeagueStatus(int leagueId)
+        public async Task<LeagueStatusReport> GetLeagueStatus(int leagueId)
         {
             return new LeagueStatusReport
             {
-                Status = _statusRepository.GetLeagueStatus(leagueId),
+                Status = await _statusRepository.GetLeagueStatus(leagueId),
                 StatusAt = DateTime.Now
             };
         }
 
-        public void ClearStatusAndMatches()
+        public async Task ClearStatusAndMatches()
         {
-            var leagues = _leagueLeagueRepository.GetLeagues();
-            _statusRepository.ClearStatus(leagues);
+            var leagues = await _leagueLeagueRepository.GetLeagues();
+            await _statusRepository.ClearStatus(leagues);
         }
     }
 }

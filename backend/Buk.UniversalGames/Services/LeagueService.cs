@@ -20,27 +20,27 @@ namespace Buk.UniversalGames.Services
             _statusRepository = statusRepository;
         }
 
-        public League? GetLeague(int leagueId)
+        public async Task<League?> GetLeague(int leagueId)
         {
-            return _leagueRepository.GetLeague(leagueId);
+            return await _leagueRepository.GetLeague(leagueId);
         }
 
-        public List<League> GetLeagues()
+        public async Task<List<League>> GetLeagues()
         {
-            return _leagueRepository.GetLeagues();
+            return await _leagueRepository.GetLeagues();
         }
 
-        public Team? GetTeamByCode(string code)
+        public async Task<Team?> GetTeamByCode(string code)
         {
-            return _leagueRepository.GetTeamByCode(code);
+            return await _leagueRepository.GetTeamByCode(code);
         }
 
-        public List<Team> GetTeams(int leagueId)
+        public async Task<List<Team>> GetTeams(int leagueId)
         {
-            return _leagueRepository.GetTeams(leagueId);
+            return await _leagueRepository.GetTeams(leagueId);
         }
 
-        public byte[] ExportTeams()
+        public async Task<byte[]> ExportTeams()
         {
             using (var stream = new MemoryStream())
             {
@@ -79,12 +79,12 @@ namespace Buk.UniversalGames.Services
                 cell.CellStyle = style;
                 cell.SetCellValue("Start Link");
 
-                var leagues = GetLeagues();
+                var leagues = await GetLeagues();
 
                 rowIndex++;
                 foreach (var league in leagues)
                 {
-                    var teams = GetTeams(league.LeagueId);
+                    var teams = await GetTeams(league.LeagueId);
 
                     foreach (var team in teams)
                     {
@@ -104,7 +104,7 @@ namespace Buk.UniversalGames.Services
             }
         }
 
-        public byte[] ExportStatus()
+        public async Task<byte[]> ExportStatus()
         {
             using (var stream = new MemoryStream())
             {
@@ -118,7 +118,7 @@ namespace Buk.UniversalGames.Services
                 var style = xlsWorkbook.CreateCellStyle();
                 style.SetFont(font);
 
-                var leagues = _leagueRepository.GetLeagues();
+                var leagues = await GetLeagues();
 
                 foreach (var league in leagues)
                 {
@@ -143,7 +143,7 @@ namespace Buk.UniversalGames.Services
                     cell.CellStyle = style;
                     cell.SetCellValue("Stickers");
 
-                    var statuses = _statusRepository.GetLeagueStatus(league.LeagueId);
+                    var statuses = await _statusRepository.GetLeagueStatus(league.LeagueId);
 
                     rowIndex ++;
                     foreach (var status in statuses)

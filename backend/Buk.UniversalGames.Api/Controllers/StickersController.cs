@@ -21,9 +21,9 @@ public class StickersController : ControllerBase
 
     [Participant]
     [HttpPost("{stickerCode}/Scan")]
-    public ActionResult<ScanResult> Scan(string stickerCode)
+    public async Task<ActionResult<ScanResult>> Scan(string stickerCode)
     {
         var team = HttpContext.Items["ValidatedTeam"] as Team;
-        return _stickerService.ScanSticker(team, stickerCode);
+        return await _stickerService.ScanSticker(team, stickerCode);
     }
 }

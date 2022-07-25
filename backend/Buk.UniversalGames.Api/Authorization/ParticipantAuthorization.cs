@@ -14,7 +14,7 @@ namespace Buk.UniversalGames.Api.Authorization
         }
     }
 
-    public class ParticipantFilter : IAuthorizationFilter
+    public class ParticipantFilter : IAsyncAuthorizationFilter
     {
         readonly ILeagueService _leagueService;
 
@@ -23,7 +23,7 @@ namespace Buk.UniversalGames.Api.Authorization
             _leagueService = leagueService;
         }
 
-        public void OnAuthorization(AuthorizationFilterContext context)
+        public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
         {
             var code = (context.RouteData.Values["code"] ?? "").ToString();
             if (string.IsNullOrEmpty(code))
@@ -32,7 +32,7 @@ namespace Buk.UniversalGames.Api.Authorization
             }
             else
             {
-                var team = _leagueService.GetTeamByCode(code);
+                var team = await _leagueService.GetTeamByCode(code);
                 if(team == null)
                     context.Result = new ExceptionResult(Strings.UnknownTeamCode, 403);
                 else if(team.Type != TeamType.Participant)

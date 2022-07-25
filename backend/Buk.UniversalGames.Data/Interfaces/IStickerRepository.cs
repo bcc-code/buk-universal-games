@@ -5,12 +5,12 @@ namespace Buk.UniversalGames.Data.Interfaces
 {
     public interface IStickerRepository
     {
-        Sticker? GetStickerByCode(string code);
+        Task<Sticker?> GetStickerByCode(string code);
 
-        StickerScanResult LogStickerScanning(Team team, Sticker sticker);
+        Task<StickerScanResult> LogStickerScanning(Team team, Sticker sticker);
 
-        List<Sticker> GetStickers(int leagueId);
+        Task<List<Sticker>> GetStickers(int leagueId);
 
-        void SetRandomStickerPoints();
+        Task SetRandomStickerPoints();
     }
 }

@@ -19,47 +19,43 @@ namespace Buk.UniversalGames.Data.CacheRepositories
             _cache = cache;
         }
 
-        public Sticker? GetStickerByCode(string code)
+        public async Task<Sticker?> GetStickerByCode(string code)
         {
             var cacheKey = $"Sticker_{code}";
-            var sticker = _cache.Get<Sticker>(cacheKey);
+            var sticker = await _cache.Get<Sticker>(cacheKey);
             if (sticker == null)
             {
-                sticker = _data.GetStickerByCode(code);
-                _cache.Set(cacheKey, sticker);
+                sticker = await _data.GetStickerByCode(code);
+                await _cache.Set(cacheKey, sticker);
             }
             return sticker;
         }
 
-        public StickerScanResult LogStickerScanning(Team team, Sticker sticker)
+        public async Task<StickerScanResult> LogStickerScanning(Team team, Sticker sticker)
         {
-            var result = _data.LogStickerScanning(team, sticker);
-
-            _cache.Remove($"LeagueStatus_{team.LeagueId.GetValueOrDefault()}");
-
+            var result = await _data.LogStickerScanning(team, sticker);
+            await _cache.Remove($"LeagueStatus_{team.LeagueId.GetValueOrDefault()}");
             return result;
         }
 
-        public List<Sticker> GetStickers(int leagueId)
+        public async Task<List<Sticker>> GetStickers(int leagueId)
         {
             var cacheKey = $"Stickers_{leagueId}";
-            var stickers = _cache.Get<List<Sticker>>(cacheKey);
+            var stickers = await _cache.Get<List<Sticker>>(cacheKey);
             if (stickers == null)
             {
-                stickers = _data.GetStickers(leagueId);
-                _cache.Set(cacheKey, stickers);
+                stickers = await _data.GetStickers(leagueId);
+                await _cache.Set(cacheKey, stickers);
 
                 foreach (var sticker in stickers)
-                {
-                    _cache.Set($"Sticker_{sticker.Code}", sticker);
-                }
+                    await _cache.Set($"Sticker_{sticker.Code}", sticker);
             }
-            return _data.GetStickers(leagueId);
+            return await _data.GetStickers(leagueId);
         }
 
-        public void SetRandomStickerPoints()
+        public async Task SetRandomStickerPoints()
         {
-            _data.SetRandomStickerPoints();
+            await _data.SetRandomStickerPoints();
         }
     }
 }

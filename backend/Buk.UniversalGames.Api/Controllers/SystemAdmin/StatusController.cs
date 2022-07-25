@@ -20,8 +20,8 @@ public class StatusController : ControllerBase
     }
 
     [HttpGet("ClearStatusAndMatches")]
-    public void ClearStatusAndMatches()
+    public async Task ClearStatusAndMatches()
     {
-        _statusService.ClearStatusAndMatches();
+        await _statusService.ClearStatusAndMatches();
     }
 }

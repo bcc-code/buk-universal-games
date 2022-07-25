@@ -5,12 +5,12 @@ namespace Buk.UniversalGames.Data.Interfaces
 {
     public interface IGameRepository
     {
-        List<Game> GetGames();
+        Task<List<Game>> GetGames();
 
-        List<MatchListItem> GetMatches(Team team);
+        Task<List<MatchListItem>> GetMatches(Team team);
 
-        List<MatchListItem> GetGameMatches(int leagueId, int? gameId = null);
+        Task<List<MatchListItem>> GetGameMatches(int leagueId, int? gameId = null);
       
-        MatchWinnerResult SetMatchWinner(Game game, int matchId, Team team);
+        Task<MatchWinnerResult> SetMatchWinner(Game game, int matchId, Team team);
     }
 }

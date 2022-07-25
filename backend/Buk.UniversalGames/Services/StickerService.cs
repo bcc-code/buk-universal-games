@@ -25,9 +25,9 @@ namespace Buk.UniversalGames.Services
             _leagueRepository = leagueRepository;
         }
 
-        public ScanResult ScanSticker(Team team, string code)
+        public async Task<ScanResult> ScanSticker(Team team, string code)
         {
-            var sticker = _stickerRepository.GetStickerByCode(code);
+            var sticker = await _stickerRepository.GetStickerByCode(code);
             if (sticker == null)
                 throw new BadRequestException(Strings.UnknownStickerCode);
 
@@ -38,7 +38,7 @@ namespace Buk.UniversalGames.Services
 
             try
             {
-                var scanResult = _stickerRepository.LogStickerScanning(team, sticker);
+                var scanResult = await _stickerRepository.LogStickerScanning(team, sticker);
 
                 // NB! If scan log will be part of cache - this is success scan log item
                 var scan = scanResult.Scan;
@@ -117,22 +117,22 @@ namespace Buk.UniversalGames.Services
             }
         }
 
-        public List<Sticker> GetStickers(int leagueId)
+        public async Task<List<Sticker>> GetStickers(int leagueId)
         {
-            return _stickerRepository.GetStickers(leagueId);
+            return await _stickerRepository.GetStickers(leagueId);
         }
 
-        public byte[]? GetStickerQR(string stickerCode, int size = 40)
+        public async Task<byte[]?> GetStickerQR(string stickerCode, int size = 40)
         {
-            var sticker = _stickerRepository.GetStickerByCode(stickerCode);
+            var sticker = await _stickerRepository.GetStickerByCode(stickerCode);
             if (sticker == null)
                 return null;
 
-            var league = _leagueRepository.GetLeague(sticker.LeagueId);
+            var league = await _leagueRepository.GetLeague(sticker.LeagueId);
             return StickerHelper.GetQRImage(sticker.Code, league?.Color ?? "90,32,39", size);
         }
 
-        public byte[] ExportStickers()
+        public async Task<byte[]> ExportStickers()
         {
             using (var stream = new MemoryStream())
             {
@@ -146,7 +146,7 @@ namespace Buk.UniversalGames.Services
                 var style = xlsWorkbook.CreateCellStyle();
                 style.SetFont(font);
 
-                var leagues = _leagueRepository.GetLeagues();
+                var leagues = await _leagueRepository.GetLeagues();
 
                 foreach (var league in leagues)
                 {
@@ -171,7 +171,7 @@ namespace Buk.UniversalGames.Services
                     cell.CellStyle = style;
                     cell.SetCellValue("QR Image");
 
-                    var stickers = _stickerRepository.GetStickers(league.LeagueId);
+                    var stickers = await _stickerRepository.GetStickers(league.LeagueId);
 
                     rowIndex++;
                     foreach (var sticker in stickers)
@@ -191,9 +191,9 @@ namespace Buk.UniversalGames.Services
             }
         }
 
-        public void SetRandomStickerPoints()
+        public async Task SetRandomStickerPoints()
         {
-            _stickerRepository.SetRandomStickerPoints();
+            await _stickerRepository.SetRandomStickerPoints();
         }
     }
 }
