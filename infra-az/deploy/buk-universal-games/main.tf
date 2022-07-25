@@ -212,13 +212,13 @@ module "api_container_app" {
     configuration      = {
       ingress          = {
         external       = true
-        targetPort     = 80
+        targetPort     = 5125
       }
       dapr             = {
         enabled        = true
         appId          = "${local.resource_prefix}-api"
         appProtocol    = "http"
-        appPort        = 80
+        appPort        = 5125
       }
       secrets          = [
           {
@@ -237,7 +237,7 @@ module "api_container_app" {
         name          = "universal-games-api"
         env           = [{
             name        = "APP_PORT"
-            value       = 80
+            value       = 5125
           },
           {
             name        = "POSTGRES_HOST"
@@ -293,13 +293,13 @@ module "directus_container_app" {
     configuration      = {
       ingress          = {
         external       = true
-        targetPort     = 80
+        targetPort     = 8055
       }
       dapr             = {
         enabled        = true
         appId          = "${local.resource_prefix}-directus"
         appProtocol    = "http"
-        appPort        = 80
+        appPort        = 8055
       }
     }
     template          = {
@@ -308,7 +308,7 @@ module "directus_container_app" {
         name          = "universal-games-directus"
         env           = [{
           name        = "APP_PORT"
-          value       = 80
+          value       = 8055
         }]
         resources     = {
           cpu         = 0.5
