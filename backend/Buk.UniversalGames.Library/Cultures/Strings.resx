@@ -142,7 +142,7 @@
     <value>Sticker was scanned {time} {unit} ago!</value>
   </data>
   <data name="ScanSuccessPointsAwesomeInfo" xml:space="preserve">
-    <value>Awesome! Sticker not scanned before and {points} added to your team!</value>
+    <value>Awesome! Sticker not scanned before and {points} points added to your team!</value>
   </data>
   <data name="ScanSuccessPointsGreatInfo" xml:space="preserve">
     <value>Great! Your team got {points} new points!</value>
@@ -151,7 +151,7 @@
     <value>Nice! You found a new sticker and {points} points to your team!</value>
   </data>
   <data name="ScanSuccessPointsPerfectInfo" xml:space="preserve">
-    <value>Perfect! {points} added to your team!</value>
+    <value>Perfect! {points} points added to your team!</value>
   </data>
   <data name="Seconds" xml:space="preserve">
     <value>seconds</value>

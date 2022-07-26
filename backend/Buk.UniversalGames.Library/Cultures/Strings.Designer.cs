@@ -133,7 +133,7 @@ namespace Buk.UniversalGames.Library.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Awesome! Sticker not scanned before and {points} added to your team!.
+        ///   Looks up a localized string similar to Awesome! Sticker not scanned before and {points} points added to your team!.
         /// </summary>
         public static string ScanSuccessPointsAwesomeInfo {
             get {
@@ -160,7 +160,7 @@ namespace Buk.UniversalGames.Library.Cultures {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Perfect! {points} added to your team!.
+        ///   Looks up a localized string similar to Perfect! {points} points added to your team!.
         /// </summary>
         public static string ScanSuccessPointsPerfectInfo {
             get {
