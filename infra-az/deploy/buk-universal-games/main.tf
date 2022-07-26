@@ -71,6 +71,11 @@ data "azurerm_postgresql_flexible_server" "postgresql_server" {
   resource_group_name    = local.platform_resource_group
 }
 
+# Get platform resource group
+data "azurerm_resource_group" "platform_rg" {
+  name = local.platform_resource_group
+}
+
 
 # Create Resource Group
 resource "azurerm_resource_group" "rg" {
@@ -169,6 +174,13 @@ resource "azurerm_redis_cache" "redis_cache" {
   }
 }
 
+# Private DNS zone
+
+data "azurerm_private_dns_zone" "dns_zone" {
+  name                = "privatelink.redis.cache.windows.net"
+  resource_group_name = local.resource_group
+}
+
 # Redis private endpoint
 resource "azurerm_private_endpoint" "redis_endpoint" {
   name                = "${local.resource_prefix}-redis-endpoint"
@@ -181,6 +193,13 @@ resource "azurerm_private_endpoint" "redis_endpoint" {
     private_connection_resource_id    =  azurerm_redis_cache.redis_cache.id
     is_manual_connection              = false
     subresource_names                 = ["redisCache"]
+  }
+
+  private_dns_zone_group {
+    name = "default"
+    private_dns_zone_ids = [
+      data.azurerm_private_dns_zone.dns_zone.id
+    ]
   }
 }
 
@@ -320,7 +339,7 @@ module "directus_container_app" {
         },
         {
           name    = "redis-connection-string"
-          value   =  azurerm_redis_cache.redis_cache.primary_connection_string
+          value   =  "rediss://:${azurerm_redis_cache.redis_cache.primary_access_key}@${azurerm_redis_cache.redis_cache.hostname}:${azurerm_redis_cache.redis_cache.ssl_port}/0"
         },
         {
           name    = "directus-admin-user-pw"
@@ -409,4 +428,17 @@ module "directus_container_app" {
       }
     }
   }
+}
+
+# Add API Route
+module "front_door_route" {
+  name                 = "universalgames"
+  source               = "../../modules/front_door_route"
+  resource_group_id    = data.azurerm_resource_group.platform_rg.id
+  origin_host          = module.api_container_app.domain_name   
+  front_door_name      = "bcc-platform-${terraform.workspace}-frontdoor"
+  endpoint_domain_name = "az-api-${terraform.workspace}.bcc.no"
+  depends_on = [
+    module.api_container_app
+  ]
 }

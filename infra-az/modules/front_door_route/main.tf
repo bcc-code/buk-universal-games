@@ -141,7 +141,7 @@ resource "azapi_resource" "origin" {
 # }
 
 resource "azurerm_resource_group_template_deployment" "origin_route" {
-  name                = var.name
+  name                = "${var.name}_deployment"
   resource_group_name = "BCC-Platform-dev"
   deployment_mode     = "Incremental"
   parameters_content = jsonencode({
@@ -221,5 +221,8 @@ resource "azurerm_resource_group_template_deployment" "origin_route" {
 }
 TEMPLATE
 
+ depends_on = [
+   azapi_resource.origin
+ ]
 
 }
