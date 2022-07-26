@@ -11,6 +11,13 @@ output "id" {
 output "instrumentation_key" {
   value       = azurerm_application_insights.resource.instrumentation_key
   description = "Specifies the instrumentation key of the Application Insights."
+  sensitive = true
+}
+
+output "connection_string" {
+  value       = azurerm_application_insights.resource.connection_string
+  description = "Specifies the connection string of the Application Insights."
+  sensitive = true
 }
 
 output "app_id" {

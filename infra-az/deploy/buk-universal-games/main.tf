@@ -247,6 +247,10 @@ module "api_container_app" {
           {
             name    = "redis-connection-string"
             value   =  azurerm_redis_cache.redis_cache.primary_connection_string
+          },
+          {
+            name    = "application-insights-connection-string"
+            value   =  module.application_insights.connection_string
           }
         ]
     }
@@ -261,6 +265,10 @@ module "api_container_app" {
           {
             name        = "POSTGRES_HOST"
             value       = data.azurerm_postgresql_flexible_server.postgresql_server.fqdn
+          },
+          {
+            name        = "APPLICATIONINSIGHTS_CONNECTION_STRING"
+            secretRef   = "application-insights-connection-string"
           },
           {
             name        = "POSTGRES_PORT"
