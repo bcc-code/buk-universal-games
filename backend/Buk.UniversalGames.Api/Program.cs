@@ -6,6 +6,8 @@ using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Exceptions;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.ApplicationInsights.DependencyCollector;
+using Microsoft.ApplicationInsights.Extensibility;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +23,14 @@ builder.Services.AddCors(options =>
 });
 
 // Add services to the container.
+
+builder.Services.AddApplicationInsightsTelemetry(c => {
+    c.ConnectionString = builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"];
+    c.EnableDependencyTrackingTelemetryModule = true;
+    c.EnablePerformanceCounterCollectionModule = true;
+    c.EnableRequestTrackingTelemetryModule = true;
+});
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -61,7 +71,6 @@ else
 // builder.Services.AddDataProtection().PersistKeysToStackExchangeRedis(redis, "wp-proxy-dataprotection-keys");
 
 builder.Services.AddMemoryCache();
-builder.Services.AddApplicationInsightsTelemetry(builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]);
 
 
 var app = builder.Build();
@@ -105,6 +114,9 @@ app.UseSwaggerUI();
 app.Map("~/", () => Results.Redirect("~/swagger"));
 
 app.UseAuthorization();
+
+//app.UseApplicationInsightsExceptionTelemetry();
+//app.UseApplicationInsightsRequestTelemetry();
 
 app.MapControllers();
 
