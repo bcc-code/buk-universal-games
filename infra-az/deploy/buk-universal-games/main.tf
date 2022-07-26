@@ -163,7 +163,7 @@ resource "azurerm_redis_cache" "redis_cache" {
   name                = "${local.resource_prefix}-redis"
   location            = local.location
   resource_group_name = local.resource_group
-  capacity            = 0
+  capacity            = 2
   family              = "C"
   sku_name            = "Basic"
   enable_non_ssl_port = false
