@@ -1,22 +1,34 @@
 <template>
   <AdminPageLayout>
-    <h2>Admin Games</h2>
+    <h2>Games</h2>
 
-    <router-link to="/admin/AdminGame">Single game</router-link>
+    <GamesList :games="$store.state.games" :loading="$store.state.gamesLoading" @clicked="gameClicked"></GamesList>
   </AdminPageLayout>
 </template>
 
 <script>
 import AdminPageLayout from "@/components/AdminPageLayout.vue";
+import GamesList from "@/components/GamesList.vue";
 
 export default {
   name: "AdminGames",
-  components: { AdminPageLayout },
+  components: { AdminPageLayout, GamesList },
   data() {
     return {};
   },
-  mounted() {},
-  methods: {},
+  created() {
+    this.$store.dispatch("getGames");
+  },
+  methods: {
+    gameClicked(game) {
+      this.$router.push({
+        name: "AdminGameInfoDetail",
+        params: {
+          game: JSON.stringify(game),
+        },
+      });
+    },
+  },
   computed: {},
 };
 </script>

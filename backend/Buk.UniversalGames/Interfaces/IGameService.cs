@@ -5,14 +5,14 @@ namespace Buk.UniversalGames.Interfaces
 {
     public interface IGameService
     {
-        List<Game> GetGames();
+        Task<List<Game>> GetGames();
 
-        List<MatchListItem> GetMatches(Team team);
+        Task<List<MatchListItem>> GetMatches(Team team);
 
-        List<MatchListItem> GetGameMatches(int leagueId, int? gameId = null);
+        Task<List<MatchListItem>> GetGameMatches(int leagueId, int? gameId = null);
 
-        MatchWinnerResult SetMatchWinner(int matchId, int winnerTeamId);
+        Task<MatchWinnerResult> SetMatchWinner(int matchId, int winnerTeamId);
 
-        byte[] GetMatchExport();
+        Task<byte[]> GetMatchExport();
     }
 }

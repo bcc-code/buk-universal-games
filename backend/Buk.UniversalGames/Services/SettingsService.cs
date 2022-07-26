@@ -15,9 +15,9 @@ namespace Buk.UniversalGames.Services
             _settingsRepository = settingsRepository;
         }
 
-        public string? GetSettings(string key, string? defaultValue = null)
+        public async Task<string?> GetSettings(string key, string? defaultValue = null)
         {
-            var settings = _settingsRepository.GetSettings(key);
+            var settings = await _settingsRepository.GetSettings(key);
             return settings ?? defaultValue;
         }
     }

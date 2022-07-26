@@ -1,7 +1,10 @@
 <template>
   <section class="card card-light" @click="() => clickFunc()">
     <div class="card-light-column">
-      <h2 class="card-light-text">{{ game }}</h2>
+      <h2 class="card-light-text game-title">
+        <span class="icon" v-html="icons[game]"></span>
+        <span class="text">{{ game }}</span>
+      </h2>
     </div>
     <div class="card-light-column">
       <h2 :class="{ 'card-light-text': true, 'card-teams': true, winner: team1 === winner, loser: team2 === winner }">
@@ -18,6 +21,12 @@
 </template>
 
 <script>
+import { gameEarthIcon } from "@/assets/icons/game-earth.svg.ts";
+import { gameFireIcon } from "@/assets/icons/game-fire.svg.ts";
+import { gameMetalIcon } from "@/assets/icons/game-metal.svg.ts";
+import { gameWoodIcon } from "@/assets/icons/game-wood.svg.ts";
+import { gameWaterIcon } from "@/assets/icons/game-water.svg.ts";
+
 export default {
   name: "MatchListItem",
   props: {
@@ -27,6 +36,17 @@ export default {
     winner: String,
     start: String,
     clickFunc: Function,
+  },
+  data() {
+    return {
+      icons: {
+        Earth: gameEarthIcon,
+        Fire: gameFireIcon,
+        Metal: gameMetalIcon,
+        Wood: gameWoodIcon,
+        Water: gameWaterIcon,
+      },
+    };
   },
 };
 </script>
@@ -41,6 +61,7 @@ button {
   border-radius: 0.75em;
   display: grid;
   grid-template-columns: 20% 65% 15%;
+  align-items: center;
 }
 
 .card-light {
@@ -96,5 +117,12 @@ button {
 
 .card-teams.loser::after {
   background-color: var(--red);
+}
+
+.game-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 </style>

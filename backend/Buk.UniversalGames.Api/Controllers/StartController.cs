@@ -20,13 +20,13 @@ public class StartController : ControllerBase
     }
 
     [HttpGet("{code}")]
-    public ActionResult<InitData> Start(string code)
+    public async Task<ActionResult<InitData>> Start(string code)
     {
-        var team = _leagueService.GetTeamByCode(code);
+        var team = await _leagueService.GetTeamByCode(code);
         if (team == null)
             return new ExceptionResult(Strings.UnknownTeamCode, 403);
 
-        var league = team.LeagueId.HasValue ? _leagueService.GetLeague(team.LeagueId.Value) : null;
+        var league = team.LeagueId.HasValue ? await _leagueService.GetLeague(team.LeagueId.Value) : null;
 
         return new InitData
         {

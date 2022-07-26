@@ -44,17 +44,12 @@ export default {
     };
   },
   created() {
-    if (!this.$store.state.matches.length) {
-      this.getMatches();
-    }
-
-    if (!this.$store.state.games.length) {
-      this.getGames();
-    }
+    this.getMatches();
+    this.getGames();
   },
   methods: {
     getMatches() {
-      this.$store.dispatch("getMatches");
+      this.$store.dispatch("getMatches", false);
     },
     getGames() {
       this.$store.dispatch("getGames");

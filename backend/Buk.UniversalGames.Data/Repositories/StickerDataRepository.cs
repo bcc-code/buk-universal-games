@@ -2,6 +2,7 @@
 using Buk.UniversalGames.Data.Interfaces;
 using Buk.UniversalGames.Data.Models;
 using Buk.UniversalGames.Data.Models.Internal;
+using Microsoft.EntityFrameworkCore;
 
 namespace Buk.UniversalGames.Data.Repositories
 {
@@ -14,14 +15,14 @@ namespace Buk.UniversalGames.Data.Repositories
             _db = db;
         }
 
-        public Sticker? GetStickerByCode(string code)
+        public async Task<Sticker?> GetStickerByCode(string code)
         {
-            return _db.Stickers.FirstOrDefault(s => s.Code == code);
+            return await _db.Stickers.FirstOrDefaultAsync(s => s.Code == code);
         }
 
-        public StickerScanResult LogStickerScanning(Team team, Sticker sticker)
+        public async Task<StickerScanResult> LogStickerScanning(Team team, Sticker sticker)
         {
-            var scans = _db.StickerScans
+            var scans = await _db.StickerScans
                 .Where(s => s.TeamId == team.TeamId && s.StickerId == sticker.StickerId)
                 .GroupBy(s => new
                 {
@@ -30,7 +31,7 @@ namespace Buk.UniversalGames.Data.Repositories
                 {
                     LastScan = s.Max(s => s.At),
                     Scans = s.Count()
-                }).FirstOrDefault();
+                }).FirstOrDefaultAsync();
 
             var scan = new StickerScan
             {
@@ -39,8 +40,8 @@ namespace Buk.UniversalGames.Data.Repositories
                 At = DateTime.Now
             };
 
-            _db.StickerScans.Add(scan);
-            _db.SaveChanges();
+            await _db.StickerScans.AddAsync(scan);
+            await _db.SaveChangesAsync();
 
             if (scans != null)
                 throw new ScannedBeforeException(scans, scan);
@@ -52,8 +53,8 @@ namespace Buk.UniversalGames.Data.Repositories
                 Points = sticker.Points,
                 Added = DateTime.Now,
             };
-            _db.Points.Add(point);
-            _db.SaveChanges();
+            await _db.Points.AddAsync(point);
+            await _db.SaveChangesAsync();
 
             return new StickerScanResult
             {
@@ -62,23 +63,23 @@ namespace Buk.UniversalGames.Data.Repositories
             };
         }
 
-        public List<Sticker> GetStickers(int leagueId)
+        public async Task<List<Sticker>> GetStickers(int leagueId)
         {
 
-            return _db.Stickers.Where(s => s.LeagueId == leagueId).ToList();
+            return await _db.Stickers.Where(s => s.LeagueId == leagueId).ToListAsync();
         }
 
-        public void SetRandomStickerPoints()
+        public async Task SetRandomStickerPoints()
         {
             var random = new Random();
 
-            var stickers = _db.Stickers.ToList();
+            var stickers = await _db.Stickers.ToListAsync();
             foreach (var sticker in stickers)
             {
                 sticker.Points = random.Next(100, 200);
             }
 
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
         }
     }
 }

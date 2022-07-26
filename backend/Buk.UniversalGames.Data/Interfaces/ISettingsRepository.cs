@@ -2,6 +2,6 @@
 {
     public interface ISettingsRepository
     {
-        string? GetSettings(string key);
+        Task<string?> GetSettings(string key);
     }
 }

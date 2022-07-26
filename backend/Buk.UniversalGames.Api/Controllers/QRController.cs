@@ -21,9 +21,9 @@ public class QRController : ControllerBase
 
 
     [HttpGet("{stickerCode}")]
-    public IActionResult GetStickerQR(string stickerCode)
+    public async Task<IActionResult> GetStickerQR(string stickerCode)
     {
-        var qr = _stickerService.GetStickerQR(stickerCode, 40);
+        var qr = await _stickerService.GetStickerQR(stickerCode, 40);
         if (qr == null)
             throw new BadRequestException(Strings.UnknownStickerCode);
         return File(qr, "image/png");

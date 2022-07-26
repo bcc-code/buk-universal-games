@@ -15,7 +15,7 @@ namespace Buk.UniversalGames.Api.Authorization
         }
     }
 
-    public class TeamTypeFilter : IAuthorizationFilter
+    public class TeamTypeFilter : IAsyncAuthorizationFilter
     {
         readonly TeamType[] _types;
         readonly ILeagueService _leagueService;
@@ -26,7 +26,7 @@ namespace Buk.UniversalGames.Api.Authorization
             _leagueService = leagueService;
         }
 
-        public void OnAuthorization(AuthorizationFilterContext context)
+        public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
         {
             if (_types.Length > 0)
             {
@@ -37,7 +37,7 @@ namespace Buk.UniversalGames.Api.Authorization
                 }
                 else
                 {
-                    var team = _leagueService.GetTeamByCode(code);
+                    var team = await _leagueService.GetTeamByCode(code);
                     if(team == null)
                         context.Result = new ExceptionResult(Strings.UnknownTeamCode, 403);
                     else if(!_types.Contains(team.Type))

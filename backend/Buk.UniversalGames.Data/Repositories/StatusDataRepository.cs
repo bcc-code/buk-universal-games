@@ -14,9 +14,9 @@ namespace Buk.UniversalGames.Data.Repositories
             _db = db;
         }
 
-        public TeamStatus? GetTeamStatus(Team team)
+        public async Task<TeamStatus?> GetTeamStatus(Team team)
         {
-            var points = _db.Points.Where(p => p.TeamId == team.TeamId).ToList();
+            var points = await _db.Points.Where(p => p.TeamId == team.TeamId).ToListAsync();
             return new TeamStatus
             {
                 Team = team.Name,
@@ -26,9 +26,9 @@ namespace Buk.UniversalGames.Data.Repositories
             };
         }
 
-        public List<TeamStatus> GetLeagueStatus(int leagueId)
+        public async Task<List<TeamStatus>> GetLeagueStatus(int leagueId)
         {
-            return (from team in _db.Teams
+            return await (from team in _db.Teams
                     where team.LeagueId == leagueId
                     join point in _db.Points on team.TeamId equals point.TeamId into teamPoints
                     from teamPoint in teamPoints.DefaultIfEmpty()
@@ -41,14 +41,14 @@ namespace Buk.UniversalGames.Data.Repositories
                         Points = grouped.Sum(s => s.Points),
                         Stickers = grouped.Count(s => s.StickerId != null)
                     }
-                ).OrderByDescending(s=>s.Points).ThenBy(s=>s.Team).ToList();
+                ).OrderByDescending(s=>s.Points).ThenBy(s=>s.Team).ToListAsync();
         }
 
-        public void ClearStatus(List<League> leagues)
+        public async Task ClearStatus(List<League> leagues)
         {
-            _db.Database.ExecuteSqlRaw("TRUNCATE TABLE points");
-            _db.Database.ExecuteSqlRaw("TRUNCATE TABLE sticker_scans");
-            _db.Database.ExecuteSqlRaw("UPDATE matches SET winner_id = NULL");
+            await _db.Database.ExecuteSqlRawAsync("TRUNCATE TABLE points");
+            await _db.Database.ExecuteSqlRawAsync("TRUNCATE TABLE sticker_scans");
+            await _db.Database.ExecuteSqlRawAsync("UPDATE matches SET winner_id = NULL");
         }
     }
 }

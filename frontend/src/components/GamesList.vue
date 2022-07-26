@@ -5,20 +5,11 @@
       <h3 class="game-title">Loading</h3>
     </li>
   </ul>
+  <div v-else-if="games.length === 0">
+    <p>Something went wrong, please try again later ...</p>
+  </div>
   <ul v-else class="games">
-    <li
-      class="game"
-      v-for="game in games"
-      :key="game.id"
-      @click="
-        $router.push({
-          name: 'GameInfoDetail',
-          params: {
-            game: JSON.stringify(game),
-          },
-        })
-      "
-    >
+    <li class="game" v-for="game in games" :key="game.id" @click="$emit('clicked', game)">
       <span class="game-icon" v-html="icons[game.name]"></span>
       <h3 class="game-title">{{ game.name }}</h3>
     </li>

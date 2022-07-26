@@ -1,6 +1,11 @@
 <template>
   <UserPageLayout>
-    <PointsAndStickers :points="teamStatus?.status?.points" :stickers="teamStatus?.status?.stickers" :refresh="() => refreshPoints()" />
+    <PointsAndStickers
+      :loading="loading"
+      :points="teamStatus?.status?.points"
+      :stickers="teamStatus?.status?.stickers"
+      :refresh="refresh"
+    />
 
     <div v-if="resultParsed && !resultParsed.error">
       <h2 class="heading-text">{{ headingText }}</h2>
@@ -36,6 +41,7 @@ export default {
   components: { UserPageLayout, PointsAndStickers },
   data() {
     return {
+      loading: true,
       resultParsed: null,
       headingText: "",
       headingIcon: "",
@@ -45,12 +51,6 @@ export default {
     };
   },
   mounted() {
-    // const result = JSON.stringify({
-    //   code: "LKJQMNG",
-    //   success: true,
-    //   message: "Nice! You found a new sticker and 154 code to your team!",
-    //   points: 154,
-    // });
     console.log("Sticker result", this.result);
 
     if (this.result) {
@@ -64,7 +64,11 @@ export default {
           this.headingText = "Sticker not added";
           this.headingIcon = bukSadIcon;
         }
+
+        this.loading = false;
+        this.refresh();
       } catch (error) {
+        this.loading = false;
         console.error(error);
         this.$router.push({ name: "Login" });
       }
@@ -74,12 +78,18 @@ export default {
   },
   created() {
     if (Object.keys(this.$store.state.teamStatus).length === 0) {
-      this.refreshPoints();
+      this.refresh();
     }
   },
   methods: {
-    refreshPoints() {
-      this.$store.dispatch("getTeamStatus");
+    refresh() {
+      this.loading = true;
+      this.$store.dispatch("getTeamStatus", true);
+      this.$store.dispatch("getLeagueStatus", true);
+
+      setTimeout(() => {
+        this.loading = false;
+      }, 1000);
     },
   },
   computed: {

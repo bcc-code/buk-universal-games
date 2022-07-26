@@ -4,16 +4,16 @@ namespace Buk.UniversalGames.Interfaces
 {
     public interface ILeagueService
     {
-        League? GetLeague(int leagueId);
+        Task<League?> GetLeague(int leagueId);
 
-        List<League> GetLeagues();
+        Task<List<League>> GetLeagues();
 
-        Team? GetTeamByCode(string code);
+        Task<Team?> GetTeamByCode(string code);
 
-        List<Team> GetTeams(int leagueId);
+        Task<List<Team>> GetTeams(int leagueId);
 
-        byte[] ExportTeams();
+        Task<byte[]> ExportTeams();
 
-        byte[] ExportStatus();
+        Task<byte[]> ExportStatus();
     }
 }

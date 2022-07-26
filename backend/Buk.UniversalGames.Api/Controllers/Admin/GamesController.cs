@@ -21,8 +21,8 @@ public class GamesController : ControllerBase
     }
 
     [HttpPost("{matchId}/Winner/{teamId}")]
-    public ActionResult<MatchWinnerResult> SetMatchWinner(int matchId, int teamId)
+    public async Task<ActionResult<MatchWinnerResult>> SetMatchWinner(int matchId, int teamId)
     {
-        return _gameService.SetMatchWinner(matchId, teamId);
+        return await _gameService.SetMatchWinner(matchId, teamId);
     }
 }

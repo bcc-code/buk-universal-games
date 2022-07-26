@@ -19,9 +19,9 @@ public class StatusController : ControllerBase
         _statusService = statusService;
     }
 
-    [HttpPost("ClearStatusAndMatches")]
-    public void ClearStatusAndMatches()
+    [HttpGet("ClearStatusAndMatches")]
+    public async Task ClearStatusAndMatches()
     {
-        _statusService.ClearStatusAndMatches();
+        await _statusService.ClearStatusAndMatches();
     }
 }

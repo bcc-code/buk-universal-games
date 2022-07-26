@@ -5,10 +5,10 @@ namespace Buk.UniversalGames.Data.Interfaces
 {
     public interface IStatusRepository
     {
-        TeamStatus? GetTeamStatus(Team team);
+        Task<TeamStatus?> GetTeamStatus(Team team);
 
-        List<TeamStatus> GetLeagueStatus(int leagueId);
+        Task<List<TeamStatus>> GetLeagueStatus(int leagueId);
 
-        void ClearStatus(List<League> leagues);
+        Task ClearStatus(List<League> leagues);
     }
 }

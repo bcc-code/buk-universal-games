@@ -5,10 +5,9 @@
       <button
         @click="
           $router.push({
-            name: 'GameInfoDetail',
+            name: 'AdminGameInfoDetail',
             params: {
               game: JSON.stringify(game),
-              code: $store.state.loginData.code,
             },
           })
         "
@@ -17,11 +16,13 @@
       </button>
     </nav>
 
-    <h3>Game</h3>
-    <h2>
-      <span class="icon" v-html="icons[game.name]"></span>
-      <span>{{ game.name }}</span>
-    </h2>
+    <header>
+      <h3>Game</h3>
+      <h2>
+        <span class="icon" v-html="icons[game.name]"></span>
+        <span>{{ game.name }}</span>
+      </h2>
+    </header>
 
     <ul>
       <li
@@ -95,24 +96,11 @@ export default {
     }
   },
   mounted() {
-    // const tmpGame = {
-    //   name: "Water",
-    //   teams: [{ name: "Sandefjord" }, { name: "Ottowa" }],
-    // };
-
     if (this.match) {
       this.init(this.match);
     } else {
       this.$router.back();
     }
-
-    // // if (this.game) {
-    // if (tmpGame) {
-    //   // this.gameParsed = JSON.parse(this.game);
-    //   this.gameParsed = tmpGame;
-    // } else {
-    //   this.$router.push({ name: "Login" });
-    // }
   },
   methods: {
     init(matchJson) {
@@ -236,7 +224,12 @@ ul li.loser .tag {
 }
 
 .btn-success {
-  /* box-shadow: 0 0.5em 2em -0.5em hsla(158, 93%, 10%, 0.2); */
   border: 2px solid hsl(158, 93%, 40%);
+}
+
+header h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
 }
 </style>

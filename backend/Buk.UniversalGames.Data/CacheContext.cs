@@ -13,72 +13,65 @@ namespace Buk.UniversalGames.Data
             _cache = cache;
         }
 
-        public T? Get<T>(string key)
+        public async Task<T?> Get<T>(string key)
         {
-            var value = _cache.GetString(key);
-
-            var cacheKeys = GetCacheKeys();
-            if (!cacheKeys.Contains(key))
-            {
-                cacheKeys.Add(key);
-                SetCacheKeys(cacheKeys);
-            }
+            var value = await _cache.GetStringAsync(key);
             return value != null ? JsonSerializer.Deserialize<T>(value) : default;
         }
 
-        public T Set<T>(string key, T value, int expirationHours = 24, int slidingMinutes = 60)
+        public async Task<T> Set<T>(string key, T value)
         {
             var timeOut = new DistributedCacheEntryOptions
             {
-                AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(expirationHours),
-                SlidingExpiration = TimeSpan.FromMinutes(slidingMinutes)
+                AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(250),
+                SlidingExpiration = TimeSpan.FromHours(250)
             };
 
-            _cache.SetString(key, JsonSerializer.Serialize(value), timeOut);
+            await _cache.SetStringAsync(key, JsonSerializer.Serialize(value), timeOut);
 
-            var cacheKeys = GetCacheKeys();
+            var cacheKeys = await GetCacheKeys();
             cacheKeys.Add(key);
-            SetCacheKeys(cacheKeys);
+            await SetCacheKeys(cacheKeys);
 
             return value;
         }
 
-        public void Remove(string key)
+        public async Task Remove(string key)
         {
-            _cache.Remove(key);
+            await _cache.RemoveAsync(key);
 
-            var cacheKeys = GetCacheKeys();
+            var cacheKeys = await GetCacheKeys();
             cacheKeys.Remove(key);
-            SetCacheKeys(cacheKeys);
+            await SetCacheKeys(cacheKeys);
         }
 
-        public void Clear()
+        public async Task Clear()
         {
-            var cacheKeys = GetCacheKeys();
+            var cacheKeys = await GetCacheKeys();
             foreach (var cacheKey in cacheKeys)
-                _cache.Remove(cacheKey);
-            _cache.Remove("CacheKeys");
+                await _cache.RemoveAsync(cacheKey);
+            await _cache.RemoveAsync("CacheKeys");
         }
 
 
-        private List<string> GetCacheKeys()
+        private async Task<List<string>> GetCacheKeys()
         {
-            var keys = _cache.Get("CacheKeys");
+            var keys = await _cache.GetAsync("CacheKeys");
             if (keys == null)
                 return new List<string>();
             return Encoding.Default.GetString(keys).Split('|').ToList();
         }
 
-        private void SetCacheKeys(List<string> keys)
+        private async Task SetCacheKeys(List<string> keys)
         {
             var timeOut = new DistributedCacheEntryOptions
             {
-                AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1000),
-                SlidingExpiration = TimeSpan.FromMinutes(1440)
+                AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(250),
+                SlidingExpiration = TimeSpan.FromHours(250),
             };
 
             var keysString = String.Join('|', keys);
-            _cache.Set("CacheKeys", Encoding.ASCII.GetBytes(keysString), timeOut);
+            await _cache.SetAsync("CacheKeys", Encoding.ASCII.GetBytes(keysString), timeOut);
         }
     }
 }
