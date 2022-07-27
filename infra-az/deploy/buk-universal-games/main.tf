@@ -271,6 +271,10 @@ module "api_container_app" {
             secretRef   = "application-insights-connection-string"
           },
           {
+            name        = "APPLICATIONINSIGHTS__CONNECTIONSTRING"
+            secretRef   = "application-insights-connection-string"
+          },
+          {
             name        = "POSTGRES_PORT"
             value       = 5432
           },

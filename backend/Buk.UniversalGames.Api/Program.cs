@@ -24,12 +24,7 @@ builder.Services.AddCors(options =>
 
 // Add services to the container.
 
-builder.Services.AddApplicationInsightsTelemetry(c => {
-    c.ConnectionString = builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"];
-    c.EnableDependencyTrackingTelemetryModule = true;
-    c.EnablePerformanceCounterCollectionModule = true;
-    c.EnableRequestTrackingTelemetryModule = true;
-});
+
 
 
 builder.Services.AddControllers();
@@ -71,6 +66,7 @@ else
 // builder.Services.AddDataProtection().PersistKeysToStackExchangeRedis(redis, "wp-proxy-dataprotection-keys");
 
 builder.Services.AddMemoryCache();
+builder.Services.AddApplicationInsightsTelemetry();
 
 
 var app = builder.Build();
