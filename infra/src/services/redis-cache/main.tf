@@ -1,5 +1,7 @@
 resource "google_redis_instance" "cache" {
   name           = "memory-cache"
+  tier           = "STANDARD_HA"
+  read_replicas_mode = "READ_REPLICAS_DISABLED"
   memory_size_gb = 1
 
   maintenance_policy {

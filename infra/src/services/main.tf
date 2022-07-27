@@ -110,6 +110,8 @@ module "buk-universal-games-api" {
   service-account-email        = google_service_account.github-build.email
   environment-secrets = {
     POSTGRES_PASSWORD   = module.buk-universal-games-db.db-password
+    APPLICATIONINSIGHTS_CONNECTION_STRING = data.azurerm_application_insights.application_insights.connection_string
+    APPLICATIONINSIGHTS__CONNECTIONSTRING = data.azurerm_application_insights.application_insights.connection_string
   }
   environment-variables = {
     POSTGRES_HOST     = "/cloudsql/${module.postgres-instance.connection-name}"
@@ -139,8 +141,6 @@ module "buk-universal-games-directus" {
   environment-secrets = {
     DB_PASSWORD       = module.buk-universal-games-db.db-password
     ADMIN_PASSWORD    = var.db-remote-admin-pw
-    APPLICATIONINSIGHTS_CONNECTION_STRING = data.azurerm_application_insights.application_insights.connection_string
-    APPLICATIONINSIGHTS__CONNECTIONSTRING = data.azurerm_application_insights.application_insights.connection_string
   }
   environment-variables = {
     KEY               = random_uuid.directus-key.result
