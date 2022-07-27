@@ -139,7 +139,7 @@ module "buk-universal-games-directus" {
   environment-secrets = {
     DB_PASSWORD       = module.buk-universal-games-db.db-password
     ADMIN_PASSWORD    = var.db-remote-admin-pw
-    APPLICATION_INSIGHTS_CONNECTION_STRING = data.azurerm_application_insights.application_insights.connection_string
+    APPLICATIONINSIGHTS_CONNECTION_STRING = data.azurerm_application_insights.application_insights.connection_string
     APPLICATIONINSIGHTS__CONNECTIONSTRING = data.azurerm_application_insights.application_insights.connection_string
   }
   environment-variables = {
