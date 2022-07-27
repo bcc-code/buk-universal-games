@@ -7,17 +7,10 @@
         :stickers="teamStatus?.status?.stickers"
         :refresh="refresh"
       />
-    </section>
-    <section class="league-title">
-      <div class="league-title-column index-column"></div>
-      <div class="league-title-column">
-        <h2 class="league-title-text">Team</h2>
-      </div>
-      <div class="league-title-column">
-        <h2 class="league-title-text">Stickers</h2>
-      </div>
-      <div class="league-title-column">
-        <h2 class="league-title-text">Points</h2>
+      <div v-if="teamStatus.error">
+        <h2>Something went wrong</h2>
+        <p>{{ teamStatus.error }}</p>
+        <p>Please try refreshing the page.</p>
       </div>
     </section>
     <div v-if="loading">
@@ -33,7 +26,30 @@
       </section>
     </div>
     <div v-else>
-      <section class="user-section" v-for="(status, i) in leagueStatus" :key="status.id">
+      <div v-if="leagueStatus.error">
+        <div v-if="leagueStatus.errorCode == 406">
+          <p>{{ leagueStatus.error }}</p>
+        </div>
+        <div v-else>
+          <h2>Something went wrong</h2>
+          <p>{{ leagueStatus.error }}</p>
+          <br />
+          <p>Please try refreshing the page.</p>
+        </div>
+      </div>
+      <section class="league-title">
+        <div class="league-title-column index-column"></div>
+        <div class="league-title-column">
+          <h2 class="league-title-text">Team</h2>
+        </div>
+        <div class="league-title-column">
+          <h2 class="league-title-text">Stickers</h2>
+        </div>
+        <div class="league-title-column">
+          <h2 class="league-title-text">Points</h2>
+        </div>
+      </section>
+      <section class="user-section" v-for="(status, i) in leagueStatus.status" :key="status.id">
         <LeagueListItem
           :class="{ 'card-light': i > 4, 'green-font': status.teamId == teamStatus?.status?.teamId }"
           :index="i + 1"
@@ -89,7 +105,7 @@ export default {
       return this?.$store.state.teamStatus;
     },
     leagueStatus() {
-      return this?.$store.state.leagueStatus.status;
+      return this?.$store.state.leagueStatus;
     },
   },
 };

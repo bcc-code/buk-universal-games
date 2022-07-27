@@ -9,7 +9,7 @@
       <img src="../assets/logo.png" alt="" class="logo" />
       <input type="text" placeholder="Team code" v-model="teamCode" />
       <router-link v-if="teamCode.length > 3" class="btn-primary" :to="loginUrl">Login</router-link>
-      <p v-if="loginError" class="login-msg">{{ loginError }}</p>
+      <p v-if="loginMessage" class="login-msg">{{ loginMessage }}</p>
     </div>
   </section>
 </template>
@@ -20,11 +20,16 @@ export default {
   data() {
     return {
       image: require("@/assets/bg.png"),
-      teamCode: "",
-      loginError: null,
+      teamCode: "8PB3P5N",
     };
   },
+  mounted() {
+    this.$store.commit("setLoginMessage", "");
+  },
   computed: {
+    loginMessage() {
+      return this.$store.state.loginMessage ?? "";
+    },
     loginUrl() {
       let url = "/";
 

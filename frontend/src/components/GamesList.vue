@@ -6,7 +6,8 @@
     </li>
   </ul>
   <div v-else-if="games.length === 0">
-    <p>Something went wrong, please try again later ...</p>
+    <h2>Something went wrong</h2>
+    <p>Please try refreshing the page.</p>
   </div>
   <ul v-else class="games">
     <li class="game" v-for="game in games" :key="game.id" @click="$emit('clicked', game)">
