@@ -20,7 +20,7 @@ export default {
   data() {
     return {
       image: require("@/assets/bg.png"),
-      teamCode: "8PB3P5N",
+      teamCode: "",
     };
   },
   mounted() {
