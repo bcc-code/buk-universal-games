@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "secrets1": {
+      "restored": true,
+      "restoreTime": "2022-07-27T09:06:49.1170628Z"
+    },
+    "appInsights1": {
+      "restored": true,
+      "restoreTime": "2022-07-27T09:06:51.0480648Z"
+    }
+  },
+  "parameters": {
+    "appInsights1.resourceGroupName": {
+      "Name": "appInsights1.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "buk-universal-games"
+    },
+    "appInsights1.subscriptionId": {
+      "Name": "appInsights1.subscriptionId",
+      "Type": "subscription",
+      "Value": "a77a3461-9212-44cf-bc6a-11c6281797e9"
+    }
+  }
+}

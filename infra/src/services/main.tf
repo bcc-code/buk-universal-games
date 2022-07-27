@@ -7,6 +7,14 @@ terraform {
       source  = "cyrilgdn/postgresql"
       version = "1.12.0"
     }
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "3.3.0"
+    }
+    azapi = {
+      source  = "Azure/azapi"
+      version = "0.4.0"
+    }
   }
   backend "gcs" {}
 }
@@ -21,11 +29,23 @@ provider "google" {
   region  = var.gcp-location
 }
 
+provider "azurerm" {
+  features {}
+}
+
+provider "azapi" {
+}
+
 locals {
   environment-name-uppercase = upper(var.environment-name)
   api-service-name = "buk-universal-games-api-${var.environment-name}"
   site-service-name = "buk-universal-games-ui-${var.environment-name}"
   directus-service-name = "buk-universal-games-directus-${var.environment-name}"
+}
+
+data "azurerm_application_insights" "application_insights" {
+  name                = "buk-universal-games"
+  resource_group_name = "buk-universal-games"
 }
 
 module "postgres-instance" {
@@ -119,6 +139,8 @@ module "buk-universal-games-directus" {
   environment-secrets = {
     DB_PASSWORD       = module.buk-universal-games-db.db-password
     ADMIN_PASSWORD    = var.db-remote-admin-pw
+    APPLICATION_INSIGHTS_CONNECTION_STRING = data.azurerm_application_insights.application_insights.connection_string
+    APPLICATIONINSIGHTS__CONNECTIONSTRING = data.azurerm_application_insights.application_insights.connection_string
   }
   environment-variables = {
     KEY               = random_uuid.directus-key.result
