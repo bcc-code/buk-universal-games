@@ -52,7 +52,7 @@ namespace Buk.UniversalGames.Data.Repositories
                     where team2.LeagueId == leagueId
                     join game in _db.Games on match.GameId equals game.GameId
                     where game.GameId == match.GameId
-                    orderby match.Start, team1.Name
+                    orderby match.Start, match.GameId, team1.Name
                     select new MatchListItem
                     {
                         MatchId = match.MatchId,
