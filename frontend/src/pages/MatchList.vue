@@ -2,11 +2,13 @@
   <UserPageLayout>
     <div v-if="matches.error">
       <h2>Something went wrong</h2>
-      <p>{{ matches.error }}</p>
-      <p>Please try refreshing the page.</p>
+      <div class="message">
+        <p class="message-text">{{ matches.error }}</p>
+        <p class="message-text">Please try refreshing the page.</p>
+      </div>
     </div>
     <MatchCard :selectedMatch="selectedMatch" :game="whichGame(selectedMatch.gameId)" :games="games" />
-    <section class="match-title">
+    <section class="match-title" v-if="matches.length">
       <div class="match-title-column">
         <h2 class="match-title-text">Game</h2>
       </div>
@@ -101,5 +103,18 @@ export default {
   font-size: 0.85em;
   color: var(--gray-2);
   margin: 1em 0 0;
+}
+
+.message {
+  border-radius: 1em;
+  margin-top: 1em;
+  padding: 1.5em;
+  background-color: var(--dark);
+  color: #fff;
+  text-align: center;
+}
+
+.message .message-text {
+  font-size: 1.5em;
 }
 </style>

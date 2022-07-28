@@ -27,17 +27,20 @@
     </div>
     <div v-else>
       <div v-if="leagueStatus.error">
-        <div v-if="leagueStatus.errorCode == 406">
-          <p>{{ leagueStatus.error }}</p>
+        <div class="message" v-if="leagueStatus.errorCode == 406">
+          <p class="message-text">{{ leagueStatus.error }}</p>
         </div>
         <div v-else>
           <h2>Something went wrong</h2>
-          <p>{{ leagueStatus.error }}</p>
-          <br />
-          <p>Please try refreshing the page.</p>
+
+          <div class="message">
+            <p class="message-text">{{ leagueStatus.error }}</p>
+            <br />
+            <p class="message-text">Please try refreshing the page.</p>
+          </div>
         </div>
       </div>
-      <section class="league-title">
+      <section class="league-title" v-if="leagueStatus.status.length">
         <div class="league-title-column index-column"></div>
         <div class="league-title-column">
           <h2 class="league-title-text">Team</h2>
@@ -141,5 +144,18 @@ export default {
 
 .green-font {
   color: var(--green);
+}
+
+.message {
+  border-radius: 1em;
+  margin-top: 1em;
+  padding: 1.5em;
+  background-color: var(--dark);
+  color: #fff;
+  text-align: center;
+}
+
+.message .message-text {
+  font-size: 1.5em;
 }
 </style>
