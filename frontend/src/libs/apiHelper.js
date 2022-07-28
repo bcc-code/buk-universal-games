@@ -106,7 +106,7 @@ export function getData(url, data) {
 
       if (store.state.currentAmountOfRequestRetries[url] && store.state.currentAmountOfRequestRetries[url] <= retryRequestAmount) {
         sendRequest().then(r => {
-          if (r.error) {
+          if (r.error && r.errorCode != 406) {
             currentResponse = r
           } else {
             intervalRunning = false

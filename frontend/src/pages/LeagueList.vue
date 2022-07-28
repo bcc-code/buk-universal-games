@@ -40,7 +40,7 @@
           </div>
         </div>
       </div>
-      <section class="league-title" v-if="leagueStatus.status.length">
+      <section class="league-title" v-if="leagueStatus.status?.length">
         <div class="league-title-column index-column"></div>
         <div class="league-title-column">
           <h2 class="league-title-text">Team</h2>
