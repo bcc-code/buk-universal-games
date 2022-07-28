@@ -1,5 +1,10 @@
 <template>
   <UserPageLayout>
+    <div v-if="matches.error">
+      <h2>Something went wrong</h2>
+      <p>{{ matches.error }}</p>
+      <p>Please try refreshing the page.</p>
+    </div>
     <MatchCard :selectedMatch="selectedMatch" :game="whichGame(selectedMatch.gameId)" :games="games" />
     <section class="match-title">
       <div class="match-title-column">
@@ -55,6 +60,10 @@ export default {
       this.$store.dispatch("getGames");
     },
     whichGame(id) {
+      if (this.games.error) {
+        return {};
+      }
+
       let game = this.games.find((game) => game.id == id);
       return game;
     },

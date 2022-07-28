@@ -111,6 +111,10 @@ export default {
       this.$store.dispatch("getGames");
     },
     getGameById(id) {
+      if (this.games.error) {
+        return {};
+      }
+
       const game = this.games.find((game) => game.id == id);
       return game;
     },

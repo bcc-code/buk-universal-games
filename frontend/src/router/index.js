@@ -14,13 +14,13 @@ import AdminGames from "@/pages/AdminGames.vue";
 import AdminMatchListGame from "@/pages/AdminMatchListGame.vue";
 import AdminMap from "@/pages/AdminMap.vue";
 import store from '@/store'
-// import { postStickerCode } from '@/libs/apiHelper'
 
 const routes = [
   {
     path: "/",
     name: "Login",
     component: Login,
+    props: true
   },
   {
     path: "/start/:code",
@@ -127,14 +127,19 @@ router.beforeEach(async (to, from, next) => {
   if (to.params.code) {
     window.localStorage.setItem("teamCode", to.params.code);
     const loginData = await store.dispatch("getLoginData")
+    store.commit('setLoginMessage', '')
 
-    if (!loginData) {
-      window.alert("Ugyldig kode");
+
+    if (!loginData || loginData.error) {
+      if (loginData.error) {
+        store.commit('setLoginMessage', loginData.error)
+      } else {
+        store.commit('setLoginMessage', 'Something went wrong, we could not log you in. Please try again')
+      }
       nextOptions = { name: 'Login' }
     }
 
     if (loginData && loginData.access === 'Admin') {
-      // nextOptions = { name: 'AdminLeagueStatus' }
       nextOptions = { name: 'AdminSelectLeague' }
     }
   }

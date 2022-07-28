@@ -8,6 +8,7 @@ const store = createStore({
   },
   state: {
     loginData: {},
+    loginMessage: '',
     teamStatus: getSavedData("teamStatus", {}),
     leagueStatus: getSavedData("leagueStatus", {}),
     adminLeagues: [],
@@ -21,11 +22,15 @@ const store = createStore({
     scanning: {
       handlingURL: false,
       stickerCode: null
-    }
+    },
+    currentAmountOfRequestRetries: []
   },
   mutations: {
     setLoginData(state, data) {
       state.loginData = data
+    },
+    setLoginMessage(state, error) {
+      state.loginMessage = error
     },
     setTeamStatus(state, data) {
       state.teamStatus = data
@@ -62,20 +67,28 @@ const store = createStore({
     },
     resetAdminFilterGameSelected(state) {
       state.adminFilterGameSelected = null
-    }
+    },
+    addRequestRetry(state, requestUrl) {
+      const exist = state.currentAmountOfRequestRetries[requestUrl]
+
+      if (exist) {
+        state.currentAmountOfRequestRetries[requestUrl]++
+      } else {
+        state.currentAmountOfRequestRetries[requestUrl] = 1
+      }
+    },
+    resetRequestRetry(state, requestUrl) {
+      const exist = state.currentAmountOfRequestRetries[requestUrl]
+
+      if (exist) {
+        state.currentAmountOfRequestRetries[requestUrl] = null
+      }
+    },
   },
   actions: {
     async getLoginData(ctx) {
-      let loginData = await initData("Start/")
-        .then(r => {
-          if (r.status == 200) {
-            return r.json()
-          }
-        })
-        .then(r => {
-          return r;
-        })
-
+      ctx.commit("setLoginMessage", 'Logging you in, please wait ...')
+      const loginData = await initData("Start/")
       ctx.commit("setLoginData", loginData)
       return loginData
     },
@@ -85,22 +98,9 @@ const store = createStore({
 
       if (savedDataAge === null || savedDataAge > 30 || (savedDataAge > 5 && override)) {
         teamStatus = await getData("/Status/")
-          .then(r => {
-            if (r.status == 200) {
-              return r.json()
-            }
-          })
-          .then(r => {
-            if (r.error) {
-              throw r.error;
-            }
-
-            saveData('teamStatus', r)
-
-            return r;
-          }).catch(e => {
-            console.error(e)
-          })
+        if (!teamStatus.error) {
+          saveData('teamStatus', teamStatus)
+        }
       }
 
       if (!teamStatus) {
@@ -118,22 +118,9 @@ const store = createStore({
 
       if (savedDataAge === null || savedDataAge > 30 || (savedDataAge > 5 && override)) {
         leagueStatus = await getData("/Status/League")
-          .then(r => {
-            if (r.status == 200) {
-              return r.json()
-            }
-          })
-          .then(r => {
-            if (r.error) {
-              throw r.error;
-            }
-
-            saveData('leagueStatus', r)
-
-            return r;
-          }).catch(e => {
-            console.error(e)
-          })
+        if (!leagueStatus.error) {
+          saveData('leagueStatus', leagueStatus)
+        }
       }
 
       if (!leagueStatus) {
@@ -149,29 +136,13 @@ const store = createStore({
         return
 
       let leagueStatus = await getData("/Admin/Leagues/" + ctx.state.adminLeagueSelected + "/Status")
-        .then(r => {
-          if (r.status == 200) {
-            return r.json()
-          }
-        })
-        .then(r => {
-          return r;
-        })
+
 
       ctx.commit("setAdminLeagueStatus", leagueStatus)
       return leagueStatus
     },
     async getAdminLeagues(ctx) {
-      let leagues = await getData("/Admin/Leagues/")
-        .then(r => {
-          if (r.status == 200) {
-            return r.json()
-          }
-        })
-        .then(r => {
-          return r;
-        })
-
+      const leagues = await getData("/Admin/Leagues/")
       ctx.commit("setAdminLeagues", leagues)
       return leagues
     },
@@ -179,16 +150,7 @@ const store = createStore({
       return ctx.commit("setAdminLeagueSelected", id)
     },
     async getAdminMatches(ctx) {
-      let matches = await getData("/Admin/Leagues/" + ctx.state.adminLeagueSelected + "/Matches")
-        .then(r => {
-          if (r.status == 200) {
-            return r.json()
-          }
-        })
-        .then(r => {
-          return r;
-        })
-
+      const matches = await getData("/Admin/Leagues/" + ctx.state.adminLeagueSelected + "/Matches")
       ctx.commit("setAdminMatches", matches)
       return matches
     },
@@ -198,22 +160,9 @@ const store = createStore({
 
       if (savedDataAge === null || savedDataAge > 30 || (savedDataAge > 5 && override)) {
         matches = await getData("/Games/Matches")
-          .then(r => {
-            if (r.status == 200) {
-              return r.json()
-            }
-          })
-          .then(r => {
-            if (r.error) {
-              throw r.error;
-            }
-
-            saveData('matches', r)
-
-            return r;
-          }).catch(e => {
-            console.error(e)
-          })
+        if (!matches.error) {
+          saveData('matches', matches)
+        }
       }
 
       if (!matches) {
@@ -231,22 +180,9 @@ const store = createStore({
 
       if (savedDataAge === null || savedDataAge > 30) {
         games = await getData("/Games")
-          .then(r => {
-            if (r.status == 200) {
-              return r.json()
-            }
-          })
-          .then(r => {
-            if (r.error) {
-              throw r.error;
-            }
-
-            saveData('games', r)
-
-            return r;
-          }).catch(e => {
-            console.error(e)
-          })
+        if (!games.error) {
+          saveData('games', games)
+        }
       }
 
       if (!games) {
@@ -302,6 +238,7 @@ function getSavedDataAge(storageKey) {
     }
   }
 
+  // return age * 100;
   return age;
 }
 

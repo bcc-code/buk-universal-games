@@ -1,26 +1,157 @@
+import store from '@/store'
+
 export const rootUrl = "https://universalgames.buk.no/api/"
+// export const rootUrl = "https://10.0.0.3:3000/api/"
+const retryRequestAmount = 5; // Retry the request x times
+const seconsBetweenRetry = 2; // Wait x seconds between each request
 
 export function initData(url, data) {
   const teamCode = myGetTeamCodeFunction()
+  let intervalRunning = false;
+  store.commit('resetRequestRetry', url)
 
-  return fetch(rootUrl + url + teamCode, {
-    method: "GET",
-    headers: {
-      "Accept": "application/json",
-    },
-    body: JSON.stringify(data),
+  return new Promise((resolve, reject) => {
+    intervalFunction(resolve, reject)
+    let currentResponse = null
+    const requestInterval = setInterval(() => intervalFunction(resolve, reject), seconsBetweenRetry * 1000);
+
+    setTimeout(() => {
+      if (intervalRunning) {
+        clearInterval(requestInterval)
+        resolve(currentResponse)
+      }
+    }, ((seconsBetweenRetry + 1) * retryRequestAmount) * 1000);
+
+    function intervalFunction(resolve, reject) {
+      intervalRunning = true
+      store.commit('addRequestRetry', url)
+
+      if (store.state.currentAmountOfRequestRetries[url] && store.state.currentAmountOfRequestRetries[url] <= retryRequestAmount) {
+        sendRequest().then(r => {
+          if (r.error) {
+            currentResponse = r
+            if (r.errorCode === 403) {
+              intervalRunning = false
+              currentResponse = r
+              clearInterval(requestInterval)
+              resolve(currentResponse)
+            }
+          } else {
+            intervalRunning = false
+            currentResponse = r
+            clearInterval(requestInterval)
+            resolve(currentResponse)
+          }
+        }).catch(e => {
+          console.error(e)
+          reject(e)
+        })
+      } else {
+        intervalRunning = false
+        clearInterval(requestInterval)
+        resolve(currentResponse)
+      }
+    }
+
+    function sendRequest() {
+      let requestStatusCode = 0;
+      return fetch(rootUrl + url + teamCode, {
+        method: "GET",
+        headers: {
+          "Accept": "application/json",
+        },
+        body: JSON.stringify(data),
+      }).then(r => {
+        requestStatusCode = r.status
+
+        return r.json()
+      }).then(r => {
+        if (requestStatusCode !== 200) {
+          throw r
+        }
+
+        return r
+      })
+        .catch(e => {
+          if (e.error) {
+            return { ...e, errorCode: requestStatusCode }
+          }
+
+          return { error: e, errorCode: requestStatusCode }
+        })
+    }
   })
 }
 
 export function getData(url, data) {
   const teamCode = myGetTeamCodeFunction()
+  let intervalRunning = false;
+  store.commit('resetRequestRetry', url)
 
-  return fetch(rootUrl + teamCode + url, {
-    method: "GET",
-    headers: {
-      "Accept": "application/json",
-    },
-    body: JSON.stringify(data),
+  return new Promise((resolve, reject) => {
+    intervalFunction(resolve, reject)
+    let currentResponse = null
+    const requestInterval = setInterval(() => intervalFunction(resolve, reject), seconsBetweenRetry * 1000);
+
+    setTimeout(() => {
+      if (intervalRunning) {
+        clearInterval(requestInterval)
+        resolve(currentResponse)
+      }
+    }, ((seconsBetweenRetry + 1) * retryRequestAmount) * 1000);
+
+    function intervalFunction(resolve, reject) {
+      intervalRunning = true
+      store.commit('addRequestRetry', url)
+
+      if (store.state.currentAmountOfRequestRetries[url] && store.state.currentAmountOfRequestRetries[url] <= retryRequestAmount) {
+        sendRequest().then(r => {
+          if (r.error) {
+            currentResponse = r
+          } else {
+            intervalRunning = false
+            currentResponse = r
+            clearInterval(requestInterval)
+            resolve(currentResponse)
+          }
+        }).catch(e => {
+          console.error(e)
+          reject(e)
+        })
+      } else {
+        intervalRunning = false
+        clearInterval(requestInterval)
+        resolve(currentResponse)
+      }
+    }
+
+    function sendRequest() {
+      let requestStatusCode = 0;
+      return fetch(rootUrl + teamCode + url, {
+        method: "GET",
+        headers: {
+          "Accept": "application/json",
+        },
+        body: JSON.stringify(data),
+      }).then(r => {
+        requestStatusCode = r.status
+
+        return r.json()
+      }).then(r => {
+        if (requestStatusCode !== 200) {
+          throw r
+        }
+
+        return r
+      })
+        .catch(e => {
+          if (e.error) {
+            return { ...e, errorCode: requestStatusCode }
+          }
+
+          return { error: e, errorCode: requestStatusCode }
+        })
+    }
   })
 }
 
