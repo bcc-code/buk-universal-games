@@ -112,6 +112,7 @@ module "buk-universal-games-api" {
     POSTGRES_PASSWORD   = module.buk-universal-games-db.db-password
     APPLICATIONINSIGHTS_CONNECTION_STRING = data.azurerm_application_insights.application_insights.connection_string
     APPLICATIONINSIGHTS__CONNECTIONSTRING = data.azurerm_application_insights.application_insights.connection_string
+    NEW_RELIC_LICENSE_KEY                 = var.new-relic-licence-key
   }
   environment-variables = {
     POSTGRES_HOST     = "/cloudsql/${module.postgres-instance.connection-name}"
@@ -120,6 +121,7 @@ module "buk-universal-games-api" {
     POSTGRES_DB       = module.buk-universal-games-db.db-name
     ENVIRONMENT_NAME  = var.environment-name
     REDIS_CONNECTION_STRING = "${module.redis-cache.service.host}:${module.redis-cache.service.port}"
+    NEW_RELIC_APP_NAME="buk-universal-games-${var.environment-name}"
   }
 }
 

@@ -36,12 +36,11 @@ services:
     networks:
         - buk-universal-games
 
-  
   database:
     container_name: bukuniversalgames_database
     image: postgis/postgis:13-master
     volumes:
-      - ./.data/database:/var/lib/postgresql/data
+      - buk-universal-games-postgres:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=password
@@ -103,6 +102,9 @@ services:
 
       ADMIN_EMAIL: 'admin@admin.com'
       ADMIN_PASSWORD: 'password'
+
+volumes:
+  buk-universal-games-postgres:
 
 networks:
   buk-universal-games:

@@ -34,5 +34,7 @@ variable "domain-name" {
   type = string
 }
 
-
+variable "new-relic-licence-key" {
+  type = string
+}
 
