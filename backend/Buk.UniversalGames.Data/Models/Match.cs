@@ -15,6 +15,8 @@ public class Match {
 
     public int GameId{ get; set; }
 
+    public string AddOn{ get; set; }
+
     public DateTime Start { get; set; }
 
     public int? WinnerId { get; set; }

@@ -32,6 +32,7 @@ namespace Buk.UniversalGames.Data.Repositories
                 {
                     MatchId = match.MatchId,
                     GameId = match.GameId,
+                    AddOn = match.AddOn,
                     Team1Id = match.Team1Id,
                     Team1 = team1.Name,
                     Team2Id = match.Team2Id,
@@ -56,6 +57,7 @@ namespace Buk.UniversalGames.Data.Repositories
                     {
                         MatchId = match.MatchId,
                         GameId = match.GameId,
+                        AddOn = match.AddOn,
                         Team1Id = match.Team1Id,
                         Team1 = team1.Name,
                         Team2Id = match.Team2Id,
