@@ -12,7 +12,7 @@ terraform init
 terraform validate -compact-warnings
 
 # Terraform plan
-terraform plan -compact-warnings -out=main-$env_name.tfplan # -var-file=deploy-$env_name.tfvars
+terraform plan -compact-warnings -out=main-$env_name.tfplan -var-file=secrets.tfvars # -var-file=deploy-$env_name.tfvars
 
 # Terraform apply
 terraform apply -compact-warnings -auto-approve main-$env_name.tfplan

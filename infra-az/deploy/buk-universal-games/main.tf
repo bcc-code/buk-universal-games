@@ -251,6 +251,10 @@ module "api_container_app" {
           {
             name    = "application-insights-connection-string"
             value   =  module.application_insights.connection_string
+          },
+          {
+            name    = "new-relic-licence-key"
+            value   =  var.new-relic-licence-key
           }
         ]
     }
@@ -297,7 +301,15 @@ module "api_container_app" {
           {
             name        = "ENVIRONMENT_NAME"
             value   = terraform.workspace
-          }
+          },
+          {
+            name        = "NEW_RELIC_LICENSE_KEY"
+            secretRef   = "new-relic-licence-key"
+          },
+          {
+            name        = "NEW_RELIC_APP_NAME"
+            value       = "buk-universal-games-dev-az"
+          },
         ]
         resources     = {
           cpu         = 0.5
