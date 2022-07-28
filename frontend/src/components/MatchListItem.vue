@@ -3,7 +3,7 @@
     <div class="card-light-column">
       <h2 class="card-light-text game-title">
         <span class="icon" v-html="icons[game]"></span>
-        <span class="text">{{ game }}</span>
+        <span class="text">{{ game + ' ' + (gameAddOn || '')}}</span>
       </h2>
     </div>
     <div class="card-light-column">
@@ -31,6 +31,7 @@ export default {
   name: "MatchListItem",
   props: {
     game: String,
+    gameAddOn: String,
     team1: String,
     team2: String,
     winner: String,

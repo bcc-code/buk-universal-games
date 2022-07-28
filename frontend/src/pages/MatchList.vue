@@ -21,6 +21,7 @@
       <MatchListItem
         :class="{ 'card-dark': match.gameId == selectedMatch.gameId }"
         :game="whichGame(match.gameId)?.name"
+        :gameAddOn="match.addOn"
         :team1="match.team1"
         :team2="match.team2"
         :start="match.start"
