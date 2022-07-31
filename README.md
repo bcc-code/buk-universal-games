@@ -1,11 +1,12 @@
 # BUK Universal Games
 
-## Notes - if project ever re-userd
+## Notes - if project ever re-used
 
 1. Make it possible to clear a match result and to set a match to a draw (splitting winner points)
 2. Extra safety on point-and-match clearing function - not allowed after game started
-3. Hide highscore to keep things excited failed because of missing check for timezone when parsing dates from settings (missed by some hours)
-3. Recommended: When signing in as systemadmin - everything should be similar as for an admin but with an additional screen for system admin features (clear cache, pre-cache and clear points and matches)
+3. Hide highscore to keep things exciting failed because of missing check for timezone when parsing dates from settings (missed by some hours)
+4. Recommended: When signing in as systemadmin - everything should be similar as for an admin but with an additional screen for system admin features (clear cache, pre-cache and clear points and matches)
+5. Better info: If start links used through Telegram and if stickers scanned directly from phones camera and not camera button i app - user is not signed in because Telegram browser does not have same local storage as the browser used outside Telegram
 
 ## Running Locally
 
