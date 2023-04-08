@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace Buk.UniversalGames.Data.Models;
 
-public class Point {
+public class PointsRegistration {
 
     [Key]
     [JsonPropertyName("id")]

@@ -42,7 +42,7 @@ namespace Buk.UniversalGames.Data.Repositories
                     Start = match.Start.ToShortTimeString(),
                 }).ToListAsync();
         }
-        public async Task<List<MatchListItem>> GetGameMatches(int leagueId, int? gameId = null)
+        public async Task<List<MatchListItem>> GetMatches(int leagueId, int? gameId = null)
         {
             return await (from match in _db.Matches
                     where !gameId.HasValue || match.GameId == gameId.Value
@@ -68,68 +68,66 @@ namespace Buk.UniversalGames.Data.Repositories
                     }).ToListAsync();
         }
 
-        public async Task<MatchWinnerResult> SetMatchWinner(Game game, int matchId, Team team)
+        public async Task<MatchWinnerResult> SetMatchWinner(Game game, int matchId, Team winningTeam)
         {
-            var match = await _db.Matches.FirstOrDefaultAsync(s => s.MatchId == matchId);
+            var match = await _db.Matches
+                .AsTracking()
+                .FirstOrDefaultAsync(s => s.MatchId == matchId)
+                ?? throw new BadRequestException(Strings.UnknownMatchId);
+            var existingPointsRegistrations = await _db.Points.Where(s => s.MatchId == matchId).ToListAsync();
 
-            if(match == null)
-                throw new BadRequestException(Strings.UnknownMatchId);
+            match.WinnerId = winningTeam.TeamId;
 
-            var points = await _db.Points.Where(s => s.MatchId == matchId).ToListAsync();
+            PointsRegistration? winningPointsRegistration = null;
+            PointsRegistration? losingPointsRegistration = null;
 
-            if (match.WinnerId.GetValueOrDefault() != team.TeamId)
-                match.WinnerId = team.TeamId;
-
-            Point? winnerPoint = null;
-            Point? looserPoint = null;
-
-            if (points.Count > 0)
+            if (existingPointsRegistrations.Count > 0)
             {
-                foreach (var point in points)
+                foreach (var pointsRegistration in existingPointsRegistrations)
                 {
-                    if (point.TeamId == team.TeamId)
+                    if (pointsRegistration.TeamId == winningTeam.TeamId)
                     {
-                        point.Points = game.WinnerPoints;
-                        winnerPoint = point;
+                        pointsRegistration.Points = game.WinnerPoints;
+                        winningPointsRegistration = pointsRegistration;
                     }
                     else
                     {
-                        point.Points = game.LooserPoints;
-                        looserPoint = point;
+                        pointsRegistration.Points = game.LooserPoints;
+                        losingPointsRegistration = pointsRegistration;
                     }
                 }
             }
             else
             {
-                winnerPoint = new Point
+                winningPointsRegistration = new PointsRegistration
                 {
-                    TeamId = team.TeamId,
+                    TeamId = winningTeam.TeamId,
                     Points = game.WinnerPoints,
                     MatchId = matchId,
                     GameId = game.GameId,
                     Added = DateTime.Now,
                 };
-                await _db.Points.AddAsync(winnerPoint);
+                
+                var losingTeamId = match.Team1Id == winningTeam.TeamId ? match.Team2Id : match.Team1Id;
 
-                var looserTeamId = match.Team1Id == team.TeamId ? match.Team2Id : match.Team1Id;
-
-                looserPoint = new Point
+                losingPointsRegistration = new PointsRegistration
                 {
-                    TeamId = looserTeamId,
+                    TeamId = losingTeamId,
                     Points = game.LooserPoints,
                     MatchId = matchId,
                     GameId = game.GameId,
                     Added = DateTime.Now
                 };
-                await _db.Points.AddAsync(looserPoint);
+
+                await _db.Points.AddRangeAsync(winningPointsRegistration, losingPointsRegistration);
             }
 
             await _db.SaveChangesAsync();
 
             return new MatchWinnerResult
             {
-                LooserPoint = looserPoint,
-                WinnerPoint = winnerPoint,
+                LooserPoint = losingPointsRegistration,
+                WinnerPoint = winningPointsRegistration,
                 Match = match
             };
         }

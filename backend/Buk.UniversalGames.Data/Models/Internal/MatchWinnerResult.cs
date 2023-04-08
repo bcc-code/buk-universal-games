@@ -3,7 +3,7 @@
     public class MatchWinnerResult
     {
         public Match Match { get; set; }
-        public Point? WinnerPoint{ get; set; }
-        public Point? LooserPoint { get; set; }
+        public PointsRegistration? WinnerPoint{ get; set; }
+        public PointsRegistration? LooserPoint { get; set; }
     }
 }

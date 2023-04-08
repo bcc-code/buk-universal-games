@@ -35,16 +35,16 @@ namespace Buk.UniversalGames.Data.CacheRepositories
 
         public async Task<List<MatchListItem>> GetMatches(Team team)
         {
-            return (await GetGameMatches(team.LeagueId.GetValueOrDefault())).Where(s => s.Team1Id == team.TeamId || s.Team2Id == team.TeamId).ToList();
+            return (await GetMatches(team.LeagueId.GetValueOrDefault())).Where(s => s.Team1Id == team.TeamId || s.Team2Id == team.TeamId).ToList();
         }
 
-        public async Task<List<MatchListItem>> GetGameMatches(int leagueId, int? gameId = null)
+        public async Task<List<MatchListItem>> GetMatches(int leagueId, int? gameId = null)
         {
             var cacheKey = $"Matches_{leagueId}";
             var matches = await _cache.Get<List<MatchListItem>>(cacheKey);
             if (matches == null)
             {
-                matches = await _data.GetGameMatches(leagueId);
+                matches = await _data.GetMatches(leagueId);
                 await _cache.Set(cacheKey, matches);
             }
 

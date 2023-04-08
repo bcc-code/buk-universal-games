@@ -1,6 +1,7 @@
 ﻿using Buk.UniversalGames.Data.Exceptions;
 using Buk.UniversalGames.Data.Interfaces;
 using Buk.UniversalGames.Data.Models;
+using Buk.UniversalGames.Data.Models.Internal;
 using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Cultures;
 using Buk.UniversalGames.Library.Enums;
@@ -18,6 +19,14 @@ namespace Buk.UniversalGames.Services
         private readonly IStickerRepository _stickerRepository;
         private readonly ILeagueRepository _leagueRepository;
 
+        private readonly string[] _stickerResponseOptions = new []
+        {
+            Strings.ScanSuccessPointsAwesomeInfo,
+            Strings.ScanSuccessPointsGreatInfo,
+            Strings.ScanSuccessPointsNiceInfo,
+            Strings.ScanSuccessPointsPerfectInfo
+        };
+
         public StickerService(ILogger<StickerService> logger, IStickerRepository stickerRepository, ILeagueRepository leagueRepository)
         {
             _logger = logger;
@@ -27,14 +36,9 @@ namespace Buk.UniversalGames.Services
 
         public async Task<ScanResult> ScanSticker(Team team, string code)
         {
-            var sticker = await _stickerRepository.GetStickerByCode(code);
-            if (sticker == null)
-                throw new BadRequestException(Strings.UnknownStickerCode);
-
+            var sticker = await _stickerRepository.GetStickerByCode(code) ?? throw new BadRequestException(Strings.UnknownStickerCode);
             if (team.LeagueId.GetValueOrDefault() != sticker.LeagueId)
                 throw new BadRequestException(Strings.WrongLeagueSticker);
-
-            var message = "";
 
             try
             {
@@ -46,30 +50,11 @@ namespace Buk.UniversalGames.Services
                 // NB! If points will be part of cache - this is added points after scanning
                 var point = scanResult.Point;
 
-                var responseValues = Enum.GetValues(typeof(StickerScanSuccessResponses));
-                var responseType = (StickerScanSuccessResponses)responseValues.GetValue(new Random().Next(responseValues.Length))!;
-
-                switch (responseType)
-                {
-                    case StickerScanSuccessResponses.PointsAddedAwesome:
-                        message = Strings.ScanSuccessPointsAwesomeInfo.Replace("{points}", sticker.Points.ToString());
-                        break;
-                    case StickerScanSuccessResponses.PointsAddedNice:
-                        message = Strings.ScanSuccessPointsNiceInfo.Replace("{points}", sticker.Points.ToString());
-                        break;
-                    case StickerScanSuccessResponses.PointsAddedPerfect:
-                        message = Strings.ScanSuccessPointsPerfectInfo.Replace("{points}", sticker.Points.ToString());
-                        break;
-                    case StickerScanSuccessResponses.PointsAddedGreat:
-                        message = Strings.ScanSuccessPointsGreatInfo.Replace("{points}", sticker.Points.ToString());
-                        break;
-                }
-
                 return new ScanResult
                 {
                     Code = code,
                     Success = true,
-                    Message = message,
+                    Message = _stickerResponseOptions[new Random().Next(_stickerResponseOptions.Length)]!.Replace("{points}", sticker.Points.ToString()),
                     Points = sticker.Points,
                 };
             }
@@ -78,40 +63,11 @@ namespace Buk.UniversalGames.Services
                 // NB! If scan log will be part of cache - this is failed scan log item
                 var scan = ex.Scan;
 
-                var responseValues = Enum.GetValues(typeof(StickerScanScannedResponses));
-                var responseType = (StickerScanScannedResponses)responseValues.GetValue(new Random().Next(responseValues.Length))!;
-                
-                switch (responseType)
-                {
-                    case StickerScanScannedResponses.ScannedTimes: 
-                        message = Strings.ScanErrorScannedBefore.Replace("{times}", ex.ScanCheckResult.Scans.ToString());
-                        break;
-                    case StickerScanScannedResponses.ScannedTimeTooBad:
-                        message = Strings.ScanErrorScannedBeforeTooBad.Replace("{times}", ex.ScanCheckResult.Scans.ToString());
-                        break;
-                    case StickerScanScannedResponses.SinceScanned:
-                    case StickerScanScannedResponses.SinceScanned2:
-                        var timespan = DateTime.Now - ex.ScanCheckResult.LastScan;
-                        var minutes = (int)Math.Ceiling(timespan.TotalMinutes);
-
-                        message = responseType == StickerScanScannedResponses.SinceScanned
-                            ? Strings.ScanErrorScannedLastTime
-                            : Strings.ScanErrorScannedLastTime2;
-
-                        if (minutes > 1)
-                            message = message.Replace("{time}", minutes.ToString()).Replace("{unit}", Strings.Minutes);
-                        else
-                        {
-                            var seconds = (int)Math.Ceiling(timespan.TotalSeconds);
-                            message = message.Replace("{time}", seconds.ToString()).Replace("{unit}", Strings.Seconds);
-                        }
-                        break;
-                }
                 return new ScanResult
                 {
                     Code = code,
                     Success = false,
-                    Message = message,
+                    Message = GetMessageIfScannedBefore(ex.ScanCheckResult),
                     Points = 0,
                 };
             }
@@ -194,6 +150,42 @@ namespace Buk.UniversalGames.Services
         public async Task SetRandomStickerPoints()
         {
             await _stickerRepository.SetRandomStickerPoints();
+        }
+
+        static string GetMessageIfScannedBefore(StickerScannedBeforeInfo scannedBeforeInfo)
+        {
+            var message = string.Empty;
+            var responseValues = Enum.GetValues(typeof(StickerScanScannedResponses));
+            var responseType = (StickerScanScannedResponses)responseValues.GetValue(new Random().Next(responseValues.Length))!;
+
+            switch (responseType)
+            {
+                case StickerScanScannedResponses.ScannedTimes:
+                    message = Strings.ScanErrorScannedBefore.Replace("{times}", scannedBeforeInfo.Scans.ToString());
+                    break;
+                case StickerScanScannedResponses.ScannedTimeTooBad:
+                    message = Strings.ScanErrorScannedBeforeTooBad.Replace("{times}", scannedBeforeInfo.Scans.ToString());
+                    break;
+                case StickerScanScannedResponses.SinceScanned:
+                case StickerScanScannedResponses.SinceScanned2:
+                    var timespan = DateTime.Now - scannedBeforeInfo.LastScan;
+                    var minutes = (int)Math.Ceiling(timespan.TotalMinutes);
+
+                    message = responseType == StickerScanScannedResponses.SinceScanned
+                        ? Strings.ScanErrorScannedLastTime
+                        : Strings.ScanErrorScannedLastTime2;
+
+                    if (minutes > 1)
+                        message = message.Replace("{time}", minutes.ToString()).Replace("{unit}", Strings.Minutes);
+                    else
+                    {
+                        var seconds = (int)Math.Ceiling(timespan.TotalSeconds);
+                        message = message.Replace("{time}", seconds.ToString()).Replace("{unit}", Strings.Seconds);
+                    }
+                    break;
+            }
+
+            return message;
         }
     }
 }

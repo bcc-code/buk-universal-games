@@ -46,13 +46,13 @@ namespace Buk.UniversalGames.Data
         {
             return Retry(async () =>
             {
-                var timeOut = new DistributedCacheEntryOptions
+                var expirationOptions = new DistributedCacheEntryOptions
                 {
                     AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(250),
                     SlidingExpiration = TimeSpan.FromHours(250)
                 };
 
-                await _cache.SetStringAsync(key, JsonSerializer.Serialize(value), timeOut);
+                await _cache.SetStringAsync(key, JsonSerializer.Serialize(value), expirationOptions);
 
                 var cacheKeys = await GetCacheKeys();
                 cacheKeys.Add(key);
@@ -98,7 +98,7 @@ namespace Buk.UniversalGames.Data
                 var keys = await _cache.GetAsync("CacheKeys");
                 if (keys == null)
                     return new List<string>();
-                return Encoding.Default.GetString(keys).Split('|').ToList();
+                return Encoding.ASCII.GetString(keys).Split('|').ToList();
             });
         }
 

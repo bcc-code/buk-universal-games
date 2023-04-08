@@ -25,7 +25,7 @@ public class Team
     [JsonIgnore]
     public League? League { get; set; }
     [JsonIgnore]
-    public List<Point> Points { get; set; }
+    public List<PointsRegistration> Points { get; set; }
     [JsonIgnore]
     public List<StickerScan> StickerScans { get; set; }
 }

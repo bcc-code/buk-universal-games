@@ -40,13 +40,14 @@ namespace Buk.UniversalGames.Data.Repositories
                 At = DateTime.Now
             };
 
+            // store the scan, regardless of validity for points
             await _db.StickerScans.AddAsync(scan);
             await _db.SaveChangesAsync();
 
             if (scans != null)
                 throw new ScannedBeforeException(scans, scan);
 
-            var point = new Point
+            var point = new PointsRegistration
             {
                 TeamId = team.TeamId,
                 StickerId = sticker.StickerId,
@@ -73,7 +74,7 @@ namespace Buk.UniversalGames.Data.Repositories
         {
             var random = new Random();
 
-            var stickers = await _db.Stickers.ToListAsync();
+            var stickers = await _db.Stickers.AsTracking().ToListAsync();
             foreach (var sticker in stickers)
             {
                 sticker.Points = random.Next(100, 200);

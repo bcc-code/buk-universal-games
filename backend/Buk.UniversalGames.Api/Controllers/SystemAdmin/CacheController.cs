@@ -44,7 +44,7 @@ public class CacheController : ControllerBase
         foreach (var league in leagues)
         {
             await _leagueRepository.GetTeams(league.LeagueId);
-            await _gameRepository.GetGameMatches(league.LeagueId);
+            await _gameRepository.GetMatches(league.LeagueId);
             await _stickerRepository.GetStickers(league.LeagueId);
             await _statusRepository.GetLeagueStatus(league.LeagueId);
         }
