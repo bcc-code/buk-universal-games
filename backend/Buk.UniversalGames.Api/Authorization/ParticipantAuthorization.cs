@@ -28,13 +28,13 @@ namespace Buk.UniversalGames.Api.Authorization
             var code = (context.RouteData.Values["code"] ?? "").ToString();
             if (string.IsNullOrEmpty(code))
             {
-                context.Result = new ExceptionResult(Strings.MissingTeamCode, 403);
+                context.Result = new ExceptionResult(Strings.MissingTeamCode, 401);
             }
             else
             {
                 var team = await _leagueService.GetTeamByCode(code);
                 if(team == null)
-                    context.Result = new ExceptionResult(Strings.UnknownTeamCode, 403);
+                    context.Result = new ExceptionResult(Strings.UnknownTeamCode, 401);
                 else if(team.Type != TeamType.Participant)
                     context.Result = new ExceptionResult(Strings.ParticipantsOnly, 403);
 
