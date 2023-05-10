@@ -11,5 +11,6 @@ gcp-remote-admin.json
 node_modules/
 dist/
 package-lock.json
+.vs/
 backend/.vs/
 backend/Buk.UniversalGames.Api/Buk.UniversalGames.Api.csproj.user

@@ -14,6 +14,18 @@
       </div>
     </section>
     <div v-if="loading">
+      <section class="league-title">
+        <div class="league-title-column index-column"></div>
+        <div class="league-title-column">
+          <h2 class="league-title-text">Team</h2>
+        </div>
+        <div class="league-title-column">
+          <h2 class="league-title-text">Stickers</h2>
+        </div>
+        <div class="league-title-column">
+          <h2 class="league-title-text">Points</h2>
+        </div>
+      </section>
       <section class="user-section" v-for="i in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]" :key="i">
         <LeagueListItem
           :class="{ 'card-light': i > 4 }"

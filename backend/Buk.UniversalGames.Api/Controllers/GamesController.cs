@@ -1,6 +1,6 @@
 using Buk.UniversalGames.Api.Authorization;
 using Buk.UniversalGames.Data.Models;
-using Buk.UniversalGames.Data.Models.Internal;
+using Buk.UniversalGames.Data.Models.Matches;
 using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Enums;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Buk.UniversalGames.Api.Controllers;
 
 [ApiController]
-[Route("{code}/[controller]")]
+[Route("[controller]")]
 public class GamesController : ControllerBase
 {
     private readonly ILogger<GamesController> _logger;
@@ -28,7 +28,7 @@ public class GamesController : ControllerBase
     }
 
     [TeamType(TeamType.Participant)]
-    [HttpGet("Matches")]
+    [HttpGet("/matches")]
     public async Task<ActionResult<List<MatchListItem>>> GetMatches()
     {
         var team = HttpContext.Items["ValidatedTeam"] as Team;

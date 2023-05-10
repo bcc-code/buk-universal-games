@@ -1,7 +1,10 @@
 using Buk.UniversalGames.Data.Models;
+using Buk.UniversalGames.Data.Models.Matches;
 using Buk.UniversalGames.Library.Enums;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using Npgsql;
+using System.Xml.Linq;
 
 namespace Buk.UniversalGames.Data;
 
@@ -50,5 +53,16 @@ public class DataContext : DbContext
         builder.Entity<Settings>().HasKey(t => t.Key);
 
         base.OnModelCreating(builder);
+    }
+
+    public class ContextFactory : IDesignTimeDbContextFactory<DataContext>
+    {
+        public DataContext CreateDbContext(string[] args)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<DataContext>();
+            optionsBuilder.UseNpgsql($"Host=localhost;Database=buk-universal-games;Username=admin;Password=password;Timeout=300;CommandTimeout=300");
+
+            return new DataContext(optionsBuilder.Options);
+        }
     }
 }

@@ -1,7 +1,7 @@
 import store from '@/store'
 
-export const rootUrl = "https://universalgames.buk.no/api/"
-// export const rootUrl = "https://10.0.0.3:3000/api/"
+//export const rootUrl = "https://universalgames.buk.no/api/"
+export const rootUrl = `http://${location.hostname}:5125/`
 const retryRequestAmount = 5; // Retry the request x times
 const seconsBetweenRetry = 2; // Wait x seconds between each request
 
@@ -127,10 +127,11 @@ export function getData(url, data) {
 
     function sendRequest() {
       let requestStatusCode = 0;
-      return fetch(rootUrl + teamCode + url, {
+      return fetch(rootUrl + url, {
         method: "GET",
         headers: {
           "Accept": "application/json",
+          "x-ubg-teamcode": teamCode
         },
         body: JSON.stringify(data),
       }).then(r => {
@@ -157,10 +158,11 @@ export function getData(url, data) {
 
 export function postData(url) {
   const teamCode = myGetTeamCodeFunction()
-  return fetch(rootUrl + teamCode + url, {
+  return fetch(rootUrl + url, {
     method: "POST",
     headers: {
       Accept: "application/json",
+      "x-ubg-teamcode": teamCode,
     },
   })
     .then((r) => r.json())

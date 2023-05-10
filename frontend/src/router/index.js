@@ -27,37 +27,37 @@ const routes = [
     redirect: { name: 'LeagueList' }
   },
   {
-    path: "/admin/AdminLeagueStatus",
+    path: "/admin/league-status",
     name: "AdminLeagueStatus",
     component: AdminLeagueStatus,
     props: true
   },
   {
-    path: "/admin/AdminSelectLeague",
+    path: "/admin/leagues",
     name: "AdminSelectLeague",
     component: AdminSelectLeague,
     props: true
   },
   {
-    path: "/admin/AdminGames",
+    path: "/admin/games",
     name: "AdminGames",
     component: AdminGames,
     props: true
   },
   {
-    path: "/admin/AdminMatchListGame",
+    path: "/admin/matches",
     name: "AdminMatchListGame",
     component: AdminMatchListGame,
     props: true
   },
   {
-    path: "/admin/AdminGame",
+    path: "/admin/matches/:match",
     name: "AdminGame",
     component: AdminGame,
     props: true
   },
   {
-    path: "/admin/game-info-detail",
+    path: "/admin/games/:game",
     name: "AdminGameInfoDetail",
     component: GameInfoDetail,
     props: true
@@ -85,28 +85,28 @@ const routes = [
     props: true
   },
   {
-    path: "/:code/league-list",
+    path: "/league-status",
     name: "LeagueList",
     component: LeagueList,
   },
   {
-    path: "/:code/match-list",
+    path: "/matches",
     name: "MatchList",
     component: MatchList,
   },
   {
-    path: "/:code/game-info",
+    path: "/games",
     name: "GameInfo",
     component: GameInfo,
   },
   {
-    path: "/:code/game-info-detail",
+    path: "/games/:game",
     name: "GameInfoDetail",
     component: GameInfoDetail,
     props: true
   },
   {
-    path: "/:code/map",
+    path: "/map",
     name: "Map",
     component: Map,
   },
@@ -122,26 +122,6 @@ router.beforeEach(async (to, from, next) => {
 
   if (to.params.stickerCode) {
     store.commit('setScanning', { handlingURL: true, stickerCode: to.params.stickerCode })
-  }
-
-  if (to.params.code) {
-    window.localStorage.setItem("teamCode", to.params.code);
-    const loginData = await store.dispatch("getLoginData")
-    store.commit('setLoginMessage', '')
-
-
-    if (!loginData || loginData.error) {
-      if (loginData.error) {
-        store.commit('setLoginMessage', loginData.error)
-      } else {
-        store.commit('setLoginMessage', 'Something went wrong, we could not log you in. Please try again')
-      }
-      nextOptions = { name: 'Login' }
-    }
-
-    if (loginData && loginData.access === 'Admin') {
-      nextOptions = { name: 'AdminSelectLeague' }
-    }
   }
 
   next(nextOptions)

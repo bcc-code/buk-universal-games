@@ -1,6 +1,6 @@
 ﻿using Buk.UniversalGames.Data.Interfaces;
 using Buk.UniversalGames.Data.Models;
-using Buk.UniversalGames.Data.Models.Internal;
+using Buk.UniversalGames.Data.Models.Matches;
 using Buk.UniversalGames.Library.Cultures;
 using Buk.UniversalGames.Library.Exceptions;
 using Microsoft.EntityFrameworkCore;
@@ -124,12 +124,7 @@ namespace Buk.UniversalGames.Data.Repositories
 
             await _db.SaveChangesAsync();
 
-            return new MatchWinnerResult
-            {
-                LooserPoint = losingPointsRegistration,
-                WinnerPoint = winningPointsRegistration,
-                Match = match
-            };
+            return new MatchWinnerResult(match, winningPointsRegistration, losingPointsRegistration);
         }
     }
 }

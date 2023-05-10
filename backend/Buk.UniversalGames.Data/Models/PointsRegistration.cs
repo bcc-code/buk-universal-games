@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using Buk.UniversalGames.Data.Models.Matches;
 
 namespace Buk.UniversalGames.Data.Models;
 

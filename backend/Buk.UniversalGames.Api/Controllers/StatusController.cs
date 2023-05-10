@@ -10,7 +10,7 @@ namespace Buk.UniversalGames.Api.Controllers;
 
 [ApiController]
 [Participant]
-[Route("{code}/[controller]")]
+[Route("[controller]")]
 public class StatusController : ControllerBase
 {
     private readonly ILogger<StatusController> _logger;
@@ -36,10 +36,10 @@ public class StatusController : ControllerBase
     {
         var team = HttpContext.Items["ValidatedTeam"] as Team;
 
-        if(!team.LeagueId.HasValue)
+        if(!team!.LeagueId.HasValue)
             return new ExceptionResult(Strings.TeamNotPartOfALeague, 403);
 
-        var hideHighScore = await _settingsService.GetSettings("hide_highscore");
+        var hideHighScore = await _settingsService.GetSetting("hide_highscore");
         if (hideHighScore != null)
         {
             DateTime.TryParse(hideHighScore, out var hideHighScoreDate);

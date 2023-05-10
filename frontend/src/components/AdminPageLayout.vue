@@ -1,7 +1,7 @@
 <template>
   <section class="admin-page-layout">
     <div class="content-area">
-      <h1 class="title">{{ title }}</h1>
+      <h1 v-if="false" class="title">{{ title }}</h1>
       <slot />
     </div>
     <AdminMenu />

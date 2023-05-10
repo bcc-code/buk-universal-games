@@ -11,14 +11,10 @@ using Buk.UniversalGames.Library.Enums;
 var builder = WebApplication.CreateBuilder(args);
 
 var CorsPolicyName = "UBGCorsPolicy";
-builder.Services.AddCors(options => options.AddPolicy(CorsPolicyName, policyBuilder =>
-{
-    policyBuilder.WithOrigins("http://localhost:8080", "https://localhost:8080")
-          .WithMethods("GET", "POST", "OPTIONS").Build();
-}));
 
 // Add services to the container.
 
+builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -56,6 +52,12 @@ builder.Services.AddDbContext<DataContext>(options =>
 if (builder.Environment.IsDevelopment())
 {
     builder.Services.AddDistributedMemoryCache();
+    builder.Services.AddCors(options => options.AddPolicy(CorsPolicyName, policyBuilder =>
+    {
+        policyBuilder.AllowAnyOrigin()
+                .WithHeaders("x-ubg-teamcode")
+              .WithMethods("GET", "POST", "OPTIONS").Build();
+    }));
 }
 else
 {
@@ -64,6 +66,12 @@ else
         options.Configuration = builder.Configuration.GetValue<string>("REDIS_CONNECTION_STRING");
         options.InstanceName = builder.Configuration.GetValue<string>("ENVIRONMENT_NAME");
     });
+    builder.Services.AddCors(options => options.AddPolicy(CorsPolicyName, policyBuilder =>
+    {
+        policyBuilder.WithOrigins("https://localhost:8080")
+                .WithHeaders("x-ubg-teamcode")
+              .WithMethods("GET", "POST", "OPTIONS").Build();
+    }));
 }
 
 // Ensure cookies work across all container instances
@@ -78,8 +86,8 @@ var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
 {
-    app.UsePathBase("/api");
-    app.UseHttpsRedirection();
+    //app.UsePathBase("/api");
+    //app.UseHttpsRedirection();
 }
 
 app.UseExceptionHandler(c => c.Run(async context =>

@@ -1,4 +1,4 @@
-﻿namespace Buk.UniversalGames.Data.Models.Internal
+﻿namespace Buk.UniversalGames.Data.Models.Matches
 {
     public class MatchListItem
     {

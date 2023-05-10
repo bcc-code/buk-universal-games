@@ -1,5 +1,5 @@
 ﻿using Buk.UniversalGames.Data.Models;
-using Buk.UniversalGames.Data.Models.Internal;
+using Buk.UniversalGames.Data.Models.Matches;
 
 namespace Buk.UniversalGames.Data.Interfaces
 {

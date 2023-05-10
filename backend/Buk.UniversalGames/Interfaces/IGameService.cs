@@ -1,5 +1,6 @@
 ﻿using Buk.UniversalGames.Data.Models;
-using Buk.UniversalGames.Data.Models.Internal;
+using Buk.UniversalGames.Data.Models.Matches;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Buk.UniversalGames.Interfaces
 {
@@ -14,5 +15,6 @@ namespace Buk.UniversalGames.Interfaces
         Task<MatchWinnerResult> SetMatchWinner(int matchId, int winnerTeamId);
 
         Task<byte[]> GetMatchExport();
+        Task<ActionResult<MatchWinnerResult>> FinishMatch(MatchResultDto matchResult);
     }
 }

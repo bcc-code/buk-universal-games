@@ -114,7 +114,7 @@ export default {
       this.$router.push({
         name: "AdminGame",
         params: {
-          match: JSON.stringify(match),
+          match: match.matchId.toString(),
         },
       });
     },

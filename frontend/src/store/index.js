@@ -88,7 +88,7 @@ const store = createStore({
   actions: {
     async getLoginData(ctx) {
       ctx.commit("setLoginMessage", 'Logging you in, please wait ...')
-      const loginData = await initData("Start/")
+      const loginData = await initData("start/")
       ctx.commit("setLoginData", loginData)
       return loginData
     },
@@ -97,7 +97,7 @@ const store = createStore({
       let teamStatus
 
       if (savedDataAge === null || savedDataAge > 30 || (savedDataAge > 5 && override)) {
-        teamStatus = await getData("/Status/")
+        teamStatus = await getData("status/")
         if (!teamStatus.error) {
           saveData('teamStatus', teamStatus)
         }
@@ -117,7 +117,7 @@ const store = createStore({
       let leagueStatus
 
       if (savedDataAge === null || savedDataAge > 30 || (savedDataAge > 5 && override)) {
-        leagueStatus = await getData("/Status/League")
+        leagueStatus = await getData("status/league")
         if (!leagueStatus.error) {
           saveData('leagueStatus', leagueStatus)
         }
@@ -135,14 +135,14 @@ const store = createStore({
       if (!ctx.state.adminLeagueSelected)
         return
 
-      let leagueStatus = await getData("/Admin/Leagues/" + ctx.state.adminLeagueSelected + "/Status")
+      let leagueStatus = await getData("admin/leagues/" + ctx.state.adminLeagueSelected + "/Status")
 
 
       ctx.commit("setAdminLeagueStatus", leagueStatus)
       return leagueStatus
     },
     async getAdminLeagues(ctx) {
-      const leagues = await getData("/Admin/Leagues/")
+      const leagues = await getData("admin/leagues/")
       ctx.commit("setAdminLeagues", leagues)
       return leagues
     },
@@ -150,7 +150,7 @@ const store = createStore({
       return ctx.commit("setAdminLeagueSelected", id)
     },
     async getAdminMatches(ctx) {
-      const matches = await getData("/Admin/Leagues/" + ctx.state.adminLeagueSelected + "/Matches")
+      const matches = await getData("admin/leagues/" + ctx.state.adminLeagueSelected + "/Matches")
       ctx.commit("setAdminMatches", matches)
       return matches
     },
@@ -159,7 +159,7 @@ const store = createStore({
       let matches
 
       if (savedDataAge === null || savedDataAge > 30 || (savedDataAge > 5 && override)) {
-        matches = await getData("/Games/Matches")
+        matches = await getData("matches")
         if (!matches.error) {
           saveData('matches', matches)
         }
@@ -179,7 +179,7 @@ const store = createStore({
       ctx.commit('setGamesLoading', true)
 
       if (savedDataAge === null || savedDataAge > 30) {
-        games = await getData("/Games")
+        games = await getData("games")
         if (!games.error) {
           saveData('games', games)
         }
@@ -195,7 +195,7 @@ const store = createStore({
       return games
     },
     async setWinner(ctx, payload) {
-      let winner = await postData("/Admin/Games/" + payload.matchId + "/Winner/" + payload.teamId)
+      let winner = await postData("admin/games/" + payload.matchId + "/winner/" + payload.teamId)
       return winner
     }
   },

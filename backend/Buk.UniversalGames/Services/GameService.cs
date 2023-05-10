@@ -1,9 +1,10 @@
 ﻿using Buk.UniversalGames.Data.Interfaces;
 using Buk.UniversalGames.Data.Models;
-using Buk.UniversalGames.Data.Models.Internal;
+using Buk.UniversalGames.Data.Models.Matches;
 using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Cultures;
 using Buk.UniversalGames.Library.Exceptions;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using NPOI.XSSF.UserModel;
 
@@ -116,6 +117,11 @@ namespace Buk.UniversalGames.Services
 
             xlsWorkbook.Write(stream);
             return stream.ToArray();
+        }
+
+        public Task<ActionResult<MatchWinnerResult>> FinishMatch(MatchResultDto matchResult)
+        {
+            throw new NotImplementedException();
         }
     }
 }

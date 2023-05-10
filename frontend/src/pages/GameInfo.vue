@@ -29,20 +29,16 @@ export default {
     }
   },
   methods: {
-    refresh() {
-      this.$store.dispatch("getTeamStatus", true);
+    async refresh() {
       this.$store.commit("setGamesLoading", true);
-
-      setTimeout(() => {
-        this.$store.commit("setGamesLoading", false);
-      }, 500);
+      await this.$store.dispatch("getTeamStatus", true,);
+      this.$store.commit("setGamesLoading", false);
     },
     gameClicked(game) {
       this.$router.push({
         name: "GameInfoDetail",
         params: {
-          code: this.$store.state.loginData.code,
-          game: JSON.stringify(game),
+          game: game.id,
         },
       });
     },
