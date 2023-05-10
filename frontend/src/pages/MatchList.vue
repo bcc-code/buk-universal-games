@@ -20,6 +20,7 @@
       </div>
     </section>
     <section class="user-section" v-for="match in matches" :key="match.id">
+      <div style="height:2px;width:100%;background-color: var(--dark);margin:5px 0 10px 0;" v-if="match.gameId == currentActiveMatch.gameId"></div>
       <MatchListItem
         :class="{ 'card-dark': match.gameId == selectedMatch.gameId }"
         :game="whichGame(match.gameId)?.name"
@@ -49,6 +50,7 @@ export default {
     return {
       loginError: "Match List",
       selectedMatch: {},
+      currentActiveMatch: {}
     };
   },
   created() {
@@ -56,8 +58,15 @@ export default {
     this.getGames();
   },
   methods: {
-    getMatches() {
-      this.$store.dispatch("getMatches", false);
+    async getMatches() {
+      await this.$store.dispatch("getMatches", false);
+
+      // let minutesBeforeNow = 20;
+      // let now = new Date(new Date().getTime() - (minutesBeforeNow * 60 * 1000));
+      // let currentTime = now.getHours() + ':' + now.getMinutes();
+      let currentTime = "12:49";
+
+      this.initMatch(this.matches.filter((match) => match.start >= currentTime)[0] || this.matches[0]);
     },
     getGames() {
       this.$store.dispatch("getGames");
@@ -72,6 +81,13 @@ export default {
     },
     matchClicked(match) {
       this.selectedMatch = match;
+    },
+    initMatch(match) {
+      this.selectedMatch = match;
+      if(match != this.matches[0])
+      {
+        this.currentActiveMatch = match;
+      }
     },
   },
   computed: {

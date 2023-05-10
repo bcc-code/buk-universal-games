@@ -19,29 +19,27 @@ namespace Buk.UniversalGames.Library.Helpers
             // prepare logo
             var logoStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(@"Buk.UniversalGames.Library.Resources.logo.png");
 
-            using (var stream = new MemoryStream(bytes))
+            using var stream = new MemoryStream(bytes);
+            using (var image = new MagickImage(stream))
             {
-                using (var image = new MagickImage(stream))
+                image.Draw(new DrawableFillColor(new MagickColor(color)),
+
+                    new DrawableCircle(image.Width / 2,
+                        image.Height / 2,
+                        (image.Width / 2) + circleSize,
+                        (image.Height / 2) + 1)
+                );
+
+                if (logoStream != null)
                 {
-                    image.Draw(new DrawableFillColor(new MagickColor(color)),
-
-                        new DrawableCircle(image.Width / 2,
-                            image.Height / 2,
-                            (image.Width / 2) + circleSize,
-                            (image.Height / 2) + 1)
-                    );
-
-                    if (logoStream != null)
+                    using (var logo = new MagickImage(logoStream))
                     {
-                        using (var logo = new MagickImage(logoStream))
-                        {
-                            logo.Resize((int) (image.Width * 0.20), (int) (image.Height * 0.20));
-                            image.Composite(logo, (image.Width / 2 - logo.Width / 2) , (image.Height / 2 - logo.Height / 2), CompositeOperator.Over);
-                        }
+                        logo.Resize((int)(image.Width * 0.20), (int)(image.Height * 0.20));
+                        image.Composite(logo, (image.Width / 2 - logo.Width / 2), (image.Height / 2 - logo.Height / 2), CompositeOperator.Over);
                     }
-
-                    return image.ToByteArray(MagickFormat.Png);
                 }
+
+                return image.ToByteArray(MagickFormat.Png);
             }
         }
     }

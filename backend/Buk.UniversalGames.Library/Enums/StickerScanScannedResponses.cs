@@ -7,4 +7,4 @@
         ScannedTimeTooBad = 2,
         SinceScanned2 = 3
     }
-}
+} 

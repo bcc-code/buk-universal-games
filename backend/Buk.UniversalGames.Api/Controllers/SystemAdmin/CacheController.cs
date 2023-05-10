@@ -8,7 +8,8 @@ namespace Buk.UniversalGames.Api.Controllers.SystemAdmin;
 
 [ApiController]
 [TeamType(TeamType.SystemAdmin)]
-[Route("{code}/SystemAdmin/[controller]")]
+[Route("{code}/[controller]")]
+[ResponseCache(NoStore = true)]
 public class CacheController : ControllerBase
 {
     private readonly ILogger<CacheController> _logger;
@@ -28,14 +29,14 @@ public class CacheController : ControllerBase
         _statusRepository = statusRepository;
     }
 
-    [HttpGet("ClearCache")]
+    [HttpGet("clear")]
     public async Task<IActionResult> ClearCache()
     {
         await _cache.Clear();
         return Ok();
     }
 
-    [HttpGet("PreCache")]
+    [HttpGet("warmup")]
     public async Task<IActionResult> PreCache()
     {
         var leagues = await _leagueRepository.GetLeagues();
@@ -44,7 +45,7 @@ public class CacheController : ControllerBase
         foreach (var league in leagues)
         {
             await _leagueRepository.GetTeams(league.LeagueId);
-            await _gameRepository.GetGameMatches(league.LeagueId);
+            await _gameRepository.GetMatches(league.LeagueId);
             await _stickerRepository.GetStickers(league.LeagueId);
             await _statusRepository.GetLeagueStatus(league.LeagueId);
         }

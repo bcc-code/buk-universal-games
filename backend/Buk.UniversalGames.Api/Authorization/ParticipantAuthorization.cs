@@ -14,32 +14,12 @@ namespace Buk.UniversalGames.Api.Authorization
         }
     }
 
-    public class ParticipantFilter : IAsyncAuthorizationFilter
+    public class ParticipantFilter : TeamTypeFilter
     {
-        readonly ILeagueService _leagueService;
 
         public ParticipantFilter(ILeagueService leagueService)
+            : base(new[] { TeamType.Participant }, leagueService)
         {
-            _leagueService = leagueService;
-        }
-
-        public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
-        {
-            var code = (context.RouteData.Values["code"] ?? "").ToString();
-            if (string.IsNullOrEmpty(code))
-            {
-                context.Result = new ExceptionResult(Strings.MissingTeamCode, 403);
-            }
-            else
-            {
-                var team = await _leagueService.GetTeamByCode(code);
-                if(team == null)
-                    context.Result = new ExceptionResult(Strings.UnknownTeamCode, 403);
-                else if(team.Type != TeamType.Participant)
-                    context.Result = new ExceptionResult(Strings.ParticipantsOnly, 403);
-
-                context.HttpContext.Items["ValidatedTeam"] = team;
-            }
         }
     }
 

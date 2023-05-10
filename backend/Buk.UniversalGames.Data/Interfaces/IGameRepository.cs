@@ -1,5 +1,5 @@
 ﻿using Buk.UniversalGames.Data.Models;
-using Buk.UniversalGames.Data.Models.Internal;
+using Buk.UniversalGames.Data.Models.Matches;
 
 namespace Buk.UniversalGames.Data.Interfaces
 {
@@ -9,7 +9,7 @@ namespace Buk.UniversalGames.Data.Interfaces
 
         Task<List<MatchListItem>> GetMatches(Team team);
 
-        Task<List<MatchListItem>> GetGameMatches(int leagueId, int? gameId = null);
+        Task<List<MatchListItem>> GetMatches(int leagueId, int? gameId = null);
       
         Task<MatchWinnerResult> SetMatchWinner(Game game, int matchId, Team team);
     }

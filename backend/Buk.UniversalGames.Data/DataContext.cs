@@ -1,41 +1,31 @@
 using Buk.UniversalGames.Data.Models;
+using Buk.UniversalGames.Data.Models.Matches;
 using Buk.UniversalGames.Library.Enums;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using Npgsql;
+using System.Xml.Linq;
 
 namespace Buk.UniversalGames.Data;
 
 public class DataContext : DbContext
 {
-    public DbSet<League> Leagues{ get; set; }
-    public DbSet<Team> Teams { get; set; }
-    public DbSet<Sticker> Stickers { get; set; }
-    public DbSet<StickerScan> StickerScans { get; set; }
-    public DbSet<Point> Points{ get; set; }
-    public DbSet<Game> Games { get; set; }
-    public DbSet<Match> Matches { get; set; }
-    public DbSet<Settings> Settings { get; set; }
-
-    static DataContext()
+    public DataContext(DbContextOptions options) : base(options)
     {
-        NpgsqlConnection.GlobalTypeMapper.MapEnum<GameType>();
-        NpgsqlConnection.GlobalTypeMapper.MapEnum<TeamType>();
     }
 
-    public static string GetConnectionString() {
-        var dbPort = Environment.GetEnvironmentVariable("POSTGRES_PORT");
-        var dbName = Environment.GetEnvironmentVariable("POSTGRES_DB");
-        var dbUser = Environment.GetEnvironmentVariable("POSTGRES_USER");
-        var dbHost = Environment.GetEnvironmentVariable("POSTGRES_HOST");
-        var dbPassword = Environment.GetEnvironmentVariable("POSTGRES_PASSWORD");
-        return $"Host={dbHost}{(dbPort != "5432" ? ";Port=" + (dbPort ?? "") : "")};Database={dbName};Username={dbUser};Password={dbPassword};Timeout=300;CommandTimeout=300";
-    }
+    public DbSet<League> Leagues{ get; init; }
+    public DbSet<Team> Teams { get; init; }
+    public DbSet<Sticker> Stickers { get; init; }
+    public DbSet<StickerScan> StickerScans { get; init; }
+    public DbSet<PointsRegistration> Points{ get; init; }
+    public DbSet<Game> Games { get; init; }
+    public DbSet<Match> Matches { get; init; }
+    public DbSet<Settings> Settings { get; init; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder options) {     
-
-        options.UseNpgsql(GetConnectionString())
-                .UseSnakeCaseNamingConvention();
-    }
+    protected override void OnConfiguring(DbContextOptionsBuilder options) => options
+            .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking)
+            .UseSnakeCaseNamingConvention();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -53,8 +43,8 @@ public class DataContext : DbContext
         builder.Entity<StickerScan>().HasKey(t => t.StickerScanId);
         builder.Entity<StickerScan>().Property(e => e.At).HasColumnType("timestamp without time zone");
 
-        builder.Entity<Point>().HasKey(t => t.PointId);
-        builder.Entity<Point>().Property(e => e.Added).HasColumnType("timestamp without time zone");
+        builder.Entity<PointsRegistration>().HasKey(t => t.PointId);
+        builder.Entity<PointsRegistration>().Property(e => e.Added).HasColumnType("timestamp without time zone");
 
         builder.Entity<Game>().HasKey(t => t.GameId);
 
@@ -63,5 +53,16 @@ public class DataContext : DbContext
         builder.Entity<Settings>().HasKey(t => t.Key);
 
         base.OnModelCreating(builder);
+    }
+
+    public class ContextFactory : IDesignTimeDbContextFactory<DataContext>
+    {
+        public DataContext CreateDbContext(string[] args)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<DataContext>();
+            optionsBuilder.UseNpgsql($"Host=localhost;Database=buk-universal-games;Username=admin;Password=password;Timeout=300;CommandTimeout=300");
+
+            return new DataContext(optionsBuilder.Options);
+        }
     }
 }

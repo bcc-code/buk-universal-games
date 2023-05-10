@@ -49,7 +49,7 @@ export default {
 .content-area {
   width: 100%;
   height: auto;
-  padding: 2em 1em 10em;
+  padding: 1em 1em 10em;
 }
 
 .title {

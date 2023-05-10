@@ -3,6 +3,6 @@
     public class StickerScanResult
     {
         public StickerScan Scan{ get; set; }
-        public Point Point{ get; set; }
+        public PointsRegistration Point{ get; set; }
     }
 }

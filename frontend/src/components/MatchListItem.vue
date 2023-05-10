@@ -1,18 +1,18 @@
 <template>
   <section class="card card-light" @click="() => clickFunc()">
     <div class="card-light-column">
-      <h2 class="card-light-text game-title">
+      <span class="card-light-text game-title">
         <span class="icon" v-html="icons[game]"></span>
         <span class="text">{{ game + ' ' + (gameAddOn || '')}}</span>
-      </h2>
+      </span>
     </div>
     <div class="card-light-column">
-      <h2 :class="{ 'card-light-text': true, 'card-teams': true, winner: team1 === winner, loser: team2 === winner }">
+      <span :class="{ 'card-light-text': true, 'card-teams': true, winner: team1 === winner, loser: team2 === winner }">
         <span>{{ team1 }}</span>
-      </h2>
-      <h2 :class="{ 'card-light-text': true, 'card-teams': true, winner: team2 === winner, loser: team1 === winner }">
+      </span>
+      <span :class="{ 'card-light-text': true, 'card-teams': true, winner: team2 === winner, loser: team1 === winner }">
         <span>{{ team2 }}</span>
-      </h2>
+      </span>
     </div>
     <div class="card-light-column">
       <h2 class="card-light-text">{{ start }}</h2>
@@ -61,7 +61,7 @@ button {
   padding: 0.25em 0.5em;
   border-radius: 0.75em;
   display: grid;
-  grid-template-columns: 20% 65% 15%;
+  grid-template-columns: 35% 50% 15%;
   align-items: center;
 }
 

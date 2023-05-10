@@ -20,7 +20,7 @@ public class StartController : ControllerBase
     }
 
     [HttpGet("{code}")]
-    public async Task<ActionResult<InitData>> Start(string code)
+    public async Task<ActionResult<SignInSuccessResponse>> Start(string code)
     {
         var team = await _leagueService.GetTeamByCode(code);
         if (team == null)
@@ -28,13 +28,11 @@ public class StartController : ControllerBase
 
         var league = team.LeagueId.HasValue ? await _leagueService.GetLeague(team.LeagueId.Value) : null;
 
-        return new InitData
-        {
-            Team = team.Name,
-            Code = team.Code,
-            LeagueId = team.LeagueId,
-            League = league?.Name,
-            Access = team.Type.ToString(),
-        };
+        return new SignInSuccessResponse(
+            team.Code, 
+            team.Name, 
+            team.Type.ToString(), 
+            team.LeagueId, 
+            league?.Name);
     }
 }

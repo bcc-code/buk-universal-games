@@ -1,35 +1,19 @@
-﻿using System.Text;
+﻿using System.Reflection.Metadata;
+using System.Text;
 using System.Text.Json;
 using Microsoft.Extensions.Caching.Distributed;
+using StackExchange.Redis;
 
 namespace Buk.UniversalGames.Data
 {
     public class CacheContext : ICacheContext
     {
         private readonly IDistributedCache _cache;
+        private static readonly Encoding _keysEncoding = Encoding.UTF8;
 
         public CacheContext(IDistributedCache cache)
         {
-            _cache = cache;
-        }
-
-        public async Task<T> Retry<T>(Func<Task<T>> action)
-        {
-            int attempts = 0;
-        retry:
-            var result = default(T);
-            try
-            {
-                result = await action();
-                return result;
-            }
-            catch (Exception ex)
-            {
-                if (attempts > 5) { throw; }
-                attempts++;
-                await Task.Delay(TimeSpan.FromMilliseconds(attempts * attempts * 100));
-                goto retry;
-            }
+            _cache = cache ?? throw new ArgumentNullException(nameof(cache));
         }
 
         public Task<T?> Get<T>(string key)
@@ -46,13 +30,13 @@ namespace Buk.UniversalGames.Data
         {
             return Retry(async () =>
             {
-                var timeOut = new DistributedCacheEntryOptions
+                var expirationOptions = new DistributedCacheEntryOptions
                 {
                     AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(250),
                     SlidingExpiration = TimeSpan.FromHours(250)
                 };
-
-                await _cache.SetStringAsync(key, JsonSerializer.Serialize(value), timeOut);
+                
+                await _cache.SetStringAsync(key, JsonSerializer.Serialize(value), expirationOptions);
 
                 var cacheKeys = await GetCacheKeys();
                 cacheKeys.Add(key);
@@ -91,18 +75,18 @@ namespace Buk.UniversalGames.Data
         }
 
 
-        private Task<List<string>> GetCacheKeys()
+        Task<List<string>> GetCacheKeys()
         {
             return Retry(async () =>
             {
                 var keys = await _cache.GetAsync("CacheKeys");
                 if (keys == null)
                     return new List<string>();
-                return Encoding.Default.GetString(keys).Split('|').ToList();
+                return Encoding.ASCII.GetString(keys).Split('|').ToList();
             });
         }
 
-        private Task SetCacheKeys(List<string> keys)
+        Task SetCacheKeys(List<string> keys)
         {
             return Retry(async () =>
             {
@@ -113,9 +97,27 @@ namespace Buk.UniversalGames.Data
                 };
 
                 var keysString = String.Join('|', keys);
-                await _cache.SetAsync("CacheKeys", Encoding.ASCII.GetBytes(keysString), timeOut);
+                await _cache.SetAsync("CacheKeys", _keysEncoding.GetBytes(keysString), timeOut);
                 return true;
             });
+        }
+
+        static async Task<T> Retry<T>(Func<Task<T>> action)
+        {
+            int attempts = 0;
+            while (true)
+            {
+                try
+                {
+                    return await action();
+                }
+                catch (Exception)
+                {
+                    if (attempts > 5) { throw; }
+                    attempts++;
+                    await Task.Delay(TimeSpan.FromMilliseconds(attempts * attempts * 100));
+                }
+            }
         }
     }
 }

@@ -33,10 +33,10 @@ export default {
 }
 
 :root {
-  --dark: #2d001c;
+  --dark: #a5709e;
   --gray-1: #e5e5e5;
   --gray-2: #b6b6b6;
-  --green: #21f7aa;
+  --green: #a0e3be;
   --red: #ff334c;
 }
 
@@ -56,7 +56,7 @@ body {
 
 main {
   height: 100%;
-  max-width: 480px;
+  max-width: 960px;
   margin: 0 auto;
   background-color: var(--gray-1);
 }

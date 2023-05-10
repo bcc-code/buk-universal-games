@@ -42,66 +42,64 @@ namespace Buk.UniversalGames.Services
 
         public async Task<byte[]> ExportTeams()
         {
-            using (var stream = new MemoryStream())
+            using var stream = new MemoryStream();
+            var xlsWorkbook = new XSSFWorkbook();
+
+            var rowIndex = 0;
+
+            var font = xlsWorkbook.CreateFont();
+            font.FontHeightInPoints = 11;
+            font.FontName = "Calibri";
+            font.IsBold = true;
+
+            var style = xlsWorkbook.CreateCellStyle();
+            style.SetFont(font);
+
+            var xlsSheet = xlsWorkbook.CreateSheet("Teams");
+            var row = xlsSheet.CreateRow(rowIndex);
+
+            var cell = row.CreateCell(0);
+            cell.CellStyle = style;
+            cell.SetCellValue("ID");
+
+            cell = row.CreateCell(1);
+            cell.CellStyle = style;
+            cell.SetCellValue("League");
+
+            cell = row.CreateCell(2);
+            cell.CellStyle = style;
+            cell.SetCellValue("Team");
+
+            cell = row.CreateCell(3);
+            cell.CellStyle = style;
+            cell.SetCellValue("Code");
+
+            cell = row.CreateCell(4);
+            cell.CellStyle = style;
+            cell.SetCellValue("Start Link");
+
+            var leagues = await GetLeagues();
+
+            rowIndex++;
+            foreach (var league in leagues)
             {
-                var xlsWorkbook = new XSSFWorkbook();
+                var teams = await GetTeams(league.LeagueId);
 
-                var rowIndex = 0;
-
-                var font = xlsWorkbook.CreateFont();
-                font.FontHeightInPoints = 11;
-                font.FontName = "Calibri";
-                font.IsBold = true;
-
-                var style = xlsWorkbook.CreateCellStyle();
-                style.SetFont(font);
-
-                var xlsSheet = xlsWorkbook.CreateSheet("Teams");
-                var row = xlsSheet.CreateRow(rowIndex);
-
-                var cell = row.CreateCell(0);
-                cell.CellStyle = style;
-                cell.SetCellValue("ID");
-
-                cell = row.CreateCell(1);
-                cell.CellStyle = style;
-                cell.SetCellValue("League");
-
-                cell = row.CreateCell(2);
-                cell.CellStyle = style;
-                cell.SetCellValue("Team");
-
-                cell = row.CreateCell(3);
-                cell.CellStyle = style;
-                cell.SetCellValue("Code");
-
-                cell = row.CreateCell(4);
-                cell.CellStyle = style;
-                cell.SetCellValue("Start Link");
-
-                var leagues = await GetLeagues();
-
-                rowIndex++;
-                foreach (var league in leagues)
+                foreach (var team in teams)
                 {
-                    var teams = await GetTeams(league.LeagueId);
+                    row = xlsSheet.CreateRow(rowIndex);
+                    row.CreateCell(0).SetCellValue(team.TeamId);
+                    row.CreateCell(1).SetCellValue(league.Name);
+                    row.CreateCell(2).SetCellValue(team.Name);
+                    row.CreateCell(3).SetCellValue(team.Code);
+                    row.CreateCell(4).SetCellValue(TeamHelper.GetStartLink(team.Code));
 
-                    foreach (var team in teams)
-                    {
-                        row = xlsSheet.CreateRow(rowIndex);
-                        row.CreateCell(0).SetCellValue(team.TeamId);
-                        row.CreateCell(1).SetCellValue(league.Name);
-                        row.CreateCell(2).SetCellValue(team.Name);
-                        row.CreateCell(3).SetCellValue(team.Code);
-                        row.CreateCell(4).SetCellValue(TeamHelper.GetStartLink(team.Code));
-
-                        rowIndex++;
-                    }
+                    rowIndex++;
                 }
-
-                xlsWorkbook.Write(stream);
-                return stream.ToArray();
             }
+
+            xlsWorkbook.Write(stream);
+            return stream.ToArray();
         }
 
         public async Task<byte[]> ExportStatus()

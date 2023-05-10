@@ -2,6 +2,6 @@
 {
     public interface ISettingsService
     {
-        Task<string?> GetSettings(string key, string? defaultValue = null);
+        Task<string?> GetSetting(string key, string? defaultValue = null);
     }
 }

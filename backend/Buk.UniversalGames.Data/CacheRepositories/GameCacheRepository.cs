@@ -1,6 +1,6 @@
 ﻿using Buk.UniversalGames.Data.Interfaces;
 using Buk.UniversalGames.Data.Models;
-using Buk.UniversalGames.Data.Models.Internal;
+using Buk.UniversalGames.Data.Models.Matches;
 using Buk.UniversalGames.Data.Repositories;
 using Microsoft.Extensions.Logging;
 
@@ -24,7 +24,7 @@ namespace Buk.UniversalGames.Data.CacheRepositories
             // get from cache
             var cacheKey = "Games";
             var result = await _cache.Get<List<Game>>(cacheKey);
-            if (result == null)
+            if (result is null)
             {
                 // fallback to db and set in cache
                 result = await _data.GetGames();
@@ -35,16 +35,17 @@ namespace Buk.UniversalGames.Data.CacheRepositories
 
         public async Task<List<MatchListItem>> GetMatches(Team team)
         {
-            return (await GetGameMatches(team.LeagueId.GetValueOrDefault())).Where(s => s.Team1Id == team.TeamId || s.Team2Id == team.TeamId).ToList();
+            if(team.LeagueId is null) throw new ArgumentException("Team doesn't have a league assigned", nameof(team));
+            return (await GetMatches(team.LeagueId.Value)).Where(s => s.Team1Id == team.TeamId || s.Team2Id == team.TeamId).ToList();
         }
 
-        public async Task<List<MatchListItem>> GetGameMatches(int leagueId, int? gameId = null)
+        public async Task<List<MatchListItem>> GetMatches(int leagueId, int? gameId = null)
         {
             var cacheKey = $"Matches_{leagueId}";
             var matches = await _cache.Get<List<MatchListItem>>(cacheKey);
             if (matches == null)
             {
-                matches = await _data.GetGameMatches(leagueId);
+                matches = await _data.GetMatches(leagueId);
                 await _cache.Set(cacheKey, matches);
             }
 

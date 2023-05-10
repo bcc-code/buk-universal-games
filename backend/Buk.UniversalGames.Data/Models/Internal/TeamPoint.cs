@@ -2,7 +2,7 @@
 {
     public class TeamPoint
     {
-        public Point Point{ get; set; }
+        public PointsRegistration Point{ get; set; }
         public string Team{ get; set; }
     }
 }

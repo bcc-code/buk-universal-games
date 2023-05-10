@@ -1,5 +1,7 @@
 using Buk.UniversalGames.Api.Authorization;
-using Buk.UniversalGames.Data.Models.Internal;
+using Buk.UniversalGames.Data;
+using Buk.UniversalGames.Data.Models;
+using Buk.UniversalGames.Data.Models.Matches;
 using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Enums;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +10,7 @@ namespace Buk.UniversalGames.Api.Controllers.Admin;
 
 [ApiController]
 [TeamType(TeamType.Admin,TeamType.SystemAdmin)]
-[Route("{code}/Admin/[controller]")]
+[Route("Admin/[controller]")]
 public class GamesController : ControllerBase
 {
     private readonly ILogger<GamesController> _logger;
@@ -18,6 +20,13 @@ public class GamesController : ControllerBase
     {
         _logger = logger;
         _gameService = gameService;
+    }
+
+
+    [HttpPost("{matchId}/results")]
+    public async Task<ActionResult<MatchWinnerResult>> PostMatchResult([FromBody]MatchResultDto matchResult)
+    {
+        return await _gameService.FinishMatch(matchResult);
     }
 
     [HttpPost("{matchId}/Winner/{teamId}")]

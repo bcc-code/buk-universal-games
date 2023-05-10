@@ -26,7 +26,7 @@ export default {
   components: { AdminLeagueSelector },
   data() {
     return {
-      image: require("@/assets/bg.png"),
+      image: require("@/assets/bg.svg"),
     };
   },
   created() {

@@ -1,13 +1,12 @@
 <template>
   <UserPageLayout :showTitle="false">
     <nav>
-      <button @click="$router.back()">&lt;</button>
-      <h3>Games</h3>
+      <button @click="$router.back()">&lt; Back</button>
     </nav>
 
     <header>
       <h2>
-        <span class="icon" v-html="icons[gameParsed.name]"></span>
+        <span class="icon" v-html="icons[gameParsed.gameType]"></span>
         <span>{{ gameParsed.name }}</span>
       </h2>
 
@@ -54,7 +53,7 @@ export default {
   data() {
     return {
       gameParsed: {},
-      bannerImage: "/images/illustrations/Universal-BUK-Games-Water.svg",
+      bannerImage: "",
       icons: {
         Earth: gameEarthIcon,
         Fire: gameFireIcon,
@@ -68,8 +67,8 @@ export default {
   },
   mounted() {
     if (this.game) {
-      this.gameParsed = JSON.parse(this.game);
-      this.bannerImage = `/images/illustrations/Universal-BUK-Games-${this.gameParsed.name}.svg`;
+      this.gameParsed = this.$store.state.games.find((game) => game.id == this.game);
+      this.bannerImage = `/images/illustrations/Universal-BUK-Games-${this.gameParsed.gameType}.svg`;
     } else {
       this.$router.back();
     }

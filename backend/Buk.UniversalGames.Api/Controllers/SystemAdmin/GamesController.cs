@@ -7,7 +7,7 @@ namespace Buk.UniversalGames.Api.Controllers.SystemAdmin;
 
 [ApiController]
 [TeamType(TeamType.SystemAdmin)]
-[Route("{code}/SystemAdmin/[controller]")]
+[Route("{code}/systemadmin/[controller]")]
 public class GamesController : ControllerBase
 {
     private readonly ILogger<GamesController> _logger;
@@ -19,8 +19,8 @@ public class GamesController : ControllerBase
         _gameService = gameService;
     }
 
-    [HttpGet("Matches")]
-    public async Task<IActionResult> GetLeagues()
+    [HttpGet("matches")]
+    public async Task<IActionResult> GetMatchReport()
     {
         var xls = await _gameService.GetMatchExport();
         return File(xls, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");

@@ -1,19 +1,8 @@
 <template>
   <AdminPageLayout>
     <nav>
-      <button @click="$router.back()">&lt;</button>
-      <button
-        @click="
-          $router.push({
-            name: 'AdminGameInfoDetail',
-            params: {
-              game: JSON.stringify(game),
-            },
-          })
-        "
-      >
-        Game-info
-      </button>
+      <button @click="$router.back()">&lt; Back</button>
+      <button @click="this.showGameInfo(game)">Game-info</button>
     </nav>
 
     <header>
@@ -68,7 +57,7 @@ import { gameWoodIcon } from "@/assets/icons/game-wood.svg.ts";
 import { gameWaterIcon } from "@/assets/icons/game-water.svg.ts";
 
 export default {
-  name: "LoginPage",
+  name: "AdminGame",
   props: {
     match: String,
   },
@@ -103,8 +92,8 @@ export default {
     }
   },
   methods: {
-    init(matchJson) {
-      this.matchParsed = JSON.parse(matchJson);
+    init(matchId) {
+      this.matchParsed = this.$store.state.adminMatches.find((match) => match.matchId == matchId);
       this.game = this.getGameById(this.matchParsed.gameId);
     },
     getGames() {
@@ -117,6 +106,14 @@ export default {
 
       const game = this.games.find((game) => game.id == id);
       return game;
+    },
+    showGameInfo(game) {
+      this.$router.push({
+            name: 'AdminGameInfoDetail',
+            params: {
+              game: game.id,
+            },
+          })
     },
     async setWinner() {
       if (this.selectedTeam) {

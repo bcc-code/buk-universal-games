@@ -1,6 +1,6 @@
 using Buk.UniversalGames.Api.Authorization;
 using Buk.UniversalGames.Data.Models;
-using Buk.UniversalGames.Data.Models.Internal;
+using Buk.UniversalGames.Data.Models.Matches;
 using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Enums;
 using Buk.UniversalGames.Models;
@@ -10,7 +10,7 @@ namespace Buk.UniversalGames.Api.Controllers.Admin;
 
 [ApiController]
 [TeamType(TeamType.Admin,TeamType.SystemAdmin)]
-[Route("{code}/Admin/[controller]")]
+[Route("Admin/[controller]")]
 public class LeaguesController : ControllerBase
 {
     private readonly ILogger<LeaguesController> _logger;

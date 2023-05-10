@@ -17,31 +17,44 @@ namespace Buk.UniversalGames.Api.Authorization
 
     public class TeamTypeFilter : IAsyncAuthorizationFilter
     {
-        readonly TeamType[] _types;
+        readonly TeamType[] _authorizedTeamTypes;
         readonly ILeagueService _leagueService;
 
         public TeamTypeFilter(TeamType[] types, ILeagueService leagueService)
         {
-            _types = types;
+            _authorizedTeamTypes = types;
             _leagueService = leagueService;
         }
 
         public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
         {
-            if (_types.Length > 0)
+            if (_authorizedTeamTypes.Length > 0)
             {
-                var code = (context.RouteData.Values["code"] ?? "").ToString();
+                string? code = default;
+                if (context.HttpContext.Request.Headers.TryGetValue("x-ubg-teamcode", out var codeFromHeader))
+                {
+                    code = codeFromHeader;
+                }
+                else if (context.RouteData.Values.TryGetValue("code", out var codeFromRoute))
+                {
+                    code = codeFromRoute?.ToString();
+                }
+
                 if (string.IsNullOrEmpty(code))
                 {
-                    context.Result = new ExceptionResult(Strings.MissingTeamCode, 403);
+                    context.Result = new ExceptionResult(Strings.MissingTeamCode, 401);
                 }
                 else
                 {
-                    var team = await _leagueService.GetTeamByCode(code);
-                    if(team == null)
-                        context.Result = new ExceptionResult(Strings.UnknownTeamCode, 403);
-                    else if(!_types.Contains(team.Type))
+                    var team = await _leagueService.GetTeamByCode(code!);
+                    if (team is null)
+                    {
+                        context.Result = new ExceptionResult(Strings.UnknownTeamCode, 401);
+                    }
+                    else if (!_authorizedTeamTypes.Contains(team.Type))
+                    {
                         context.Result = new ExceptionResult(Strings.TeamUnathorized, 403);
+                    }
 
                     context.HttpContext.Items["ValidatedTeam"] = team;
                 }

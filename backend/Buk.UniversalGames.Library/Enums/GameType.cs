@@ -2,11 +2,10 @@
 {
     public enum GameType
     {
-        Unknown = 0,
-        Water = 1,
-        Wood = 2,
-        Fire = 3,
-        Earth = 4,
-        Metal = 5,
+        NerveSpiral = 1,
+        TicketTwist = 2,
+        MonkeyBars = 3,
+        MineField = 4,
+        TableSurfing = 5,
     }
 }
