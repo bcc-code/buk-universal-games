@@ -16,7 +16,7 @@ Visit http://localhost:5125/
 ### Accessing Database
 
 1. Visit: http://localhost:5126/
-2. Log in with: admin@admin.com / password
+2. Log in with: admin@admin.com / password (Note: You may get stuck in a redirect loop on Firefox, use Chrome instead)
 3. Right click "Servers"->Register->Server...
 4. Add following parameters
    1. Name: buk-universal-games
