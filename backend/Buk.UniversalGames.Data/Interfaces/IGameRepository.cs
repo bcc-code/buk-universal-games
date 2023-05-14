@@ -12,5 +12,6 @@ namespace Buk.UniversalGames.Data.Interfaces
         Task<List<MatchListItem>> GetMatches(int leagueId, int? gameId = null);
       
         Task<MatchWinnerResult> SetMatchWinner(Game game, int matchId, Team team);
+        Task<TeamMatchResult> StoreMatchResult(int matchId, int teamId, int measuredResult);
     }
 }

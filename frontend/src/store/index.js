@@ -112,6 +112,10 @@ const store = createStore({
       return teamStatus
 
     },
+    async confirmTeamResult(ctx, payload) {
+      const result = await postData(`matches/${payload.matchId}/results`, payload)
+      return result
+    },
     async getLeagueStatus(ctx, override) {
       const savedDataAge = getSavedDataAge('leagueStatus')
       let leagueStatus

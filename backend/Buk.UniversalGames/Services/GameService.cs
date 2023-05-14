@@ -119,9 +119,9 @@ namespace Buk.UniversalGames.Services
             return stream.ToArray();
         }
 
-        public Task<ActionResult<MatchWinnerResult>> FinishMatch(MatchResultDto matchResult)
+        public async Task<ActionResult<TeamMatchResult>> ReportTeamMatchResult(int matchId, int teamId, int result)
         {
-            throw new NotImplementedException();
+            return await _gameRepository.StoreMatchResult(matchId, teamId, result);
         }
     }
 }

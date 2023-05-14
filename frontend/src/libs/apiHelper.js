@@ -155,14 +155,16 @@ export function getData(url, data) {
   })
 }
 
-export function postData(url) {
+export function postData(url, data) {
   const teamCode = myGetTeamCodeFunction()
   return fetch(rootUrl + url, {
     method: "POST",
     headers: {
       Accept: "application/json",
+      "Content-Type": "application/json",
       "x-ubg-teamcode": teamCode,
     },
+    body: JSON.stringify(data),
   })
     .then((r) => r.json())
     .then((r) => {

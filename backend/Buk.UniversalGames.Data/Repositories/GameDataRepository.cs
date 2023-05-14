@@ -16,17 +16,18 @@ namespace Buk.UniversalGames.Data.Repositories
             _db = db;
         }
 
-        public async Task<List<Game>> GetGames()
+        public Task<List<Game>> GetGames()
         {
-            return await _db.Games.ToListAsync();
+            return _db.Games.ToListAsync();
         }
 
         public async Task<List<MatchListItem>> GetMatches(Team team)
         {
-            return await (from match in _db.Matches
-                where match.Team1Id == team.TeamId || match.Team2Id == team.TeamId
-                    join team1 in _db.Teams on match.Team1Id equals team1.TeamId
+            return await (
+                from match in _db.Matches
+                join team1 in _db.Teams on match.Team1Id equals team1.TeamId
                 join team2 in _db.Teams on match.Team2Id equals team2.TeamId
+                where match.Team1Id == team.TeamId || match.Team2Id == team.TeamId
                 orderby match.Start
                 select new MatchListItem
                 {
@@ -44,14 +45,12 @@ namespace Buk.UniversalGames.Data.Repositories
         }
         public async Task<List<MatchListItem>> GetMatches(int leagueId, int? gameId = null)
         {
-            return await (from match in _db.Matches
-                    where !gameId.HasValue || match.GameId == gameId.Value
+            return await (
+                from match in _db.Matches
                     join team1 in _db.Teams on match.Team1Id equals team1.TeamId
-                    where team1.LeagueId == leagueId
                     join team2 in _db.Teams on match.Team2Id equals team2.TeamId
-                    where team2.LeagueId == leagueId
                     join game in _db.Games on match.GameId equals game.GameId
-                    where game.GameId == match.GameId
+                    where (team1.LeagueId == leagueId && (!gameId.HasValue || match.GameId == gameId.Value))
                     orderby match.Start, match.GameId, team1.Name
                     select new MatchListItem
                     {
@@ -125,6 +124,29 @@ namespace Buk.UniversalGames.Data.Repositories
             await _db.SaveChangesAsync();
 
             return new MatchWinnerResult(match, winningPointsRegistration, losingPointsRegistration);
+        }
+
+        public async Task<TeamMatchResult> StoreMatchResult(int matchId, int teamId, int measuredResult)
+        {
+            var match = await _db.Matches.FindAsync(matchId) ?? throw new ArgumentException("Match does not exist", nameof(matchId));
+            var existingRegistrations = await _db.Points.Where(s => s.MatchId == matchId).AsTracking().ToListAsync();
+            var currentTeamResult = existingRegistrations.FirstOrDefault(x => x.TeamId == teamId);
+            var otherTeamResult = existingRegistrations.FirstOrDefault(x => x.TeamId != teamId);
+
+            if (currentTeamResult != null)
+            {
+                currentTeamResult.Points = measuredResult;
+            }
+            else
+            {
+                await _db.Points.AddAsync(new PointsRegistration { MatchId = matchId, TeamId = teamId, GameId = match.GameId, Points = measuredResult });
+            }
+            await _db.SaveChangesAsync();
+
+            return new TeamMatchResult (
+                matchId, 
+                teamId == match.Team1Id ? measuredResult : otherTeamResult?.Points, 
+                teamId == match.Team2Id ? measuredResult : otherTeamResult?.Points);
         }
     }
 }

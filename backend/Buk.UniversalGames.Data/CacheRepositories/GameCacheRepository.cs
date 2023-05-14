@@ -64,5 +64,10 @@ namespace Buk.UniversalGames.Data.CacheRepositories
 
             return result;
         }
+
+        public Task<TeamMatchResult> StoreMatchResult(int matchId, int teamId, int measuredResult)
+        {
+            return _data.StoreMatchResult(matchId, teamId, measuredResult);
+        }
     }
 }

@@ -6,42 +6,44 @@
     </nav>
 
     <header>
-      <h3>Game</h3>
+      <h3><span class="icon" v-html="icons[game.name]"></span>
+        <span>{{ game.name }}</span></h3>
       <h2>
-        <span class="icon" v-html="icons[game.name]"></span>
-        <span>{{ game.name }}</span>
+        <span>Start: {{ match.start }}</span>
       </h2>
     </header>
 
-    <ul>
-      <li
+    <div class="teams">
+      <div
         :class="{
-          selected: matchParsed?.team1Id === selectedTeam,
-          winner: matchParsed?.team1Id === matchParsed?.winnerId,
-          loser: matchParsed?.team2Id === matchParsed?.winnerId,
+          teamresult: true,
+          selected: match?.team1Id === selectedTeam,
+          winner: match?.team1Id === match?.winnerId,
+          loser: match?.team2Id === match?.winnerId,
         }"
-        v-on:click="selectedTeam = matchParsed?.team1Id"
       >
-        <p>{{ matchParsed?.team1 }}</p>
-        <span class="tag" v-if="matchParsed?.team1Id === matchParsed?.winnerId">Winner</span>
-        <span class="tag" v-else-if="!!matchParsed?.winnerId">Loser</span>
-      </li>
-      <li
+        <p>{{ match?.team1 }}</p>
+        <input type="number" v-model="team1Result" placeholder="Result (in meters/seconds/number of flipped cards)" />
+        <button class="btn btn-blank" @click="confirmTeamResult(match?.team1Id, team1Result)">Confirm</button>
+        <span class="tag" v-if="match?.team1Id === match?.winnerId">Winner</span>
+      </div>
+      <div
         :class="{
-          selected: matchParsed?.team2Id === selectedTeam,
-          winner: matchParsed?.team2Id === matchParsed?.winnerId,
-          loser: matchParsed?.team1Id === matchParsed?.winnerId,
+          teamresult: true,
+          selected: match?.team2Id === selectedTeam,
+          winner: match?.team2Id === match?.winnerId,
+          loser: match?.team1Id === match?.winnerId,
         }"
-        v-on:click="selectedTeam = matchParsed?.team2Id"
       >
-        <p>{{ matchParsed?.team2 }}</p>
-        <span class="tag" v-if="matchParsed?.team2Id === matchParsed?.winnerId">Winner</span>
-        <span class="tag" v-else-if="!!matchParsed?.winnerId">Loser</span>
-      </li>
-    </ul>
+        <p>{{ match?.team2 }}</p>
+        <input type="number" v-model="team2Result" placeholder="Result (in meters/seconds/number of flipped cards)" />
+        <button class="btn btn-blank" @click="confirmTeamResult(match?.team2Id, team2Result)">Confirm</button>
+        <span class="tag" v-if="match?.team2Id === match?.winnerId">Winner</span>
+      </div>
+    </div>
 
     <div class="buttons">
-      <button :class="{ 'btn-blank': true, 'btn-success': !!selectedTeam }" @click="setWinner">Set winner</button>
+      <!-- <button :class="{ 'btn-blank': true, 'btn-success': !!selectedTeam }" @click="setWinner">Set winner</button> -->
       <!-- <button class="btn btn-blank">Loser</button> -->
     </div>
   </AdminPageLayout>
@@ -57,17 +59,19 @@ import { gameWoodIcon } from "@/assets/icons/game-wood.svg.ts";
 import { gameWaterIcon } from "@/assets/icons/game-water.svg.ts";
 
 export default {
-  name: "AdminGame",
+  name: "AdminMatch",
   props: {
-    match: String,
+    matchId: String,
   },
   components: { AdminPageLayout },
   data() {
     return {
       loginError: "Game Info",
-      // gameParsed: {},
       game: {},
-      matchParsed: {},
+      match: {},
+      team1Result: {},
+      team2Result: {},
+      canEnterResults: false,
       loading: true,
       selectedTeam: null,
       icons: {
@@ -85,16 +89,16 @@ export default {
     }
   },
   mounted() {
-    if (this.match) {
-      this.init(this.match);
+    if (this.matchId) {
+      this.init(this.matchId);
     } else {
       this.$router.back();
     }
   },
   methods: {
     init(matchId) {
-      this.matchParsed = this.$store.state.adminMatches.find((match) => match.matchId == matchId);
-      this.game = this.getGameById(this.matchParsed.gameId);
+      this.match = this.$store.state.adminMatches.find((match) => match.matchId == matchId);
+      this.game = this.getGameById(this.match.gameId);
     },
     getGames() {
       this.$store.dispatch("getGames");
@@ -115,13 +119,25 @@ export default {
             },
           })
     },
+    async confirmTeamResult(teamId, result) {
+      if (result) {
+        const payload = { matchId: this.match.matchId, teamId, result };
+        await this.$store.dispatch("confirmTeamResult", payload);
+        this.$store.dispatch("getAdminLeagueStatus");
+        this.$store.dispatch("getAdminMatches");
+        this.match.team1Result = this.team1Result;
+        this.match.team2Result = this.team2Result;
+      } else {
+        alert("Please enter a result");
+      }
+    },
     async setWinner() {
       if (this.selectedTeam) {
-        const payload = { matchId: this.matchParsed.matchId, teamId: this.selectedTeam };
+        const payload = { matchId: this.match.matchId, teamId: this.selectedTeam };
         await this.$store.dispatch("setWinner", payload);
         this.$store.dispatch("getAdminLeagueStatus");
         this.$store.dispatch("getAdminMatches");
-        this.matchParsed.winnerId = this.selectedTeam;
+        this.match.winnerId = this.selectedTeam;
         this.selectedTeam = null;
       } else {
         alert("Please select a team");
@@ -159,23 +175,20 @@ nav {
   align-items: center;
 }
 
-ul {
+div.teams {
   display: grid;
   gap: 1em;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 10em;
+  grid-template-columns: repeat(auto-fill, minmax(1fr, 2fr));
+  grid-template-rows: 8em 8em;
   list-style: none;
   margin: 0 0 2em 0;
   padding: 0;
 }
 
-ul li {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+div.teamresult {
+  padding: 1em;
   background-color: #fff;
   border-radius: 1em;
-  text-align: center;
   position: relative;
   box-shadow: 0 0.5em 1em -0.5em rgba(0, 0, 0, 0.1);
 }
@@ -195,23 +208,24 @@ ul li.selected {
 
 } */
 
-ul li .tag {
+div.teamresult .tag {
   position: absolute;
-  bottom: 1em;
-  left: 1em;
+  top: 1em;
+  right: 1em;
   text-transform: uppercase;
   border-radius: 4px;
   padding: 0.25em 0.5em;
 }
 
-ul li.winner .tag {
-  color: #000;
-  background-color: var(--green);
-}
 
-ul li.loser .tag {
+div.teamresult .tag {
   color: #000;
   background-color: var(--red);
+}
+
+div.teamresult.winner .tag {
+  color: #000;
+  background-color: var(--green);
 }
 
 .buttons {

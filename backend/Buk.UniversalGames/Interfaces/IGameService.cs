@@ -15,6 +15,6 @@ namespace Buk.UniversalGames.Interfaces
         Task<MatchWinnerResult> SetMatchWinner(int matchId, int winnerTeamId);
 
         Task<byte[]> GetMatchExport();
-        Task<ActionResult<MatchWinnerResult>> FinishMatch(MatchResultDto matchResult);
+        Task<ActionResult<TeamMatchResult>> ReportTeamMatchResult(int matchId, int teamId, int result);
     }
 }

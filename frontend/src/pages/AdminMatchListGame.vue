@@ -112,9 +112,9 @@ export default {
     },
     matchClicked(match) {
       this.$router.push({
-        name: "AdminGame",
+        name: "AdminMatch",
         params: {
-          match: match.matchId.toString(),
+          matchId: match.matchId.toString(),
         },
       });
     },

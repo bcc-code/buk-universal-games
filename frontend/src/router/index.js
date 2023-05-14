@@ -7,7 +7,7 @@ import GameInfoDetail from "@/pages/GameInfoDetail.vue";
 import ScanResult from "@/pages/ScanResult.vue";
 import ScanProcessing from "@/pages/ScanProcessing.vue";
 import Map from "@/pages/Map.vue";
-import AdminGame from "@/pages/AdminGame.vue";
+import AdminMatch from "@/pages/AdminMatch.vue";
 import AdminLeagueStatus from "@/pages/AdminLeagueStatus.vue";
 import AdminSelectLeague from "@/pages/AdminSelectLeague.vue";
 import AdminGames from "@/pages/AdminGames.vue";
@@ -51,9 +51,9 @@ const routes = [
     props: true
   },
   {
-    path: "/admin/matches/:match",
-    name: "AdminGame",
-    component: AdminGame,
+    path: "/admin/matches/:matchId",
+    name: "AdminMatch",
+    component: AdminMatch,
     props: true
   },
   {
@@ -124,6 +124,12 @@ router.beforeEach(async (to, from, next) => {
     store.commit('setScanning', { handlingURL: true, stickerCode: to.params.stickerCode })
   }
 
+  if (!store.state.loginData && window.localStorage.getItem('teamCode')) {
+    store.dispatch('loadLoginData')
+    store.dispatch('loadLeagueData')
+    store.dispatch('loadGameData')
+    store.dispatch('loadAdminLeagueData')
+  }
   next(nextOptions)
 })
 
