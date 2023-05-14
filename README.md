@@ -10,8 +10,8 @@
 
 ## Running Locally
 
-Run `docker-compose up --build`  
-Visit http://localhost:5125/
+Run `docker-compose up --build -d` for the backend. Visit http://localhost:5127/ for the Directus UI, credentials are admin@admin.com:password
+Run `cd frontend; npm install; npm run serve` for the front-end. Visit https://localhost:8080 to view it.
 
 ### Accessing Database
 
