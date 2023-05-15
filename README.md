@@ -10,22 +10,45 @@
 
 ## Running Locally
 
-Run `docker-compose up --build`  
-Visit http://localhost:5125/
+Run `docker-compose up --build -d` for the backend. Visit http://localhost:5127/ for the Directus UI, credentials are admin@admin.com:password
+Run `cd frontend; npm install; npm run serve` for the front-end. Visit https://localhost:8080 to view it.
 
 ### Accessing Database
 
 1. Visit: http://localhost:5126/
-2. Log in with: admin@admin.com / password
+2. Log in with: admin@admin.com / password (Note: You may get stuck in a redirect loop on Firefox, use Chrome instead)
 3. Right click "Servers"->Register->Server...
 4. Add following parameters
    1. Name: buk-universal-games
    2. (Under connection)
-     * Host name: `host.docker.internal` (on windows, can also try localhost on other platforms)
-     * Port: `5432`
-     * Username: `admin`
-     * Password: `password`
+      - Host name: `host.docker.internal` on Windows / Mac (otherwise, see below)
+      - Port: `5432`
+      - Username: `admin`
+      - Password: `password`
 5. Database tables can be found under `buk-universal-games->Schemas->public`
+
+#### If `host.docker.internal` doesn't work
+
+On Windows and MacOS, these DNS entries are auto-added. On Linux systems, this doesn't seem to be the case.
+
+Instead run `ip route` to get a list of adapter routes:
+
+```sh
+default via 192.168.2.254 dev eth0 proto dhcp metric 100
+172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown
+172.18.0.0/16 dev br-9a750de8dfd7 proto kernel scope link src 172.18.0.1
+192.168.2.0/24 dev eth0 proto kernel scope link src 192.168.2.51 metric 100
+```
+
+In this case you can see three routing configurations:
+
+- `docker0` the default network adapter for docker
+- `br-9a750de8dfd7` a bridge adapter created by docker-compose
+- `eth0` the `default` LAN connection of the machine.
+
+To connect to the database, use the gateway address for the docker-compose bridge adapter. This represents access to the `buk-universal-games` network defined in the docker compose file. The IP to use is therefore `172.18.0.1`.
+
+Note: If you're running multiple docker-compose configurations with custom networks at the same time, you'll see multiple bridge adapters and you'll have to guess which one is correct. There are of course more deterministic ways to find which one is correct, please expand this document with such methods if you find you need them.
 
 ## Adding Database Migrations
 
@@ -46,7 +69,7 @@ Migrations are automatically applied when the a new version of the application i
 6. Add following parameters
    1. Name: `buk-universal-games - PROD` (or similar)
    2. (Under connection)
-     * Host name: `host.docker.internal` (on windows, can also try localhost on other platforms)
-     * Port: `5434`
-     * Username: `remote-admin`
-     * Password: `{***remote admin password***}`
+      - Host name: `host.docker.internal` (on windows, can also try localhost on other platforms)
+      - Port: `5434`
+      - Username: `remote-admin`
+      - Password: `{***remote admin password***}`
