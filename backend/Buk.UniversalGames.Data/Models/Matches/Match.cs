@@ -16,6 +16,8 @@ public class Match
 
     public int GameId { get; set; }
 
+    public int LeagueId { get; set; }
+
     public string AddOn { get; set; }
 
     public DateTime Start { get; set; }
@@ -30,4 +32,6 @@ public class Match
     public Game Game { get; set; }
     [JsonIgnore]
     public Team? Winner { get; set; }
+
+    public League League { get; set; }
 }

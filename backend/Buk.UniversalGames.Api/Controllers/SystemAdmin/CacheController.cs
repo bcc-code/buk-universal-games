@@ -1,7 +1,10 @@
 using Buk.UniversalGames.Api.Authorization;
 using Buk.UniversalGames.Data;
 using Buk.UniversalGames.Data.Interfaces;
+using Buk.UniversalGames.Data.Models;
+using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Enums;
+using Buk.UniversalGames.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Buk.UniversalGames.Api.Controllers.SystemAdmin;
@@ -17,16 +20,16 @@ public class CacheController : ControllerBase
     private readonly ILeagueRepository _leagueRepository;
     private readonly IGameRepository _gameRepository;
     private readonly IStickerRepository _stickerRepository;
-    private readonly IStatusRepository _statusRepository;
+    private readonly IStatusService _statusService;
 
-    public CacheController(ILogger<CacheController> logger, IStatusRepository statusRepository, ILeagueRepository leagueRepository, IGameRepository gameRepository, IStickerRepository stickerRepository, ICacheContext cache)
+    public CacheController(ILogger<CacheController> logger, IStatusService statusService, ILeagueRepository leagueRepository, IGameRepository gameRepository, IStickerRepository stickerRepository, ICacheContext cache)
     {
         _logger = logger;
         _cache = cache;
         _leagueRepository = leagueRepository;
         _gameRepository = gameRepository;
         _stickerRepository = stickerRepository;
-        _statusRepository = statusRepository;
+        _statusService = statusService;
     }
 
     [HttpGet("clear")]
@@ -47,7 +50,9 @@ public class CacheController : ControllerBase
             await _leagueRepository.GetTeams(league.LeagueId);
             await _gameRepository.GetMatches(league.LeagueId);
             await _stickerRepository.GetStickers(league.LeagueId);
-            await _statusRepository.GetLeagueStatus(league.LeagueId);
+            foreach(var game in games)
+                await _statusService.BuildAndCacheRankingForGameInLeague(game, league.LeagueId);
+            await _statusService.BuildAndCacheLeagueRanking(league.LeagueId);
         }
         return Ok();
     }

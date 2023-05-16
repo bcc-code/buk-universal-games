@@ -10,9 +10,6 @@
       </div>
     </div>
     <div class="card-dark-column">
-      <h2 class="card-dark-text">{{ stickers }}</h2>
-    </div>
-    <div class="card-dark-column">
       <h2 class="card-dark-text">{{ points }}</h2>
     </div>
   </section>
@@ -51,7 +48,7 @@ button {
   padding: 0 1em;
   border-radius: 0.75em;
   display: grid;
-  grid-template-columns: 10% 60% 15% 15%;
+  grid-template-columns: 10% 75% 15%;
 }
 
 .card-row {

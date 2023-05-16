@@ -4,7 +4,13 @@ namespace Buk.UniversalGames.Models
 {
     public class LeagueStatusReport
     {
-        public DateTime StatusAt { get; set; }
-        public List<TeamStatus> Status { get; set; }
+        public LeagueStatusReport(DateTime statusAt, Dictionary<string, List<TeamStatus>> status)
+        {
+            StatusAt = statusAt;
+            Status = status;
+        }
+
+        public DateTime StatusAt { get; }
+        public Dictionary<string, List<TeamStatus>> Status { get; }
     }
 }

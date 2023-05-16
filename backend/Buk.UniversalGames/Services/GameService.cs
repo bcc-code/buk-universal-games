@@ -1,12 +1,16 @@
-﻿using Buk.UniversalGames.Data.Interfaces;
+﻿using Buk.UniversalGames.Data;
+using Buk.UniversalGames.Data.Interfaces;
 using Buk.UniversalGames.Data.Models;
 using Buk.UniversalGames.Data.Models.Matches;
 using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Cultures;
+using Buk.UniversalGames.Library.Enums;
 using Buk.UniversalGames.Library.Exceptions;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using NPOI.XSSF.UserModel;
+using StackExchange.Redis;
 
 namespace Buk.UniversalGames.Services
 {
@@ -15,12 +19,16 @@ namespace Buk.UniversalGames.Services
         private readonly ILogger<GameService> _logger;
         private readonly IGameRepository _gameRepository;
         private readonly ILeagueRepository _leagueRepository;
+        private readonly IStatusService _statusService;
+        private readonly DataContext _db;
 
-        public GameService(ILogger<GameService> logger, IGameRepository gameRepository , ILeagueRepository leagueRepository)
+        public GameService(ILogger<GameService> logger, IGameRepository gameRepository , ILeagueRepository leagueRepository, IStatusService statusService, DataContext db)
         {
             _logger = logger;
             _gameRepository = gameRepository;
             _leagueRepository = leagueRepository;
+            _statusService = statusService;
+            _db = db;
         }
 
         public async Task<List<Game>> GetGames()
@@ -44,6 +52,14 @@ namespace Buk.UniversalGames.Services
             var match = (await GetMatches(team)).FirstOrDefault(s=>s.MatchId == matchId) ?? throw new BadRequestException(Strings.UnknownMatchId);
             var game = (await GetGames()).FirstOrDefault(s => s.GameId == match.GameId) ?? throw new BadRequestException(Strings.UnknownGame);
             return await _gameRepository.SetMatchWinner(game, matchId, team);
+        }
+
+        public async Task<ActionResult<TeamMatchResult>> ReportTeamMatchResult(int matchId, int teamId, int result)
+        {
+            var match = _db.Matches.Include(x => x.Game).Single(x => x.MatchId == matchId) ?? throw new ArgumentException("No match found", nameof(matchId));
+            var matchResult = await _gameRepository.StoreMatchResult(matchId, teamId, result);
+            await _statusService.UpdateGameRanking(match.Game, match.LeagueId);
+            return matchResult;
         }
 
         public async Task<byte[]> GetMatchExport()
@@ -117,11 +133,6 @@ namespace Buk.UniversalGames.Services
 
             xlsWorkbook.Write(stream);
             return stream.ToArray();
-        }
-
-        public async Task<ActionResult<TeamMatchResult>> ReportTeamMatchResult(int matchId, int teamId, int result)
-        {
-            return await _gameRepository.StoreMatchResult(matchId, teamId, result);
         }
     }
 }

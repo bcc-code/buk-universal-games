@@ -7,7 +7,7 @@
         :stickers="teamStatus?.status?.stickers"
         :refresh="refresh"
       />
-      <div v-if="teamStatus.error">
+      <div v-if="teamStatus?.error">
         <h2>Something went wrong</h2>
         <p>{{ teamStatus.error }}</p>
         <p>Please try refreshing the page.</p>
@@ -18,9 +18,6 @@
         <div class="league-title-column index-column"></div>
         <div class="league-title-column">
           <h2 class="league-title-text">Team</h2>
-        </div>
-        <div class="league-title-column">
-          <h2 class="league-title-text">Stickers</h2>
         </div>
         <div class="league-title-column">
           <h2 class="league-title-text">Points</h2>
@@ -52,19 +49,16 @@
           </div>
         </div>
       </div>
-      <section class="league-title" v-if="leagueStatus.status?.length">
+      <section class="league-title" v-if="leagueStatus.status?.total.length">
         <div class="league-title-column index-column"></div>
         <div class="league-title-column">
           <h2 class="league-title-text">Team</h2>
         </div>
         <div class="league-title-column">
-          <h2 class="league-title-text">Stickers</h2>
-        </div>
-        <div class="league-title-column">
           <h2 class="league-title-text">Points</h2>
         </div>
       </section>
-      <section class="user-section" v-for="(status, i) in leagueStatus.status" :key="status.id">
+      <section class="user-section" v-for="(status, i) in leagueStatus.status.total" :key="status.id">
         <LeagueListItem
           :class="{ 'card-light': i > 4, 'green-font': status.teamId == teamStatus?.status?.teamId }"
           :index="i + 1"
@@ -95,7 +89,6 @@ export default {
     };
   },
   created() {
-    this.getTeamStatus(false);
     this.getLeagueStatus(false);
   },
   methods: {
@@ -107,7 +100,6 @@ export default {
     },
     refresh() {
       this.loading = true;
-      this.getTeamStatus(true);
       this.getLeagueStatus(true);
 
       setTimeout(() => {
@@ -117,7 +109,7 @@ export default {
   },
   computed: {
     teamStatus() {
-      return this?.$store.state.teamStatus;
+      return this?.leagueStatus?.status?.total?.find((team) => team.teamId == this.$store.state.teamId);
     },
     leagueStatus() {
       return this?.$store.state.leagueStatus;
@@ -131,7 +123,7 @@ export default {
   padding: 0 1em;
   border-radius: 0.75em;
   display: grid;
-  grid-template-columns: 2fr 8fr 3fr 3fr;
+  grid-template-columns: 10% 75% 15%;
 }
 
 .league-title-column {
@@ -140,9 +132,6 @@ export default {
   width: 100%;
 }
 
-.league-title-column:nth-last-child(-n + 2) {
-  align-items: flex-end;
-}
 
 .league-title-text {
   font-size: 0.85em;

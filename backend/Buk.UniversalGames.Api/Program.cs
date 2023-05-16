@@ -7,6 +7,7 @@ using Buk.UniversalGames.Library.Exceptions;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using Buk.UniversalGames.Library.Enums;
+using Buk.UniversalGames.Api.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +19,7 @@ builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options => options.OperationFilter<TeamCodeHeaderFilter>());
 
 builder.Services.AddScoped<ILeagueService, LeagueService>();
 builder.Services.AddScoped<IGameService, GameService>();
@@ -55,7 +56,7 @@ if (builder.Environment.IsDevelopment())
     builder.Services.AddCors(options => options.AddPolicy(CorsPolicyName, policyBuilder =>
     {
         policyBuilder.AllowAnyOrigin()
-                .WithHeaders("x-ubg-teamcode")
+                .WithHeaders("x-ubg-teamcode", "content-type")
               .WithMethods("GET", "POST", "OPTIONS").Build();
     }));
 }
@@ -69,7 +70,7 @@ else
     builder.Services.AddCors(options => options.AddPolicy(CorsPolicyName, policyBuilder =>
     {
         policyBuilder.WithOrigins("https://universalgames.buk.no")
-                .WithHeaders("x-ubg-teamcode")
+                .WithHeaders("x-ubg-teamcode", "content-type")
               .WithMethods("GET", "POST", "OPTIONS").Build();
     }));
 }
