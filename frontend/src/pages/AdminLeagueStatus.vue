@@ -15,18 +15,14 @@
         <h2 class="league-title-text">Team</h2>
       </div>
       <div class="league-title-column">
-        <h2 class="league-title-text">Stickers</h2>
-      </div>
-      <div class="league-title-column">
         <h2 class="league-title-text">Points</h2>
       </div>
     </section>
-    <section class="user-section" v-for="(status, i) in adminLeagueStatus" :key="status.id">
+    <section class="user-section" v-for="(status,i) in adminLeagueStatus?.total" :key="status.id">
       <LeagueListItem
         :class="{ 'card-light': i > 4 }"
         :index="i + 1"
         :team="status.team"
-        :stickers="status.stickers"
         :points="status.points"
       />
     </section>
@@ -83,17 +79,13 @@ export default {
   padding: 0 1em;
   border-radius: 0.75em;
   display: grid;
-  grid-template-columns: 2fr 8fr 3fr 3fr;
+  grid-template-columns: 10% 75% 15%;
 }
 
 .league-title-column {
   display: flex;
   flex-direction: column;
   width: 100%;
-}
-
-.league-title-column:nth-last-child(-n + 2) {
-  align-items: flex-end;
 }
 
 .league-title-text {

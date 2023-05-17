@@ -23,7 +23,7 @@
         }"
       >
         <p>{{ match?.team1 }}</p>
-        <input type="number" v-model="team1Result" placeholder="Result (in meters/seconds/number of flipped cards)" />
+        <input type="number" v-model="team1Result" :placeholder="'Result (in ' + units[game.gameType] + ')'" />
         <button class="btn btn-blank" @click="confirmTeamResult(match?.team1Id, team1Result)">Confirm</button>
         <span class="tag" v-if="match?.team1Id === match?.winnerId">Winner</span>
       </div>
@@ -36,7 +36,7 @@
         }"
       >
         <p>{{ match?.team2 }}</p>
-        <input type="number" v-model="team2Result" placeholder="Result (in meters/seconds/number of flipped cards)" />
+        <input type="number" v-model="team2Result" :placeholder="'Result (in ' + units[game.gameType] + ')'" />
         <button class="btn btn-blank" @click="confirmTeamResult(match?.team2Id, team2Result)">Confirm</button>
         <span class="tag" v-if="match?.team2Id === match?.winnerId">Winner</span>
       </div>
@@ -74,6 +74,13 @@ export default {
       canEnterResults: false,
       loading: true,
       selectedTeam: null,
+      units: {
+        NerveSpiral: "seconds",
+        MineField: "seconds",
+        MonkeyBars: "bars completed",
+        TableSurfing: "meters",
+        TicketTwist: "nr of tickets",
+      },
       icons: {
         Earth: gameEarthIcon,
         Fire: gameFireIcon,
@@ -190,6 +197,8 @@ div.teamresult {
   background-color: #fff;
   border-radius: 1em;
   position: relative;
+  display:grid;
+  grid-template-rows: 1fr 1fr 1fr;
   box-shadow: 0 0.5em 1em -0.5em rgba(0, 0, 0, 0.1);
 }
 
