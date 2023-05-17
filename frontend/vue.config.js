@@ -3,7 +3,7 @@ module.exports = defineConfig({
   transpileDependencies: true,
   devServer: {
     server: {
-      type: 'https'
+      type: 'http'
     }
   }
 })
