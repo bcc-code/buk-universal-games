@@ -49,8 +49,8 @@ public class DataContext : DbContext
 
         builder.Entity<Game>().HasKey(t => t.GameId);
 
-        builder.Entity<Match>().HasOne(x => x.League);
         builder.Entity<Match>().HasKey(t => t.MatchId);
+        builder.Entity<Match>().Property(e => e.Start).HasColumnType("timestamp without time zone");
 
         builder.Entity<Settings>().HasKey(t => t.Key);
 
