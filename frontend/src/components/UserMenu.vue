@@ -19,7 +19,7 @@
     </div>
     <div class="user-menu-btn-small-wrapper">
       <button
-        :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'GameInfo' }"
+        :class="{ 'user-menu-btn-small': true, 'selected-component': ['GameInfo','GameInfoDetail'].includes($route.name) }"
         v-html="ballIcon"
         @click="$router.push({ name: 'GameInfo', params: { code: $store.state.loginData.code } })"
       ></button>
@@ -30,11 +30,9 @@
       ></button>
     </div>
   </nav>
-  <CameraScanner ref="cameraScanner"></CameraScanner>
 </template>
 
 <script>
-import CameraScanner from "@/components/CameraScanner.vue";
 
 import { ballIcon } from "@/assets/icons/ball.svg.ts";
 import { homeIcon } from "@/assets/icons/home.svg.ts";
@@ -45,7 +43,6 @@ import { scanIcon } from "@/assets/icons/scan.svg.ts";
 export default {
   name: "UserMenu",
   components: {
-    CameraScanner,
   },
   data() {
     return {
@@ -73,7 +70,7 @@ input[type="file"] {
   position: fixed;
   bottom: 0;
   width: 100%;
-  max-width: 480px;
+  max-width: 960px;
   margin: 0 auto;
   background-color: transparent;
   background-color: white;
