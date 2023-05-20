@@ -3,7 +3,7 @@
     <section class="user-section">
       <PointsAndStickers
         :loading="loading"
-        :points="teamStatus?.status?.points"
+        :points="teamStatus?.points"
         :stickers="teamStatus?.status?.stickers"
         :refresh="refresh"
       />
@@ -14,13 +14,13 @@
       </div>
     </section>
     <div v-if="loading">
-      <section class="league-title">
-        <div class="league-title-column index-column"></div>
-        <div class="league-title-column">
-          <h2 class="league-title-text">Team</h2>
+      <section class="ranking-title">
+        <div class="ranking-title-column index-column"></div>
+        <div class="ranking-title-column">
+          <h2 class="ranking-title-text">Team</h2>
         </div>
-        <div class="league-title-column">
-          <h2 class="league-title-text">Points</h2>
+        <div class="ranking-title-column">
+          <h2 class="ranking-title-text">Points</h2>
         </div>
       </section>
       <section class="user-section" v-for="i in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]" :key="i">
@@ -49,16 +49,16 @@
           </div>
         </div>
       </div>
-      <section class="league-title" v-if="leagueStatus.status?.total.length">
-        <div class="league-title-column index-column"></div>
-        <div class="league-title-column">
-          <h2 class="league-title-text">Team</h2>
+      <section class="ranking-title" v-if="leagueStatus.status?.total.length">
+        <div class="ranking-title-column index-column"></div>
+        <div class="ranking-title-column">
+          <h2 class="ranking-title-text">Team</h2>
         </div>
-        <div class="league-title-column">
-          <h2 class="league-title-text">Points</h2>
+        <div class="ranking-title-column">
+          <h2 class="ranking-title-text">Points</h2>
         </div>
       </section>
-      <section class="user-section" v-for="(status, i) in leagueStatus.status.total" :key="status.id">
+      <section class="user-section" v-for="(status, i) in leagueStatus?.status?.total" :key="status.id">
         <LeagueListItem
           :class="{ 'card-light': i > 4, 'green-font': status.teamId == teamStatus?.status?.teamId }"
           :index="i + 1"
@@ -109,7 +109,7 @@ export default {
   },
   computed: {
     teamStatus() {
-      return this?.leagueStatus?.status?.total?.find((team) => team.teamId == this.$store.state.teamId);
+      return this?.leagueStatus?.status?.total?.find((score) => score.team == this.$store.state.loginData?.team);
     },
     leagueStatus() {
       return this?.$store.state.leagueStatus;
@@ -119,21 +119,21 @@ export default {
 </script>
 
 <style scoped>
-.league-title {
+.ranking-title {
   padding: 0 1em;
   border-radius: 0.75em;
   display: grid;
   grid-template-columns: 10% 75% 15%;
 }
 
-.league-title-column {
+.ranking-title-column {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
 
-.league-title-text {
+.ranking-title-text {
   font-size: 0.85em;
   color: var(--gray-2);
   margin: 1em 0 0;

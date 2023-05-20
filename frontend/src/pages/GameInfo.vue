@@ -1,8 +1,8 @@
 <template>
   <UserPageLayout>
     <PointsAndStickers
-      :points="teamStatus?.status?.points"
-      :stickers="teamStatus?.status?.stickers"
+      :points="teamStatus?.points"
+      :stickers="teamStatus?.stickers"
       :refresh="refresh"
       :loading="$store.state.gamesLoading"
     />
@@ -24,14 +24,14 @@ export default {
   created() {
     this.$store.dispatch("getGames");
 
-    if (Object.keys(this.$store.state.teamStatus).length === 0) {
+    if (Object.keys(this.$store.state.leagueStatus).length === 0) {
       this.refresh();
     }
   },
   methods: {
     async refresh() {
       this.$store.commit("setGamesLoading", true);
-      await this.$store.dispatch("getTeamStatus", true,);
+      await this.$store.dispatch("getLeagueStatus", true,);
       this.$store.commit("setGamesLoading", false);
     },
     gameClicked(game) {
@@ -45,7 +45,10 @@ export default {
   },
   computed: {
     teamStatus() {
-      return this?.$store.state.teamStatus;
+      return this?.leagueStatus?.status?.total?.find((score) => score.team == this.$store.state.loginData?.team);
+    },
+    leagueStatus() {
+      return this?.$store.state.leagueStatus;
     },
   },
 };

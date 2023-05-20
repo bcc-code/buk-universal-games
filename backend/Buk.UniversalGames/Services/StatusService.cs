@@ -23,12 +23,13 @@ namespace Buk.UniversalGames.Services
         private readonly DataContext _db;
         private readonly ICacheContext _cache;
 
-        private readonly GameType[] _gameTypes = (GameType[])Enum.GetValues(typeof(GameType));
-
         private readonly int[] _scoreByRank = new int[]
         {
             20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1
         };
+
+        private string gameCacheKey(GameType type, int leagueId) => $"ranking_{type}_{leagueId}";
+        private string leagueCacheKey(int leagueId) => $"ranking_total_{leagueId}";
 
         public StatusService(ILogger<StatusService> logger, IStatusRepository statusRepository, ILeagueRepository leagueLeagueRepository, DataContext db, ICacheContext cache)
         {
@@ -46,14 +47,14 @@ namespace Buk.UniversalGames.Services
             {
                 dict.Add(type.ToString(), await GetGameRanking(type, leagueId));
             }
-            dict.Add("total", await _cache.Get<List<TeamStatus>>($"ranking_total_{leagueId}") ?? new List<TeamStatus>());
+            dict.Add("total", await _cache.Get<List<TeamStatus>>(leagueCacheKey(leagueId)) ?? new List<TeamStatus>());
 
             return dict;
         }
 
         public async Task<List<TeamStatus>> GetGameRanking(GameType gameType, int leagueId)
         {
-            return await _cache.Get<List<TeamStatus>>($"ranking_{gameType}_{leagueId}") ?? new List<TeamStatus>();
+            return await _cache.Get<List<TeamStatus>>(gameCacheKey(gameType, leagueId)) ?? new List<TeamStatus>();
         }
 
         public async Task<List<TeamStatus>> UpdateGameRanking(Game game, int leagueId)
@@ -65,30 +66,27 @@ namespace Buk.UniversalGames.Services
         public async Task<List<TeamStatus>> BuildAndCacheRankingForGameInLeague(Game game, int leagueId)
         {
             var teamScores = from score in _db.Points
-                             join match in _db.Matches on score.Match equals match
-                             join league in _db.Leagues on match.League equals league
-                             join team in _db.Teams on score.Team equals team
-                             where score.Game == game && league.LeagueId == leagueId
-                             select new { score.TeamId, team.Name, score.Points };
-            var teamScoresQuery = (await teamScores.ToListAsync()).GroupBy(x => x.Points);
+                             where score.Game == game && score.Match!.LeagueId == leagueId
+                             select new { score.TeamId, score.Team.Name, score.Points };
+            var teamsGroupedByPoints = (await teamScores.ToListAsync()).GroupBy(x => x.Points);
 
             if (game.Type == GameType.TicketTwist || game.Type == GameType.MonkeyBars)
             {
-                teamScoresQuery = teamScoresQuery.OrderByDescending(x => x.Key);
+                teamsGroupedByPoints = teamsGroupedByPoints.OrderByDescending(x => x.Key);
             }
             else
             {
-                teamScoresQuery = teamScoresQuery.OrderBy(x => x.Key);
+                teamsGroupedByPoints = teamsGroupedByPoints.OrderBy(x => x.Key);
             }
             var rank = -1;
             var ranking = new List<TeamStatus>();
-            foreach (var rankingPosition in teamScoresQuery)
+            foreach (var rankingPosition in teamsGroupedByPoints)
             {
                 rank += rankingPosition.Count();
                 ranking.AddRange(rankingPosition.Select(x => new TeamStatus(x.TeamId, x.Name, _scoreByRank[rank]) { Score = x.Points }));
             }
 
-            await _cache.Set($"ranking_{game.GameType}_{leagueId}", ranking);
+            await _cache.Set(gameCacheKey(game.Type, leagueId), ranking);
 
             return ranking;
         }
@@ -115,7 +113,7 @@ namespace Buk.UniversalGames.Services
                 leagueRanking.Add(new TeamStatus(team.TeamId, team.Name, totalPoints));
             }
 
-            await _cache.Set($"ranking_total_{leagueId}", leagueRanking);
+            await _cache.Set(leagueCacheKey(leagueId), leagueRanking);
 
             return leagueRanking;
 

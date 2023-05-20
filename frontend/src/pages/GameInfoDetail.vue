@@ -69,7 +69,6 @@ export default {
   data() {
     return {
       gameParsed: {},
-      ranking: [],
       bannerImage: "",
       icons: {
         Earth: gameEarthIcon,
@@ -82,10 +81,12 @@ export default {
       groupIcon
     };
   },
+  created() {
+    this.$store.dispatch("getLeagueStatus");
+  },
   mounted() {
     if (this.game) {
       this.gameParsed = this.$store.state.games.find((game) => game.id == this.game);
-      this.ranking = this.$store.state.leagueStatus.status[this.gameParsed.gameType]; 
       this.bannerImage = `/images/illustrations/Universal-BUK-Games-${this.gameParsed.gameType}.svg`;
     } else {
       this.$router.back();
@@ -93,8 +94,14 @@ export default {
   },
   methods: {},
   computed: {
-    gameRanking() {
-      return this.$store.state.leagueStatus;
+    ranking() {
+      const gameType = this.gameParsed?.gameType;
+      const leagueStatus = this.$store.state.leagueStatus;
+      if(gameType)
+      {
+        return leagueStatus?.status?.[gameType] || [];
+      }
+      return [];
     },
   },
 };
