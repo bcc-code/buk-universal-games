@@ -24,7 +24,7 @@ export default {
       this.$router.push({
         name: "AdminGameInfoDetail",
         params: {
-          game: JSON.stringify(game),
+          game: game.id,
         },
       });
     },
