@@ -87,8 +87,8 @@ var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
 {
-    //app.UsePathBase("/api");
-    //app.UseHttpsRedirection();
+    app.UsePathBase("/api");
+    app.UseHttpsRedirection();
 }
 
 app.UseExceptionHandler(c => c.Run(async context =>
