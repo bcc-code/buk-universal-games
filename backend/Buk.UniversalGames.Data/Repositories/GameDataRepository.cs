@@ -25,8 +25,6 @@ namespace Buk.UniversalGames.Data.Repositories
         {
             return await (
                 from match in _db.Matches
-                join team1 in _db.Teams on match.Team1Id equals team1.TeamId
-                join team2 in _db.Teams on match.Team2Id equals team2.TeamId
                 where match.Team1Id == team.TeamId || match.Team2Id == team.TeamId
                 orderby match.Start
                 select new MatchListItem
@@ -35,35 +33,33 @@ namespace Buk.UniversalGames.Data.Repositories
                     GameId = match.GameId,
                     AddOn = match.AddOn,
                     Team1Id = match.Team1Id,
-                    Team1 = team1.Name,
+                    Team1 = match.Team1.Name,
                     Team2Id = match.Team2Id,
-                    Team2 = team2.Name,
+                    Team2 = match.Team2.Name,
                     WinnerId = match.WinnerId.GetValueOrDefault(),
-                    Winner = match.WinnerId.HasValue ? (match.WinnerId.Value == match.Team1Id ? team1.Name : team2.Name) : "",
-                    Start = match.Start.ToShortTimeString(),
+                    Winner = match.WinnerId.HasValue ? (match.WinnerId.Value == match.Team1Id ? match.Team1.Name : match.Team2.Name) : "",
+                    Start = match.Start.ToLocalTime().ToString("HH:mm"),
                 }).ToListAsync();
         }
         public async Task<List<MatchListItem>> GetMatches(int leagueId, int? gameId = null)
         {
             return await (
                 from match in _db.Matches
-                    join team1 in _db.Teams on match.Team1Id equals team1.TeamId
-                    join team2 in _db.Teams on match.Team2Id equals team2.TeamId
                     join game in _db.Games on match.GameId equals game.GameId
-                    where (team1.LeagueId == leagueId && (!gameId.HasValue || match.GameId == gameId.Value))
-                    orderby match.Start, match.GameId, team1.Name
+                    where match.LeagueId == leagueId && (!gameId.HasValue || match.GameId == gameId.Value)
+                    orderby match.Start, match.GameId, match.Team1.Name
                     select new MatchListItem
                     {
                         MatchId = match.MatchId,
                         GameId = match.GameId,
                         AddOn = match.AddOn,
                         Team1Id = match.Team1Id,
-                        Team1 = team1.Name,
+                        Team1 = match.Team1.Name,
                         Team2Id = match.Team2Id,
-                        Team2 = team2.Name,
+                        Team2 = match.Team2.Name,
                         WinnerId = match.WinnerId.GetValueOrDefault(),
-                        Winner = match.WinnerId.HasValue ? (match.WinnerId.Value == match.Team1Id ? team1.Name : team2.Name) : "",
-                        Start = match.Start.ToShortTimeString(),
+                        Winner = match.WinnerId.HasValue ? (match.WinnerId.Value == match.Team1Id ? match.Team1.Name : match.Team2.Name) : "",
+                        Start = match.Start.ToLocalTime().ToString("HH:mm"),
                     }).ToListAsync();
         }
 
