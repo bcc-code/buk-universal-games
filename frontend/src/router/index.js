@@ -19,12 +19,13 @@ const routes = [
   {
     path: "/",
     name: "Login",
-    component: Login,
-    props: true
+    component: Login
   },
   {
     path: "/start/:code",
-    redirect: { name: 'LeagueList' }
+    name: "LoginWithCode",
+    component: Login,
+    props: true
   },
   {
     path: "/admin/league-status",
