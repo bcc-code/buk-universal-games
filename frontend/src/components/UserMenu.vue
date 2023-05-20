@@ -13,9 +13,10 @@
       ></button>
     </div>
     <div class="user-menu-btn-big-wrapper">
-      <button class="user-menu-btn-big" v-on:click="$refs.cameraScanner.start()">
+      <img src="images/ubg-logo.png" class="menu-logo-big">
+      <!-- <button class="user-menu-btn-big" v-on:click="$refs.cameraScanner.start()">
         <p v-html="scanIcon"></p>
-      </button>
+      </button> -->
     </div>
     <div class="user-menu-btn-small-wrapper">
       <button
@@ -106,6 +107,20 @@ button {
   background-color: var(--dark);
   color: white;
   border-radius: 10em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid white;
+}
+
+.menu-logo-big {
+  position: absolute;
+  height: 5em;
+  width: 5em;
+  top: -2em;
+  background-color: var(--dark);
+  color: white;
+  border-radius: 1em;
   display: flex;
   justify-content: center;
   align-items: center;
