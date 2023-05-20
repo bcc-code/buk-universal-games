@@ -7,7 +7,7 @@
   >
     <div class="content">
       <img src="../assets/logo.png" alt="" class="logo" />
-      <input type="text" placeholder="Team code" v-model="teamCode" />
+      <input type="text" class="codeInput" placeholder="Team code" v-model="teamCode" />
       <button v-if="teamCode.length > 3" class="btn-primary" @click="tryLogin()">Login</button>
       <!-- <router-link v-if="teamCode.length > 3" class="btn-primary" :to="loginUrl">Login</router-link> -->
       <p v-if="loginMessage" class="login-msg">{{ loginMessage }}</p>
@@ -18,6 +18,9 @@
 <script>
 export default {
   name: "LoginPage",
+  props: {
+    code: String,
+  },
   data() {
     return {
       image: require("@/assets/bg.svg"),
@@ -26,6 +29,10 @@ export default {
   },
   mounted() {
     this.$store.commit("setLoginMessage", "");
+    if(this.code) {
+      this.teamCode = this.code
+      this.tryLogin()
+    }
   },
   methods: {
     async tryLogin() {
@@ -74,6 +81,29 @@ export default {
   background-position: center;
   padding: 1em 2em;
   min-height: 100%;
+}
+
+.logo {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  display: block;
+}
+
+.codeInput {
+  margin: 1em auto;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  font-size: 1.3em;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: var(--dark);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  outline: none;
 }
 
 .content {

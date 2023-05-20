@@ -8,20 +8,22 @@ namespace Buk.UniversalGames.Data.Models.Matches
 {
     public class MatchResultDto : IMatchResult
     {
-        internal MatchResultDto(int matchId, int measuredResultTeam1, int measuredResultTeam2)
+        public MatchResultDto() { }
+        public MatchResultDto(int matchId, int teamId, int result)
         {
             MatchId = matchId;
-            MeasuredResultTeam1 = measuredResultTeam1;
-            MeasuredResultTeam2 = measuredResultTeam2;
+            TeamId = teamId;
+            Result = result;
         }
 
-        public int MatchId { get; }
-        
+        public int MatchId { get; init; }
+
+        public int TeamId { get; init; }
+
         /// <summary>
-        /// Score of team 1 as indicated in the match definition. Expressed in unit indicated in match definition
+        /// Score of the provided team for this match. Unit indicated in game definition
         /// </summary>
-        public int MeasuredResultTeam1 { get; }
-        public int MeasuredResultTeam2 { get; }
+        public int Result { get; init; }
     }
 
 }

@@ -10,7 +10,6 @@ namespace Buk.UniversalGames.Api.Controllers.Admin;
 
 [ApiController]
 [TeamType(TeamType.Admin,TeamType.SystemAdmin)]
-[Route("Admin/[controller]")]
 public class GamesController : ControllerBase
 {
     private readonly ILogger<GamesController> _logger;
@@ -23,13 +22,13 @@ public class GamesController : ControllerBase
     }
 
 
-    [HttpPost("{matchId}/results")]
-    public async Task<ActionResult<MatchWinnerResult>> PostMatchResult([FromBody]MatchResultDto matchResult)
+    [HttpPost("matches/{matchId}/results")]
+    public async Task<ActionResult<TeamMatchResult>> PostMatchResult([FromBody]MatchResultDto matchResult)
     {
-        return await _gameService.FinishMatch(matchResult);
+        return await _gameService.ReportTeamMatchResult(matchResult.MatchId, matchResult.TeamId, matchResult.Result);
     }
 
-    [HttpPost("{matchId}/Winner/{teamId}")]
+    [HttpPost("matches/{matchId}/Winner/{teamId}")]
     public async Task<ActionResult<MatchWinnerResult>> SetMatchWinner(int matchId, int teamId)
     {
         return await _gameService.SetMatchWinner(matchId, teamId);

@@ -11,12 +11,7 @@
       </h2>
 
       <div class="banner" :style="{ 'background-image': `url(${bannerImage})` }">
-        <div>
-          <p>W: {{ gameParsed.winnerPoints }}pt</p>
-        </div>
-        <div>
-          <p>L: {{ gameParsed.looserPoints }}pt</p>
-        </div>
+
       </div>
     </header>
 
@@ -31,11 +26,32 @@
       <span v-html="circleInfoIcon"></span>
       {{ gameParsed.safetyInfo }}
     </p>
+
+    <section class="league-title" v-if="ranking?.length">
+        <div class="league-title-column index-column"></div>
+        <div class="league-title-column">
+          <h2 class="league-title-text">Team</h2>
+        </div>
+        <div class="league-title-column">
+          <h2 class="league-title-text">Points</h2>
+        </div>
+      </section>
+      <section class="user-section" v-for="(status, i) in ranking" :key="status.id">
+        <LeagueListItem
+          :class="{ 'card-light': i > 4, 'green-font': status.teamId == teamStatus?.status?.teamId }"
+          :index="i + 1"
+          :team="status.team"
+          :stickers="status.stickers"
+          :points="status.points"
+          :loading="loading"
+        />
+      </section>
   </UserPageLayout>
 </template>
 
 <script>
 import UserPageLayout from "@/components/UserPageLayout.vue";
+import LeagueListItem from "@/components/LeagueListItem.vue";
 import { gameEarthIcon } from "@/assets/icons/game-earth.svg.ts";
 import { gameFireIcon } from "@/assets/icons/game-fire.svg.ts";
 import { gameMetalIcon } from "@/assets/icons/game-metal.svg.ts";
@@ -49,7 +65,7 @@ export default {
   props: {
     game: String,
   },
-  components: { UserPageLayout },
+  components: { UserPageLayout, LeagueListItem },
   data() {
     return {
       gameParsed: {},
@@ -65,6 +81,9 @@ export default {
       groupIcon
     };
   },
+  created() {
+    this.$store.dispatch("getLeagueStatus");
+  },
   mounted() {
     if (this.game) {
       this.gameParsed = this.$store.state.games.find((game) => game.id == this.game);
@@ -74,6 +93,17 @@ export default {
     }
   },
   methods: {},
+  computed: {
+    ranking() {
+      const gameType = this.gameParsed?.gameType;
+      const leagueStatus = this.$store.state.leagueStatus;
+      if(gameType)
+      {
+        return leagueStatus?.status?.[gameType] || [];
+      }
+      return [];
+    },
+  },
 };
 </script>
 
@@ -115,5 +145,25 @@ header h2 {
   align-items: center;
   gap: 0.5em;
   margin: .5em 0;
+}
+
+.league-title {
+  padding: 0 1em;
+  border-radius: 0.75em;
+  display: grid;
+  grid-template-columns: 10% 75% 15%;
+}
+
+.league-title-column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+
+.league-title-text {
+  font-size: 0.85em;
+  color: var(--gray-2);
+  margin: 1em 0 0;
 }
 </style>

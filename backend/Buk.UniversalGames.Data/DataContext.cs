@@ -44,11 +44,13 @@ public class DataContext : DbContext
         builder.Entity<StickerScan>().Property(e => e.At).HasColumnType("timestamp without time zone");
 
         builder.Entity<PointsRegistration>().HasKey(t => t.PointId);
+
         builder.Entity<PointsRegistration>().Property(e => e.Added).HasColumnType("timestamp without time zone");
 
         builder.Entity<Game>().HasKey(t => t.GameId);
 
         builder.Entity<Match>().HasKey(t => t.MatchId);
+        builder.Entity<Match>().Property(e => e.Start).HasColumnType("timestamp without time zone");
 
         builder.Entity<Settings>().HasKey(t => t.Key);
 

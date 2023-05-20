@@ -16,17 +16,16 @@ namespace Buk.UniversalGames.Data.Repositories
             _db = db;
         }
 
-        public async Task<List<Game>> GetGames()
+        public Task<List<Game>> GetGames()
         {
-            return await _db.Games.ToListAsync();
+            return _db.Games.ToListAsync();
         }
 
         public async Task<List<MatchListItem>> GetMatches(Team team)
         {
-            return await (from match in _db.Matches
+            return await (
+                from match in _db.Matches
                 where match.Team1Id == team.TeamId || match.Team2Id == team.TeamId
-                    join team1 in _db.Teams on match.Team1Id equals team1.TeamId
-                join team2 in _db.Teams on match.Team2Id equals team2.TeamId
                 orderby match.Start
                 select new MatchListItem
                 {
@@ -34,37 +33,33 @@ namespace Buk.UniversalGames.Data.Repositories
                     GameId = match.GameId,
                     AddOn = match.AddOn,
                     Team1Id = match.Team1Id,
-                    Team1 = team1.Name,
+                    Team1 = match.Team1.Name,
                     Team2Id = match.Team2Id,
-                    Team2 = team2.Name,
+                    Team2 = match.Team2.Name,
                     WinnerId = match.WinnerId.GetValueOrDefault(),
-                    Winner = match.WinnerId.HasValue ? (match.WinnerId.Value == match.Team1Id ? team1.Name : team2.Name) : "",
-                    Start = match.Start.ToShortTimeString(),
+                    Winner = match.WinnerId.HasValue ? (match.WinnerId.Value == match.Team1Id ? match.Team1.Name : match.Team2.Name) : "",
+                    Start = match.Start.ToLocalTime().ToString("HH:mm"),
                 }).ToListAsync();
         }
         public async Task<List<MatchListItem>> GetMatches(int leagueId, int? gameId = null)
         {
-            return await (from match in _db.Matches
-                    where !gameId.HasValue || match.GameId == gameId.Value
-                    join team1 in _db.Teams on match.Team1Id equals team1.TeamId
-                    where team1.LeagueId == leagueId
-                    join team2 in _db.Teams on match.Team2Id equals team2.TeamId
-                    where team2.LeagueId == leagueId
+            return await (
+                from match in _db.Matches
                     join game in _db.Games on match.GameId equals game.GameId
-                    where game.GameId == match.GameId
-                    orderby match.Start, match.GameId, team1.Name
+                    where match.LeagueId == leagueId && (!gameId.HasValue || match.GameId == gameId.Value)
+                    orderby match.Start, match.GameId, match.Team1.Name
                     select new MatchListItem
                     {
                         MatchId = match.MatchId,
                         GameId = match.GameId,
                         AddOn = match.AddOn,
                         Team1Id = match.Team1Id,
-                        Team1 = team1.Name,
+                        Team1 = match.Team1.Name,
                         Team2Id = match.Team2Id,
-                        Team2 = team2.Name,
+                        Team2 = match.Team2.Name,
                         WinnerId = match.WinnerId.GetValueOrDefault(),
-                        Winner = match.WinnerId.HasValue ? (match.WinnerId.Value == match.Team1Id ? team1.Name : team2.Name) : "",
-                        Start = match.Start.ToShortTimeString(),
+                        Winner = match.WinnerId.HasValue ? (match.WinnerId.Value == match.Team1Id ? match.Team1.Name : match.Team2.Name) : "",
+                        Start = match.Start.ToLocalTime().ToString("HH:mm"),
                     }).ToListAsync();
         }
 
@@ -125,6 +120,29 @@ namespace Buk.UniversalGames.Data.Repositories
             await _db.SaveChangesAsync();
 
             return new MatchWinnerResult(match, winningPointsRegistration, losingPointsRegistration);
+        }
+
+        public async Task<TeamMatchResult> StoreMatchResult(int matchId, int teamId, int measuredResult)
+        {
+            var match = await _db.Matches.FindAsync(matchId) ?? throw new ArgumentException("Match does not exist", nameof(matchId));
+            var existingRegistrations = await _db.Points.Where(s => s.MatchId == matchId).AsTracking().ToListAsync();
+            var currentTeamResult = existingRegistrations.FirstOrDefault(x => x.TeamId == teamId);
+            var otherTeamResult = existingRegistrations.FirstOrDefault(x => x.TeamId != teamId);
+
+            if (currentTeamResult != null)
+            {
+                currentTeamResult.Points = measuredResult;
+            }
+            else
+            {
+                await _db.Points.AddAsync(new PointsRegistration { MatchId = matchId, TeamId = teamId, GameId = match.GameId, Points = measuredResult });
+            }
+            await _db.SaveChangesAsync();
+
+            return new TeamMatchResult (
+                matchId, 
+                teamId == match.Team1Id ? measuredResult : otherTeamResult?.Points, 
+                teamId == match.Team2Id ? measuredResult : otherTeamResult?.Points);
         }
     }
 }

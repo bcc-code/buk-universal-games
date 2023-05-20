@@ -66,7 +66,7 @@ input[type="file"] {
   position: fixed;
   bottom: 0;
   width: 100%;
-  max-width: 480px;
+  max-width: 960px;
   margin: 0 auto;
   background-color: transparent;
   background-color: white;

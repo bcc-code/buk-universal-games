@@ -150,7 +150,6 @@ namespace Buk.UniversalGames.Services
                         row.CreateCell(0).SetCellValue(rowIndex);
                         row.CreateCell(1).SetCellValue(status.Team);
                         row.CreateCell(2).SetCellValue(status.Points);
-                        row.CreateCell(3).SetCellValue(status.Stickers);
 
                         rowIndex++;
                     }
