@@ -1,6 +1,6 @@
 import store from '@/store'
 
-export const rootUrl = location.hostname === 'universalgames.buk.no' ? 'https://buk-universal-games-api-prod-6lnfloei4a-ez.a.run.app/' : `http://${location.hostname}:5125/`
+export const rootUrl = location.hostname === 'universalgames.buk.no' ? 'https://universalgames.buk.no/api/' : `http://${location.hostname}:5125/`
 const retryRequestAmount = 5; // Retry the request x times
 const seconsBetweenRetry = 2; // Wait x seconds between each request
 
