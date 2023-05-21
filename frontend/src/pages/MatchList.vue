@@ -61,10 +61,10 @@ export default {
     async getMatches() {
       await this.$store.dispatch("getMatches", false);
 
-      // let minutesBeforeNow = 20;
-      // let now = new Date(new Date().getTime() - (minutesBeforeNow * 60 * 1000));
-      // let currentTime = now.getHours() + ':' + now.getMinutes();
-      let currentTime = "12:49";
+       let minutesBeforeNow = 20;
+       let now = new Date(new Date().getTime() - (minutesBeforeNow * 60 * 1000));
+       let currentTime = now.getHours() + ':' + now.getMinutes();
+      //let currentTime = "12:49";
 
       this.initMatch(this.matches.filter((match) => match.start >= currentTime)[0] || this.matches[0]);
     },

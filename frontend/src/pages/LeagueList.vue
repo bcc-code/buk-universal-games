@@ -58,7 +58,7 @@
           <h2 class="ranking-title-text">Points</h2>
         </div>
       </section>
-      <section class="user-section" v-for="(status, i) in leagueStatus?.status?.total" :key="status.id">
+      <section class="user-section" v-for="(status, i) in leagueStatus?.status?.total.sort((a, b) => b.points - a.points)" :key="status.id">
         <LeagueListItem
           :class="{ 'card-light': i > 4, 'green-font': status.teamId == teamStatus?.status?.teamId }"
           :index="i + 1"
