@@ -24,6 +24,8 @@
       >
         <p>{{ match?.team1 }}</p>
         <TableSurfingInput v-if="game?.gameType === 'TableSurfing'" v-model="team1Result" />
+        <TimeInput v-else-if="['MineField','NerveSpiral'].includes(game?.gameType)" v-model="team1Result" />
+        <MonkeyBarsInput v-else-if="game?.gameType === 'MonkeyBars'" v-model="team1Result" />
         <input v-else type="number" v-model="team1Result" :placeholder="'Result (in ' + units[game?.gameType] + ')'" />
 
         <button class="btn btn-blank" @click="confirmTeamResult(match?.team1Id, team1Result)">Confirm</button>
@@ -55,12 +57,15 @@
 <script>
 import AdminPageLayout from "@/components/AdminPageLayout.vue";
 // import { getData } from "@/libs/apiHelper";
-import TableSurfingInput from '@/components/TableSurfingInput.vue';
+
 import { gameEarthIcon } from "@/assets/icons/game-earth.svg.ts";
 import { gameFireIcon } from "@/assets/icons/game-fire.svg.ts";
 import { gameMetalIcon } from "@/assets/icons/game-metal.svg.ts";
 import { gameWoodIcon } from "@/assets/icons/game-wood.svg.ts";
 import { gameWaterIcon } from "@/assets/icons/game-water.svg.ts";
+import TableSurfingInput from '@/components/TableSurfingInput.vue';
+import TimeInput from "@/components/TimeInput.vue";
+import MonkeyBarsInput from "@/components/MonkeyBarsInput.vue";
 
 export default {
   name: "AdminMatch",
@@ -69,8 +74,10 @@ export default {
   },
   components: {
     AdminPageLayout,
-    TableSurfingInput
-  },
+    TableSurfingInput,
+    TimeInput,
+    MonkeyBarsInput
+},
   data() {
     return {
       loginError: "Game Info",
@@ -84,7 +91,7 @@ export default {
         NerveSpiral: "seconds",
         MineField: "seconds",
         MonkeyBars: "bars completed",
-        TableSurfing: "meters",
+        TableSurfing: "seconds",
         TicketTwist: "nr of tickets",
       },
       icons: {

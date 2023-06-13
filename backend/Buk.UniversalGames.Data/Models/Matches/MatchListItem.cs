@@ -9,8 +9,11 @@
         public string Team1 { get; set; }
         public int Team2Id { get; set; }
         public string Team2 { get; set; }
-        public string Start { get; set; }
+        public string Start { get; init; }
         public int WinnerId { get; set; }
-        public string Winner { get; set; }
+        public string? Winner { get; set; }
+
+        public int? Team1Result { get; set; }
+        public int? Team2Result { get; set; }
     }
 }

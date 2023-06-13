@@ -1,7 +1,7 @@
 <template>
   <section :class="{ 'card-dark': true, loading }">
     <div class="card-dark-column">
-      <div class="card-dark-heading">Points</div>
+      <div class="card-dark-heading">{{ $t('points')}}</div>
       <h1 class="card-dark-text">{{ points }}</h1>
     </div>
     <div class="card-dark-column" v-if="false">
