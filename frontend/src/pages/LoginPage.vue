@@ -8,7 +8,7 @@
     <div class="content">
       <img src="../assets/logo.png" alt="" class="logo" />
       <input type="text" class="codeInput" placeholder="Team code" v-model="teamCode" />
-      <button v-if="teamCode.length > 3" class="btn-primary" @click="tryLogin()">Login</button>
+      <button v-if="teamCode.length > 3" class="btn-primary" @click="tryLogin()">{{ $t('login') }}</button>
       <!-- <router-link v-if="teamCode.length > 3" class="btn-primary" :to="loginUrl">Login</router-link> -->
       <p v-if="loginMessage" class="login-msg">{{ loginMessage }}</p>
     </div>

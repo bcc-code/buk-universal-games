@@ -1,0 +1,19 @@
+{
+    "leadstory": {
+        "monkeybars": "Your next test originates from the ferris wheel. I need to see that you're strong enough to save people from it if it breaks down. Are you able to climb it? Show me by completing the monkey bars.",
+        "nervespiral": "You're doing great. Now, I need to see that you're able to keep your cool in a stressful situation. Complete the nerve spiral without raising the alarms.  Are you able to do that?",
+        "ticket_twist": "Oh oh, there is a mess at the ticket booth. I need you to help me sort out the tickets. Can you do that? Make sure all the tickets are facing the right way.",
+        "mine_field": "Alarm! The animals have escaped. Avoid them and exit the park to get help",
+        "last_one": "Something"
+    },
+    "rules": {
+        "monkeybars": "",
+        "nervespiral": "",
+        "ticket_twist": "",
+        "mine_field": "",
+        "crowdsurfing": ""
+    },
+    "points": "Points",
+    "login": "Login",
+    "teamcode": "Team code"
+}
