@@ -23,12 +23,17 @@
         }"
       >
         <p>{{ match?.team1 }}</p>
+        <p><strong>Score ({{ units[game?.gameType]}}):</strong> {{ match.team1Result }}</p>
+
+        <button class="btn btn-blank" v-if="!isChangingScore1 && match.team1Result > 0" @click="isChangingScore1 = true">Change</button>
+
+        <div v-if="isChangingScore1 || !match.team1Result">
         <TableSurfingInput v-if="game?.gameType === 'TableSurfing'" v-model="team1Result" />
         <TimeInput v-else-if="['MineField','NerveSpiral'].includes(game?.gameType)" v-model="team1Result" />
         <MonkeyBarsInput v-else-if="game?.gameType === 'MonkeyBars'" v-model="team1Result" />
         <input v-else type="number" v-model="team1Result" :placeholder="'Result (in ' + units[game?.gameType] + ')'" />
-
         <button class="btn btn-blank" @click="confirmTeamResult(match?.team1Id, team1Result)">Confirm</button>
+        </div>
         <span class="tag" v-if="match?.team1Id === match?.winnerId">Winner</span>
       </div>
       <div v-if="match?.team1Id !== match?.team2Id"
@@ -40,9 +45,16 @@
         }"
       >
         <p>{{ match?.team2 }}</p>
+        <p><strong>Score ({{ units[game?.gameType]}}):</strong> {{ match.team2Result }}</p>
+
+        <button class="btn btn-blank" v-if="!isChangingScore2 && match.team2Result > 0" @click="isChangingScore2 = true">Change</button>
+        <div v-if="isChangingScore2 || !match.team2Result">
         <TableSurfingInput v-if="game?.gameType === 'TableSurfing'" v-model="team2Result" />
+        <TimeInput v-else-if="['MineField','NerveSpiral'].includes(game?.gameType)" v-model="team2Result" />
+        <MonkeyBarsInput v-else-if="game?.gameType === 'MonkeyBars'" v-model="team2Result" />
         <input v-else type="number" v-model="team2Result" :placeholder="'Result (in ' + units[game.gameType] + ')'" />
         <button class="btn btn-blank" @click="confirmTeamResult(match?.team2Id, team2Result)">Confirm</button>
+        </div>
         <span class="tag" v-if="match?.team2Id === match?.winnerId">Winner</span>
       </div>
     </div>
@@ -86,6 +98,8 @@ export default {
       team2Result: null,
       canEnterResults: false,
       loading: true,
+      isChangingScore1: false,
+      isChangingScore2: false,
       selectedTeam: null,
       units: {
         NerveSpiral: "seconds",
@@ -140,8 +154,14 @@ export default {
         await this.$store.dispatch("confirmTeamResult", payload);
         this.$store.dispatch("getAdminLeagueStatus");
         this.$store.dispatch("getAdminMatches");
-        this.match.team1Result = this.team1Result;
-        this.match.team2Result = this.team2Result;
+        if(teamId === this.match.team1Id) {
+          this.match.team1Result = this.team1Result;
+          this.isChangingScore1 = false;
+        }
+        else {
+          this.match.team2Result = this.team2Result;
+          this.isChangingScore2 = false;
+        }
       } else {
         alert("Please enter a result");
       }

@@ -57,7 +57,7 @@ namespace Buk.UniversalGames.Services
         public async Task<ActionResult<TeamMatchResult>> ReportTeamMatchResult(int matchId, int teamId, int result)
         {
             var match = _db.Matches.Include(x => x.Game).Single(x => x.MatchId == matchId) ?? throw new ArgumentException("No match found", nameof(matchId));
-            var matchResult = await _gameRepository.StoreMatchResult(matchId, teamId, result);
+            var matchResult = await _gameRepository.StoreMatchResult(match, teamId, result);
             await _statusService.UpdateGameRanking(match.Game, match.LeagueId);
             return matchResult;
         }
