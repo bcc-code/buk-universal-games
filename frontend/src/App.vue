@@ -129,15 +129,15 @@ dialog#ubg-dialogue {
   right: 0;
   margin: auto;
   display: grid;
-  grid-template: 'image title' auto
+  grid-template: 'icon title' auto
     'body body' auto / auto auto;
 }
 
 dialog#ubg-dialogue .title {
   grid-area: title;
 }
-dialog#ubg-dialogue .image {
-  grid-area: image;
+dialog#ubg-dialogue .icon {
+  grid-area: icon;
 }
 dialog#ubg-dialogue .body {
   grid-area: body;

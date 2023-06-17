@@ -5,7 +5,7 @@ export default class NotificationService {
       title: 'Test',
       options: {
         body: 'This is a scheduled test notification',
-        // image: 'images/ubg-logo.png'
+        icon: 'images/ubg-logo.png'
       }
     }
   ];
@@ -19,20 +19,20 @@ export default class NotificationService {
       dialogue.id = 'ubg-dialogue'
       const title = document.createElement("h2");
       const body = document.createElement("p");
-      const image = document.createElement("img");
+      const icon = document.createElement("img");
       title.className = "title";
       body.className = "body";
-      image.className = "image";
+      icon.className = "icon";
       dialogue.appendChild(title);
       dialogue.appendChild(body);
-      dialogue.appendChild(image);
+      dialogue.appendChild(icon);
       document.body.appendChild(dialogue);
       dialogue.addEventListener("click", () => {
         dialogue.style.visibility = "hidden";
         title.textContent = "";
         body.textContent = "";
-        image.style.visibility = "hidden";
-        image.src = "";
+        icon.style.visibility = "hidden";
+        icon.src = "";
       });
     }
     return dialogue;
