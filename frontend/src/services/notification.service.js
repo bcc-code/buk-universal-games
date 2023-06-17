@@ -72,7 +72,12 @@ export default class NotificationService {
     this.scheduledNotifications.sort((a, b) => a.time.getTime() - b.time.getTime());
   }
   notifyExternal(title, options) {
-    new Notification(title, options);
+    const serviceWorkerRegistration = ServiceWorkerRegistration.active;
+    if ('showNotification' in serviceWorkerRegistration) {
+      serviceWorkerRegistration.showNotification(title, options)
+    } else {
+      new Notification(title, options);
+    }
   }
   notifyInternal(title, options) {
     const dialogue = this.dialogue;
