@@ -3,16 +3,15 @@
     <div v-if="notificationService.canAskForPermission" class="external-notification-bell"
       @click="notificationService.requestExternal()">🔔</div>
     <router-view :key="$route.fullPath"></router-view>
+    <internal-notification></internal-notification>
   </main>
 </template>
 
 <script setup>
-import NotificationService from '@/services/notification.service.js'
-import { provide } from 'vue'
+import InternalNotification from '@/components/InternalNotification.vue';
+import { inject } from 'vue'
 
-const notificationService = new NotificationService();
-// TODO: Schedule all user-relevant notifications.
-provide({ notificationService });
+const notificationService = inject('notificationService');
 </script>
 
 <style>
@@ -119,27 +118,5 @@ h1 {
   position: fixed;
   top: 1em;
   right: 1em;
-}
-
-dialog#ubg-dialogue {
-  position:fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  display: grid;
-  grid-template: 'icon title' auto
-    'body body' auto / auto auto;
-}
-
-dialog#ubg-dialogue .title {
-  grid-area: title;
-}
-dialog#ubg-dialogue .icon {
-  grid-area: icon;
-}
-dialog#ubg-dialogue .body {
-  grid-area: body;
 }
 </style>
