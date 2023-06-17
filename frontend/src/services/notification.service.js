@@ -54,9 +54,8 @@ export default class NotificationService {
   requestExternal() {
     Notification.requestPermission().then((result) => {
       if (result === "granted") {
-        new Notification("Success!", {
-          body: "Notifications have been enabled",
-          image: "icon/192.png",
+        this.notifyExternal("Success!", {
+          body: "System notifications have been enabled",
         });
       }
     });
