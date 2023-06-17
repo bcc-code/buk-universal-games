@@ -5,37 +5,13 @@ export default class NotificationService {
       title: 'Test',
       options: {
         body: 'This is a scheduled test notification',
-        icon: 'images/ubg-logo.png'
+        icon: 'images/ubg-logo.png',
+        onClick: () => alert('You clicked the modal')
       }
     }
   ];
   get canNotifyExternal() {
     return "Notification" in window && Notification.permission === "granted";
-  }
-  get dialogue() {
-    let dialogue = document.getElementById("ubg-dialogue");
-    if (!dialogue) {
-      dialogue = document.createElement("dialog");
-      dialogue.id = 'ubg-dialogue'
-      const title = document.createElement("h2");
-      const body = document.createElement("p");
-      const icon = document.createElement("img");
-      title.className = "title";
-      body.className = "body";
-      icon.className = "icon";
-      dialogue.appendChild(title);
-      dialogue.appendChild(body);
-      dialogue.appendChild(icon);
-      document.body.appendChild(dialogue);
-      dialogue.addEventListener("click", () => {
-        dialogue.style.visibility = "hidden";
-        title.textContent = "";
-        body.textContent = "";
-        icon.style.visibility = "hidden";
-        icon.src = "";
-      });
-    }
-    return dialogue;
   }
   get canAskForPermission() {
     return "Notification" in window && Notification.permission === "default";
@@ -78,15 +54,11 @@ export default class NotificationService {
       new Notification(title, options);
     }
   }
-  notifyInternal(title, options) {
-    const dialogue = this.dialogue;
-    dialogue.getElementsByClassName("title")[0].textContent = title;
-    dialogue.getElementsByClassName("body")[0].textContent = options.body;
-    if (options.image) {
-      const image = dialogue.getElementsByClassName("image")[0];
-      image.src = options.image;
-      image.style.visibility = "visible";
-    }
-    dialogue.style.visibility = "visible";
+  notifyInternal = () => {
+    throw new Error('Please register a notifier!');
+  }
+
+  registerInternalNotifier(fn) {
+    this.notifyInternal = fn;
   }
 }
