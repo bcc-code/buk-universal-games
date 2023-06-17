@@ -10,7 +10,6 @@
 <script setup>
 import InternalNotification from '@/components/InternalNotification.vue';
 import { inject } from 'vue'
-
 const notificationService = inject('notificationService');
 </script>
 

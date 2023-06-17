@@ -6,7 +6,6 @@ export default class NotificationService {
       options: {
         body: 'This is a scheduled test notification',
         icon: 'images/ubg-logo.png',
-        onClick: () => alert('You clicked the modal')
       }
     }
   ];
@@ -46,10 +45,10 @@ export default class NotificationService {
     // Sort ascending
     this.scheduledNotifications.sort((a, b) => a.time.getTime() - b.time.getTime());
   }
-  notifyExternal(title, options) {
-    const serviceWorkerRegistration = ServiceWorkerRegistration.active;
-    if ('showNotification' in serviceWorkerRegistration) {
-      serviceWorkerRegistration.showNotification(title, options)
+  async notifyExternal(title, options) {
+    const registration = await navigator.serviceWorker.getRegistration();
+    if (registration && 'showNotification' in registration) {
+      await registration.showNotification(title, { ...options, data: options.onClick });
     } else {
       new Notification(title, options);
     }
