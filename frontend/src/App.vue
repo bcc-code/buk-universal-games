@@ -1,13 +1,16 @@
 <template>
   <main>
+    <div v-if="notificationService.canAskForPermission" class="external-notification-bell"
+      @click="notificationService.requestExternal()">🔔</div>
     <router-view :key="$route.fullPath"></router-view>
+    <internal-notification></internal-notification>
   </main>
 </template>
 
-<script>
-export default {
-  name: "App",
-};
+<script setup>
+import InternalNotification from '@/components/InternalNotification.vue';
+import { inject } from 'vue'
+const notificationService = inject('notificationService');
 </script>
 
 <style>
@@ -108,5 +111,11 @@ h1 {
 
 .user-section {
   padding: 0.2em 0;
+}
+
+.external-notification-bell {
+  position: fixed;
+  top: 1em;
+  right: 1em;
 }
 </style>
