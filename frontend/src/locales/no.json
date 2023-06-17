@@ -1,0 +1,19 @@
+{
+    "leadstory": {
+        "monkeybars": "Neste test....",
+        "nervespiral": "Veldig bra",
+        "ticket_twist": "Oh oh, vi har et problem ",
+        "mine_field": "Alarm! Dyrene har ....",
+        "crowdsurfing": "Something"
+    },
+    "rules": {
+        "monkeybars": "",
+        "nervespiral": "",
+        "ticket_twist": "",
+        "mine_field": "",
+        "crowdsurfing": ""
+    },
+    "points": "Poeng",
+    "login": "Login",
+    "teamcode": "Team code"
+}
