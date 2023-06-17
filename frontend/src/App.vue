@@ -1,13 +1,18 @@
 <template>
   <main>
+    <div v-if="notificationService.canAskForPermission" class="external-notification-bell"
+      @click="notificationService.requestExternal()">🔔</div>
     <router-view :key="$route.fullPath"></router-view>
   </main>
 </template>
 
-<script>
-export default {
-  name: "App",
-};
+<script setup>
+import NotificationService from '@/services/notification.service.js'
+import { provide } from 'vue'
+
+const notificationService = new NotificationService();
+// TODO: Schedule all user-relevant notifications.
+provide({ notificationService });
 </script>
 
 <style>
@@ -108,5 +113,33 @@ h1 {
 
 .user-section {
   padding: 0.2em 0;
+}
+
+.external-notification-bell {
+  position: fixed;
+  top: 1em;
+  right: 1em;
+}
+
+dialog#ubg-dialogue {
+  position:fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: grid;
+  grid-template: 'image title' auto
+    'body body' auto / auto auto;
+}
+
+dialog#ubg-dialogue .title {
+  grid-area: title;
+}
+dialog#ubg-dialogue .image {
+  grid-area: image;
+}
+dialog#ubg-dialogue .body {
+  grid-area: body;
 }
 </style>
