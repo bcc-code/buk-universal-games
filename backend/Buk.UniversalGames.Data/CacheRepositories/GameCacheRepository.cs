@@ -51,23 +51,26 @@ namespace Buk.UniversalGames.Data.CacheRepositories
 
             if (gameId == null)
                 return matches;
-            return matches.Where(s => s.GameId == gameId.GetValueOrDefault()).ToList();
+            return matches.Where(s => s.GameId == gameId.Value).ToList();
         }
 
         public async Task<MatchWinnerResult> SetMatchWinner(Game game, int matchId, Team team)
         {
+            if(team.LeagueId is null) throw new ArgumentException("Team doesn't belong to any league", nameof (team));
             var result = await _data.SetMatchWinner(game, matchId, team);
 
             // clear match lists for league and league status
-            await _cache.Remove($"Matches_{team.LeagueId.GetValueOrDefault()}");
-            await _cache.Remove($"LeagueStatus_{team.LeagueId.GetValueOrDefault()}");
+            await _cache.Remove($"Matches_{team.LeagueId.Value}");
+            await _cache.Remove($"LeagueStatus_{team.LeagueId.Value}");
 
             return result;
         }
 
-        public Task<TeamMatchResult> StoreMatchResult(int matchId, int teamId, int measuredResult)
+        public async Task<TeamMatchResult> StoreMatchResult(Match match, int teamId, int measuredResult)
         {
-            return _data.StoreMatchResult(matchId, teamId, measuredResult);
+            var teamResult = await _data.StoreMatchResult(match, teamId, measuredResult);
+            await _cache.Remove($"Matches_{match.LeagueId}");
+            return teamResult;
         }
     }
 }

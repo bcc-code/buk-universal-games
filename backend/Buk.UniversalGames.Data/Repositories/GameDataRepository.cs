@@ -45,8 +45,9 @@ namespace Buk.UniversalGames.Data.Repositories
         {
             return await (
                 from match in _db.Matches
-                    join game in _db.Games on match.GameId equals game.GameId
-                    where match.LeagueId == leagueId && (!gameId.HasValue || match.GameId == gameId.Value)
+                join pointsreg1 in _db.Points on new { MatchId = (int?)match.MatchId, TeamId = match.Team1Id } equals new { pointsreg1.MatchId, pointsreg1.TeamId }
+                join pointsreg2 in _db.Points on new { MatchId = (int?)match.MatchId, TeamId = match.Team2Id } equals new { pointsreg2.MatchId, pointsreg2.TeamId }
+                where match.LeagueId == leagueId && (!gameId.HasValue || match.GameId == gameId.Value)
                     orderby match.Start, match.GameId, match.Team1.Name
                     select new MatchListItem
                     {
@@ -59,6 +60,8 @@ namespace Buk.UniversalGames.Data.Repositories
                         Team2 = match.Team2.Name,
                         WinnerId = match.WinnerId.GetValueOrDefault(),
                         Winner = match.WinnerId.HasValue ? (match.WinnerId.Value == match.Team1Id ? match.Team1.Name : match.Team2.Name) : "",
+                        Team1Result = pointsreg1.Points,
+                        Team2Result = pointsreg2.Points,
                         Start = match.Start.ToLocalTime().ToString("HH:mm"),
                     }).ToListAsync();
         }
@@ -122,10 +125,9 @@ namespace Buk.UniversalGames.Data.Repositories
             return new MatchWinnerResult(match, winningPointsRegistration, losingPointsRegistration);
         }
 
-        public async Task<TeamMatchResult> StoreMatchResult(int matchId, int teamId, int measuredResult)
+        public async Task<TeamMatchResult> StoreMatchResult(Match match, int teamId, int measuredResult)
         {
-            var match = await _db.Matches.FindAsync(matchId) ?? throw new ArgumentException("Match does not exist", nameof(matchId));
-            var existingRegistrations = await _db.Points.Where(s => s.MatchId == matchId).AsTracking().ToListAsync();
+            var existingRegistrations = await _db.Points.Where(s => s.MatchId == match.MatchId).AsTracking().ToListAsync();
             var currentTeamResult = existingRegistrations.FirstOrDefault(x => x.TeamId == teamId);
             var otherTeamResult = existingRegistrations.FirstOrDefault(x => x.TeamId != teamId);
 
@@ -135,12 +137,12 @@ namespace Buk.UniversalGames.Data.Repositories
             }
             else
             {
-                await _db.Points.AddAsync(new PointsRegistration { MatchId = matchId, TeamId = teamId, GameId = match.GameId, Points = measuredResult });
+                await _db.Points.AddAsync(new PointsRegistration { MatchId = match.MatchId, TeamId = teamId, GameId = match.GameId, Points = measuredResult });
             }
             await _db.SaveChangesAsync();
 
             return new TeamMatchResult (
-                matchId, 
+                match.MatchId, 
                 teamId == match.Team1Id ? measuredResult : otherTeamResult?.Points, 
                 teamId == match.Team2Id ? measuredResult : otherTeamResult?.Points);
         }

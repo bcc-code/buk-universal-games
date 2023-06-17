@@ -1,14 +1,14 @@
 <template>
   <div>
-    <input type="number" v-model="minutes" @input="updateTotal" :placeholder="'Minutes'" /><span>&nbsp;:&nbsp;</span> 
+    <input type="number" v-model="minutes" @input="updateTotal" :placeholder="'Minutes'" />
+    <span>&nbsp;:&nbsp;</span> 
     <input type="number" v-model="seconds" @input="updateTotal" :placeholder="'Seconds'" />
-    <input type="number" v-model="penaltyPoints" @input="updateTotal" :placeholder="'Penalty Points'" />
   </div>
 </template>
 
 <script>
 export default {
-  name: "TableSurfingInput",
+  name: "TimeInput",
   props: {
     modelValue: Number,
   },
@@ -17,13 +17,12 @@ export default {
     return {
       minutes: null,
       seconds: null,
-      penaltyPoints: null,
       totalSeconds: this.value,
     };
   },
   methods: {
     updateTotal() {
-      this.totalSeconds = this.minutes * 60 + this.seconds + this.penaltyPoints;
+      this.totalSeconds = this.minutes * 60 + this.seconds;
       this.$emit("update:model-value", this.totalSeconds);
     },
   },
