@@ -2,13 +2,14 @@
   <section
     class="bg"
     :style="{
-      'background-image': `url(${image})`,
+      //'background-image': `url(${image})`,
+      'background-color': '#a0e3be'
     }"
   >
     <div class="content">
-      <img src="../assets/logo.png" alt="" class="logo" />
-      <input type="text" class="codeInput" placeholder="Team code" v-model="teamCode" />
-      <button v-if="teamCode.length > 3" class="btn-primary" @click="tryLogin()">{{ $t('login') }}</button>
+      <img src="images/ubg-logo.png" alt="" class="logo" />
+      <input type="text" class="codeInput" :placeholder="$t('login.teamcode')" v-model="teamCode" />
+      <button v-if="teamCode.length > 3" class="btn-primary" @click="tryLogin()">{{ $t('login.login_button') }}</button>
       <!-- <router-link v-if="teamCode.length > 3" class="btn-primary" :to="loginUrl">Login</router-link> -->
       <p v-if="loginMessage" class="login-msg">{{ loginMessage }}</p>
     </div>
@@ -48,13 +49,13 @@ export default {
           this.$store.commit('setLoginMessage', 'Something went wrong, we could not log you in. Please try again')
         }
       }
-
-      if (loginData && loginData.access === 'Admin') {
-        this.$router.push({ name: 'AdminSelectLeague' })
-      }
-      else
-      {
-        this.$router.push({ name: 'LeagueList' })
+      else {
+        if (loginData && loginData.access === 'Admin') {
+          this.$router.push({ name: 'AdminSelectLeague' })
+        }
+        else {
+          this.$router.push({ name: 'LeagueList' })
+        }
       }
     }
   },
@@ -84,10 +85,12 @@ export default {
 }
 
 .logo {
-  width: 100%;
+  width: 80%;
   max-width: 400px;
   margin: 0 auto;
   display: block;
+  border: 10px solid white;
+  border-radius: 80px;
 }
 
 .codeInput {
@@ -107,6 +110,7 @@ export default {
 }
 
 .content {
+
   padding-top: 10em;
   padding-bottom: 10em;
   display: flex;
