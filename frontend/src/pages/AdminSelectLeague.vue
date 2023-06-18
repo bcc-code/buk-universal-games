@@ -2,11 +2,16 @@
   <section
     class="bg"
     :style="{
-      'background-image': `url(${image})`,
+      //'background-image': `url(${image})`,
+      'background-color': '#a0e3be'
     }"
   >
-    <img src="../assets/logo.png" alt="" class="logo" />
+
+  <img src="images/ubg-logo.png" alt="" class="logo" />
     <section class="leagues">
+      <p>
+        {{ $t('admin.select_league.intro') }}
+      </p>
       <AdminLeagueSelector
         v-for="league in adminLeagues"
         class="league-card"
@@ -60,6 +65,15 @@ export default {
   flex-direction: column;
   justify-content: center;
   padding: 1em;
+}
+
+.logo {
+  width: 80%;
+  max-width: 400px;
+  margin: 0 auto 2em auto;
+  display: block;
+  border: 10px solid white;
+  border-radius: 80px;
 }
 
 .league-card {

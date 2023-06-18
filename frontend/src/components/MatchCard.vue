@@ -12,16 +12,14 @@
       <div class="card-dark-column">
         <h2 class="card-dark-text">{{ selectedMatch?.team1 }}</h2>
         <div v-if="selectedMatch.winner">
-          <h2 v-if="selectedMatch.winnerId == selectedMatch.team1Id" class="card-dark-text winner">{{ game.winnerPoints }}</h2>
-          <h2 v-else class="card-dark-text">{{ game.looserPoints }}</h2>
+          <h2 :class="{ 'card-dark-text' : true, 'winner' : selectedMatch.winnerId == selectedMatch.team1Id }">{{ selectedMatch.team1Result }} bars</h2>
         </div>
       </div>
       <div class="vl"></div>
       <div class="card-dark-column">
         <h2 class="card-dark-text">{{ selectedMatch?.team2 }}</h2>
         <div v-if="selectedMatch.winner">
-          <h2 v-if="selectedMatch.winnerId == selectedMatch.team2Id" class="card-dark-text winner">{{ game.winnerPoints }}</h2>
-          <h2 v-else class="card-dark-text">{{ game.looserPoints }}</h2>
+          <h2 :class="{ 'card-dark-text' : true, 'winner' : selectedMatch.winnerId == selectedMatch.team2Id }">{{ selectedMatch.team2Result ?? '-' }}</h2>
         </div>
       </div>
     </section>

@@ -49,6 +49,7 @@
           </div>
         </div>
       </div>
+      <p>View the ranking and scores per game on the <RouterLink to="games">game pages</RouterLink></p>
       <section class="ranking-title" v-if="leagueStatus.status?.total.length">
         <div class="ranking-title-column index-column"></div>
         <div class="ranking-title-column">

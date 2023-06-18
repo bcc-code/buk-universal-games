@@ -53,6 +53,15 @@ const store = createStore({
     setMatches(state, data) {
       state.matches = data
     },
+    replaceMatch(state, data) {
+      const index = state.adminMatches.findIndex(m => m.matchId === data.matchId)
+      if (index !== -1) {
+        data.team1 = state.adminMatches[index].team1
+        data.team2 = state.adminMatches[index].team2
+        data.winner = state.adminMatches[index].winnerId === data.team1Id ? data.team1 : data.team2
+        state.adminMatches[index] = data
+      }
+    },
     setAdminMatches(state, data) {
       state.adminMatches = data
     },
@@ -114,6 +123,9 @@ const store = createStore({
     },
     async confirmTeamResult(ctx, payload) {
       const result = await postData(`matches/${payload.matchId}/results`, payload)
+      if (!result.error) {
+        ctx.commit("replaceMatch", result)
+      }
       return result
     },
     async getLeagueStatus(ctx, override) {
@@ -139,7 +151,7 @@ const store = createStore({
       if (!ctx.state.adminLeagueSelected)
         return
 
-      let leagueStatus = await getData("admin/leagues/" + ctx.state.adminLeagueSelected + "/Status")
+      let leagueStatus = await getData("admin/leagues/" + ctx.state.adminLeagueSelected + "/status")
 
 
       ctx.commit("setAdminLeagueStatus", leagueStatus)

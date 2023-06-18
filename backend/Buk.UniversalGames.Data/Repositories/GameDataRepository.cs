@@ -45,8 +45,10 @@ namespace Buk.UniversalGames.Data.Repositories
         {
             return await (
                 from match in _db.Matches
-                join pointsreg1 in _db.Points on new { MatchId = (int?)match.MatchId, TeamId = match.Team1Id } equals new { pointsreg1.MatchId, pointsreg1.TeamId }
-                join pointsreg2 in _db.Points on new { MatchId = (int?)match.MatchId, TeamId = match.Team2Id } equals new { pointsreg2.MatchId, pointsreg2.TeamId }
+                join pointsreg1 in _db.Points on new { MatchId = (int?)match.MatchId, TeamId = match.Team1Id } equals new { pointsreg1.MatchId, pointsreg1.TeamId } into joinedPoints1
+                from pointsreg1 in joinedPoints1.DefaultIfEmpty()
+                join pointsreg2 in _db.Points on new { MatchId = (int?)match.MatchId, TeamId = match.Team2Id } equals new { pointsreg2.MatchId, pointsreg2.TeamId } into joinedPoints2
+                from pointsreg2 in joinedPoints2.DefaultIfEmpty()
                 where match.LeagueId == leagueId && (!gameId.HasValue || match.GameId == gameId.Value)
                     orderby match.Start, match.GameId, match.Team1.Name
                     select new MatchListItem
@@ -125,7 +127,7 @@ namespace Buk.UniversalGames.Data.Repositories
             return new MatchWinnerResult(match, winningPointsRegistration, losingPointsRegistration);
         }
 
-        public async Task<TeamMatchResult> StoreMatchResult(Match match, int teamId, int measuredResult)
+        public async Task<MatchListItem> StoreMatchResult(Match match, int teamId, int measuredResult)
         {
             var existingRegistrations = await _db.Points.Where(s => s.MatchId == match.MatchId).AsTracking().ToListAsync();
             var currentTeamResult = existingRegistrations.FirstOrDefault(x => x.TeamId == teamId);
@@ -137,14 +139,33 @@ namespace Buk.UniversalGames.Data.Repositories
             }
             else
             {
-                await _db.Points.AddAsync(new PointsRegistration { MatchId = match.MatchId, TeamId = teamId, GameId = match.GameId, Points = measuredResult });
+                var addedEntry = _db.Points.Add(new PointsRegistration { MatchId = match.MatchId, TeamId = teamId, GameId = match.GameId, Points = measuredResult });
+                currentTeamResult = addedEntry.Entity;
+            }
+
+            if (otherTeamResult is not null)
+            {
+                //set winner and save
+                var winnerTeamId = measuredResult > otherTeamResult.Points ? teamId : otherTeamResult.TeamId;
+                match.WinnerId = winnerTeamId;
             }
             await _db.SaveChangesAsync();
 
-            return new TeamMatchResult (
-                match.MatchId, 
-                teamId == match.Team1Id ? measuredResult : otherTeamResult?.Points, 
-                teamId == match.Team2Id ? measuredResult : otherTeamResult?.Points);
+            return new MatchListItem
+            {
+                MatchId = match.MatchId,
+                GameId = match.GameId,
+                AddOn = match.AddOn,
+                Team1Id = match.Team1Id,
+                //Team1 = match.Team1.Name,
+                Team2Id = match.Team2Id,
+                //Team2 = match.Team2.Name,
+                WinnerId = match.WinnerId.GetValueOrDefault(),
+                //Winner = match.WinnerId.HasValue ? (match.WinnerId.Value == match.Team1Id ? match.Team1.Name : match.Team2.Name) : "",
+                Team1Result = teamId == match.Team1Id ? measuredResult : otherTeamResult?.Points,
+                Team2Result = teamId == match.Team2Id ? measuredResult : otherTeamResult?.Points,
+                Start = match.Start.ToLocalTime().ToString("HH:mm"),
+            };
         }
     }
 }

@@ -17,5 +17,10 @@
     "login": {
         "login_button": "Logg inn",
         "teamcode":"Team code"
+    },
+    "admin": {
+        "select_league": {
+            "intro": "Velg ligaen du vil administrere"
+        }
     }
 }
