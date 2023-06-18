@@ -154,7 +154,7 @@ const store = createStore({
       return ctx.commit("setAdminLeagueSelected", id)
     },
     async getAdminMatches(ctx) {
-      const matches = await getData("admin/leagues/" + ctx.state.adminLeagueSelected + "/Matches")
+      const matches = await getData("admin/leagues/" + ctx.state.adminLeagueSelected + "/matches")
       ctx.commit("setAdminMatches", matches)
       return matches
     },
