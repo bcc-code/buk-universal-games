@@ -7,7 +7,7 @@
         <p class="message-text">Please try refreshing the page.</p>
       </div>
     </div>
-    <MatchCard :selectedMatch="selectedMatch" :game="whichGame(selectedMatch.gameId)" :games="games" />
+    <MatchCard :selectedMatch="selectedMatch" :game="whichGame(selectedMatch.gameId)" />
     <section class="match-title" v-if="matches.length">
       <div class="match-title-column">
         <h2 class="match-title-text">Game</h2>
@@ -20,9 +20,9 @@
       </div>
     </section>
     <section class="user-section" v-for="match in matches" :key="match.id">
-      <div style="height:2px;width:100%;background-color: var(--dark);margin:5px 0 10px 0;" v-if="match.gameId == currentActiveMatch.gameId"></div>
+      <div style="height:2px;width:100%;background-color: var(--dark);margin:5px 0 10px 0;" v-if="match == currentActiveMatch"></div>
       <MatchListItem
-        :class="{ 'card-dark': match.gameId == selectedMatch.gameId }"
+        :class="{ 'card-dark': match == selectedMatch }"
         :game="whichGame(match.gameId)?.name"
         :gameAddOn="match.addOn"
         :team1="match.team1"

@@ -1,4 +1,4 @@
-﻿using Buk.UniversalGames.Data;
+using Buk.UniversalGames.Data;
 using Buk.UniversalGames.Data.Interfaces;
 using Buk.UniversalGames.Data.Models;
 using Buk.UniversalGames.Data.Models.Internal;
@@ -17,6 +17,8 @@ namespace Buk.UniversalGames.Services
 {
     public class StatusService : IStatusService
     {
+        private static readonly int _matchWinnerPoints = 3;
+
         private readonly ILogger<StatusService> _logger;
         private readonly IStatusRepository _statusRepository;
         private readonly ILeagueRepository _leagueLeagueRepository;
@@ -34,7 +36,7 @@ namespace Buk.UniversalGames.Services
         public StatusService(ILogger<StatusService> logger, IStatusRepository statusRepository, ILeagueRepository leagueLeagueRepository, DataContext db, ICacheContext cache)
         {
             _logger = logger;
-            _statusRepository = statusRepository;
+            _statusRepository = statusRepository ?? throw new ArgumentNullException(nameof(statusRepository));
             _leagueLeagueRepository = leagueLeagueRepository;
             _db = db;
             _cache = cache;
@@ -65,10 +67,11 @@ namespace Buk.UniversalGames.Services
 
         public async Task<List<TeamStatus>> BuildAndCacheRankingForGameInLeague(Game game, int leagueId)
         {
-            var teamScores = from score in _db.Points
+            var teamScoresQuery = from score in _db.Points
                              where score.Game == game && score.Match!.LeagueId == leagueId
                              select new { score.TeamId, score.Team.Name, score.Points };
-            var teamsGroupedByPoints = (await teamScores.ToListAsync()).GroupBy(x => x.Points);
+            var teamScores = await teamScoresQuery.ToListAsync();
+            var teamsGroupedByPoints = teamScores.GroupBy(x => x.Points);
 
             if (game.Type == GameType.TicketTwist || game.Type == GameType.MonkeyBars)
             {
@@ -95,6 +98,10 @@ namespace Buk.UniversalGames.Services
         {
             var teams = await _leagueLeagueRepository.GetTeams(leagueId);
 
+            var matchWinners = from m in _db.Matches
+                               where m.LeagueId == leagueId && m.WinnerId.HasValue
+                               select m.WinnerId!.Value;
+
             var nerveSpiral = (await GetGameRanking(GameType.NerveSpiral, leagueId)).ToDictionary(x => x.TeamId);
             var monkeyBars = (await GetGameRanking(GameType.MonkeyBars, leagueId)).ToDictionary(x => x.TeamId);
             var ticketTwist = (await GetGameRanking(GameType.TicketTwist, leagueId)).ToDictionary(x => x.TeamId);
@@ -109,13 +116,15 @@ namespace Buk.UniversalGames.Services
                                     + GetPointsForGame(monkeyBars, team)
                                     + GetPointsForGame(ticketTwist, team)
                                     + GetPointsForGame(minefield, team)
-                                    + GetPointsForGame(tableSurfing, team);
+                                    + GetPointsForGame(tableSurfing, team)
+                                    + _matchWinnerPoints * matchWinners.Count(x => x == team.TeamId);
+                    
                 leagueRanking.Add(new TeamStatus(team.TeamId, team.Name, totalPoints));
             }
 
-            await _cache.Set(leagueCacheKey(leagueId), leagueRanking);
-
-            return leagueRanking;
+            var sortedRanking = leagueRanking.OrderByDescending(x => x.Points).ToList();
+            await _cache.Set(leagueCacheKey(leagueId), sortedRanking);
+            return sortedRanking;
 
             static int GetPointsForGame(Dictionary<int, TeamStatus> nerveSpiral, Team team) 
                 => nerveSpiral.TryGetValue(team.TeamId, out var status) ? status.Points : 0;
@@ -123,6 +132,8 @@ namespace Buk.UniversalGames.Services
 
         public async Task<TeamStatusReport> GetTeamStatus(Team team)
         {
+            if(team is null) throw new ArgumentNullException(nameof(team));
+
             return new TeamStatusReport
             {
                 Status = await _statusRepository.GetTeamStatus(team),

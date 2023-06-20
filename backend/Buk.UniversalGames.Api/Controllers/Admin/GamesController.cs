@@ -23,7 +23,7 @@ public class GamesController : ControllerBase
 
 
     [HttpPost("matches/{matchId}/results")]
-    public async Task<ActionResult<TeamMatchResult>> PostMatchResult([FromBody]MatchResultDto matchResult)
+    public async Task<ActionResult<MatchListItem>> PostMatchResult([FromBody]MatchResultDto matchResult)
     {
         return await _gameService.ReportTeamMatchResult(matchResult.MatchId, matchResult.TeamId, matchResult.Result);
     }

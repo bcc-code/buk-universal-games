@@ -23,11 +23,11 @@
         }"
       >
         <p>{{ match?.team1 }}</p>
-        <p><strong>Score ({{ units[game?.gameType]}}):</strong> {{ match.team1Result }}</p>
+        <p><strong>Score ({{ units[game?.gameType]}}):</strong> {{ match?.team1Result }}</p>
 
-        <button class="btn btn-blank" v-if="!isChangingScore1 && match.team1Result > 0" @click="isChangingScore1 = true">Change</button>
+        <button class="btn btn-blank" v-if="!isChangingScore1 && match?.team1Result > 0" @click="isChangingScore1 = true">Change</button>
 
-        <div v-if="isChangingScore1 || !match.team1Result">
+        <div v-if="isChangingScore1 || !match?.team1Result">
         <TableSurfingInput v-if="game?.gameType === 'TableSurfing'" v-model="team1Result" />
         <TimeInput v-else-if="['MineField','NerveSpiral'].includes(game?.gameType)" v-model="team1Result" />
         <MonkeyBarsInput v-else-if="game?.gameType === 'MonkeyBars'" v-model="team1Result" />
@@ -45,10 +45,10 @@
         }"
       >
         <p>{{ match?.team2 }}</p>
-        <p><strong>Score ({{ units[game?.gameType]}}):</strong> {{ match.team2Result }}</p>
+        <p><strong>Score ({{ units[game?.gameType]}}):</strong> {{ match?.team2Result }}</p>
 
-        <button class="btn btn-blank" v-if="!isChangingScore2 && match.team2Result > 0" @click="isChangingScore2 = true">Change</button>
-        <div v-if="isChangingScore2 || !match.team2Result">
+        <button class="btn btn-blank" v-if="!isChangingScore2 && match?.team2Result > 0" @click="isChangingScore2 = true">Change</button>
+        <div v-if="isChangingScore2 || !match?.team2Result">
         <TableSurfingInput v-if="game?.gameType === 'TableSurfing'" v-model="team2Result" />
         <TimeInput v-else-if="['MineField','NerveSpiral'].includes(game?.gameType)" v-model="team2Result" />
         <MonkeyBarsInput v-else-if="game?.gameType === 'MonkeyBars'" v-model="team2Result" />
@@ -57,11 +57,6 @@
         </div>
         <span class="tag" v-if="match?.team2Id === match?.winnerId">Winner</span>
       </div>
-    </div>
-
-    <div class="buttons">
-      <!-- <button :class="{ 'btn-blank': true, 'btn-success': !!selectedTeam }" @click="setWinner">Set winner</button> -->
-      <!-- <button class="btn btn-blank">Loser</button> -->
     </div>
   </AdminPageLayout>
 </template>
@@ -93,7 +88,6 @@ export default {
   data() {
     return {
       loginError: "Game Info",
-      match: {},
       team1Result: null,
       team2Result: null,
       canEnterResults: false,
@@ -121,25 +115,16 @@ export default {
     if (!this.$store.state.games.length) {
       this.$store.dispatch("getGames");
     }
+    if(!this.$store.state.adminMatches.length) {
+        this.$store.dispatch("getAdminMatches");
+    }
   },
   mounted() {
-    if (this.matchId) {
-      this.init(this.matchId);
-    } else {
+    if (!this.matchId) {
       this.$router.back();
     }
   },
   methods: {
-    init(matchId) {
-      if(!this.$store.state.adminMatches.length) {
-        this.$store.dispatch("getAdminMatches").then(() => {
-          this.match = this.$store.state.adminMatches.find((match) => match.matchId == matchId);
-        });
-      }
-      else {
-        this.match = this.$store.state.adminMatches.find((match) => match.matchId == matchId);
-      }
-    },
     showGameInfo(game) {
       this.$router.push({
             name: 'AdminGameInfoDetail',
@@ -152,8 +137,8 @@ export default {
       if (result) {
         const payload = { matchId: this.match.matchId, teamId, result };
         await this.$store.dispatch("confirmTeamResult", payload);
+        this.$forceUpdate();
         this.$store.dispatch("getAdminLeagueStatus");
-        this.$store.dispatch("getAdminMatches");
         if(teamId === this.match.team1Id) {
           this.match.team1Result = this.team1Result;
           this.isChangingScore1 = false;
@@ -165,26 +150,20 @@ export default {
       } else {
         alert("Please enter a result");
       }
-    },
-    async setWinner() {
-      if (this.selectedTeam) {
-        const payload = { matchId: this.match.matchId, teamId: this.selectedTeam };
-        await this.$store.dispatch("setWinner", payload);
-        this.$store.dispatch("getAdminLeagueStatus");
-        this.$store.dispatch("getAdminMatches");
-        this.match.winnerId = this.selectedTeam;
-        this.selectedTeam = null;
-      } else {
-        alert("Please select a team");
-      }
-    },
+    }
   },
   computed: {
+    matches() {
+      return this.$store.state.adminMatches;
+    },
+    match() {
+      return this.matches?.find((match) => match.matchId == this.matchId);
+    },
     games() {
-      return this?.$store.state.games;
+      return this.$store.state.games;
     },
     game() {
-      return this?.games?.find((game) => game.id == this.match?.gameId);
+      return this.games?.find((game) => game.id == this.match?.gameId);
     }
   },
 };
