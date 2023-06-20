@@ -1,5 +1,6 @@
 using Buk.UniversalGames.Data.Models;
 using Buk.UniversalGames.Data.Models.Matches;
+using Buk.UniversalGames.Data.Models.SideQuest;
 using Buk.UniversalGames.Library.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
@@ -21,6 +22,7 @@ public class DataContext : DbContext
     public DbSet<PointsRegistration> Points{ get; init; }
     public DbSet<Game> Games { get; init; }
     public DbSet<Match> Matches { get; init; }
+    public DbSet<Guess> Guesses { get; init; }
     public DbSet<Settings> Settings { get; init; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder options) => options
@@ -51,6 +53,9 @@ public class DataContext : DbContext
 
         builder.Entity<Match>().HasKey(t => t.MatchId);
         builder.Entity<Match>().Property(e => e.Start).HasColumnType("timestamp without time zone");
+
+        builder.Entity<Guess>().HasKey(g => g.Id);
+        builder.Entity<Guess>().Property(g => g.Time).HasColumnType("timestamp without time zone");
 
         builder.Entity<Settings>().HasKey(t => t.Key);
 

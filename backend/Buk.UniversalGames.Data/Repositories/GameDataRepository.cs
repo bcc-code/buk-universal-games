@@ -61,7 +61,7 @@ namespace Buk.UniversalGames.Data.Repositories
                         Team2Id = match.Team2Id,
                         Team2 = match.Team2.Name,
                         WinnerId = match.WinnerId.GetValueOrDefault(),
-                        Winner = match.WinnerId.HasValue ? (match.WinnerId.Value == match.Team1Id ? match.Team1.Name : match.Team2.Name) : "",
+                        Winner = match.WinnerId.HasValue ? (match.WinnerId!.Value == match.Team1Id ? match.Team1.Name : match.Team2.Name) : "",
                         Team1Result = pointsreg1.Points,
                         Team2Result = pointsreg2.Points,
                         Start = match.Start.ToLocalTime().ToString("HH:mm"),
