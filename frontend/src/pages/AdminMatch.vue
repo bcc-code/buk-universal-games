@@ -63,8 +63,6 @@
 
 <script>
 import AdminPageLayout from "@/components/AdminPageLayout.vue";
-// import { getData } from "@/libs/apiHelper";
-
 import { gameEarthIcon } from "@/assets/icons/game-earth.svg.ts";
 import { gameFireIcon } from "@/assets/icons/game-fire.svg.ts";
 import { gameMetalIcon } from "@/assets/icons/game-metal.svg.ts";

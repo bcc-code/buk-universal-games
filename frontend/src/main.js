@@ -6,8 +6,6 @@ import { setupI18n } from './libs/i18n'
 import NotificationService from '@/services/notification.service'
 
 createApp(App)
-    .use(router)
     .use(store)
-    .use(setupI18n({ locale: 'no'}))
-    .provide('notificationService', new NotificationService())
+    .use(initRouter(store))
     .mount('#app')

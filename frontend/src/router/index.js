@@ -13,7 +13,6 @@ import AdminSelectLeague from "@/pages/AdminSelectLeague.vue";
 import AdminGames from "@/pages/AdminGames.vue";
 import AdminMatchListGame from "@/pages/AdminMatchListGame.vue";
 import AdminMap from "@/pages/AdminMap.vue";
-import store from '@/store'
 
 const routes = [
   {
@@ -113,26 +112,26 @@ const routes = [
   },
 ];
 
-const router = createRouter({
-  history: createWebHashHistory(),
-  routes,
-});
+export default function (store) {
+  const router = createRouter({
+    history: createWebHashHistory(),
+    routes,
+  });
 
-router.beforeEach(async (to, from, next) => {
-  let nextOptions = null;
+  router.beforeEach(async (to, from, next) => {
+    let nextOptions = null;
 
-  if (to.params.stickerCode) {
-    store.commit('setScanning', { handlingURL: true, stickerCode: to.params.stickerCode })
-  }
+    if (to.params.stickerCode) {
+      store.commit('setScanning', { handlingURL: true, stickerCode: to.params.stickerCode })
+    }
 
-  if (!store.state.loginData && window.localStorage.getItem('teamCode')) {
-    store.dispatch('loadLoginData')
-    store.dispatch('loadLeagueData')
-    store.dispatch('loadGameData')
-    store.dispatch('loadAdminLeagueData')
-  }
-  next(nextOptions)
-})
-
-
-export default router;
+    if (!store.state.loginData && window.localStorage.getItem('teamCode')) {
+      store.dispatch('loadLoginData')
+      store.dispatch('loadLeagueData')
+      store.dispatch('loadGameData')
+      store.dispatch('loadAdminLeagueData')
+    }
+    next(nextOptions)
+  })
+  return router;
+}
