@@ -1,0 +1,50 @@
+[
+	{
+		"team_id": 5,
+		"name": "System Admin",
+		"code": "overlords",
+		"league_id": null,
+		"type": "system_admin",
+		"color": ""
+	},
+	{
+		"team_id": 6,
+		"name": "Admin",
+		"code": "team5rules",
+		"league_id": null,
+		"type": "admin",
+		"color": ""
+	},
+	{
+		"team_id": 57,
+		"name": "Test Team 1",
+		"code": "A84BQ9",
+		"league_id": 4,
+		"type": "participant",
+		"color": "#3B88CD"
+	},
+	{
+		"team_id": 58,
+		"name": "Test Team 2",
+		"code": "F79MN3",
+		"league_id": 4,
+		"type": "participant",
+		"color": "#789CCD"
+	},
+	{
+		"team_id": 59,
+		"name": "Test Team 3",
+		"code": "7VGHPA",
+		"league_id": 4,
+		"type": "participant",
+		"color": "#CC6BD8"
+	},
+	{
+		"team_id": 60,
+		"name": "Test Team 4",
+		"code": "P83HBL",
+		"league_id": 4,
+		"type": "participant",
+		"color": "#99BCA5"
+	}
+]

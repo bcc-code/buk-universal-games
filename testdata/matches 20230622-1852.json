@@ -1,0 +1,72 @@
+[
+	{
+		"match_id": 165,
+		"team1id": 57,
+		"team2id": 58,
+		"game_id": 3,
+		"start": "2023-06-18T13:30:00",
+		"winner_id": null,
+		"add_on": "",
+		"league_id": 4
+	},
+	{
+		"match_id": 166,
+		"team1id": 58,
+		"team2id": 58,
+		"game_id": 1,
+		"start": "2023-06-18T13:50:00",
+		"winner_id": null,
+		"add_on": "",
+		"league_id": 4
+	},
+	{
+		"match_id": 167,
+		"team1id": 57,
+		"team2id": 57,
+		"game_id": 5,
+		"start": "2023-06-18T13:50:00",
+		"winner_id": null,
+		"add_on": "",
+		"league_id": 4
+	},
+	{
+		"match_id": 168,
+		"team1id": 58,
+		"team2id": 57,
+		"game_id": 3,
+		"start": "2023-06-18T14:10:00",
+		"winner_id": null,
+		"add_on": "",
+		"league_id": 4
+	},
+	{
+		"match_id": 169,
+		"team1id": 57,
+		"team2id": 57,
+		"game_id": 2,
+		"start": "2023-06-18T14:30:00",
+		"winner_id": null,
+		"add_on": "",
+		"league_id": 4
+	},
+	{
+		"match_id": 170,
+		"team1id": 58,
+		"team2id": 58,
+		"game_id": 5,
+		"start": "2023-06-18T14:30:00",
+		"winner_id": null,
+		"add_on": "",
+		"league_id": 4
+	},
+	{
+		"match_id": 171,
+		"team1id": 57,
+		"team2id": 58,
+		"game_id": 5,
+		"start": "2023-06-18T14:50:00",
+		"winner_id": null,
+		"add_on": "",
+		"league_id": 4
+	}
+]
