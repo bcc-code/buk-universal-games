@@ -6,7 +6,8 @@ export default class NotificationService {
   get canAskForPermission() {
     return "Notification" in window && Notification.permission === "default";
   }
-  constructor() {
+  /** Scheduled notifications expire 5 minutes after their target time by default. */
+  constructor(expiryTimeOffset = 300_000) {
     // Debug mode only
     if ('webpackChunkbuk_universal_games_ui' in window) {
       this.scheduledNotifications.push({
@@ -23,7 +24,7 @@ export default class NotificationService {
       while (this.scheduledNotifications[0]?.time < new Date()) {
         latestNotification = this.scheduledNotifications.shift();
       }
-      if (latestNotification) {
+      if (new Date().getTime() < latestNotification?.time.getTime() + expiryTimeOffset) {
         this.notify(latestNotification.title, latestNotification.options);
       }
     }, 1000);
