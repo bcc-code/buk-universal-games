@@ -19,7 +19,7 @@ export default class NotificationService {
     setInterval(() => {
       let latestNotification;
       while (this.scheduledNotifications[0]?.time < new Date()) {
-        latestNotification = this.scheduledNotifications.pop();
+        latestNotification = this.scheduledNotifications.shift();
       }
       if (latestNotification) {
         this.notify(latestNotification.title, latestNotification.options);
