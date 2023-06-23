@@ -7,7 +7,6 @@ export default (notificationService) => (store) => {
         const time = new Date(new Date().setHours(...match.start.split(":")))
         const game = state.games.find(g => g.id === match.gameId);
         notificationService.schedule(time, `${match.start}: ${game.name}`, { body: `${match.team1} — ${match.team2}` })
-        notificationService.notify(`${match.start}: ${game.name}`, { body: `${match.team1} — ${match.team2}` })
       }
     }
   })
