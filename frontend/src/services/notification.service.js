@@ -1,14 +1,5 @@
 export default class NotificationService {
-  scheduledNotifications = [
-    {
-      time: new Date(new Date().getTime() + 10_000),
-      title: 'Test',
-      options: {
-        body: 'This is a scheduled test notification',
-        icon: 'images/ubg-logo.png',
-      }
-    }
-  ];
+  scheduledNotifications = [];
   get canNotifyExternal() {
     return "Notification" in window && Notification.permission === "granted";
   }
@@ -16,6 +7,17 @@ export default class NotificationService {
     return "Notification" in window && Notification.permission === "default";
   }
   constructor() {
+    // Debug mode only
+    if ('webpackChunkbuk_universal_games_ui' in window) {
+      this.scheduledNotifications.push({
+        time: new Date(new Date().getTime() + 10_000),
+        title: 'Test',
+        options: {
+          body: 'This is a scheduled test notification',
+          icon: 'images/ubg-logo.png',
+        }
+      })
+    }
     setInterval(() => {
       let latestNotification;
       while (this.scheduledNotifications[0]?.time < new Date()) {
