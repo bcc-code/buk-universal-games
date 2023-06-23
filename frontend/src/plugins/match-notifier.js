@@ -1,10 +1,10 @@
-export default (notificationService) => (store) => {
+/** Default time offset is 5 minutes before match starts */
+export default (notificationService, timeOffset = -300_000) => (store) => {
   // called when the store is initialized
   store.subscribe(async (mutation, state) => {
-    console.log(mutation.type)
     if (mutation.type === 'setMatches') {
       for (let match of mutation.payload) {
-        const time = new Date(new Date().setHours(...match.start.split(":")))
+        const time = new Date(new Date().setHours(...match.start.split(":")) + timeOffset)
         const game = state.games.find(g => g.id === match.gameId);
         notificationService.schedule(time, `${match.start}: ${game.name}`, { body: `${match.team1} — ${match.team2}` })
       }
