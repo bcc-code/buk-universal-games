@@ -7,7 +7,13 @@
       :refresh="refresh"
     />
     <section>
-      <RouterLink to="sidequest/question">Question</RouterLink>
+      <h2>Round 1</h2>
+      <div>
+        <div class="game-left">
+            <h3><RouterLink to="sidequest/question">Play</RouterLink></h3>
+        </div>
+        <div class="game-right"></div>
+      </div>
     </section>
   </UserPageLayout>
 </template>

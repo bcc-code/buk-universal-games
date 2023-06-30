@@ -10,19 +10,27 @@
       <div class="heading-text">
         <h2>Are you ready?</h2>
         </div>  
-      <Timer :seconds="5" @timer-finished="nextStep" />
+      <Timer :seconds="3" @timer-finished="nextStep" />
     </section>
     <section v-if="step==2">
-      <Timer ref="questionTimer" :seconds="30" @timer-finished="questionFinished" />
+      <Timer ref="questionTimer" :seconds="15" @timer-finished="questionFinished" />
       <div class="heading-text">
-        <h2>What color shirt was Herman wearing?</h2>
+        <h2>{{ this.question }}</h2>
         </div>
-        <component :is="questionComponent" :options="answers" />
+        <component :is="questionComponent" :options="answers" :value="selectedAnswer" />
+    </section>
+    <section v-if="step==3">
+      <div class="heading-text">
+        <h2>{{ $t("sidequest.thanks") }}</h2>
+        </div>
+        <component :is="questionComponent" :options="answers" :value="selectedAnswer" />
     </section>
   </UserPageLayout>
 </template>
 
 <script>
+
+import { markRaw } from "vue";
 import UserPageLayout from "@/components/UserPageLayout.vue";
 import PointsAndStickers from "@/components/PointsAndStickers.vue";
 import MultipleChoiceSelector from "@/components/MultipleChoiceSelector.vue";
@@ -30,30 +38,27 @@ import Timer from "@/components/CircularTimer.vue";
 
 export default {
   name: "SideQuestQuestion",
-  props: {
-    question: Number,
-  },
   components: { UserPageLayout, PointsAndStickers, Timer },
   data() {
     return {
-      loading: true,
-      questionComponent: MultipleChoiceSelector,
+      loading: false,
+      questionComponent: markRaw(MultipleChoiceSelector),
       selectedAnswer: null,
-      answers: [
-        { label: "Option 1", value: "option1" },
-        { label: "Option 2", value: "option2" },
-        { label: "Option 3", value: "option3" },
-        { label: "Option 4", value: "option4" },
-        { label: "Option 5", value: "option5" },
-      ],
+      question: null,
+      answers: [],
       step: 1,
     };
   },
   mounted() {
-    
+    const q = this.$store.state.qs[0];
+    this.question = this.$t("questions." + q.q + ".q");
+    this.answers = q.a.map((option) => ({
+      label: this.$t("questions." + q.q + ".a." + option),
+      value: option,
+    }));
   },
   created() {
-    
+
   },
   methods: {
     refresh() {
@@ -67,6 +72,9 @@ export default {
     nextStep() {
       this.step = this.step + 1;
       console.log("next step")
+    },
+    questionFinished() {
+      this.step = this.step + 1;
     },
   },
   computed: {

@@ -21,6 +21,10 @@ export default function (...plugins) {
       adminMatches: [],
       games: getSavedData("games", []),
       gamesLoading: true,
+      qs: [
+        { q: "colorshirt", a: ["red","blue","yellow","green"]},
+      ],
+      answers: [],
       scanning: {
         handlingURL: false,
         stickerCode: null

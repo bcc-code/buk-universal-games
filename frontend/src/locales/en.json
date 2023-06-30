@@ -13,6 +13,17 @@
         "mine_field": "",
         "crowdsurfing": ""
     },
+    "questions": {
+        "colorshirt": { 
+            "q": "Which color shirt did Herman wear?",
+            "a": {
+                "red": "Red",
+                "blue": "Blue",
+                "green": "Green",
+                "yellow": "Yellow"
+            }
+        }
+    },
     "points": "Points",
     "login": "Login",
     "teamcode": "Team code"

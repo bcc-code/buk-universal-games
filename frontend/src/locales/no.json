@@ -14,9 +14,26 @@
         "crowdsurfing": ""
     },
     "points": "Poeng",
+    "coins": "Mynter",
     "login": {
         "login_button": "Logg inn",
         "teamcode":"Team code"
+    },
+    "sidequest": {
+        "thanks": "Takk, din svar er registrert",
+        "timeranout": "Beklager, tiden er ute",
+        "areyouready": "Er du klar?"
+    },
+    "questions": {
+        "colorshirt": { 
+            "q": "Hvilken farge hadde skjorten til Herman?",
+            "a": {
+                "red": "Rød",
+                "blue": "Blå",
+                "green": "Grønn",
+                "yellow": "Gul"
+            }
+        }
     },
     "admin": {
         "select_league": {
