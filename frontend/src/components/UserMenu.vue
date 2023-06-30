@@ -13,10 +13,10 @@
       ></button>
     </div>
     <div class="user-menu-btn-big-wrapper">
-      <img src="images/ubg-logo.png" class="menu-logo-big">
-      <!-- <button class="user-menu-btn-big" v-on:click="$refs.cameraScanner.start()">
+      <!-- <img src="images/ubg-logo.png" class="menu-logo-big"> -->
+      <button class="user-menu-btn-big" @click="$router.push({name: 'SideQuest'})">
         <p v-html="scanIcon"></p>
-      </button> -->
+      </button>
     </div>
     <div class="user-menu-btn-small-wrapper">
       <button
