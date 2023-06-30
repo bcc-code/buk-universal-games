@@ -3,7 +3,7 @@
     <PointsAndStickers
       :loading="loading"
       :points="teamStatus?.status?.points"
-      :stickers="this.coins"
+      :stickers="coins"
       :refresh="refresh"
     />
     <section v-if="step==1">
@@ -13,11 +13,11 @@
       <Timer :seconds="5" @timer-finished="nextStep" />
     </section>
     <section v-if="step==2">
+      <Timer ref="questionTimer" :seconds="30" @timer-finished="questionFinished" />
       <div class="heading-text">
         <h2>What color shirt was Herman wearing?</h2>
-        <component :is="questionComponent" />
-        </div>  
-      <Timer ref="questionTimer" :seconds="30" @timer-finished="questionFinished" />
+        </div>
+        <component :is="questionComponent" :options="answers" />
     </section>
   </UserPageLayout>
 </template>
@@ -25,7 +25,7 @@
 <script>
 import UserPageLayout from "@/components/UserPageLayout.vue";
 import PointsAndStickers from "@/components/PointsAndStickers.vue";
-
+import MultipleChoiceSelector from "@/components/MultipleChoiceSelector.vue";
 import Timer from "@/components/CircularTimer.vue";
 
 export default {
@@ -37,8 +37,15 @@ export default {
   data() {
     return {
       loading: true,
-      resultParsed: null,
-     questionComponent,
+      questionComponent: MultipleChoiceSelector,
+      selectedAnswer: null,
+      answers: [
+        { label: "Option 1", value: "option1" },
+        { label: "Option 2", value: "option2" },
+        { label: "Option 3", value: "option3" },
+        { label: "Option 4", value: "option4" },
+        { label: "Option 5", value: "option5" },
+      ],
       step: 1,
     };
   },
@@ -82,6 +89,11 @@ export default {
 <style scoped>
 .heading-text {
   text-align: center;
+  margin-top:20%
+}
+
+.circle {
+  margin-left:-50px
 }
 
 .heading-icon {
