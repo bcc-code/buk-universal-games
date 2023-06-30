@@ -1,10 +1,8 @@
-import store from '@/store'
-
 export const rootUrl = location.hostname === 'universalgames.buk.no' ? 'https://universalgames.buk.no/api/' : `http://${location.hostname}:5125/`
 const retryRequestAmount = 5; // Retry the request x times
-const seconsBetweenRetry = 2; // Wait x seconds between each request
+const secondsBetweenRetry = 2; // Wait x seconds between each request
 
-export function initData(url, data) {
+export function initData(store, url, data) {
   const teamCode = myGetTeamCodeFunction()
   let intervalRunning = false;
   store.commit('resetRequestRetry', url)
@@ -12,14 +10,14 @@ export function initData(url, data) {
   return new Promise((resolve, reject) => {
     intervalFunction(resolve, reject)
     let currentResponse = null
-    const requestInterval = setInterval(() => intervalFunction(resolve, reject), seconsBetweenRetry * 1000);
+    const requestInterval = setInterval(() => intervalFunction(resolve, reject), secondsBetweenRetry * 1000);
 
     setTimeout(() => {
       if (intervalRunning) {
         clearInterval(requestInterval)
         resolve(currentResponse)
       }
-    }, ((seconsBetweenRetry + 1) * retryRequestAmount) * 1000);
+    }, ((secondsBetweenRetry + 1) * retryRequestAmount) * 1000);
 
     function intervalFunction(resolve, reject) {
       intervalRunning = true
@@ -82,7 +80,7 @@ export function initData(url, data) {
   })
 }
 
-export function getData(url, data) {
+export function getData(store, url, data) {
   const teamCode = myGetTeamCodeFunction()
   let intervalRunning = false;
   store.commit('resetRequestRetry', url)
@@ -90,14 +88,14 @@ export function getData(url, data) {
   return new Promise((resolve, reject) => {
     intervalFunction(resolve, reject)
     let currentResponse = null
-    const requestInterval = setInterval(() => intervalFunction(resolve, reject), seconsBetweenRetry * 1000);
+    const requestInterval = setInterval(() => intervalFunction(resolve, reject), secondsBetweenRetry * 1000);
 
     setTimeout(() => {
       if (intervalRunning) {
         clearInterval(requestInterval)
         resolve(currentResponse)
       }
-    }, ((seconsBetweenRetry + 1) * retryRequestAmount) * 1000);
+    }, ((secondsBetweenRetry + 1) * retryRequestAmount) * 1000);
 
     function intervalFunction(resolve, reject) {
       intervalRunning = true

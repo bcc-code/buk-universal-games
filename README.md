@@ -16,8 +16,17 @@ Run `cd frontend; npm install; npm run serve` for the front-end. Visit https://l
 Note: To allow a PWA to work in development in Chromium browsers you must start it with an additional command line flag `--ignore-certificate-errors`:
 
 ```sh
-chromium --ignore-certificate-errors https://localhost:8080
+chromium --ignore-certificate-errors http://localhost:8080
 ```
+
+## Test data
+
+You can import the test data files in Directus in this order:
+
+1. games…json
+2. leagues…json
+3. teams…json
+4. matches…json
 
 ### Accessing Database
 

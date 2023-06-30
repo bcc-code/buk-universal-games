@@ -1,27 +1,30 @@
 export default class NotificationService {
-  scheduledNotifications = [
-    {
-      time: new Date(new Date().getTime() + 10_000),
-      title: 'Test',
-      options: {
-        body: 'This is a scheduled test notification',
-        icon: 'images/ubg-logo.png',
-      }
-    }
-  ];
+  scheduledNotifications = [];
   get canNotifyExternal() {
     return "Notification" in window && Notification.permission === "granted";
   }
   get canAskForPermission() {
     return "Notification" in window && Notification.permission === "default";
   }
-  constructor() {
+  /** Scheduled notifications expire 5 minutes after their target time by default. */
+  constructor(expiryTimeOffset = 300_000) {
+    // Debug mode only
+    if ('webpackChunkbuk_universal_games_ui' in window) {
+      this.scheduledNotifications.push({
+        time: new Date(new Date().getTime() + 10_000),
+        title: 'Test',
+        options: {
+          body: 'This is a scheduled test notification',
+          icon: 'images/ubg-logo.png',
+        }
+      })
+    }
     setInterval(() => {
       let latestNotification;
       while (this.scheduledNotifications[0]?.time < new Date()) {
-        latestNotification = this.scheduledNotifications.pop();
+        latestNotification = this.scheduledNotifications.shift();
       }
-      if (latestNotification) {
+      if (new Date().getTime() < latestNotification?.time.getTime() + expiryTimeOffset) {
         this.notify(latestNotification.title, latestNotification.options);
       }
     }, 1000);
