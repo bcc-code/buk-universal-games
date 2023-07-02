@@ -71,10 +71,7 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("install", (event) => {
-  event.waitUntil(async (resources) => {
-    const cache = await caches.open("v1");
-    await cache.addAll(resources);
-  });
+  event.waitUntil(caches.open("v1").then(cache => cache.addAll(preCacheUris)));
 });
 
 self.addEventListener("fetch", (event) => {
@@ -109,3 +106,9 @@ const cacheableDestinations = [
   "video",
   "worker",
 ];
+
+const preCacheUris = [
+  'images/map-B-liga.png',
+  'images/map-U-liga.png',
+  'images/map-K-liga.png',
+]
