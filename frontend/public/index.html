@@ -20,8 +20,13 @@
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', async () => {
           const registration = await navigator.serviceWorker.register('sw.js')
-          await registration.update();
-          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          try {
+            await registration.update();
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          }
+          catch {
+            console.warn('Failed to update serviceworker. Running the cached version.');
+          }
         });
       }
     </script>
