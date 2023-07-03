@@ -107,8 +107,12 @@ const cacheableDestinations = [
 ];
 
 const preCacheUris = [
-  'video/crowdsurfing.mp4',
+  'index.html',
+  'js/app.js',
+  'js/chunk-vendors.js',
+  'images/ubg-logo.png',
   'images/map-B-liga.png',
   'images/map-U-liga.png',
   'images/map-K-liga.png',
+  'video/crowdsurfing.mp4',
 ]
