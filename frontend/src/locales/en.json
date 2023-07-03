@@ -13,6 +13,11 @@
         "mine_field": "",
         "crowdsurfing": ""
     },
+    "sidequest": {
+        "thanks": "Thanks, your answer has been recorded",
+        "timeranout": "Time ran out, better luck next time",
+        "areyouready": "Are you ready?"
+    },
     "questions": {
         "colorshirt": { 
             "q": "Which color shirt did Herman wear?",

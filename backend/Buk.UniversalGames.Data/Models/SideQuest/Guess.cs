@@ -7,7 +7,7 @@ namespace Buk.UniversalGames.Data.Models.SideQuest
         public int Id { get; set; }
         public int TeamId { get; set; }
 
-        public required Team Team { get; init; }
+        public Team? Team { get; init; }
 
         public required int QuestionId { get; init; }
 
@@ -15,6 +15,7 @@ namespace Buk.UniversalGames.Data.Models.SideQuest
 
         public required string UniqueId { get; init; }
 
+        public required DateTime TimeAnswered { get; init; }
         public required DateTime Time { get; init; }
 
         public bool IsCorrect { get; init; }

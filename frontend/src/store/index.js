@@ -21,10 +21,15 @@ export default function (...plugins) {
       adminMatches: [],
       games: getSavedData("games", []),
       gamesLoading: true,
+      coins: getSavedData("coins", ["dgsdfg","as45zzz","gztzz4ez","d5435","g45g4","j767jf"]),
       qs: [
-        { q: "colorshirt", a: ["red","blue","yellow","green"]},
+        { id: 1, q: "colorshirt", a: ["red","blue","yellow","green"]},
+        { id: 2, q: "colorshirt", a: ["red","blue","yellow","green"]},
+        { id: 3, q: "colorshirt", a: ["red","blue","yellow","green"]},
+        { id: 4, q: "colorshirt", a: ["red","blue","yellow","green"]},
       ],
       answers: [],
+      submittedAnswers: [],
       scanning: {
         handlingURL: false,
         stickerCode: null
@@ -59,6 +64,9 @@ export default function (...plugins) {
       setMatches(state, data) {
         state.matches = data
       },
+      setQuestions(state, data) {
+        state.questions = data
+      },
       replaceMatch(state, data) {
         const index = state.adminMatches.findIndex(m => m.matchId === data.matchId)
         if (index !== -1) {
@@ -76,6 +84,14 @@ export default function (...plugins) {
       },
       setGamesLoading(state, data) {
         state.gamesLoading = data
+      },
+      addAnswer(state, data) {
+        data.time = new Date();
+        state.answers.push(data)
+      },
+      setAnswersSubmitted(state, data) {
+        state.submittedAnswers.push(...data);
+        state.answers = state.answers.filter(item => !data.includes(item))
       },
       setAdminFilterGameSelected(state, data) {
         state.adminFilterGameSelected = data
@@ -125,7 +141,13 @@ export default function (...plugins) {
         ctx.commit("setTeamStatus", teamStatus)
 
         return teamStatus
-
+      },
+      async submitAnswers(ctx) {
+        const answers = ctx.state.answers.slice();
+        const result = await postData(`sidequest/guesses`, answers);
+        if (!result.error) {
+          ctx.commit("setAnswersSubmitted", answers);
+        }
       },
       async confirmTeamResult(ctx, payload) {
         const result = await postData(`matches/${payload.matchId}/results`, payload)

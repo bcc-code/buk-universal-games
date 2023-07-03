@@ -3,27 +3,39 @@
     <PointsAndStickers
       :loading="loading"
       :points="teamStatus?.status?.points"
-      :stickers="coins"
+      :stickers="coins.length"
       :refresh="refresh"
     />
-    <section v-if="step==1">
+    <section v-if="step=='pre'">
       <div class="heading-text">
         <h2>Are you ready?</h2>
         </div>  
-      <Timer :seconds="3" @timer-finished="nextStep" />
+      <Timer :seconds="1" @timer-finished="startQuestion" />
     </section>
-    <section v-if="step==2">
-      <Timer ref="questionTimer" :seconds="15" @timer-finished="questionFinished" />
+    <section v-if="step=='question'">
+      <Timer :seconds="1" @timer-finished="questionFinished" />
       <div class="heading-text">
         <h2>{{ this.question }}</h2>
-        </div>
-        <component :is="questionComponent" :options="answers" :value="selectedAnswer" />
+      </div>
     </section>
-    <section v-if="step==3">
+    <section v-if="step=='answer'">
+      <Timer :seconds="4" @timer-finished="answerFinished" />
+      <div class="heading-text">
+        <h2>{{ this.question }}</h2>
+      </div>
+      <component :is="answerComponent" :options="options" v-model="selectedAnswer" />
+    </section>
+    <section v-if="step=='done'">
       <div class="heading-text">
         <h2>{{ $t("sidequest.thanks") }}</h2>
-        </div>
-        <component :is="questionComponent" :options="answers" :value="selectedAnswer" />
+      </div>
+      <button @click="$router.back()">{{ $t("sidequest.back_to_overview") }}</button>
+    </section>
+    <section v-if="step=='timeranout'">
+      <div class="heading-text">
+        <h2>{{ $t("sidequest.timeranout") }}</h2>
+      </div>
+      <button @click="$router.back()">{{ $t("sidequest.back_to_overview") }}</button>
     </section>
   </UserPageLayout>
 </template>
@@ -39,26 +51,31 @@ import Timer from "@/components/CircularTimer.vue";
 export default {
   name: "SideQuestQuestion",
   components: { UserPageLayout, PointsAndStickers, Timer },
+  props: {
+    id: {
+      type: Number
+    },
+  },
   data() {
     return {
       loading: false,
-      questionComponent: markRaw(MultipleChoiceSelector),
       selectedAnswer: null,
+      answerComponent: markRaw(MultipleChoiceSelector),
       question: null,
-      answers: [],
-      step: 1,
+      options: [],
+      step: 'pre',
     };
-  },
-  mounted() {
-    const q = this.$store.state.qs[0];
-    this.question = this.$t("questions." + q.q + ".q");
-    this.answers = q.a.map((option) => ({
-      label: this.$t("questions." + q.q + ".a." + option),
-      value: option,
-    }));
   },
   created() {
 
+  },
+  mounted() {
+    const q = this.$store.state.qs.find((q) => q.id == this.id);
+    this.question = this.$t("questions." + q.q + ".q");
+    this.options = q.a.map((option) => ({
+      label: this.$t("questions." + q.q + ".a." + option),
+      value: option,
+    }));
   },
   methods: {
     refresh() {
@@ -69,12 +86,21 @@ export default {
         this.loading = false;
       }, 1000);
     },
-    nextStep() {
-      this.step = this.step + 1;
-      console.log("next step")
+    startQuestion() {
+      this.step = "question";
     },
     questionFinished() {
-      this.step = this.step + 1;
+      this.step = "answer";
+    },
+    answerFinished() {
+      if(this.selectedAnswer) {
+        this.$store.commit("addAnswer", {questionId: this.id, answer: this.selectedAnswer, coin: this.coins.pop()});
+        this.step = 'done';
+      }
+      else
+      {
+        this.step = 'timeranout';
+      }
     },
   },
   computed: {

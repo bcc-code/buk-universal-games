@@ -19,10 +19,7 @@
         type: Array,
         required: true,
       },
-      value: {
-        type: String,
-        default: "",
-      },
+      modelValue: String,
     },
     data() {
       return {
@@ -32,8 +29,7 @@
     methods: {
       selectOption(optionValue) {
         this.selectedOption = optionValue;
-        this.$emit("input", optionValue);
-        this.$emit("option-selected", optionValue);
+        this.$emit("update:model-value", optionValue);
       },
     },
   };

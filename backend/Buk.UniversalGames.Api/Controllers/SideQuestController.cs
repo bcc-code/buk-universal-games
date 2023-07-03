@@ -15,12 +15,11 @@ namespace Buk.UniversalGames.Api.Controllers;
 public class SideQuestController : ControllerBase
 {
     private readonly DataContext _db;
-    public static List<Question> Questions = new List<Question>
+    public static List<Question> Questions = new()
     {
         new Question(1, "What is the sound?", "shoe brushing"),
         new Question(2, "Who sung this song?", "Dag Helge Bernardsen")
     };
-    //private readonly IStickerService _stickerService;
 
     public SideQuestController(DataContext db) 
     {
@@ -28,21 +27,23 @@ public class SideQuestController : ControllerBase
     }
 
     [Participant]
-    [HttpPost("/questions/{questionId}/guesses")]
-    public async Task<ActionResult<ScanResult>> Guess(int questionId, [FromBody] GuessDto guess)
+    [HttpPost("/sidequest/guesses")]
+    public async Task<ActionResult<ScanResult>> Guess([FromBody] GuessDto[] guesses)
     {
         var team = HttpContext.Items["ValidatedTeam"] as Team;
-        var addedEntry =_db.Guesses.Add(new Guess
-                            { 
-                                Answer = guess.Answer,
-                                QuestionId = questionId,
-                                Team = team!,
-                                Time = DateTime.Now,
-                                UniqueId = ""
-                            }
+        _db.Guesses.AddRange(
+            guesses.Select(guess => new Guess
+            {
+                Answer = guess.Answer,
+                QuestionId = guess.QuestionId,
+                TeamId = team!.TeamId,
+                TimeAnswered = guess.Time.ToLocalTime(),
+                Time = DateTime.Now,
+                UniqueId = guess.Coin
+            })
         );
         await _db.SaveChangesAsync();
 
-        return Accepted(addedEntry.Entity);
+        return Ok();
     }
 }

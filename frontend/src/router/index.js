@@ -85,9 +85,10 @@ const routes = [
     component: SideQuest
   },
   {
-    path: "/sidequest/question",
+    path: "/sidequest/question/:id",
     name: "SideQuestQuestion",
-    component: SideQuestQuestion
+    component: SideQuestQuestion,
+    props: true
   },
   {
     path: "/league-status",

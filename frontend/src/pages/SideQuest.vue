@@ -3,16 +3,62 @@
     <PointsAndStickers
       :loading="loading"
       :points="teamStatus?.status?.points"
-      :stickers="this.coins"
+      :stickers="this.coins.length"
       :refresh="refresh"
     />
     <section>
+      <span>You have {{ unsubmittedAnswers.length }} unsubmitted answers</span>
+      <button @click="trySubmitAnswers">Submit your answers</button>
+    </section>
+    <section>
       <h2>Round 1</h2>
-      <div>
+      <div class="round">
+        <div class="game-left">
+            <h3><RouterLink to="sidequest/question/1">Play</RouterLink></h3>
+        </div>
+        <div class="game-right">
+            <h3><RouterLink to="sidequest/question/2">Play</RouterLink></h3>
+        </div>
+      </div>
+
+      <h2>Round 2</h2>
+      <div class="round">
+        <div class="game-left">
+            <h3><RouterLink to="sidequest/question/3">Play</RouterLink></h3>
+        </div>
+        <div class="game-right">
+            <h3><RouterLink to="sidequest/question/4">Play</RouterLink></h3>
+        </div>
+      </div>
+
+      <h2>Round 3</h2>
+      <div class="round">
         <div class="game-left">
             <h3><RouterLink to="sidequest/question">Play</RouterLink></h3>
         </div>
-        <div class="game-right"></div>
+        <div class="game-right">
+            <h3><RouterLink to="sidequest/question">Play</RouterLink></h3>
+        </div>
+      </div>
+
+      <h2>Round 4</h2>
+      <div class="round">
+        <div class="game-left">
+            <h3><RouterLink to="sidequest/question">Play</RouterLink></h3>
+        </div>
+        <div class="game-right">
+            <h3><RouterLink to="sidequest/question">Play</RouterLink></h3>
+        </div>
+      </div>
+
+      <h2>Round 5</h2>
+      <div class="round">
+        <div class="game-left">
+            <h3><RouterLink to="sidequest/question">Play</RouterLink></h3>
+        </div>
+        <div class="game-right">
+            <h3><RouterLink to="sidequest/question">Play</RouterLink></h3>
+        </div>
       </div>
     </section>
   </UserPageLayout>
@@ -49,11 +95,14 @@ export default {
         this.loading = false;
       }, 1000);
     },
-    nextStep() {
-      console.log("next step")
+    trySubmitAnswers() {
+      this.$store.dispatch("submitAnswers");
     },
   },
   computed: {
+    unsubmittedAnswers() {
+      return this.$store.state.answers;
+    },
     coins() {
       return this.$store.state.coins;
     },
@@ -99,6 +148,28 @@ export default {
 .heading-icon.success {
   background-color: var(--green);
   color: hsl(158, 93%, 5%);
+}
+
+.game-left, .game-right {
+  display:block;
+  min-width:30%;
+  border-radius:15px;
+  background-color: var(--gray-2);
+}
+
+.round {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1em 0;
+}
+
+.game-left {
+  clear:both;
+  float: left;
+}
+.game-right {
+  float: right;
 }
 
 .message {

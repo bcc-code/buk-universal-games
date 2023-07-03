@@ -56,6 +56,7 @@ public class DataContext : DbContext
 
         builder.Entity<Guess>().HasKey(g => g.Id);
         builder.Entity<Guess>().Property(g => g.Time).HasColumnType("timestamp without time zone");
+        builder.Entity<Guess>().Property(g => g.TimeAnswered).HasColumnType("timestamp without time zone");
 
         builder.Entity<Settings>().HasKey(t => t.Key);
 
