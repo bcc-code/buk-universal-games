@@ -10,8 +10,10 @@
         <span>{{ gameParsed.name }}</span>
       </h2>
 
-      <div class="banner" :style="{ 'background-image': `url(${bannerImage})` }">
-
+      <div class="banner">
+        <video autoplay loop muted playsinline>
+          <source src="/video/crowdsurfing.mp4" type="video/mp4" />
+        </video>
       </div>
     </header>
 
@@ -110,9 +112,8 @@ export default {
 <style scoped>
 .banner {
   width: 100%;
-  padding: 2em;
-  height: 20em;
-  border-radius: 1em;
+  border:5px solid var(--dark);
+  border-radius: 20px;
   margin: 1.5em auto;
   background-color: var(--dark);
   color: #fff;
@@ -123,6 +124,14 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
 }
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: aspect-fill;
+  border-radius: 15px;
+}
+
 
 nav {
   display: flex;

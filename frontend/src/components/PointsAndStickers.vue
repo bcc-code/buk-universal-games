@@ -1,11 +1,11 @@
 <template>
   <section :class="{ 'card-dark': true, loading }">
     <div class="card-dark-column">
-      <div class="card-dark-heading">Points</div>
+      <div class="card-dark-heading">{{ $t('points') }}</div>
       <h1 class="card-dark-text">{{ points }}</h1>
     </div>
-    <div class="card-dark-column" v-if="false">
-      <div class="card-dark-heading">Stickers</div>
+    <div class="card-dark-column">
+      <div class="card-dark-heading">{{ $t('coins') }}</div>
       <h1 class="card-dark-text">{{ stickers }}</h1>
     </div>
     <div></div>

@@ -3,6 +3,7 @@ using System;
 using Buk.UniversalGames.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Buk.UniversalGames.Api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230619213731_AddSideQuestSupport")]
+    partial class AddSideQuestSupport
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -229,13 +232,6 @@ namespace Buk.UniversalGames.Api.Migrations
 
             modelBuilder.Entity("Buk.UniversalGames.Data.Models.SideQuest.Guess", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("id");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
                     b.Property<string>("Answer")
                         .IsRequired()
                         .HasColumnType("text")
@@ -253,21 +249,14 @@ namespace Buk.UniversalGames.Api.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("team_id");
 
-                    b.Property<DateTime>("Time")
-                        .HasColumnType("timestamp without time zone")
+                    b.Property<DateTimeOffset>("Time")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("time");
-
-                    b.Property<DateTime>("TimeAnswered")
-                        .HasColumnType("timestamp without time zone")
-                        .HasColumnName("time_answered");
 
                     b.Property<string>("UniqueId")
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("unique_id");
-
-                    b.HasKey("Id")
-                        .HasName("pk_guesses");
 
                     b.HasIndex("TeamId")
                         .HasDatabaseName("ix_guesses_team_id");

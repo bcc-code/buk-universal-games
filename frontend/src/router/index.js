@@ -4,7 +4,8 @@ import LeagueList from "@/pages/LeagueList.vue";
 import MatchList from "@/pages/MatchList.vue";
 import GameInfo from "@/pages/GameInfo.vue";
 import GameInfoDetail from "@/pages/GameInfoDetail.vue";
-import ScanResult from "@/pages/ScanResult.vue";
+import SideQuest from "@/pages/SideQuest.vue";
+import SideQuestQuestion from "@/pages/SideQuestQuestion.vue";
 import ScanProcessing from "@/pages/ScanProcessing.vue";
 import Map from "@/pages/Map.vue";
 import AdminMatch from "@/pages/AdminMatch.vue";
@@ -79,9 +80,14 @@ const routes = [
     component: ScanProcessing,
   },
   {
-    path: "/:code/sticker-scan-result",
-    name: "ScanResult",
-    component: ScanResult,
+    path: "/sidequest",
+    name: "SideQuest",
+    component: SideQuest
+  },
+  {
+    path: "/sidequest/question/:id",
+    name: "SideQuestQuestion",
+    component: SideQuestQuestion,
     props: true
   },
   {

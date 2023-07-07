@@ -20,6 +20,8 @@ public class Team
 
     public TeamType Type { get; set; }
 
+    public int MemberCount { get; set; }
+
     public virtual string TeamType => Type.ToString();
 
     [JsonIgnore]

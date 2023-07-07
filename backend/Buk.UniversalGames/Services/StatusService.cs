@@ -6,12 +6,9 @@ using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Enums;
 using Buk.UniversalGames.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Logging;
 using NPOI.HSSF.Record;
 using Org.BouncyCastle.Math.EC.Rfc7748;
-using System.Collections.Generic;
-using System.ComponentModel;
 
 namespace Buk.UniversalGames.Services
 {
@@ -65,6 +62,44 @@ namespace Buk.UniversalGames.Services
             return await BuildAndCacheLeagueRanking(leagueId);
         }
 
+        public async Task<List<TeamStatus>> BuildAndCacheRankingForSidequest(int leagueId)
+        {
+            var teamSizes = (from team in _db.Teams
+                             select new { team.TeamId, team.Name, team.MemberCount }).ToList();
+            
+            var teamSizeDict = teamSizes.ToDictionary(x => x.TeamId, x => x.MemberCount);
+
+            var teamScores = from answer in _db.Guesses
+                             where answer.Team.LeagueId == leagueId && answer.IsCorrect
+                             group answer by new { answer.TeamId, answer.QuestionId } into t
+                             select new { t.Key.TeamId, t.Key.QuestionId, Count = t.Count() };
+
+            var relativeScores = teamScores.Select(x => new { x.TeamId, x.QuestionId, x.Count, Percentage = (decimal)x.Count / teamSizeDict[x.TeamId] });
+            var averageScores = teamSizes
+                .Select(t => new { 
+                    t.TeamId, 
+                    t.Name, 
+                    AverageScore = relativeScores
+                        .Where(x => x.TeamId == t.TeamId)
+                        .Average(x => x.Percentage)
+                })
+                .OrderByDescending(x => x.AverageScore);
+
+            var groupedByRank = averageScores.GroupBy(x => x.AverageScore);
+
+            var rank = -1;
+            var ranking = new List<TeamStatus>();
+            foreach (var rankingPosition in groupedByRank)
+            {
+                rank += rankingPosition.Count();
+                ranking.AddRange(rankingPosition.Select(x => new TeamStatus(x.TeamId, x.Name, _scoreByRank[rank])));
+            }
+
+            await _cache.Set("sidequest_ranking", ranking);
+
+            return ranking;
+        }
+
         public async Task<List<TeamStatus>> BuildAndCacheRankingForGameInLeague(Game game, int leagueId)
         {
             var teamScoresQuery = from score in _db.Points
@@ -107,18 +142,21 @@ namespace Buk.UniversalGames.Services
             var ticketTwist = (await GetGameRanking(GameType.TicketTwist, leagueId)).ToDictionary(x => x.TeamId);
             var minefield = (await GetGameRanking(GameType.MineField, leagueId)).ToDictionary(x => x.TeamId);
             var tableSurfing = (await GetGameRanking(GameType.TableSurfing, leagueId)).ToDictionary(x => x.TeamId);
+            
+            var sidequest = (await _cache.Get<List<TeamStatus>>("sidequest_ranking"))?.ToDictionary(x => x.TeamId) ?? new Dictionary<int, TeamStatus>();
 
             var leagueRanking = new List<TeamStatus>();
 
             foreach(var team in teams)
             {
-                var totalPoints = GetPointsForGame(nerveSpiral, team) 
-                                    + GetPointsForGame(monkeyBars, team)
-                                    + GetPointsForGame(ticketTwist, team)
-                                    + GetPointsForGame(minefield, team)
-                                    + GetPointsForGame(tableSurfing, team)
+                var totalPoints = GetPointsForSubRanking(nerveSpiral, team) 
+                                    + GetPointsForSubRanking(monkeyBars, team)
+                                    + GetPointsForSubRanking(ticketTwist, team)
+                                    + GetPointsForSubRanking(minefield, team)
+                                    + GetPointsForSubRanking(tableSurfing, team)
+                                    + GetPointsForSubRanking(sidequest, team)
                                     + _matchWinnerPoints * matchWinners.Count(x => x == team.TeamId);
-                    
+
                 leagueRanking.Add(new TeamStatus(team.TeamId, team.Name, totalPoints));
             }
 
@@ -126,8 +164,8 @@ namespace Buk.UniversalGames.Services
             await _cache.Set(leagueCacheKey(leagueId), sortedRanking);
             return sortedRanking;
 
-            static int GetPointsForGame(Dictionary<int, TeamStatus> nerveSpiral, Team team) 
-                => nerveSpiral.TryGetValue(team.TeamId, out var status) ? status.Points : 0;
+            static int GetPointsForSubRanking (Dictionary<int, TeamStatus> subRanking, Team team) 
+                => subRanking.TryGetValue(team.TeamId, out var status) ? status.Points : 0;
         }
 
         public async Task<TeamStatusReport> GetTeamStatus(Team team)
