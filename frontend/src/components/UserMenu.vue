@@ -4,12 +4,12 @@
       <button
         :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'LeagueList' }"
         v-html="homeIcon"
-        @click="$router.push({ name: 'LeagueList', params: { code: $store.state.loginData.code } })"
+        @click="$router.push({ name: 'LeagueList' })"
       ></button>
       <button
         :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'MatchList' }"
         v-html="calendarIcon"
-        @click="$router.push({ name: 'MatchList', params: { code: $store.state.loginData.code } })"
+        @click="$router.push({ name: 'MatchList' })"
       ></button>
     </div>
     <div class="user-menu-btn-big-wrapper">
@@ -22,12 +22,12 @@
       <button
         :class="{ 'user-menu-btn-small': true, 'selected-component': ['GameInfo','GameInfoDetail'].includes($route.name) }"
         v-html="ballIcon"
-        @click="$router.push({ name: 'GameInfo', params: { code: $store.state.loginData.code } })"
+        @click="$router.push({ name: 'GameInfo' })"
       ></button>
       <button
         :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'Map' }"
         v-html="placeIcon"
-        @click="$router.push({ name: 'Map', params: { code: $store.state.loginData.code } })"
+        @click="$router.push({ name: 'Map' })"
       ></button>
     </div>
   </nav>

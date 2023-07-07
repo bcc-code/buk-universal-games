@@ -4,13 +4,13 @@
       <PointsAndStickers
         :loading="loading"
         :points="teamStatus?.points"
-        :stickers="teamStatus?.status?.stickers"
+        :stickers="coins.length"
         :refresh="refresh"
       />
       <div v-if="teamStatus?.error">
-        <h2>Something went wrong</h2>
+        <h2>{{ $t("general_error") }}</h2>
         <p>{{ teamStatus.error }}</p>
-        <p>Please try refreshing the page.</p>
+        <p>{{ $t("please_refresh") }}</p>
       </div>
     </section>
     <div v-if="loading">
@@ -40,16 +40,16 @@
           <p class="message-text">{{ leagueStatus.error }}</p>
         </div>
         <div v-else>
-          <h2>Something went wrong</h2>
+          <h2>{{ $t("general_error") }}</h2>
 
           <div class="message">
             <p class="message-text">{{ leagueStatus.error }}</p>
             <br />
-            <p class="message-text">Please try refreshing the page.</p>
+            <p class="message-text">{{ $t("pleaserefresh") }}</p>
           </div>
         </div>
       </div>
-      <p><RouterLink to="games">View ranking and scores per game</RouterLink></p>
+      <p><RouterLink to="games">{{ $t("league.viewgamerankings") }}</RouterLink></p>
       <section class="ranking-title" v-if="leagueStatus.status?.total.length">
         <div class="ranking-title-column index-column"></div>
         <div class="ranking-title-column">
@@ -57,6 +57,11 @@
         </div>
         <div class="ranking-title-column">
           <h2 class="ranking-title-text">Points</h2>
+        </div>
+      </section>
+      <section v-else>
+        <div class="">
+          <p class="message-text">{{ $t("league.rankingisempty") }}</p>
         </div>
       </section>
       <section class="user-section" v-for="(status, i) in leagueStatus?.status?.total.sort((a, b) => b.points - a.points)" :key="status.id">
@@ -79,10 +84,7 @@ import PointsAndStickers from "../components/PointsAndStickers.vue";
 import LeagueListItem from "../components/LeagueListItem.vue";
 
 export default {
-  name: "LoginPage",
-  props: {
-    data: String,
-  },
+  name: "LeagueList",
   components: { UserPageLayout, PointsAndStickers, LeagueListItem },
   data() {
     return {
@@ -109,6 +111,9 @@ export default {
     },
   },
   computed: {
+    coins() {
+      return this.$store.state.coins;
+    },
     teamStatus() {
       return this?.leagueStatus?.status?.total?.find((score) => score.team == this.$store.state.loginData?.team);
     },

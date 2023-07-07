@@ -7,57 +7,14 @@
       :refresh="refresh"
     />
     <section>
-      <span>You have {{ unsubmittedAnswers.length }} unsubmitted answers</span>
-      <button @click="trySubmitAnswers">Submit your answers</button>
+      <span>{{ $t("sidequest.youhaveunsubmittedanswers", { numAnswers: unsubmittedAnswers.length}) }}</span>
+      <button @click="trySubmitAnswers">{{ $t("sidequest.submityouranswers") }}</button>
     </section>
-    <section>
-      <h2>Round 1</h2>
+    <section v-for="(round,index) in questions" :key="index">
+      <h2>{{ $t("sidequest.gameroundtitle", {round: index}) }}</h2>
       <div class="round">
-        <div class="game-left">
-            <h3><RouterLink to="sidequest/question/1">Play</RouterLink></h3>
-        </div>
-        <div class="game-right">
-            <h3><RouterLink to="sidequest/question/2">Play</RouterLink></h3>
-        </div>
-      </div>
-
-      <h2>Round 2</h2>
-      <div class="round">
-        <div class="game-left">
-            <h3><RouterLink to="sidequest/question/3">Play</RouterLink></h3>
-        </div>
-        <div class="game-right">
-            <h3><RouterLink to="sidequest/question/4">Play</RouterLink></h3>
-        </div>
-      </div>
-
-      <h2>Round 3</h2>
-      <div class="round">
-        <div class="game-left">
-            <h3><RouterLink to="sidequest/question">Play</RouterLink></h3>
-        </div>
-        <div class="game-right">
-            <h3><RouterLink to="sidequest/question">Play</RouterLink></h3>
-        </div>
-      </div>
-
-      <h2>Round 4</h2>
-      <div class="round">
-        <div class="game-left">
-            <h3><RouterLink to="sidequest/question">Play</RouterLink></h3>
-        </div>
-        <div class="game-right">
-            <h3><RouterLink to="sidequest/question">Play</RouterLink></h3>
-        </div>
-      </div>
-
-      <h2>Round 5</h2>
-      <div class="round">
-        <div class="game-left">
-            <h3><RouterLink to="sidequest/question">Play</RouterLink></h3>
-        </div>
-        <div class="game-right">
-            <h3><RouterLink to="sidequest/question">Play</RouterLink></h3>
+        <div v-for="question in round" :key="question.id">
+            <h3><RouterLink :to="'sidequest/question/' + question.id">{{ $t("sidequest.questiontypes." + question.t) }}</RouterLink></h3>
         </div>
       </div>
     </section>
@@ -75,13 +32,16 @@ export default {
   components: { UserPageLayout, PointsAndStickers },
   data() {
     return {
-      loading: true,
+      loading: false,
       resultParsed: null,
       messageIcon,
     };
   },
   mounted() {
-    
+    this.$store.dispatch("checkNewQuestions");
+    if(this.questions[1].length == 0) {
+      this.$store.commit("unlockNewQuestions", 1);
+    }
   },
   created() {
 
@@ -100,6 +60,9 @@ export default {
     },
   },
   computed: {
+    questions() {
+      return this.$store.state.qsOpened;
+    },
     unsubmittedAnswers() {
       return this.$store.state.answers;
     },

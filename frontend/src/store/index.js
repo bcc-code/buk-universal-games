@@ -1,33 +1,52 @@
 import { createStore } from "vuex";
+import createPersistedState from "vuex-persistedstate";
 import { initData, getData, postData } from "../libs/apiHelper"
 
 const storageKeyPrefix = 'buk-universal-games-';
 
 export default function (...plugins) {
   const store = createStore({
-    plugins,
+    plugins: [
+      createPersistedState({
+        key: storageKeyPrefix + 'store'
+      })
+    ].concat(plugins),
     modules: {
     },
     state: {
       loginData: {},
       loginMessage: '',
-      teamStatus: getSavedData("teamStatus", {}),
-      leagueStatus: getSavedData("leagueStatus", {}),
+      teamStatus: {},
+      leagueStatus: {},
       adminLeagues: [],
       adminLeagueStatus: {},
       adminLeagueSelected: 4,
       adminFilterGameSelected: null,
-      matches: getSavedData("matches", []),
+      matches: [],
       adminMatches: [],
-      games: getSavedData("games", []),
+      games: [],
       gamesLoading: true,
-      coins: getSavedData("coins", ["dgsdfg","as45zzz","gztzz4ez","d5435","g45g4","j767jf"]),
+      coins: ["dgsdfg","as45zzz","gztzz4ez","d5435","g45g4","j767jf"],
       qs: [
-        { id: 1, q: "colorshirt", a: ["red","blue","yellow","green"]},
-        { id: 2, q: "colorshirt", a: ["red","blue","yellow","green"]},
-        { id: 3, q: "colorshirt", a: ["red","blue","yellow","green"]},
-        { id: 4, q: "colorshirt", a: ["red","blue","yellow","green"]},
+        { id: 1, t: "guess", q: "guesshowmany1", a: ["100","1000","10000","20000"]},
+        { id: 2, t: "guess", q: "guesshowmany2", a: ["3000","4000","5000","6000"]},
+        { id: 3, t: "remember", q: "remember", a: ["opta","optb","optc","optd"]},
+        { id: 4, t: "insight", q: "insight", a: ["red","green","yellow","sametime"]},
+        { id: 5, t: "guess", q: "guesshowoften", a: ["1","2","4","8"]},
+        { id: 6, t: "recognize", q: "recognize1", a: ["horse","camel","antilope","giraffe"]},
+        { id: 7, t: "recognize", q: "recognize2", a: ["elephant","tiger","owl","lion"]},
+        { id: 8, t: "recognize", q: "recognize3", a: ["peter","john","matthew","paul"]},
+        { id: 9, t: "recognize", q: "recognize4", a: ["bkg","gkb","kgb","bgk"]},
+        { id: 10, t: "math", q: "math", a: ["30","81","200","67"]},
+        { id: 11, t: "knowledge", q: "knowledge", a: ["singapore","serbia","japan","peru"]},
       ],
+      qsOpened: {
+        1: [],
+        2: [],
+        3: [],
+        4: [],
+        5: [],
+      },
       answers: [],
       submittedAnswers: [],
       scanning: {
@@ -80,7 +99,12 @@ export default function (...plugins) {
         state.adminMatches = data
       },
       setGames(state, data) {
-        state.games = data
+        state.games = data.map(game => {
+          return {
+            ...game,
+            gameType: game.gameType.toLowerCase()
+          }
+        })
       },
       setGamesLoading(state, data) {
         state.gamesLoading = data
@@ -115,27 +139,36 @@ export default function (...plugins) {
           state.currentAmountOfRequestRetries[requestUrl] = null
         }
       },
+      unlockNewQuestions(state, round) {
+        console.log(round);
+        for(let i = 0; i < 2; i++)
+        {
+          const newQuestion = state.qs[Math.floor(Math.random() * state.qs.length)]
+          console.log(newQuestion);
+          state.qsOpened[round].push(newQuestion)
+        }
+      }
     },
     actions: {
-      async getLoginData(ctx) {
+      async signIn(ctx) {
         ctx.commit("setLoginMessage", 'Logging you in, please wait ...')
         const loginData = await initData(store, "start/")
         ctx.commit("setLoginData", loginData)
         return loginData
       },
       async getTeamStatus(ctx, override) {
-        const savedDataAge = getSavedDataAge('teamStatus')
+        const cacheAge = getCachedDataAge('teamStatus')
         let teamStatus
 
-        if (savedDataAge === null || savedDataAge > 30 || (savedDataAge > 5 && override)) {
+        if (cacheAge === null || cacheAge > 30 || (cacheAge > 5 && override)) {
           teamStatus = await getData(store, "status/")
           if (!teamStatus.error) {
-            saveData('teamStatus', teamStatus)
+            cacheData('teamStatus', teamStatus)
           }
         }
 
         if (!teamStatus) {
-          teamStatus = getSavedData('teamStatus', {})
+          teamStatus = getFromCache('teamStatus', {})
         }
 
         ctx.commit("setTeamStatus", teamStatus)
@@ -157,18 +190,18 @@ export default function (...plugins) {
         return result
       },
       async getLeagueStatus(ctx, override) {
-        const savedDataAge = getSavedDataAge('leagueStatus')
+        const cacheAge = getCachedDataAge('leagueStatus')
         let leagueStatus
 
-        if (savedDataAge === null || savedDataAge > 30 || (savedDataAge > 5 && override)) {
+        if (cacheAge === null || cacheAge > 30 || (cacheAge > 5 && override)) {
           leagueStatus = await getData(store, "status/league")
           if (!leagueStatus.error) {
-            saveData('leagueStatus', leagueStatus)
+            cacheData('leagueStatus', leagueStatus)
           }
         }
 
         if (!leagueStatus) {
-          leagueStatus = getSavedData('leagueStatus', {})
+          leagueStatus = getFromCache('leagueStatus', {})
         }
 
         ctx.commit("setLeagueStatus", leagueStatus)
@@ -199,38 +232,49 @@ export default function (...plugins) {
         return matches
       },
       async getMatches(ctx, override) {
-        const savedDataAge = getSavedDataAge('matches')
+        const cacheAge = getCachedDataAge('matches')
         let matches
 
-        if (savedDataAge === null || savedDataAge > 30 || (savedDataAge > 5 && override)) {
+        if (cacheAge === null || cacheAge > 30 || (cacheAge > 5 && override)) {
           matches = await getData(store, "matches")
           if (!matches.error) {
-            saveData('matches', matches)
+            cacheData('matches', matches)
           }
         }
 
         if (!matches) {
-          matches = getSavedData('matches', [])
+          matches = getFromCache('matches', [])
         }
 
         ctx.commit("setMatches", matches)
 
         return matches
       },
+      checkNewQuestions(ctx) {
+        const now = new Date();
+        const timeString = `${(now.getHours() + 14).toString().padStart(2,'0')}:${(now.getMinutes() + 10).toString().padStart(2,'0')}`;
+        const round = ctx.state.matches.findIndex(match => match.start > timeString)
+        console.log(round);
+        if(round < 1) return;
+        const questions = ctx.state.qsOpened[round];
+        if (questions.length == 0) {
+          ctx.commit("unlockNewQuestions", round)
+        }
+      },
       async getGames(ctx) {
-        const savedDataAge = getSavedDataAge('games')
+        const savedDataAge = getCachedDataAge('games')
         let games
         ctx.commit('setGamesLoading', true)
 
         if (savedDataAge === null || savedDataAge > 30) {
           games = await getData(store, "games")
           if (!games.error) {
-            saveData('games', games)
+            cacheData('games', games)
           }
         }
 
         if (!games) {
-          games = getSavedData('games', [])
+          games = getFromCache('games', [])
         }
 
         ctx.commit("setGames", games)
@@ -247,7 +291,7 @@ export default function (...plugins) {
   return store;
 }
 
-function getSavedData(storageKey, fallbackValue) {
+function getFromCache(storageKey, fallbackValue) {
   const savedData = window.localStorage.getItem(storageKeyPrefix + storageKey);
   let data = fallbackValue
 
@@ -262,7 +306,7 @@ function getSavedData(storageKey, fallbackValue) {
   return data
 }
 
-function saveData(storageKey, data) {
+function cacheData(storageKey, data) {
   window.localStorage.setItem(storageKeyPrefix + storageKey, JSON.stringify({
     timestamp: new Date().getTime(),
     data
@@ -270,7 +314,7 @@ function saveData(storageKey, data) {
 }
 
 // Gets age in seconds
-function getSavedDataAge(storageKey) {
+function getCachedDataAge(storageKey) {
   let age = null;
   const savedData = window.localStorage.getItem(storageKeyPrefix + storageKey);
 

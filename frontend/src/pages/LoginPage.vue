@@ -38,7 +38,7 @@ export default {
   methods: {
     async tryLogin() {
       window.localStorage.setItem("teamCode", this.teamCode);
-      const loginData = await this.$store.dispatch("getLoginData")
+      const loginData = await this.$store.dispatch("signIn")
       this.$store.commit('setLoginMessage', '')
 
 
@@ -50,10 +50,14 @@ export default {
         }
       }
       else {
+        this.$store.dispatch('getGames')
         if (loginData && loginData.access === 'Admin') {
+          this.$store.dispatch('getAdminLeagues')
+          this.$store.dispatch('getAdminLeagueStatus')
           this.$router.push({ name: 'AdminSelectLeague' })
         }
         else {
+          this.$store.dispatch('getMatches')
           this.$router.push({ name: 'LeagueList' })
         }
       }

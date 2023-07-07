@@ -1,29 +1,29 @@
 <template>
   <UserPageLayout>
     <div v-if="matches.error">
-      <h2>Something went wrong</h2>
+      <h2>{{ $t("general_error") }}</h2>
       <div class="message">
         <p class="message-text">{{ matches.error }}</p>
-        <p class="message-text">Please try refreshing the page.</p>
+        <p class="message-text">{{ $t("pleaserefresh") }}</p>
       </div>
     </div>
     <MatchCard :selectedMatch="selectedMatch" :game="whichGame(selectedMatch.gameId)" />
     <section class="match-title" v-if="matches.length">
       <div class="match-title-column">
-        <h2 class="match-title-text">Game</h2>
+        <h2 class="match-title-text">{{ $t("game") }}</h2>
       </div>
       <div class="match-title-column">
-        <h2 class="match-title-text">Team 1 / Team 2</h2>
+        <h2 class="match-title-text">{{ $t("team1team2") }}</h2>
       </div>
       <div class="match-title-column">
-        <h2 class="match-title-text">Start</h2>
+        <h2 class="match-title-text">{{ $t("start") }}</h2>
       </div>
     </section>
     <section class="user-section" v-for="match in matches" :key="match.id">
       <div style="height:2px;width:100%;background-color: var(--dark);margin:5px 0 10px 0;" v-if="match == currentActiveMatch"></div>
       <MatchListItem
         :class="{ 'card-dark': match == selectedMatch }"
-        :game="whichGame(match.gameId)?.name"
+        :game="$t('games.' + whichGame(match.gameId)?.gameType)"
         :gameAddOn="match.addOn"
         :team1="match.team1"
         :team2="match.team2"
@@ -92,10 +92,10 @@ export default {
   },
   computed: {
     matches() {
-      return this?.$store.state.matches;
+      return this.$store.state.matches;
     },
     games() {
-      return this?.$store.state.games;
+      return this.$store.state.games;
     },
   },
 };
