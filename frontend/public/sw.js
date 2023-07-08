@@ -75,26 +75,25 @@ self.addEventListener("install", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
-  if (
-    event.request.method === "GET" &&
-    cacheableDestinations.includes(event.request.destination)
-  ) {
-    event.respondWith(
-      cacheFirst({
-        request: event.request,
-        preloadResponsePromise: event.preloadResponse,
-      })
-    );
-  } else {
-    event.respondWith(
-      networkFirst(event.request)
-    )
+  console.log(event.request.destination, event.request.url, event.request.mode);
+  if (event.request.method === "GET") {
+    if(cacheableDestinations.includes(event.request.destination)){
+      event.respondWith(
+        cacheFirst({
+          request: event.request,
+          preloadResponsePromise: event.preloadResponse,
+        }).catch((x) => console.log(x))
+      );
+    } else{
+      event.respondWith(
+        networkFirst(event.request)
+      )
+    }
   }
 });
 
 const cacheableDestinations = [
   "audio",
-  "document",
   "embed",
   "font",
   "image",
@@ -108,6 +107,7 @@ const cacheableDestinations = [
 ];
 
 const preCacheUris = [
+  'video/crowdsurfing.mp4',
   'images/map-B-liga.png',
   'images/map-U-liga.png',
   'images/map-K-liga.png',

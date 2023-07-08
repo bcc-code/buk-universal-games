@@ -2,7 +2,7 @@
   <section v-if="selectedMatch.team1" class="card card-dark">
     <section>
       <div class="card-dark-column">
-        <h1 class="card-dark-text">
+        <h1 class="card-dark-text" @click="showGameInfo">
           <span class="icon" v-html="icons[game.name]"></span>
           <span>{{ game.name }}</span>
         </h1>
@@ -12,14 +12,14 @@
       <div class="card-dark-column">
         <h2 class="card-dark-text">{{ selectedMatch?.team1 }}</h2>
         <div v-if="selectedMatch.winner">
-          <h2 :class="{ 'card-dark-text' : true, 'winner' : selectedMatch.winnerId == selectedMatch.team1Id }">{{ selectedMatch.team1Result }} bars</h2>
+          <h2 :class="{ 'card-dark-text' : true, 'winner' : selectedMatch.winnerId == selectedMatch.team1Id }">{{ selectedMatch.team1Result ? $t("score." + game.gameType, { score:selectedMatch.team1Result}) : '-' }}</h2>
         </div>
       </div>
       <div class="vl"></div>
       <div class="card-dark-column">
         <h2 class="card-dark-text">{{ selectedMatch?.team2 }}</h2>
         <div v-if="selectedMatch.winner">
-          <h2 :class="{ 'card-dark-text' : true, 'winner' : selectedMatch.winnerId == selectedMatch.team2Id }">{{ selectedMatch.team2Result ?? '-' }}</h2>
+          <h2 :class="{ 'card-dark-text' : true, 'winner' : selectedMatch.winnerId == selectedMatch.team2Id }">{{ selectedMatch.team2Result ? $t("score." + game.gameType, { score:selectedMatch.team2Result}) : "-" }}</h2>
         </div>
       </div>
     </section>
@@ -32,6 +32,7 @@ import { gameFireIcon } from "@/assets/icons/game-fire.svg.ts";
 import { gameMetalIcon } from "@/assets/icons/game-metal.svg.ts";
 import { gameWoodIcon } from "@/assets/icons/game-wood.svg.ts";
 import { gameWaterIcon } from "@/assets/icons/game-water.svg.ts";
+
 
 export default {
   name: "MatchCard",
@@ -49,6 +50,16 @@ export default {
   props: {
     selectedMatch: Object,
     game: Object,
+  },
+  methods: {
+    showGameInfo() {
+      this.$router.push({
+            name: 'GameInfoDetail',
+            params: {
+              game: this.game.id,
+            },
+          })
+    },
   },
 };
 </script>

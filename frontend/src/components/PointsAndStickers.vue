@@ -1,12 +1,15 @@
 <template>
   <section :class="{ 'card-dark': true, loading }">
     <div class="card-dark-column">
+      <img src="images/ubg-logo.png" class="logo" />
+    </div>
+    <div class="card-dark-column">
       <div class="card-dark-heading">{{ $t('points') }}</div>
-      <h1 class="card-dark-text">{{ points }}</h1>
+      <h1 class="card-dark-text">{{ points ?? "-" }}</h1>
     </div>
     <div class="card-dark-column">
       <div class="card-dark-heading">{{ $t('coins') }}</div>
-      <h1 class="card-dark-text">{{ stickers }}</h1>
+      <h1 class="card-dark-text">{{ stickers ?? "-" }}</h1>
     </div>
     <div></div>
     <button class="card-btn" v-html="refreshIcon" @click="refresh"></button>
@@ -81,6 +84,18 @@ button {
   animation-iteration-count: infinite;
   animation-name: shimmer;
   animation-timing-function: linear;
+}
+.logo {
+  height: 5em;
+  width: 5em;
+  margin: -10px 0;
+  background-color: var(--dark);
+  color: white;
+  border-radius: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid white;
 }
 
 .loading .card-dark-heading,

@@ -132,7 +132,7 @@ export default function (store) {
     }
 
     if (!store.state.loginData && window.localStorage.getItem('teamCode')) {
-      store.dispatch('loadLoginData')
+      store.dispatch('signIn')
       store.dispatch('loadLeagueData')
       store.dispatch('loadGameData')
       store.dispatch('loadAdminLeagueData')

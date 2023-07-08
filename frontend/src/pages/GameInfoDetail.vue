@@ -7,7 +7,7 @@
     <header>
       <h2>
         <span class="icon" v-html="icons[gameParsed.gameType]"></span>
-        <span>{{ gameParsed.name }}</span>
+        <span>{{ $t("games." + gameParsed.gameType) }}</span>
       </h2>
 
       <div class="banner">
@@ -17,16 +17,21 @@
       </div>
     </header>
 
-    <p class="description">
-      {{ gameParsed.description }}
-    </p>
-    <p class="description">
-      <span v-html="groupIcon"></span>
-      {{ gameParsed.participantsInfo }}
+    <p class="leadstory">
+      {{ $t("leadstory." + gameParsed.gameType) }}
     </p>
     <p class="description">
       <span v-html="circleInfoIcon"></span>
-      {{ gameParsed.safetyInfo }}
+      {{ $t("explanation." + gameParsed.gameType) }}
+    </p>
+
+    <p class="description">
+      <span>{{ $t("rulestitle") }}</span>
+      <ul>
+        <li v-for="(rule,index) in rules" :key="index">
+          {{ rule }}
+        </li>
+      </ul>
     </p>
 
     <section class="league-title" v-if="ranking?.length">
@@ -105,6 +110,9 @@ export default {
       }
       return [];
     },
+    rules() {
+      return this.$t('rules.' + this.gameParsed.gameType).split('|');
+    },
   },
 };
 </script>
@@ -140,6 +148,15 @@ nav {
 
 nav h3 {
   padding: 0 .75em;
+}
+
+.leadstory {
+  color: #555;
+  font-style: italic;
+  line-height: 1.5;
+  font-size: large;
+  white-space: break-spaces;
+  margin: 1.5em 0;
 }
 
 .description {

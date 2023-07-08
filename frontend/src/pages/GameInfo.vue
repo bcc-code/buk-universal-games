@@ -2,7 +2,7 @@
   <UserPageLayout>
     <PointsAndStickers
       :points="teamStatus?.points"
-      :stickers="teamStatus?.stickers"
+      :stickers="coins.length"
       :refresh="refresh"
       :loading="$store.state.gamesLoading"
     />
@@ -44,6 +44,9 @@ export default {
     },
   },
   computed: {
+    coins() {
+      return this.$store.state.coins;
+    },
     teamStatus() {
       return this?.leagueStatus?.status?.total?.find((score) => score.team == this.$store.state.loginData?.team);
     },

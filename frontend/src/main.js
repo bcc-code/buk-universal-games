@@ -13,6 +13,6 @@ const store = initStore(matchNotifierPlugin);
 createApp(App)
     .use(store)
     .use(initRouter(store))
-    .use(setupI18n({ locale: 'no' }))
+    .use(setupI18n({ locale: 'en' }))
     .provide('notificationService', notificationService)
     .mount('#app')

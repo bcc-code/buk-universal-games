@@ -10,16 +10,16 @@
       <div class="heading-text">
         <h2>Are you ready?</h2>
         </div>  
-      <Timer :seconds="1" @timer-finished="startQuestion" />
+      <Timer :seconds="5" @timer-finished="startQuestion" />
     </section>
     <section v-if="step=='question'">
-      <Timer :seconds="1" @timer-finished="questionFinished" />
+      <Timer :seconds="5" @timer-finished="questionFinished" />
       <div class="heading-text">
         <h2>{{ this.question }}</h2>
       </div>
     </section>
     <section v-if="step=='answer'">
-      <Timer :seconds="4" @timer-finished="answerFinished" />
+      <Timer :seconds="20" @timer-finished="answerFinished" />
       <div class="heading-text">
         <h2>{{ this.question }}</h2>
       </div>
@@ -62,6 +62,7 @@ export default {
       selectedAnswer: null,
       answerComponent: markRaw(MultipleChoiceSelector),
       question: null,
+      intro: null,
       options: [],
       step: 'pre',
     };
@@ -72,6 +73,7 @@ export default {
   mounted() {
     const q = this.$store.state.qs.find((q) => q.id == this.id);
     this.question = this.$t("questions." + q.q + ".q");
+    this.intro = this.$t("questions." + q.q + ".intro");
     this.options = q.a.map((option) => ({
       label: this.$t("questions." + q.q + ".a." + option),
       value: option,
