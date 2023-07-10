@@ -2,18 +2,25 @@
   <UserPageLayout>
     <PointsAndStickers
       :loading="loading"
-      :points="teamStatus?.status?.points"
+      :points="teamStatus?.points"
       :stickers="this.coins.length"
       :refresh="refresh"
     />
-    <section>
-      <span>{{ $t("sidequest.youhaveunsubmittedanswers", { numAnswers: unsubmittedAnswers.length}) }}</span>
-      <button @click="trySubmitAnswers">{{ $t("sidequest.submityouranswers") }}</button>
+    <section v-if="unsubmittedAnswers.length > 0">
+      <div class="message-white">
+        <p>
+          <span>{{ $t("sidequest.youhaveunsubmittedanswers", { numAnswers: unsubmittedAnswers.length}) }}</span>
+        </p>
+        <button class="btn-success" @click="trySubmitAnswers">{{ $t("sidequest.submityouranswers") }}</button>
+      </div>
     </section>
     <section v-for="(round,index) in questions" :key="index">
       <h2>{{ $t("sidequest.gameroundtitle", {round: index}) }}</h2>
       <div class="round">
-        <div v-for="question in round" :key="question.id">
+        <div class="message-white" v-if="round.length == 0">
+          <p>{{ $t("sidequest.noroundyet") }}</p>
+        </div>
+        <div class="message-white" v-for="question in round" :key="question.id">
             <h3><RouterLink :to="'sidequest/question/' + question.id">{{ $t("sidequest.questiontypes." + question.t) }}</RouterLink></h3>
         </div>
       </div>
@@ -126,13 +133,12 @@ export default {
   align-items: center;
   margin: 1em 0;
 }
-
-.game-left {
-  clear:both;
-  float: left;
-}
-.game-right {
-  float: right;
+.round div {
+  border-radius: 1em;
+  padding: 0.5em;
+  background-color: #fff;
+  width: 100%;
+  margin: 0 1em;
 }
 
 .message {
@@ -152,7 +158,22 @@ export default {
   align-items: center;
   margin: auto;
 }
+
 .message .message-text {
   font-size: 1.5em;
 }
+
+.message-white {
+  border-radius: 1em;
+  margin-top: 1em;
+  padding: 1em 1em 4em 1em;
+  background-color: #fff;
+}
+
+.message-white button {
+  margin-top:10px;
+  float:right;
+  padding:10px;
+}
+
 </style>

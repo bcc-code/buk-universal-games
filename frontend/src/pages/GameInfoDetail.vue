@@ -33,6 +33,18 @@
         </li>
       </ul>
     </p>
+    <section>
+      <h2>{{ $t("yourmatch") }}</h2>
+      <MatchListItem
+        v-if="match"
+        :game="gameParsed.name"
+        :gameAddOn="match.addOn"
+        :team1="match.team1"
+        :team2="match.team2"
+        :start="match.start"
+        :winner="match.winner"
+        :class="{ 'card-light': true }"></MatchListItem>
+    </section>
 
     <section class="league-title" v-if="ranking?.length">
         <div class="league-title-column index-column"></div>
@@ -50,7 +62,6 @@
           :team="status.team"
           :stickers="status.stickers"
           :points="status.points"
-          :loading="loading"
         />
       </section>
   </UserPageLayout>
@@ -59,6 +70,7 @@
 <script>
 import UserPageLayout from "@/components/UserPageLayout.vue";
 import LeagueListItem from "@/components/LeagueListItem.vue";
+import MatchListItem from "@/components/MatchListItem.vue";
 import { gameEarthIcon } from "@/assets/icons/game-earth.svg.ts";
 import { gameFireIcon } from "@/assets/icons/game-fire.svg.ts";
 import { gameMetalIcon } from "@/assets/icons/game-metal.svg.ts";
@@ -72,7 +84,7 @@ export default {
   props: {
     game: String,
   },
-  components: { UserPageLayout, LeagueListItem },
+  components: { UserPageLayout, LeagueListItem, MatchListItem },
   data() {
     return {
       gameParsed: {},
@@ -90,8 +102,6 @@ export default {
   },
   created() {
     this.$store.dispatch("getLeagueStatus");
-  },
-  mounted() {
     if (this.game) {
       this.gameParsed = this.$store.state.games.find((game) => game.id == this.game);
       this.bannerImage = `/images/illustrations/Universal-BUK-Games-${this.gameParsed.gameType}.svg`;
@@ -99,14 +109,30 @@ export default {
       this.$router.back();
     }
   },
+  mounted() {
+    // if (this.game) {
+    //   this.gameParsed = this.$store.state.games.find((game) => game.id == this.game);
+    //   this.bannerImage = `/images/illustrations/Universal-BUK-Games-${this.gameParsed.gameType}.svg`;
+    // } else {
+    //   this.$router.back();
+    // }
+  },
   methods: {},
   computed: {
+    teamStatus() {
+      return this.$store.state.teamStatus;
+    },
+    match() {
+      return this.$store.state.matches.find((match) => match.teamId == this.teamStatus?.status?.teamId && match.gameId == this.gameParsed?.id);
+    },
     ranking() {
       const gameType = this.gameParsed?.gameType;
       const leagueStatus = this.$store.state.leagueStatus;
+      console.log(gameType);
       if(gameType)
       {
-        return leagueStatus?.status?.[gameType] || [];
+        console.log(leagueStatus?.status);
+        return leagueStatus?.status[gameType] || [];
       }
       return [];
     },

@@ -49,7 +49,12 @@
           </div>
         </div>
       </div>
-      <p><RouterLink to="games">{{ $t("league.viewgamerankings") }}</RouterLink></p>
+      <div class="message-white">
+        <p>
+          You can view the rankings per game on the game detail pages.
+        </p>
+        <button class="btn-success" @click="this.$router.push('games')">{{ $t("league.viewgamerankings") }}</button>
+      </div>
       <section class="ranking-title" v-if="leagueStatus.status?.total.length">
         <div class="ranking-title-column index-column"></div>
         <div class="ranking-title-column">
@@ -160,6 +165,19 @@ export default {
   background-color: var(--dark);
   color: #fff;
   text-align: center;
+}
+
+.message-white {
+  border-radius: 1em;
+  margin-top: 1em;
+  padding: 1em 1em 4em 1em;
+  background-color: #fff;
+}
+
+.message-white button {
+  margin-top:10px;
+  float:right;
+  padding:10px;
 }
 
 .message .message-text {

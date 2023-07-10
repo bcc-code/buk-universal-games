@@ -14,7 +14,7 @@ public class Game {
 
     public GameType Type{ get; set; }
 
-    public virtual string GameType => Type.ToString();
+    public virtual string GameType => Type.ToString().ToLowerInvariant();
 
     public string Description { get; set; } = "";
 

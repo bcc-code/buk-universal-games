@@ -31,14 +31,14 @@ export default function (...plugins) {
         { id: 1, t: "guess", q: "guesshowmany1", a: ["100","1000","10000","20000"]},
         { id: 2, t: "guess", q: "guesshowmany2", a: ["3000","4000","5000","6000"]},
         { id: 3, t: "remember", q: "remember", a: ["opta","optb","optc","optd"]},
-        { id: 4, t: "insight", q: "insight", a: ["red","green","yellow","sametime"]},
-        { id: 5, t: "guess", q: "guesshowoften", a: ["1","2","4","8"]},
-        { id: 6, t: "recognize", q: "recognize1", a: ["horse","camel","antilope","giraffe"]},
-        { id: 7, t: "recognize", q: "recognize2", a: ["elephant","tiger","owl","lion"]},
-        { id: 8, t: "recognize", q: "recognize3", a: ["peter","john","matthew","paul"]},
-        { id: 9, t: "recognize", q: "recognize4", a: ["bkg","gkb","kgb","bgk"]},
-        { id: 10, t: "math", q: "math", a: ["30","81","200","67"]},
-        { id: 11, t: "knowledge", q: "knowledge", a: ["singapore","serbia","japan","peru"]},
+        { id: 4, t: "insight", i:true, q: "insight", a: ["red","green","yellow","sametime"]},
+        { id: 5, t: "guess", i:true, q: "guesshowoften", a: ["1","2","4","8"]},
+        { id: 6, t: "recognize", i:true, q: "recognize1", a: ["horse","camel","antilope","giraffe"]},
+        { id: 7, t: "recognize", i:true, q: "recognize2", a: ["elephant","tiger","owl","lion"]},
+        { id: 8, t: "recognize", i:true, q: "recognize3", a: ["peter","john","matthew","paul"]},
+        { id: 9, t: "recognize", i:true, q: "recognize4", a: ["bkg","gkb","kgb","bgk"]},
+        { id: 10, t: "math", i:true, q: "math", a: ["30","81","200","67"]},
+        { id: 11, t: "knowledge", i:true, q: "knowledge", a: ["singapore","serbia","japan","peru"]},
       ],
       qsOpened: {
         1: [],
@@ -99,12 +99,7 @@ export default function (...plugins) {
         state.adminMatches = data
       },
       setGames(state, data) {
-        state.games = data.map(game => {
-          return {
-            ...game,
-            gameType: game.gameType.toLowerCase()
-          }
-        })
+        state.games = data
       },
       setGamesLoading(state, data) {
         state.gamesLoading = data

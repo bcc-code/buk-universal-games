@@ -1,5 +1,5 @@
 <template>
-  <section class="card card-light" @click="() => clickFunc()">
+  <section class="card card-light" @click="() => {if(clickFunc) clickFunc()}">
     <div class="card-light-column">
       <span class="card-light-text game-title">
         <span class="icon" v-html="icons[game]"></span>

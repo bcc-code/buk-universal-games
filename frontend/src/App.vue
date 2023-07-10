@@ -36,11 +36,11 @@ const notificationService = inject('notificationService');
 }
 
 :root {
-  --dark: #a5709e;
+  --dark: #A4709D;
   --gray-1: #e5e5e5;
   --gray-2: #b6b6b6;
-  --green: #a0e3be;
-  --red: #ff334c;
+  --green: #9FE2BD;
+  --red: #DE6050;
 }
 
 html {
