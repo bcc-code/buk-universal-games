@@ -54,13 +54,14 @@ export default {
     };
   },
   created() {
+    this.$store.dispatch("getMatches", false);
+    this.$store.dispatch("getGames", false);
+  },
+  mounted() {
     this.getMatches();
-    this.getGames();
   },
   methods: {
     async getMatches() {
-      await this.$store.dispatch("getMatches", false);
-
        let minutesBeforeNow = 20;
        let now = new Date(new Date().getTime() - (minutesBeforeNow * 60 * 1000));
        let currentTime = now.getHours() + ':' + now.getMinutes();
@@ -69,7 +70,6 @@ export default {
       this.initMatch(this.matches.filter((match) => match.start >= currentTime)[0] || this.matches[0]);
     },
     getGames() {
-      this.$store.dispatch("getGames");
     },
     whichGame(id) {
       if (this.games.error) {

@@ -17,6 +17,7 @@
       <div class="heading-text">
         <h2>{{ this.question }}</h2>
       </div>
+      <img :src="require(`@/assets/img/${id}.jpg`)" v-if="hasImage" />
     </section>
     <section v-if="step=='answer'">
       <Timer :seconds="20" @timer-finished="answerFinished" />
@@ -29,13 +30,13 @@
       <div class="heading-text">
         <h2>{{ $t("sidequest.thanks") }}</h2>
       </div>
-      <button @click="$router.back()">{{ $t("sidequest.back_to_overview") }}</button>
+      <button class="btn-blank" @click="$router.back()">{{ $t("sidequest.back_to_overview") }}</button>
     </section>
     <section v-if="step=='timeranout'">
       <div class="heading-text">
         <h2>{{ $t("sidequest.timeranout") }}</h2>
       </div>
-      <button @click="$router.back()">{{ $t("sidequest.back_to_overview") }}</button>
+      <button class="btn-blank" @click="$router.back()">{{ $t("sidequest.back_to_overview") }}</button>
     </section>
   </UserPageLayout>
 </template>
@@ -46,6 +47,7 @@ import { markRaw } from "vue";
 import UserPageLayout from "@/components/UserPageLayout.vue";
 import PointsAndStickers from "@/components/PointsAndStickers.vue";
 import MultipleChoiceSelector from "@/components/MultipleChoiceSelector.vue";
+import SimpleGuessInput from "@/components/SimpleGuessInput.vue";
 import Timer from "@/components/CircularTimer.vue";
 
 export default {
@@ -60,20 +62,30 @@ export default {
     return {
       loading: false,
       selectedAnswer: null,
-      answerComponent: markRaw(MultipleChoiceSelector),
+      answerComponent: null,
       question: null,
+      coin: null,
+      image: null,
+      hasImage: false,
       intro: null,
       options: [],
       step: 'pre',
     };
   },
   created() {
-
+    if([1,2].includes(this.id)) {
+      this.answerComponent = markRaw(SimpleGuessInput);
+    }
+    else {
+      this.answerComponent = markRaw(MultipleChoiceSelector);
+    }
   },
   mounted() {
     const q = this.$store.state.qs.find((q) => q.id == this.id);
+    this.coin = this.coins.pop();
     this.question = this.$t("questions." + q.q + ".q");
     this.intro = this.$t("questions." + q.q + ".intro");
+    this.hasImage = q.i;
     this.options = q.a.map((option) => ({
       label: this.$t("questions." + q.q + ".a." + option),
       value: option,
@@ -96,7 +108,7 @@ export default {
     },
     answerFinished() {
       if(this.selectedAnswer) {
-        this.$store.commit("addAnswer", {questionId: this.id, answer: this.selectedAnswer, coin: this.coins.pop()});
+        this.$store.commit("addAnswer", {questionId: this.id, answer: this.selectedAnswer, coin: this.coin});
         this.step = 'done';
       }
       else

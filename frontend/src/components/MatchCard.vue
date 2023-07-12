@@ -3,8 +3,9 @@
     <section>
       <div class="card-dark-column">
         <h1 class="card-dark-text" @click="showGameInfo">
-          <span class="icon" v-html="icons[game.name]"></span>
-          <span>{{ game.name }}</span>
+          <img class="icon" :src="require(`@/assets/icons/game-${game.gameType}.svg`)"/>
+          <span>{{ game.name }}</span><span class="title-arrow">></span>
+          
         </h1>
       </div>
     </section>
@@ -81,6 +82,15 @@ button {
   background-color: inherit;
 }
 
+.icon {
+  width: 3em;
+  height: 3em;
+  margin-right: 0.5em;
+}
+.title-arrow {
+  font-weight: normal;
+  font-family: sans-serif;
+}
 .card {
   padding: 1em;
   border-radius: 0.75em;

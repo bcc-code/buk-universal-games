@@ -65,7 +65,7 @@ services:
 
   directus:
     container_name: bukuniversalgames_directus
-    image: directus/directus:latest
+    image: directus/directus:10.3
     ports:
       - 5127:8055
     volumes:

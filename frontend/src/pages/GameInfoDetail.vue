@@ -6,7 +6,7 @@
 
     <header>
       <h2>
-        <span class="icon" v-html="icons[gameParsed.gameType]"></span>
+        <img class="icon" :src="require(`@/assets/icons/game-${gameParsed.gameType}.svg`)"/>
         <span>{{ $t("games." + gameParsed.gameType) }}</span>
       </h2>
 
@@ -33,6 +33,18 @@
         </li>
       </ul>
     </p>
+    <section>
+      <h2>{{ $t("yourmatch") }}</h2>
+      <MatchListItem
+        v-if="match"
+        :game="gameParsed.name"
+        :gameAddOn="match.addOn"
+        :team1="match.team1"
+        :team2="match.team2"
+        :start="match.start"
+        :winner="match.winner"
+        :class="{ 'card-light': true }"></MatchListItem>
+    </section>
 
     <section class="league-title" v-if="ranking?.length">
         <div class="league-title-column index-column"></div>
@@ -50,7 +62,6 @@
           :team="status.team"
           :stickers="status.stickers"
           :points="status.points"
-          :loading="loading"
         />
       </section>
   </UserPageLayout>
@@ -59,7 +70,8 @@
 <script>
 import UserPageLayout from "@/components/UserPageLayout.vue";
 import LeagueListItem from "@/components/LeagueListItem.vue";
-import { gameEarthIcon } from "@/assets/icons/game-earth.svg.ts";
+import MatchListItem from "@/components/MatchListItem.vue";
+import minefieldIcon from "@/assets/icons/game-minefield.svg";
 import { gameFireIcon } from "@/assets/icons/game-fire.svg.ts";
 import { gameMetalIcon } from "@/assets/icons/game-metal.svg.ts";
 import { gameWoodIcon } from "@/assets/icons/game-wood.svg.ts";
@@ -72,13 +84,13 @@ export default {
   props: {
     game: String,
   },
-  components: { UserPageLayout, LeagueListItem },
+  components: { UserPageLayout, LeagueListItem, MatchListItem },
   data() {
     return {
       gameParsed: {},
       bannerImage: "",
       icons: {
-        Earth: gameEarthIcon,
+        minefield: minefieldIcon,
         Fire: gameFireIcon,
         Metal: gameMetalIcon,
         Wood: gameWoodIcon,
@@ -90,8 +102,6 @@ export default {
   },
   created() {
     this.$store.dispatch("getLeagueStatus");
-  },
-  mounted() {
     if (this.game) {
       this.gameParsed = this.$store.state.games.find((game) => game.id == this.game);
       this.bannerImage = `/images/illustrations/Universal-BUK-Games-${this.gameParsed.gameType}.svg`;
@@ -99,14 +109,30 @@ export default {
       this.$router.back();
     }
   },
+  mounted() {
+    // if (this.game) {
+    //   this.gameParsed = this.$store.state.games.find((game) => game.id == this.game);
+    //   this.bannerImage = `/images/illustrations/Universal-BUK-Games-${this.gameParsed.gameType}.svg`;
+    // } else {
+    //   this.$router.back();
+    // }
+  },
   methods: {},
   computed: {
+    teamStatus() {
+      return this.$store.state.teamStatus;
+    },
+    match() {
+      return this.$store.state.matches.find((match) => match.teamId == this.teamStatus?.status?.teamId && match.gameId == this.gameParsed?.id);
+    },
     ranking() {
       const gameType = this.gameParsed?.gameType;
       const leagueStatus = this.$store.state.leagueStatus;
+      console.log(gameType);
       if(gameType)
       {
-        return leagueStatus?.status?.[gameType] || [];
+        console.log(leagueStatus?.status);
+        return leagueStatus?.status[gameType] || [];
       }
       return [];
     },
@@ -140,6 +166,9 @@ video {
   border-radius: 15px;
 }
 
+.icon {
+  max-width: 4em;
+}
 
 nav {
   display: flex;
@@ -153,10 +182,12 @@ nav h3 {
 .leadstory {
   color: #555;
   font-style: italic;
-  line-height: 1.5;
-  font-size: large;
+  line-height: 1.7;
+  font-size: medium;
   white-space: break-spaces;
-  margin: 1.5em 0;
+  margin: 1.5em -1em;
+  padding: 1em;
+  background: #fff;
 }
 
 .description {

@@ -44,7 +44,7 @@ namespace Buk.UniversalGames.Services
             var dict = new Dictionary<string, List<TeamStatus>>();
             foreach(var type in (GameType[])Enum.GetValues(typeof(GameType)))
             {
-                dict.Add(type.ToString(), await GetGameRanking(type, leagueId));
+                dict.Add(type.ToString().ToLowerInvariant(), await GetGameRanking(type, leagueId));
             }
             dict.Add("total", await _cache.Get<List<TeamStatus>>(leagueCacheKey(leagueId)) ?? new List<TeamStatus>());
 

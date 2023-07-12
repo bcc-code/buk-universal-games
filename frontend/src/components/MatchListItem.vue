@@ -1,8 +1,8 @@
 <template>
-  <section class="card card-light" @click="() => clickFunc()">
+  <section class="card card-light" @click="() => {if(clickFunc) clickFunc()}">
     <div class="card-light-column">
       <span class="card-light-text game-title">
-        <span class="icon" v-html="icons[game]"></span>
+        <!-- <img class="icon" :src="require(`@/assets/icons/game-${game.replace(' ','').toLowerCase()}.svg`)"/> -->
         <span class="text">{{ game + ' ' + (gameAddOn || '')}}</span>
       </span>
     </div>
@@ -15,17 +15,12 @@
       </span>
     </div>
     <div class="card-light-column">
-      <h2 class="card-light-text">{{ start }}</h2>
+      <span class="card-light-text">{{ start }}</span>
     </div>
   </section>
 </template>
 
 <script>
-import { gameEarthIcon } from "@/assets/icons/game-earth.svg.ts";
-import { gameFireIcon } from "@/assets/icons/game-fire.svg.ts";
-import { gameMetalIcon } from "@/assets/icons/game-metal.svg.ts";
-import { gameWoodIcon } from "@/assets/icons/game-wood.svg.ts";
-import { gameWaterIcon } from "@/assets/icons/game-water.svg.ts";
 
 export default {
   name: "MatchListItem",
@@ -39,15 +34,6 @@ export default {
     clickFunc: Function,
   },
   data() {
-    return {
-      icons: {
-        Earth: gameEarthIcon,
-        Fire: gameFireIcon,
-        Metal: gameMetalIcon,
-        Wood: gameWoodIcon,
-        Water: gameWaterIcon,
-      },
-    };
   },
 };
 </script>
@@ -57,11 +43,17 @@ button {
   background-color: inherit;
 }
 
+.icon {
+  width: 3em;
+  height: 3em;
+  margin-right: 0.5em;
+}
+
 .card {
   padding: 0.25em 0.5em;
   border-radius: 0.75em;
   display: grid;
-  grid-template-columns: 35% 50% 15%;
+  grid-template-columns: 40% 50% 10%;
   align-items: center;
 }
 

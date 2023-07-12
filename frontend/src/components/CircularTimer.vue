@@ -25,7 +25,7 @@
         },
         color: {
           type: String,
-          default: '#f00',
+          default: '#ff334c',
         },
       },
       emits: ['timer-finished'],
