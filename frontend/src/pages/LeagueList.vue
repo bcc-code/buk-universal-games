@@ -65,7 +65,7 @@
         </div>
       </section>
       <section v-else>
-        <div class="">
+        <div class="nodata">
           <p class="message-text">{{ $t("league.rankingisempty") }}</p>
         </div>
       </section>
@@ -156,6 +156,13 @@ export default {
 
 .green-font {
   color: var(--green);
+}
+
+.nodata {
+  text-align: center;
+  margin-top: 1em;
+  font-size: 1.5em;
+  color: #888;
 }
 
 .message {

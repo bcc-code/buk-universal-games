@@ -11,18 +11,13 @@
   </div>
   <ul v-else class="games">
     <li class="game" v-for="game in games" :key="game.id" @click="$emit('clicked', game)">
-      <span class="game-icon" v-html="icons[game.gameType]"></span>
+      <img class="game-icon" :src="require(`@/assets/icons/game-${game.gameType}.svg`)" />
       <h3 class="game-title">{{ game.name }}</h3>
     </li>
   </ul>
 </template>
 
 <script>
-import { gameEarthIcon } from "@/assets/icons/game-earth.svg.ts";
-import { gameFireIcon } from "@/assets/icons/game-fire.svg.ts";
-import { gameMetalIcon } from "@/assets/icons/game-metal.svg.ts";
-import { gameWoodIcon } from "@/assets/icons/game-wood.svg.ts";
-import { gameWaterIcon } from "@/assets/icons/game-water.svg.ts";
 
 export default {
   name: "LeageListItem",
@@ -33,11 +28,7 @@ export default {
   data() {
     return {
       icons: {
-        Earth: gameEarthIcon,
-        Fire: gameFireIcon,
-        Metal: gameMetalIcon,
-        Wood: gameWoodIcon,
-        Water: gameWaterIcon,
+
       },
     };
   },
@@ -66,15 +57,15 @@ export default {
 }
 
 .games .game .game-title {
-  margin: 1rem 0 0;
+  margin: .5em 0 0 0;
   font-weight: 400;
 }
 
 .games .game .game-icon {
   margin: 0;
-  width: 2em;
-  height: 2em;
-  overflow: hidden;
+  width: 3em;
+  height: 3em;
+  float: right;
 }
 
 .games-loading .game {

@@ -29,7 +29,7 @@ export default {
   },
   mounted() {
     if (Object.keys(this.$store.state.loginData).length === 0) {
-      this.$store.dispatch("getLoginData");
+      this.$store.dispatch("signIn");
     }
   },
   methods: {},

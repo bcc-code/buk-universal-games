@@ -6,7 +6,7 @@
 
     <header>
       <h2>
-        <span class="icon" v-html="icons[gameParsed.gameType]"></span>
+        <img class="icon" :src="require(`@/assets/icons/game-${gameParsed.gameType}.svg`)"/>
         <span>{{ $t("games." + gameParsed.gameType) }}</span>
       </h2>
 
@@ -71,7 +71,7 @@
 import UserPageLayout from "@/components/UserPageLayout.vue";
 import LeagueListItem from "@/components/LeagueListItem.vue";
 import MatchListItem from "@/components/MatchListItem.vue";
-import { gameEarthIcon } from "@/assets/icons/game-earth.svg.ts";
+import minefieldIcon from "@/assets/icons/game-minefield.svg";
 import { gameFireIcon } from "@/assets/icons/game-fire.svg.ts";
 import { gameMetalIcon } from "@/assets/icons/game-metal.svg.ts";
 import { gameWoodIcon } from "@/assets/icons/game-wood.svg.ts";
@@ -90,7 +90,7 @@ export default {
       gameParsed: {},
       bannerImage: "",
       icons: {
-        Earth: gameEarthIcon,
+        minefield: minefieldIcon,
         Fire: gameFireIcon,
         Metal: gameMetalIcon,
         Wood: gameWoodIcon,
@@ -166,6 +166,9 @@ video {
   border-radius: 15px;
 }
 
+.icon {
+  max-width: 4em;
+}
 
 nav {
   display: flex;
@@ -179,10 +182,12 @@ nav h3 {
 .leadstory {
   color: #555;
   font-style: italic;
-  line-height: 1.5;
-  font-size: large;
+  line-height: 1.7;
+  font-size: medium;
   white-space: break-spaces;
-  margin: 1.5em 0;
+  margin: 1.5em -1em;
+  padding: 1em;
+  background: #fff;
 }
 
 .description {

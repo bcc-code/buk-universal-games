@@ -17,6 +17,7 @@
       <div class="heading-text">
         <h2>{{ this.question }}</h2>
       </div>
+      <img :src="require(`@/assets/img/${id}.jpg`)" v-if="hasImage" />
     </section>
     <section v-if="step=='answer'">
       <Timer :seconds="20" @timer-finished="answerFinished" />
@@ -64,6 +65,8 @@ export default {
       answerComponent: null,
       question: null,
       coin: null,
+      image: null,
+      hasImage: false,
       intro: null,
       options: [],
       step: 'pre',
@@ -82,6 +85,7 @@ export default {
     this.coin = this.coins.pop();
     this.question = this.$t("questions." + q.q + ".q");
     this.intro = this.$t("questions." + q.q + ".intro");
+    this.hasImage = q.i;
     this.options = q.a.map((option) => ({
       label: this.$t("questions." + q.q + ".a." + option),
       value: option,

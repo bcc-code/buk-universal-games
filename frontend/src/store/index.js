@@ -237,7 +237,7 @@ export default function (...plugins) {
           }
         }
 
-        if (!matches) {
+        if (!matches || matches.error) {
           matches = getFromCache('matches', [])
         }
 
@@ -246,14 +246,17 @@ export default function (...plugins) {
         return matches
       },
       checkNewQuestions(ctx) {
-        const now = new Date();
-        const timeString = `${(now.getHours() + 14).toString().padStart(2,'0')}:${(now.getMinutes() + 10).toString().padStart(2,'0')}`;
-        const round = ctx.state.matches.findIndex(match => match.start > timeString)
-        console.log(round);
-        if(round < 1) return;
-        const questions = ctx.state.qsOpened[round];
-        if (questions.length == 0) {
-          ctx.commit("unlockNewQuestions", round)
+        if(ctx.state.matches && ctx.state.matches.length > 0)
+        {
+          const now = new Date();
+          const timeString = `${(now.getHours() + 14).toString().padStart(2,'0')}:${(now.getMinutes() + 10).toString().padStart(2,'0')}`;
+          const round = ctx.state.matches?.findIndex(match => match.start > timeString)
+          console.log(round);
+          if(round < 1) return;
+          const questions = ctx.state.qsOpened[round];
+          if (questions.length == 0) {
+            ctx.commit("unlockNewQuestions", round)
+          }
         }
       },
       async getGames(ctx) {
@@ -281,7 +284,7 @@ export default function (...plugins) {
         let winner = await postData("admin/games/" + payload.matchId + "/winner/" + payload.teamId)
         return winner
       }
-    },
+    }
   });
   return store;
 }
