@@ -111,6 +111,7 @@ const preCacheUris = [
   'js/app.js',
   'js/chunk-vendors.js',
   'images/ubg-logo.png',
+  'icon/192.png',
   'images/map-B-liga.png',
   'images/map-U-liga.png',
   'images/map-K-liga.png',
