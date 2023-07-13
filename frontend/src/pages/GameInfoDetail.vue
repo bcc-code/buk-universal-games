@@ -6,7 +6,7 @@
 
     <header>
       <h2>
-        <img class="icon" :src="require(`@/assets/icons/game-${gameParsed.gameType}.svg`)"/>
+        <img class="icon" :src="require(`@/assets/icons/game-${gameParsed.gameType}.svg`)" />
         <span>{{ $t("games." + gameParsed.gameType) }}</span>
       </h2>
 
@@ -27,43 +27,31 @@
 
     <p class="description">
       <span>{{ $t("rulestitle") }}</span>
-      <ul>
-        <li v-for="(rule,index) in rules" :key="index">
-          {{ rule }}
-        </li>
-      </ul>
+    <ul>
+      <li v-for="(rule, index) in rules" :key="index">
+        {{ rule }}
+      </li>
+    </ul>
     </p>
     <section>
       <h2>{{ $t("yourmatch") }}</h2>
-      <MatchListItem
-        v-if="match"
-        :game="gameParsed.name"
-        :gameAddOn="match.addOn"
-        :team1="match.team1"
-        :team2="match.team2"
-        :start="match.start"
-        :winner="match.winner"
-        :class="{ 'card-light': true }"></MatchListItem>
+      <MatchListItem v-if="match" :gameType="gameParsed.gameType" :gameAddOn="match.addOn" :team1="match.team1"
+        :team2="match.team2" :start="match.start" :winner="match.winner" :class="{ 'card-light': true }"></MatchListItem>
     </section>
 
     <section class="league-title" v-if="ranking?.length">
-        <div class="league-title-column index-column"></div>
-        <div class="league-title-column">
-          <h2 class="league-title-text">Team</h2>
-        </div>
-        <div class="league-title-column">
-          <h2 class="league-title-text">Points</h2>
-        </div>
-      </section>
-      <section class="user-section" v-for="(status, i) in ranking" :key="status.id">
-        <LeagueListItem
-          :class="{ 'card-light': i > 4, 'green-font': status.teamId == teamStatus?.status?.teamId }"
-          :index="i + 1"
-          :team="status.team"
-          :stickers="status.stickers"
-          :points="status.points"
-        />
-      </section>
+      <div class="league-title-column index-column"></div>
+      <div class="league-title-column">
+        <h2 class="league-title-text">Team</h2>
+      </div>
+      <div class="league-title-column">
+        <h2 class="league-title-text">Points</h2>
+      </div>
+    </section>
+    <section class="user-section" v-for="(status, i) in ranking" :key="status.id">
+      <LeagueListItem :class="{ 'card-light': i > 4, 'green-font': status.teamId == teamStatus?.status?.teamId }"
+        :index="i + 1" :team="status.team" :stickers="status.stickers" :points="status.points" />
+    </section>
   </UserPageLayout>
 </template>
 
@@ -129,8 +117,7 @@ export default {
       const gameType = this.gameParsed?.gameType;
       const leagueStatus = this.$store.state.leagueStatus;
       console.log(gameType);
-      if(gameType)
-      {
+      if (gameType) {
         console.log(leagueStatus?.status);
         return leagueStatus?.status[gameType] || [];
       }
@@ -146,7 +133,7 @@ export default {
 <style scoped>
 .banner {
   width: 100%;
-  border:5px solid var(--dark);
+  border: 5px solid var(--dark);
   border-radius: 20px;
   margin: 1.5em auto;
   background-color: var(--dark);

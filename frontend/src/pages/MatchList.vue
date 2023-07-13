@@ -20,17 +20,11 @@
       </div>
     </section>
     <section class="user-section" v-for="match in matches" :key="match.id">
-      <div style="height:2px;width:100%;background-color: var(--dark);margin:5px 0 10px 0;" v-if="match == currentActiveMatch"></div>
-      <MatchListItem
-        :class="{ 'card-dark': match == selectedMatch }"
-        :game="$t('games.' + whichGame(match.gameId)?.gameType)"
-        :gameAddOn="match.addOn"
-        :team1="match.team1"
-        :team2="match.team2"
-        :start="match.start"
-        :winner="match.winner"
-        :clickFunc="() => matchClicked(match)"
-      />
+      <div style="height:2px;width:100%;background-color: var(--dark);margin:5px 0 10px 0;"
+        v-if="match == currentActiveMatch"></div>
+      <MatchListItem :class="{ 'card-dark': match == selectedMatch }" :gameType="whichGame(match.gameId)?.gameType"
+        :gameAddOn="match.addOn" :team1="match.team1" :team2="match.team2" :start="match.start" :winner="match.winner"
+        :clickFunc="() => matchClicked(match)" />
     </section>
   </UserPageLayout>
 </template>
@@ -62,9 +56,9 @@ export default {
   },
   methods: {
     async getMatches() {
-       let minutesBeforeNow = 20;
-       let now = new Date(new Date().getTime() - (minutesBeforeNow * 60 * 1000));
-       let currentTime = now.getHours() + ':' + now.getMinutes();
+      let minutesBeforeNow = 20;
+      let now = new Date(new Date().getTime() - (minutesBeforeNow * 60 * 1000));
+      let currentTime = now.getHours() + ':' + now.getMinutes();
       //let currentTime = "12:49";
 
       this.initMatch(this.matches.filter((match) => match.start >= currentTime)[0] || this.matches[0]);
@@ -84,8 +78,7 @@ export default {
     },
     initMatch(match) {
       this.selectedMatch = match;
-      if(match != this.matches[0])
-      {
+      if (match != this.matches[0]) {
         this.currentActiveMatch = match;
       }
     },
