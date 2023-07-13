@@ -34,6 +34,7 @@ export default {
     clickFunc: Function,
   },
   data() {
+    return {};
   },
 };
 </script>
