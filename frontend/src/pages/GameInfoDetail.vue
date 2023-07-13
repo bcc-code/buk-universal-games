@@ -119,7 +119,7 @@ export default {
       console.log(gameType);
       if (gameType) {
         console.log(leagueStatus?.status);
-        return leagueStatus?.status[gameType] || [];
+        return leagueStatus?.status?.[gameType] || [];
       }
       return [];
     },
