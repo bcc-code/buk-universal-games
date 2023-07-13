@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     async tryLogin() {
-      window.localStorage.setItem("teamCode", this.teamCode);
+      window.localStorage.setItem("teamCode", this.teamCode.toUpperCase());
       const loginData = await this.$store.dispatch("signIn")
       this.$store.commit('setLoginMessage', '')
 
