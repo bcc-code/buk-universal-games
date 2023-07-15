@@ -20,7 +20,7 @@
       <div class="heading-text">
         <h2>{{ this.intro }}</h2>
       </div>
-      <img :src="require(`@/assets/img/${id}.jpg`)" v-if="hasImage" />
+      <img :src="require(`../assets/img/${id}.jpg`)" v-if="hasImage" />
     </section>
     <section v-if="step=='answer'">
       <div class="timer-top-right">
