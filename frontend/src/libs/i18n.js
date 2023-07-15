@@ -3,26 +3,28 @@ import { createI18n } from 'vue-i18n'
 
 export const SUPPORT_LOCALES = ['en', 'no']
 
-export function setupI18n(options = { locale: 'en' }) {
+export function setupI18n(options = { locale: 'en',  }) {
+  if(!options.locale || !SUPPORT_LOCALES.includes(options.locale)) {
+    console.warn(`The locale '${options.locale}' is not supported. Using 'en' as fallback.`)
+    options.locale = 'en'
+  }
   const i18n = createI18n(options)
-  setI18nLanguage(i18n, options.locale)
+  setI18nLanguage(i18n.global, options.locale)
   return i18n
 }
 
 export function setI18nLanguage(i18n, locale) {
-  i18n.locale = locale
   loadLocaleMessages(i18n, locale)
+  i18n.locale = locale
   document.querySelector('html').setAttribute('lang', locale)
 }
 
 export async function loadLocaleMessages(i18n, locale) {
   // load locale messages with dynamic import
-  const messages = await import(
-    /* webpackChunkName: "locale-[request]" */ `./../locales/${locale}.json`
-  )
+  const messages = await import(`./../locales/${locale}.json`)
 
   // set locale and locale message
-  i18n.global.setLocaleMessage(locale, messages.default)
+  i18n.setLocaleMessage(locale, messages.default)
 
   return nextTick()
 }

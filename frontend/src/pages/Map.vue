@@ -1,7 +1,8 @@
 <template>
   <div class="root">
     <div ref="map" class="map-wrapper">
-      <img :src="`/images/map-${$store.state.loginData.league.substring(0, 1).toUpperCase()}-liga.png`" alt="" />
+      <img :src="`/images/ubg-strand-small.png`" alt="" />
+      <img :src="`/images/ubg-strand-icons.svg`" style="position:absolute;" alt="" />
     </div>
     <UserMenu />
   </div>

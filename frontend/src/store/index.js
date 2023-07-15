@@ -1,18 +1,21 @@
 import { createStore } from "vuex";
-import createPersistedState from "vuex-persistedstate";
+import VuexPersistence from "vuex-persist";
+import roundfinishedMonitor from "@/plugins/roundfinished-monitor";
 import { initData, getData, postData } from "../libs/apiHelper"
 
 const storageKeyPrefix = 'buk-universal-games-';
 
+const vuexLocal = new VuexPersistence({
+  storage: window.localStorage,
+  key: `ubg-store`,
+})
+
 export default function (...plugins) {
   const store = createStore({
     plugins: [
-      createPersistedState({
-        key: storageKeyPrefix + 'store'
-      })
+      vuexLocal.plugin,
+      roundfinishedMonitor(),
     ].concat(plugins),
-    modules: {
-    },
     state: {
       loginData: {},
       loginMessage: '',
@@ -40,19 +43,20 @@ export default function (...plugins) {
         { id: 10, t: "math", i:true, q: "math", a: ["30","81","200","67"]},
         { id: 11, t: "knowledge", i:true, q: "knowledge", a: ["singapore","serbia","japan","peru"]},
       ],
-      qsOpened: {
-        1: [],
-        2: [],
-        3: [],
-        4: [],
-        5: [],
-      },
+      qsOpened: [
+        [],
+        [],
+        [],
+        [],
+        [],
+      ],
       answers: [],
       submittedAnswers: [],
       scanning: {
         handlingURL: false,
         stickerCode: null
       },
+      userLanguage: null,
       currentAmountOfRequestRetries: []
     },
     mutations: {
@@ -140,8 +144,11 @@ export default function (...plugins) {
         {
           const newQuestion = state.qs[Math.floor(Math.random() * state.qs.length)]
           console.log(newQuestion);
-          state.qsOpened[round].push(newQuestion)
+          state.qsOpened[round -1].push(newQuestion)
         }
+      },
+      setUserLanguage(state, language) {
+        state.userLanguage = language;
       }
     },
     actions: {
@@ -245,15 +252,15 @@ export default function (...plugins) {
 
         return matches
       },
-      checkNewQuestions(ctx) {
-        if(ctx.state.matches && ctx.state.matches.length > 0)
+      checkNewQuestions(ctx, matches) {
+        if(matches && matches.length > 0)
         {
           const now = new Date();
-          const timeString = `${(now.getHours() + 14).toString().padStart(2,'0')}:${(now.getMinutes() + 10).toString().padStart(2,'0')}`;
-          const round = ctx.state.matches?.findIndex(match => match.start > timeString)
-          console.log(round);
-          if(round < 1) return;
-          const questions = ctx.state.qsOpened[round];
+          const timeString = `${(now.getHours()).toString().padStart(2,'0')}:${(now.getMinutes() + 10).toString().padStart(2,'0')}`;
+          const round = matches?.findIndex(match => match.start > timeString)
+          console.log(`Current round:${round}, based on time ${timeString}`);
+          if(round < 0) return;
+          const questions = ctx.state.qsOpened[round - 1] || [];
           if (questions.length == 0) {
             ctx.commit("unlockNewQuestions", round)
           }

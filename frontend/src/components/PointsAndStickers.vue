@@ -12,15 +12,20 @@
       <h1 class="card-dark-text">{{ stickers ?? "-" }}</h1>
     </div>
     <div></div>
+    <div>
+      <LanguageSwitcher />
     <button class="card-btn" v-html="refreshIcon" @click="refresh"></button>
+    </div>
   </section>
 </template>
 
 <script>
 import { refreshIcon } from "@/assets/icons/refresh.svg.ts";
+import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
 
 export default {
   name: "PointsAndStickers",
+  components: { LanguageSwitcher },
   props: {
     points: Number,
     stickers: Number,

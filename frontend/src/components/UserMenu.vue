@@ -13,9 +13,8 @@
       ></button>
     </div>
     <div class="user-menu-btn-big-wrapper">
-      <!-- <img src="images/ubg-logo.png" class="menu-logo-big"> -->
       <button class="user-menu-btn-big" @click="$router.push({name: 'SideQuest'})">
-        <p v-html="scanIcon"></p>
+        <img :src="require('../assets/icons/sidequest.svg')" style="width:5em" />
       </button>
     </div>
     <div class="user-menu-btn-small-wrapper">
@@ -108,20 +107,7 @@ button {
   color: white;
   border-radius: 10em;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 5px solid white;
-}
-
-.menu-logo-big {
-  position: absolute;
-  height: 5em;
-  width: 5em;
-  top: -2em;
-  background-color: var(--dark);
-  color: white;
-  border-radius: 1em;
-  display: flex;
+  padding:3px;
   justify-content: center;
   align-items: center;
   border: 5px solid white;
