@@ -1,9 +1,9 @@
 <template>
-  <section class="card card-light" @click="() => {if(clickFunc) clickFunc()}">
+  <section class="card card-light" @click="() => { if (clickFunc) clickFunc() }">
     <div class="card-light-column">
       <span class="card-light-text game-title">
-        <!-- <img class="icon" :src="require(`@/assets/icons/game-${game.replace(' ','').toLowerCase()}.svg`)"/> -->
-        <span class="text">{{ game + ' ' + (gameAddOn || '')}}</span>
+        <img class="icon" :src="require(`@/assets/icons/game-${gameType}.svg`)" />
+        <span class="text">{{ $t(`games.${gameType}`) }} {{ gameAddOn || '' }}</span>
       </span>
     </div>
     <div class="card-light-column">
@@ -25,7 +25,7 @@
 export default {
   name: "MatchListItem",
   props: {
-    game: String,
+    gameType: String,
     gameAddOn: String,
     team1: String,
     team2: String,
@@ -34,6 +34,7 @@ export default {
     clickFunc: Function,
   },
   data() {
+    return {};
   },
 };
 </script>
@@ -104,6 +105,7 @@ button {
   height: 1em;
   border-radius: 100%;
 }
+
 .card-teams.winner::after {
   background-color: var(--green);
 }

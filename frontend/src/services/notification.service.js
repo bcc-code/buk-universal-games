@@ -1,3 +1,12 @@
+export const testNotification = {
+  time: new Date(new Date().getTime() + 10_000),
+  title: 'Test',
+  options: {
+    body: 'This is a scheduled test notification',
+    icon: 'images/ubg-logo.png',
+  }
+};
+
 export default class NotificationService {
   scheduledNotifications = [];
   get canNotifyExternal() {
@@ -10,14 +19,7 @@ export default class NotificationService {
   constructor(expiryTimeOffset = 300_000) {
     // Debug mode only
     if ('webpackChunkbuk_universal_games_ui' in window) {
-      this.scheduledNotifications.push({
-        time: new Date(new Date().getTime() + 10_000),
-        title: 'Test',
-        options: {
-          body: 'This is a scheduled test notification',
-          icon: 'images/ubg-logo.png',
-        }
-      })
+      this.scheduledNotifications.push()
     }
     setInterval(() => {
       let latestNotification;

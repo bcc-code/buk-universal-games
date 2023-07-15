@@ -48,7 +48,7 @@
         <MatchListItem
           v-for="match in adminMatchGroups[matchGroupKey].matches"
           :key="match.id"
-          :game="getGameById(match.gameId)?.name"
+          :gameType="getGameById(match.gameId)?.gameType"
           :gameAddOn="match.addOn"
           :team1="match.team1"
           :team2="match.team2"
