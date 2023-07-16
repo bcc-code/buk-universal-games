@@ -1,7 +1,7 @@
 <template>
   <section :class="{ 'card-dark': true, loading }">
     <div class="card-dark-column">
-      <img src="images/ubg-logo.png" class="logo" />
+      <img src="image/ubg-logo.png" class="logo" />
     </div>
     <div class="card-dark-column">
       <div class="card-dark-heading">{{ $t('points') }}</div>

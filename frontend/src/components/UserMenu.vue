@@ -14,7 +14,7 @@
     </div>
     <div class="user-menu-btn-big-wrapper">
       <button class="user-menu-btn-big" @click="$router.push({name: 'SideQuest'})">
-        <img :src="require('../assets/icons/sidequest.svg')" style="width:5em" />
+        <img src="icon/sidequest.svg" style="width:5em" />
       </button>
     </div>
     <div class="user-menu-btn-small-wrapper">
@@ -38,7 +38,6 @@ import { ballIcon } from "@/assets/icons/ball.svg.ts";
 import { homeIcon } from "@/assets/icons/home.svg.ts";
 import { calendarIcon } from "@/assets/icons/calendar.svg.ts";
 import { placeIcon } from "@/assets/icons/place.svg.ts";
-import { scanIcon } from "@/assets/icons/scan.svg.ts";
 
 export default {
   name: "UserMenu",
@@ -50,7 +49,6 @@ export default {
       homeIcon,
       calendarIcon,
       placeIcon,
-      scanIcon,
     };
   },
   methods: {},

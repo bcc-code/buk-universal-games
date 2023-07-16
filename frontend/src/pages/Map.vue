@@ -24,12 +24,12 @@ export default {
   },
   created() {
     if (this.league == "k") {
-      this.map = "/images/ubg-beach-small.png";
+      this.map = "/image/ubg-beach-small.png";
     } else {
-      this.map = "/images/ubg-arena-small.png";
+      this.map = "/image/ubg-arena-small.png";
       this.defaultZoom
     }
-    this.icons = `/images/ubg-${this.league}-liga-icons.svg`;
+    this.icons = `/image/ubg-${this.league}-liga-icons.svg`;
   },
   mounted() {
     new PinchZoom(this.$refs.map, {

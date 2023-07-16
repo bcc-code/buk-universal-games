@@ -2,7 +2,7 @@
   <section class="card card-light" @click="() => { if (clickFunc) clickFunc() }">
     <div class="card-light-column">
       <span class="card-light-text game-title">
-        <img class="icon" :src="require(`@/assets/icons/game-${gameType}.svg`)" />
+        <img class="icon" :src="`icon/game-${gameType}.svg`" />
         <span class="text">{{ $t(`games.${gameType}`) }} {{ gameAddOn || '' }}</span>
       </span>
     </div>

@@ -3,7 +3,7 @@ export const testNotification = {
   title: 'Test',
   options: {
     body: 'This is a scheduled test notification',
-    icon: 'images/ubg-logo.png',
+    icon: 'image/ubg-logo.png',
   }
 };
 

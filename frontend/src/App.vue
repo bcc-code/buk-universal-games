@@ -14,21 +14,6 @@ const notificationService = inject('notificationService');
 </script>
 
 <style>
-@font-face {
-  font-family: "ClashGrotesk-Semibold";
-  src: url("./assets/fonts/ClashGrotesk-Semibold.otf") format("truetype");
-  font-weight: 600;
-  font-display: swap;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "ClashGrotesk-Medium";
-  src: url("./assets/fonts/ClashGrotesk-Medium.otf") format("truetype");
-  font-display: swap;
-  font-style: normal;
-}
-
 *,
 *:before,
 *:after {

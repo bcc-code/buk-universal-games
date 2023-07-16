@@ -63,11 +63,6 @@
 
 <script>
 import AdminPageLayout from "@/components/AdminPageLayout.vue";
-import { gameEarthIcon } from "@/assets/icons/game-earth.svg.ts";
-import { gameFireIcon } from "@/assets/icons/game-fire.svg.ts";
-import { gameMetalIcon } from "@/assets/icons/game-metal.svg.ts";
-import { gameWoodIcon } from "@/assets/icons/game-wood.svg.ts";
-import { gameWaterIcon } from "@/assets/icons/game-water.svg.ts";
 import TableSurfingInput from '@/components/TableSurfingInput.vue';
 import TimeInput from "@/components/TimeInput.vue";
 import MonkeyBarsInput from "@/components/MonkeyBarsInput.vue";
@@ -99,13 +94,6 @@ export default {
         MonkeyBars: "bars completed",
         TableSurfing: "seconds",
         TicketTwist: "nr of tickets",
-      },
-      icons: {
-        Earth: gameEarthIcon,
-        Fire: gameFireIcon,
-        Metal: gameMetalIcon,
-        Wood: gameWoodIcon,
-        Water: gameWaterIcon,
       },
     };
   },

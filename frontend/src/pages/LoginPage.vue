@@ -1,13 +1,11 @@
 <template>
   <section class="bg" :style="{
-    //'background-image': `url(${image})`,
     'background-color': '#a0e3be'
   }">
     <form class="content" action="none" @submit="tryLogin">
-      <img src="images/ubg-logo.png" alt="" class="logo" />
+      <img src="image/ubg-logo.png" alt="" class="logo" />
       <input type="text" class="codeInput" :placeholder="$t('login.teamcode')" v-model="teamCode" />
       <button v-if="teamCode.length > 3" class="btn-primary">{{ $t('login.login_button') }}</button>
-      <!-- <router-link v-if="teamCode.length > 3" class="btn-primary" :to="loginUrl">Login</router-link> -->
       <p v-if="loginMessage" class="login-msg">{{ loginMessage }}</p>
     </form>
   </section>
@@ -21,7 +19,6 @@ export default {
   },
   data() {
     return {
-      image: require("@/assets/bg.svg"),
       teamCode: "",
     };
   },

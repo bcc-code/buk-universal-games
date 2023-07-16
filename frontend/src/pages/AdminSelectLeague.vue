@@ -2,12 +2,11 @@
   <section
     class="bg"
     :style="{
-      //'background-image': `url(${image})`,
       'background-color': '#a0e3be'
     }"
   >
 
-  <img src="images/ubg-logo.png" alt="" class="logo" />
+  <img src="image/ubg-logo.png" alt="" class="logo" />
     <section class="leagues">
       <p>
         {{ $t('admin.select_league.intro') }}
@@ -29,11 +28,6 @@ import AdminLeagueSelector from "@/components/AdminLeagueSelector.vue";
 export default {
   name: "AdminSelectLeague",
   components: { AdminLeagueSelector },
-  data() {
-    return {
-      image: require("@/assets/bg.svg"),
-    };
-  },
   created() {
     if (!this.$store.state.adminLeagues.length) {
       this.getAdminLeagues();

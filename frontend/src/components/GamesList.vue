@@ -11,7 +11,7 @@
   </div>
   <ul v-else class="games">
     <li class="game" v-for="game in games" :key="game.id" @click="$emit('clicked', game)">
-      <img class="game-icon" :src="require(`@/assets/icons/game-${game.gameType}.svg`)" />
+      <img class="game-icon" :src="`icon/game-${game.gameType}.svg`" />
       <h3 class="game-title">{{ game.name }}</h3>
     </li>
   </ul>
