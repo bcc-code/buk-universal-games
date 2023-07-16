@@ -1,57 +1,31 @@
 <template>
   <nav class="user-menu">
     <div class="user-menu-btn-small-wrapper">
-      <button
-        :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'LeagueList' }"
-        v-html="homeIcon"
-        @click="$router.push({ name: 'LeagueList' })"
-      ></button>
-      <button
-        :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'MatchList' }"
-        v-html="calendarIcon"
-        @click="$router.push({ name: 'MatchList' })"
-      ></button>
+      <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'LeagueList' }"
+        @click="$router.push({ name: 'LeagueList' })"><img src="icon/home.svg" /></button>
+      <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'MatchList' }"
+        @click="$router.push({ name: 'MatchList' })"><img src="icon/calendar.svg" /></button>
     </div>
     <div class="user-menu-btn-big-wrapper">
-      <button class="user-menu-btn-big" @click="$router.push({name: 'SideQuest'})">
-        <img :src="require('../assets/icons/sidequest.svg')" style="width:5em" />
+      <button class="user-menu-btn-big" @click="$router.push({ name: 'SideQuest' })">
+        <img src="icon/sidequest.svg" style="width:5em" />
       </button>
     </div>
     <div class="user-menu-btn-small-wrapper">
       <button
-        :class="{ 'user-menu-btn-small': true, 'selected-component': ['GameInfo','GameInfoDetail'].includes($route.name) }"
-        v-html="ballIcon"
-        @click="$router.push({ name: 'GameInfo' })"
-      ></button>
-      <button
-        :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'Map' }"
-        v-html="placeIcon"
-        @click="$router.push({ name: 'Map' })"
-      ></button>
+        :class="{ 'user-menu-btn-small': true, 'selected-component': ['GameInfo', 'GameInfoDetail'].includes($route.name) }"
+        @click="$router.push({ name: 'GameInfo' })"><img src="icon/ball.svg" /></button>
+      <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'Map' }"
+        @click="$router.push({ name: 'Map' })"><img src="icon/place.svg" /></button>
     </div>
   </nav>
 </template>
 
 <script>
 
-import { ballIcon } from "@/assets/icons/ball.svg.ts";
-import { homeIcon } from "@/assets/icons/home.svg.ts";
-import { calendarIcon } from "@/assets/icons/calendar.svg.ts";
-import { placeIcon } from "@/assets/icons/place.svg.ts";
-import { scanIcon } from "@/assets/icons/scan.svg.ts";
-
 export default {
   name: "UserMenu",
   components: {
-  },
-  data() {
-    return {
-      ballIcon,
-      homeIcon,
-      calendarIcon,
-      placeIcon,
-      scanIcon,
-    };
   },
   methods: {},
 };
@@ -89,7 +63,11 @@ button {
 .user-menu-btn-small {
   align-self: flex-start;
   padding: 0;
-  color: var(--gray-2);
+}
+
+.user-menu-btn-small>img {
+  /* This trick allows us to colourise <img /> tag SVGs. */
+  filter: var(--inactive-yellow-button)
 }
 
 .user-menu-btn-big-wrapper {
@@ -107,13 +85,14 @@ button {
   color: white;
   border-radius: 10em;
   display: flex;
-  padding:3px;
+  padding: 3px;
   justify-content: center;
   align-items: center;
   border: 5px solid white;
 }
 
-.selected-component {
-  color: var(--green);
+.selected-component>img {
+  /* This trick allows us to colourise <img /> tag SVGs. */
+  filter: var(--active-green-button);
 }
 </style>

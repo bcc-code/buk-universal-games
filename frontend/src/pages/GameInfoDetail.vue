@@ -6,13 +6,13 @@
 
     <header>
       <h2>
-        <img class="icon" :src="require(`@/assets/icons/game-${gameParsed.gameType}.svg`)" />
+        <img class="icon" :src="`icon/game-${gameParsed.gameType}.svg`" />
         <span>{{ $t("games." + gameParsed.gameType) }}</span>
       </h2>
 
       <div class="banner">
         <video autoplay loop muted playsinline>
-          <source src="/video/crowdsurfing.mp4" type="video/mp4" />
+          <source :src="`/video/${gameParsed.gameType}.mp4`" type="video/mp4" />
         </video>
       </div>
     </header>
@@ -21,7 +21,7 @@
       {{ $t("leadstory." + gameParsed.gameType) }}
     </p>
     <p class="description">
-      <span v-html="circleInfoIcon"></span>
+      <img src="icon/circle-info.svg" />
       {{ $t("explanation." + gameParsed.gameType) }}
     </p>
 
@@ -59,13 +59,6 @@
 import UserPageLayout from "@/components/UserPageLayout.vue";
 import LeagueListItem from "@/components/LeagueListItem.vue";
 import MatchListItem from "@/components/MatchListItem.vue";
-import minefieldIcon from "@/assets/icons/game-minefield.svg";
-import { gameFireIcon } from "@/assets/icons/game-fire.svg.ts";
-import { gameMetalIcon } from "@/assets/icons/game-metal.svg.ts";
-import { gameWoodIcon } from "@/assets/icons/game-wood.svg.ts";
-import { gameWaterIcon } from "@/assets/icons/game-water.svg.ts";
-import { circleInfoIcon } from "@/assets/icons/circle-info.svg.ts";
-import { groupIcon } from "@/assets/icons/group.svg.ts";
 
 export default {
   name: "GameInfoDetail",
@@ -76,34 +69,15 @@ export default {
   data() {
     return {
       gameParsed: {},
-      bannerImage: "",
-      icons: {
-        minefield: minefieldIcon,
-        Fire: gameFireIcon,
-        Metal: gameMetalIcon,
-        Wood: gameWoodIcon,
-        Water: gameWaterIcon,
-      },
-      circleInfoIcon,
-      groupIcon
     };
   },
   created() {
     this.$store.dispatch("getLeagueStatus");
     if (this.game) {
       this.gameParsed = this.$store.state.games.find((game) => game.id == this.game);
-      this.bannerImage = `/images/illustrations/Universal-BUK-Games-${this.gameParsed.gameType}.svg`;
     } else {
       this.$router.back();
     }
-  },
-  mounted() {
-    // if (this.game) {
-    //   this.gameParsed = this.$store.state.games.find((game) => game.id == this.game);
-    //   this.bannerImage = `/images/illustrations/Universal-BUK-Games-${this.gameParsed.gameType}.svg`;
-    // } else {
-    //   this.$router.back();
-    // }
   },
   methods: {},
   computed: {
@@ -182,6 +156,10 @@ nav h3 {
   line-height: 1.5;
   white-space: break-spaces;
   margin: 1.5em 0;
+}
+
+.description>img {
+  width: 24px;
 }
 
 header h2 {

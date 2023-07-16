@@ -3,7 +3,7 @@
     <section>
       <div class="card-dark-column">
         <h1 class="card-dark-text" @click="showGameInfo">
-          <img class="icon" :src="require(`@/assets/icons/game-${game.gameType}.svg`)"/>
+          <img class="icon" :src="`icon/game-${game.gameType}.svg`"/>
           <span>{{ game.name }}</span><span class="title-arrow">></span>
           
         </h1>
@@ -28,26 +28,8 @@
 </template>
 
 <script>
-import { gameEarthIcon } from "@/assets/icons/game-earth.svg.ts";
-import { gameFireIcon } from "@/assets/icons/game-fire.svg.ts";
-import { gameMetalIcon } from "@/assets/icons/game-metal.svg.ts";
-import { gameWoodIcon } from "@/assets/icons/game-wood.svg.ts";
-import { gameWaterIcon } from "@/assets/icons/game-water.svg.ts";
-
-
 export default {
   name: "MatchCard",
-  data() {
-    return {
-      icons: {
-        Earth: gameEarthIcon,
-        Fire: gameFireIcon,
-        Metal: gameMetalIcon,
-        Wood: gameWoodIcon,
-        Water: gameWaterIcon,
-      },
-    };
-  },
   props: {
     selectedMatch: Object,
     game: Object,

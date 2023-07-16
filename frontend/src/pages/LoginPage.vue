@@ -1,13 +1,9 @@
 <template>
-  <section class="bg" :style="{
-    //'background-image': `url(${image})`,
-    'background-color': '#a0e3be'
-  }">
-    <form class="content" @submit="tryLogin()">
-      <img src="images/ubg-logo.png" alt="" class="logo" />
+  <section class="bg">
+    <form class="content" @submit="tryLogin">
+      <img src="image/ubg-logo.png" alt="" class="logo" />
       <input type="text" class="codeInput" :placeholder="$t('login.teamcode')" v-model="teamCode" />
       <button v-if="teamCode.length > 3" class="btn-primary">{{ $t('login.login_button') }}</button>
-      <!-- <router-link v-if="teamCode.length > 3" class="btn-primary" :to="loginUrl">Login</router-link> -->
       <p v-if="loginMessage" class="login-msg">{{ loginMessage }}</p>
     </form>
   </section>
@@ -21,7 +17,6 @@ export default {
   },
   data() {
     return {
-      image: require("@/assets/bg.svg"),
       teamCode: "",
     };
   },
@@ -33,7 +28,9 @@ export default {
     }
   },
   methods: {
-    async tryLogin() {
+    async tryLogin(ev) {
+      // Do not perform normal HTML form submit.
+      ev.preventDefault();
       window.localStorage.setItem("teamCode", this.teamCode.toUpperCase());
       const loginData = await this.$store.dispatch("signIn")
       this.$store.commit('setLoginMessage', '')
@@ -83,6 +80,7 @@ export default {
   background-position: center;
   padding: 1em 2em;
   min-height: 100%;
+  background-color: #a0e3be;
 }
 
 .logo {

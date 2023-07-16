@@ -1,7 +1,7 @@
 <template>
   <section :class="{ 'card-dark': true, loading }">
     <div class="card-dark-column">
-      <img src="images/ubg-logo.png" class="logo" />
+      <img src="image/ubg-logo.png" class="logo" />
     </div>
     <div class="card-dark-column">
       <div class="card-dark-heading">{{ $t('points') }}</div>
@@ -14,13 +14,12 @@
     <div></div>
     <div>
       <LanguageSwitcher />
-    <button class="card-btn" v-html="refreshIcon" @click="refresh"></button>
+      <button class="card-btn" @click="refresh"><img src="icon/refresh.svg" /></button>
     </div>
   </section>
 </template>
 
 <script>
-import { refreshIcon } from "@/assets/icons/refresh.svg.ts";
 import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
 
 export default {
@@ -35,11 +34,6 @@ export default {
       type: Boolean,
       default: false,
     },
-  },
-  data() {
-    return {
-      refreshIcon,
-    };
   },
   methods: {},
 };
@@ -90,6 +84,7 @@ button {
   animation-name: shimmer;
   animation-timing-function: linear;
 }
+
 .logo {
   height: 5em;
   width: 5em;

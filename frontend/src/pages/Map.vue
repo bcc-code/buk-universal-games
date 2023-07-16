@@ -23,13 +23,13 @@ export default {
     };
   },
   created() {
-    if(this.league == "K") {
-      this.map = "/images/ubg-strand-small.png";
+    if (this.league == "k") {
+      this.map = "/image/ubg-beach-small.png";
     } else {
-      this.map = "/images/ubg-arena-small.png";
+      this.map = "/image/ubg-arena-small.png";
       this.defaultZoom
     }
-    this.icons = `/images/ubg-${this.league}-liga-icons.svg`;
+    this.icons = `/image/ubg-${this.league}-liga-icons.svg`;
   },
   mounted() {
     new PinchZoom(this.$refs.map, {
@@ -43,7 +43,7 @@ export default {
   methods: {},
   computed: {
     league() {
-      return this.$store.state.loginData.league.substring(0, 1);
+      return this.$store.state.loginData.league?.substring(0, 1).toLowerCase();
     },
   }
 };
@@ -54,6 +54,7 @@ export default {
   width: 100%;
   height: 100%;
 }
+
 .map-wrapper {
   width: 100%;
   height: 100%;

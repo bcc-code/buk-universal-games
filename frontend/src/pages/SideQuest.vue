@@ -37,8 +37,6 @@
 import UserPageLayout from "@/components/UserPageLayout.vue";
 import PointsAndStickers from "@/components/PointsAndStickers.vue";
 
-import { messageIcon } from "@/assets/icons/message.svg.ts";
-
 export default {
   name: "SideQuest",
   components: { UserPageLayout, PointsAndStickers },
@@ -46,7 +44,6 @@ export default {
     return {
       loading: false,
       resultParsed: null,
-      messageIcon,
     };
   },
   mounted() {

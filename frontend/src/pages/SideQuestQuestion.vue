@@ -1,37 +1,33 @@
 <template>
   <UserPageLayout>
-    <PointsAndStickers
-      :loading="loading"
-      :points="teamStatus?.status?.points"
-      :stickers="coins.length"
-      :refresh="refresh"
-    />
-    <section v-if="step=='pre'">
+    <PointsAndStickers :loading="loading" :points="teamStatus?.status?.points" :stickers="coins.length"
+      :refresh="refresh" />
+    <section v-if="step == 'pre'">
       <div class="heading-text">
         <h2>Ready?</h2>
       </div>
       <Timer class="timer-center" :seconds="3" @timer-finished="startQuestion" />
     </section>
-    <section v-if="step=='question'">
-      
+    <section v-if="step == 'question'">
+
       <div class="timer-top-right">
-      <Timer :seconds="10" @timer-finished="questionFinished" />
+        <Timer :seconds="10" @timer-finished="questionFinished" />
       </div>
       <div class="heading-text">
         <h2>{{ this.intro }}</h2>
       </div>
-      <img :src="require(`../assets/img/${id}.jpg`)" v-if="hasImage" />
+      <img :src="`image/${id}.jpg`" v-if="hasImage" />
     </section>
-    <section v-if="step=='answer'">
+    <section v-if="step == 'answer'">
       <div class="timer-top-right">
-      <Timer :seconds="20" @timer-finished="answerFinished" />
+        <Timer :seconds="20" @timer-finished="answerFinished" />
       </div>
       <div class="heading-text">
         <h2>{{ this.question }}</h2>
       </div>
       <component :is="answerComponent" :options="options" v-model="selectedAnswer" />
     </section>
-    <section v-if="['timeranout','done','alreadyAnswered'].includes(step)" class="final-screen">
+    <section v-if="['timeranout', 'done', 'alreadyAnswered'].includes(step)" class="final-screen">
       <div class="heading-text">
         <h2>{{ $t(doneMessage[step]) }}</h2>
       </div>
@@ -76,15 +72,15 @@ export default {
     };
   },
   created() {
-      this.answerComponent = markRaw(MultipleChoiceSelector);
+    this.answerComponent = markRaw(MultipleChoiceSelector);
   },
   mounted() {
     const q = this.$store.state.qs.find((q) => q.id == this.id);
-    if(!this.$store.state.qsOpened.flat().some((q) => q.id == this.id)) {
+    if (!this.$store.state.qsOpened.flat().some((q) => q.id == this.id)) {
       this.$router.back();
       return;
     }
-    if(this.$store.state.answers.some((a) => a.questionId == this.id) || this.$store.state.submittedAnswers.some((a) => a.questionId == this.id)) {
+    if (this.$store.state.answers.some((a) => a.questionId == this.id) || this.$store.state.submittedAnswers.some((a) => a.questionId == this.id)) {
       this.step = 'alreadyAnswered';
       return;
     }
@@ -113,12 +109,11 @@ export default {
       this.step = "answer";
     },
     answerFinished() {
-      if(this.selectedAnswer) {
-        this.$store.commit("addAnswer", {questionId: this.id, answer: this.selectedAnswer, coin: this.coin});
+      if (this.selectedAnswer) {
+        this.$store.commit("addAnswer", { questionId: this.id, answer: this.selectedAnswer, coin: this.coin });
         this.step = 'done';
       }
-      else
-      {
+      else {
         this.step = 'timeranout';
       }
     },
@@ -143,17 +138,18 @@ export default {
 <style scoped>
 .heading-text {
   text-align: center;
-  margin-top:20%
+  margin-top: 20%
 }
 
 .circle {
-  margin-left:-50px;
+  margin-left: -50px;
 }
+
 .timer-top-right {
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  padding-right:30px;
+  padding-right: 30px;
   margin-top: 30px;
 }
 
@@ -174,7 +170,7 @@ export default {
   align-items: center;
 }
 
-.heading-icon > span {
+.heading-icon>span {
   width: 3em;
   height: 3em;
   display: flex;
@@ -187,6 +183,7 @@ export default {
   background-color: var(--red);
   color: hsl(353, 100%, 10%);
 }
+
 .heading-icon.success {
   background-color: var(--green);
   color: hsl(158, 93%, 5%);
@@ -209,6 +206,7 @@ export default {
   align-items: center;
   margin: auto;
 }
+
 .message .message-text {
   font-size: 1.5em;
 }

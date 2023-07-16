@@ -1,13 +1,13 @@
 <template>
   <div class="root">
     <div ref="mapB" class="map-wrapper">
-      <img src="/images/map-B-liga.png" alt="" />
+      <img src="/image/map-B-liga.png" alt="" />
     </div>
     <div ref="mapU" class="map-wrapper">
-      <img src="/images/map-U-liga.png" alt="" />
+      <img src="/image/map-U-liga.png" alt="" />
     </div>
     <div ref="mapK" class="map-wrapper">
-      <img src="/images/map-K-liga.png" alt="" />
+      <img src="/image/map-K-liga.png" alt="" />
     </div>
     <AdminMenu />
   </div>
