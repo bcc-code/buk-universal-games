@@ -8,35 +8,34 @@
     />
     <section v-if="step=='pre'">
       <div class="heading-text">
-        <h2>Are you ready?</h2>
-        </div>  
-      <Timer :seconds="5" @timer-finished="startQuestion" />
+        <h2>Ready?</h2>
+      </div>
+      <Timer class="timer-center" :seconds="3" @timer-finished="startQuestion" />
     </section>
     <section v-if="step=='question'">
-      <Timer :seconds="5" @timer-finished="questionFinished" />
-      <div class="heading-text">
-        <h2>{{ this.question }}</h2>
+      
+      <div class="timer-top-right">
+      <Timer :seconds="10" @timer-finished="questionFinished" />
       </div>
-      <img :src="require(`@/assets/img/${id}.jpg`)" v-if="hasImage" />
+      <div class="heading-text">
+        <h2>{{ this.intro }}</h2>
+      </div>
+      <img :src="require(`../assets/img/${id}.jpg`)" v-if="hasImage" />
     </section>
     <section v-if="step=='answer'">
+      <div class="timer-top-right">
       <Timer :seconds="20" @timer-finished="answerFinished" />
+      </div>
       <div class="heading-text">
         <h2>{{ this.question }}</h2>
       </div>
       <component :is="answerComponent" :options="options" v-model="selectedAnswer" />
     </section>
-    <section v-if="step=='done'">
+    <section v-if="['timeranout','done','alreadyAnswered'].includes(step)" class="final-screen">
       <div class="heading-text">
-        <h2>{{ $t("sidequest.thanks") }}</h2>
+        <h2>{{ $t(doneMessage[step]) }}</h2>
       </div>
-      <button class="btn-blank" @click="$router.back()">{{ $t("sidequest.back_to_overview") }}</button>
-    </section>
-    <section v-if="step=='timeranout'">
-      <div class="heading-text">
-        <h2>{{ $t("sidequest.timeranout") }}</h2>
-      </div>
-      <button class="btn-blank" @click="$router.back()">{{ $t("sidequest.back_to_overview") }}</button>
+      <button class="btn-blank btn-return" @click="$router.back()">{{ $t("sidequest.back_to_overview") }}</button>
     </section>
   </UserPageLayout>
 </template>
@@ -47,7 +46,6 @@ import { markRaw } from "vue";
 import UserPageLayout from "@/components/UserPageLayout.vue";
 import PointsAndStickers from "@/components/PointsAndStickers.vue";
 import MultipleChoiceSelector from "@/components/MultipleChoiceSelector.vue";
-import SimpleGuessInput from "@/components/SimpleGuessInput.vue";
 import Timer from "@/components/CircularTimer.vue";
 
 export default {
@@ -70,18 +68,26 @@ export default {
       intro: null,
       options: [],
       step: 'pre',
+      doneMessage: {
+        done: "sidequest.thanks",
+        alreadyAnswered: "sidequest.alreadyAnswered",
+        timeranout: "sidequest.timeranout",
+      }
     };
   },
   created() {
-    if([1,2].includes(this.id)) {
-      this.answerComponent = markRaw(SimpleGuessInput);
-    }
-    else {
       this.answerComponent = markRaw(MultipleChoiceSelector);
-    }
   },
   mounted() {
     const q = this.$store.state.qs.find((q) => q.id == this.id);
+    if(!this.$store.state.qsOpened.flat().some((q) => q.id == this.id)) {
+      this.$router.back();
+      return;
+    }
+    if(this.$store.state.answers.some((a) => a.questionId == this.id) || this.$store.state.submittedAnswers.some((a) => a.questionId == this.id)) {
+      this.step = 'alreadyAnswered';
+      return;
+    }
     this.coin = this.coins.pop();
     this.question = this.$t("questions." + q.q + ".q");
     this.intro = this.$t("questions." + q.q + ".intro");
@@ -141,7 +147,20 @@ export default {
 }
 
 .circle {
-  margin-left:-50px
+  margin-left:-50px;
+}
+.timer-top-right {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right:30px;
+  margin-top: 30px;
+}
+
+.timer-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 
 .heading-icon {
@@ -192,5 +211,12 @@ export default {
 }
 .message .message-text {
   font-size: 1.5em;
+}
+
+.final-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 </style>

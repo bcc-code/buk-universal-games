@@ -1,5 +1,5 @@
 <template>
-  <div class="circle center">
+  <div class="circle">
       <div class="count">{{timeRemaining}}</div>
       <div class="l-half"></div>
       <div class="r-half"></div>
@@ -33,7 +33,7 @@
         return {
           secondsPlusOne: this.seconds + 1,
           fontSize: ((this.size - (this.lineThickness * 2)) / 2) + 'px',
-          halfSize: (this.size / 2) + 'px',
+          halfSize: (this.size / 2).toString() + 'px',
           lineThicknessPx: this.lineThickness + 'px',
           sizePx: this.size + 'px',
           secondsCss: this.seconds + 's',
@@ -58,23 +58,18 @@
     </script>
     
     <style>
-  
-  .center {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin-top: -v-bind(halfSize);
-      margin-left: -v-bind(halfSize);
-  }
+
   
   /* -- CIRCLE -- */
-  
+
   .circle {
       width: v-bind(sizePx);
       height: v-bind(sizePx);
       position: relative;
       border-radius: 999px;
       box-shadow: inset 0 0 0 v-bind(lineThicknessPx) rgba(255,255,255,0.5);
+      margin-top: -v-bind(halfSize);
+      margin-left: -v-bind(halfSize);
   }
   
   .l-half, .r-half {

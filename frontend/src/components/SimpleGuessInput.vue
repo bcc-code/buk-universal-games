@@ -12,10 +12,7 @@
   export default {
     name: "SimpleGuessInput",
     props: {
-      value: {
-        type: String,
-        required: true,
-      },
+      value: String
     },
     data() {
       return {
@@ -33,9 +30,10 @@
   
   <style scoped>
   .single-text-input {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
   }
   
   input {
@@ -44,6 +42,6 @@
     border-radius: 5px;
     background-color: #f2f2f2;
     box-sizing: border-box;
-    width: 100%;
+    width: 80%;
   }
   </style>

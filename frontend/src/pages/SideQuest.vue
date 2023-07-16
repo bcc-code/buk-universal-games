@@ -14,14 +14,19 @@
         <button class="btn-success" @click="trySubmitAnswers">{{ $t("sidequest.submityouranswers") }}</button>
       </div>
     </section>
-    <section v-for="(round,index) in questions" :key="index">
-      <h2>{{ $t("sidequest.gameroundtitle", {round: index}) }}</h2>
+    <section v-for="(questions,index) in questionsPerRound" :key="index">
+      <h2>{{ $t("sidequest.gameroundtitle", {round: index + 1}) }}</h2>
       <div class="round">
-        <div class="message-white" v-if="round.length == 0">
-          <p>{{ $t("sidequest.noroundyet") }}</p>
-        </div>
-        <div class="message-white" v-for="question in round" :key="question.id">
+        <div class="message-white" v-for="question in questions" :key="question.id">
             <h3><RouterLink :to="'sidequest/question/' + question.id">{{ $t("sidequest.questiontypes." + question.t) }}</RouterLink></h3>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h2>Round {{ questionsPerRound.length + 1 }}</h2>
+      <div class="" v-if="questionsPerRound.length < 5">
+        <div class="round">
+          <p>{{ $t("sidequest.noroundyet", {nextRound: questionsPerRound.length + 1}) }}</p>
         </div>
       </div>
     </section>
@@ -45,13 +50,10 @@ export default {
     };
   },
   mounted() {
-    this.$store.dispatch("checkNewQuestions");
-    if(this.questions[1].length == 0) {
+    this.$store.dispatch("checkNewQuestions", this.$store.state.matches);
+    if(this.questionsPerRound.length == 0) {
       this.$store.commit("unlockNewQuestions", 1);
     }
-  },
-  created() {
-
   },
   methods: {
     refresh() {
@@ -67,8 +69,9 @@ export default {
     },
   },
   computed: {
-    questions() {
-      return this.$store.state.qsOpened;
+    questionsPerRound() {
+      console.log(this.$store.state.qsOpened);
+      return this.$store.state.qsOpened.filter(round => round.length > 0)  || [];
     },
     unsubmittedAnswers() {
       return this.$store.state.answers;
@@ -138,7 +141,10 @@ export default {
   padding: 0.5em;
   background-color: #fff;
   width: 100%;
-  margin: 0 1em;
+  margin:0 0 0 .5em;
+}
+.round div:first-child {
+  margin:0 .5em 0 0;
 }
 
 .message {

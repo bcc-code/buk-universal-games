@@ -1,7 +1,8 @@
 <template>
   <div class="root">
     <div ref="map" class="map-wrapper">
-      <img :src="`/images/map-${$store.state.loginData.league.substring(0, 1).toUpperCase()}-liga.png`" alt="" />
+      <img :src="map" alt="" />
+      <img :src="icons" style="position:absolute;" alt="" />
     </div>
     <UserMenu />
   </div>
@@ -17,18 +18,34 @@ export default {
   data() {
     return {
       loginError: "Map",
+      map: null,
+      icons: null,
     };
+  },
+  created() {
+    if(this.league == "K") {
+      this.map = "/images/ubg-strand-small.png";
+    } else {
+      this.map = "/images/ubg-arena-small.png";
+      this.defaultZoom
+    }
+    this.icons = `/images/ubg-${this.league}-liga-icons.svg`;
   },
   mounted() {
     new PinchZoom(this.$refs.map, {
       minZoom: 1,
       maxZoom: 10,
       animationDuration: 150,
-      tapZoomFactor: 5,
+      tapZoomFactor: 3,
       draggableUnzoomed: true,
     });
   },
   methods: {},
+  computed: {
+    league() {
+      return this.$store.state.loginData.league.substring(0, 1);
+    },
+  }
 };
 </script>
 

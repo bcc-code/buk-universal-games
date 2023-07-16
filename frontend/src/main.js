@@ -8,11 +8,16 @@ import createMatchNotifierPlugin from './plugins/match-notifier'
 
 const notificationService = new NotificationService();
 const matchNotifierPlugin = createMatchNotifierPlugin(notificationService);
+
+const savedLanguage = localStorage.getItem('userLanguage');
+const language = (savedLanguage || navigator.language || navigator.userLanguage || 'en').split('-')[0];
+const i18n = setupI18n({ locale: language });
+
 const store = initStore(matchNotifierPlugin);
 
 createApp(App)
     .use(store)
     .use(initRouter(store))
-    .use(setupI18n({ locale: 'en' }))
+    .use(i18n)
     .provide('notificationService', notificationService)
     .mount('#app')

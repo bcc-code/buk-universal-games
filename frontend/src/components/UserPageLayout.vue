@@ -1,5 +1,5 @@
 <template>
-  <section class="user-page-layout">
+  <section>
     <div class="content-area">
       <h1 v-if="showTitle" class="title">BUK {{ $store.state.loginData.team }}</h1>
       <slot />
@@ -20,7 +20,7 @@ export default {
     UserMenu,
   },
   props: {
-    showTitle: Boolean,
+    showTitle: Boolean
   },
   data() {
     return {
@@ -44,6 +44,10 @@ export default {
   /* height: 100%; */
   justify-content: space-between;
   padding-bottom: 5em;
+}
+
+.custom-background {
+  /* background-color: v-bind(backgroundColor); */
 }
 
 .content-area {
