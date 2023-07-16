@@ -3,7 +3,7 @@
     //'background-image': `url(${image})`,
     'background-color': '#a0e3be'
   }">
-    <form class="content" @submit="tryLogin()">
+    <form class="content" action="none" @submit="tryLogin">
       <img src="images/ubg-logo.png" alt="" class="logo" />
       <input type="text" class="codeInput" :placeholder="$t('login.teamcode')" v-model="teamCode" />
       <button v-if="teamCode.length > 3" class="btn-primary">{{ $t('login.login_button') }}</button>
@@ -33,7 +33,9 @@ export default {
     }
   },
   methods: {
-    async tryLogin() {
+    async tryLogin(ev) {
+      // Do not perform normal HTML form submit.
+      ev.preventDefault();
       window.localStorage.setItem("teamCode", this.teamCode.toUpperCase());
       const loginData = await this.$store.dispatch("signIn")
       this.$store.commit('setLoginMessage', '')
