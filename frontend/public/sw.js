@@ -112,8 +112,10 @@ const preCacheUris = [
   'js/chunk-vendors.js',
   'images/ubg-logo.png',
   'icon/192.png',
-  'images/map-B-liga.png',
-  'images/map-U-liga.png',
-  'images/map-K-liga.png',
+  'images/ubg-beach-small.png',
+  'images/ubg-arena-small.png',
+  'images/ubg-b-liga-icons.svg',
+  'images/ubg-u-liga-icons.svg',
+  'images/ubg-k-liga-icons.svg',
   'video/crowdsurfing.mp4',
 ]

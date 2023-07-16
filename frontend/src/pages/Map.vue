@@ -23,8 +23,8 @@ export default {
     };
   },
   created() {
-    if(this.league == "K") {
-      this.map = "/images/ubg-strand-small.png";
+    if (this.league == "k") {
+      this.map = "/images/ubg-beach-small.png";
     } else {
       this.map = "/images/ubg-arena-small.png";
       this.defaultZoom
@@ -43,7 +43,7 @@ export default {
   methods: {},
   computed: {
     league() {
-      return this.$store.state.loginData.league.substring(0, 1);
+      return this.$store.state.loginData.league?.substring(0, 1).toLowerCase();
     },
   }
 };
@@ -54,6 +54,7 @@ export default {
   width: 100%;
   height: 100%;
 }
+
 .map-wrapper {
   width: 100%;
   height: 100%;
