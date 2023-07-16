@@ -1,8 +1,6 @@
 <template>
-  <section class="bg" :style="{
-    'background-color': '#a0e3be'
-  }">
-    <form class="content" action="none" @submit="tryLogin">
+  <section class="bg">
+    <form class="content" @submit="tryLogin">
       <img src="image/ubg-logo.png" alt="" class="logo" />
       <input type="text" class="codeInput" :placeholder="$t('login.teamcode')" v-model="teamCode" />
       <button v-if="teamCode.length > 3" class="btn-primary">{{ $t('login.login_button') }}</button>
@@ -82,6 +80,7 @@ export default {
   background-position: center;
   padding: 1em 2em;
   min-height: 100%;
+  background-color: #a0e3be;
 }
 
 .logo {

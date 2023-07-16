@@ -5,7 +5,7 @@
     </div>
     <div class="card-dark-column">
       <div class="card-row">
-        <span class="buk-icon" v-html="bukIcon"></span>
+        <span class="buk-icon"><img src="icon/buk-icon.svg" /></span>
         <h2 class="card-dark-text hide-text-overflow">{{ team }}</h2>
       </div>
     </div>
@@ -16,8 +16,6 @@
 </template>
 
 <script>
-import { bukIcon } from "@/assets/icons/buk-icon.svg.ts";
-
 export default {
   name: "LeagueListItem",
   props: {
@@ -30,11 +28,6 @@ export default {
       type: Boolean,
       default: false,
     },
-  },
-  data() {
-    return {
-      bukIcon,
-    };
   },
 };
 </script>

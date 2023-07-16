@@ -1,4 +1,4 @@
-export const calendarIcon = `<svg width="27" height="20" viewBox="0 0 27 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="27" height="20" viewBox="0 0 27 20" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g clip-path="url(#clip0_122_4121)">
         <path d="M19.0079 4.82759C19.5746 4.82759 20.0446 4.35862 20.0446 3.7931V1.03448C20.0446 0.468966 19.5746 0 19.0079 0C18.4411 0 17.9711 0.468966 17.9711 1.03448V3.7931C17.9711 4.35862 18.4411 4.82759 19.0079 4.82759Z" fill="currentColor" />
         <path d="M7.94878 4.82759C8.51555 4.82759 8.98557 4.35862 8.98557 3.7931V1.03448C8.98557 0.468966 8.51555 0 7.94878 0C7.382 0 6.91199 0.468966 6.91199 1.03448V3.7931C6.91199 4.35862 7.382 4.82759 7.94878 4.82759Z" fill="currentColor" />
@@ -9,4 +9,4 @@ export const calendarIcon = `<svg width="27" height="20" viewBox="0 0 27 20" fil
             <rect width="26.9565" height="20" fill="white" />
         </clipPath>
     </defs>
-</svg>`;
+</svg>

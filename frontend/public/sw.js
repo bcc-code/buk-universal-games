@@ -77,14 +77,14 @@ self.addEventListener("install", (event) => {
 self.addEventListener("fetch", (event) => {
   console.log(event.request.destination, event.request.url, event.request.mode);
   if (event.request.method === "GET") {
-    if(cacheableDestinations.includes(event.request.destination)){
+    if (cacheableDestinations.includes(event.request.destination)) {
       event.respondWith(
         cacheFirst({
           request: event.request,
           preloadResponsePromise: event.preloadResponse,
         }).catch((x) => console.log(x))
       );
-    } else{
+    } else {
       event.respondWith(
         networkFirst(event.request)
       )
@@ -110,11 +110,19 @@ const preCacheUris = [
   'index.html',
   'js/app.js',
   'js/chunk-vendors.js',
+  'icon/ball.svg',
+  'icon/buk-icon.svg',
+  'icon/calendar.svg',
+  'icon/circle-info.svg',
   'icon/game-minefield.svg',
   'icon/game-monkeybars.svg',
   'icon/game-nervespiral.svg',
   'icon/game-tablesurfing.svg',
   'icon/game-tickettwist.svg',
+  'icon/group.svg',
+  'icon/home.svg',
+  'icon/place.svg',
+  'icon/refresh.svg',
   'icon/sidequest.svg',
   'image/4.jpg',
   'image/5.jpg',
@@ -130,4 +138,8 @@ const preCacheUris = [
   'image/ubg-logo.png',
   'image/ubg-u-liga-icons.svg',
   'video/crowdsurfing.mp4',
+  //'video/monkeybars.mp4',
+  //'video/minefield.mp4',
+  //'video/nervespiral.mp4',
+  //'video/tickettwist.mp4',
 ]

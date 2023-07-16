@@ -1,4 +1,4 @@
-export const ballIcon = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g clip-path="url(#clip0_122_4112)">
         <path d="M16.0062 2.91301L16.4694 2.34688C14.8842 0.998447 12.9593 0.195565 10.8904 0.0102844L10.7668 1.24549C10.9315 2.32629 11.4359 4.20998 12.9285 5.97014L15.9959 2.90272L16.0062 2.91301Z" fill="currentColor" />
         <path d="M18.7854 9.23316H20C19.8353 7.07155 18.9912 5.06435 17.5708 3.4277L17.1487 3.94237L14.0298 7.06126C14.9974 7.87444 16.5826 8.90377 18.7854 9.23316Z" fill="currentColor" />
@@ -14,4 +14,4 @@ export const ballIcon = `<svg width="20" height="20" viewBox="0 0 20 20" fill="n
             <rect width="20" height="20" fill="white" />
         </clipPath>
     </defs>
-</svg>`;
+</svg>

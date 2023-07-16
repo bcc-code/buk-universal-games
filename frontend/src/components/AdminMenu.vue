@@ -1,26 +1,14 @@
 <template>
   <nav class="user-menu">
     <div class="user-menu-btn-small-wrapper">
-      <button
-        :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'AdminLeagueStatus' }"
-        v-html="homeIcon"
-        @click="$router.push({ name: 'AdminLeagueStatus' })"
-      ></button>
-      <button
-        :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'AdminMatchListGame' }"
-        v-html="calendarIcon"
-        @click="$router.push({ name: 'AdminMatchListGame' })"
-      ></button>
-      <button
-        :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'AdminGames' }"
-        v-html="ballIcon"
-        @click="$router.push({ name: 'AdminGames' })"
-      ></button>
-      <button
-        :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'AdminMap' }"
-        v-html="placeIcon"
-        @click="$router.push({ name: 'AdminMap' })"
-      ></button>
+      <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'AdminLeagueStatus' }"
+        @click="$router.push({ name: 'AdminLeagueStatus' })"><img src="icon/home.svg" /></button>
+      <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'AdminMatchListGame' }"
+        @click="$router.push({ name: 'AdminMatchListGame' })"><img src="icon/calendar.svg" /></button>
+      <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'AdminGames' }"
+        @click="$router.push({ name: 'AdminGames' })"><img src="icon/ball.svg" /></button>
+      <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'AdminMap' }"
+        @click="$router.push({ name: 'AdminMap' })"><img src="icon/place.svg" /></button>
     </div>
   </nav>
   <CameraScanner ref="cameraScanner"></CameraScanner>
@@ -29,25 +17,10 @@
 <script>
 import CameraScanner from "@/components/CameraScanner.vue";
 
-import { ballIcon } from "@/assets/icons/ball.svg.ts";
-import { homeIcon } from "@/assets/icons/home.svg.ts";
-import { calendarIcon } from "@/assets/icons/calendar.svg.ts";
-import { placeIcon } from "@/assets/icons/place.svg.ts";
-import { scanIcon } from "@/assets/icons/scan.svg.ts";
-
 export default {
   name: "UserMenu",
   components: {
     CameraScanner,
-  },
-  data() {
-    return {
-      ballIcon,
-      homeIcon,
-      calendarIcon,
-      placeIcon,
-      scanIcon,
-    };
   },
   methods: {},
 };
@@ -85,10 +58,15 @@ button {
 .user-menu-btn-small {
   align-self: flex-start;
   padding: 0;
-  color: var(--gray-2);
 }
 
-.selected-component {
-  color: var(--green);
+.user-menu-btn-small>img {
+  /* This trick allows us to colourise <img /> tag SVGs. */
+  filter: var(--inactive-yellow-button)
+}
+
+.selected-component>img {
+  /* This trick allows us to colourise <img /> tag SVGs. */
+  filter: var(--active-green-button);
 }
 </style>

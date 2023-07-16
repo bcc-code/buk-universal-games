@@ -21,7 +21,7 @@
       {{ $t("leadstory." + gameParsed.gameType) }}
     </p>
     <p class="description">
-      <span v-html="circleInfoIcon"></span>
+      <img src="icon/circle-info.svg" />
       {{ $t("explanation." + gameParsed.gameType) }}
     </p>
 
@@ -59,8 +59,6 @@
 import UserPageLayout from "@/components/UserPageLayout.vue";
 import LeagueListItem from "@/components/LeagueListItem.vue";
 import MatchListItem from "@/components/MatchListItem.vue";
-import { circleInfoIcon } from "@/assets/icons/circle-info.svg.ts";
-import { groupIcon } from "@/assets/icons/group.svg.ts";
 
 export default {
   name: "GameInfoDetail",
@@ -71,8 +69,6 @@ export default {
   data() {
     return {
       gameParsed: {},
-      circleInfoIcon,
-      groupIcon
     };
   },
   created() {
@@ -160,6 +156,10 @@ nav h3 {
   line-height: 1.5;
   white-space: break-spaces;
   margin: 1.5em 0;
+}
+
+.description>img {
+  width: 24px;
 }
 
 header h2 {

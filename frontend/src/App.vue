@@ -26,6 +26,10 @@ const notificationService = inject('notificationService');
   --gray-2: #b6b6b6;
   --green: #9FE2BD;
   --red: #DE6050;
+  /* These values yield colours extremely similar to the colours above, through applied CSS filters.
+  This means they can be used to colourise SVG elements inserted through <img /> tags. */
+  --active-green-button: brightness(0) saturate(100%) invert(48%) sepia(43%) saturate(1337%) hue-rotate(114deg) brightness(96%) contrast(101%);
+  --inactive-yellow-button: brightness(0) saturate(100%) invert(81%) sepia(58%) saturate(4717%) hue-rotate(11deg) brightness(107%) contrast(112%);
 }
 
 html {
