@@ -6,7 +6,6 @@ import GameInfo from "@/pages/GameInfo.vue";
 import GameInfoDetail from "@/pages/GameInfoDetail.vue";
 import SideQuest from "@/pages/SideQuest.vue";
 import SideQuestQuestion from "@/pages/SideQuestQuestion.vue";
-import ScanProcessing from "@/pages/ScanProcessing.vue";
 import Map from "@/pages/Map.vue";
 import AdminMatch from "@/pages/AdminMatch.vue";
 import AdminLeagueStatus from "@/pages/AdminLeagueStatus.vue";
@@ -19,7 +18,7 @@ const routes = [
   {
     path: "/",
     name: "Login",
-    component: Login
+    component: Login,
   },
   {
     path: "/start/:code",
@@ -69,17 +68,6 @@ const routes = [
     component: AdminMap,
   },
   {
-    // TODO: Google Docs and QR code example are contradictive, which one is correct?
-    path: "/scan/:stickerCode",
-    name: "ScanProcessing1",
-    component: ScanProcessing,
-  },
-  {
-    path: "/sticker/:stickerCode",
-    name: "ScanProcessing2",
-    component: ScanProcessing,
-  },
-  {
     path: "/sidequest",
     name: "SideQuest",
     component: SideQuest
@@ -125,19 +113,18 @@ export default function (store) {
   });
 
   router.beforeEach(async (to, from, next) => {
-    let nextOptions = null;
-
-    if (to.params.stickerCode) {
-      store.commit('setScanning', { handlingURL: true, stickerCode: to.params.stickerCode })
-    }
-
     if (!store.state.loginData && window.localStorage.getItem('teamCode')) {
-      store.dispatch('signIn')
-      store.dispatch('loadLeagueData')
-      store.dispatch('loadGameData')
-      store.dispatch('loadAdminLeagueData')
+      await store.dispatch('signIn')
+      await store.dispatch('getTeamStatus')
+      await store.dispatch('getLeagueStatus')
+      await store.dispatch('getMatches')
+      await store.dispatch('getGames')
+      await store.dispatch('checkNewQuestions')
     }
-    next(nextOptions)
+    if (window.localStorage.getItem('teamCode') && to.path === '/' && !from.matched.length) {
+      next('/league-status')
+    }
+    next(null)
   })
   return router;
 }
