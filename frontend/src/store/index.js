@@ -140,16 +140,49 @@ export default function (...plugins) {
       },
       unlockNewQuestions(state, round) {
         console.log(round);
-        for(let i = 0; i < 2; i++)
+        if(state.qsOpened[round -1] && state.qsOpened[round -1].length > 0)
+        {
+          console.log("Already unlocked");
+          return;
+        }
+        while(state.qsOpened[round -1].length < 2)
         {
           const newQuestion = state.qs[Math.floor(Math.random() * state.qs.length)]
-          console.log(newQuestion);
-          state.qsOpened[round -1].push(newQuestion)
+          if(!state.qsOpened.flat().includes(newQuestion) && !state.qsOpened[round -1].some(q => q.t == newQuestion.t))
+          {
+            console.log(newQuestion);
+            state.qsOpened[round -1].push(newQuestion);
+          }
         }
       },
       setUserLanguage(state, language) {
         state.userLanguage = language;
       }
+    },
+    getters: {
+      currentRound: (state) => {
+        const now = new Date();
+        const timeString = `${(now.getHours()).toString().padStart(2,'0')}:${(now.getMinutes()).toString().padStart(2,'0')}`;
+        const currentMatchIndex = state.matches?.findLastIndex(match => match.start <= timeString);
+        
+        console.log(`Current round:${currentMatchIndex + 1}, based on time ${timeString}`);
+        return currentMatchIndex + 1;
+      },
+      afterRoundPeriod: (state, getters) => {
+        const round = getters.currentRound;
+        if(round < 1) return { isAfterRound: false, round: round };
+
+        const now = new Date();
+        const currentRoundStart = new Date(`${now.toDateString()} ${state.matches?.[getters.currentRound - 1].start}`);
+        const afterRoundStart = new Date(currentRoundStart.getTime() + (15 * 60_000));
+        const afterRoundEnd = new Date(afterRoundStart.getTime() + (10 * 60_000));
+
+        if (now >= afterRoundStart && now <= afterRoundEnd) {
+          return { isAfterRound: true, round: round };
+        }
+        else {
+          return { isAfterRound: false, round: round };
+        }
     },
     actions: {
       async signIn(ctx) {
@@ -253,16 +286,19 @@ export default function (...plugins) {
         return matches
       },
       checkNewQuestions(ctx, matches) {
-        if(matches && matches.length > 0)
+        if(!matches || matches.length == 0)
+          return;
+
+        const { isAfterRound, round: currentRound } = ctx.getters.afterRoundPeriod;
+
+        if(currentRound < 1) return;
+
+        for(let i=1; i < 5 && (i<currentRound || (i == currentRound && isAfterRound)); i++)
         {
-          const now = new Date();
-          const timeString = `${(now.getHours()).toString().padStart(2,'0')}:${(now.getMinutes() + 10).toString().padStart(2,'0')}`;
-          const round = matches?.findIndex(match => match.start > timeString)
-          console.debug(`Current round:${round}, based on time ${timeString}`);
-          if(!round || round < 0) return;
-          const questions = ctx.state.qsOpened[round - 1] || [];
+          const questions = ctx.state.qsOpened[i - 1] || [];
+          console.log(currentRound, isAfterRound, i, questions, ctx.state.qsOpened[i - 1]);
           if (questions.length == 0) {
-            ctx.commit("unlockNewQuestions", round)
+            ctx.commit("unlockNewQuestions", i)
           }
         }
       },

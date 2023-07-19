@@ -76,7 +76,7 @@ export default {
   },
   mounted() {
     const q = this.$store.state.qs.find((q) => q.id == this.id);
-    if (!this.$store.state.qsOpened.flat().some((q) => q.id == this.id)) {
+    if (!this.$store.state.qsOpened[this.$store.getters.currentRound - 1].some((q) => q.id == this.id)) {
       this.$router.back();
       return;
     }
