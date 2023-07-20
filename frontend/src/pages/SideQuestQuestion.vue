@@ -4,7 +4,7 @@
       :refresh="refresh" />
     <section v-if="step == 'pre'">
       <div class="heading-text">
-        <h2>Ready?</h2>
+        <h2>{{ $t("sidequest.areyouready") }}</h2>
       </div>
       <Timer class="timer-center" :seconds="3" @timer-finished="startQuestion" />
     </section>
@@ -76,20 +76,27 @@ export default {
   },
   mounted() {
     const q = this.$store.state.qs.find((q) => q.id == this.id);
-    if (!this.$store.state.qsOpened.flat().some((q) => q.id == this.id)) {
-      this.$router.back();
-      return;
-    }
-    if (this.$store.state.answers.some((a) => a.questionId == this.id) || this.$store.state.submittedAnswers.some((a) => a.questionId == this.id)) {
-      this.step = 'alreadyAnswered';
-      return;
-    }
+    // if (!this.$store.state.qsOpened[this.$store.getters.currentRound - 1].some((q) => q.id == this.id)) {
+    //   this.$router.back();
+    //   return;
+    // }
+    // if (this.$store.state.answers.some((a) => a.questionId == this.id) || this.$store.state.submittedAnswers.some((a) => a.questionId == this.id)) {
+    //   this.step = 'alreadyAnswered';
+    //   return;
+    // }
     this.coin = this.coins.pop();
     this.question = this.$t("questions." + q.q + ".q");
     this.intro = this.$t("questions." + q.q + ".intro");
     this.hasImage = q.i;
-    this.options = q.a.map((option) => ({
-      label: this.$t("questions." + q.q + ".a." + option),
+
+    const shuffled = q.a.slice(); // Make a copy of the answers array
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+
+    this.options = shuffled.map((option) => ({
+      label: [1,2].includes(q.id) ? this.$n(option) : this.$t("questions." + q.q + ".a." + option),
       value: option,
     }));
   },

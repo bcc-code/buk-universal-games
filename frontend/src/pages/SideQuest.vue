@@ -6,6 +6,13 @@
       :stickers="this.coins.length"
       :refresh="refresh"
     />
+
+    <section>
+      <p class="introduction">
+        {{ $t("sidequest.explanation") }}
+      </p>
+    </section>
+
     <section v-if="unsubmittedAnswers.length > 0">
       <div class="message-white">
         <p>
@@ -16,18 +23,23 @@
     </section>
     <section v-for="(questions,index) in questionsPerRound" :key="index">
       <h2>{{ $t("sidequest.gameroundtitle", {round: index + 1}) }}</h2>
-      <div class="round">
-        <div class="message-white" v-for="question in questions" :key="question.id">
-            <h3><RouterLink :to="'sidequest/question/' + question.id">{{ $t("sidequest.questiontypes." + question.t) }}</RouterLink></h3>
+      <div :class="{'round':true, 'locked': (index + 1 < $store.getters.currentRound)}">
+        <div class="question" v-for="question in questions" :key="question.id">
+          <div class="question-button">
+          <img :src="`/icon/sq-${question.t}.svg`" />
+          <h3>
+            <RouterLink v-if="index === $store.getters.currentRound" :to="'sidequest/question/' + question.id">{{ $t("sidequest.questiontypes." + question.t) }}</RouterLink>
+            <span v-else>{{ $t("sidequest.questiontypes." + question.t) }}</span>
+          </h3>
         </div>
+        <span class="locked-indicator" v-if="(index + 1 < $store.getters.currentRound)">Locked</span>
+      </div>
       </div>
     </section>
-    <section>
+    <section v-if="questionsPerRound.length < 4">
       <h2>Round {{ questionsPerRound.length + 1 }}</h2>
-      <div class="" v-if="questionsPerRound.length < 5">
-        <div class="round">
-          <p>{{ $t("sidequest.noroundyet", {nextRound: questionsPerRound.length + 1}) }}</p>
-        </div>
+      <div class="round">
+        <p>{{ $t("sidequest.noroundyet", {nextRound: questionsPerRound.length + 1}) }}</p>
       </div>
     </section>
   </UserPageLayout>
@@ -48,9 +60,6 @@ export default {
   },
   mounted() {
     this.$store.dispatch("checkNewQuestions", this.$store.state.matches);
-    if(this.questionsPerRound.length == 0) {
-      this.$store.commit("unlockNewQuestions", 1);
-    }
   },
   methods: {
     refresh() {
@@ -68,7 +77,7 @@ export default {
   computed: {
     questionsPerRound() {
       console.log(this.$store.state.qsOpened);
-      return this.$store.state.qsOpened.filter(round => round.length > 0)  || [];
+      return this.$store.state.qsOpened.filter(questions => questions.length > 0)  || [];
     },
     unsubmittedAnswers() {
       return this.$store.state.answers;
@@ -89,6 +98,17 @@ export default {
 <style scoped>
 .heading-text {
   text-align: center;
+}
+
+.introduction {
+  color: #555;
+  font-style: italic;
+  line-height: 1.7;
+  font-size: medium;
+  white-space: break-spaces;
+  margin: 1.5em -1em;
+  padding: 1em;
+  background: #fff;
 }
 
 .heading-icon {
@@ -133,15 +153,53 @@ export default {
   align-items: center;
   margin: 1em 0;
 }
-.round div {
-  border-radius: 1em;
-  padding: 0.5em;
-  background-color: #fff;
-  width: 100%;
+
+.question {
+  width:100%;
   margin:0 0 0 .5em;
+  position:relative;
+  }
+
+.question-button {
+  border-radius: 1em;
+  padding: 1em;
+  background-color: var(--darkgreen);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width:100%;
 }
-.round div:first-child {
+
+.round.locked .question-button {
+  background-color: var(--red);
+  filter: blur(2px);
+}
+.question-button img {
+  height:5em;
+}
+
+.question:first-child {
   margin:0 .5em 0 0;
+}
+
+.question-button h3 {
+  font-size: 1.5em;
+  margin: 0;
+  text-align: center;
+  width:100%;
+  color: #fff;
+}
+.locked-indicator {
+  position: absolute;
+  filter:none;
+  font-size: 3em;
+  opacity: 0.7;
+  top: 30%;
+  rotate: -15deg;
+  margin: 0;
+  text-align: center;
+  width:100%;
+  color: #fff;
 }
 
 .message {
@@ -178,5 +236,4 @@ export default {
   float:right;
   padding:10px;
 }
-
 </style>

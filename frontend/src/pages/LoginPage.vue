@@ -30,7 +30,7 @@ export default {
   methods: {
     async tryLogin(ev) {
       // Do not perform normal HTML form submit.
-      ev.preventDefault();
+      ev?.preventDefault();
       window.localStorage.setItem("teamCode", this.teamCode.toUpperCase());
       const loginData = await this.$store.dispatch("signIn")
       this.$store.commit('setLoginMessage', '')
@@ -60,16 +60,7 @@ export default {
   computed: {
     loginMessage() {
       return this.$store.state.loginMessage ?? "";
-    },
-    loginUrl() {
-      let url = "/";
-
-      if (this.teamCode) {
-        url = "/" + this.teamCode + "/league-list";
-      }
-
-      return url;
-    },
+    }
   },
 };
 </script>

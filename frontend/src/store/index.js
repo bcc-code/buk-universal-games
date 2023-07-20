@@ -31,17 +31,14 @@ export default function (...plugins) {
       gamesLoading: true,
       coins: ["dgsdfg","as45zzz","gztzz4ez","d5435","g45g4","j767jf"],
       qs: [
-        { id: 1, t: "guess", q: "guesshowmany1", a: ["100","1000","10000","20000"]},
-        { id: 2, t: "guess", q: "guesshowmany2", a: ["3000","4000","5000","6000"]},
+        { id: 1, t: "guess", q: "guesshowmany1", a: ["115000","90000","50000","140000"]},
+        { id: 2, t: "guess", q: "guesshowmany2", a: ["11200","7400","9900","13500"]},
         { id: 3, t: "remember", q: "remember", a: ["opta","optb","optc","optd"]},
         { id: 4, t: "insight", i:true, q: "insight", a: ["red","green","yellow","sametime"]},
-        { id: 5, t: "guess", i:true, q: "guesshowoften", a: ["1","2","4","8"]},
-        { id: 6, t: "recognize", i:true, q: "recognize1", a: ["horse","camel","antilope","giraffe"]},
-        { id: 7, t: "recognize", i:true, q: "recognize2", a: ["elephant","tiger","owl","lion"]},
-        { id: 8, t: "recognize", i:true, q: "recognize3", a: ["peter","john","matthew","paul"]},
-        { id: 9, t: "recognize", i:true, q: "recognize4", a: ["bkg","gkb","kgb","bgk"]},
-        { id: 10, t: "math", i:true, q: "math", a: ["30","81","200","67"]},
-        { id: 11, t: "knowledge", i:true, q: "knowledge", a: ["singapore","serbia","japan","peru"]},
+        { id: 5, t: "recognize", i:true, q: "recognize1", a: ["Gershon Twilley","Harald Kronstad","Gunnar Gangsø","Bernt-Aksel Larsen"]},
+        { id: 6, t: "recognize", i:true, q: "recognize2", a: ["peter","john","matthew","paul"]},
+        { id: 7, t: "math", i:true, q: "math", a: ["30","81","200","67"]},
+        { id: 8, t: "knowledge", i:true, q: "knowledge", a: ["singapore","serbia","japan","peru"]},
       ],
       qsOpened: [
         [],
@@ -140,15 +137,51 @@ export default function (...plugins) {
       },
       unlockNewQuestions(state, round) {
         console.log(round);
-        for(let i = 0; i < 2; i++)
+        if(state.qsOpened[round -1] && state.qsOpened[round -1].length > 0)
+        {
+          console.log("Already unlocked");
+          return;
+        }
+        while(state.qsOpened[round -1].length < 2)
         {
           const newQuestion = state.qs[Math.floor(Math.random() * state.qs.length)]
-          console.log(newQuestion);
-          state.qsOpened[round -1].push(newQuestion)
+          if(!state.qsOpened.flat().includes(newQuestion) && !state.qsOpened[round -1].some(q => q.t == newQuestion.t))
+          {
+            console.log(newQuestion);
+            state.qsOpened[round -1].push(newQuestion);
+          }
         }
       },
       setUserLanguage(state, language) {
         state.userLanguage = language;
+      }
+    },
+    getters: {
+      currentRound: (state) => {
+        const now = new Date();
+        const timeString = `${(now.getHours()).toString().padStart(2,'0')}:${(now.getMinutes()).toString().padStart(2,'0')}`;
+        const currentMatchIndex = state.matches?.findLastIndex(match => match.start <= timeString);
+        
+        if(!currentMatchIndex || currentMatchIndex < 0) return 0;
+        
+        console.log(`Current round:${currentMatchIndex + 1}, based on time ${timeString}`);
+        return currentMatchIndex + 1;
+      },
+      afterRoundPeriod: (state, getters) => {
+        const round = getters.currentRound;
+        if(round < 1) return { isAfterRound: false, round: round };
+
+        const now = new Date();
+        const currentRoundStart = new Date(`${now.toDateString()} ${state.matches?.[round - 1].start}`);
+        const afterRoundStart = new Date(currentRoundStart.getTime() + (15 * 60_000));
+        const afterRoundEnd = new Date(afterRoundStart.getTime() + (10 * 60_000));
+
+        if (now >= afterRoundStart && now <= afterRoundEnd) {
+          return { isAfterRound: true, round: round };
+        }
+        else {
+          return { isAfterRound: false, round: round };
+        }
       }
     },
     actions: {
@@ -253,16 +286,19 @@ export default function (...plugins) {
         return matches
       },
       checkNewQuestions(ctx, matches) {
-        if(matches && matches.length > 0)
+        if(!matches || matches.length == 0)
+          return;
+
+        const { isAfterRound, round: currentRound } = ctx.getters.afterRoundPeriod;
+
+        if(currentRound < 1) return;
+
+        for(let i=1; i < 5 && (i<currentRound || (i == currentRound && isAfterRound)); i++)
         {
-          const now = new Date();
-          const timeString = `${(now.getHours()).toString().padStart(2,'0')}:${(now.getMinutes() + 10).toString().padStart(2,'0')}`;
-          const round = matches?.findIndex(match => match.start > timeString)
-          console.debug(`Current round:${round}, based on time ${timeString}`);
-          if(!round || round < 0) return;
-          const questions = ctx.state.qsOpened[round - 1] || [];
+          const questions = ctx.state.qsOpened[i - 1] || [];
+          console.log(currentRound, isAfterRound, i, questions, ctx.state.qsOpened[i - 1]);
           if (questions.length == 0) {
-            ctx.commit("unlockNewQuestions", round)
+            ctx.commit("unlockNewQuestions", i)
           }
         }
       },
