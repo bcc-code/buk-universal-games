@@ -183,6 +183,7 @@ export default function (...plugins) {
         else {
           return { isAfterRound: false, round: round };
         }
+      }
     },
     actions: {
       async signIn(ctx) {
