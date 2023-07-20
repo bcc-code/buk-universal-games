@@ -1,8 +1,8 @@
 <template>
     <div class="locale-changer">
         <select v-model="selectedLanguage" @change="changeLanguage">
-            <option v-for="locale in ['cn', 'en', 'es', 'fr', 'nb', 'nl', 'ro']" :key="`locale-${locale}`" :value="locale">
-                {{ locale }}</option>
+            <option v-for="locale in Object.keys(locales)" :key="`locale-${locale}`" :value="locale">
+                {{ locales[locale] }}</option>
         </select>
     </div>
 </template>
@@ -16,6 +16,19 @@ export default {
     data() {
         return {
             selectedLanguage: this.$i18n.locale,
+            locales: {
+                cn: "中文",
+                de: "Deutsch",
+                en: "English",
+                es: "Español",
+                fr: "Français",
+                nb: "Norsk Bokmål",
+                nl: "Nederlands",
+                pl: "Polski",
+                ro: "Română",
+                ru: "Русский",
+                tr: "Türkçe"
+            }
         };
     },
     methods: {
