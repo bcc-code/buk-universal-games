@@ -6,8 +6,9 @@
     </nav>
 
     <header>
-      <h3><span class="icon" v-html="icons[game?.name]"></span>
-        <span>{{ game?.name }}</span></h3>
+      <h3>
+        <img class="icon" :src="`icon/game-${game.gameType}.svg`" />
+        <span>{{ $t("games." + game.gameType) }}</span></h3>
       <h2>
         <span>Start: {{ match?.start }}</span>
       </h2>
@@ -23,7 +24,7 @@
         }"
       >
         <p>{{ match?.team1 }}</p>
-        <p><strong>Score ({{ units[game?.gameType]}}):</strong> {{ match?.team1Result }}</p>
+        <p v-if="match?.team1Result"><strong>Score ({{ units[game?.gameType]}}):</strong> {{ match?.team1Result }}</p>
 
         <button class="btn btn-blank" v-if="!isChangingScore1 && match?.team1Result > 0" @click="isChangingScore1 = true">Change</button>
 
@@ -45,13 +46,13 @@
         }"
       >
         <p>{{ match?.team2 }}</p>
-        <p><strong>Score ({{ units[game?.gameType]}}):</strong> {{ match?.team2Result }}</p>
+        <p v-if="match?.team2Result"><strong>Score ({{ units[game?.gameType]}}):</strong> {{ match?.team2Result }}</p>
 
         <button class="btn btn-blank" v-if="!isChangingScore2 && match?.team2Result > 0" @click="isChangingScore2 = true">Change</button>
         <div v-if="isChangingScore2 || !match?.team2Result">
-        <TableSurfingInput v-if="game?.gameType === 'TableSurfing'" v-model="team2Result" />
-        <TimeInput v-else-if="['MineField','NerveSpiral'].includes(game?.gameType)" v-model="team2Result" />
-        <MonkeyBarsInput v-else-if="game?.gameType === 'MonkeyBars'" v-model="team2Result" />
+        <TableSurfingInput v-if="game?.gameType === 'tableSurfing'" v-model="team2Result" />
+        <TimeInput v-else-if="['mineField','nerveSpiral'].includes(game?.gameType)" v-model="team2Result" />
+        <MonkeyBarsInput v-else-if="game?.gameType === 'monkeybars'" v-model="team2Result" />
         <input v-else type="number" v-model="team2Result" :placeholder="'Result (in ' + units[game.gameType] + ')'" />
         <button class="btn btn-blank" @click="confirmTeamResult(match?.team2Id, team2Result)">Confirm</button>
         </div>
@@ -89,11 +90,11 @@ export default {
       isChangingScore2: false,
       selectedTeam: null,
       units: {
-        NerveSpiral: "seconds",
-        MineField: "seconds",
-        MonkeyBars: "bars completed",
-        TableSurfing: "seconds",
-        TicketTwist: "nr of tickets",
+        nervespiral: "seconds",
+        minefield: "seconds",
+        monkeybars: "bars completed",
+        tablesurfing: "seconds",
+        tickettwist: "nr of tickets",
       },
     };
   },
@@ -176,6 +177,16 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+header h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin: .5em 0;
+}
+
+.icon {
+  max-width: 4em;
 }
 
 div.teams {

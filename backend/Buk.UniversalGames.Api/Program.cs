@@ -43,10 +43,8 @@ builder.Services.AddDbContext<DataContext>(options =>
     var dbUser = Environment.GetEnvironmentVariable("POSTGRES_USER");
     var dbHost = Environment.GetEnvironmentVariable("POSTGRES_HOST");
     var dbPassword = Environment.GetEnvironmentVariable("POSTGRES_PASSWORD");
-    var dataSourceBuilder = new Npgsql.NpgsqlDataSourceBuilder($"Host={dbHost}{(dbPort != "5432" ? ";Port=" + (dbPort ?? "") : "")};Database={dbName};Username={dbUser};Password={dbPassword};Pooling=false;Connection Idle Lifetime=0;");
-    dataSourceBuilder
-        .MapEnum<GameType>()
-        .MapEnum<TeamType>();
+    var dataSourceBuilder = new Npgsql.NpgsqlDataSourceBuilder($"Host={dbHost}{(dbPort != "5432" ? ";Port=" + (dbPort ?? "") : "")};Database={dbName};Username={dbUser};Password={dbPassword};Pooling=false;Connection Idle Lifetime=0;Server Compatibility Mode=NoTypeLoading");
+
     options.UseNpgsql(dataSourceBuilder.Build());
 });
 

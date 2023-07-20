@@ -258,8 +258,8 @@ export default function (...plugins) {
           const now = new Date();
           const timeString = `${(now.getHours()).toString().padStart(2,'0')}:${(now.getMinutes() + 10).toString().padStart(2,'0')}`;
           const round = matches?.findIndex(match => match.start > timeString)
-          console.log(`Current round:${round}, based on time ${timeString}`);
-          if(round < 0) return;
+          console.debug(`Current round:${round}, based on time ${timeString}`);
+          if(!round || round < 0) return;
           const questions = ctx.state.qsOpened[round - 1] || [];
           if (questions.length == 0) {
             ctx.commit("unlockNewQuestions", round)
