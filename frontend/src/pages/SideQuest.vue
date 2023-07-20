@@ -6,6 +6,13 @@
       :stickers="this.coins.length"
       :refresh="refresh"
     />
+
+    <section>
+      <p class="introduction">
+        {{ $t("sidequest.explanation") }}
+      </p>
+    </section>
+
     <section v-if="unsubmittedAnswers.length > 0">
       <div class="message-white">
         <p>
@@ -16,14 +23,17 @@
     </section>
     <section v-for="(questions,index) in questionsPerRound" :key="index">
       <h2>{{ $t("sidequest.gameroundtitle", {round: index + 1}) }}</h2>
-      <div :class="{'round':true, 'locked': index != 3 && (index + 1 < $store.getters.currentRound)}">
-        <div class="question-button" v-for="question in questions" :key="question.id">
+      <div :class="{'round':true, 'locked': (index + 1 < $store.getters.currentRound)}">
+        <div class="question" v-for="question in questions" :key="question.id">
+          <div class="question-button">
           <img :src="`/icon/sq-${question.t}.svg`" />
-            <h3>
-              <RouterLink v-if="index === $store.getters.currentRound" :to="'sidequest/question/' + question.id">{{ $t("sidequest.questiontypes." + question.t) }}</RouterLink>
-              <span v-else>{{ $t("sidequest.questiontypes." + question.t) }}</span>
-            </h3>
+          <h3>
+            <RouterLink v-if="index === $store.getters.currentRound" :to="'sidequest/question/' + question.id">{{ $t("sidequest.questiontypes." + question.t) }}</RouterLink>
+            <span v-else>{{ $t("sidequest.questiontypes." + question.t) }}</span>
+          </h3>
         </div>
+        <span class="locked-indicator" v-if="(index + 1 < $store.getters.currentRound)">Locked</span>
+      </div>
       </div>
     </section>
     <section v-if="questionsPerRound.length < 4">
@@ -90,6 +100,17 @@ export default {
   text-align: center;
 }
 
+.introduction {
+  color: #555;
+  font-style: italic;
+  line-height: 1.7;
+  font-size: medium;
+  white-space: break-spaces;
+  margin: 1.5em -1em;
+  padding: 1em;
+  background: #fff;
+}
+
 .heading-icon {
   background-color: var(--gray-2);
   border-radius: 1em;
@@ -133,9 +154,14 @@ export default {
   margin: 1em 0;
 }
 
+.question {
+  width:100%;
+  margin:0 0 0 .5em;
+  position:relative;
+  }
+
 .question-button {
   border-radius: 1em;
-  margin:0 0 0 .5em;
   padding: 1em;
   background-color: var(--darkgreen);
   display: flex;
@@ -152,12 +178,24 @@ export default {
   height:5em;
 }
 
-.question-button:first-child {
+.question:first-child {
   margin:0 .5em 0 0;
 }
 
 .question-button h3 {
   font-size: 1.5em;
+  margin: 0;
+  text-align: center;
+  width:100%;
+  color: #fff;
+}
+.locked-indicator {
+  position: absolute;
+  filter:none;
+  font-size: 3em;
+  opacity: 0.7;
+  top: 30%;
+  rotate: -15deg;
   margin: 0;
   text-align: center;
   width:100%;
