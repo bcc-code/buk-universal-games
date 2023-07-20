@@ -1,0 +1,191 @@
+{
+  "menu": {
+    "home": "Kezdőlap",
+    "league": "Liga",
+    "sidequest": "Mellékküldetés",
+    "games": "Játékok",
+    "map": "Térkép"
+  },
+  "games": {
+    "monkeybars": "Majomrudak",
+    "nervespiral": "Idegspirál XL",
+    "tickettwist": "Jegy Szédítés",
+    "minefield": "Aknamező",
+    "crowdsurfing": "Tömegszörf"
+  },
+  "score": {
+    "monkeybars": "{score} rudak",
+    "nervespiral": "{score} másodperc",
+    "tickettwist": "{score} jegy",
+    "minefield": "{score} másodperc",
+    "crowdsurfing": "{score} másodperc"
+  },
+  "leadstory": {
+    "monkeybars": "Vajon csapata segíthet-e az emberek megmentésében, akik beszorultak egy meghibásodott óriáskerékbe? Az óriáskeréken való mászás kihívást jelenthet, ezért fontos, hogy ne felejtsék el a elsősegély felszerelések fontosságát. Segítsen csapatának eljutni a másik oldalra és mentsen meg ezeket a segítségre szoruló embereket.",
+    "nervespiral": "Miközben türelmesen várja a következő körre való sorát, hirtelen meghibásodik az áram, de nincs szükség pánikra. Vajon csapata képes-e ügyesen navigálni ebben a váratlan helyzetben, biztonságosan kijutni a sorból anélkül, hogy elektromos sokkokat tapasztalnának? Maradjon nyugodt és bízzon csapata képességeiben, hogy megoldja ezt a kihívást megfontoltan és elegánsan.",
+    "tickettwist": "Az emberek sorban állnak a jegyekért. Vajon csapata képes kezelni a sebességet és a stresszt, amely a jegypénztárban jelentkezik? Ez a játék gyors gondolkodást, kitartást, sebességet és csapatmunkát kombinálja. Koncentráljon és fordítsa fel minél több jegyet csapatának színére. Készen áll a kihívásra?",
+    "minefield": "Csapatának nehéz helyzettel kell szembenéznie, amikor át kell jutnia a másik oldalra, miközben óvatosnak kell lennie a megszökött vadállatokkal szemben. A cél az, hogy elérjék úticéljukat anélkül, hogy ezek az állatok megtámadnák őket.",
+    "crowdsurfing": "A vasúti sínek sérültek, ami jelentős problémát okoz. Azonban csapata képes megoldani ezt a helyzetet úgy, hogy együtt dolgozik csapatként. Kombinálja képességeiket, koordinálja cselekedeteiket és találjon megoldást, hogy a vonat gördülékenyen haladhasson."
+  },
+  "explanation": {
+    "monkeybars": "Az első játékos a Majomrudakon kezdi megmászni azokat, amennyire csak tudja. Amint elérte a 12. rudat, a következő játékos elkezdheti az elejéről.\n\nPélda: Az első játékos az 26. rudat érintette meg utoljára, így a pontszáma 26 pont. A második játékos a 18. rudon esett el, így pontszáma 18 pont. A játékosok összes pontszámát összeadjuk, majd elosztjuk a csapatban lévő játékosok összes számával. Ez lesz a csapat pontszáma.",
+    "nervespiral": "Amikor elhangzik a startjel, az első két játékos elindulhat a spirálra. Mindketten egy-egy oldalát fogják meg a fém karikának, és megpróbálják eljutni az első ellenőrzőpontig anélkül, hogy megérintenék a csövet.\n\nAmikor a két játékos eléri az egyik ellenőrzőpontot, visszatérnek, és két új játékos lép a játékba. Amikor ez a két játékos megérinti a spirált, visszatérnek a csapatukhoz, és két új játékos folytatja az utat az utolsó ellenőrzőpontig. Ezt addig folytatják, amíg el nem érik a spirál végét. A csapat, amelyik először fejezi be a játékot, nyer.",
+    "tickettwist": "Ehhez a játékhoz minden résztvevőnek csapatának színű szalagot kell viselnie. Minden csapatból 10 játékos versenyez a pályán. A játék célja az, hogy minél több lapot fordítsanak át a csapat színére. A játékosok bármikor cserélhetnek egymással, de ehhez az új játékosnak meg kell kapnia az \"öreg\" játékostól a szalagot, és csak utána folytathatja a játékot. A játék egy 8 perces körből áll. Amikor lejár az idő, az összes játékos elhagyja a pályát, és a lapokat színek szerint számolják. A csapat, amelyik a legtöbb lapot fordítja át a saját színére, nyeri a játékot.",
+    "minefield": "A játék egy nagy területen zajlik kis szakaszokkal. Minden csapatnak két kapitány van a pálya szélén, akik irányítják a játékosokat telefonok vagy más segédeszközök használata nélkül. Az első játékos kezdi, és megpróbál átmenni a mezőn anélkül, hogy rossz dobozba lépne. Annak megállapításához, hogy jó vagy rossz dobozban állsz, használj hangjelzőt, ami minden dobozban van. Ha a hangjelző riasztást ad, akkor rossz dobozban állsz, és új játékost kell váltanod. Minden játékos ellenőrzi minden dobozt, még akkor is, ha 100% biztos benne, hogy nem az akna. A kapitányok segítenek emlékezni a helyes útvonalra. Addig folytatod, amíg el nem éred a célt, majd leállítják az idődet. A csapat, amelyik a leggyorsabb idővel ér célba, nyeri a játékot.",
+    "crowdsurfing": "A vasúti sínek sérültek, ami jelentős problémát okoz. Azonban csapata képes megoldani ezt a helyzetet úgy, hogy együtt dolgozik csapatként. Kombinálja képességeiket, koordinálja cselekedeteiket és találjon megoldást, hogy a vonat gördülékenyen haladhasson."
+  },
+  "rules": {
+    "monkeybars": "Az összes csapat tagja részt vesz",
+    "nervespiral": "30-50 csapattag vesz részt (15-25 párban)",
+    "tickettwist": "Csak azok az emberek léphetnek a pályára, akiknek van csapat színű szalagjuk (10 csapatonként)|Korlátlanul lehet cserélni a résztvevőket, amennyiben az új játékos szalaggal rendelkezik a pályára lépéskor",
+    "minefield": "Körülbelül 30 csapattag vesz részt|Egy időben csak 1 személy léphet a pályára|A pályán résztvevőket két csapatkapitány vezeti, akik nem használhatnak eszközöket az útvonal megjegyzéséhez",
+    "crowdsurfing": "16 fiú és 16 lány vesz részt, 1 szörfös és 15 gördülőszemély|Nem szabad megérinteni a talajt (mind a szörfös, mind a gördülőszemélyek)|Az akadályokat nem lehet áthelyezni, és a gördülőszemélyek nem léphetnek ki az előre jelölt területről"
+  },
+  "general_error": "Valami hiba történt",
+  "pleaserefresh": "Kérjük, próbálja újra frissíteni az oldalt",
+  "points": "Pontok",
+  "coins": "Érmék",
+  "game": "Játék",
+  "team1team2": "Csapat 1 / Csapat 2",
+  "start": "Indítás",
+  "rulestitle": "Szabályok",
+  "login": {
+    "login_button": "Bejelentkezés",
+    "teamcode": "Csapat kód",
+    "teamcode_invalid": "Sajnáljuk, a csapat kulcsa érvénytelen"
+  },
+  "league": {
+    "rankingisempty": "Még egy csapat sem szerzett pontokat. Ellenőrizze vissza az első kör után.",
+    "viewgamerankings": "Nézze meg a ranglistát és pontszámokat minden játékhoz"
+  },
+  "admin": {
+    "select_league": {
+      "intro": "Válassza ki a ligát, amelyet kezelni szeretne"
+    }
+  },
+  "sidequest": {
+    "thanks": "Köszönjük, az ön válasza rögzítésre került",
+    "timeranout": "Lejárt az idő, legközelebb jobb szerencsét",
+    "areyouready": "Készen áll?",
+    "checkanswerlater": "Ellenőrizze a választ, amikor a játék véget ér",
+    "question_locked": "Még mindig zárolva van",
+    "youhaveunsubmittedanswers": "Van {numAnswers} válasza. Szeretné most elküldeni őket?",
+    "submityouranswers": "Adja be a válaszait",
+    "gameroundtitle": "Kör {round}",
+    "back_to_overview": "Vissza az áttekintéshez",
+    "questiontypes": {
+      "math": "Matematika",
+      "knowledge": "Ismeret",
+      "recognize": "Felismerés",
+      "insight": "Belátás",
+      "remember": "Emlékezés",
+      "guess": "Tippelés"
+    }
+  },
+  "questions": {
+    "guesshowmany1": {
+      "q": "Hány órányi Fra Kåre zenét hallgatták idén?",
+      "intro": "Hallgattál idén Fra Kåre zenét?",
+      "a": {
+        "100": "100",
+        "1000": "1000",
+        "10000": "10000",
+        "20000": "20000"
+      }
+    },
+    "guesshowmany2": {
+      "q": "Hányan látogatták meg a táborokat 2023-ban?",
+      "intro": "Jól tudsz számolni?"
+    },
+    "remember": {
+      "q": "Mi a helyes sorrend a Herman Shuffle táncmozdulatokban?",
+      "intro": "Táncoltál ma reggel?",
+      "a": {
+        "opta": "Lean, Wave, Drift",
+        "optb": "Wave, Lean, Drift",
+        "optc": "Lean, Drift, Wave",
+        "optd": "Wave, Drift, Lean"
+      }
+    },
+    "insight": {
+      "q": "Melyik hullámvasúti kocsi ér le először a mélypontra?",
+      "intro": "Nézze meg a képet",
+      "a": {
+        "red": "Piros",
+        "green": "Zöld",
+        "yellow": "Sárga",
+        "sametime": "Egyidőben érnek le a mélypontra"
+      }
+    },
+    "guesshowoften": {
+      "q": "A kék inges férfi elájul ennek a hullámvasútnak az útján. Hányszor fog elájulni?",
+      "intro": "Nézze meg a képet",
+      "a": {
+        "1": "1 alkalommal",
+        "2": "2 alkalommal",
+        "4": "4 alkalommal",
+        "8": "8 alkalommal"
+      }
+    },
+    "recognize1": {
+      "q": "Milyen állat próbálja meg szagolni önöket a másik oldalról?",
+      "intro": "Szereted az állatokat? Nézze meg a képet.",
+      "a": {
+        "horse": "Ló",
+        "camel": "Teve",
+        "antelope": "Antilop",
+        "giraffe": "Zsiráf"
+      }
+    },
+    "recognize2": {
+      "q": "Milyen állat próbálja meg szagolni önöket a másik oldalról?",
+      "intro": "Nézze meg a képet",
+      "a": {
+        "elephant": "Elefánt",
+        "tiger": "Tigris",
+        "owl": "Bagoly",
+        "lion": "Oroszlán"
+      }
+    },
+    "recognize3": {
+      "q": "Emlékszik, ki látható a képen?",
+      "intro": "Követte az idei projekteket? Nézze meg a képet.",
+      "a": {
+        "peter": "Péter",
+        "john": "János",
+        "matthew": "Máté",
+        "paul": "Pál"
+      }
+    },
+    "recognize4": {
+      "q": "Kinek a látható a sorrendje balról jobbra?",
+      "intro": "Van éles szeme? Nézze meg a képet.",
+      "a": {
+        "bkg": "Bernt Aksel, Kåre, Gershon",
+        "gkb": "Gershon, Kåre, Bernt Aksel",
+        "kgb": "Kåre, Gershon, Bernt Aksel",
+        "bgk": "Bernt Aksel, Gershon, Kåre"
+      }
+    },
+    "math": {
+      "q": "Milyen számot kell beírni a kérdőjel helyére?",
+      "intro": "Nézze meg a képet.",
+      "a": {
+        "30": "30",
+        "81": "81",
+        "200": "200",
+        "67": "67"
+      }
+    },
+    "knowledge": {
+      "q": "Melyik országban nincs BCC gyülekezet?",
+      "intro": "Honnan származik?",
+      "a": {
+        "singapore": "Szingapúr",
+        "serbia": "Szerbia",
+        "japan": "Japán",
+        "peru": "Peru"
+      }
+    }
+  }
+}

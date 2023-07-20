@@ -1,0 +1,191 @@
+{
+  "menu": {
+    "home": "Home",
+    "league": "Competitie",
+    "sidequest": "Zijmissie",
+    "games": "Spellen",
+    "map": "Kaart"
+  },
+  "games": {
+    "monkeybars": "Apenkooien",
+    "nervespiral": "Zenuwspiraal XL",
+    "tickettwist": "Ticket Twist",
+    "minefield": "Mijnenveld",
+    "crowdsurfing": "Crowdsurfen"
+  },
+  "score": {
+    "monkeybars": "{score} balken",
+    "nervespiral": "{score} seconden",
+    "tickettwist": "{score} tickets",
+    "minefield": "{score} seconden",
+    "crowdsurfing": "{score} seconden"
+  },
+  "leadstory": {
+    "monkeybars": "Kan jouw team hulp bieden bij het redden van mensen die vastzitten in een defect reuzenrad? Het beklimmen van een reuzenrad kan een uitdaging zijn, en het is cruciaal om het belang van het meenemen van EHBO-benodigdheden in gedachten te houden. Zorg ervoor dat je team de overkant bereikt en deze hulpeloze mensen redt.",
+    "nervespiral": "Terwijl je geduldig wacht op je beurt in de rij voor de volgende attractie, is er plotseling een stroomstoring. Geen paniek. Kan jouw team behendig door deze onverwachte situatie navigeren en veilig de rij verlaten zonder elektrische schokken op te lopen? Blijf kalm en vertrouw op het vermogen van je team om deze uitdaging met kalmte en gratie aan te pakken.",
+    "tickettwist": "Mensen staan in de rij om hun tickets te krijgen. Is jouw team in staat om de snelheid en stress van de ticketbalie aan te kunnen? Dit spel combineert snel denken, uithoudingsvermogen, snelheid en teamwork. Blijf gefocust en draai zoveel mogelijk tickets naar de kleur van jouw team. Zijn jullie klaar voor de uitdaging?",
+    "minefield": "Jouw team staat voor een moeilijke situatie waarbij ze naar de overkant moeten gaan terwijl ze voorzichtig zijn voor wilde dieren die zijn ontsnapt. Het doel is om hun bestemming te bereiken zonder aangevallen te worden door deze dieren.",
+    "crowdsurfing": "De treinsporen zijn beschadigd, wat een aanzienlijk probleem veroorzaakt. Maar jouw team kan deze situatie aanpakken door als een team samen te werken. Combineer jullie vaardigheden, coördineer jullie acties en vind een manier om de trein soepel te laten blijven bewegen."
+  },
+  "explanation": {
+    "monkeybars": "Speler één begint aan het apenkooien zo ver als hij kan. Zodra hij de 12e balk heeft bereikt, kan de volgende speler weer vanaf het begin beginnen.\n\nVoorbeeld: Speler één heeft als laatste de 26e balk aangeraakt, dus zijn score is 26 punten. Speler twee viel bij de 18e balk, dus haar score is 18 punten. De scores van alle spelers worden opgeteld en gedeeld door het totale aantal spelers in het team. Dat wordt jullie totale punten.",
+    "nervespiral": "Wanneer het startsignaal klinkt, kunnen de eerste twee spelers naar de spiraal gaan. Ze nemen elk één kant van de metalen ring vast en proberen naar het eerste controlepunt te gaan zonder de buis aan te raken.\n\n Wanneer de twee spelers één controlepunt hebben bereikt, gaan ze terug en komen er twee nieuwe spelers in het spel. Wanneer deze twee spelers de spiraal aanraken, gaan ze terug naar het team en gaan er twee nieuwe spelers verder vanaf het laatste controlepunt. Dit gaat door totdat je het einde van de spiraal hebt bereikt. Het team dat als eerste eindigt, wint.",
+    "tickettwist": "Voor dit spel moet elke speler die deelneemt aan het spel, een lint van de kleur van zijn of haar team dragen. 10 spelers van elk team zullen tegen elkaar strijden op het veld. Het doel van dit spel is om zoveel mogelijk tegels naar de kleur van jouw team om te draaien. De spelers op het veld kunnen zo vaak wisselen als ze willen, maar dan moet de nieuwe speler het lint van de 'oude' speler dragen en kan de nieuwe speler doorgaan met het spel. Het spel bestaat uit 1 ronde van 8 minuten. Als de tijd om is, verlaten alle spelers het veld en worden de tegels geteld per kleur. Het team dat de meeste tegels naar hun kleur heeft omgedraaid, wint het spel.",
+    "minefield": "Dit spel vindt plaats op een groot veld met kleine vakken. Elk team heeft twee teamleiders aan de zijlijn die de spelers begeleiden zonder telefoons of andere hulpmiddelen te gebruiken. Speler één begint en probeert door het veld te gaan zonder in het verkeerde vak te stappen. Om te weten of je in het juiste of verkeerde vak staat, gebruik je de zoemer in elk vak. Wanneer de zoemer het alarmsignaal geeft, sta je in het verkeerde vak en moet je de speler vervangen door een nieuwe speler. Elke speler controleert elk vak, zelfs als het 100% zeker is dat het geen mijn is. De teamleiders helpen met het onthouden van de juiste route. Je gaat door totdat je de finish hebt bereikt en dan stopt je tijd. Het team met de snelste tijd wint het spel.",
+    "crowdsurfing": "Het doel van dit spel is om één persoon naar de andere kant van het parcours te krijgen op de flamingo, over rollende personen. Met je team neem je meerdere beurten en probeer je te voorkomen dat de persoon bovenop op de grond valt. Aan het einde van het parcours vind je een helling. Zodra de jongens de helling hebben beklommen, gaat de bel rinkelen en wissel je van team. Het tweede team (meisjes) legt op de terugweg hetzelfde parcours af, met afdalen van de helling en om alle bochten heen. Het team dat als eerste de finishlijn overschrijdt, wint."
+  },
+  "rules": {
+    "monkeybars": "Alle leden van het team doen mee",
+    "nervespiral": "30 - 50 teamleden doen mee (in 15-25 paren)",
+    "tickettwist": "Alleen personen met een teamlint mogen het veld betreden (10 per team)|Het is toegestaan om deelnemers onbeperkt te wisselen, zolang ze een teamlint dragen bij het betreden van het veld",
+    "minefield": "Ongeveer 30 teamleden doen mee|Er mag slechts één persoon tegelijk op het parcours zijn|2 teamleiders begeleiden de deelnemers door het parcours|Teamleiders mogen geen hulpmiddelen gebruiken om de route te onthouden",
+    "crowdsurfing": "16 jongens en 16 meisjes doen mee, 1 'crowdsurfer' en 15 'rollers'|Het is niet toegestaan om de grond aan te raken (zowel drijver als crowdsurfer)|De obstakels mogen niet worden verplaatst en de rollers mogen niet buiten het gemarkeerde gebied komen"
+  },
+  "general_error": "Er is iets misgegaan",
+  "pleaserefresh": "Probeer de pagina te vernieuwen",
+  "points": "Punten",
+  "coins": "Munten",
+  "game": "Spel",
+  "team1team2": "Team 1 / Team 2",
+  "start": "Start",
+  "rulestitle": "Regels",
+  "login": {
+    "login_button": "Inloggen",
+    "teamcode": "Teamcode",
+    "teamcode_invalid": "Sorry, jouw teamcode is niet geldig"
+  },
+  "league": {
+    "rankingisempty": "Nog geen enkel team heeft punten geregistreerd. Kom na de eerste ronde hier terug.",
+    "viewgamerankings": "Bekijk ranglijst en scores voor elk spel"
+  },
+  "admin": {
+    "select_league": {
+      "intro": "Kies de competitie die je wilt beheren"
+    }
+  },
+  "sidequest": {
+    "thanks": "Bedankt, je antwoord is opgenomen",
+    "timeranout": "De tijd is verstreken, volgende keer beter",
+    "areyouready": "Ben je er klaar voor?",
+    "checkanswerlater": "Controleer het antwoord als het spel voorbij is",
+    "question_locked": "Nog steeds vergrendeld",
+    "youhaveunsubmittedanswers": "Je hebt {numAnswers} antwoorden. Wil je ze nu verzenden?",
+    "submityouranswers": "Stuur je antwoorden in",
+    "gameroundtitle": "Ronde {round}",
+    "back_to_overview": "Terug naar het overzicht",
+    "questiontypes": {
+      "math": "Rekenen",
+      "knowledge": "Kennis",
+      "recognize": "Herkennen",
+      "insight": "Inzicht",
+      "remember": "Onthouden",
+      "guess": "Gokken"
+    }
+  },
+  "questions": {
+    "guesshowmany1": {
+      "q": "Hoeveel uur is er dit jaar naar Fra Kåre geluisterd?",
+      "intro": "Heb je dit jaar naar Fra Kåre geluisterd?",
+      "a": {
+        "100": "100",
+        "1000": "1000",
+        "10000": "10000",
+        "20000": "20000"
+      }
+    },
+    "guesshowmany2": {
+      "q": "Hoeveel mensen hebben de kampen bezocht in 2023?",
+      "intro": "Ben je goed in tellen?"
+    },
+    "remember": {
+      "q": "Wat is de juiste volgorde van de Herman Shuffle danspassen?",
+      "intro": "Heb je vanochtend meegedanst?",
+      "a": {
+        "opta": "Lean, Wave, Drift",
+        "optb": "Wave, Lean, Drift",
+        "optc": "Lean, Drift, Wave",
+        "optd": "Wave, Drift, Lean"
+      }
+    },
+    "insight": {
+      "q": "Welk achtbaankarretje bereikt als eerste de bodem?",
+      "intro": "Bekijk de afbeelding",
+      "a": {
+        "red": "Rood",
+        "green": "Groen",
+        "yellow": "Geel",
+        "sametime": "Ze bereiken tegelijkertijd de bodem"
+      }
+    },
+    "guesshowoften": {
+      "q": "De man met het blauwe shirt gaat flauwvallen tijdens deze achtbaanrit, hoe vaak zal hij flauwvallen?",
+      "intro": "Bekijk de afbeelding",
+      "a": {
+        "1": "1 keer",
+        "2": "2 keer",
+        "4": "4 keer",
+        "8": "8 keer"
+      }
+    },
+    "recognize1": {
+      "q": "Welk dier probeert van de andere kant aan je te snuffelen?",
+      "intro": "Ben je een fan van dieren? Bestudeer de afbeelding.",
+      "a": {
+        "horse": "Paard",
+        "camel": "Kameel",
+        "antelope": "Antilope",
+        "giraffe": "Giraffe"
+      }
+    },
+    "recognize2": {
+      "q": "Welk dier probeert van de andere kant aan je te snuffelen?",
+      "intro": "Bekijk de afbeelding",
+      "a": {
+        "elephant": "Olifant",
+        "tiger": "Tijger",
+        "owl": "Uil",
+        "lion": "Leeuw"
+      }
+    },
+    "recognize3": {
+      "q": "Weet je nog wie dit is?",
+      "intro": "Heb je de projecten dit jaar gevolgd? Bekijk de afbeelding.",
+      "a": {
+        "peter": "Petrus",
+        "john": "Johannes",
+        "matthew": "Matteüs",
+        "paul": "Paulus"
+      }
+    },
+    "recognize4": {
+      "q": "Wie zie je van links naar rechts?",
+      "intro": "Heb je een scherp oog? Bekijk de afbeelding.",
+      "a": {
+        "bkg": "Bernt Aksel, Kåre, Gershon",
+        "gkb": "Gershon, Kåre, Bernt Aksel",
+        "kgb": "Kåre, Gershon, Bernt Aksel",
+        "bgk": "Bernt Aksel, Gershon, Kåre"
+      }
+    },
+    "math": {
+      "q": "Welk getal hoort er op het vraagteken?",
+      "intro": "Bekijk de afbeelding.",
+      "a": {
+        "30": "30",
+        "81": "81",
+        "200": "200",
+        "67": "67"
+      }
+    },
+    "knowledge": {
+      "q": "In welk land heeft BCC geen gemeente?",
+      "intro": "Waar kom je vandaan?",
+      "a": {
+        "singapore": "Singapore",
+        "serbia": "Servië",
+        "japan": "Japan",
+        "peru": "Peru"
+      }
+    }
+  }
+}

@@ -1,0 +1,191 @@
+{
+    "menu": {
+        "home": "Accueil",
+        "league": "Ligue",
+        "sidequest": "Quête secondaire",
+        "games": "Jeux",
+        "map": "Carte"
+    },
+    "games": {
+        "monkeybars": "Monkey Bars",
+        "nervespiral": "Spirale nerveuse XL",
+        "tickettwist": "Ticket Twist",
+        "minefield": "Champ de mines",
+        "crowdsurfing": "Crowd Surfing"
+    },
+    "score": {
+        "monkeybars": "{score} barres",
+        "nervespiral": "{score} secondes",
+        "tickettwist": "{score} tickets",
+        "minefield": "{score} secondes",
+        "crowdsurfing": "score} secondes"
+    },
+    "leadstory": {
+        "monkeybars": "Monkey Bars pour mesurer la force : Votre équipe peut-elle venir en aide à des personnes coincées dans une grande roue en panne ? L'ascension d'une grande roue peut s'avérer difficile, et il est essentiel de se souvenir de l'importance d'emporter du matériel de premiers secours. Aidez votre équipe à atteindre l'autre côté et à secourir ces personnes sans défense.",
+        "nervespiral": "Spirale Nerveuse pour le contrôle des nerfs : Alors que vous attendez patiemment votre tour dans la file d'attente pour le prochain manège, une panne d'électricité survient soudainement : pas besoin de paniquer. Votre équipe peut-elle se sortir habilement de cette situation inattendue et quitter la file d'attente en toute sécurité, sans subir de choc électrique ? Restez calme et ayez confiance en la capacité de votre équipe à relever ce défi avec sang-froid et élégance.",
+        "tickettwist": "Ticket Twist pour mesurer l'endurance : Les gens font la queue pour obtenir leur billet. Votre équipe est-elle capable de faire face à la vitesse et au stress de la billetterie ? Ce jeu allie rapidité d'esprit, endurance, vitesse et travail d'équipe. Restez concentrés et remettez le plus de billets possible à l'équipe de votre couleur.  Êtes-vous prêts à relever le défi ?",
+        "minefield": "Champ de Mines pour évaluer la réflexion logique : Votre équipe est confrontée à une situation difficile où elle doit passer de l'autre côté tout en se méfiant des animaux sauvages qui se sont échappés. L'objectif est d'atteindre sa destination sans être attaqué par ces animaux.",
+        "crowdsurfing": "Surf de Foule pour mesurer la coopération : Les voies ferrées sont endommagées, ce qui pose un problème de taille. Cependant, votre équipe peut faire face à cette situation en travaillant ensemble. Combinez vos compétences, coordonnez vos actions et trouvez un moyen de faire avancer le train."
+    },
+    "explanation": {
+        "monkeybars": "Le premier participant commence par escalader les Monkey Bars le plus loin possible. Une fois qu'il a atteint la 12e barre, le participant suivant peut commencer à grimper à son tour. Lorsque le premier joueur a atteint la 26e barre, son score est de 26 points. Le joueur 2 en est à la 18ème barre, son score est donc de 18 points. Les points de tous les joueurs seront additionnés et divisés par le nombre total de joueurs de l'équipe. Cela donnera le total des points de votre équipe.",
+        "nervespiral": "Lorsque le signal de départ retentit, les deux premiers joueurs peuvent se diriger vers la spirale, prendre chacun un côté de l'anneau métallique et essayer d'atteindre le premier point de contrôle sans toucher le tube. Lorsque les deux joueurs atteignent un point de contrôle, ils reviennent en arrière et deux nouveaux joueurs entrent dans le jeu. Cela continue jusqu'à ce qu'ils atteignent le point d'arrivée. Si deux joueurs touchent la spirale, ils entendent une alarme et doivent échanger leur place avec les deux joueurs suivants qui commencent au dernier point de contrôle. Vous continuez jusqu'à ce que vous atteigniez la fin de la spirale. L'équipe qui termine la première gagne.",
+        "tickettwist": "Pour ce jeu, chaque joueur participant doit porter un ruban de la couleur de son équipe. 10 joueurs de chaque équipe s'affronteront sur le terrain. Le but de ce jeu est de retourner le plus grand nombre de carreau possible à la couleur de son équipe. Les joueurs sur le terrain peuvent se remplacer aussi souvent qu'ils le souhaitent, mais le nouveau joueur doit alors récupérer le ruban de le joueur précédent avant de pouvoir continuer le jeu. Le jeu consiste en un tour de 8 minutes. À la fin du temps imparti, tous les joueurs quittent le terrain et les carreau sont comptées par couleur. L'équipe qui a retourné le plus de carreau à sa couleur gagne le jeu.",
+        "minefield": "Ce jeu se déroule dans un grand champ divisé en petites sections. Chaque équipe a deux capitaines sur la ligne de touche qui guident les joueurs sans utiliser de téléphone ou autre moyen d'aide. Le premier joueur commence et essaie de traverser le terrain sans se tromper de case. Pour savoir si vous êtes dans une bonne ou une mauvaise case, vous utilisez le signal sonore dans chaque case. Lorsque le signal d'alarme est émis, le joueur se trouve dans la mauvaise case et doit être remplacé par un autre joueur. Chaque joueur vérifie chaque boîte, même s'il est sûr à 100 % qu'il ne s'agit pas d'une mine. Les capitaines aident à se souvenir du bon chemin. Vous continuez jusqu'à l'arrivée et le temps s'arrête. ",
+        "crowdsurfing": "Le but de ce jeu est d'amener une personne de l'autre côté de la voie sur le flamant rose au-dessus des personnes qui se déplacent. Avec votre équipe, vous devez faire plusieurs tours et essayer de ne pas laisser la personne du dessus tomber par terre. Au bout de la piste, vous trouverez une pente. Une fois que les garçons ont grimpé la pente, la cloche sonne et vous changez d'équipe. La deuxième équipe (les filles) doit reproduire la même trajectoire sur le chemin du retour, en descendant la pente et en franchissant tous les virages. L'équipe qui franchit la ligne d'arrivée en premier gagne."
+    },
+    "rules": {
+        "monkeybars": "Tous les membres de l'équipe participent",
+        "nervespiral": "30 à 50 membres de l'équipe participent (en 15 à 25 paires).",
+        "tickettwist": "Seules les personnes portant un ruban de l'équipe sont autorisées à entrer sur le terrain (10 par équipe).|Il est permis de faire des changements de participants sans limitation, à condition qu'ils portent un ruban de l'équipe en entrant sur le terrain.",
+        "minefield": "Environ 30 membres de l'équipe participent|Une seule personne à la fois est autorisée sur le parcours.|2 capitaines d'équipe guident les participants tout au long du parcours.|Les capitaines d'équipe ne peuvent pas utiliser d'outils pour se souvenir de l'itinéraire.",
+        "crowdsurfing": "16 garçons et 16 filles participent, 1 surfeur et 15 rollers.|Il est interdit de toucher le sol (tant pour le flotteur que pour le surfeur).|Les obstacles ne peuvent pas être déplacés et les rollers ne peuvent pas sortir de la zone marquée."
+    },
+    "general_error": "Un problème est survenu.",
+    "pleaserefresh": "Essayez d'actualiser la page.",
+    "points": "Points",
+    "coins": "Monnaie",
+    "game": "Jeu",
+    "team1team2": "Équipe 1 / Équipe 2",
+    "start": "Début (heure)",
+    "rulestitle": "Règles du jeu",
+    "login": {
+        "login_button": "Se connecter",
+        "teamcode": "Code de l'équipe",
+        "teamcode_invalid": "Désolé, votre code d'équipe n'est pas valide"
+    },
+    "league": {
+        "rankingisempty": "Aucun point n'a encore été gagné. Vérifiez à nouveau après le premier tour.",
+        "viewgamerankings": "Voir le classement et les scores de chaque jeu"
+    },
+    "admin": {
+        "select_league": {
+            "intro": "Choisissez la ligue que vous souhaitez gérer"
+        }
+    },
+    "sidequest": {
+        "thanks": "Merci, votre réponse a été enregistrée",
+        "timeranout": "Le temps est écoulé, vous aurez plus de chance la prochaine fois",
+        "areyouready": "Êtes-vous prêt ?",
+        "checkanswerlater": "Vérifier la réponse lorsque le jeu est terminé",
+        "question_locked": "Encore verrouillé",
+        "youhaveunsubmittedanswers": "Vous avez {numAnswers} réponses. Voulez-vous les envoyer maintenant ?",
+        "submityouranswers": "Envoyez vos réponses",
+        "gameroundtitle": "Tour {round}",
+        "back_to_overview": "Retour à l'aperçu",
+        "questiontypes": {
+            "math": "Mathématiques",
+            "knowledge": "Connaissances",
+            "recognize": "Reconnaître",
+            "insight": "Comprendre",
+            "remember": "Se souvenir",
+            "guess": "Deviner"
+        }
+    },
+    "questions": {
+        "guesshowmany1": {
+            "q": "Combien d'heures de Fra Kåre ont été écoutées cette année ?",
+            "intro": "Avez-vous écouté Fra Kåre cette année ?",
+            "a": {
+                "100": "100",
+                "1000": "1.000",
+                "10000": "10.000",
+                "20000": "20.000"
+            }
+        },
+        "guesshowmany2": {
+            "q": "Combien de personnes ont participé aux camps en 2023 ?",
+            "intro": "Êtes-vous bons en calcul ?"
+        },
+        "remember": {
+            "q": "Quel est l'ordre correct des mouvements de danse du Herman Shuffle ?",
+            "intro": "Avez-vous dansé ce matin ?",
+            "a": {
+                "opta": "Lean, Wave, Drift ",
+                "optb": "Wave, Lean, Drift",
+                "optc": "Lean, Drift, Wave",
+                "optd": "Wave, Drift, Lean"
+            }
+        },
+        "insight": {
+            "q": "Quel chariot de montagnes russes atteindra le sol en premier ?",
+            "intro": "Regardez l'image.",
+            "a": {
+                "red": "Rouge",
+                "green": "Vert",
+                "yellow": "Jaune",
+                "sametime": "Ils atteignent le sol en même temps"
+            }
+        },
+        "guesshowoften": {
+            "q": "L'homme à la chemise bleue va s'évanouir sur ces montagnes russes. Combien de fois va-t-il s'évanouir ?",
+            "intro": "Regardez l'image.",
+            "a": {
+                "1": "1 fois",
+                "2": "2 fois",
+                "4": "4 fois",
+                "8": "8 fois"
+            }
+        },
+        "recognize1": {
+            "q": "Quel animal essaie de vous renifler de l'autre côté ?",
+            "intro": "Vous aimez les animaux ? Étudiez l'image.",
+            "a": {
+                "horse": "Cheval",
+                "camel": "Chameau",
+                "antelope": "Antilope",
+                "giraffe": "Girafe"
+            }
+        },
+        "recognize2": {
+            "q": "Quel animal essaie de vous renifler de l'autre côté ? ",
+            "intro": "Vous aimez les animaux ? Étudiez l'image.",
+            "a": {
+                "elephant": "Éléphant",
+                "tiger": "Tigre",
+                "owl": "Hibou",
+                "lion": "Lion"
+            }
+        },
+        "recognize3": {
+            "q": "Regardez l'image.",
+            "intro": "Avez-vous suivi les projets de cette année ?",
+            "a": {
+                "peter": "Pierre",
+                "john": "Jean",
+                "matthew": "Matthieu",
+                "paul": "Paul"
+            }
+        },
+        "recognize4": {
+            "q": "Qui voyez-vous dans l'ordre, de gauche à droite ?",
+            "intro": "Vous avez un œil de lynx ? Regardez l'image.",
+            "a": {
+                "bkg": "Bernt Aksel, Kåre, Gershon",
+                "gkb": "Gershon, Kåre, Bernt Aksel",
+                "kgb": "Kåre, Gershon, Bernt Aksel",
+                "bgk": "Bernt Aksel, Gershon, Kåre"
+            }
+        },
+        "math": {
+            "q": "A quel numéro correspond le point d'interrogation ?",
+            "intro": "Regardez l'image.",
+            "a": {
+                "30": "30",
+                "81": "81",
+                "200": "200",
+                "67": "67"
+            }
+        },
+        "knowledge": {
+            "q": "Dans quel pays BCC n'a pas d'assemblée ?",
+            "intro": "L'Église dans le monde",
+            "a": {
+                "singapore": "Singapour",
+                "serbia": "Serbie",
+                "japan": "Japon",
+                "peru": "Pérou"
+            }
+        }
+    }
+}

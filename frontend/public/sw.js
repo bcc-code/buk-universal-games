@@ -107,9 +107,8 @@ const cacheableDestinations = [
 ];
 
 const preCacheUris = [
-  'index.html',
-  'js/app.js',
-  'js/chunk-vendors.js',
+  'font/ClashGrotesk-Medium.otf',
+  'font/ClashGrotesk-Semibold.otf',
   'icon/ball.svg',
   'icon/buk-icon.svg',
   'icon/calendar.svg',
@@ -140,6 +139,9 @@ const preCacheUris = [
   'image/ubg-k-liga-icons.svg',
   'image/ubg-logo.png',
   'image/ubg-u-liga-icons.svg',
+  'index.html',
+  'js/app.js',
+  'js/chunk-vendors.js',
   'video/crowdsurfing.mp4',
   'video/monkeybars.mp4',
   'video/minefield.mp4',
