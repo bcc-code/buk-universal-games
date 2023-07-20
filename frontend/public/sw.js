@@ -134,8 +134,6 @@ const preCacheUris = [
   'image/6.jpg',
   'image/7.jpg',
   'image/8.jpg',
-  'image/9.jpg',
-  'image/10.jpg',
   'image/ubg-arena-small.png',
   'image/ubg-b-liga-icons.svg',
   'image/ubg-beach-small.png',
