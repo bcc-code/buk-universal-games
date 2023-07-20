@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using Buk.UniversalGames.Library.Enums;
 
@@ -12,9 +13,17 @@ public class Game {
 
     public string Name { get; set; } = "";
 
-    public GameType Type{ get; set; }
+    public virtual GameType Type => GameType switch
+    {
+        "nervespiral" => Library.Enums.GameType.NerveSpiral,
+        "monkeybars" => Library.Enums.GameType.MonkeyBars,
+        "tickettwist" => Library.Enums.GameType.TicketTwist,
+        "minefield" => Library.Enums.GameType.MineField,
+        "tablesurfing" => Library.Enums.GameType.TableSurfing
+    };
 
-    public virtual string GameType => Type.ToString().ToLowerInvariant();
+    [Column("type")]
+    public string GameType { get; set; }
 
     public string Description { get; set; } = "";
 

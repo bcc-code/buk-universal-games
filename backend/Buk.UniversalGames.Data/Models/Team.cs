@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using Buk.UniversalGames.Library.Enums;
 
@@ -18,11 +19,17 @@ public class Team
 
     public int? LeagueId { get; set; }
 
-    public TeamType Type { get; set; }
+    public virtual TeamType Type => TeamType switch
+    {
+        "participant" => Library.Enums.TeamType.Participant,
+        "admin" => Library.Enums.TeamType.Admin,
+        "systemadmin" => Library.Enums.TeamType.SystemAdmin
+    };
 
     public int MemberCount { get; set; }
 
-    public virtual string TeamType => Type.ToString();
+    [Column("type")]
+    public string TeamType { get; set; }
 
     [JsonIgnore]
     public League? League { get; set; }
