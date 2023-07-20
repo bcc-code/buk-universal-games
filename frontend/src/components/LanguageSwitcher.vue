@@ -1,8 +1,9 @@
 <template>
     <div class="locale-changer">
-      <select v-model="selectedLanguage" @change="changeLanguage">
-        <option v-for="locale in ['cn', 'en', 'fr', 'nb', 'nl', 'ro']" :key="`locale-${locale}`" :value="locale">{{ locale }}</option>
-      </select>
+        <select v-model="selectedLanguage" @change="changeLanguage">
+            <option v-for="locale in ['cn', 'en', 'es', 'fr', 'nb', 'nl', 'ro']" :key="`locale-${locale}`" :value="locale">
+                {{ locale }}</option>
+        </select>
     </div>
 </template>
 
