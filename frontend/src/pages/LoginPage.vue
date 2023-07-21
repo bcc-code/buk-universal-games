@@ -1,6 +1,7 @@
 <template>
   <section class="bg">
     <form class="content" @submit="tryLogin()">
+      <p class="install-hint">{{ $t('install_hint') }}</p>
       <img src="image/ubg-logo.svg" alt="" class="logo" />
       <input type="text" class="codeInput" :placeholder="$t('login.teamcode')" v-model="teamCode" />
       <button v-if="teamCode.length > 3" class="btn-primary">{{ $t('login.login_button') }}</button>
@@ -75,6 +76,16 @@ export default {
   padding: 1em 2em;
   min-height: 100%;
   background-color: #a0e3be;
+}
+
+.install-hint {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: var(--dark);
+  max-width: 400px;
+  padding: 0.3em;
+  margin: 1em auto;
+  text-align: center;
+  white-space: pre-line;
 }
 
 .logo {

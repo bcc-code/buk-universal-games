@@ -1,4 +1,5 @@
 {
+  "install_hint": "Sugestie:\nInstalați această aplicație web pe ecranul de start, va funcționa mai bine!",
   "menu": {
     "home": "Acasă",
     "league": "Ligă",
@@ -105,7 +106,7 @@
         "optb": "Wave, Lean, Drift",
         "optc": "Lean, Drift, Wave",
         "optd": "Wave, Drift, Lean"
-    }
+      }
     },
     "insight": {
       "q": "Ce cărucior de montagne-russe va ajunge primul jos?",
