@@ -57,7 +57,8 @@
   },
   "league": {
     "rankingisempty": "Nog geen enkel team heeft punten geregistreerd. Kom na de eerste ronde hier terug.",
-    "viewgamerankings": "Bekijk ranglijst en scores voor elk spel"
+    "viewgamerankings": "Bekijk ranglijst en scores voor elk spel",
+    "viewgamerankings-title": "Je kunt de ranglijsten per spel bekijken op de detailpagina's van het spel."
   },
   "admin": {
     "select_league": {

@@ -57,7 +57,8 @@
     },
     "league": {
         "rankingisempty": "Aucun point n'a encore été gagné. Vérifiez à nouveau après le premier tour.",
-        "viewgamerankings": "Voir le classement et les scores de chaque jeu"
+        "viewgamerankings": "Voir le classement et les scores de chaque jeu",
+        "viewgamerankings-title": "Vous pouvez consulter les classements par jeu sur les pages de détails du jeu."
     },
     "admin": {
         "select_league": {

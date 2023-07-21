@@ -57,7 +57,8 @@
     },
     "league": {
         "rankingisempty": "Ningún equipo ha registrado puntos todavía. Vuelve aquí después de la primera ronda.",
-        "viewgamerankings": "Ver clasificación y puntuaciones para cada juego"
+        "viewgamerankings": "Ver clasificación y puntuaciones para cada juego",
+        "viewgamerankings-title": "Puedes ver las clasificaciones por juego en las páginas de detalles del juego."
     },
     "admin": {
         "select_league": {

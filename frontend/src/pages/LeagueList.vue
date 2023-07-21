@@ -51,7 +51,7 @@
       </div>
       <div class="message-white">
         <p>
-          You can view the rankings per game on the game detail pages.
+          {{$t('league.viewgamerankings-title')}}
         </p>
         <button class="btn-success" @click="this.$router.push('games')">{{ $t("league.viewgamerankings") }}</button>
       </div>

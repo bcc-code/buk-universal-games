@@ -57,7 +57,8 @@
   },
   "league": {
     "rankingisempty": "Még egy csapat sem szerzett pontokat. Ellenőrizze vissza az első kör után.",
-    "viewgamerankings": "Nézze meg a ranglistát és pontszámokat minden játékhoz"
+    "viewgamerankings": "Nézze meg a ranglistát és pontszámokat minden játékhoz",
+    "viewgamerankings-title": "A játék részletező oldalain megtekintheti az eredmények rangsorát."
   },
   "admin": {
     "select_league": {

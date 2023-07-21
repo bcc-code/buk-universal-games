@@ -57,7 +57,8 @@
   },
   "league": {
     "rankingisempty": "Niciun echipă nu a înregistrat încă puncte. Verificați din nou după prima rundă.",
-    "viewgamerankings": "Vizualizați clasamentul și scorurile pentru fiecare joc"
+    "viewgamerankings": "Vizualizați clasamentul și scorurile pentru fiecare joc",
+    "viewgamerankings-title": "Puteți vizualiza clasamentele pe joc pe paginile de detalii ale jocului."
   },
   "admin": {
     "select_league": {

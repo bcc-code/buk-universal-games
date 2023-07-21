@@ -57,7 +57,8 @@
   },
   "league": {
     "rankingisempty": "Kein Team hat bisher Punkte registriert. Schau nach der ersten Runde hier wieder vorbei.",
-    "viewgamerankings": "Zeige Rangliste und Punktzahl für jedes Spiel an"
+    "viewgamerankings": "Zeige Rangliste und Punktzahl für jedes Spiel an",
+    "viewgamerankings-title": "Sie können die Rangliste pro Spiel auf den Detailseiten des Spiels anzeigen."
   },
   "admin": {
     "select_league": {

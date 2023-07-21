@@ -57,7 +57,8 @@
   },
   "league": {
     "rankingisempty": "Żadna drużyna nie zarejestrowała jeszcze punktów. Sprawdź tutaj po pierwszej rundzie.",
-    "viewgamerankings": "Wyświetl ranking i wyniki dla każdej gry"
+    "viewgamerankings": "Wyświetl ranking i wyniki dla każdej gry",
+    "viewgamerankings-title": "Możesz zobaczyć rankingi na stronach szczegółów gry."
   },
   "admin": {
     "select_league": {

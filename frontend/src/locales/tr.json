@@ -53,7 +53,8 @@
   "login": {
     "login_button": "Giriş",
     "teamcode": "Takım kodu",
-    "teamcode_invalid": "Üzgünüz, takım anahtarınız geçersiz"
+    "teamcode_invalid": "Üzgünüz, takım anahtarınız geçersiz",
+    "viewgamerankings-title": "Oyun detay sayfalarında oyunlara göre sıralamaları görüntüleyebilirsiniz."
   },
   "league": {
     "rankingisempty": "Henüz hiçbir takım puan kaydetmedi. İlk turdan sonra burayı kontrol edin.",

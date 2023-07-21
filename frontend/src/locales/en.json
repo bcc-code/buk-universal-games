@@ -57,7 +57,8 @@
     },
     "league": {
         "rankingisempty": "No team has yet registered points. Check back here after the first round.",
-        "viewgamerankings": "View ranking and scores for each game"
+        "viewgamerankings": "View ranking and scores for each game",
+        "viewgamerankings-title": "You can view the rankings per game on the game detail pages."
     },
     "admin": {
         "select_league": {

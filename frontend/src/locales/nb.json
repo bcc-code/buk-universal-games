@@ -57,7 +57,8 @@
   },
   "league": {
     "rankingisempty": "Ingen lag har ennå registrert poeng. Sjekk tilbake her etter første runde.",
-    "viewgamerankings": "Se rangering og poengsum for hvert spill"
+    "viewgamerankings": "Se rangering og poengsum for hvert spill",
+    "viewgamerankings-title": "Du kan se rangeringene per spill på spilldetaljsidene."
   },
   "admin": {
     "select_league": {
