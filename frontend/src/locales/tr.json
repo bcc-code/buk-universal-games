@@ -11,35 +11,35 @@
     "nervespiral": "Sinirli Spiral XL",
     "tickettwist": "Bilet Kıvırma",
     "minefield": "Mayın Tarlası",
-    "crowdsurfing": "Kalabalık Sörf"
+    "tablesurfing": "Kalabalık Sörf"
   },
   "score": {
     "monkeybars": "{score} çubuk",
     "nervespiral": "{score} saniye",
     "tickettwist": "{score} bilet",
     "minefield": "{score} saniye",
-    "crowdsurfing": "{score} saniye"
+    "tablesurfing": "{score} saniye"
   },
   "leadstory": {
     "monkeybars": "Takımınız, arızalanan bir dönme dolapta mahsur kalmış kişilere yardım edebilir mi? Dönme dolaba tırmanmak zorlu olabilir ve ilk yardım malzemelerini taşımanın önemini unutmamak önemlidir. Lütfen takımınızın diğer tarafa ulaşmasını ve bu yardıma muhtaç kişileri kurtarmasını sağlayın.",
     "nervespiral": "Sıranızın bir sonraki oyuna kadar sabırla beklerken, birdenbire bir güç arızası meydana gelir. Endişelenmeye gerek yok. Takımınız bu beklenmedik durumu ustaca yönlendirebilecek mi? Elektrik çarpması olmadan sıradan ayrılmak için takımınıza güvenin ve bu zorluğun üstesinden sakinlik ve nezaketle gelin.",
     "tickettwist": "İnsanlar bilet almak için sırada bekliyor. Takımınız hız ve stresle başa çıkabilecek mi? Bu oyun hızlı düşünmeyi, dayanıklılığı, hızı ve takım çalışmasını birleştirir. Odaklanın ve mümkün olduğunca çok biletin rengini takımınıza çevirin. Bu zorluğa hazır mısınız?",
     "minefield": "Takımınız, kaçan vahşi hayvanlara karşı dikkatli olmaları gereken zorlu bir durumla karşı karşıya. Hedefleri bu hayvanlar tarafından saldırıya uğramadan hedeflerine ulaşmaktır.",
-    "crowdsurfing": "Tren rayları hasar gördü, önemli bir problem oluşturuyor. Ancak takımınız, birlikte çalışarak bu durumla başa çıkabilir. Yeteneklerinizi birleştirin, eylemlerinizi koordine edin ve trenin sorunsuz bir şekilde ilerlemesini sağlayacak bir yol bulun."
+    "tablesurfing": "Tren rayları hasar gördü, önemli bir problem oluşturuyor. Ancak takımınız, birlikte çalışarak bu durumla başa çıkabilir. Yeteneklerinizi birleştirin, eylemlerinizi koordine edin ve trenin sorunsuz bir şekilde ilerlemesini sağlayacak bir yol bulun."
   },
   "explanation": {
     "monkeybars": "Birinci oyuncu Maymun Barları'na tırmanmaya başlar ve yapabildiği kadar ilerler. 12. çubuğa ulaştığında, bir sonraki oyuncu başlangıçtan başlayabilir.\n\nÖrnek: Birinci oyuncu son olarak 26. çubuğa dokundu, bu nedenle puanı 26 olur. İkinci oyuncu 18. çubukta düştü, bu nedenle puanı 18 olur. Tüm oyuncuların puanları toplanır ve takımın toplam puanı takım üye sayısına bölünür.",
     "nervespiral": "Başlangıç işareti seslendiğinde, ilk iki oyuncu spirale gidebilir, her biri metal halkanın bir tarafını alır ve tüpe temas etmeden ilk kontrol noktasına ulaşmaya çalışır.\n\n İki oyuncu bir kontrol noktasına ulaştığında geri dönerler ve iki yeni oyuncu oyunun içine girer. Bu iki oyuncu spiral dokunduğunda, takımlarına geri döner ve iki yeni oyuncu son kontrol noktasından devam eder. Bu şekilde, spiralin sonuna ulaşılana kadar devam edilir. İlk bitiren takım kazanır.",
     "tickettwist": "Bu oyunda, oyuna katılan her oyuncu takımının renginde bir kurdele takmak zorundadır. Her takımdan 10 oyuncu alan oyunda, amacı takımının rengine mümkün olduğunca çok bilet çevirmektir. Oyuncular alan içinde diledikleri kadar değişebilir, ancak yeni oyuncu oyuna \"eski\" oyuncunun kurdelesini almalı ve ardından yeni oyuncu oyunu devam ettirebilir. Oyun 8 dakikalık 1 turdan oluşur. Süre dolduğunda, tüm oyuncular alanı terk eder ve biletler renklere göre sayılır. En çok bilet çeviren takım oyunu kazanır.",
     "minefield": "Bu oyun büyük bir alanda küçük bölümler halinde gerçekleşir. Her takımın alanın kenarlarında iki kaptanı vardır ve bu kaptanlar telefon veya başka bir yardımcı araç kullanmadan katılımcıları yönlendirir. Birinci oyuncu başlar ve yanlış kutuya basmadan alana geçmeye çalışır. Doğru veya yanlış kutuda olduğunuzu anlamak için her kutuda sesli uyarı veren bir sinyalizatör kullanırsınız. Sinyalizatör alarm sinyali verdiğinde, yanlış kutuda olduğunuzu anlamış olursunuz ve yeni bir oyuncu için oyuncuyu değiştirmeniz gerekir. Her oyuncu her kutuyu kontrol eder, hatta bu kutunun kesinlikle bir mayın içermediğine yüzde 100 emin olsa bile. Kaptanlar doğru yolu hatırlamada yardımcı olur. Bitişe ulaşana kadar devam eder ve ardından zamanınız durur. En hızlı sürede bitiren takım oyunu kazanır.",
-    "crowdsurfing": "Bu oyunun amacı, flamingo üzerindeki bir kişiyi diğer tarafa geçirmektir. Takımınızla birlikte birkaç tur almanız ve üstteki kişinin yere düşmemesini sağlamanız gerekir. Rota sonunda bir yokuş bulunur. Erkekler yokuşa tırmandıktan sonra zil çalar ve takımlar değişir. İkinci takım (kızlar) aynı rotayı geri dönerken, yokuşa iner ve tüm dönemeçlerden dolaşır. Finiş çizgisini ilk geçen takım oyunu kazanır."
+    "tablesurfing": "Bu oyunun amacı, flamingo üzerindeki bir kişiyi diğer tarafa geçirmektir. Takımınızla birlikte birkaç tur almanız ve üstteki kişinin yere düşmemesini sağlamanız gerekir. Rota sonunda bir yokuş bulunur. Erkekler yokuşa tırmandıktan sonra zil çalar ve takımlar değişir. İkinci takım (kızlar) aynı rotayı geri dönerken, yokuşa iner ve tüm dönemeçlerden dolaşır. Finiş çizgisini ilk geçen takım oyunu kazanır."
   },
   "rules": {
     "monkeybars": "Takımın tüm üyeleri katılır",
     "nervespiral": "30 - 50 takım üyesi katılır (15-25 çift)",
     "tickettwist": "Sadece takım kurdelesi taşıyan kişilere sahaya giriş izni vardır (takım başına 10)|Kurdele taşıyan katılımcılar sınırsız sayıda değiştirilebilir, ancak sahaya girerken takım kurdelesi takmalıdır",
     "minefield": "Yaklaşık 30 takım üyesi katılır|Zaman içinde sadece 1 kişi alanda olabilir|2 takım kaptanı katılımcıları alanda yönlendirir|Takım kaptanları hatırlamak için araç kullanamaz",
-    "crowdsurfing": "16 erkek ve 16 kız katılır, 1 sörfçü ve 15 yuvarlanan|Yere dokunmak yasaktır (hem yuvarlananlar hem de sörfçü)|Engeller hareket ettirilemez ve yuvarlananlar işaretlenen alanın dışına çıkamaz"
+    "tablesurfing": "16 erkek ve 16 kız katılır, 1 sörfçü ve 15 yuvarlanan|Yere dokunmak yasaktır (hem yuvarlananlar hem de sörfçü)|Engeller hareket ettirilemez ve yuvarlananlar işaretlenen alanın dışına çıkamaz"
   },
   "general_error": "Bir şeyler ters gitti",
   "pleaserefresh": "Lütfen sayfayı yeniden yüklemeyi deneyin",

@@ -142,7 +142,7 @@ const preCacheUris = [
   'index.html',
   'js/app.js',
   'js/chunk-vendors.js',
-  'video/crowdsurfing.mp4',
+  'video/tablesurfing.mp4',
   // 'video/monkeybars.mp4',
   // 'video/minefield.mp4',
   // 'video/nervespiral.mp4',

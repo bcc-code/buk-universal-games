@@ -11,35 +11,35 @@
       "nervespiral": "Espiral de nervios XL",
       "tickettwist": "Giro de boletos",
       "minefield": "Campo de minas",
-      "crowdsurfing": "Surf de multitudes"
+      "tablesurfing": "Surf de multitudes"
   },
   "score": {
       "monkeybars": "{score} barras",
       "nervespiral": "{score} segundos",
       "tickettwist": "{score} boletos",
       "minefield": "{score} segundos",
-      "crowdsurfing": "{score} segundos"
+      "tablesurfing": "{score} segundos"
   },
   "leadstory": {
       "monkeybars": "¿Puede tu equipo proporcionar asistencia para rescatar a personas atrapadas en una noria averiada? Escalar una noria puede ser un desafío, y es crucial recordar la importancia de llevar suministros de primeros auxilios. Lleva a tu equipo al otro lado y rescata a estas personas necesitadas.",
       "nervespiral": "Mientras esperas pacientemente tu turno en la fila para la próxima atracción, de repente ocurre un fallo de energía. No hay necesidad de entrar en pánico. ¿Puede tu equipo navegar hábilmente por esta situación inesperada, saliendo de la fila sin experimentar ninguna descarga eléctrica? Mantén la calma y confía en la capacidad de tu equipo para manejar este desafío con compostura y gracia.",
       "tickettwist": "Las personas están esperando en la fila para obtener su boleto. ¿Puede tu equipo manejar la velocidad y el estrés que viene en la taquilla? Este juego combina pensamiento rápido, resistencia, velocidad y trabajo en equipo. Mantén la concentración y cambia la mayor cantidad de boletos a tu color de equipo. ¿Estás listo para el desafío?",
       "minefield": "Tu equipo se enfrenta a una situación difícil donde necesitan cruzar al otro lado teniendo cuidado con los animales salvajes que han escapado. El objetivo es llegar a su destino sin ser atacados por estos animales.",
-      "crowdsurfing": "Las vías del tren están dañadas, lo que causa un problema importante. Sin embargo, tu equipo puede enfrentar esta situación trabajando juntos como un equipo. Combina tus habilidades, coordina tus acciones y encuentra una manera de mantener el tren en movimiento sin problemas."
+      "tablesurfing": "Las vías del tren están dañadas, lo que causa un problema importante. Sin embargo, tu equipo puede enfrentar esta situación trabajando juntos como un equipo. Combina tus habilidades, coordina tus acciones y encuentra una manera de mantener el tren en movimiento sin problemas."
   },
   "explanation": {
       "monkeybars": "El jugador uno comienza a trepar las barras de mono todo lo que pueda. Una vez que ha alcanzado la barra número 12, el siguiente jugador puede comenzar desde el principio.\n\nEjemplo: El jugador uno tocó la barra número 26 por última vez, por lo que su puntuación será de 26 puntos. El jugador dos cayó en la barra número 18, por lo que su puntuación es de 18 puntos. Las puntuaciones de todos los jugadores se sumarán y se dividirán por el número total de jugadores en el equipo. Esa será la puntuación total de tu equipo.",
       "nervespiral": "Cuando suena la señal de inicio, los primeros dos jugadores pueden ir a la espiral. Ambos toman un lado del anillo de metal e intentan llegar al primer punto de control sin tocar el tubo.\n\nCuando los dos jugadores llegan a un punto de control, regresan y entran dos nuevos jugadores al juego. Cuando estos dos jugadores tocan la espiral, regresan al equipo y dos nuevos jugadores continúan desde el último punto de control. Continúas hasta llegar al final de la espiral. El equipo que termine primero gana.",
       "tickettwist": "Para este juego, cada jugador que participe debe llevar una cinta del color de su equipo. 10 jugadores de cada equipo competirán entre sí en el campo. El objetivo de este juego es cambiar la mayor cantidad de fichas al color de tu equipo. Los jugadores en el campo pueden cambiar tantas veces como deseen, pero el nuevo jugador debe recibir la cinta del jugador 'antiguo' y luego el nuevo jugador puede continuar con el juego. El juego consta de 1 ronda de 8 minutos. Cuando se acabe el tiempo, todos los jugadores abandonan el campo y las fichas se contarán por color. El equipo que haya cambiado más fichas a su color, gana el juego.",
       "minefield": "Este juego se llevará a cabo en un gran campo con secciones pequeñas. Cada equipo tiene dos capitanes en las líneas laterales que guían a los jugadores sin usar teléfonos móviles u otras ayudas. El jugador uno comienza y trata de pasar por el campo sin pisar una casilla equivocada. Para saber si estás en una casilla correcta o equivocada, usas un dispositivo sonoro en cada casilla. Cuando el dispositivo sonoro da la señal de alarma, estás en una casilla equivocada y debes cambiar al jugador por un jugador nuevo. Cada jugador verifica cada casilla, incluso si estás 100% seguro de que no es una mina. Los capitanes ayudan a recordar el camino correcto. Continúas hasta que llegues al final y luego se detendrá tu tiempo. El equipo con el tiempo más rápido, gana el juego.",
-      "crowdsurfing": "El objetivo de este juego es llevar a una persona al otro lado de la pista en un flamenco sobre personas rodantes. Con tu equipo, debes tomar varias vueltas y tratar de evitar que la persona de arriba caiga al suelo. Al final de la pista, encontrarás una pendiente. Una vez que los chicos hayan subido la pendiente, sonará el timbre y los equipos se cambiarán. El segundo equipo (las chicas) colocará la misma pista en el camino de regreso, pasando por la pendiente y alrededor de todas las curvas. El equipo que cruce la línea de meta primero, gana."
+      "tablesurfing": "El objetivo de este juego es llevar a una persona al otro lado de la pista en un flamenco sobre personas rodantes. Con tu equipo, debes tomar varias vueltas y tratar de evitar que la persona de arriba caiga al suelo. Al final de la pista, encontrarás una pendiente. Una vez que los chicos hayan subido la pendiente, sonará el timbre y los equipos se cambiarán. El segundo equipo (las chicas) colocará la misma pista en el camino de regreso, pasando por la pendiente y alrededor de todas las curvas. El equipo que cruce la línea de meta primero, gana."
   },
   "rules": {
       "monkeybars": "Participan todos los miembros del equipo",
       "nervespiral": "Participan de 30 a 50 miembros del equipo (en 15-25 parejas)",
       "tickettwist": "Solo las personas con una cinta del equipo tienen permitido ingresar al campo (10 por equipo)|Se permite cambiar de participantes sin limitación, siempre y cuando lleven una cinta del equipo al ingresar al campo",
       "minefield": "Participan aproximadamente 30 miembros del equipo|Solo se permite una persona a la vez en el recorrido|2 capitanes del equipo guían a los participantes por el recorrido|Los capitanes del equipo no pueden usar herramientas para recordar la ruta",
-      "crowdsurfing": "Participan 16 chicos y 16 chicas, 1 persona que está en el flamenco y 15 personas que ruedan|No se permite tocar el suelo (tanto el que está en el flamenco como los que ruedan)|No se pueden mover los obstáculos y los rodantes no pueden salir del área marcada"
+      "tablesurfing": "Participan 16 chicos y 16 chicas, 1 persona que está en el flamenco y 15 personas que ruedan|No se permite tocar el suelo (tanto el que está en el flamenco como los que ruedan)|No se pueden mover los obstáculos y los rodantes no pueden salir del área marcada"
   },
   "general_error": "Algo salió mal",
   "pleaserefresh": "Por favor, intenta actualizar la página",

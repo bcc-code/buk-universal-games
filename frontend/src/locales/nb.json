@@ -11,35 +11,35 @@
     "nervespiral": "Nerve-spiral XL",
     "tickettwist": "Billettriks",
     "minefield": "Minefelt",
-    "crowdsurfing": "Publikumsurfing"
+    "tablesurfing": "Publikumsurfing"
   },
   "score": {
     "monkeybars": "{score} stenger",
     "nervespiral": "{score} sekunder",
     "tickettwist": "{score} billetter",
     "minefield": "{score} sekunder",
-    "crowdsurfing": "{score} sekunder"
+    "tablesurfing": "{score} sekunder"
   },
   "leadstory": {
     "monkeybars": "Kan ditt lag bistå med å redde folk som er fanget på et feilfungerende pariserhjul? Å klatre på et pariserhjul kan være utfordrende, og det er viktig å huske betydningen av å ha førstehjelpsutstyr med seg. Få teamet ditt til å nå den andre siden og redde disse hjelpeløse individene som trenger hjelp.",
     "nervespiral": "Mens du tålmodig venter på din tur i køen til den neste attraksjonen, skjer det plutselig strømbrudd. Ikke panikk. Kan ditt lag dyktig navigere gjennom denne uventede situasjonen og trygt forlate køen uten å oppleve noen elektriske støt? Hold roen og stol på teamets evne til å håndtere denne utfordringen med ro og verdighet.",
     "tickettwist": "Mennesker står i kø for å få billetten sin. Er ditt lag i stand til å håndtere hastigheten og stresset som følger med billettkiosken? Dette spillet kombinerer rask tenkning, utholdenhet, hastighet og samarbeid. Hold fokus og snu så mange billetter som mulig til fargen til ditt lag. Er dere klare for utfordringen?",
     "minefield": "Ditt lag står overfor en vanskelig situasjon der de må krysse til den andre siden samtidig som de er forsiktige med ville dyr som har rømt. Målet er å nå destinasjonen deres uten å bli angrepet av disse dyrene.",
-    "crowdsurfing": "Jernbanesporene er skadet, noe som skaper et betydelig problem. Men ditt lag kan takle denne situasjonen ved å jobbe sammen som et team. Kombiner ferdighetene deres, koordiner handlingene deres, og finn en måte å holde toget i bevegelse jevnt på."
+    "tablesurfing": "Jernbanesporene er skadet, noe som skaper et betydelig problem. Men ditt lag kan takle denne situasjonen ved å jobbe sammen som et team. Kombiner ferdighetene deres, koordiner handlingene deres, og finn en måte å holde toget i bevegelse jevnt på."
   },
   "explanation": {
     "monkeybars": "Spiller én begynner å klatre på apereiret så langt som de kan. Når de har nådd den 12. stangen, kan neste spiller begynne fra begynnelsen.\n\nEksempel: Spiller én berørte sist den 26. stangen, så poengsummen hans vil være 26 poeng. Spiller to falt på den 18. stangen, så poengsummen hennes er 18 poeng. Poengene til alle spillerne blir lagt sammen og delt på det totale antallet spillere på laget. Det blir lagets totale poengsum.",
     "nervespiral": "Når startsignalet høres, kan de første to spillerne gå til spiralen. De tar hver sin side av metallringen og prøver å komme til det første kontrollpunktet uten å berøre røret.\n\nNår de to spillerne når ett kontrollpunkt, går de tilbake, og to nye spillere kommer inn i spillet. Når disse to spillerne berører spiralen, går de tilbake til laget, og to nye spillere fortsetter fra det siste kontrollpunktet. Dette fortsetter til du når enden av spiralen. Laget som avslutter først, vinner.",
     "tickettwist": "For dette spillet må hver spiller som deltar i spillet, ha et bånd i fargen til laget sitt. 10 spillere fra hvert lag vil konkurrere mot hverandre på banen. Målet med dette spillet er å snu så mange fliser som mulig til fargen til laget ditt. Spillerne på banen kan bytte så ofte de vil, men da må den nye spilleren ha båndet fra 'gamle' spilleren og kan deretter fortsette med spillet. Spillet består av 1 runde på 8 minutter. Når tiden er ute, forlater alle spillerne banen, og flisene blir telt etter farge. Laget som har snudd flest fliser til fargen sin, vinner spillet.",
     "minefield": "Dette spillet vil finne sted på et stort felt med små seksjoner. Hvert lag har to kapteiner på sidelinjen som guider spillerne uten å bruke telefoner eller andre hjelpemidler. Spiller én begynner og prøver å gå gjennom feltet uten å tråkke på feil boks. For å vite om du er i en riktig eller feil boks, bruker du lydsignalet i hver boks. Når lydsignalet gir alarmen, er du i feil boks, og du må bytte spiller til en ny spiller. Hver spiller sjekker hver boks, selv om det er 100% sikkert at det ikke er en mine. Kapteinene hjelper med å huske den riktige ruten. Du fortsetter til du har nådd målet, og da stopper tiden din. Laget med den raskeste tiden, vinner spillet.",
-    "crowdsurfing": "Målet med dette spillet er å få en person til den andre siden av sporet på flamingoen, over rullende personer. Med teamet ditt tar du flere runder og prøver å forhindre at personen på toppen faller på bakken. På enden av sporet finner du en bakke. Når guttene har klatret bakken, ringer klokken, og dere bytter lag. Det andre laget (jenter) legger ut samme spor på vei tilbake, med å gå ned bakken og rundt alle kurvene. Laget som krysser målstreken først, vinner."
+    "tablesurfing": "Målet med dette spillet er å få en person til den andre siden av sporet på flamingoen, over rullende personer. Med teamet ditt tar du flere runder og prøver å forhindre at personen på toppen faller på bakken. På enden av sporet finner du en bakke. Når guttene har klatret bakken, ringer klokken, og dere bytter lag. Det andre laget (jenter) legger ut samme spor på vei tilbake, med å gå ned bakken og rundt alle kurvene. Laget som krysser målstreken først, vinner."
   },
   "rules": {
     "monkeybars": "Alle medlemmer av laget deltar",
     "nervespiral": "30 - 50 lagmedlemmer deltar (i 15-25 par)",
     "tickettwist": "Bare personer med et lagsbånd har lov til å gå inn på banen (10 per lag)|Det er tillatt å bytte deltakere uten begrensning, så lenge de har på seg et lagsbånd når de går inn på banen",
     "minefield": "Omtrent 30 lagmedlemmer deltar|Bare én person av gangen er tillatt på banen|2 lagkapteiner guider deltakerne gjennom banen|Lagkapteinene kan ikke bruke verktøy for å huske ruten",
-    "crowdsurfing": "16 gutter og 16 jenter deltar, 1 surfer og 15 rullende personer|Det er ikke tillatt å berøre bakken (både flytende og surfer)|Hindringer kan ikke flyttes, og rullende personer kan ikke bevege seg utenfor det merkede området"
+    "tablesurfing": "16 gutter og 16 jenter deltar, 1 surfer og 15 rullende personer|Det er ikke tillatt å berøre bakken (både flytende og surfer)|Hindringer kan ikke flyttes, og rullende personer kan ikke bevege seg utenfor det merkede området"
   },
   "general_error": "Noe gikk galt",
   "pleaserefresh": "Vennligst prøv å oppdatere siden",
