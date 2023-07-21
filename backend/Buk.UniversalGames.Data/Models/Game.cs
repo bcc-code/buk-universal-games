@@ -15,11 +15,12 @@ public class Game {
 
     public virtual GameType Type => GameType switch
     {
-        "nervespiral" => Library.Enums.GameType.NerveSpiral,
-        "monkeybars" => Library.Enums.GameType.MonkeyBars,
-        "tickettwist" => Library.Enums.GameType.TicketTwist,
-        "minefield" => Library.Enums.GameType.MineField,
-        "tablesurfing" => Library.Enums.GameType.TableSurfing
+      "nervespiral" => Library.Enums.GameType.NerveSpiral,
+      "monkeybars" => Library.Enums.GameType.MonkeyBars,
+      "tickettwist" => Library.Enums.GameType.TicketTwist,
+      "minefield" => Library.Enums.GameType.MineField,
+      "tablesurfing" => Library.Enums.GameType.TableSurfing,
+      _ => throw new NotImplementedException("Invalid game type. Please migrate your data manually")
     };
 
     [Column("type")]
