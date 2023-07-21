@@ -38,9 +38,8 @@ export default {
       window.localStorage.setItem("teamCode", this.teamCode.toUpperCase());
       const loginData = await this.$store.dispatch("signIn")
       this.$store.commit('setLoginMessage', '')
-
-
       if (!loginData || loginData.error) {
+        window.localStorage.removeItem("teamCode");
         if (loginData.error) {
           this.$store.commit('setLoginMessage', loginData.error)
         } else {
