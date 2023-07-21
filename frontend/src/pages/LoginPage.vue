@@ -1,6 +1,6 @@
 <template>
   <section class="bg">
-    <form class="content" @submit="tryLogin">
+    <form class="content" @submit="tryLogin()">
       <img src="image/ubg-logo.svg" alt="" class="logo" />
       <input type="text" class="codeInput" :placeholder="$t('login.teamcode')" v-model="teamCode" />
       <button v-if="teamCode.length > 3" class="btn-primary">{{ $t('login.login_button') }}</button>
@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import { inject } from 'vue'
 export default {
   name: "LoginPage",
   props: {
@@ -18,10 +19,12 @@ export default {
   data() {
     return {
       teamCode: "",
+      notificationService: null,
     };
   },
   mounted() {
     this.$store.commit("setLoginMessage", "");
+    this.notificationService = inject('notificationService');
     if (this.code) {
       this.teamCode = this.code
       this.tryLogin()
@@ -29,6 +32,7 @@ export default {
   },
   methods: {
     async tryLogin(ev) {
+      this.notificationService.requestExternal();
       // Do not perform normal HTML form submit.
       ev?.preventDefault();
       window.localStorage.setItem("teamCode", this.teamCode.toUpperCase());
