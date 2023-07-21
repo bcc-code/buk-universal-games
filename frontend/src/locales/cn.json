@@ -71,7 +71,7 @@
         "question_locked": "仍处于锁定状态",
         "youhaveunsubmittedanswers": "您有 {numAnswers} 个答案。 您现在想发送它们吗？",
         "submityouranswers": "提交您的答案",
-        "gameroundtitle": "第{round}轮",
+        "gameroundtitle": "第{round}回合",
         "back_to_overview": "返回概述",
         "questiontypes": {
             "math": "数学",
