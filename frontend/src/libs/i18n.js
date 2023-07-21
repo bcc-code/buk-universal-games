@@ -1,10 +1,10 @@
 import { nextTick } from 'vue'
 import { createI18n } from 'vue-i18n'
 
-export const SUPPORT_LOCALES = ['en', 'no']
+export const SUPPORT_LOCALES = ['cn', 'de', 'en', 'es', 'fr', 'nb', 'nl', 'pl', 'ro', 'ru', 'tr']
 
-export function setupI18n(options = { locale: 'en',  }) {
-  if(!options.locale || !SUPPORT_LOCALES.includes(options.locale)) {
+export function setupI18n(options = { locale: 'en', }) {
+  if (!options.locale || !SUPPORT_LOCALES.includes(options.locale)) {
     console.warn(`The locale '${options.locale}' is not supported. Using 'en' as fallback.`)
     options.locale = 'en'
   }

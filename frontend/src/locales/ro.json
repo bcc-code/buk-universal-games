@@ -1,4 +1,5 @@
 {
+  "install_hint": "Sugestie:\nInstalați această aplicație web pe ecranul de start, va funcționa mai bine!",
   "menu": {
     "home": "Acasă",
     "league": "Ligă",
@@ -11,35 +12,35 @@
     "nervespiral": "Spirală nervoasă XL",
     "tickettwist": "Trucul cu Bilete",
     "minefield": "Câmp Minat",
-    "crowdsurfing": "Surf în Mulțime"
+    "tablesurfing": "Surf în Mulțime"
   },
   "score": {
     "monkeybars": "{score} bare",
     "nervespiral": "{score} secunde",
     "tickettwist": "{score} bilete",
     "minefield": "{score} secunde",
-    "crowdsurfing": "{score} secunde"
+    "tablesurfing": "{score} secunde"
   },
   "leadstory": {
     "monkeybars": "Poate echipa ta oferi asistență pentru a salva oameni prinși pe o roată panoramică defectă? Să urci pe o roată panoramică poate fi provocator, și este crucial să nu uiți importanța de a avea provizii de prim ajutor. Fă-ți echipa să ajungă pe cealaltă parte și să salveze acești oameni neajutorați.",
     "nervespiral": "În timp ce aștepți rândul tău în linia pentru următoarea atracție, se întâmplă brusc o cădere de curent. Nu intra în panică. Poate echipa ta naviga cu pricepere prin această situație neașteptată, părăsind în siguranță linia fără a experimenta șocuri electrice? Păstrează-ți calmul și încrederea în abilitatea echipei tale de a gestiona această provocare cu compoziție și eleganță.",
     "tickettwist": "Oamenii stau în linie pentru a-și lua biletul. Este echipa ta capabilă să facă față vitezei și stresului din zona de vânzare a biletelor? Acest joc combină gândirea rapidă, rezistența, viteza și colaborarea. Concentrează-te și adună cât mai multe bilete în culoarea echipei tale. Ești pregătit pentru provocare?",
     "minefield": "Echipa ta se confruntă cu o situație dificilă în care trebuie să traverseze spre cealaltă parte fiind atenți la animalele sălbatice care au scăpat. Scopul este de a ajunge la destinație fără a fi atacați de aceste animale.",
-    "crowdsurfing": "Linia de cale ferată este deteriorată, provocând o problemă semnificativă. Cu toate acestea, echipa ta poate rezolva această situație lucrând împreună ca o echipă. Combină-vă abilitățile, coordonați-vă acțiunile și găsiți o modalitate de a menține trenul în mișcare lină."
+    "tablesurfing": "Linia de cale ferată este deteriorată, provocând o problemă semnificativă. Cu toate acestea, echipa ta poate rezolva această situație lucrând împreună ca o echipă. Combină-vă abilitățile, coordonați-vă acțiunile și găsiți o modalitate de a menține trenul în mișcare lină."
   },
   "explanation": {
     "monkeybars": "Jucătorul unu începe să urce pe barele cu maimuțe cât de mult poate. Odată ce a ajuns la a 12-a bară, următorul jucător poate începe de la început.\n\nExemplu: Jucătorul unu a atins ultima dată a 26-a bară, deci scorul lui va fi de 26 de puncte. Jucătorul doi a căzut la a 18-a bară, deci scorul ei este de 18 puncte. Punctele tuturor jucătorilor se vor aduna și se vor împărți la numărul total de jucători din echipă. Acesta va fi scorul total al echipei tale.",
     "nervespiral": "Când se dă semnalul de start, primii doi jucători pot merge la spirală. Aceștia iau fiecare o parte a inelului de metal și încearcă să ajungă la primul punct de control fără să atingă tubul.\n\nCând cei doi jucători ajung la un punct de control, se întorc înapoi, iar doi jucători noi intră în joc. Când acești doi jucători ating spirală, se întorc la echipă, iar doi jucători noi continuă de la ultimul punct de control. Acest lucru continuă până când se ajunge la capătul spirală. Echipa care termină prima câștigă.",
     "tickettwist": "Pentru acest joc, fiecare jucător care participă în joc trebuie să poarte o banderolă în culoarea echipei sale. 10 jucători din fiecare echipă vor concura unul împotriva celuilalt pe teren. Scopul acestui joc este să întorci cât mai multe cărămizi în culoarea echipei tale. Jucătorii de pe teren pot să schimbe cât de des doresc, dar noul jucător trebuie să primească banderola de la jucătorul „vechi” și apoi noul jucător poate continua jocul. Jocul constă într-o rundă de 8 minute. Când timpul a expirat, toți jucătorii părăsesc terenul, iar cărămizile vor fi numărate după culoare. Echipa care a întors cele mai multe cărămizi în culoarea sa câștigă jocul.",
     "minefield": "Acest joc va avea loc pe un teren mare cu sectoare mici. Fiecare echipă are doi căpitani pe margine care ghidează jucătorii fără a folosi telefoane mobile sau alte ajutoare. Jucătorul unu începe și încearcă să treacă prin teren fără să calce într-o cutie greșită. Pentru a ști dacă te afli într-o cutie corectă sau greșită, folosești un dispozitiv sonor în fiecare cutie. Când dispozitivul sonor dă semnalul de alarmă, te afli într-o cutie greșită și trebuie să schimbi jucătorul cu un jucător nou. Fiecare jucător verifică fiecare cutie, chiar dacă este 100% sigur că nu este o mină. Căpitanii ajută la memorarea traseului corect. Continui până când ai ajuns la final, iar apoi timpul tău se oprește. Echipa cu cel mai rapid timp câștigă jocul.",
-    "crowdsurfing": "Scopul acestui joc este să treci o persoană de pe o parte a traseului la alta pe o flamingo peste persoanele care se rostogolesc. Cu echipa ta trebuie să faci mai multe încercări și să nu lași persoana de sus să cadă pe pământ. La capătul traseului, vei găsi o pantă. Odată ce băieții au urcat pe pantă, se va auzi clopoțelul și echipele se vor schimba. A doua echipă (fetele) va stabili același traseu pe drumul înapoi, coborând pe pantă și trecând pe la toate curburile. Echipa care trece linia de sosire prima câștigă."
+    "tablesurfing": "Scopul acestui joc este să treci o persoană de pe o parte a traseului la alta pe o flamingo peste persoanele care se rostogolesc. Cu echipa ta trebuie să faci mai multe încercări și să nu lași persoana de sus să cadă pe pământ. La capătul traseului, vei găsi o pantă. Odată ce băieții au urcat pe pantă, se va auzi clopoțelul și echipele se vor schimba. A doua echipă (fetele) va stabili același traseu pe drumul înapoi, coborând pe pantă și trecând pe la toate curburile. Echipa care trece linia de sosire prima câștigă."
   },
   "rules": {
     "monkeybars": "Participă toți membrii echipei",
     "nervespiral": "Participă 30 - 50 de membri ai echipei (în 15-25 de perechi)",
     "tickettwist": "Numai persoanele cu banderolă de echipă au voie să intre pe teren (10 pe echipă)|Este permis să schimbi participanții fără limită, atâta timp cât poartă o banderolă de echipă când intră pe teren",
     "minefield": "Participă aproximativ 30 de membri ai echipei|Pe traseu este permisă o singură persoană odată|2 căpitani de echipă ghidează participanții prin traseu|Căpitanii de echipă nu au voie să folosească unelte pentru a-și aminti traseul",
-    "crowdsurfing": "Participă 16 băieți și 16 fete, 1 persoană care stă pe flamingo și 15 persoane care se rostogolesc|Nu este permis să atingi pământul (atat cel care stă pe flamingo, cât și cei care se rostogolesc)|Obstacolele nu pot fi mutate, iar persoanele care se rostogolesc nu pot ieși din zona marcată"
+    "tablesurfing": "Participă 16 băieți și 16 fete, 1 persoană care stă pe flamingo și 15 persoane care se rostogolesc|Nu este permis să atingi pământul (atat cel care stă pe flamingo, cât și cei care se rostogolesc)|Obstacolele nu pot fi mutate, iar persoanele care se rostogolesc nu pot ieși din zona marcată"
   },
   "general_error": "Ceva nu a mers bine",
   "pleaserefresh": "Vă rugăm să încercați să reîmprospătați pagina",
@@ -56,7 +57,8 @@
   },
   "league": {
     "rankingisempty": "Niciun echipă nu a înregistrat încă puncte. Verificați din nou după prima rundă.",
-    "viewgamerankings": "Vizualizați clasamentul și scorurile pentru fiecare joc"
+    "viewgamerankings": "Vizualizați clasamentul și scorurile pentru fiecare joc",
+    "viewgamerankings-title": "Puteți vizualiza clasamentele pe joc pe paginile de detalii ale jocului."
   },
   "admin": {
     "select_league": {
@@ -105,7 +107,7 @@
         "optb": "Wave, Lean, Drift",
         "optc": "Lean, Drift, Wave",
         "optd": "Wave, Drift, Lean"
-    }
+      }
     },
     "insight": {
       "q": "Ce cărucior de montagne-russe va ajunge primul jos?",

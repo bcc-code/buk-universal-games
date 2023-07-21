@@ -1,7 +1,5 @@
 <template>
   <main>
-    <div v-if="notificationService.canAskForPermission" class="external-notification-bell"
-      @click="notificationService.requestExternal()">🔔</div>
     <router-view :key="$route.fullPath"></router-view>
     <internal-notification></internal-notification>
   </main>
@@ -9,8 +7,6 @@
 
 <script setup>
 import InternalNotification from '@/components/InternalNotification.vue';
-import { inject } from 'vue'
-const notificationService = inject('notificationService');
 </script>
 
 <style>

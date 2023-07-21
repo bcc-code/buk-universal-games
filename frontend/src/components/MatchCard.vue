@@ -1,5 +1,5 @@
 <template>
-  <section v-if="selectedMatch.team1" class="card card-dark">
+  <section v-if="selectedMatch?.team1" class="card card-dark">
     <section>
       <div class="card-dark-column">
         <h1 class="card-dark-text" @click="showGameInfo">

@@ -1,7 +1,8 @@
 <template>
   <section class="bg">
-    <form class="content" @submit="tryLogin">
-      <img src="image/ubg-logo.png" alt="" class="logo" />
+    <form class="content" @submit="tryLogin()">
+      <p class="install-hint">{{ $t('install_hint') }}</p>
+      <img src="image/ubg-logo.svg" alt="" class="logo" />
       <input type="text" class="codeInput" :placeholder="$t('login.teamcode')" v-model="teamCode" />
       <button v-if="teamCode.length > 3" class="btn-primary">{{ $t('login.login_button') }}</button>
       <p v-if="loginMessage" class="login-msg">{{ loginMessage }}</p>
@@ -10,6 +11,7 @@
 </template>
 
 <script>
+import { inject } from 'vue'
 export default {
   name: "LoginPage",
   props: {
@@ -18,10 +20,12 @@ export default {
   data() {
     return {
       teamCode: "",
+      notificationService: null,
     };
   },
   mounted() {
     this.$store.commit("setLoginMessage", "");
+    this.notificationService = inject('notificationService');
     if (this.code) {
       this.teamCode = this.code
       this.tryLogin()
@@ -29,14 +33,14 @@ export default {
   },
   methods: {
     async tryLogin(ev) {
+      this.notificationService.requestExternal();
       // Do not perform normal HTML form submit.
       ev?.preventDefault();
       window.localStorage.setItem("teamCode", this.teamCode.toUpperCase());
       const loginData = await this.$store.dispatch("signIn")
       this.$store.commit('setLoginMessage', '')
-
-
       if (!loginData || loginData.error) {
+        window.localStorage.removeItem("teamCode");
         if (loginData.error) {
           this.$store.commit('setLoginMessage', loginData.error)
         } else {
@@ -72,6 +76,16 @@ export default {
   padding: 1em 2em;
   min-height: 100%;
   background-color: #a0e3be;
+}
+
+.install-hint {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: var(--dark);
+  max-width: 400px;
+  padding: 0.3em;
+  margin: 1em auto;
+  text-align: center;
+  white-space: pre-line;
 }
 
 .logo {
