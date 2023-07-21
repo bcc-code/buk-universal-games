@@ -1,7 +1,7 @@
 <template>
   <section class="bg">
     <form class="content" @submit="tryLogin">
-      <img src="image/ubg-logo.png" alt="" class="logo" />
+      <img src="image/ubg-logo.svg" alt="" class="logo" />
       <input type="text" class="codeInput" :placeholder="$t('login.teamcode')" v-model="teamCode" />
       <button v-if="teamCode.length > 3" class="btn-primary">{{ $t('login.login_button') }}</button>
       <p v-if="loginMessage" class="login-msg">{{ loginMessage }}</p>

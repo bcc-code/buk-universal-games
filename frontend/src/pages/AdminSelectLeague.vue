@@ -6,7 +6,7 @@
     }"
   >
 
-  <img src="image/ubg-logo.png" alt="" class="logo" />
+  <img src="image/ubg-logo.svg" alt="" class="logo" />
     <section class="leagues">
       <p>
         {{ $t('admin.select_league.intro') }}
