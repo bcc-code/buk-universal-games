@@ -64,6 +64,7 @@
             "intro": "Choose the league you want to manage"
         }
     },
+    "yourmatch": "",
     "sidequest": {
         "thanks": "Thanks, your answer has been recorded",
         "timeranout": "Time ran out, better luck next time",
@@ -75,6 +76,7 @@
         "gameroundtitle": "Round {round}",
         "back_to_overview": "Return to the overview",
         "explanation": "",
+        "noroundyet": "",
         "questiontypes": {
             "math": "Math",
             "knowledge": "Knowledge",
