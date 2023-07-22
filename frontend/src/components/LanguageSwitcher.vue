@@ -22,7 +22,7 @@ export default {
                 en: "English",
                 es: "Español",
                 fr: "Français",
-                nb: "Norsk Bokmål",
+                nb: "Norsk",
                 nl: "Nederlands",
                 pl: "Polski",
                 ro: "Română",

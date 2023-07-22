@@ -29,7 +29,7 @@ export default function (...plugins) {
       adminMatches: [],
       games: [],
       gamesLoading: true,
-      coins: ["dgsdfg","as45zzz","gztzz4ez","d5435","g45g4","j767jf"],
+      coins: ["dgsdfg", "as45zzz", "gztzz4ez", "d546d35", "g45fgyg4", "j767jf", "as5sed5a", "4w7487sd"],
       qs: [
         { id: 1, t: "guess", q: "guesshowmany1", a: ["115000","90000","50000","140000"]},
         { id: 2, t: "guess", q: "guesshowmany2", a: ["11200","7400","9900","13500"]},

@@ -1,17 +1,17 @@
 <template>
   <UserPageLayout :showTitle="false">
     <nav>
-      <button @click="$router.back()">&lt; Back</button>
+      <button @click="$router.back()">&lt; {{ $t("back") }}</button>
     </nav>
 
     <header>
       <h2>
         <img class="icon" :src="`icon/game-${gameParsed.gameType}.svg`" />
-        <span>{{ $t("games." + gameParsed.gameType) }}</span>
+        <span>{{ $t(`games.${gameParsed.gameType}`) }}</span>
       </h2>
 
       <div class="banner">
-        <video autoplay loop muted playsinline>
+        <video autoplay muted playsinline controls>
           <source :src="`/video/${gameParsed.gameType}.mp4`" type="video/mp4" />
         </video>
       </div>

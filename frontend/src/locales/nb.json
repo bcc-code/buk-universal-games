@@ -75,6 +75,8 @@
     "submityouranswers": "Send inn svarene dine",
     "gameroundtitle": "Runde {round}",
     "back_to_overview": "Tilbake til oversikten",
+    "explanation": "Forklaring",
+    "explanation_text": "Etter hver kamp, bortsett fra den siste, vil 2 spørsmål bli låst opp i tilfeldig rekkefølge, totalt 8 spørsmål. Du har 10 minutter til å svare på dem, til neste kamp begynner.\nDu har totalt 8 mynter. Hver spørsmål du starter koster en mynt, selv om du ikke svarer på det. Så, hvis du prøver å svare på samme spørsmål på nytt, må du hoppe over et annet spørsmål.\nNår du har svart på et spørsmål, kan du ikke svare på det igjen.\n\nLaget ditt tjener bonuspoeng basert på hvor mange av laget ditt som sender inn et riktig svar for hvert spørsmål.\nSjekk tilbake etter hver kamp for å tjene flere poeng for laget ditt!",
     "questiontypes": {
       "math": "Matematikk",
       "knowledge": "Kunnskap",
@@ -189,5 +191,6 @@
         "peru": "Peru"
       }
     }
-  }
+  },
+  "back": "Tilbake"
 }

@@ -7,7 +7,7 @@
       :loading="$store.state.gamesLoading"
     />
 
-    <h2>Games</h2>
+    <h2>{{ $t("menu.games")}}</h2>
 
     <GamesList :games="$store.state.games" :loading="$store.state.gamesLoading" @clicked="gameClicked"></GamesList>
   </UserPageLayout>

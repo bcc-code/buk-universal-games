@@ -3,7 +3,7 @@
   "menu": {
     "home": "Home",
     "league": "Competitie",
-    "sidequest": "Zijmissie",
+    "sidequest": "Sidequest",
     "games": "Spellen",
     "map": "Kaart"
   },
@@ -75,6 +75,8 @@
     "submityouranswers": "Stuur je antwoorden in",
     "gameroundtitle": "Ronde {round}",
     "back_to_overview": "Terug naar het overzicht",
+    "explanation": "Uitleg",
+    "explanation_text": "Na elke wedstrijd, behalve de laatste, worden 2 vragen in willekeurige volgorde ontgrendeld, dus in totaal 8 vragen. Je hebt 10 minuten de tijd om ze te beantwoorden, tot de volgende wedstrijd begint.\nJe hebt in totaal 8 munten. Elke vraag die je begint kost een munt, zelfs als je er geen antwoord op geeft. Dus, als je dezelfde vraag opnieuw probeert, moet je een andere vraag overslaan.\nZodra je een vraag hebt beantwoord, kun je deze niet opnieuw beantwoorden.\n\nJe team verdient bonuspunten op basis van hoeveel teamleden een correct antwoord insturen voor elke vraag.\nKom na elke wedstrijd terug om meer punten voor je team te verdienen!",
     "questiontypes": {
       "math": "Rekenen",
       "knowledge": "Kennis",
@@ -189,5 +191,6 @@
         "peru": "Peru"
       }
     }
-  }
+  },
+  "back": "Terug"
 }

@@ -75,6 +75,8 @@
     "submityouranswers": "Adja be a válaszait",
     "gameroundtitle": "Kör {round}",
     "back_to_overview": "Vissza az áttekintéshez",
+    "explanation": "Magyarázat",
+    "explanation_text": "Minden mérkőzés után, kivéve az utolsót, 2 kérdés lesz véletlenszerű sorrendben feloldva, összesen 8 kérdés. 10 perc áll rendelkezésedre válaszolni rájuk, a következő mérkőzés kezdetéig.\nÖsszesen 8 érméd van. Minden kérdés, amit elkezdesz, egy érmet kerül, még akkor is, ha nem válaszolsz rá. Tehát, ha újra megpróbálod ugyanazt a kérdést, egy másik kérdést kell kihagynod.\nMiután válaszoltál egy kérdésre, már nem válaszolhatsz rá újra.\n\nCsapatod bónuszpontokat szerez attól függően, hogy hány csapattag küld be helyes választ minden kérdésre.\nGyere vissza minden mérkőzés után, hogy még több pontot szerezz a csapatodnak!",
     "questiontypes": {
       "math": "Matematika",
       "knowledge": "Ismeret",
@@ -189,5 +191,6 @@
         "peru": "Peru"
       }
     }
-  }
+  },
+  "back": "Vissza"
 }

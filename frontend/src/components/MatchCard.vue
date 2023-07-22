@@ -2,10 +2,9 @@
   <section v-if="selectedMatch?.team1" class="card card-dark">
     <section>
       <div class="card-dark-column">
-        <h1 class="card-dark-text" @click="showGameInfo">
+        <h1 class="gameinfo card-dark-text" @click="showGameInfo">
           <img class="icon" :src="`icon/game-${game.gameType}.svg`"/>
-          <span>{{ game.name }}</span><span class="title-arrow">></span>
-          
+          <span>{{ $t(`games.${game.gameType}`) }}</span><span class="title-arrow">></span>
         </h1>
       </div>
     </section>
@@ -62,6 +61,10 @@ h2 {
 
 button {
   background-color: inherit;
+}
+
+.gameinfo {
+  cursor:pointer;
 }
 
 .icon {

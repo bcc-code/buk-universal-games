@@ -99,7 +99,7 @@ export default {
   padding: 0 0.25em;
   border-radius: 0.75em;
   display: grid;
-  grid-template-columns: 20% 65% 15%;
+  grid-template-columns: 40% 50% 10%;
 }
 
 .match-title-column {

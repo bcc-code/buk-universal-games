@@ -75,6 +75,8 @@
     "submityouranswers": "Wyślij swoje odpowiedzi",
     "gameroundtitle": "Runda {round}",
     "back_to_overview": "Powrót do przeglądu",
+    "explanation": "Wyjaśnienie",
+    "explanation_text": "Po każdym meczu, za wyjątkiem ostatniego, zostaną odblokowane 2 pytania w losowej kolejności, łącznie 8 pytań. Masz 10 minut na ich odpowiedź, do rozpoczęcia kolejnego meczu.\nMasz w sumie 8 monet. Każde pytanie, które zaczniesz, kosztuje monetę, nawet jeśli nie odpowiesz na nie. Więc, jeśli spróbujesz ponownie odpowiedzieć na to samo pytanie, będziesz musiał(a) pominąć inne pytanie.\nGdy już odpowiesz na pytanie, nie możesz odpowiedzieć na nie ponownie.\n\nTwój zespół zdobywa dodatkowe punkty za to, ile członków zespołu przesyła poprawne odpowiedzi na każde pytanie.\nSprawdź po każdym meczu, aby zdobyć więcej punktów dla swojego zespołu!",
     "questiontypes": {
       "math": "Matematyka",
       "knowledge": "Wiedza",
@@ -189,5 +191,6 @@
         "peru": "Peru"
       }
     }
-  }
+  },
+  "back": "Powrót"
 }

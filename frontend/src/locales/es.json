@@ -75,6 +75,8 @@
         "submityouranswers": "Enviar tus respuestas",
         "gameroundtitle": "Ronda {round}",
         "back_to_overview": "Volver a la vista general",
+        "explanation": "Explicación",
+        "explanation_text": "Después de cada partido, excepto el último, se desbloquearán 2 preguntas en orden aleatorio, un total de 8 preguntas. Tienes 10 minutos para responderlas, hasta que comience el siguiente partido.\nTienes un total de 8 monedas. Cada pregunta que comiences te costará una moneda, incluso si no la respondes. Así que, si vuelves a intentar la misma pregunta, deberás saltarte otra pregunta.\nUna vez que hayas respondido una pregunta, no podrás responderla de nuevo.\n\nTu equipo obtiene puntos extra según cuántos miembros de tu equipo envíen una respuesta correcta para cada pregunta.\n¡Vuelve después de cada partido para obtener más puntos para tu equipo!",
         "questiontypes": {
             "math": "Matemáticas",
             "knowledge": "Conocimiento",
@@ -189,5 +191,6 @@
                 "peru": "Perú"
             }
         }
-    }
+    },
+    "back": "Volver"
 }
