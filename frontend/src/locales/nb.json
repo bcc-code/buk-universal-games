@@ -75,6 +75,8 @@
     "submityouranswers": "Send inn svarene dine",
     "gameroundtitle": "Runde {round}",
     "back_to_overview": "Tilbake til oversikten",
+    "explanation": "Forklaring",
+    "explanation_text": "Etter hver kamp, bortsett fra den siste, vil 2 spørsmål bli låst opp i tilfeldig rekkefølge, totalt 8 spørsmål. Du har 10 minutter til å svare på dem, til neste kamp begynner.\nDu har totalt 8 mynter. Hver spørsmål du starter koster en mynt, selv om du ikke svarer på det. Så, hvis du prøver å svare på samme spørsmål på nytt, må du hoppe over et annet spørsmål.\nNår du har svart på et spørsmål, kan du ikke svare på det igjen.\n\nLaget ditt tjener bonuspoeng basert på hvor mange av laget ditt som sender inn et riktig svar for hvert spørsmål.\nSjekk tilbake etter hver kamp for å tjene flere poeng for laget ditt!",
     "questiontypes": {
       "math": "Matematikk",
       "knowledge": "Kunnskap",
@@ -105,8 +107,8 @@
       "a": {
         "opta": "Lene, Svinge, Drifte",
         "optb": "Svinge, Lene, Drifte",
-        "optc": "Lene, Drifte, Svinge",
-        "optd": "Svinge, Drifte, Lene"
+        "ldw": "Lene, Drifte, Svinge",
+        "wdl": "Svinge, Drifte, Lene"
       }
     },
     "insight": {
@@ -119,35 +121,15 @@
         "sametime": "De når bunnen samtidig"
       }
     },
-    "guesshowoften": {
-      "q": "Mannen med den blå skjorten kommer til å besvime under denne berg-og-dal-baneturen, hvor ofte vil han besvime?",
-      "intro": "Se på bildet",
-      "a": {
-        "1": "1 gang",
-        "2": "2 ganger",
-        "4": "4 ganger",
-        "8": "8 ganger"
-      }
-    },
     "recognize1": {
-      "q": "Hvilket dyr prøver å snuse på deg fra den andre siden?",
-      "intro": "Er du fan av dyr? Studer bildet.",
+      "q": "Gjenkjenner du eller husker du hvem dette er?",
+      "intro": "Vet du hvem vi ser (ikke) på dette bildet?"
       "a": {
-        "horse": "Hest",
-        "camel": "Kamel",
-        "antelope": "Antilope",
-        "giraffe": "Giraff"
-      }
-    },
-    "recognize2": {
-      "q": "Hvilket dyr prøver å snuse på deg fra den andre siden?",
-      "intro": "Se på bildet",
-      "a": {
-        "elephant": "Elefant",
-        "tiger": "Tiger",
-        "owl": "Ugle",
-        "lion": "Løve"
-      }
+        "opta": "Gershon Twilley",
+        "optb": "Harald Kronstad",
+        "optc": "Gunnar Gangsø",
+        "optd": "Bernt-Aksel Larsen"
+    }
     },
     "recognize3": {
       "q": "Husker du hvem dette er?",
@@ -157,16 +139,6 @@
         "john": "Johannes",
         "matthew": "Matteus",
         "paul": "Paulus"
-      }
-    },
-    "recognize4": {
-      "q": "Hvem ser du fra venstre mot høyre?",
-      "intro": "Har du et skarpt øye? Se på bildet.",
-      "a": {
-        "bkg": "Bernt Aksel, Kåre, Gershon",
-        "gkb": "Gershon, Kåre, Bernt Aksel",
-        "kgb": "Kåre, Gershon, Bernt Aksel",
-        "bgk": "Bernt Aksel, Gershon, Kåre"
       }
     },
     "math": {
@@ -189,5 +161,6 @@
         "peru": "Peru"
       }
     }
-  }
+  },
+  "back": "Tilbake"
 }

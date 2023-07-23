@@ -71,7 +71,7 @@
       </section>
       <section class="user-section" v-for="(status, i) in leagueStatus?.status?.total.sort((a, b) => b.points - a.points)" :key="status.id">
         <LeagueListItem
-          :class="{ 'card-light': i > 4, 'green-font': status.teamId == teamStatus?.status?.teamId }"
+          :class="{ 'card-light': status.teamId != teamStatus?.teamId, 'card-currentTeam': status.teamId == teamStatus?.teamId }"
           :index="i + 1"
           :team="status.team"
           :stickers="status.stickers"
@@ -154,8 +154,11 @@ export default {
   width: 25%;
 }
 
-.green-font {
-  color: var(--green);
+.card-currentTeam {
+  color: var(--dark);
+  padding:.1em 1em;
+  box-shadow:2px 2px;
+  background-color: var(--yellow);
 }
 
 .nodata {
@@ -179,6 +182,10 @@ export default {
   margin-top: 1em;
   padding: 1em 1em 4em 1em;
   background-color: #fff;
+}
+
+.btn-success {
+  color:#333;
 }
 
 .message-white button {

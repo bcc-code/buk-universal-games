@@ -75,6 +75,8 @@
         "submityouranswers": "Enviar tus respuestas",
         "gameroundtitle": "Ronda {round}",
         "back_to_overview": "Volver a la vista general",
+        "explanation": "Explicación",
+        "explanation_text": "Después de cada partido, excepto el último, se desbloquearán 2 preguntas en orden aleatorio, un total de 8 preguntas. Tienes 10 minutos para responderlas, hasta que comience el siguiente partido.\nTienes un total de 8 monedas. Cada pregunta que comiences te costará una moneda, incluso si no la respondes. Así que, si vuelves a intentar la misma pregunta, deberás saltarte otra pregunta.\nUna vez que hayas respondido una pregunta, no podrás responderla de nuevo.\n\nTu equipo obtiene puntos extra según cuántos miembros de tu equipo envíen una respuesta correcta para cada pregunta.\n¡Vuelve después de cada partido para obtener más puntos para tu equipo!",
         "questiontypes": {
             "math": "Matemáticas",
             "knowledge": "Conocimiento",
@@ -103,10 +105,10 @@
             "q": "¿Cuál es el orden correcto de los movimientos de baile de Herman Shuffle?",
             "intro": "¿Has bailado con esto esta mañana?",
             "a": {
-                "opta": "Lean, Wave, Drift",
-                "optb": "Wave, Lean, Drift",
-                "optc": "Lean, Drift, Wave",
-                "optd": "Wave, Drift, Lean"
+                "lwd": "Lean, Wave, Drift",
+                "wld": "Wave, Lean, Drift",
+                "ldw": "Lean, Drift, Wave",
+                "wdl": "Wave, Drift, Lean"
             }
         },
         "insight": {
@@ -119,37 +121,17 @@
                 "sametime": "Llegan abajo al mismo tiempo"
             }
         },
-        "guesshowoften": {
-            "q": "El hombre con la camisa azul va a desmayarse en este paseo de montaña rusa, ¿con qué frecuencia se desmayará?",
-            "intro": "Mira la imagen",
-            "a": {
-                "1": "1 vez",
-                "2": "2 veces",
-                "4": "4 veces",
-                "8": "8 veces"
-            }
-        },
         "recognize1": {
             "q": "¿Qué animal está tratando de olerte desde el otro lado?",
             "intro": "¿Eres fanático de los animales? Estudia la imagen.",
             "a": {
-                "horse": "Caballo",
-                "camel": "Camello",
-                "antelope": "Antílope",
-                "giraffe": "Jirafa"
+                "opta": "Gershon Twilley",
+                "optb": "Harald Kronstad",
+                "optc": "Gunnar Gangsø",
+                "optd": "Bernt-Aksel Larsen"
             }
         },
         "recognize2": {
-            "q": "¿Qué animal está tratando de olerte desde el otro lado?",
-            "intro": "Mira la imagen",
-            "a": {
-                "elephant": "Elefante",
-                "tiger": "Tigre",
-                "owl": "Búho",
-                "lion": "León"
-            }
-        },
-        "recognize3": {
             "q": "¿Puedes recordar quién es esta persona?",
             "intro": "¿Has seguido los proyectos este año? Mira la imagen.",
             "a": {
@@ -157,16 +139,6 @@
                 "john": "Juan",
                 "matthew": "Mateo",
                 "paul": "Pablo"
-            }
-        },
-        "recognize4": {
-            "q": "¿A quién puedes ver en orden de izquierda a derecha?",
-            "intro": "¿Tienes una vista aguda? Mira la imagen.",
-            "a": {
-                "bkg": "Bernt Aksel, Kåre, Gershon",
-                "gkb": "Gershon, Kåre, Bernt Aksel",
-                "kgb": "Kåre, Gershon, Bernt Aksel",
-                "bgk": "Bernt Aksel, Gershon, Kåre"
             }
         },
         "math": {
@@ -189,5 +161,6 @@
                 "peru": "Perú"
             }
         }
-    }
+    },
+    "back": "Volver"
 }

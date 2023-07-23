@@ -54,6 +54,7 @@ namespace Buk.UniversalGames.Data.CacheRepositories
                 // clear match lists for league and league status
                 await _cache.Remove($"Matches_{league.LeagueId}");
                 await _cache.Remove($"LeagueStatus_{league.LeagueId}");
+                await _cache.Remove($"LeagueStatus_{league.LeagueId}");
             }
         }
     }

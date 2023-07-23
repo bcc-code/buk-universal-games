@@ -75,6 +75,8 @@
     "submityouranswers": "Trimite răspunsurile tale",
     "gameroundtitle": "Runda {round}",
     "back_to_overview": "Înapoi la vedere de ansamblu",
+    "explanation": "Explicație",
+    "explanation_text": "După fiecare meci, cu excepția ultimului, vor fi deblocate 2 întrebări în ordine aleatoare, deci în total 8 întrebări. Ai 10 minute la dispoziție să le răspunzi, până când începe următorul meci.\nAi în total 8 monede. Fiecare întrebare pe care o începi costă o monedă, chiar dacă nu răspunzi la ea. Deci, dacă reîncerci aceeași întrebare, va trebui să sari peste o altă întrebare.\nOdată ce ai răspuns la o întrebare, nu o poți mai răspunde o dată.\n\nEchipa ta obține puncte bonus în funcție de câți membri ai echipei trimit un răspuns corect pentru fiecare întrebare.\nVerifică după fiecare meci pentru a câștiga mai multe puncte pentru echipa ta!",
     "questiontypes": {
       "math": "Matematică",
       "knowledge": "Cunoștințe",
@@ -105,8 +107,8 @@
       "a": {
         "opta": "Lean, Wave, Drift",
         "optb": "Wave, Lean, Drift",
-        "optc": "Lean, Drift, Wave",
-        "optd": "Wave, Drift, Lean"
+        "ldw": "Lean, Drift, Wave",
+        "wdl": "Wave, Drift, Lean"
       }
     },
     "insight": {
@@ -119,16 +121,6 @@
         "sametime": "Ajung jos în același timp"
       }
     },
-    "guesshowoften": {
-      "q": "Bărbatul cu cămașa albastră o să leșine în timpul acestei călătorii cu montagne-russe, de câte ori o să leșine?",
-      "intro": "Uită-te la imagine",
-      "a": {
-        "1": "1 dată",
-        "2": "2 ori",
-        "4": "4 ori",
-        "8": "8 ori"
-      }
-    },
     "recognize1": {
       "q": "Ce animal încearcă să te miros din cealaltă parte?",
       "intro": "Ești fan al animalelor? Studiază imaginea.",
@@ -137,16 +129,6 @@
         "camel": "Cămilă",
         "antelope": "Antilopă",
         "giraffe": "Girafă"
-      }
-    },
-    "recognize2": {
-      "q": "Ce animal încearcă să te miros din cealaltă parte?",
-      "intro": "Uită-te la imagine",
-      "a": {
-        "elephant": "Elefant",
-        "tiger": "Tigru",
-        "owl": "Bufniță",
-        "lion": "Leu"
       }
     },
     "recognize3": {
@@ -189,5 +171,6 @@
         "peru": "Peru"
       }
     }
-  }
+  },
+  "back": "Înapoi"
 }

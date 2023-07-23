@@ -75,6 +75,8 @@
     "submityouranswers": "Sende deine Antworten",
     "gameroundtitle": "Runde {round}",
     "back_to_overview": "Zurück zur Übersicht",
+    "explanation": "Erklärung",
+    "explanation_text": "Nach jedem Match, außer dem letzten, werden 2 Fragen in zufälliger Reihenfolge freigeschaltet, insgesamt also 8 Fragen. Sie haben 10 Minuten Zeit, um sie zu beantworten, bis das nächste Match beginnt.\nSie haben insgesamt 8 Münzen. Jede Frage, die Sie beginnen, kostet eine Münze, auch wenn Sie sie nicht beantworten. Also, wenn Sie dieselbe Frage erneut versuchen, müssen Sie eine andere Frage überspringen.\nSobald Sie eine Frage beantwortet haben, können Sie sie nicht erneut beantworten.\n\nIhr Team erhält Bonuspunkte basierend darauf, wie viele Mitglieder Ihres Teams eine richtige Antwort für jede Frage einsenden.\nKommen Sie nach jedem Match zurück, um mehr Punkte für Ihr Team zu verdienen!",
     "questiontypes": {
       "math": "Mathe",
       "knowledge": "Wissen",
@@ -103,10 +105,10 @@
       "q": "Was ist die richtige Reihenfolge der Tanzbewegungen von Herman Shuffle?",
       "intro": "Hast du heute Morgen dazu getanzt?",
       "a": {
-        "opta": "Lean, Wave, Drift",
-        "optb": "Wave, Lean, Drift",
-        "optc": "Lean, Drift, Wave",
-        "optd": "Wave, Drift, Lean"
+        "lwd": "Lean, Wave, Drift",
+        "wld": "Wave, Lean, Drift",
+        "ldw": "Lean, Drift, Wave",
+        "wdl": "Wave, Drift, Lean"
       }
     },
     "insight": {
@@ -119,16 +121,6 @@
         "sametime": "Sie kommen gleichzeitig unten an"
       }
     },
-    "guesshowoften": {
-      "q": "Der Mann mit dem blauen Hemd wird auf dieser Achterbahnfahrt ohnmächtig, wie oft wird er ohnmächtig?",
-      "intro": "Schau dir das Bild an",
-      "a": {
-        "1": "1 Mal",
-        "2": "2 Mal",
-        "4": "4 Mal",
-        "8": "8 Mal"
-      }
-    },
     "recognize1": {
       "q": "Welches Tier versucht dich von der anderen Seite zu beschnüffeln?",
       "intro": "Bist du ein Tierliebhaber? Betrachte das Bild.",
@@ -137,16 +129,6 @@
         "camel": "Kamel",
         "antelope": "Antilope",
         "giraffe": "Giraffe"
-      }
-    },
-    "recognize2": {
-      "q": "Welches Tier versucht dich von der anderen Seite zu beschnüffeln?",
-      "intro": "Schau dir das Bild an",
-      "a": {
-        "elephant": "Elefant",
-        "tiger": "Tiger",
-        "owl": "Eule",
-        "lion": "Löwe"
       }
     },
     "recognize3": {
@@ -189,5 +171,6 @@
         "peru": "Peru"
       }
     }
-  }
+  },
+  "back": "Zurück"
 }

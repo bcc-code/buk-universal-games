@@ -1,4 +1,4 @@
-import { createStore } from "vuex";
+import { createStore } from "vuex"; 
 import VuexPersistence from "vuex-persist";
 import roundfinishedMonitor from "@/plugins/roundfinished-monitor";
 import { initData, getData, postData } from "../libs/apiHelper"
@@ -29,19 +29,18 @@ export default function (...plugins) {
       adminMatches: [],
       games: [],
       gamesLoading: true,
-      coins: ["dgsdfg","as45zzz","gztzz4ez","d5435","g45g4","j767jf"],
+      coins: ["dgsdfg", "as45zzz", "gztzz4ez", "d546d35", "g45fgyg4", "j767jf", "as5sed5a", "4w7487sd"],
       qs: [
         { id: 1, t: "guess", q: "guesshowmany1", a: ["115000","90000","50000","140000"]},
         { id: 2, t: "guess", q: "guesshowmany2", a: ["11200","7400","9900","13500"]},
-        { id: 3, t: "remember", q: "remember", a: ["opta","optb","optc","optd"]},
+        { id: 3, t: "remember", q: "remember", a: ["lwd","wld","ldw","wdl"]},
         { id: 4, t: "insight", i:true, q: "insight", a: ["red","green","yellow","sametime"]},
-        { id: 5, t: "recognize", i:true, q: "recognize1", a: ["Gershon Twilley","Harald Kronstad","Gunnar Gangsø","Bernt-Aksel Larsen"]},
+        { id: 5, t: "recognize", i:true, q: "recognize1", a: ["opta","optb","optc","optd"]},
         { id: 6, t: "recognize", i:true, q: "recognize2", a: ["peter","john","matthew","paul"]},
         { id: 7, t: "math", i:true, q: "math", a: ["30","81","200","67"]},
         { id: 8, t: "knowledge", i:true, q: "knowledge", a: ["singapore","serbia","japan","peru"]},
       ],
       qsOpened: [
-        [],
         [],
         [],
         [],
@@ -90,10 +89,11 @@ export default function (...plugins) {
       replaceMatch(state, data) {
         const index = state.adminMatches.findIndex(m => m.matchId === data.matchId)
         if (index !== -1) {
-          data.team1 = state.adminMatches[index].team1
-          data.team2 = state.adminMatches[index].team2
-          data.winner = state.adminMatches[index].winnerId === data.team1Id ? data.team1 : data.team2
-          state.adminMatches[index] = data
+          data.team1 = state.adminMatches[index].team1;
+          data.team2 = state.adminMatches[index].team2;
+          data.winner = state.adminMatches[index].winnerId === data.team1Id ? data.team1 : data.team2;
+          state.adminMatches[index] = data;
+          //Vue.set(state.adminMatches, index, data)
         }
       },
       setAdminMatches(state, data) {
@@ -148,7 +148,8 @@ export default function (...plugins) {
           if(!state.qsOpened.flat().includes(newQuestion) && !state.qsOpened[round -1].some(q => q.t == newQuestion.t))
           {
             console.log(newQuestion);
-            state.qsOpened[round -1].push(newQuestion);
+            state.qsOpened[round-1].push(newQuestion);
+            //Vue.set(state.qsOpened, (round - 1), state.qsOpened[round -1].push(newQuestion));
           }
         }
       },

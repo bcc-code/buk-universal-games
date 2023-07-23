@@ -19,7 +19,7 @@ import InternalNotification from '@/components/InternalNotification.vue';
 :root {
   --dark: #A4709D;
   --gray-1: #e5e5e5;
-  --gray-2: #b6b6b6;
+  --gray-2: #999;
   --green: #9FE2BD;
   --red: #DE6050;
   --darkgreen:#22C16A;

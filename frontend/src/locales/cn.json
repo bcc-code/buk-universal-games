@@ -75,6 +75,8 @@
     "submityouranswers": "提交您的答案",
     "gameroundtitle": "第{round}回合",
     "back_to_overview": "返回概述",
+    "explanation": "解释",
+    "explanation_text": "除了最后一场比赛，每场比赛结束后，将以随机顺序解锁2个问题，总共8个问题。您有10分钟的时间回答它们，在下一场比赛开始之前。\n您总共有8个硬币。每个您开始回答的问题都会消耗一个硬币，即使您没有回答它。因此，如果您重新尝试回答相同的问题，您将不得不跳过另一个问题。\n一旦您回答了一个问题，就不能再回答它。\n\n您的团队将根据有多少团队成员正确回答每个问题而获得奖励积分。\n每场比赛后回来查看，为您的团队赚取更多积分！",
     "questiontypes": {
       "math": "数学",
       "knowledge": "知识",
@@ -103,10 +105,10 @@
       "q": "赫尔曼洗牌舞步的正确顺序是什么？",
       "intro": "今天早上你跳舞了吗？",
       "a": {
-        "opta": "倾斜、波浪、漂移",
-        "optb": "波浪、倾斜、漂移",
-        "optc": "精益、漂移、波浪",
-        "optd": "波浪、漂移、倾斜"
+        "lwd": "倾斜、波浪、漂移",
+        "wld": "波浪、倾斜、漂移",
+        "ldw": "精益、漂移、波浪",
+        "wdl": "波浪、漂移、倾斜"
       }
     },
     "insight": {
@@ -119,37 +121,17 @@
         "sametime": "他们同时到达底部"
       }
     },
-    "guesshowoften": {
-      "q": "蓝衫男子在坐过山车时会晕倒，他会晕倒多少次？",
-      "intro": "看图片。",
-      "a": {
-        "1": "1次",
-        "2": "2次",
-        "4": "4次",
-        "8": "8次"
-      }
-    },
     "recognize1": {
       "q": "什么动物试图从另一边嗅你？",
       "intro": "你是动物迷吗？ 研究图像。",
       "a": {
-        "horse": "一匹马",
-        "camel": "骆驼",
-        "antelope": "羚羊",
-        "giraffe": "长颈鹿"
-      }
+        "opta": "Gershon Twilley",
+        "optb": "Harald Kronstad",
+        "optc": "Gunnar Gangsø",
+        "optd": "Bernt-Aksel Larsen"
+    }
     },
     "recognize2": {
-      "q": "什么动物试图从另一边嗅你？",
-      "intro": "你是动物迷吗？ 研究图像。",
-      "a": {
-        "elephant": "大象",
-        "tiger": "老虎",
-        "owl": "猫头鹰",
-        "lion": "狮子"
-      }
-    },
-    "recognize3": {
       "q": "你还记得这是谁吗？",
       "intro": "今年的项目你关注了吗？ 看图片。",
       "a": {
@@ -157,16 +139,6 @@
         "john": "约翰",
         "matthew": "马修",
         "paul": "保罗"
-      }
-    },
-    "recognize4": {
-      "q": "按从左到右的顺序你能看到谁？",
-      "intro": "你有敏锐的眼睛吗？ 看图片。",
-      "a": {
-        "bkg": "Bernt Aksel, Kåre, Gershon",
-        "gkb": "Gershon, Kåre, Bernt Aksel",
-        "kgb": "Kåre, Gershon, Bernt Aksel",
-        "bgk": "Bernt Aksel, Gershon, Kåre"
       }
     },
     "math": {
@@ -189,5 +161,6 @@
         "peru": "秘鲁"
       }
     }
-  }
+  },
+  "back": "返回"
 }

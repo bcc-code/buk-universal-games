@@ -17,5 +17,6 @@ namespace Buk.UniversalGames.Interfaces
         Task<List<TeamStatus>> BuildAndCacheRankingForGameInLeague(Game game, int leagueId);
         Task<List<TeamStatus>> GetGameRanking(GameType gameType, int leagueId);
         Task<Dictionary<string, List<TeamStatus>>> GetLeagueRankings(int leagueId);
+        Task GuaranteeAnswersInCache();
     }
 }

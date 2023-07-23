@@ -1,6 +1,6 @@
 <template>
   <UserPageLayout>
-    <PointsAndStickers :loading="loading" :points="teamStatus?.status?.points" :stickers="coins.length"
+    <PointsAndStickers :loading="loading" :points="teamStatus?.points" :stickers="coins.length"
       :refresh="refresh" />
     <section v-if="step == 'pre'">
       <div class="heading-text">
@@ -9,7 +9,6 @@
       <Timer class="timer-center" :seconds="3" @timer-finished="startQuestion" />
     </section>
     <section v-if="step == 'question'">
-
       <div class="timer-top-right">
         <Timer :seconds="10" @timer-finished="questionFinished" />
       </div>
@@ -96,7 +95,7 @@ export default {
     }
 
     this.options = shuffled.map((option) => ({
-      label: [1,2].includes(q.id) ? this.$n(option) : this.$t("questions." + q.q + ".a." + option),
+      label: [1,2].includes(q.id) ? this.$n(parseInt(option)) : this.$t("questions." + q.q + ".a." + option),
       value: option,
     }));
   },

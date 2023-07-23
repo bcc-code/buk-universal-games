@@ -2,12 +2,12 @@
   <ul v-if="loading" class="games games-loading">
     <li v-for="i in [0, 1, 2, 3, 4]" :key="i" class="game">
       <span class="game-icon"></span>
-      <h3 class="game-title">Loading</h3>
+      <h3 class="game-title">....</h3>
     </li>
   </ul>
   <div v-else-if="games.length === 0">
-    <h2>Something went wrong</h2>
-    <p>Please try refreshing the page.</p>
+    <h2>{{ $t("general_error") }}</h2>
+    <p>{{ $t("please_refresh") }}</p>
   </div>
   <ul v-else class="games">
     <li class="game" v-for="game in games" :key="game.id" @click="$emit('clicked', game)">

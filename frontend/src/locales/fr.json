@@ -75,6 +75,8 @@
         "submityouranswers": "Envoyez vos réponses",
         "gameroundtitle": "Tour {round}",
         "back_to_overview": "Retour à l'aperçu",
+        "explanation": "Explication",
+        "explanation_text": "Après chaque match, sauf le dernier, 2 questions seront déverrouillées dans un ordre aléatoire, soit un total de 8 questions. Vous avez 10 minutes pour y répondre, jusqu'à ce que le match suivant commence.\nVous avez un total de 8 pièces. Chaque question que vous commencez vous coûte une pièce, même si vous n'y répondez pas. Donc, si vous réessayez la même question, vous devrez sauter une autre question.\nUne fois que vous avez répondu à une question, vous ne pouvez plus y répondre.\n\nVotre équipe gagne des points bonus en fonction du nombre de membres de votre équipe qui envoient une réponse correcte pour chaque question.\nRevenez après chaque match pour gagner plus de points pour votre équipe !",
         "questiontypes": {
             "math": "Mathématiques",
             "knowledge": "Connaissances",
@@ -103,10 +105,10 @@
             "q": "Quel est l'ordre correct des mouvements de danse du Herman Shuffle ?",
             "intro": "Avez-vous dansé ce matin ?",
             "a": {
-                "opta": "Lean, Wave, Drift ",
-                "optb": "Wave, Lean, Drift",
-                "optc": "Lean, Drift, Wave",
-                "optd": "Wave, Drift, Lean"
+                "lwd": "Lean, Wave, Drift ",
+                "wld": "Wave, Lean, Drift",
+                "ldw": "Lean, Drift, Wave",
+                "wdl": "Wave, Drift, Lean"
             }
         },
         "insight": {
@@ -119,34 +121,14 @@
                 "sametime": "Ils atteignent le sol en même temps"
             }
         },
-        "guesshowoften": {
-            "q": "L'homme à la chemise bleue va s'évanouir sur ces montagnes russes. Combien de fois va-t-il s'évanouir ?",
-            "intro": "Regardez l'image.",
-            "a": {
-                "1": "1 fois",
-                "2": "2 fois",
-                "4": "4 fois",
-                "8": "8 fois"
-            }
-        },
         "recognize1": {
             "q": "Quel animal essaie de vous renifler de l'autre côté ?",
             "intro": "Vous aimez les animaux ? Étudiez l'image.",
             "a": {
-                "horse": "Cheval",
-                "camel": "Chameau",
-                "antelope": "Antilope",
-                "giraffe": "Girafe"
-            }
-        },
-        "recognize2": {
-            "q": "Quel animal essaie de vous renifler de l'autre côté ? ",
-            "intro": "Vous aimez les animaux ? Étudiez l'image.",
-            "a": {
-                "elephant": "Éléphant",
-                "tiger": "Tigre",
-                "owl": "Hibou",
-                "lion": "Lion"
+                "opta": "Gershon Twilley",
+                "optb": "Harald Kronstad",
+                "optc": "Gunnar Gangsø",
+                "optd": "Bernt-Aksel Larsen"
             }
         },
         "recognize3": {
@@ -189,5 +171,6 @@
                 "peru": "Pérou"
             }
         }
-    }
+    },
+    "back": "Retour"
 }

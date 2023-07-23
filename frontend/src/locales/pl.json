@@ -75,6 +75,8 @@
     "submityouranswers": "Wyślij swoje odpowiedzi",
     "gameroundtitle": "Runda {round}",
     "back_to_overview": "Powrót do przeglądu",
+    "explanation": "Wyjaśnienie",
+    "explanation_text": "Po każdym meczu, za wyjątkiem ostatniego, zostaną odblokowane 2 pytania w losowej kolejności, łącznie 8 pytań. Masz 10 minut na ich odpowiedź, do rozpoczęcia kolejnego meczu.\nMasz w sumie 8 monet. Każde pytanie, które zaczniesz, kosztuje monetę, nawet jeśli nie odpowiesz na nie. Więc, jeśli spróbujesz ponownie odpowiedzieć na to samo pytanie, będziesz musiał(a) pominąć inne pytanie.\nGdy już odpowiesz na pytanie, nie możesz odpowiedzieć na nie ponownie.\n\nTwój zespół zdobywa dodatkowe punkty za to, ile członków zespołu przesyła poprawne odpowiedzi na każde pytanie.\nSprawdź po każdym meczu, aby zdobyć więcej punktów dla swojego zespołu!",
     "questiontypes": {
       "math": "Matematyka",
       "knowledge": "Wiedza",
@@ -105,8 +107,8 @@
       "a": {
         "opta": "Lean, Wave, Drift",
         "optb": "Wave, Lean, Drift",
-        "optc": "Lean, Drift, Wave",
-        "optd": "Wave, Drift, Lean"
+        "ldw": "Lean, Drift, Wave",
+        "wdl": "Wave, Drift, Lean"
       }
     },
     "insight": {
@@ -119,16 +121,6 @@
         "sametime": "Dotrą na dół w tym samym czasie"
       }
     },
-    "guesshowoften": {
-      "q": "Mężczyzna w niebieskiej koszuli zamierza zemdleć na tej kolejce górskiej, ile razy straci przytomność?",
-      "intro": "Popatrz na obrazek",
-      "a": {
-        "1": "1 raz",
-        "2": "2 razy",
-        "4": "4 razy",
-        "8": "8 razy"
-      }
-    },
     "recognize1": {
       "q": "Jakie zwierzę próbuje cię wąchać z drugiej strony?",
       "intro": "Jesteś fanem zwierząt? Przyjrzyj się obrazkowi.",
@@ -137,16 +129,6 @@
         "camel": "Wielbłąd",
         "antelope": "Antylopa",
         "giraffe": "Żyrafa"
-      }
-    },
-    "recognize2": {
-      "q": "Jakie zwierzę próbuje cię wąchać z drugiej strony?",
-      "intro": "Popatrz na obrazek",
-      "a": {
-        "elephant": "Słoń",
-        "tiger": "Tygrys",
-        "owl": "Sowa",
-        "lion": "Lew"
       }
     },
     "recognize3": {
@@ -189,5 +171,6 @@
         "peru": "Peru"
       }
     }
-  }
+  },
+  "back": "Powrót"
 }

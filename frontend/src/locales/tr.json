@@ -75,6 +75,8 @@
     "submityouranswers": "Yanıtlarınızı gönderin",
     "gameroundtitle": "Tur {round}",
     "back_to_overview": "Genel Bakışa Dön",
+    "explanation": "Açıklama",
+    "explanation_text": "Son maç hariç her maçtan sonra, rastgele sırayla 2 soru açılacak, toplamda 8 soru olacak. Bu soruları yanıtlamak için 10 dakikanız var, sonraki maç başlayana kadar.\nToplamda 8 jetonunuz var. Başlattığınız her soru, ona cevap vermeseniz bile bir jetonunuzu tüketir. Bu nedenle aynı soruyu tekrar denerseniz, başka bir soruyu atlamak zorunda kalırsınız.\nBir soruya cevap verdikten sonra tekrar cevaplayamazsınız.\n\nTakımınız, her soru için kaç takım üyesinin doğru cevap gönderdiğine bağlı olarak bonus puanlar kazanır.\nTakımınıza daha fazla puan kazandırmak için her maçtan sonra geri dönün!",
     "questiontypes": {
       "math": "Matematik",
       "knowledge": "Bilgi",
@@ -103,10 +105,10 @@
       "q": "Herman Shuffle dans hareketlerinin doğru sırası nedir?",
       "intro": "Bu sabah dans ettiniz mi?",
       "a": {
-        "opta": "Lean, Wave, Drift",
-        "optb": "Wave, Lean, Drift",
-        "optc": "Lean, Drift, Wave",
-        "optd": "Wave, Drift, Lean"
+        "lwd": "Lean, Wave, Drift",
+        "wld": "Wave, Lean, Drift",
+        "ldw": "Lean, Drift, Wave",
+        "wdl": "Wave, Drift, Lean"
       }
     },
     "insight": {
@@ -119,16 +121,6 @@
         "sametime": "Aynı anda alt noktaya ulaşırlar"
       }
     },
-    "guesshowoften": {
-      "q": "Mavi gömlekli adam bu montajlı tekerlekli arabada bayılacak, kaç kez bayılacak?",
-      "intro": "Resme bakın",
-      "a": {
-        "1": "1 kez",
-        "2": "2 kez",
-        "4": "4 kez",
-        "8": "8 kez"
-      }
-    },
     "recognize1": {
       "q": "Karşı taraftan sizi koklamaya çalışan hangi hayvan?",
       "intro": "Hayvanlarla aranız nasıl? Resme bakın.",
@@ -137,16 +129,6 @@
         "camel": "Deve",
         "antelope": "Antilop",
         "giraffe": "Zürafa"
-      }
-    },
-    "recognize2": {
-      "q": "Karşı taraftan sizi koklamaya çalışan hangi hayvan?",
-      "intro": "Resme bakın",
-      "a": {
-        "elephant": "Fil",
-        "tiger": "Kaplan",
-        "owl": "Baykuş",
-        "lion": "Aslan"
       }
     },
     "recognize3": {
@@ -189,5 +171,6 @@
         "peru": "Peru"
       }
     }
-  }
+  },
+  "back": "Geri"
 }

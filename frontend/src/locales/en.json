@@ -76,7 +76,8 @@
         "submityouranswers": "Submit your answers",
         "gameroundtitle": "Round {round}",
         "back_to_overview": "Return to the overview",
-        "explanation": "",
+        "explanation": "Explanation",
+        "explanation_text": "After every round except the last one, 2 questions will be unlocked in random order, so 8 questions total. You can answer them until the next match starts.\n\nIf you don't answer the question or back out of it, you loose one of your 8 coins. If you retry the same question you will have to skip another question. \n\nYour team earns bonus points based on how many of your team sends in a correct answer for each question.",
         "noroundyet": "",
         "questiontypes": {
             "math": "Math",
@@ -89,14 +90,8 @@
     },
     "questions": {
         "guesshowmany1": {
-            "q": "How many hours of Fra Kåre have been listened this year?",
-            "intro": "Have you been listening to Fra Kåre this year?",
-            "a": {
-                "100": "100",
-                "1000": "1000",
-                "10000": "10000",
-                "20000": "20000"
-            }
+            "q": "How many hours of Fra Kåre have there been listened to this year?",
+            "intro": "Have you been listening to Fra Kåre this year?"
         },
         "guesshowmany2": {
             "q": "How many people have visited the camps in 2023?",
@@ -106,10 +101,10 @@
             "q": "What is the correct order of the Herman Shuffle dance moves?",
             "intro": "Did you dance along this morning?",
             "a": {
-                "opta": "Lean, Wave, Drift",
-                "optb": "Wave, Lean, Drift",
-                "optc": "Lean, Drift, Wave",
-                "optd": "Wave, Drift, Lean"
+                "lwd": "Lean, Wave, Drift",
+                "wld": "Wave, Lean, Drift",
+                "ldw": "Lean, Drift, Wave",
+                "wdl": "Wave, Drift, Lean"
             }
         },
         "insight": {
@@ -122,34 +117,14 @@
                 "sametime": "They reach the bottom at the same time"
             }
         },
-        "guesshowoften": {
-            "q": "The man with the blue shirt is going to faint on this roller coaster ride, how often will he pass out?",
-            "intro": "Look at the image",
-            "a": {
-                "1": "1 time",
-                "2": "2 times",
-                "4": "4 times",
-                "8": "8 times"
-            }
-        },
         "recognize1": {
-            "q": "What animal is trying to sniff you from the other side?",
-            "intro": "Are you a fan of animals? Study the image.",
+            "q": "Do you recognize or remember who this is?",
+            "intro": "Do you know who we are (not) seeing in this image?",
             "a": {
-                "horse": "Horse",
-                "camel": "Camel",
-                "antelope": "Antelope",
-                "giraffe": "Giraffe"
-            }
-        },
-        "recognize2": {
-            "q": "What animal is trying to sniff you from the other side?",
-            "intro": "Look at the image",
-            "a": {
-                "elephant": "Elephant",
-                "tiger": "Tiger",
-                "owl": "Owl",
-                "lion": "Lion"
+                "opta": "Gershon Twilley",
+                "optb": "Harald Kronstad",
+                "optc": "Gunnar Gangsø",
+                "optd": "Bernt-Aksel Larsen"
             }
         },
         "recognize3": {
@@ -160,16 +135,6 @@
                 "john": "John",
                 "matthew": "Matthew",
                 "paul": "Paul"
-            }
-        },
-        "recognize4": {
-            "q": "Who can you see in order from left to right?",
-            "intro": "Do you have a keen eye? Look at the image.",
-            "a": {
-                "bkg": "Bernt Aksel, Kåre, Gershon",
-                "gkb": "Gershon, Kåre, Bernt Aksel",
-                "kgb": "Kåre, Gershon, Bernt Aksel",
-                "bgk": "Bernt Aksel, Gershon, Kåre"
             }
         },
         "math": {
@@ -192,5 +157,6 @@
                 "peru": "Peru"
             }
         }
-    }
+    },
+    "back": "Back"
 }

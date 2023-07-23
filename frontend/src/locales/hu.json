@@ -75,6 +75,8 @@
     "submityouranswers": "Adja be a válaszait",
     "gameroundtitle": "Kör {round}",
     "back_to_overview": "Vissza az áttekintéshez",
+    "explanation": "Magyarázat",
+    "explanation_text": "Minden mérkőzés után, kivéve az utolsót, 2 kérdés lesz véletlenszerű sorrendben feloldva, összesen 8 kérdés. 10 perc áll rendelkezésedre válaszolni rájuk, a következő mérkőzés kezdetéig.\nÖsszesen 8 érméd van. Minden kérdés, amit elkezdesz, egy érmet kerül, még akkor is, ha nem válaszolsz rá. Tehát, ha újra megpróbálod ugyanazt a kérdést, egy másik kérdést kell kihagynod.\nMiután válaszoltál egy kérdésre, már nem válaszolhatsz rá újra.\n\nCsapatod bónuszpontokat szerez attól függően, hogy hány csapattag küld be helyes választ minden kérdésre.\nGyere vissza minden mérkőzés után, hogy még több pontot szerezz a csapatodnak!",
     "questiontypes": {
       "math": "Matematika",
       "knowledge": "Ismeret",
@@ -105,8 +107,8 @@
       "a": {
         "opta": "Lean, Wave, Drift",
         "optb": "Wave, Lean, Drift",
-        "optc": "Lean, Drift, Wave",
-        "optd": "Wave, Drift, Lean"
+        "ldw": "Lean, Drift, Wave",
+        "wdl": "Wave, Drift, Lean"
       }
     },
     "insight": {
@@ -119,35 +121,15 @@
         "sametime": "Egyidőben érnek le a mélypontra"
       }
     },
-    "guesshowoften": {
-      "q": "A kék inges férfi elájul ennek a hullámvasútnak az útján. Hányszor fog elájulni?",
-      "intro": "Nézze meg a képet",
-      "a": {
-        "1": "1 alkalommal",
-        "2": "2 alkalommal",
-        "4": "4 alkalommal",
-        "8": "8 alkalommal"
-      }
-    },
     "recognize1": {
       "q": "Milyen állat próbálja meg szagolni önöket a másik oldalról?",
       "intro": "Szereted az állatokat? Nézze meg a képet.",
       "a": {
-        "horse": "Ló",
-        "camel": "Teve",
-        "antelope": "Antilop",
-        "giraffe": "Zsiráf"
-      }
-    },
-    "recognize2": {
-      "q": "Milyen állat próbálja meg szagolni önöket a másik oldalról?",
-      "intro": "Nézze meg a képet",
-      "a": {
-        "elephant": "Elefánt",
-        "tiger": "Tigris",
-        "owl": "Bagoly",
-        "lion": "Oroszlán"
-      }
+        "opta": "Gershon Twilley",
+        "optb": "Harald Kronstad",
+        "optc": "Gunnar Gangsø",
+        "optd": "Bernt-Aksel Larsen"
+    }
     },
     "recognize3": {
       "q": "Emlékszik, ki látható a képen?",
@@ -189,5 +171,6 @@
         "peru": "Peru"
       }
     }
-  }
+  },
+  "back": "Vissza"
 }

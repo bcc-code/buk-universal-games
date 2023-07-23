@@ -8,7 +8,9 @@ export function setupI18n(options = { locale: 'en', }) {
     console.warn(`The locale '${options.locale}' is not supported. Using 'en' as fallback.`)
     options.locale = 'en'
   }
+  options.fallbackLocale = 'en';
   const i18n = createI18n(options)
+  loadLocaleMessages(i18n.global, options.fallbackLocale) //load fallback messages
   setI18nLanguage(i18n.global, options.locale)
   return i18n
 }

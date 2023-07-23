@@ -40,6 +40,7 @@ public class SideQuestController : ControllerBase
                 TimeAnswered = guess.Time.ToLocalTime(),
                 Time = DateTime.Now,
                 UniqueId = guess.Coin
+
             })
         );
         await _db.SaveChangesAsync();

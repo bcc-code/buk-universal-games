@@ -8,9 +8,11 @@
     />
 
     <section>
-      <p class="introduction">
-        {{ $t("sidequest.explanation") }}
-      </p>
+      <h2>{{ $t("menu.sidequest") }}</h2>
+      <div class="introduction">
+        <h3 @click="showExplanation">{{ $t("sidequest.explanation") }} <span :class="{'toggle-arrow': true, 'rotated': isExplanationVisible}"></span> </h3>
+        <span :class="{'show': isExplanationVisible}">{{ $t("sidequest.explanation_text") }}</span>
+      </div>
     </section>
 
     <section v-if="unsubmittedAnswers.length > 0">
@@ -23,21 +25,20 @@
     </section>
     <section v-for="(questions,index) in questionsPerRound" :key="index">
       <h2>{{ $t("sidequest.gameroundtitle", {round: index + 1}) }}</h2>
-      <div :class="{'round':true, 'locked': (index + 1 < $store.getters.currentRound)}">
-        <div class="question" v-for="question in questions" :key="question.id">
+      <div :class="{'round':true, 'locked': ($store.getters.currentRound > 0 && index + 1 < $store.getters.currentRound)}">
+        <div class="question" v-for="question in questions" :key="question.id" @click="questionClicked(question.id, index + 1)">
           <div class="question-button">
           <img :src="`/icon/sq-${question.t}.svg`" />
           <h3>
-            <RouterLink v-if="index === $store.getters.currentRound" :to="'sidequest/question/' + question.id">{{ $t("sidequest.questiontypes." + question.t) }}</RouterLink>
-            <span v-else>{{ $t("sidequest.questiontypes." + question.t) }}</span>
+            <span>{{ $t("sidequest.questiontypes." + question.t) }}</span>
           </h3>
         </div>
-        <span class="locked-indicator" v-if="(index + 1 < $store.getters.currentRound)">Locked</span>
+        <!-- <span class="locked-indicator" v-if="(index + 1 < $store.getters.currentRound)">Locked</span> -->
       </div>
       </div>
     </section>
     <section v-if="questionsPerRound.length < 4">
-      <h2>Round {{ questionsPerRound.length + 1 }}</h2>
+      <h2>{{ $t("sidequest.gameroundtitle", {round: questionsPerRound.length + 1}) }}</h2>
       <div class="round">
         <p>{{ $t("sidequest.noroundyet", {nextRound: questionsPerRound.length + 1}) }}</p>
       </div>
@@ -56,10 +57,19 @@ export default {
     return {
       loading: false,
       resultParsed: null,
+      isExplanationVisible: false,
+      showExplanationText: false
     };
   },
   mounted() {
-    this.$store.dispatch("checkNewQuestions", this.$store.state.matches);
+    //this.$store.dispatch("checkNewQuestions", this.$store.state.matches);
+    for(let i = 0; i < this.$store.state.qsOpened.length; i++)
+    {
+      if(this.$store.state.qsOpened[i].length == 0)
+      {
+        this.$store.commit("unlockNewQuestions", i + 1);
+      }
+    }
   },
   methods: {
     refresh() {
@@ -73,10 +83,18 @@ export default {
     trySubmitAnswers() {
       this.$store.dispatch("submitAnswers");
     },
+    showExplanation() {
+      this.isExplanationVisible = !this.isExplanationVisible;
+    },
+    questionClicked(questionId) {
+      // if(round === this.$store.getters.currentRound)
+      // {
+        this.$router.push(`/sidequest/question/${questionId}`);
+      // }
+    },
   },
   computed: {
     questionsPerRound() {
-      console.log(this.$store.state.qsOpened);
       return this.$store.state.qsOpened.filter(questions => questions.length > 0)  || [];
     },
     unsubmittedAnswers() {
@@ -107,8 +125,20 @@ export default {
   font-size: medium;
   white-space: break-spaces;
   margin: 1.5em -1em;
-  padding: 1em;
+  padding: 0.1em 1em;
   background: #fff;
+}
+.introduction > span {
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, margin-bottom 0.5s ease-out;
+}
+
+.introduction > span.show {
+  max-height: 1000px;
+  transition: max-height 0.3s ease-in;
+  margin-bottom:1em;
 }
 
 .heading-icon {
@@ -139,7 +169,6 @@ export default {
   background-color: var(--green);
   color: hsl(158, 93%, 5%);
 }
-
 .game-left, .game-right {
   display:block;
   min-width:30%;
@@ -168,11 +197,30 @@ export default {
   flex-direction: column;
   justify-content: center;
   width:100%;
+  cursor: pointer;
+}
+
+.toggle-arrow {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 5px;
+  vertical-align: middle;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid black;
+  transform: rotate(0deg);
+  transition: transform 0.2s ease-in-out;
+}
+
+.toggle-arrow.rotated {
+  transform: rotate(90deg);
 }
 
 .round.locked .question-button {
   background-color: var(--red);
   filter: blur(2px);
+  cursor: not-allowed;
 }
 .question-button img {
   height:5em;
@@ -188,6 +236,11 @@ export default {
   text-align: center;
   width:100%;
   color: #fff;
+}
+
+.question-button a {
+  color: #fff;
+  text-decoration: none;
 }
 .locked-indicator {
   position: absolute;

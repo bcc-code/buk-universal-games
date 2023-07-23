@@ -3,7 +3,7 @@
     <div class="card-light-column">
       <span class="card-light-text game-title">
         <img class="icon" :src="`icon/game-${gameType}.svg`" />
-        <span class="text">{{ $t(`games.${gameType}`) }} {{ gameAddOn || '' }}</span>
+        <span class="text">{{ $t(`games.${gameType}`) }} - {{ gameAddOn || '' }}</span>
       </span>
     </div>
     <div class="card-light-column">

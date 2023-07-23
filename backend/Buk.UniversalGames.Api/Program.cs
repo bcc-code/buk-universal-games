@@ -33,7 +33,7 @@ builder.Services.AddScoped<IStickerRepository, StickerCacheRepository>();
 builder.Services.AddScoped<IStatusRepository, StatusCacheRepository>();
 builder.Services.AddScoped<ISettingsRepository, SettingsCacheRepository>();
 
-builder.Services.AddSingleton<ICacheContext, CacheContext>();
+builder.Services.AddScoped<ICacheContext, CacheContext>();
 
 
 builder.Services.AddDbContext<DataContext>(options =>
