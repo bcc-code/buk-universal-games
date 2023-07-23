@@ -10,15 +10,14 @@
 import { inject, reactive } from 'vue';
 const notificationService = inject('notificationService');
 const state = reactive({
-  action: () => {},
+  action: () => { },
   body: null,
   icon: null,
   style: { visibility: 'hidden' },
   title: null,
 });
 notificationService.registerInternalNotifier((title, options) => {
-  if (options.onClick)
-  {
+  if (options.onClick) {
     state.action = options.onClick;
   }
   state.body = options.body;
@@ -33,7 +32,7 @@ function click() {
 }
 
 function close() {
-  state.action = () => {};
+  state.action = () => { };
   state.body = null;
   state.icon = null;
   state.style.visibility = 'hidden'
@@ -59,6 +58,7 @@ dialog .title {
 
 dialog .icon {
   grid-area: icon;
+  max-width: 64px;
 }
 
 dialog .body {
