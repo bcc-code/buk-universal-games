@@ -54,7 +54,7 @@ button {
   padding: 0.25em 0.5em;
   border-radius: 0.75em;
   display: grid;
-  grid-template-columns: 40% 50% 10%;
+  grid-template-columns: 40% 47% 13%;
   align-items: center;
 }
 
