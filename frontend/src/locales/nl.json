@@ -117,13 +117,13 @@
     },
     "recognize1": {
       "q": "Herken je of herinner je je wie dit is?",
-      "intro": "Weet je wie we (niet) zien op deze afbeelding?"
+      "intro": "Weet je wie we (niet) zien op deze afbeelding?",
       "a": {
         "opta": "Gershon Twilley",
         "optb": "Harald Kronstad",
         "optc": "Gunnar Gangsø",
         "optd": "Bernt-Aksel Larsen"
-    }
+      }
     },
     "recognize3": {
       "q": "Weet je nog wie dit is?",
