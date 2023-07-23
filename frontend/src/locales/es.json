@@ -58,13 +58,15 @@
     "league": {
         "rankingisempty": "Ningún equipo ha registrado puntos todavía. Vuelve aquí después de la primera ronda.",
         "viewgamerankings": "Ver clasificación para cada juego",
-        "viewgamerankings-title": "Puedes ver las clasificaciones por juego en las páginas de detalles del juego."
+        "viewgamerankings-title": "Puedes ver las clasificaciones por juego en las páginas de detalles del juego.",
+        "ranking-frozen": "La clasificación está congelada hasta que se anuncien los ganadores"
     },
     "admin": {
         "select_league": {
             "intro": "Elige la liga que deseas administrar"
         }
     },
+    "yourmatch": "Tu partida",
     "sidequest": {
         "thanks": "Gracias, tu respuesta ha sido registrada",
         "timeranout": "El tiempo se agotó, mejor suerte la próxima vez",
@@ -75,6 +77,7 @@
         "submityouranswers": "Enviar tus respuestas",
         "gameroundtitle": "Ronda {round}",
         "back_to_overview": "Volver a la vista general",
+        "noroundyet": "Aún no disponible. Vuelve después del partido.",
         "explanation": "Explicación",
         "explanation_text": "Después de cada partido, excepto el último, se desbloquearán 2 preguntas en orden aleatorio, un total de 8 preguntas. Tienes 10 minutos para responderlas, hasta que comience el siguiente partido.\nTienes un total de 8 monedas. Cada pregunta que comiences te costará una moneda, incluso si no la respondes. Así que, si vuelves a intentar la misma pregunta, deberás saltarte otra pregunta.\nUna vez que hayas respondido una pregunta, no podrás responderla de nuevo.\n\nTu equipo obtiene puntos extra según cuántos miembros de tu equipo envíen una respuesta correcta para cada pregunta.\n¡Vuelve después de cada partido para obtener más puntos para tu equipo!",
         "questiontypes": {

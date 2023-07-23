@@ -58,13 +58,15 @@
   "league": {
     "rankingisempty": "Kein Team hat bisher Punkte registriert. Schau nach der ersten Runde hier wieder vorbei.",
     "viewgamerankings": "Zeige Rangliste für jedes Spiel an",
-    "viewgamerankings-title": "Sie können die Rangliste pro Spiel auf den Detailseiten des Spiels anzeigen."
+    "viewgamerankings-title": "Sie können die Rangliste pro Spiel auf den Detailseiten des Spiels anzeigen.",
+    "ranking-frozen": "Die Rangliste ist jetzt eingefroren, bis die Gewinner bekannt gegeben werden"
   },
   "admin": {
     "select_league": {
       "intro": "Wähle die Liga aus, die du verwalten möchtest"
     }
   },
+  "yourmatch": "Dein Spiel",
   "sidequest": {
     "thanks": "Vielen Dank, deine Antwort wurde registriert",
     "timeranout": "Die Zeit ist abgelaufen, beim nächsten Mal klappt es vielleicht besser",
@@ -75,6 +77,7 @@
     "submityouranswers": "Sende deine Antworten",
     "gameroundtitle": "Runde {round}",
     "back_to_overview": "Zurück zur Übersicht",
+    "noroundyet": "Noch nicht verfügbar. Komm nach dem Match zurück.",
     "explanation": "Erklärung",
     "explanation_text": "Nach jedem Match, außer dem letzten, werden 2 Fragen in zufälliger Reihenfolge freigeschaltet, insgesamt also 8 Fragen. Sie haben 10 Minuten Zeit, um sie zu beantworten, bis das nächste Match beginnt.\nSie haben insgesamt 8 Münzen. Jede Frage, die Sie beginnen, kostet eine Münze, auch wenn Sie sie nicht beantworten. Also, wenn Sie dieselbe Frage erneut versuchen, müssen Sie eine andere Frage überspringen.\nSobald Sie eine Frage beantwortet haben, können Sie sie nicht erneut beantworten.\n\nIhr Team erhält Bonuspunkte basierend darauf, wie viele Mitglieder Ihres Teams eine richtige Antwort für jede Frage einsenden.\nKommen Sie nach jedem Match zurück, um mehr Punkte für Ihr Team zu verdienen!",
     "questiontypes": {

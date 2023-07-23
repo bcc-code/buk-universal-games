@@ -58,13 +58,15 @@
   "league": {
     "rankingisempty": "Még egy csapat sem szerzett pontokat. Ellenőrizze vissza az első kör után.",
     "viewgamerankings": "Nézze meg a ranglistát minden játékhoz",
-    "viewgamerankings-title": "A játék részletező oldalain megtekintheti az eredmények rangsorát."
+    "viewgamerankings-title": "A játék részletező oldalain megtekintheti az eredmények rangsorát.",
+    "ranking-frozen": "A ranglista most befagyasztva van, amíg a győztesek be nem jelentik"
   },
   "admin": {
     "select_league": {
       "intro": "Válassza ki a ligát, amelyet kezelni szeretne"
     }
   },
+  "yourmatch": "A te meccsed",
   "sidequest": {
     "thanks": "Köszönjük, az ön válasza rögzítésre került",
     "timeranout": "Lejárt az idő, legközelebb jobb szerencsét",
@@ -75,6 +77,7 @@
     "submityouranswers": "Adja be a válaszait",
     "gameroundtitle": "Kör {round}",
     "back_to_overview": "Vissza az áttekintéshez",
+    "noroundyet": "Még nem elérhető. Gyere vissza a mérkőzés után.",
     "explanation": "Magyarázat",
     "explanation_text": "Minden mérkőzés után, kivéve az utolsót, 2 kérdés lesz véletlenszerű sorrendben feloldva, összesen 8 kérdés. 10 perc áll rendelkezésedre válaszolni rájuk, a következő mérkőzés kezdetéig.\nÖsszesen 8 érméd van. Minden kérdés, amit elkezdesz, egy érmet kerül, még akkor is, ha nem válaszolsz rá. Tehát, ha újra megpróbálod ugyanazt a kérdést, egy másik kérdést kell kihagynod.\nMiután válaszoltál egy kérdésre, már nem válaszolhatsz rá újra.\n\nCsapatod bónuszpontokat szerez attól függően, hogy hány csapattag küld be helyes választ minden kérdésre.\nGyere vissza minden mérkőzés után, hogy még több pontot szerezz a csapatodnak!",
     "questiontypes": {

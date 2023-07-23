@@ -58,13 +58,15 @@
   "league": {
     "rankingisempty": "Niciun echipă nu a înregistrat încă puncte. Verificați din nou după prima rundă.",
     "viewgamerankings": "Vizualizează clasamentul pentru fiecare joc",
-    "viewgamerankings-title": "Poți vizualiza clasamentele pe jocuri pe paginile de detalii ale jocurilor"
+    "viewgamerankings-title": "Poți vizualiza clasamentele pe jocuri pe paginile de detalii ale jocurilor",
+    "ranking-frozen": "Clasamentul este acum blocat până când câștigătorii vor fi anunțați"
   },
   "admin": {
     "select_league": {
       "intro": "Alege liga pe care dorești să o administrezi"
     }
   },
+  "yourmatch": "Meciul tău",
   "sidequest": {
     "thanks": "Mulțumim, răspunsul tău a fost înregistrat",
     "timeranout": "Timpul a expirat, noroc mai bun data viitoare",
@@ -75,6 +77,7 @@
     "submityouranswers": "Trimite răspunsurile tale",
     "gameroundtitle": "Runda {round}",
     "back_to_overview": "Înapoi la vedere de ansamblu",
+    "noroundyet": "Încă nu este disponibil. Reveniți după meci.",
     "explanation": "Explicație",
     "explanation_text": "După fiecare meci, cu excepția ultimului, vor fi deblocate 2 întrebări în ordine aleatoare, deci în total 8 întrebări. Ai 10 minute la dispoziție să le răspunzi, până când începe următorul meci.\nAi în total 8 monede. Fiecare întrebare pe care o începi costă o monedă, chiar dacă nu răspunzi la ea. Deci, dacă reîncerci aceeași întrebare, va trebui să sari peste o altă întrebare.\nOdată ce ai răspuns la o întrebare, nu o poți mai răspunde o dată.\n\nEchipa ta obține puncte bonus în funcție de câți membri ai echipei trimit un răspuns corect pentru fiecare întrebare.\nVerifică după fiecare meci pentru a câștiga mai multe puncte pentru echipa ta!",
     "questiontypes": {

@@ -59,13 +59,15 @@
   "league": {
     "rankingisempty": "Henüz hiçbir takım puan kaydetmedi. İlk turdan sonra burayı kontrol edin.",
     "viewgamerankings": "Her oyun için sıralamayı görüntüle",
-    "viewgamerankings-title": "Oyun ayrıntı sayfalarında her oyun için sıralamayı görebilirsin"
+    "viewgamerankings-title": "Oyun ayrıntı sayfalarında her oyun için sıralamayı görebilirsin",
+    "ranking-frozen": "Sıralama şimdi kazananlar açıklanana kadar dondurulmuştur"
   },
   "admin": {
     "select_league": {
       "intro": "Yönetmek istediğiniz ligi seçin"
     }
   },
+  "yourmatch": "Maçınız",
   "sidequest": {
     "thanks": "Teşekkürler, yanıtınız kaydedildi",
     "timeranout": "Süre doldu, bir sonraki sefere daha iyi şanslar",
@@ -76,6 +78,7 @@
     "submityouranswers": "Yanıtlarınızı gönderin",
     "gameroundtitle": "Tur {round}",
     "back_to_overview": "Genel Bakışa Dön",
+    "noroundyet": "Henüz mevcut değil. Maçtan sonra geri gelin.",
     "explanation": "Açıklama",
     "explanation_text": "Son maç hariç her maçtan sonra, rastgele sırayla 2 soru açılacak, toplamda 8 soru olacak. Bu soruları yanıtlamak için 10 dakikanız var, sonraki maç başlayana kadar.\nToplamda 8 jetonunuz var. Başlattığınız her soru, ona cevap vermeseniz bile bir jetonunuzu tüketir. Bu nedenle aynı soruyu tekrar denerseniz, başka bir soruyu atlamak zorunda kalırsınız.\nBir soruya cevap verdikten sonra tekrar cevaplayamazsınız.\n\nTakımınız, her soru için kaç takım üyesinin doğru cevap gönderdiğine bağlı olarak bonus puanlar kazanır.\nTakımınıza daha fazla puan kazandırmak için her maçtan sonra geri dönün!",
     "questiontypes": {

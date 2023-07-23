@@ -58,13 +58,15 @@
     "league": {
         "rankingisempty": "Aucun point n'a encore été gagné. Vérifiez à nouveau après le premier tour.",
         "viewgamerankings": "Voir le classement de chaque jeu",
-        "viewgamerankings-title": "Vous pouvez consulter les classements par jeu sur les pages de détails du jeu."
+        "viewgamerankings-title": "Vous pouvez consulter les classements par jeu sur les pages de détails du jeu.",
+        "ranking-frozen": "Le classement est maintenant gelé jusqu'à ce que les gagnants soient annoncés"
     },
     "admin": {
         "select_league": {
             "intro": "Choisissez la ligue que vous souhaitez gérer"
         }
     },
+    "yourmatch": "Votre match",
     "sidequest": {
         "thanks": "Merci, votre réponse a été enregistrée",
         "timeranout": "Le temps est écoulé, vous aurez plus de chance la prochaine fois",
@@ -75,6 +77,7 @@
         "submityouranswers": "Envoyez vos réponses",
         "gameroundtitle": "Tour {round}",
         "back_to_overview": "Retour à l'aperçu",
+        "noroundyet": "Indisponible pour le moment. Revenez après le match.",
         "explanation": "Explication",
         "explanation_text": "Après chaque match, sauf le dernier, 2 questions seront déverrouillées dans un ordre aléatoire, soit un total de 8 questions. Vous avez 10 minutes pour y répondre, jusqu'à ce que le match suivant commence.\nVous avez un total de 8 pièces. Chaque question que vous commencez vous coûte une pièce, même si vous n'y répondez pas. Donc, si vous réessayez la même question, vous devrez sauter une autre question.\nUne fois que vous avez répondu à une question, vous ne pouvez plus y répondre.\n\nVotre équipe gagne des points bonus en fonction du nombre de membres de votre équipe qui envoient une réponse correcte pour chaque question.\nRevenez après chaque match pour gagner plus de points pour votre équipe !",
         "questiontypes": {

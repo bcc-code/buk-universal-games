@@ -58,14 +58,15 @@
   "league": {
     "rankingisempty": "No team has yet registered points. Check back here after the first round.",
     "viewgamerankings": "View ranking for each game",
-    "viewgamerankings-title": "You can view the rankings per game on the game detail pages."
+    "viewgamerankings-title": "You can view the rankings per game on the game detail pages.",
+    "ranking-frozen": "The ranking is now frozen until the winners are announced"
   },
   "admin": {
     "select_league": {
       "intro": "Choose the league you want to manage"
     }
   },
-  "yourmatch": "",
+  "yourmatch": "Your match",
   "sidequest": {
     "thanks": "Thanks, your answer has been recorded",
     "timeranout": "Time ran out, better luck next time",
@@ -78,7 +79,7 @@
     "back_to_overview": "Return to the overview",
     "explanation": "Explanation",
     "explanation_text": "After every round except the last one, 2 questions will be unlocked in random order, so 8 questions total. You can answer them until the next match starts.\n\nIf you don't answer the question or back out of it, you loose one of your 8 coins. If you retry the same question you will have to skip another question. \n\nYour team earns bonus points based on how many of your team sends in a correct answer for each question.",
-    "noroundyet": "",
+    "noroundyet": "Not yet available. Come back after the match",
     "questiontypes": {
       "math": "Math",
       "knowledge": "Knowledge",

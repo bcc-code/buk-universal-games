@@ -1,7 +1,7 @@
 import { nextTick } from 'vue'
 import { createI18n } from 'vue-i18n'
 
-export const SUPPORT_LOCALES = ['cn', 'de', 'en', 'es', 'fi', 'fr', 'hu', 'it', 'nb', 'nl', 'pl', 'ro', 'ru', 'tr']
+export const SUPPORT_LOCALES = ['cn', 'de', 'en', 'es', 'fi', 'fr', 'hu', 'it', 'nb', 'nl', 'pl', 'ro', 'ru', 'tr','ua']
 
 export function setupI18n(options = { locale: 'en', }) {
   if (!options.locale || !SUPPORT_LOCALES.includes(options.locale)) {
