@@ -9,6 +9,7 @@ export const testNotification = {
 
 export default class NotificationService {
   scheduledNotifications = [];
+  shownNotifications = [];
   get canNotifyExternal() {
     return "Notification" in window && Notification.permission === "granted";
   }
@@ -17,16 +18,14 @@ export default class NotificationService {
   }
   /** Scheduled notifications expire 5 minutes after their target time by default. */
   constructor(expiryTimeOffset = 300_000) {
-    // Debug mode only
-    if ('webpackChunkbuk_universal_games_ui' in window) {
-      this.scheduledNotifications.push()
-    }
     setInterval(() => {
       let latestNotification;
       while (this.scheduledNotifications[0]?.time < new Date()) {
         latestNotification = this.scheduledNotifications.shift();
       }
-      if (new Date().getTime() < latestNotification?.time.getTime() + expiryTimeOffset) {
+      if (latestNotification && !this.shownNotifications.find(n => n.time.getTime() === latestNotification.time.getTime())
+        && new Date().getTime() < latestNotification.time.getTime() + expiryTimeOffset) {
+        this.shownNotifications.push(latestNotification);
         this.notify(latestNotification.title, latestNotification.options);
       }
     }, 1000);
@@ -46,9 +45,15 @@ export default class NotificationService {
       : this.notifyInternal(title, options);
   }
   schedule(time, title, options) {
-    this.scheduledNotifications.push({ time, title, options });
-    // Sort ascending
-    this.scheduledNotifications.sort((a, b) => a.time.getTime() - b.time.getTime());
+    // Do not reschedule notifications that have already been shown.
+    if (!this.shownNotifications.find(n => n.time.getTime() === time.getTime())) {
+      this.scheduledNotifications.push({ time, title, options });
+      this.scheduledNotifications = this.scheduledNotifications
+        // Sort ascending
+        .sort((a, b) => a.time.getTime() - b.time.getTime())
+        // Distinct
+        .filter((n, ix, all) => all.findIndex(n2 => n2.time.getTime() === n.time.getTime()) === ix);
+    }
   }
   async notifyExternal(title, options) {
     const registration = await navigator.serviceWorker.getRegistration();
