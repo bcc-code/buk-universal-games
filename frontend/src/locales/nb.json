@@ -107,8 +107,8 @@
       "a": {
         "opta": "Lene, Svinge, Drifte",
         "optb": "Svinge, Lene, Drifte",
-        "optc": "Lene, Drifte, Svinge",
-        "optd": "Svinge, Drifte, Lene"
+        "ldw": "Lene, Drifte, Svinge",
+        "wdl": "Svinge, Drifte, Lene"
       }
     },
     "insight": {
@@ -121,35 +121,15 @@
         "sametime": "De når bunnen samtidig"
       }
     },
-    "guesshowoften": {
-      "q": "Mannen med den blå skjorten kommer til å besvime under denne berg-og-dal-baneturen, hvor ofte vil han besvime?",
-      "intro": "Se på bildet",
-      "a": {
-        "1": "1 gang",
-        "2": "2 ganger",
-        "4": "4 ganger",
-        "8": "8 ganger"
-      }
-    },
     "recognize1": {
-      "q": "Hvilket dyr prøver å snuse på deg fra den andre siden?",
-      "intro": "Er du fan av dyr? Studer bildet.",
+      "q": "Gjenkjenner du eller husker du hvem dette er?",
+      "intro": "Vet du hvem vi ser (ikke) på dette bildet?"
       "a": {
-        "horse": "Hest",
-        "camel": "Kamel",
-        "antelope": "Antilope",
-        "giraffe": "Giraff"
-      }
-    },
-    "recognize2": {
-      "q": "Hvilket dyr prøver å snuse på deg fra den andre siden?",
-      "intro": "Se på bildet",
-      "a": {
-        "elephant": "Elefant",
-        "tiger": "Tiger",
-        "owl": "Ugle",
-        "lion": "Løve"
-      }
+        "opta": "Gershon Twilley",
+        "optb": "Harald Kronstad",
+        "optc": "Gunnar Gangsø",
+        "optd": "Bernt-Aksel Larsen"
+    }
     },
     "recognize3": {
       "q": "Husker du hvem dette er?",
@@ -159,16 +139,6 @@
         "john": "Johannes",
         "matthew": "Matteus",
         "paul": "Paulus"
-      }
-    },
-    "recognize4": {
-      "q": "Hvem ser du fra venstre mot høyre?",
-      "intro": "Har du et skarpt øye? Se på bildet.",
-      "a": {
-        "bkg": "Bernt Aksel, Kåre, Gershon",
-        "gkb": "Gershon, Kåre, Bernt Aksel",
-        "kgb": "Kåre, Gershon, Bernt Aksel",
-        "bgk": "Bernt Aksel, Gershon, Kåre"
       }
     },
     "math": {

@@ -36,7 +36,7 @@ namespace Buk.UniversalGames.Data.Repositories
         public async Task ClearStatus(List<League> leagues)
         {
             await _db.Database.ExecuteSqlRawAsync("TRUNCATE TABLE points");
-            await _db.Database.ExecuteSqlRawAsync("TRUNCATE TABLE sticker_scans");
+            await _db.Database.ExecuteSqlRawAsync("TRUNCATE TABLE guesses");
             await _db.Database.ExecuteSqlRawAsync("UPDATE matches SET winner_id = NULL");
         }
     }

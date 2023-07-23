@@ -107,8 +107,8 @@
       "a": {
         "opta": "Lean, Wave, Drift",
         "optb": "Wave, Lean, Drift",
-        "optc": "Lean, Drift, Wave",
-        "optd": "Wave, Drift, Lean"
+        "ldw": "Lean, Drift, Wave",
+        "wdl": "Wave, Drift, Lean"
       }
     },
     "insight": {
@@ -121,16 +121,6 @@
         "sametime": "Dotrą na dół w tym samym czasie"
       }
     },
-    "guesshowoften": {
-      "q": "Mężczyzna w niebieskiej koszuli zamierza zemdleć na tej kolejce górskiej, ile razy straci przytomność?",
-      "intro": "Popatrz na obrazek",
-      "a": {
-        "1": "1 raz",
-        "2": "2 razy",
-        "4": "4 razy",
-        "8": "8 razy"
-      }
-    },
     "recognize1": {
       "q": "Jakie zwierzę próbuje cię wąchać z drugiej strony?",
       "intro": "Jesteś fanem zwierząt? Przyjrzyj się obrazkowi.",
@@ -139,16 +129,6 @@
         "camel": "Wielbłąd",
         "antelope": "Antylopa",
         "giraffe": "Żyrafa"
-      }
-    },
-    "recognize2": {
-      "q": "Jakie zwierzę próbuje cię wąchać z drugiej strony?",
-      "intro": "Popatrz na obrazek",
-      "a": {
-        "elephant": "Słoń",
-        "tiger": "Tygrys",
-        "owl": "Sowa",
-        "lion": "Lew"
       }
     },
     "recognize3": {

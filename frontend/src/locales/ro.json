@@ -107,8 +107,8 @@
       "a": {
         "opta": "Lean, Wave, Drift",
         "optb": "Wave, Lean, Drift",
-        "optc": "Lean, Drift, Wave",
-        "optd": "Wave, Drift, Lean"
+        "ldw": "Lean, Drift, Wave",
+        "wdl": "Wave, Drift, Lean"
       }
     },
     "insight": {
@@ -121,16 +121,6 @@
         "sametime": "Ajung jos în același timp"
       }
     },
-    "guesshowoften": {
-      "q": "Bărbatul cu cămașa albastră o să leșine în timpul acestei călătorii cu montagne-russe, de câte ori o să leșine?",
-      "intro": "Uită-te la imagine",
-      "a": {
-        "1": "1 dată",
-        "2": "2 ori",
-        "4": "4 ori",
-        "8": "8 ori"
-      }
-    },
     "recognize1": {
       "q": "Ce animal încearcă să te miros din cealaltă parte?",
       "intro": "Ești fan al animalelor? Studiază imaginea.",
@@ -139,16 +129,6 @@
         "camel": "Cămilă",
         "antelope": "Antilopă",
         "giraffe": "Girafă"
-      }
-    },
-    "recognize2": {
-      "q": "Ce animal încearcă să te miros din cealaltă parte?",
-      "intro": "Uită-te la imagine",
-      "a": {
-        "elephant": "Elefant",
-        "tiger": "Tigru",
-        "owl": "Bufniță",
-        "lion": "Leu"
       }
     },
     "recognize3": {

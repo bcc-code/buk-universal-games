@@ -33,12 +33,12 @@
             <span>{{ $t("sidequest.questiontypes." + question.t) }}</span>
           </h3>
         </div>
-        <span class="locked-indicator" v-if="(index + 1 < $store.getters.currentRound)">Locked</span>
+        <!-- <span class="locked-indicator" v-if="(index + 1 < $store.getters.currentRound)">Locked</span> -->
       </div>
       </div>
     </section>
     <section v-if="questionsPerRound.length < 4">
-      <h2>Round {{ questionsPerRound.length + 1 }}</h2>
+      <h2>{{ $t("sidequest.gameroundtitle", {round: questionsPerRound.length + 1}) }}</h2>
       <div class="round">
         <p>{{ $t("sidequest.noroundyet", {nextRound: questionsPerRound.length + 1}) }}</p>
       </div>
@@ -62,7 +62,14 @@ export default {
     };
   },
   mounted() {
-    this.$store.dispatch("checkNewQuestions", this.$store.state.matches);
+    //this.$store.dispatch("checkNewQuestions", this.$store.state.matches);
+    for(let i = 0; i < this.$store.state.qsOpened.length; i++)
+    {
+      if(this.$store.state.qsOpened[i].length == 0)
+      {
+        this.$store.commit("unlockNewQuestions", i + 1);
+      }
+    }
   },
   methods: {
     refresh() {

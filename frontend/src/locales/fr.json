@@ -105,10 +105,10 @@
             "q": "Quel est l'ordre correct des mouvements de danse du Herman Shuffle ?",
             "intro": "Avez-vous dansé ce matin ?",
             "a": {
-                "opta": "Lean, Wave, Drift ",
-                "optb": "Wave, Lean, Drift",
-                "optc": "Lean, Drift, Wave",
-                "optd": "Wave, Drift, Lean"
+                "lwd": "Lean, Wave, Drift ",
+                "wld": "Wave, Lean, Drift",
+                "ldw": "Lean, Drift, Wave",
+                "wdl": "Wave, Drift, Lean"
             }
         },
         "insight": {
@@ -121,34 +121,14 @@
                 "sametime": "Ils atteignent le sol en même temps"
             }
         },
-        "guesshowoften": {
-            "q": "L'homme à la chemise bleue va s'évanouir sur ces montagnes russes. Combien de fois va-t-il s'évanouir ?",
-            "intro": "Regardez l'image.",
-            "a": {
-                "1": "1 fois",
-                "2": "2 fois",
-                "4": "4 fois",
-                "8": "8 fois"
-            }
-        },
         "recognize1": {
             "q": "Quel animal essaie de vous renifler de l'autre côté ?",
             "intro": "Vous aimez les animaux ? Étudiez l'image.",
             "a": {
-                "horse": "Cheval",
-                "camel": "Chameau",
-                "antelope": "Antilope",
-                "giraffe": "Girafe"
-            }
-        },
-        "recognize2": {
-            "q": "Quel animal essaie de vous renifler de l'autre côté ? ",
-            "intro": "Vous aimez les animaux ? Étudiez l'image.",
-            "a": {
-                "elephant": "Éléphant",
-                "tiger": "Tigre",
-                "owl": "Hibou",
-                "lion": "Lion"
+                "opta": "Gershon Twilley",
+                "optb": "Harald Kronstad",
+                "optc": "Gunnar Gangsø",
+                "optd": "Bernt-Aksel Larsen"
             }
         },
         "recognize3": {

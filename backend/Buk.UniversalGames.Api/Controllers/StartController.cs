@@ -26,13 +26,19 @@ public class StartController : ControllerBase
         if (team == null)
             return new ExceptionResult(Strings.UnknownTeamCode, 403);
 
-        var league = team.LeagueId.HasValue ? await _leagueService.GetLeague(team.LeagueId.Value) : null;
+        //var league = team.LeagueId.HasValue ? await _leagueService.GetLeague(team.LeagueId.Value) : null;
 
         return new SignInSuccessResponse(
             team.Code, 
             team.Name, 
-            team.Type.ToString(), 
+            team.TeamType, 
             team.LeagueId, 
-            league?.Name);
+            team.LeagueId switch
+            {
+                4 => "B-League",
+                5 => "U-League",
+                6 => "K-League",
+                _ => null
+            });
     }
 }

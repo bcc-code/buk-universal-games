@@ -105,10 +105,10 @@
             "q": "¿Cuál es el orden correcto de los movimientos de baile de Herman Shuffle?",
             "intro": "¿Has bailado con esto esta mañana?",
             "a": {
-                "opta": "Lean, Wave, Drift",
-                "optb": "Wave, Lean, Drift",
-                "optc": "Lean, Drift, Wave",
-                "optd": "Wave, Drift, Lean"
+                "lwd": "Lean, Wave, Drift",
+                "wld": "Wave, Lean, Drift",
+                "ldw": "Lean, Drift, Wave",
+                "wdl": "Wave, Drift, Lean"
             }
         },
         "insight": {
@@ -121,37 +121,17 @@
                 "sametime": "Llegan abajo al mismo tiempo"
             }
         },
-        "guesshowoften": {
-            "q": "El hombre con la camisa azul va a desmayarse en este paseo de montaña rusa, ¿con qué frecuencia se desmayará?",
-            "intro": "Mira la imagen",
-            "a": {
-                "1": "1 vez",
-                "2": "2 veces",
-                "4": "4 veces",
-                "8": "8 veces"
-            }
-        },
         "recognize1": {
             "q": "¿Qué animal está tratando de olerte desde el otro lado?",
             "intro": "¿Eres fanático de los animales? Estudia la imagen.",
             "a": {
-                "horse": "Caballo",
-                "camel": "Camello",
-                "antelope": "Antílope",
-                "giraffe": "Jirafa"
+                "opta": "Gershon Twilley",
+                "optb": "Harald Kronstad",
+                "optc": "Gunnar Gangsø",
+                "optd": "Bernt-Aksel Larsen"
             }
         },
         "recognize2": {
-            "q": "¿Qué animal está tratando de olerte desde el otro lado?",
-            "intro": "Mira la imagen",
-            "a": {
-                "elephant": "Elefante",
-                "tiger": "Tigre",
-                "owl": "Búho",
-                "lion": "León"
-            }
-        },
-        "recognize3": {
             "q": "¿Puedes recordar quién es esta persona?",
             "intro": "¿Has seguido los proyectos este año? Mira la imagen.",
             "a": {
@@ -159,16 +139,6 @@
                 "john": "Juan",
                 "matthew": "Mateo",
                 "paul": "Pablo"
-            }
-        },
-        "recognize4": {
-            "q": "¿A quién puedes ver en orden de izquierda a derecha?",
-            "intro": "¿Tienes una vista aguda? Mira la imagen.",
-            "a": {
-                "bkg": "Bernt Aksel, Kåre, Gershon",
-                "gkb": "Gershon, Kåre, Bernt Aksel",
-                "kgb": "Kåre, Gershon, Bernt Aksel",
-                "bgk": "Bernt Aksel, Gershon, Kåre"
             }
         },
         "math": {

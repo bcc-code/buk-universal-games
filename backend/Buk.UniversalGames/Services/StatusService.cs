@@ -8,6 +8,8 @@ using Buk.UniversalGames.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using NPOI.HSSF.Record;
+using NPOI.OpenXmlFormats.Spreadsheet;
+using NPOI.XSSF.UserModel;
 using Org.BouncyCastle.Math.EC.Rfc7748;
 
 namespace Buk.UniversalGames.Services
@@ -42,7 +44,7 @@ namespace Buk.UniversalGames.Services
         public async Task<Dictionary<string, List<TeamStatus>>> GetLeagueRankings(int leagueId)
         {
             var dict = new Dictionary<string, List<TeamStatus>>();
-            foreach(var type in (GameType[])Enum.GetValues(typeof(GameType)))
+            foreach (var type in (GameType[])Enum.GetValues(typeof(GameType)))
             {
                 dict.Add(type.ToString().ToLowerInvariant(), await GetGameRanking(type, leagueId));
             }
@@ -64,21 +66,25 @@ namespace Buk.UniversalGames.Services
 
         public async Task<List<TeamStatus>> BuildAndCacheRankingForSidequest(int leagueId)
         {
-            var teamSizes = (from team in _db.Teams
-                             select new { team.TeamId, team.Name, team.MemberCount }).ToList();
-            
-            var teamSizeDict = teamSizes.ToDictionary(x => x.TeamId, x => x.MemberCount);
+            var answers = await _cache.Get<string[]>("sidequest_answers");
+            if (answers is null || answers.Length == 0) throw new InvalidOperationException("Answers haven't been loaded");
 
-            var teamScores = from answer in _db.Guesses
-                             where answer.Team.LeagueId == leagueId && answer.IsCorrect
-                             group answer by new { answer.TeamId, answer.QuestionId } into t
+            var teamsWithSize = (from team in _db.Teams
+                                 select new { team.TeamId, team.Name, team.MemberCount }).ToList();
+
+            var teamSizeDict = teamsWithSize.ToDictionary(x => x.TeamId, x => x.MemberCount);
+
+            var teamScores = from guess in _db.Guesses
+                             where guess.Team.LeagueId == leagueId && answers.Contains(guess.Answer)
+                             group guess by new { guess.TeamId, guess.QuestionId } into t
                              select new { t.Key.TeamId, t.Key.QuestionId, Count = t.Count() };
 
             var relativeScores = teamScores.Select(x => new { x.TeamId, x.QuestionId, x.Count, Percentage = (decimal)x.Count / teamSizeDict[x.TeamId] });
-            var averageScores = teamSizes
-                .Select(t => new { 
-                    t.TeamId, 
-                    t.Name, 
+            var averageScores = teamsWithSize
+                .Select(t => new
+                {
+                    t.TeamId,
+                    t.Name,
                     AverageScore = relativeScores
                         .Where(x => x.TeamId == t.TeamId)
                         .Average(x => x.Percentage)
@@ -95,7 +101,7 @@ namespace Buk.UniversalGames.Services
                 ranking.AddRange(rankingPosition.Select(x => new TeamStatus(x.TeamId, x.Name, _scoreByRank[rank])));
             }
 
-            await _cache.Set("sidequest_ranking", ranking);
+            await _cache.Set($"sidequest_ranking_{leagueId}", ranking);
 
             return ranking;
         }
@@ -103,8 +109,8 @@ namespace Buk.UniversalGames.Services
         public async Task<List<TeamStatus>> BuildAndCacheRankingForGameInLeague(Game game, int leagueId)
         {
             var teamScoresQuery = from score in _db.Points
-                             where score.Game == game && score.Match!.LeagueId == leagueId
-                             select new { score.TeamId, score.Team.Name, score.Points };
+                                  where score.Game == game && score.Match!.LeagueId == leagueId
+                                  select new { score.TeamId, score.Team.Name, score.Points };
             var teamScores = await teamScoresQuery.ToListAsync();
             var teamsGroupedByPoints = teamScores.GroupBy(x => x.Points);
 
@@ -142,35 +148,35 @@ namespace Buk.UniversalGames.Services
             var ticketTwist = (await GetGameRanking(GameType.TicketTwist, leagueId)).ToDictionary(x => x.TeamId);
             var minefield = (await GetGameRanking(GameType.MineField, leagueId)).ToDictionary(x => x.TeamId);
             var tableSurfing = (await GetGameRanking(GameType.TableSurfing, leagueId)).ToDictionary(x => x.TeamId);
-            
-            var sidequest = (await _cache.Get<List<TeamStatus>>("sidequest_ranking"))?.ToDictionary(x => x.TeamId) ?? new Dictionary<int, TeamStatus>();
+
+            var sidequest = (await _cache.Get<List<TeamStatus>>($"sidequest_ranking_{leagueId}"))?.ToDictionary(x => x.TeamId) ?? new Dictionary<int, TeamStatus>();
 
             var leagueRanking = new List<TeamStatus>();
 
-            foreach(var team in teams)
+            foreach (var team in teams)
             {
-                var totalPoints = GetPointsForSubRanking(nerveSpiral, team) 
+                var totalPoints = GetPointsForSubRanking(nerveSpiral, team)
                                     + GetPointsForSubRanking(monkeyBars, team)
                                     + GetPointsForSubRanking(ticketTwist, team)
                                     + GetPointsForSubRanking(minefield, team)
                                     + GetPointsForSubRanking(tableSurfing, team)
-                                    + GetPointsForSubRanking(sidequest, team)
+                                    + GetPointsForSubRanking(sidequest, team) * .7
                                     + _matchWinnerPoints * matchWinners.Count(x => x == team.TeamId);
 
-                leagueRanking.Add(new TeamStatus(team.TeamId, team.Name, totalPoints));
+                leagueRanking.Add(new TeamStatus(team.TeamId, team.Name, (int)(totalPoints * 10)));
             }
 
             var sortedRanking = leagueRanking.OrderByDescending(x => x.Points).ToList();
             await _cache.Set(leagueCacheKey(leagueId), sortedRanking);
             return sortedRanking;
 
-            static int GetPointsForSubRanking (Dictionary<int, TeamStatus> subRanking, Team team) 
+            static int GetPointsForSubRanking(Dictionary<int, TeamStatus> subRanking, Team team)
                 => subRanking.TryGetValue(team.TeamId, out var status) ? status.Points : 0;
         }
 
         public async Task<TeamStatusReport> GetTeamStatus(Team team)
         {
-            if(team is null) throw new ArgumentNullException(nameof(team));
+            if (team is null) throw new ArgumentNullException(nameof(team));
 
             return new TeamStatusReport
             {
@@ -188,6 +194,68 @@ namespace Buk.UniversalGames.Services
         {
             var leagues = await _leagueLeagueRepository.GetLeagues();
             await _statusRepository.ClearStatus(leagues);
+        }
+
+        public async Task GuaranteeAnswersInCache()
+        {
+            var answers = await _db.Settings.FindAsync("answers");
+            await _cache.Set("sidequest_answers", answers);
+        }
+
+        public async Task<byte[]> ExportStatus()
+        {
+            using var stream = new MemoryStream();
+            var xlsWorkbook = new XSSFWorkbook();
+
+            var font = xlsWorkbook.CreateFont();
+            font.FontHeightInPoints = 11;
+            font.FontName = "Calibri";
+            font.IsBold = true;
+
+            var style = xlsWorkbook.CreateCellStyle();
+            style.SetFont(font);
+
+            var leagues = await _leagueLeagueRepository.GetLeagues();
+
+            foreach (var league in leagues)
+            {
+                var xlsSheet = xlsWorkbook.CreateSheet(league.Name);
+
+                var rowIndex = 0;
+                var row = xlsSheet.CreateRow(rowIndex);
+
+                var cell = row.CreateCell(0);
+                cell.CellStyle = style;
+                cell.SetCellValue("Position");
+
+                cell = row.CreateCell(1);
+                cell.CellStyle = style;
+                cell.SetCellValue("Team");
+
+                cell = row.CreateCell(2);
+                cell.CellStyle = style;
+                cell.SetCellValue("Points");
+
+                cell = row.CreateCell(3);
+                cell.CellStyle = style;
+                cell.SetCellValue("Stickers");
+
+                var statuses = await _statusRepository.GetLeagueStatus(league.LeagueId);
+
+                rowIndex++;
+                foreach (var status in statuses)
+                {
+                    row = xlsSheet.CreateRow(rowIndex);
+                    row.CreateCell(0).SetCellValue(rowIndex);
+                    row.CreateCell(1).SetCellValue(status.Team);
+                    row.CreateCell(2).SetCellValue(status.Points);
+
+                    rowIndex++;
+                }
+            }
+
+            xlsWorkbook.Write(stream);
+            return stream.ToArray();
         }
     }
 }

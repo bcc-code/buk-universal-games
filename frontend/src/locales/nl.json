@@ -89,13 +89,7 @@
   "questions": {
     "guesshowmany1": {
       "q": "Hoeveel uur is er dit jaar naar Fra Kåre geluisterd?",
-      "intro": "Heb je dit jaar naar Fra Kåre geluisterd?",
-      "a": {
-        "100": "100",
-        "1000": "1000",
-        "10000": "10000",
-        "20000": "20000"
-      }
+      "intro": "Heb je dit jaar naar Fra Kåre geluisterd?"
     },
     "guesshowmany2": {
       "q": "Hoeveel mensen hebben de kampen bezocht in 2023?",
@@ -105,10 +99,10 @@
       "q": "Wat is de juiste volgorde van de Herman Shuffle danspassen?",
       "intro": "Heb je vanochtend meegedanst?",
       "a": {
-        "opta": "Lean, Wave, Drift",
-        "optb": "Wave, Lean, Drift",
-        "optc": "Lean, Drift, Wave",
-        "optd": "Wave, Drift, Lean"
+        "lwd": "Lean, Wave, Drift",
+        "wld": "Wave, Lean, Drift",
+        "ldw": "Lean, Drift, Wave",
+        "wdl": "Wave, Drift, Lean"
       }
     },
     "insight": {
@@ -121,35 +115,15 @@
         "sametime": "Ze bereiken tegelijkertijd de bodem"
       }
     },
-    "guesshowoften": {
-      "q": "De man met het blauwe shirt gaat flauwvallen tijdens deze achtbaanrit, hoe vaak zal hij flauwvallen?",
-      "intro": "Bekijk de afbeelding",
-      "a": {
-        "1": "1 keer",
-        "2": "2 keer",
-        "4": "4 keer",
-        "8": "8 keer"
-      }
-    },
     "recognize1": {
-      "q": "Welk dier probeert van de andere kant aan je te snuffelen?",
-      "intro": "Ben je een fan van dieren? Bestudeer de afbeelding.",
+      "q": "Herken je of herinner je je wie dit is?",
+      "intro": "Weet je wie we (niet) zien op deze afbeelding?"
       "a": {
-        "horse": "Paard",
-        "camel": "Kameel",
-        "antelope": "Antilope",
-        "giraffe": "Giraffe"
-      }
-    },
-    "recognize2": {
-      "q": "Welk dier probeert van de andere kant aan je te snuffelen?",
-      "intro": "Bekijk de afbeelding",
-      "a": {
-        "elephant": "Olifant",
-        "tiger": "Tijger",
-        "owl": "Uil",
-        "lion": "Leeuw"
-      }
+        "opta": "Gershon Twilley",
+        "optb": "Harald Kronstad",
+        "optc": "Gunnar Gangsø",
+        "optd": "Bernt-Aksel Larsen"
+    }
     },
     "recognize3": {
       "q": "Weet je nog wie dit is?",
@@ -159,16 +133,6 @@
         "john": "Johannes",
         "matthew": "Matteüs",
         "paul": "Paulus"
-      }
-    },
-    "recognize4": {
-      "q": "Wie zie je van links naar rechts?",
-      "intro": "Heb je een scherp oog? Bekijk de afbeelding.",
-      "a": {
-        "bkg": "Bernt Aksel, Kåre, Gershon",
-        "gkb": "Gershon, Kåre, Bernt Aksel",
-        "kgb": "Kåre, Gershon, Bernt Aksel",
-        "bgk": "Bernt Aksel, Gershon, Kåre"
       }
     },
     "math": {

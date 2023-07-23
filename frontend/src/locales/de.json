@@ -105,10 +105,10 @@
       "q": "Was ist die richtige Reihenfolge der Tanzbewegungen von Herman Shuffle?",
       "intro": "Hast du heute Morgen dazu getanzt?",
       "a": {
-        "opta": "Lean, Wave, Drift",
-        "optb": "Wave, Lean, Drift",
-        "optc": "Lean, Drift, Wave",
-        "optd": "Wave, Drift, Lean"
+        "lwd": "Lean, Wave, Drift",
+        "wld": "Wave, Lean, Drift",
+        "ldw": "Lean, Drift, Wave",
+        "wdl": "Wave, Drift, Lean"
       }
     },
     "insight": {
@@ -121,16 +121,6 @@
         "sametime": "Sie kommen gleichzeitig unten an"
       }
     },
-    "guesshowoften": {
-      "q": "Der Mann mit dem blauen Hemd wird auf dieser Achterbahnfahrt ohnmächtig, wie oft wird er ohnmächtig?",
-      "intro": "Schau dir das Bild an",
-      "a": {
-        "1": "1 Mal",
-        "2": "2 Mal",
-        "4": "4 Mal",
-        "8": "8 Mal"
-      }
-    },
     "recognize1": {
       "q": "Welches Tier versucht dich von der anderen Seite zu beschnüffeln?",
       "intro": "Bist du ein Tierliebhaber? Betrachte das Bild.",
@@ -139,16 +129,6 @@
         "camel": "Kamel",
         "antelope": "Antilope",
         "giraffe": "Giraffe"
-      }
-    },
-    "recognize2": {
-      "q": "Welches Tier versucht dich von der anderen Seite zu beschnüffeln?",
-      "intro": "Schau dir das Bild an",
-      "a": {
-        "elephant": "Elefant",
-        "tiger": "Tiger",
-        "owl": "Eule",
-        "lion": "Löwe"
       }
     },
     "recognize3": {

@@ -46,7 +46,7 @@ button {
 
 .card-dark {
   background-color: var(--dark);
-  padding: 1.5em;
+  padding: 1.5em 1em;
   border-radius: 1em;
   display: flex;
   flex-direction: row;

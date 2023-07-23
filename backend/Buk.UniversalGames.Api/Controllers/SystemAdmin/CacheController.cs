@@ -49,10 +49,10 @@ public class CacheController : ControllerBase
         {
             await _leagueRepository.GetTeams(league.LeagueId);
             await _gameRepository.GetMatches(league.LeagueId);
-            //await _stickerRepository.GetStickers(league.LeagueId);
             foreach(var game in games)
                 await _statusService.BuildAndCacheRankingForGameInLeague(game, league.LeagueId);
             await _statusService.BuildAndCacheLeagueRanking(league.LeagueId);
+            await _statusService.GuaranteeAnswersInCache();
         }
         return Ok();
     }
