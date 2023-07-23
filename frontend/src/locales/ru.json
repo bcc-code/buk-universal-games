@@ -9,7 +9,7 @@
   },
   "games": {
     "monkeybars": "Лазалки",
-    "nervespiral": "Нервное спираль XL",
+    "nervespiral": "Нервное спираль",
     "tickettwist": "Твистер-билеты",
     "minefield": "Минное поле",
     "tablesurfing": "Толпа-сёрфинг"
@@ -57,7 +57,7 @@
   },
   "league": {
     "rankingisempty": "Пока ни одна команда не набрала очков. Загляните сюда после первого раунда.",
-    "viewgamerankings": "Посмотреть рейтинг и счета для каждой игры",
+    "viewgamerankings": "Посмотреть рейтинг для каждой игры",
     "viewgamerankings-title": "Вы можете просматривать рейтинги для каждой игры на страницах с подробностями об игре."
   },
   "admin": {
@@ -70,7 +70,7 @@
     "timeranout": "Время вышло, повезет в следующий раз",
     "areyouready": "Вы готовы?",
     "checkanswerlater": "Проверьте ответ, когда игра закончится",
-    "question_locked": "Еще заблокировано",
+    "question_locked": "Истекший",
     "youhaveunsubmittedanswers": "У вас есть {numAnswers} ответов. Хотите отправить их сейчас?",
     "submityouranswers": "Отправить свои ответы",
     "gameroundtitle": "Раунд {round}",
@@ -89,13 +89,7 @@
   "questions": {
     "guesshowmany1": {
       "q": "Сколько часов музыки Fra Kåre было прослушано в этом году?",
-      "intro": "Слушали ли вы музыку Fra Kåre в этом году?",
-      "a": {
-        "100": "100",
-        "1000": "1000",
-        "10000": "10000",
-        "20000": "20000"
-      }
+      "intro": "Слушали ли вы музыку Fra Kåre в этом году?"
     },
     "guesshowmany2": {
       "q": "Сколько человек посетило лагери в 2023 году?",
@@ -125,10 +119,10 @@
       "q": "Какое животное пытается вас обнюхать с другой стороны?",
       "intro": "Вам нравятся животные? Посмотрите на изображение.",
       "a": {
-        "horse": "Лошадь",
-        "camel": "Верблюд",
-        "antelope": "Антилопа",
-        "giraffe": "Жираф"
+        "opta": "Gershon Twilley",
+        "optb": "Harald Kronstad",
+        "optc": "Gunnar Gangsø",
+        "optd": "Bernt-Aksel Larsen"
       }
     },
     "recognize2": {
@@ -139,16 +133,6 @@
         "john": "Иоанн",
         "matthew": "Матфей",
         "paul": "Павел"
-      }
-    },
-    "recognize4": {
-      "q": "Кто изображен на картинке слева направо?",
-      "intro": "У вас хорошее зрение? Посмотрите на изображение.",
-      "a": {
-        "bkg": "Bernt Aksel, Kåre, Gershon",
-        "gkb": "Gershon, Kåre, Bernt Aksel",
-        "kgb": "Kåre, Gershon, Bernt Aksel",
-        "bgk": "Bernt Aksel, Gershon, Kåre"
       }
     },
     "math": {

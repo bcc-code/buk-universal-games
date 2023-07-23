@@ -9,7 +9,7 @@
     },
     "games": {
         "monkeybars": "Barras de mono",
-        "nervespiral": "Espiral de nervios XL",
+        "nervespiral": "Espiral de nervios",
         "tickettwist": "Giro de boletos",
         "minefield": "Campo de minas",
         "tablesurfing": "Surf de multitudes"
@@ -57,7 +57,7 @@
     },
     "league": {
         "rankingisempty": "Ningún equipo ha registrado puntos todavía. Vuelve aquí después de la primera ronda.",
-        "viewgamerankings": "Ver clasificación y puntuaciones para cada juego",
+        "viewgamerankings": "Ver clasificación para cada juego",
         "viewgamerankings-title": "Puedes ver las clasificaciones por juego en las páginas de detalles del juego."
     },
     "admin": {
@@ -70,7 +70,7 @@
         "timeranout": "El tiempo se agotó, mejor suerte la próxima vez",
         "areyouready": "¿Estás listo?",
         "checkanswerlater": "Verifica la respuesta cuando termine el juego",
-        "question_locked": "Todavía bloqueado",
+        "question_locked": "Caducado",
         "youhaveunsubmittedanswers": "Tienes {numAnswers} respuestas. ¿Quieres enviarlas ahora?",
         "submityouranswers": "Enviar tus respuestas",
         "gameroundtitle": "Ronda {round}",
@@ -89,13 +89,7 @@
     "questions": {
         "guesshowmany1": {
             "q": "¿Cuántas horas se ha escuchado a Fra Kåre este año?",
-            "intro": "¿Has estado escuchando a Fra Kåre este año?",
-            "a": {
-                "100": "100",
-                "1000": "1000",
-                "10000": "10000",
-                "20000": "20000"
-            }
+            "intro": "¿Has estado escuchando a Fra Kåre este año?"
         },
         "guesshowmany2": {
             "q": "¿Cuántas personas han visitado los campamentos en 2023?",
@@ -122,8 +116,8 @@
             }
         },
         "recognize1": {
-            "q": "¿Qué animal está tratando de olerte desde el otro lado?",
-            "intro": "¿Eres fanático de los animales? Estudia la imagen.",
+            "q": "¿Reconoces o recuerdas quién es esto?",
+            "intro": "¿Sabes a quién (no) vemos en esta imagen?",
             "a": {
                 "opta": "Gershon Twilley",
                 "optb": "Harald Kronstad",

@@ -57,7 +57,7 @@
   },
   "league": {
     "rankingisempty": "尚未获得任何积分。第一轮结束后回来。",
-    "viewgamerankings": "查看每场比赛的排名和得分",
+    "viewgamerankings": "查看每个游戏的排名",
     "viewgamerankings-title": "您可以在游戏详情页面查看排名。"
   },
   "admin": {
@@ -70,7 +70,7 @@
     "timeranout": "时间已到，下次祝你好运",
     "areyouready": "你准备好了吗？",
     "checkanswerlater": "游戏结束后查看答案",
-    "question_locked": "仍处于锁定状态",
+    "question_locked": "过期",
     "youhaveunsubmittedanswers": "您有 {numAnswers} 个答案。 您现在想发送它们吗？",
     "submityouranswers": "提交您的答案",
     "gameroundtitle": "第{round}回合",
@@ -89,13 +89,7 @@
   "questions": {
     "guesshowmany1": {
       "q": "今年《Fra Kåre》听了多少小时？",
-      "intro": "今年你听过 Fra Kåre 吗？",
-      "a": {
-        "100": "百 100",
-        "1000": "千 1000",
-        "10000": "万 10000",
-        "20000": "两万 20000"
-      }
+      "intro": "今年你听过 Fra Kåre 吗？"
     },
     "guesshowmany2": {
       "q": "2023 年有多少人参观过营地？",
@@ -122,8 +116,8 @@
       }
     },
     "recognize1": {
-      "q": "什么动物试图从另一边嗅你？",
-      "intro": "你是动物迷吗？ 研究图像。",
+      "q": "你认识或者记得这是谁吗？",
+      "intro": "你知道我们在这张图片中（没有）看到谁吗？",
       "a": {
         "opta": "Gershon Twilley",
         "optb": "Harald Kronstad",

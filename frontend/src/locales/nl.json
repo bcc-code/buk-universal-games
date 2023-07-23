@@ -9,7 +9,7 @@
   },
   "games": {
     "monkeybars": "Apenkooien",
-    "nervespiral": "Zenuwspiraal XL",
+    "nervespiral": "Zenuwspiraal",
     "tickettwist": "Ticket Twist",
     "minefield": "Mijnenveld",
     "tablesurfing": "Crowdsurfen"
@@ -57,7 +57,7 @@
   },
   "league": {
     "rankingisempty": "Nog geen enkel team heeft punten geregistreerd. Kom na de eerste ronde hier terug.",
-    "viewgamerankings": "Bekijk ranglijst en scores voor elk spel",
+    "viewgamerankings": "Bekijk ranglijst voor elk spel",
     "viewgamerankings-title": "Je kunt de ranglijsten per spel bekijken op de detailpagina's van het spel."
   },
   "admin": {
@@ -70,7 +70,7 @@
     "timeranout": "De tijd is verstreken, volgende keer beter",
     "areyouready": "Ben je er klaar voor?",
     "checkanswerlater": "Controleer het antwoord als het spel voorbij is",
-    "question_locked": "Nog steeds vergrendeld",
+    "question_locked": "Verlopen",
     "youhaveunsubmittedanswers": "Je hebt {numAnswers} antwoorden. Wil je ze nu verzenden?",
     "submityouranswers": "Stuur je antwoorden in",
     "gameroundtitle": "Ronde {round}",

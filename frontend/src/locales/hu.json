@@ -9,7 +9,7 @@
   },
   "games": {
     "monkeybars": "Majomrudak",
-    "nervespiral": "Idegspirál XL",
+    "nervespiral": "Idegspirál",
     "tickettwist": "Jegy Szédítés",
     "minefield": "Aknamező",
     "tablesurfing": "Tömegszörf"
@@ -57,7 +57,7 @@
   },
   "league": {
     "rankingisempty": "Még egy csapat sem szerzett pontokat. Ellenőrizze vissza az első kör után.",
-    "viewgamerankings": "Nézze meg a ranglistát és pontszámokat minden játékhoz",
+    "viewgamerankings": "Nézze meg a ranglistát minden játékhoz",
     "viewgamerankings-title": "A játék részletező oldalain megtekintheti az eredmények rangsorát."
   },
   "admin": {
@@ -70,7 +70,7 @@
     "timeranout": "Lejárt az idő, legközelebb jobb szerencsét",
     "areyouready": "Készen áll?",
     "checkanswerlater": "Ellenőrizze a választ, amikor a játék véget ér",
-    "question_locked": "Még mindig zárolva van",
+    "question_locked": "Lejárt",
     "youhaveunsubmittedanswers": "Van {numAnswers} válasza. Szeretné most elküldeni őket?",
     "submityouranswers": "Adja be a válaszait",
     "gameroundtitle": "Kör {round}",
@@ -89,13 +89,7 @@
   "questions": {
     "guesshowmany1": {
       "q": "Hány órányi Fra Kåre zenét hallgatták idén?",
-      "intro": "Hallgattál idén Fra Kåre zenét?",
-      "a": {
-        "100": "100",
-        "1000": "1000",
-        "10000": "10000",
-        "20000": "20000"
-      }
+      "intro": "Hallgattál idén Fra Kåre zenét?"
     },
     "guesshowmany2": {
       "q": "Hányan látogatták meg a táborokat 2023-ban?",
@@ -122,8 +116,8 @@
       }
     },
     "recognize1": {
-      "q": "Milyen állat próbálja meg szagolni önöket a másik oldalról?",
-      "intro": "Szereted az állatokat? Nézze meg a képet.",
+      "q": "Felismered vagy emlékszel, hogy ki ő?",
+      "intro": "Tudod, kit (nem) látunk ezen a képen?",
       "a": {
         "opta": "Gershon Twilley",
         "optb": "Harald Kronstad",
@@ -139,16 +133,6 @@
         "john": "János",
         "matthew": "Máté",
         "paul": "Pál"
-      }
-    },
-    "recognize4": {
-      "q": "Kinek a látható a sorrendje balról jobbra?",
-      "intro": "Van éles szeme? Nézze meg a képet.",
-      "a": {
-        "bkg": "Bernt Aksel, Kåre, Gershon",
-        "gkb": "Gershon, Kåre, Bernt Aksel",
-        "kgb": "Kåre, Gershon, Bernt Aksel",
-        "bgk": "Bernt Aksel, Gershon, Kåre"
       }
     },
     "math": {

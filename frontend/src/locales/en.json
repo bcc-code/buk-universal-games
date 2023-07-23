@@ -9,7 +9,7 @@
   },
   "games": {
     "monkeybars": "Monkey Bars",
-    "nervespiral": "Nerve Spiral XL",
+    "nervespiral": "Nerve Spiral",
     "tickettwist": "Ticket Twist",
     "minefield": "Mine Field",
     "tablesurfing": "Crowd Surfing"
@@ -57,7 +57,7 @@
   },
   "league": {
     "rankingisempty": "No team has yet registered points. Check back here after the first round.",
-    "viewgamerankings": "View ranking and scores for each game",
+    "viewgamerankings": "View ranking for each game",
     "viewgamerankings-title": "You can view the rankings per game on the game detail pages."
   },
   "admin": {
@@ -71,7 +71,7 @@
     "timeranout": "Time ran out, better luck next time",
     "areyouready": "Are you ready?",
     "checkanswerlater": "Check the answer when the game is over",
-    "question_locked": "Still locked",
+    "question_locked": "Expired",
     "youhaveunsubmittedanswers": "You have {numAnswers} answers. Do you want to send them now?",
     "submityouranswers": "Submit your answers",
     "gameroundtitle": "Round {round}",
@@ -125,7 +125,7 @@
         "optb": "Harald Kronstad",
         "optc": "Gunnar Gangsø",
         "optd": "Bernt-Aksel Larsen"
-      }
+        }
     },
     "recognize2": {
       "q": "Can you remember who this is?",

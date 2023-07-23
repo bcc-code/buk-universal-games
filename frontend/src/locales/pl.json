@@ -9,7 +9,7 @@
   },
   "games": {
     "monkeybars": "Drabinki małp",
-    "nervespiral": "Wiraż nerwów XL",
+    "nervespiral": "Wiraż nerwów",
     "tickettwist": "Zwariowane bilety",
     "minefield": "Pole minowe",
     "tablesurfing": "Crowdsurfing"
@@ -57,7 +57,7 @@
   },
   "league": {
     "rankingisempty": "Żadna drużyna nie zarejestrowała jeszcze punktów. Sprawdź tutaj po pierwszej rundzie.",
-    "viewgamerankings": "Wyświetl ranking i wyniki dla każdej gry",
+    "viewgamerankings": "Wyświetl ranking dla każdej gry",
     "viewgamerankings-title": "Możesz zobaczyć rankingi na stronach szczegółów gry."
   },
   "admin": {
@@ -70,7 +70,7 @@
     "timeranout": "Czas minął, powodzenia następnym razem",
     "areyouready": "Czy jesteś gotowy?",
     "checkanswerlater": "Sprawdź odpowiedź po zakończeniu gry",
-    "question_locked": "Nadal zablokowane",
+    "question_locked": "Wygasły",
     "youhaveunsubmittedanswers": "Masz {numAnswers} odpowiedzi. Czy chcesz je teraz wysłać?",
     "submityouranswers": "Wyślij swoje odpowiedzi",
     "gameroundtitle": "Runda {round}",
@@ -89,13 +89,7 @@
   "questions": {
     "guesshowmany1": {
       "q": "Ile godzin zostało przesłuchanych w tym roku słuchowisku \"Fra Kåre\"?",
-      "intro": "Czy słuchałeś w tym roku słuchowiska \"Fra Kåre\"?",
-      "a": {
-        "100": "100",
-        "1000": "1000",
-        "10000": "10000",
-        "20000": "20000"
-      }
+      "intro": "Czy słuchałeś w tym roku słuchowiska \"Fra Kåre\"?"
     },
     "guesshowmany2": {
       "q": "Ile osób odwiedziło obozy w 2023 roku?",
@@ -122,13 +116,13 @@
       }
     },
     "recognize1": {
-      "q": "Jakie zwierzę próbuje cię wąchać z drugiej strony?",
-      "intro": "Jesteś fanem zwierząt? Przyjrzyj się obrazkowi.",
+      "q": "Czy rozpoznajesz lub pamiętasz, kim jest ta osoba?",
+      "intro": "Wiesz, kogo (nie) widzimy na tym obrazie?",
       "a": {
-        "horse": "Koń",
-        "camel": "Wielbłąd",
-        "antelope": "Antylopa",
-        "giraffe": "Żyrafa"
+        "opta": "Gershon Twilley",
+        "optb": "Harald Kronstad",
+        "optc": "Gunnar Gangsø",
+        "optd": "Bernt-Aksel Larsen"
       }
     },
     "recognize2": {
@@ -139,16 +133,6 @@
         "john": "Jan",
         "matthew": "Mateusz",
         "paul": "Paweł"
-      }
-    },
-    "recognize4": {
-      "q": "Kogo widzisz na zdjęciu od lewej do prawej?",
-      "intro": "Masz dobry wzrok? Popatrz na obrazek.",
-      "a": {
-        "bkg": "Bernt Aksel, Kåre, Gershon",
-        "gkb": "Gershon, Kåre, Bernt Aksel",
-        "kgb": "Kåre, Gershon, Bernt Aksel",
-        "bgk": "Bernt Aksel, Gershon, Kåre"
       }
     },
     "math": {

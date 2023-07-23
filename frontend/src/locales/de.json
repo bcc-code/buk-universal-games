@@ -9,7 +9,7 @@
   },
   "games": {
     "monkeybars": "Affenstangen",
-    "nervespiral": "Nervenspirale XL",
+    "nervespiral": "Nervenspirale",
     "tickettwist": "Ticketdreher",
     "minefield": "Minenfeld",
     "tablesurfing": "Crowdsurfen"
@@ -57,7 +57,7 @@
   },
   "league": {
     "rankingisempty": "Kein Team hat bisher Punkte registriert. Schau nach der ersten Runde hier wieder vorbei.",
-    "viewgamerankings": "Zeige Rangliste und Punktzahl für jedes Spiel an",
+    "viewgamerankings": "Zeige Rangliste für jedes Spiel an",
     "viewgamerankings-title": "Sie können die Rangliste pro Spiel auf den Detailseiten des Spiels anzeigen."
   },
   "admin": {
@@ -70,7 +70,7 @@
     "timeranout": "Die Zeit ist abgelaufen, beim nächsten Mal klappt es vielleicht besser",
     "areyouready": "Bist du bereit?",
     "checkanswerlater": "Überprüfe die Antwort, wenn das Spiel vorbei ist",
-    "question_locked": "Noch gesperrt",
+    "question_locked": "Abgelaufen",
     "youhaveunsubmittedanswers": "Du hast {numAnswers} Antworten. Möchtest du sie jetzt senden?",
     "submityouranswers": "Sende deine Antworten",
     "gameroundtitle": "Runde {round}",
@@ -89,13 +89,7 @@
   "questions": {
     "guesshowmany1": {
       "q": "Wie viele Stunden wurde Fra Kåre in diesem Jahr gehört?",
-      "intro": "Hast du Fra Kåre in diesem Jahr gehört?",
-      "a": {
-        "100": "100",
-        "1000": "1000",
-        "10000": "10000",
-        "20000": "20000"
-      }
+      "intro": "Hast du Fra Kåre in diesem Jahr gehört?"
     },
     "guesshowmany2": {
       "q": "Wie viele Personen haben die Lager im Jahr 2023 besucht?",
@@ -122,13 +116,13 @@
       }
     },
     "recognize1": {
-      "q": "Welches Tier versucht dich von der anderen Seite zu beschnüffeln?",
-      "intro": "Bist du ein Tierliebhaber? Betrachte das Bild.",
+      "q": "Erkennst du oder erinnerst du dich, wer das ist?",
+      "intro": "Wissen Sie, wen wir auf diesem Bild (nicht) sehen?",
       "a": {
-        "horse": "Pferd",
-        "camel": "Kamel",
-        "antelope": "Antilope",
-        "giraffe": "Giraffe"
+        "opta": "Gershon Twilley",
+        "optb": "Harald Kronstad",
+        "optc": "Gunnar Gangsø",
+        "optd": "Bernt-Aksel Larsen"
       }
     },
     "recognize2": {
@@ -139,16 +133,6 @@
         "john": "Johannes",
         "matthew": "Matthäus",
         "paul": "Paulus"
-      }
-    },
-    "recognize4": {
-      "q": "Wen kannst du von links nach rechts sehen?",
-      "intro": "Hast du einen scharfen Blick? Schau dir das Bild an.",
-      "a": {
-        "bkg": "Bernt Aksel, Kåre, Gershon",
-        "gkb": "Gershon, Kåre, Bernt Aksel",
-        "kgb": "Kåre, Gershon, Bernt Aksel",
-        "bgk": "Bernt Aksel, Gershon, Kåre"
       }
     },
     "math": {
@@ -172,5 +156,5 @@
       }
     }
   },
-  "back": "Zurück"
+  "back": "Zurück"  
 }

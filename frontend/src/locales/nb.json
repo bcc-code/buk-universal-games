@@ -9,7 +9,7 @@
   },
   "games": {
     "monkeybars": "Apereir",
-    "nervespiral": "Nerve-spiral XL",
+    "nervespiral": "Nerve-spiral",
     "tickettwist": "Billettriks",
     "minefield": "Minefelt",
     "tablesurfing": "Publikumsurfing"
@@ -57,7 +57,7 @@
   },
   "league": {
     "rankingisempty": "Ingen lag har ennå registrert poeng. Sjekk tilbake her etter første runde.",
-    "viewgamerankings": "Se rangering og poengsum for hvert spill",
+    "viewgamerankings": "Se rangering for hvert spill",
     "viewgamerankings-title": "Du kan se rangeringene per spill på spilldetaljsidene."
   },
   "admin": {
@@ -70,7 +70,7 @@
     "timeranout": "Tiden gikk ut, bedre lykke neste gang",
     "areyouready": "Er du klar?",
     "checkanswerlater": "Sjekk svaret når spillet er over",
-    "question_locked": "Fortsatt låst",
+    "question_locked": "Utgått",
     "youhaveunsubmittedanswers": "Du har {numAnswers} svar. Vil du sende dem nå?",
     "submityouranswers": "Send inn svarene dine",
     "gameroundtitle": "Runde {round}",
@@ -89,13 +89,7 @@
   "questions": {
     "guesshowmany1": {
       "q": "Hvor mange timer har Fra Kåre blitt hørt i år?",
-      "intro": "Har du hørt på Fra Kåre i år?",
-      "a": {
-        "100": "100",
-        "1000": "1000",
-        "10000": "10000",
-        "20000": "20000"
-      }
+      "intro": "Har du hørt på Fra Kåre i år?"
     },
     "guesshowmany2": {
       "q": "Hvor mange personer har besøkt leirene i 2023?",
