@@ -40,11 +40,16 @@ public class StatusController : ControllerBase
             return new ExceptionResult(Strings.TeamNotPartOfALeague, 403);
 
         var hideHighScore = await _settingsService.GetSetting("hide_highscore");
-        if (hideHighScore != null)
+        if (!string.IsNullOrEmpty(hideHighScore))
         {
-            DateTime.TryParse(hideHighScore, out var hideHighScoreDate);
-            if (hideHighScoreDate != DateTime.MinValue && hideHighScoreDate < DateTime.Now)
+            var now = DateTime.UtcNow;
+            var beginAndEnd = hideHighScore.Split("|");
+
+            if (DateTime.TryParse(beginAndEnd[0], out var hideHighScoreDate) && hideHighScoreDate < now
+                && beginAndEnd.Length < 2 || !DateTime.TryParse(beginAndEnd[1], out var showAgainDate) || showAgainDate > now)
+            {
                 return new ExceptionResult(Strings.HighScoreHidden, 406);
+            }
         }
 
         return await _statusService.GetLeagueStatus(team.LeagueId.Value);
