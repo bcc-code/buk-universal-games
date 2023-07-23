@@ -7,7 +7,7 @@
         <p class="message-text">{{ $t("pleaserefresh") }}</p>
       </div>
     </div>
-    <MatchCard :selectedMatch="selectedMatch" :game="whichGame(selectedMatch.gameId)" />
+    <MatchCard :selectedMatch="selectedMatch" :game="whichGame(selectedMatch?.gameId)" />
     <section class="match-title" v-if="matches.length">
       <div class="match-title-column">
         <h2 class="match-title-text">{{ $t("game") }}</h2>
