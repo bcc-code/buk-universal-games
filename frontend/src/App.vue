@@ -40,7 +40,7 @@ body {
   margin: 0;
   font-size: 16px;
   background-color: var(--gray-1);
-  font-family: "ClashGrotesk-Medium";
+  font-family: "ClashGrotesk-Medium", sans-serif;
   height: 100%;
 }
 
