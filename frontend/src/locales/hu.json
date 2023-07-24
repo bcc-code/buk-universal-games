@@ -105,8 +105,8 @@
       "q": "Mi a helyes sorrend a Herman Shuffle táncmozdulatokban?",
       "intro": "Táncoltál ma reggel?",
       "a": {
-        "opta": "Lean, Wave, Drift",
-        "optb": "Wave, Lean, Drift",
+        "lwd": "Lean, Wave, Drift",
+        "wld": "Wave, Lean, Drift",
         "ldw": "Lean, Drift, Wave",
         "wdl": "Wave, Drift, Lean"
       }

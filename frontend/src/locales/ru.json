@@ -105,8 +105,8 @@
       "q": "Каков правильный порядок движений танца Herman Shuffle?",
       "intro": "Танцевали ли вы сегодня утром?",
       "a": {
-        "opta": "Lean, Wave, Drift",
-        "optb": "Wave, Lean, Drift",
+        "lwd": "Lean, Wave, Drift",
+        "wld": "Wave, Lean, Drift",
         "ldw": "Lean, Drift, Wave",
         "wdl": "Wave, Drift, Lean"
       }
