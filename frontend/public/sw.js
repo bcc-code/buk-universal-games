@@ -140,8 +140,6 @@ const preCacheUris = [
   'image/ubg-logo.svg',
   'image/ubg-u-liga-icons.svg',
   'index.html',
-  'js/app.js',
-  'js/chunk-vendors.js',
   'video/tablesurfing.mp4',
   'video/monkeybars.mp4',
   'video/minefield.mp4',
