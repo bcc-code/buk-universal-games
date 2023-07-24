@@ -29,9 +29,9 @@
         <button class="btn btn-blank" v-if="!isChangingScore1 && match?.team1Result > 0" @click="isChangingScore1 = true">Change</button>
 
         <div v-if="isChangingScore1 || !match?.team1Result">
-        <TableSurfingInput v-if="game?.gameType === 'TableSurfing'" v-model="team1Result" />
-        <TimeInput v-else-if="['MineField','NerveSpiral'].includes(game?.gameType)" v-model="team1Result" />
-        <MonkeyBarsInput v-else-if="game?.gameType === 'MonkeyBars'" v-model="team1Result" />
+        <TableSurfingInput v-if="game?.gameType === 'tablesurfing'" v-model="team1Result" />
+        <TimeInput v-else-if="['minefield','nervespiral'].includes(game?.gameType)" v-model="team1Result" />
+        <MonkeyBarsInput v-else-if="game?.gameType === 'monkeybars'" v-model="team1Result" />
         <input v-else type="number" v-model="team1Result" :placeholder="'Result (in ' + units[game?.gameType] + ')'" />
         <button class="btn btn-blank" @click="confirmTeamResult(match?.team1Id, team1Result)">Confirm</button>
         </div>
@@ -50,8 +50,8 @@
 
         <button class="btn btn-blank" v-if="!isChangingScore2 && match?.team2Result > 0" @click="isChangingScore2 = true">Change</button>
         <div v-if="isChangingScore2 || !match?.team2Result">
-        <TableSurfingInput v-if="game?.gameType === 'tableSurfing'" v-model="team2Result" />
-        <TimeInput v-else-if="['mineField','nerveSpiral'].includes(game?.gameType)" v-model="team2Result" />
+        <TableSurfingInput v-if="game?.gameType === 'tablesurfing'" v-model="team2Result" />
+        <TimeInput v-else-if="['minefield','nervespiral'].includes(game?.gameType)" v-model="team2Result" />
         <MonkeyBarsInput v-else-if="game?.gameType === 'monkeybars'" v-model="team2Result" />
         <input v-else type="number" v-model="team2Result" :placeholder="'Result (in ' + units[game.gameType] + ')'" />
         <button class="btn btn-blank" @click="confirmTeamResult(match?.team2Id, team2Result)">Confirm</button>
