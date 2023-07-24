@@ -120,8 +120,8 @@ export default function (store) {
 
     if (window.localStorage.getItem('teamCode') && to.path === '/' && !from.matched.length) {
       if(store.state.loginData.access === 'admin') {
-        this.$store.dispatch('getAdminLeagues')
-        this.$store.dispatch('getAdminLeagueStatus')
+        await store.dispatch('getAdminLeagues')
+        await store.dispatch('getAdminLeagueStatus')
         return { name: 'AdminSelectLeague' };
       } else {
 
