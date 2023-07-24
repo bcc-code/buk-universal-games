@@ -105,10 +105,10 @@
       "q": "Hva er den riktige rekkefølgen på Herman Shuffle dansetrinnene?",
       "intro": "Danset du med på dette i morges?",
       "a": {
-        "opta": "Lene, Svinge, Drifte",
-        "optb": "Svinge, Lene, Drifte",
-        "ldw": "Lene, Drifte, Svinge",
-        "wdl": "Svinge, Drifte, Lene"
+        "lwd": "Lean, Wave, Drift ",
+        "wld": "Wave, Lean, Drift",
+        "ldw": "Lean, Drift, Wave",
+        "wdl": "Wave, Drift, Lean"
       }
     },
     "insight": {
@@ -129,7 +129,7 @@
         "optb": "Harald Kronstad",
         "optc": "Gunnar Gangsø",
         "optd": "Bernt-Aksel Larsen"
-    }
+      }
     },
     "recognize2": {
       "q": "Husker du hvem dette er?",

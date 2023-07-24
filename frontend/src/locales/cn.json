@@ -105,10 +105,10 @@
       "q": "赫尔曼洗牌舞步的正确顺序是什么？",
       "intro": "今天早上你跳舞了吗？",
       "a": {
-        "lwd": "倾斜、波浪、漂移",
-        "wld": "波浪、倾斜、漂移",
-        "ldw": "精益、漂移、波浪",
-        "wdl": "波浪、漂移、倾斜"
+        "lwd": "Lean, Wave, Drift ",
+        "wld": "Wave, Lean, Drift",
+        "ldw": "Lean, Drift, Wave",
+        "wdl": "Wave, Drift, Lean"
       }
     },
     "insight": {
@@ -129,7 +129,7 @@
         "optb": "Harald Kronstad",
         "optc": "Gunnar Gangsø",
         "optd": "Bernt-Aksel Larsen"
-    }
+      }
     },
     "recognize2": {
       "q": "你还记得这是谁吗？",
