@@ -112,19 +112,25 @@ export default function (store) {
     routes,
   });
 
-  router.beforeEach(async (to, from, next) => {
+  router.beforeEach(async (to, from) => {
     if (!store.state.loginData && window.localStorage.getItem('teamCode')) {
       await store.dispatch('signIn')
-      await store.dispatch('getTeamStatus')
-      await store.dispatch('getLeagueStatus')
-      await store.dispatch('getMatches')
       await store.dispatch('getGames')
-      await store.dispatch('checkNewQuestions')
     }
+
     if (window.localStorage.getItem('teamCode') && to.path === '/' && !from.matched.length) {
-      next('/league-status')
+      if(store.state.loginData.access === 'admin') {
+        this.$store.dispatch('getAdminLeagues')
+        this.$store.dispatch('getAdminLeagueStatus')
+        return { name: 'AdminSelectLeague' };
+      } else {
+
+        await store.dispatch('getLeagueStatus')
+        await store.dispatch('getMatches')
+        await store.dispatch('checkNewQuestions')
+        return { name: 'LeagueList' };
+      }
     }
-    next(null)
   })
   return router;
 }

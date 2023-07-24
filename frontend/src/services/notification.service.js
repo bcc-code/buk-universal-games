@@ -11,7 +11,7 @@ export default class NotificationService {
   scheduledNotifications = [];
   shownNotifications = [];
   get canNotifyExternal() {
-    return "Notification" in window && Notification.permission === "granted";
+    return navigator.serviceWorker && "Notification" in window && Notification.permission === "granted";
   }
   get canAskForPermission() {
     return "Notification" in window && Notification.permission === "default";
@@ -31,6 +31,7 @@ export default class NotificationService {
     }, 1000);
   }
   requestExternal() {
+    if(!navigator.serviceWorker) { return;}
     Notification.requestPermission().then((result) => {
       if (result === "granted") {
         this.notifyExternal("Success!", {

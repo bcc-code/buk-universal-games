@@ -1,6 +1,6 @@
 <template>
   <section class="bg">
-    <form class="content" @submit="tryLogin()">
+    <form class="content" @submit="tryLogin">
       <p class="install-hint">{{ $t('install_hint') }}</p>
       <img src="image/ubg-logo.svg" alt="" class="logo" />
       <input type="text" class="codeInput" :placeholder="$t('login.teamcode')" v-model="teamCode" />
@@ -35,7 +35,10 @@ export default {
     async tryLogin(ev) {
       this.notificationService.requestExternal();
       // Do not perform normal HTML form submit.
-      ev?.preventDefault();
+      if(ev)
+      {
+        ev.preventDefault();
+      }
       window.localStorage.setItem("teamCode", this.teamCode.toUpperCase());
       const loginData = await this.$store.dispatch("signIn")
       this.$store.commit('setLoginMessage', '')
@@ -49,7 +52,7 @@ export default {
       }
       else {
         this.$store.dispatch('getGames')
-        if (loginData && loginData.access === 'Admin') {
+        if (loginData.access.toLowerCase() === 'admin') {
           this.$store.dispatch('getAdminLeagues')
           this.$store.dispatch('getAdminLeagueStatus')
           this.$router.push({ name: 'AdminSelectLeague' })
@@ -73,7 +76,7 @@ export default {
 .bg {
   background-size: cover;
   background-position: center;
-  padding: 1em 2em;
+  padding: 1em 2rem;
   min-height: 100%;
   background-color: #a0e3be;
 }
@@ -82,7 +85,7 @@ export default {
   background-color: rgba(255, 255, 255, 0.8);
   color: var(--dark);
   max-width: 400px;
-  padding: 0.3em;
+  padding: 0.3rem;
   margin: 1em auto;
   text-align: center;
   white-space: pre-line;
@@ -102,21 +105,21 @@ export default {
   width: 100%;
   max-width: 600px;
   text-align: center;
-  font-size: 1.3em;
-  padding: 0.5em;
-  border-radius: 0.5em;
+  font-size: 1.3rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
   border: none;
   background-color: rgba(255, 255, 255, 0.8);
   color: var(--dark);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.1rem;
   outline: none;
 }
 
 .content {
 
-  padding-top: 10em;
-  padding-bottom: 10em;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
