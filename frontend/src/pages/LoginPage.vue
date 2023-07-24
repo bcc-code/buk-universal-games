@@ -33,7 +33,11 @@ export default {
   },
   methods: {
     async tryLogin(ev) {
+      try{
       this.notificationService.requestExternal();
+      }catch(e){
+        console.log(e);
+      }
       // Do not perform normal HTML form submit.
       if(ev)
       {
