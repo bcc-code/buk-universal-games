@@ -36,10 +36,7 @@
     </div>
     <div v-else>
       <div v-if="leagueStatus.error">
-        <div class="message" v-if="leagueStatus.errorCode == 406">
-          <p class="message-text">{{ leagueStatus.error }}</p>
-        </div>
-        <div v-else>
+        <div v-if="leagueStatus.errorCode != 406">
           <h2>{{ $t("general_error") }}</h2>
 
           <div class="message">
@@ -54,6 +51,9 @@
           {{$t('league.viewgamerankings-title')}}
         </p>
         <button class="btn-success" @click="this.$router.push('games')">{{ $t("league.viewgamerankings") }}</button>
+      </div>
+      <div class="rankingfrozen-message" v-if="$store.getters.currentRound > 3">
+        <h3>{{ $t("league.ranking-frozen") }}</h3>
       </div>
       <section class="ranking-title" v-if="leagueStatus.status?.total.length">
         <div class="ranking-title-column index-column"></div>
@@ -182,6 +182,15 @@ export default {
   margin-top: 1em;
   padding: 1em 1em 4em 1em;
   background-color: #fff;
+}
+
+.rankingfrozen-message {
+  border-radius: 1em;
+  margin-top: 1em;
+  padding: .5em;
+  background-color: var(--yellow);
+  color: var(--red);
+  text-align: center;
 }
 
 .btn-success {

@@ -9,7 +9,7 @@
   },
   "games": {
     "monkeybars": "Bară cu Maimuțe",
-    "nervespiral": "Spirală nervoasă XL",
+    "nervespiral": "Spirală nervoasă",
     "tickettwist": "Trucul cu Bilete",
     "minefield": "Câmp Minat",
     "tablesurfing": "Surf în Mulțime"
@@ -57,24 +57,27 @@
   },
   "league": {
     "rankingisempty": "Niciun echipă nu a înregistrat încă puncte. Verificați din nou după prima rundă.",
-    "viewgamerankings": "Vizualizați clasamentul și scorurile pentru fiecare joc",
-    "viewgamerankings-title": "Puteți vizualiza clasamentele pe joc pe paginile de detalii ale jocului."
+    "viewgamerankings": "Vizualizează clasamentul pentru fiecare joc",
+    "viewgamerankings-title": "Poți vizualiza clasamentele pe jocuri pe paginile de detalii ale jocurilor",
+    "ranking-frozen": "Clasamentul este acum blocat până când câștigătorii vor fi anunțați"
   },
   "admin": {
     "select_league": {
       "intro": "Alege liga pe care dorești să o administrezi"
     }
   },
+  "yourmatch": "Meciul tău",
   "sidequest": {
     "thanks": "Mulțumim, răspunsul tău a fost înregistrat",
     "timeranout": "Timpul a expirat, noroc mai bun data viitoare",
     "areyouready": "Ești pregătit?",
     "checkanswerlater": "Verifică răspunsul când jocul s-a terminat",
-    "question_locked": "Încă blocat",
+    "question_locked": "Expirat",
     "youhaveunsubmittedanswers": "Ai {numAnswers} răspunsuri. Vrei să le trimiți acum?",
     "submityouranswers": "Trimite răspunsurile tale",
     "gameroundtitle": "Runda {round}",
     "back_to_overview": "Înapoi la vedere de ansamblu",
+    "noroundyet": "Încă nu este disponibil. Reveniți după meci.",
     "explanation": "Explicație",
     "explanation_text": "După fiecare meci, cu excepția ultimului, vor fi deblocate 2 întrebări în ordine aleatoare, deci în total 8 întrebări. Ai 10 minute la dispoziție să le răspunzi, până când începe următorul meci.\nAi în total 8 monede. Fiecare întrebare pe care o începi costă o monedă, chiar dacă nu răspunzi la ea. Deci, dacă reîncerci aceeași întrebare, va trebui să sari peste o altă întrebare.\nOdată ce ai răspuns la o întrebare, nu o poți mai răspunde o dată.\n\nEchipa ta obține puncte bonus în funcție de câți membri ai echipei trimit un răspuns corect pentru fiecare întrebare.\nVerifică după fiecare meci pentru a câștiga mai multe puncte pentru echipa ta!",
     "questiontypes": {
@@ -89,13 +92,7 @@
   "questions": {
     "guesshowmany1": {
       "q": "Câte ore de Fra Kåre au fost ascultate anul acesta?",
-      "intro": "Ai ascultat Fra Kåre anul acesta?",
-      "a": {
-        "100": "100",
-        "1000": "1000",
-        "10000": "10000",
-        "20000": "20000"
-      }
+      "intro": "Ai ascultat Fra Kåre anul acesta?"
     },
     "guesshowmany2": {
       "q": "Câte persoane au vizitat taberele în 2023?",
@@ -122,13 +119,13 @@
       }
     },
     "recognize1": {
-      "q": "Ce animal încearcă să te miros din cealaltă parte?",
-      "intro": "Ești fan al animalelor? Studiază imaginea.",
+      "q": "Recunoști sau îți amintești cine este aceasta?",
+      "intro": "Știi pe cine (nu) vedem în această imagine?",
       "a": {
-        "horse": "Cal",
-        "camel": "Cămilă",
-        "antelope": "Antilopă",
-        "giraffe": "Girafă"
+        "opta": "Gershon Twilley",
+        "optb": "Harald Kronstad",
+        "optc": "Gunnar Gangsø",
+        "optd": "Bernt-Aksel Larsen"
       }
     },
     "recognize2": {
@@ -139,16 +136,6 @@
         "john": "Ioan",
         "matthew": "Matei",
         "paul": "Pavel"
-      }
-    },
-    "recognize4": {
-      "q": "Cine poți vedea în ordine de la stânga la dreapta?",
-      "intro": "Ai un ochi ager? Uită-te la imagine.",
-      "a": {
-        "bkg": "Bernt Aksel, Kåre, Gershon",
-        "gkb": "Gershon, Kåre, Bernt Aksel",
-        "kgb": "Kåre, Gershon, Bernt Aksel",
-        "bgk": "Bernt Aksel, Gershon, Kåre"
       }
     },
     "math": {

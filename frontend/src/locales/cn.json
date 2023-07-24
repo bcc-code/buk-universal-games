@@ -57,24 +57,27 @@
   },
   "league": {
     "rankingisempty": "尚未获得任何积分。第一轮结束后回来。",
-    "viewgamerankings": "查看每场比赛的排名和得分",
-    "viewgamerankings-title": "您可以在游戏详情页面查看排名。"
+    "viewgamerankings": "查看每个游戏的排名",
+    "viewgamerankings-title": "您可以在游戏详情页面查看排名。",
+    "ranking-frozen": "排名现在冻结，直到获胜者宣布"
   },
   "admin": {
     "select_league": {
       "intro": "选择您要管理的联盟"
     }
   },
+  "yourmatch": "您的比赛",
   "sidequest": {
     "thanks": "谢谢，您的回答已记录",
     "timeranout": "时间已到，下次祝你好运",
     "areyouready": "你准备好了吗？",
     "checkanswerlater": "游戏结束后查看答案",
-    "question_locked": "仍处于锁定状态",
+    "question_locked": "过期",
     "youhaveunsubmittedanswers": "您有 {numAnswers} 个答案。 您现在想发送它们吗？",
     "submityouranswers": "提交您的答案",
     "gameroundtitle": "第{round}回合",
     "back_to_overview": "返回概述",
+    "noroundyet": "暂时还不可用。比赛结束后请回来。",
     "explanation": "解释",
     "explanation_text": "除了最后一场比赛，每场比赛结束后，将以随机顺序解锁2个问题，总共8个问题。您有10分钟的时间回答它们，在下一场比赛开始之前。\n您总共有8个硬币。每个您开始回答的问题都会消耗一个硬币，即使您没有回答它。因此，如果您重新尝试回答相同的问题，您将不得不跳过另一个问题。\n一旦您回答了一个问题，就不能再回答它。\n\n您的团队将根据有多少团队成员正确回答每个问题而获得奖励积分。\n每场比赛后回来查看，为您的团队赚取更多积分！",
     "questiontypes": {
@@ -89,13 +92,7 @@
   "questions": {
     "guesshowmany1": {
       "q": "今年《Fra Kåre》听了多少小时？",
-      "intro": "今年你听过 Fra Kåre 吗？",
-      "a": {
-        "100": "百 100",
-        "1000": "千 1000",
-        "10000": "万 10000",
-        "20000": "两万 20000"
-      }
+      "intro": "今年你听过 Fra Kåre 吗？"
     },
     "guesshowmany2": {
       "q": "2023 年有多少人参观过营地？",
@@ -122,8 +119,8 @@
       }
     },
     "recognize1": {
-      "q": "什么动物试图从另一边嗅你？",
-      "intro": "你是动物迷吗？ 研究图像。",
+      "q": "你认识或者记得这是谁吗？",
+      "intro": "你知道我们在这张图片中（没有）看到谁吗？",
       "a": {
         "opta": "Gershon Twilley",
         "optb": "Harald Kronstad",

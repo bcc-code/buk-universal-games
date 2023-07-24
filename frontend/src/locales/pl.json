@@ -9,7 +9,7 @@
   },
   "games": {
     "monkeybars": "Drabinki małp",
-    "nervespiral": "Wiraż nerwów XL",
+    "nervespiral": "Wiraż nerwów",
     "tickettwist": "Zwariowane bilety",
     "minefield": "Pole minowe",
     "tablesurfing": "Crowdsurfing"
@@ -57,24 +57,27 @@
   },
   "league": {
     "rankingisempty": "Żadna drużyna nie zarejestrowała jeszcze punktów. Sprawdź tutaj po pierwszej rundzie.",
-    "viewgamerankings": "Wyświetl ranking i wyniki dla każdej gry",
-    "viewgamerankings-title": "Możesz zobaczyć rankingi na stronach szczegółów gry."
+    "viewgamerankings": "Wyświetl ranking dla każdej gry",
+    "viewgamerankings-title": "Możesz zobaczyć rankingi na stronach szczegółów gry.",
+    "ranking-frozen": "Klasyfikacja jest teraz zamrożona do czasu ogłoszenia zwycięzców"
   },
   "admin": {
     "select_league": {
       "intro": "Wybierz ligę, którą chcesz zarządzać"
     }
   },
+  "yourmatch": "Twój mecz",
   "sidequest": {
     "thanks": "Dziękujemy, Twoja odpowiedź została zarejestrowana",
     "timeranout": "Czas minął, powodzenia następnym razem",
     "areyouready": "Czy jesteś gotowy?",
     "checkanswerlater": "Sprawdź odpowiedź po zakończeniu gry",
-    "question_locked": "Nadal zablokowane",
+    "question_locked": "Wygasły",
     "youhaveunsubmittedanswers": "Masz {numAnswers} odpowiedzi. Czy chcesz je teraz wysłać?",
     "submityouranswers": "Wyślij swoje odpowiedzi",
     "gameroundtitle": "Runda {round}",
     "back_to_overview": "Powrót do przeglądu",
+    "noroundyet": "Nie dostępne jeszcze. Wróć po meczu.",
     "explanation": "Wyjaśnienie",
     "explanation_text": "Po każdym meczu, za wyjątkiem ostatniego, zostaną odblokowane 2 pytania w losowej kolejności, łącznie 8 pytań. Masz 10 minut na ich odpowiedź, do rozpoczęcia kolejnego meczu.\nMasz w sumie 8 monet. Każde pytanie, które zaczniesz, kosztuje monetę, nawet jeśli nie odpowiesz na nie. Więc, jeśli spróbujesz ponownie odpowiedzieć na to samo pytanie, będziesz musiał(a) pominąć inne pytanie.\nGdy już odpowiesz na pytanie, nie możesz odpowiedzieć na nie ponownie.\n\nTwój zespół zdobywa dodatkowe punkty za to, ile członków zespołu przesyła poprawne odpowiedzi na każde pytanie.\nSprawdź po każdym meczu, aby zdobyć więcej punktów dla swojego zespołu!",
     "questiontypes": {
@@ -89,13 +92,7 @@
   "questions": {
     "guesshowmany1": {
       "q": "Ile godzin zostało przesłuchanych w tym roku słuchowisku \"Fra Kåre\"?",
-      "intro": "Czy słuchałeś w tym roku słuchowiska \"Fra Kåre\"?",
-      "a": {
-        "100": "100",
-        "1000": "1000",
-        "10000": "10000",
-        "20000": "20000"
-      }
+      "intro": "Czy słuchałeś w tym roku słuchowiska \"Fra Kåre\"?"
     },
     "guesshowmany2": {
       "q": "Ile osób odwiedziło obozy w 2023 roku?",
@@ -122,13 +119,13 @@
       }
     },
     "recognize1": {
-      "q": "Jakie zwierzę próbuje cię wąchać z drugiej strony?",
-      "intro": "Jesteś fanem zwierząt? Przyjrzyj się obrazkowi.",
+      "q": "Czy rozpoznajesz lub pamiętasz, kim jest ta osoba?",
+      "intro": "Wiesz, kogo (nie) widzimy na tym obrazie?",
       "a": {
-        "horse": "Koń",
-        "camel": "Wielbłąd",
-        "antelope": "Antylopa",
-        "giraffe": "Żyrafa"
+        "opta": "Gershon Twilley",
+        "optb": "Harald Kronstad",
+        "optc": "Gunnar Gangsø",
+        "optd": "Bernt-Aksel Larsen"
       }
     },
     "recognize2": {
@@ -139,16 +136,6 @@
         "john": "Jan",
         "matthew": "Mateusz",
         "paul": "Paweł"
-      }
-    },
-    "recognize4": {
-      "q": "Kogo widzisz na zdjęciu od lewej do prawej?",
-      "intro": "Masz dobry wzrok? Popatrz na obrazek.",
-      "a": {
-        "bkg": "Bernt Aksel, Kåre, Gershon",
-        "gkb": "Gershon, Kåre, Bernt Aksel",
-        "kgb": "Kåre, Gershon, Bernt Aksel",
-        "bgk": "Bernt Aksel, Gershon, Kåre"
       }
     },
     "math": {

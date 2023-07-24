@@ -30,7 +30,8 @@ export default {
                 pl: "Polski",
                 ro: "Română",
                 ru: "Русский",
-                tr: "Türkçe"
+                tr: "Türkçe",
+                ua: "українська",
             }
         };
     },

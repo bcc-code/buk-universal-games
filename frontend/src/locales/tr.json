@@ -9,7 +9,7 @@
   },
   "games": {
     "monkeybars": "Maymun Barları",
-    "nervespiral": "Sinirli Spiral XL",
+    "nervespiral": "Sinirli Spiral",
     "tickettwist": "Bilet Kıvırma",
     "minefield": "Mayın Tarlası",
     "tablesurfing": "Kalabalık Sörf"
@@ -58,23 +58,27 @@
   },
   "league": {
     "rankingisempty": "Henüz hiçbir takım puan kaydetmedi. İlk turdan sonra burayı kontrol edin.",
-    "viewgamerankings": "Her oyundaki sıralamayı ve skorları görüntüle"
+    "viewgamerankings": "Her oyun için sıralamayı görüntüle",
+    "viewgamerankings-title": "Oyun ayrıntı sayfalarında her oyun için sıralamayı görebilirsin",
+    "ranking-frozen": "Sıralama şimdi kazananlar açıklanana kadar dondurulmuştur"
   },
   "admin": {
     "select_league": {
       "intro": "Yönetmek istediğiniz ligi seçin"
     }
   },
+  "yourmatch": "Maçınız",
   "sidequest": {
     "thanks": "Teşekkürler, yanıtınız kaydedildi",
     "timeranout": "Süre doldu, bir sonraki sefere daha iyi şanslar",
     "areyouready": "Hazır mısınız?",
     "checkanswerlater": "Oyun bittikten sonra yanıtı kontrol edin",
-    "question_locked": "Hala kilitli",
+    "question_locked": "Süresi Dolmuş",
     "youhaveunsubmittedanswers": "Gönderilmemiş {numAnswers} yanıtınız var. Şimdi göndermek ister misiniz?",
     "submityouranswers": "Yanıtlarınızı gönderin",
     "gameroundtitle": "Tur {round}",
     "back_to_overview": "Genel Bakışa Dön",
+    "noroundyet": "Henüz mevcut değil. Maçtan sonra geri gelin.",
     "explanation": "Açıklama",
     "explanation_text": "Son maç hariç her maçtan sonra, rastgele sırayla 2 soru açılacak, toplamda 8 soru olacak. Bu soruları yanıtlamak için 10 dakikanız var, sonraki maç başlayana kadar.\nToplamda 8 jetonunuz var. Başlattığınız her soru, ona cevap vermeseniz bile bir jetonunuzu tüketir. Bu nedenle aynı soruyu tekrar denerseniz, başka bir soruyu atlamak zorunda kalırsınız.\nBir soruya cevap verdikten sonra tekrar cevaplayamazsınız.\n\nTakımınız, her soru için kaç takım üyesinin doğru cevap gönderdiğine bağlı olarak bonus puanlar kazanır.\nTakımınıza daha fazla puan kazandırmak için her maçtan sonra geri dönün!",
     "questiontypes": {
@@ -89,13 +93,7 @@
   "questions": {
     "guesshowmany1": {
       "q": "Bu yıl Fra Kåre müziği kaç saat dinlendi?",
-      "intro": "Bu yıl Fra Kåre müziğini dinlediniz mi?",
-      "a": {
-        "100": "100",
-        "1000": "1000",
-        "10000": "10000",
-        "20000": "20000"
-      }
+      "intro": "Bu yıl Fra Kåre müziğini dinlediniz mi?"
     },
     "guesshowmany2": {
       "q": "2023'te kamplara kaç kişi katıldı?",
@@ -122,13 +120,13 @@
       }
     },
     "recognize1": {
-      "q": "Karşı taraftan sizi koklamaya çalışan hangi hayvan?",
-      "intro": "Hayvanlarla aranız nasıl? Resme bakın.",
+      "q": "Bunu tanıyor veya hatırlıyor musun?",
+      "intro": "Bu resimde kimleri görüyoruz (veya görmüyoruz) biliyor musun?",
       "a": {
-        "horse": "At",
-        "camel": "Deve",
-        "antelope": "Antilop",
-        "giraffe": "Zürafa"
+        "opta": "Gershon Twilley",
+        "optb": "Harald Kronstad",
+        "optc": "Gunnar Gangsø",
+        "optd": "Bernt-Aksel Larsen"
       }
     },
     "recognize2": {
@@ -139,16 +137,6 @@
         "john": "John",
         "matthew": "Matthew",
         "paul": "Paul"
-      }
-    },
-    "recognize4": {
-      "q": "Kimler soldan sağa doğru görülebilir?",
-      "intro": "İyi bir gözlemci misiniz? Resme bakın.",
-      "a": {
-        "bkg": "Bernt Aksel, Kåre, Gershon",
-        "gkb": "Gershon, Kåre, Bernt Aksel",
-        "kgb": "Kåre, Gershon, Bernt Aksel",
-        "bgk": "Bernt Aksel, Gershon, Kåre"
       }
     },
     "math": {

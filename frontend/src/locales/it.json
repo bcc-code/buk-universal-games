@@ -9,7 +9,7 @@
   },
   "games": {
     "monkeybars": "Trapezio",
-    "nervespiral": "Spirale Nervosa XL",
+    "nervespiral": "Spirale Nervosa",
     "tickettwist": "Ticket Twist",
     "minefield": "Campo Minato",
     "tablesurfing": "Surf da Tavolo"
@@ -57,7 +57,7 @@
   },
   "league": {
     "rankingisempty": "Ancora nessuna squadra ha registrato punti. Torna qui dopo la prima fase.",
-    "viewgamerankings": "Visualizza classifica e punteggi per ogni gioco",
+    "viewgamerankings": "Visualizza classifica per ogni gioco",
     "viewgamerankings-title": "Puoi visualizzare le classifiche per gioco sulle pagine dei dettagli del gioco."
   },
   "admin": {
@@ -65,20 +65,20 @@
       "intro": "Scegli il campionato che desideri gestire"
     }
   },
-  "yourmatch": "",
+  "yourmatch": "La tua partita",
   "sidequest": {
     "thanks": "Grazie, la tua risposta è stata registrata",
     "timeranout": "Il tempo è scaduto, meglio fortuna la prossima volta",
     "areyouready": "Sei pronto?",
     "checkanswerlater": "Controlla la risposta quando il gioco è finito",
-    "question_locked": "Ancora bloccata",
+    "question_locked": "Scaduto",
     "youhaveunsubmittedanswers": "Hai {numAnswers} risposte. Vuoi inviarle ora?",
     "submityouranswers": "Invia le tue risposte",
     "gameroundtitle": "Round {round}",
     "back_to_overview": "Torna alla panoramica",
     "explanation": "Spiegazione",
     "explanation_text": "Dopo ogni round tranne l'ultimo, verranno sbloccate casualmente 2 domande, quindi un totale di 8 domande. Puoi rispondere alle domande fino a quando inizia la partita successiva.\n\nSe non rispondi alla domanda o esci da essa, perdi uno dei tuoi 8 gettoni. Se riprovi la stessa domanda, dovrai saltare un'altra domanda. \n\nLa tua squadra guadagna punti bonus in base a quante persone della tua squadra inviano una risposta corretta per ogni domanda.",
-    "noroundyet": "",
+    "noroundyet": "Non ancora disponibile. Torna dopo la partita",
     "questiontypes": {
       "math": "Matematica",
       "knowledge": "Conoscenza",
