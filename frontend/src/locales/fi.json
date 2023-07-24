@@ -1,0 +1,162 @@
+{
+  "install_hint": "Vinkki:\nAsenna tämä web-sovellus kotinäytöllesi, se toimii paremmin!",
+  "menu": {
+    "home": "Koti",
+    "league": "Liiga",
+    "sidequest": "Sivutehtävä",
+    "games": "Pelit",
+    "map": "Kartta"
+  },
+  "games": {
+    "monkeybars": "Apinakeinut",
+    "nervespiral": "Hermospiraali XL",
+    "tickettwist": "Lippuväännä",
+    "minefield": "Miinakenttä",
+    "tablesurfing": "Joukkosurffaus"
+  },
+  "score": {
+    "monkeybars": "{score} tankoa",
+    "nervespiral": "{score} sekuntia",
+    "tickettwist": "{score} lippua",
+    "minefield": "{score} sekuntia",
+    "tablesurfing": "{score} sekuntia"
+  },
+  "leadstory": {
+    "monkeybars": "Voiko tiimisi auttaa pelastamaan ihmisiä jumittuneesta viallisesta maailmanpyörästä? Maailmanpyörään kiipeäminen voi olla haastavaa, ja ensiapuvälineiden tärkeyden muistaminen on ratkaisevaa. Tavoitteena on päästä tiimisi kanssa toiselle puolelle ja pelastaa nämä avuttomat tarvitsevat.",
+    "nervespiral": "Kun odotat kärsivällisesti vuoroasi seuraavaan laitteeseen, yllättäen tapahtuu sähkökatkos, paniikkiin ei ole tarvetta. Voiko tiimisi taitavasti navigoida tämän odottamattoman tilanteen läpi, lähteä turvallisesti jonosta aiheuttamatta sähköiskuja? Pysy rauhallisena ja luota tiimisi kykyyn selviytyä tästä haasteesta tyynesti ja arvokkaasti.",
+    "tickettwist": "Ihmiset odottavat lippujen saamista jonossa. Onko tiimisi kykenevä käsittelemään nopeutta ja stressiä, joka liittyy lippuluukulle? Tämä peli yhdistää nopean ajattelun, kestävyyden, nopeuden ja tiimityön. Pysy keskittyneenä ja käännä mahdollisimman monta lippua tiimisi väriin. Oletko valmis haasteeseen?",
+    "minefield": "Tiimisi kohtaa vaikean tilanteen, jossa heidän on päästävä toiselle puolelle samalla kun he varovat karanneita villieläimiä. Tavoitteena on saavuttaa määränpää ilman, että nämä eläimet hyökkäävät heidän kimppuunsa.",
+    "tablesurfing": "Rautatiet ovat vaurioituneet, mikä aiheuttaa merkittävän ongelman. Tiimisi voi kuitenkin selviytyä tilanteesta työskennellen yhdessä tiiminä. Yhdistä taitosi, koordinoi toimintasi ja löydä tapa pitää juna liikkumassa sujuvasti."
+  },
+  "explanation": {
+    "monkeybars": "Pelaaja yksi alkaa kiivetä apinakeinuille niin pitkälle kuin pystyy. Kun hän on saavuttanut 12. tangon, seuraava pelaaja voi aloittaa alusta.\n\nEsimerkki: Pelaaja yksi kosketti viimeksi 26. tankoa, joten hänen pistemääränsä on 26 pistettä. Pelaaja kaksi putosi 18. tangolla, joten hänen pistemääränsä on 18 pistettä. Kaikkien pelaajien pisteet lasketaan yhteen ja jaetaan joukkueen pelaajien kokonaismäärällä. Se on teidän joukkueenne yhteispistemäärä.",
+    "nervespiral": "Kun aloitusmerkki kuuluu, kaksi ensimmäistä pelaajaa voi mennä spiraaliin, molemmat ottavat metallirenkaasta kiinni ja yrittävät päästä ensimmäiselle tarkistuspisteelle koskematta putkeen.\n\n Kun kaksi pelaajaa saavuttavat yhden tarkistuspisteen, he palaavat takaisin ja kaksi uutta pelaajaa astuvat peliin. Kun nämä kaksi pelaajaa koskettavat spiraalia, he palaavat takaisin joukkueeseen ja kaksi uutta pelaajaa jatkavat viimeiseltä tarkistuspisteeltä. Jatkatte kunnes saavutatte spiraalin loppuun. Joukkue, joka saavuttaa ensimmäisenä maalin, voittaa.",
+    "tickettwist": "Tässä pelissä jokaisen pelaajan, joka osallistuu peliin, on käytettävä joukkueensa värillistä nauhaa. 10 pelaajaa kustakin joukkueesta kilpailevat toisiaan vastaan kentällä. Tämän pelin tavoitteena on kääntää mahdollisimman monta laattaa joukkueesi väriin. Kentän pelaajat voivat vaihtaa paikkoja niin usein kuin haluavat, mutta uuden pelaajan on otettava 'vanhalta' pelaajalta nauha ja sen jälkeen uusi pelaaja voi jatkaa peliä. Peli koostuu 1 kierroksesta, joka kestää 8 minuuttia. Kun aika loppuu, kaikki pelaajat poistuvat kentältä ja laatat lasketaan värin mukaan. Joukkue, joka käänsi eniten laattoja oman värisiksi, voittaa pelin.",
+    "minefield": "Tämä peli pelataan suurella kentällä, jossa on pieniä osia. Kullakin joukkueella on kaksi kapteenia sivurajoilla, jotka opastavat pelaajaa ilman puhelimia tai muita apuvälineitä. Pelaaja yksi aloittaa ja yrittää kulkea kentän läpi astumatta väärään laatikkoon. Tietääksesi, oletko oikeassa vai väärässä laatikossa, käytät piipparia kussakin laatikossa. Kun piippari antaa hälytysmerkin, olet väärässä laatikossa ja sinun on vaihdettava pelaaja uuteen pelaajaan. Jokainen pelaaja tarkistaa jokaisen laatikon, vaikka olisikin 100-prosenttisen varma, ettei siinä ole miinaa. Kapteenit auttavat muistamaan oikean reitin. Jatkatte kunnes olette saavuttaneet maalin, ja sitten aikanne pysähtyy. Joukkue, jolla on nopein aika, voittaa pelin.",
+    "tablesurfing": "Tämän pelin tavoitteena on saada yksi henkilö toiselle puolelle rataa flamingon päällä pyörivien henkilöiden yli. Tiimisi tarvitsee ottaa useita vuoroja ja yrittää olla päästämättä henkilöä putoamaan maahan. Radan lopussa on rinne. Kun pojat ovat kiivenneet mäen, kello soi ja vaihdatte joukkueita. Toinen joukkue (tytöt) asettaa samanlaisen radan takaisin mennessä, laskeutuu rinnettä ja kiertää kaikki mutkat. Joukkue, joka ylittää maaliviivan ensimmäisenä, voittaa."
+  },
+  "rules": {
+    "monkeybars": "Kaikki tiimin jäsenet osallistuvat",
+    "nervespiral": "30 - 50 tiimin jäsentä osallistuu (15-25 paria)",
+    "tickettwist": "Vain joukkueen nauhaa käyttävät henkilöt saavat osallistua kentälle (10 per joukkue)|Osallistujia saa vaihtaa rajattomasti, kunhan heillä on joukkueen nauha tullessaan kentälle",
+    "minefield": "Noin 30 joukkueen jäsentä osallistuu|Vain yksi henkilö kerrallaan saa olla radalla|2 joukkueen kapteenia opastavat osallistujat radan läpi|Joukkueen kapteenit eivät saa käyttää työkaluja reitin muistamiseen",
+    "tablesurfing": "16 poikaa ja 16 tyttöä osallistuu, 1 surffaaja ja 15 pyörittäjää|Maata ei saa koskea (sekä ilmapallo että surffaaja)|Esteitä ei saa liikuttaa, eikä pyörittäjien saa liikkua merkityn alueen ulkopuolelle"
+  },
+  "general_error": "Jotain meni pieleen",
+  "pleaserefresh": "Yritä päivittää sivu",
+  "points": "Pisteet",
+  "coins": "Kolikot",
+  "game": "Peli",
+  "team1team2": "Joukkue 1 / Joukkue 2",
+  "start": "Aloita",
+  "rulestitle": "Säännöt",
+  "login": {
+    "login_button": "Kirjaudu sisään",
+    "teamcode": "Joukkuekoodi",
+    "teamcode_invalid": "Valitettavasti joukkuekoodisi ei ole kelvollinen"
+  },
+  "league": {
+    "rankingisempty": "Mikään joukkue ei ole vielä rekisteröinyt pisteitä. Tarkista tilanne uudelleen ensimmäisen kierroksen jälkeen.",
+    "viewgamerankings": "Näytä sijoitukset ja pisteet jokaisesta pelistä",
+    "viewgamerankings-title": "Voit tarkastella sijoituksia pelikohtaisesti pelisivuilla."
+  },
+  "admin": {
+    "select_league": {
+      "intro": "Valitse liiga, jonka haluat hallinnoida"
+    }
+  },
+  "yourmatch": "",
+  "sidequest": {
+    "thanks": "Kiitos, vastauksesi on tallennettu",
+    "timeranout": "Aika loppui, parempaa onnea ensi kerralla",
+    "areyouready": "Oletko valmis?",
+    "checkanswerlater": "Tarkista vastaus, kun peli päättyy",
+    "question_locked": "Edelleen lukittu",
+    "youhaveunsubmittedanswers": "Sinulla on {numAnswers} vastausta. Haluatko lähettää ne nyt?",
+    "submityouranswers": "Lähetä vastauksesi",
+    "gameroundtitle": "Kierros {round}",
+    "back_to_overview": "Palaa yleiskatsaukseen",
+    "explanation": "Selitys",
+    "explanation_text": "Jokaisen kierroksen jälkeen, paitsi viimeisen, kaksi kysymystä avataan satunnaisessa järjestyksessä, yhteensä 8 kysymystä. Voit vastata niihin, kunnes seuraava ottelu alkaa.\n\nJos et vastaa kysymykseen tai poistut siitä, menetät yhden 8 kolikostasi. Jos yrität uudelleen samaa kysymystä, sinun on ohitettava toinen kysymys. \n\nTiimisi ansaitsee bonuspisteitä sen mukaan, kuinka monta joukkueen jäsentä lähettää oikean vastauksen kuhunkin kysymykseen.",
+    "noroundyet": "",
+    "questiontypes": {
+      "math": "Matematiikka",
+      "knowledge": "Tietämys",
+      "recognize": "Tunnistaminen",
+      "insight": "Oivallus",
+      "remember": "Muistaminen",
+      "guess": "Arvaa"
+    }
+  },
+  "questions": {
+    "guesshowmany1": {
+      "q": "Kuinka monta tuntia Fra Kårea on kuunneltu tänä vuonna?",
+      "intro": "Oletko kuunnellut Fra Kårea tänä vuonna?"
+    },
+    "guesshowmany2": {
+      "q": "Kuinka monta ihmistä on vieraillut leireillä vuonna 2023?",
+      "intro": "Oletko hyvä laskemaan?"
+    },
+    "remember": {
+      "q": "Mikä on oikea järjestys Herman Shuffle -tanssiliikkeissä?",
+      "intro": "Tanssitko mukana tänä aamuna?",
+      "a": {
+        "lwd": "Lean, Wave, Drift",
+        "wld": "Wave, Lean, Drift",
+        "ldw": "Lean, Drift, Wave",
+        "wdl": "Wave, Drift, Lean"
+      }
+    },
+    "insight": {
+      "q": "Mikä vuoristoradan vaunuista saavuttaa pohjan ensin?",
+      "intro": "Katso kuvaa",
+      "a": {
+        "red": "Punainen",
+        "green": "Vihreä",
+        "yellow": "Keltainen",
+        "sametime": "Ne saavuttavat pohjan samaan aikaan"
+      }
+    },
+    "recognize1": {
+      "q": "Tunnistatko tai muistatko, kuka tämä on?",
+      "intro": "Tiedätkö, keitä emme näe tässä kuvassa?",
+      "a": {
+        "opta": "Gershon Twilley",
+        "optb": "Harald Kronstad",
+        "optc": "Gunnar Gangsø",
+        "optd": "Bernt-Aksel Larsen"
+      }
+    },
+    "recognize2": {
+      "q": "Muistatko, kuka tämä on?",
+      "intro": "Seurasitko projekteja tänä vuonna? Katso kuvaa.",
+      "a": {
+        "peter": "Pietari",
+        "john": "Johannes",
+        "matthew": "Matteus",
+        "james": "Jaakob"
+      }
+    },
+    "math": {
+      "q": "Mikä numero tulisi kysymysmerkin paikalle?",
+      "intro": "Katso kuvaa.",
+      "a": {
+        "30": "30",
+        "81": "81",
+        "200": "200",
+        "67": "67"
+      }
+    },
+    "knowledge": {
+      "q": "Missä maassa BCC:llä ei ole kirkkoa?",
+      "intro": "Mistä olet kotoisin?",
+      "a": {
+        "singapore": "Singapore",
+        "serbia": "Serbia",
+        "japan": "Japani",
+        "peru": "Peru"
+      }
+    }
+  },
+  "back": "Takaisin"
+}
