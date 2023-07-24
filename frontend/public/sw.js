@@ -63,6 +63,7 @@ const networkFirst = async (request) => {
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(async () => {
+    clients.claim();
     if (self.registration.navigationPreload) {
       // Enable navigation preloads!
       await self.registration.navigationPreload.enable();
