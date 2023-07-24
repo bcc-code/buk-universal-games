@@ -9,7 +9,7 @@
   },
   "games": {
     "monkeybars": "Apinakeinut",
-    "nervespiral": "Hermospiraali XL",
+    "nervespiral": "Hermospiraali",
     "tickettwist": "Lippuväännä",
     "minefield": "Miinakenttä",
     "tablesurfing": "Joukkosurffaus"
@@ -57,7 +57,7 @@
   },
   "league": {
     "rankingisempty": "Mikään joukkue ei ole vielä rekisteröinyt pisteitä. Tarkista tilanne uudelleen ensimmäisen kierroksen jälkeen.",
-    "viewgamerankings": "Näytä sijoitukset ja pisteet jokaisesta pelistä",
+    "viewgamerankings": "Näytä sijoitukset jokaiselle pelille",
     "viewgamerankings-title": "Voit tarkastella sijoituksia pelikohtaisesti pelisivuilla."
   },
   "admin": {
@@ -65,20 +65,20 @@
       "intro": "Valitse liiga, jonka haluat hallinnoida"
     }
   },
-  "yourmatch": "",
+  "yourmatch": "Sinun ottelu",
   "sidequest": {
     "thanks": "Kiitos, vastauksesi on tallennettu",
     "timeranout": "Aika loppui, parempaa onnea ensi kerralla",
     "areyouready": "Oletko valmis?",
     "checkanswerlater": "Tarkista vastaus, kun peli päättyy",
-    "question_locked": "Edelleen lukittu",
+    "question_locked": "Vanhentunut",
     "youhaveunsubmittedanswers": "Sinulla on {numAnswers} vastausta. Haluatko lähettää ne nyt?",
     "submityouranswers": "Lähetä vastauksesi",
     "gameroundtitle": "Kierros {round}",
     "back_to_overview": "Palaa yleiskatsaukseen",
     "explanation": "Selitys",
     "explanation_text": "Jokaisen kierroksen jälkeen, paitsi viimeisen, kaksi kysymystä avataan satunnaisessa järjestyksessä, yhteensä 8 kysymystä. Voit vastata niihin, kunnes seuraava ottelu alkaa.\n\nJos et vastaa kysymykseen tai poistut siitä, menetät yhden 8 kolikostasi. Jos yrität uudelleen samaa kysymystä, sinun on ohitettava toinen kysymys. \n\nTiimisi ansaitsee bonuspisteitä sen mukaan, kuinka monta joukkueen jäsentä lähettää oikean vastauksen kuhunkin kysymykseen.",
-    "noroundyet": "",
+    "noroundyet": "Ei vielä saatavilla. Palaa ottelun jälkeen",
     "questiontypes": {
       "math": "Matematiikka",
       "knowledge": "Tietämys",
