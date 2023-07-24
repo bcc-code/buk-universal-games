@@ -203,7 +203,7 @@ div.teamresult {
   border-radius: 1em;
   position: relative;
   display:grid;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto;
   box-shadow: 0 0.5em 1em -0.5em rgba(0, 0, 0, 0.1);
 }
 

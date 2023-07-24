@@ -1,7 +1,7 @@
 <template>
   <div>
-    <input type="number" v-model="minutes" @input="updateTotal" :placeholder="'Minutes'" /><span>&nbsp;:&nbsp;</span> 
-    <input type="number" v-model="seconds" @input="updateTotal" :placeholder="'Seconds'" />
+    <input class="small-input" type="number" v-model="minutes" @input="updateTotal" :placeholder="'Minutes'" /><span>&nbsp;:&nbsp;</span> 
+    <input class="small-input" type="number" v-model="seconds" @input="updateTotal" :placeholder="'Seconds'" />
     <input type="number" v-model="penaltyPoints" @input="updateTotal" :placeholder="'Penalty Points'" />
   </div>
 </template>
@@ -33,6 +33,10 @@ export default {
 <style scoped>
 input {
   margin: 0.5em;
+}
+
+.small-input {
+  width: 7em;
 }
 </style>
 ```
