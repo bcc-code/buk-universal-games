@@ -2,6 +2,7 @@
 using Buk.UniversalGames.Data.Models;
 using Buk.UniversalGames.Data.Models.Matches;
 using Buk.UniversalGames.Library.Cultures;
+using Buk.UniversalGames.Library.Enums;
 using Buk.UniversalGames.Library.Exceptions;
 using Microsoft.EntityFrameworkCore;
 
@@ -145,9 +146,22 @@ namespace Buk.UniversalGames.Data.Repositories
 
             if (otherTeamResult is not null)
             {
-                //set winner and save
-                var winnerTeamId = measuredResult > otherTeamResult.Points ? teamId : otherTeamResult.TeamId;
-                match.WinnerId = winnerTeamId;
+                if (measuredResult == otherTeamResult.Points)
+                {
+                    match.WinnerId = null; //no winner
+                }
+                else
+                {
+                    //set winner and save
+                    if (match.GameId == 2 || match.GameId == 3) //tickettwist + monkeybars: higher is better
+                    {
+                        match.WinnerId = measuredResult > otherTeamResult.Points ? teamId : otherTeamResult.TeamId;
+                    }
+                    else
+                    {
+                        match.WinnerId = measuredResult < otherTeamResult.Points ? teamId : otherTeamResult.TeamId;
+                    }
+                }
             }
             await _db.SaveChangesAsync();
 
