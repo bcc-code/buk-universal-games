@@ -8,7 +8,7 @@
     "map": "Kaart"
   },
   "games": {
-    "monkeybars": "Apenkooien",
+    "monkeybars": "Monkeybars",
     "nervespiral": "Zenuwspiraal",
     "tickettwist": "Ticket Twist",
     "minefield": "Mijnenveld",
@@ -29,7 +29,7 @@
     "tablesurfing": "De treinsporen zijn beschadigd, wat een aanzienlijk probleem veroorzaakt. Maar jouw team kan deze situatie aanpakken door als een team samen te werken. Combineer jullie vaardigheden, coördineer jullie acties en vind een manier om de trein soepel te laten blijven bewegen."
   },
   "explanation": {
-    "monkeybars": "Speler één begint aan het apenkooien zo ver als hij kan. Zodra hij de 12e balk heeft bereikt, kan de volgende speler weer vanaf het begin beginnen.\n\nVoorbeeld: Speler één heeft als laatste de 26e balk aangeraakt, dus zijn score is 26 punten. Speler twee viel bij de 18e balk, dus haar score is 18 punten. De scores van alle spelers worden opgeteld en gedeeld door het totale aantal spelers in het team. Dat wordt jullie totale punten.",
+    "monkeybars": "Speler één begint aan de Monkey bars zo ver als hij kan. Zodra hij de 12e balk heeft bereikt, kan de volgende speler weer vanaf het begin beginnen.\n\nVoorbeeld: Speler één heeft als laatste de 26e balk aangeraakt, dus zijn score is 26 punten. Speler twee viel bij de 18e balk, dus haar score is 18 punten. De scores van alle spelers worden opgeteld en gedeeld door het totale aantal spelers in het team. Dat wordt jullie totale punten.",
     "nervespiral": "Wanneer het startsignaal klinkt, kunnen de eerste twee spelers naar de spiraal gaan. Ze nemen elk één kant van de metalen ring vast en proberen naar het eerste controlepunt te gaan zonder de buis aan te raken.\n\n Wanneer de twee spelers één controlepunt hebben bereikt, gaan ze terug en komen er twee nieuwe spelers in het spel. Wanneer deze twee spelers de spiraal aanraken, gaan ze terug naar het team en gaan er twee nieuwe spelers verder vanaf het laatste controlepunt. Dit gaat door totdat je het einde van de spiraal hebt bereikt. Het team dat als eerste eindigt, wint.",
     "tickettwist": "Voor dit spel moet elke speler die deelneemt aan het spel, een lint van de kleur van zijn of haar team dragen. 10 spelers van elk team zullen tegen elkaar strijden op het veld. Het doel van dit spel is om zoveel mogelijk tegels naar de kleur van jouw team om te draaien. De spelers op het veld kunnen zo vaak wisselen als ze willen, maar dan moet de nieuwe speler het lint van de 'oude' speler dragen en kan de nieuwe speler doorgaan met het spel. Het spel bestaat uit 1 ronde van 8 minuten. Als de tijd om is, verlaten alle spelers het veld en worden de tegels geteld per kleur. Het team dat de meeste tegels naar hun kleur heeft omgedraaid, wint het spel.",
     "minefield": "Dit spel vindt plaats op een groot veld met kleine vakken. Elk team heeft twee teamleiders aan de zijlijn die de spelers begeleiden zonder telefoons of andere hulpmiddelen te gebruiken. Speler één begint en probeert door het veld te gaan zonder in het verkeerde vak te stappen. Om te weten of je in het juiste of verkeerde vak staat, gebruik je de zoemer in elk vak. Wanneer de zoemer het alarmsignaal geeft, sta je in het verkeerde vak en moet je de speler vervangen door een nieuwe speler. Elke speler controleert elk vak, zelfs als het 100% zeker is dat het geen mijn is. De teamleiders helpen met het onthouden van de juiste route. Je gaat door totdat je de finish hebt bereikt en dan stopt je tijd. Het team met de snelste tijd wint het spel.",
