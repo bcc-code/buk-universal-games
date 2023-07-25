@@ -29,9 +29,10 @@ export default function (...plugins) {
       adminMatches: [],
       games: [],
       gamesLoading: true,
-      coins: ["dgsdfg", "as45zzz", "gztzz4ez", "d546d35", "g45fgyg4", "j767jf", "as5sed5a", "4w7487sd"],
+      coins: [],
+      coinsInitialized: false,
       qs: [
-        { id: 1, t: "guess", q: "guesshowmany1", a: ["115000","90000","50000","140000"]},
+        { id: 1, t: "guess", q: "guesshowmany1", a: ["115000","93000","50000","140000"]},
         { id: 2, t: "guess", q: "guesshowmany2", a: ["11200","7400","9900","13500"]},
         { id: 3, t: "remember", q: "remember", a: ["lwd","wld","ldw","wdl"]},
         { id: 4, t: "insight", i:true, q: "insight", a: ["red","green","yellow","sametime"]},
@@ -153,6 +154,14 @@ export default function (...plugins) {
           }
         }
       },
+      initializeCoins(state, coins) {
+        state.coins = coins;
+        console.log("Coins initialized", coins);
+        state.coinsInitialized = true;
+      },
+      removeCoin(state, coin) {
+        state.coins = state.coins.filter(c => c !== coin);
+      },
       setUserLanguage(state, language) {
         state.userLanguage = language;
       }
@@ -190,6 +199,10 @@ export default function (...plugins) {
         ctx.commit("setLoginMessage", 'Logging you in, please wait ...')
         const loginData = await initData(store, "start/")
         ctx.commit("setLoginData", loginData)
+        if(!ctx.state.coinsInitialized && ctx.state.coins.length == 0)
+        {
+          ctx.commit("initializeCoins", loginData.coins)
+        }
         return loginData
       },
       async getTeamStatus(ctx, override) {

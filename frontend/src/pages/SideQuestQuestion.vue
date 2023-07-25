@@ -83,7 +83,8 @@ export default {
     //   this.step = 'alreadyAnswered';
     //   return;
     // }
-    this.coin = this.coins.pop();
+    this.coin = this.coins.slice(-1)[0];
+    this.$store.commit("removeCoin", this.coin);
     this.question = this.$t("questions." + q.q + ".q");
     this.intro = this.$t("questions." + q.q + ".intro");
     this.hasImage = q.i;

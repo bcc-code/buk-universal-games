@@ -13,6 +13,8 @@ public class StartController : ControllerBase
     private readonly ILogger<StartController> _logger;
     private readonly ILeagueService _leagueService;
 
+    private const string _chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
     public StartController(ILogger<StartController> logger, ILeagueService leagueService)
     {
         _logger = logger;
@@ -26,19 +28,32 @@ public class StartController : ControllerBase
         if (team == null)
             return new ExceptionResult(Strings.UnknownTeamCode, 403);
 
-        //var league = team.LeagueId.HasValue ? await _leagueService.GetLeague(team.LeagueId.Value) : null;
-
         return new SignInSuccessResponse(
-            team.Code, 
-            team.Name, 
-            team.TeamType, 
-            team.LeagueId, 
+            team.Code,
+            team.Name,
+            team.TeamType,
+            team.LeagueId,
             team.LeagueId switch
             {
                 4 => "B-League",
                 5 => "U-League",
                 6 => "K-League",
                 _ => null
-            });
+            },
+            Enumerable.Range(0, 8).Select(x => GetCoins())
+            );
+    }
+
+    private static string GetCoins()
+    {
+        var stringChars = new char[8];
+        var random = new Random();
+
+        for (int i = 0; i < stringChars.Length; i++)
+        {
+            stringChars[i] = _chars[random.Next(_chars.Length)];
+        }
+
+        return new string(stringChars);
     }
 }
