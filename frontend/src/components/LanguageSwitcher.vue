@@ -44,15 +44,12 @@ export default {
     },
     methods: {
         toggleDropdown(override = null) {
-            console.log(override, this.isOpen, override || !this.isOpen)
             this.isOpen = override || !this.isOpen;
             if (this.isOpen) {
                 setTimeout(() => {
-                    console.log("add handler")
                     document.addEventListener('click', this.closeDropdown);
                 }, 100);
             } else {
-                console.log("remove handler")
                 document.removeEventListener('click', this.closeDropdown);
             }
         },
@@ -67,7 +64,6 @@ export default {
             event.stopPropagation();
             if(!this.$refs.languagePickerMenu)
             {
-                console.log("remove handler")
                 document.removeEventListener('click', this.closeDropdown);
                 return;
             }

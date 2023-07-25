@@ -10,7 +10,7 @@
     </section>
     <section v-if="step == 'question'">
       <div class="timer-top-right">
-        <Timer :seconds="10" @timer-finished="questionFinished" />
+        <Timer :seconds="questionTime" @timer-finished="questionFinished" />
       </div>
       <div class="heading-text">
         <h2>{{ this.intro }}</h2>
@@ -25,6 +25,9 @@
         <h2>{{ this.question }}</h2>
       </div>
       <component :is="answerComponent" :options="options" v-model="selectedAnswer" />
+      <div class="next-button">
+        <button class="btn-blank btn-continue-answer" @click="answerFinished">&#x2794;</button>
+      </div>
     </section>
     <section v-if="['timeranout', 'done', 'alreadyAnswered'].includes(step)" class="final-screen">
       <div class="heading-text">
@@ -62,6 +65,7 @@ export default {
       hasImage: false,
       intro: null,
       options: [],
+      questionTime: 10,
       step: 'pre',
       doneMessage: {
         done: "sidequest.thanks",
@@ -83,13 +87,29 @@ export default {
     //   this.step = 'alreadyAnswered';
     //   return;
     // }
+    if(this.coins.length == 0)
+    {
+      this.$router.back();
+      return;
+    }
     this.coin = this.coins.slice(-1)[0];
     this.$store.commit("removeCoin", this.coin);
     this.question = this.$t("questions." + q.q + ".q");
     this.intro = this.$t("questions." + q.q + ".intro");
     this.hasImage = q.i;
+    switch (q.id) {
+      case 7:
+        this.questionTime = 45;
+        break;
+      case 4:
+        this.questionTime = 20;
+        break;
+      default:
+        this.questionTime = 10;
+    }
+    this.questionTime = q.id == 7 ? 40 : q.id == 8 ? 60 : 10;
 
-    const shuffled = q.a.slice(); // Make a copy of the answers array
+    const shuffled = q.a.slice();
     for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
@@ -116,6 +136,8 @@ export default {
       this.step = "answer";
     },
     answerFinished() {
+      if(this.step != "answer") return;
+
       if (this.selectedAnswer) {
         this.$store.commit("addAnswer", { questionId: this.id, answer: this.selectedAnswer, coin: this.coin });
         this.step = 'done';
@@ -221,6 +243,13 @@ export default {
 .final-screen {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.next-button {
+  margin-top:1em;
+  display: flex;
   justify-content: center;
   align-items: center;
 }

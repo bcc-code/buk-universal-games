@@ -78,14 +78,16 @@
         "gameroundtitle": "Tour {round}",
         "back_to_overview": "Retour à l'aperçu",
         "noroundyet": "Indisponible pour le moment. Revenez après le match.",
+        "submitfailed": "Impossible d'envoyer tes réponses. Vérifie ta connexion et réessaie",
+        "no_coins": "Tu n'as plus de pièces. Tu ne peux plus répondre à de nouvelles questions",
         "explanation": "Explication",
         "explanation_text": "Après chaque match, sauf le dernier, 2 questions seront déverrouillées dans un ordre aléatoire, soit un total de 8 questions. Vous avez 10 minutes pour y répondre, jusqu'à ce que le match suivant commence.\nVous avez un total de 8 pièces. Chaque question que vous commencez vous coûte une pièce, même si vous n'y répondez pas. Donc, si vous réessayez la même question, vous devrez sauter une autre question.\nUne fois que vous avez répondu à une question, vous ne pouvez plus y répondre.\n\nVotre équipe gagne des points bonus en fonction du nombre de membres de votre équipe qui envoient une réponse correcte pour chaque question.\nRevenez après chaque match pour gagner plus de points pour votre équipe !",
         "questiontypes": {
-            "math": "Mathématiques",
-            "knowledge": "Connaissances",
+            "math": "Maths",
+            "knowledge": "Savoir",
             "recognize": "Reconnaître",
             "insight": "Comprendre",
-            "remember": "Se souvenir",
+            "remember": "Rappel",
             "guess": "Deviner"
         }
     },
@@ -110,7 +112,7 @@
         },
         "insight": {
             "q": "Quel chariot de montagnes russes atteindra le sol en premier ?",
-            "intro": "Regardez l'image.",
+            "intro": "Regardez l'image. Quel chariot de montagnes russes atteindra le sol en premier ?",
             "a": {
                 "red": "Rouge",
                 "green": "Vert",

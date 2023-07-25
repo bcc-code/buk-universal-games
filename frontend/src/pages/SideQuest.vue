@@ -7,8 +7,8 @@
       :refresh="refresh"
     />
 
-    <section class="error-popup" v-if="submitAnswersFailed">
-      <p><span>{{ $t("Answers not submitted. Make sure you are online and try again") }}</span></p>
+    <section class="error-popup" v-if="showErrorPopup">
+      <p><span>{{ popupErrorMessage }}</span></p>
     </section>
 
     <section>
@@ -39,7 +39,7 @@
             <span>{{ $t("sidequest.questiontypes." + question.t) }}</span>
           </h3>
         </div>
-        <!-- <span class="locked-indicator" v-if="(index + 1 < $store.getters.currentRound)">Locked</span> -->
+        <span class="locked-indicator" v-if="(index + 1 < $store.getters.currentRound)">{{ $t("sidequest.question_locked") }}</span>
       </div>
       </div>
     </section>
@@ -65,7 +65,8 @@ export default {
       resultParsed: null,
       isExplanationVisible: false,
       showExplanationText: false,
-      submitAnswersFailed: false
+      showErrorPopup: false,
+      popupErrorMessage: ""
     };
   },
   mounted() {
@@ -91,9 +92,11 @@ export default {
       this.$store.dispatch("submitAnswers").then((x) => {
         console.log(x);
         if (x == "failed") {
-          this.submitAnswersFailed = true;
+          this.popupErrorMessage = this.$t("sidequest.submitfailed");
+          this.showErrorPopup = true;
           setTimeout(() => {
-            this.submitAnswersFailed = false;
+            this.showErrorPopup = false;
+            this.popupErrorMessage = null;
           }, 5000);
         }
       });
@@ -102,6 +105,16 @@ export default {
       this.isExplanationVisible = !this.isExplanationVisible;
     },
     questionClicked(questionId) {
+      if(this.coins.length == 0)
+      {
+        this.popupErrorMessage = this.$t("sidequest.no_coins");
+        this.showErrorPopup = true;
+          setTimeout(() => {
+            this.showErrorPopup = false;
+            this.popupErrorMessage = null;
+          }, 5000);
+        return;
+      }
       // if(round === this.$store.getters.currentRound)
       // {
         this.$router.push(`/sidequest/question/${questionId}`);
@@ -176,14 +189,16 @@ export default {
   margin: auto;
 }
 .error-popup {
-  max-width: 900px;
-  position: absolute;
+  position: fixed;
   top: 4em;
+  left:1em;
+  right:1em;
+  z-index:800;
   background-color: var(--red);
   color: #fff;
-  padding:1em;
-  margin-right:1em;
+  padding:1.5em 1em;
   border-radius:1em;
+  box-shadow: 2px 5px 5px 0px rgba(0,0,0,0.5);
 }
 
 .heading-icon.failure {
@@ -256,7 +271,7 @@ export default {
 }
 
 .question-button h3 {
-  font-size: 1.5em;
+  font-size: 1.4em;
   margin: 0;
   text-align: center;
   width:100%;
@@ -270,7 +285,7 @@ export default {
 .locked-indicator {
   position: absolute;
   filter:none;
-  font-size: 3em;
+  font-size: 1.5em;
   opacity: 0.7;
   top: 30%;
   rotate: -15deg;

@@ -78,15 +78,17 @@
     "gameroundtitle": "Runda {round}",
     "back_to_overview": "Înapoi la vedere de ansamblu",
     "noroundyet": "Încă nu este disponibil. Reveniți după meci.",
+    "submitfailed": "Nu s-au putut trimite răspunsurile tale. Asigură-te că ai conexiune și încearcă din nou",
+    "no_coins": "Nu mai ai nicio monedă. Nu poți răspunde la alte întrebări",
     "explanation": "Explicație",
     "explanation_text": "După fiecare meci, cu excepția ultimului, vor fi deblocate 2 întrebări în ordine aleatoare, deci în total 8 întrebări. Ai 10 minute la dispoziție să le răspunzi, până când începe următorul meci.\nAi în total 8 monede. Fiecare întrebare pe care o începi costă o monedă, chiar dacă nu răspunzi la ea. Deci, dacă reîncerci aceeași întrebare, va trebui să sari peste o altă întrebare.\nOdată ce ai răspuns la o întrebare, nu o poți mai răspunde o dată.\n\nEchipa ta obține puncte bonus în funcție de câți membri ai echipei trimit un răspuns corect pentru fiecare întrebare.\nVerifică după fiecare meci pentru a câștiga mai multe puncte pentru echipa ta!",
     "questiontypes": {
-      "math": "Matematică",
-      "knowledge": "Cunoștințe",
-      "recognize": "Recunoaștere",
-      "insight": "Înțelegere",
-      "remember": "Memorare",
-      "guess": "Ghicit"
+      "math": "Mate",
+      "knowledge": "Cunoșt",
+      "recognize": "Recunoaște",
+      "insight": "Înțelege",
+      "remember": "Memorează",
+      "guess": "Ghicește"
     }
   },
   "questions": {
@@ -110,7 +112,7 @@
     },
     "insight": {
       "q": "Ce cărucior de montagne-russe va ajunge primul jos?",
-      "intro": "Uită-te la imagine",
+      "intro": "Uită-te la imagine. Ce cărucior de montagne-russe va ajunge primul jos?",
       "a": {
         "red": "Roșu",
         "green": "Verde",
@@ -140,7 +142,7 @@
     },
     "math": {
       "q": "Ce număr trebuie să fie pe semnul întrebării?",
-      "intro": "Uită-te la imagine.",
+      "intro": "Uită-te la imagine. Ce număr trebuie să fie pe semnul întrebării?",
       "a": {
         "30": "30",
         "81": "81",

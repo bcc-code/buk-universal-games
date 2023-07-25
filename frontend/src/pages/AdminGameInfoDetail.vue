@@ -1,5 +1,5 @@
 <template>
-  <UserPageLayout :showTitle="false">
+  <AdminPageLayout :showTitle="false">
     <nav>
       <button @click="$router.back()">&lt; {{ $t("back") }}</button>
     </nav>
@@ -33,11 +33,6 @@
       </li>
     </ul>
     </p>
-    <section>
-      <h2>{{ $t("yourmatch") }}</h2>
-      <MatchListItem v-if="match" :gameType="gameParsed.gameType" :gameAddOn="match.addOn" :team1="match.team1"
-        :team2="match.team2" :start="match.start" :winner="match.winner" :class="{ 'card-light': true }"></MatchListItem>
-    </section>
 
     <section class="league-title" v-if="ranking?.length">
       <div class="league-title-column index-column"></div>
@@ -52,27 +47,25 @@
       <LeagueListItem :class="{ 'card-light': i > 4, 'green-font': status.teamId == teamStatus?.status?.teamId }"
         :index="i + 1" :team="status.team" :stickers="status.stickers" :points="status.points" />
     </section>
-  </UserPageLayout>
+  </AdminPageLayout>
 </template>
 
 <script>
-import UserPageLayout from "@/components/UserPageLayout.vue";
+import AdminPageLayout from "@/components/AdminPageLayout.vue";
 import LeagueListItem from "@/components/LeagueListItem.vue";
-import MatchListItem from "@/components/MatchListItem.vue";
 
 export default {
   name: "GameInfoDetail",
   props: {
     game: String,
   },
-  components: { UserPageLayout, LeagueListItem, MatchListItem },
+  components: { LeagueListItem, AdminPageLayout },
   data() {
     return {
       gameParsed: {},
     };
   },
   created() {
-    this.$store.dispatch("getLeagueStatus");
     if (this.game) {
       this.gameParsed = this.$store.state.games.find((game) => game.id == this.game);
     } else {
@@ -81,12 +74,6 @@ export default {
   },
   methods: {},
   computed: {
-    teamStatus() {
-      return this.$store.state.teamStatus;
-    },
-    match() {
-      return this.$store.state.matches.find((match) => match.teamId == this.teamStatus?.status?.teamId && match.gameId == this.gameParsed?.id);
-    },
     ranking() {
       const gameType = this.gameParsed?.gameType;
       const leagueStatus = this.$store.state.leagueStatus;

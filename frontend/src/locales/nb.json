@@ -78,6 +78,8 @@
     "gameroundtitle": "Runde {round}",
     "back_to_overview": "Tilbake til oversikten",
     "noroundyet": "Ikke tilgjengelig ennå. Kom tilbake etter kampen.",
+    "submitfailed": "Kunne ikke sende inn svarene dine. Sjekk at du har tilkobling og prøv igjen",
+    "no_coins": "Du har ingen mynter igjen. Du kan ikke svare på flere spørsmål",
     "explanation": "Forklaring",
     "explanation_text": "Etter hver kamp, bortsett fra den siste, vil 2 spørsmål bli låst opp i tilfeldig rekkefølge, totalt 8 spørsmål. Du har 10 minutter til å svare på dem, til neste kamp begynner.\nDu har totalt 8 mynter. Hver spørsmål du starter koster en mynt, selv om du ikke svarer på det. Så, hvis du prøver å svare på samme spørsmål på nytt, må du hoppe over et annet spørsmål.\nNår du har svart på et spørsmål, kan du ikke svare på det igjen.\n\nLaget ditt tjener bonuspoeng basert på hvor mange av laget ditt som sender inn et riktig svar for hvert spørsmål.\nSjekk tilbake etter hver kamp for å tjene flere poeng for laget ditt!",
     "questiontypes": {
@@ -110,7 +112,7 @@
     },
     "insight": {
       "q": "Hvilken berg-og-dal-banevogn vil nå bunnen først?",
-      "intro": "Se på bildet",
+      "intro": "Se på bildet. Hvilken berg-og-dal-banevogn vil nå bunnen først?",
       "a": {
         "red": "Rød",
         "green": "Grønn",
@@ -140,7 +142,7 @@
     },
     "math": {
       "q": "Hvilket tall skal stå på spørsmålstegnet?",
-      "intro": "Se på bildet.",
+      "intro": "Se på bildet. Hvilket tall skal stå på spørsmålstegnet?",
       "a": {
         "30": "30",
         "81": "81",

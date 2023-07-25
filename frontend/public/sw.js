@@ -62,8 +62,9 @@ const networkFirst = async (request) => {
 };
 
 self.addEventListener("activate", (event) => {
+  console.log("Service worker activating...", self.clients);
+  clients.claim();
   event.waitUntil(async () => {
-    clients.claim();
     if (self.registration.navigationPreload) {
       // Enable navigation preloads!
       await self.registration.navigationPreload.enable();
@@ -76,7 +77,6 @@ self.addEventListener("install", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
-  console.log(event.request.destination, event.request.url, event.request.mode);
   if (event.request.method === "GET") {
     if (cacheableDestinations.includes(event.request.destination)) {
       event.respondWith(

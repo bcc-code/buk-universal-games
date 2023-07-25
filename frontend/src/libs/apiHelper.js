@@ -166,7 +166,6 @@ export async function postData(url, data) {
       body: JSON.stringify(data),
     });
     const r_1 = await r.json();
-    console.log("POST data response OK", r_1);
     return r_1;
   } catch (e) {
     console.log("POST data response ERROR", e);
@@ -184,7 +183,6 @@ export function postStickerCode(stickerCode) {
   })
     .then((r) => r.json())
     .then((r) => {
-      console.log("Sticker response OK", r);
       return r
     })
     .catch((e) => {

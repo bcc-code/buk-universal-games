@@ -137,10 +137,8 @@ export default function (...plugins) {
         }
       },
       unlockNewQuestions(state, round) {
-        console.log(round);
         if(state.qsOpened[round -1] && state.qsOpened[round -1].length > 0)
         {
-          console.log("Already unlocked");
           return;
         }
         while(state.qsOpened[round -1].length < 2)
@@ -148,7 +146,6 @@ export default function (...plugins) {
           const newQuestion = state.qs[Math.floor(Math.random() * state.qs.length)]
           if(!state.qsOpened.flat().includes(newQuestion) && !state.qsOpened[round -1].some(q => q.t == newQuestion.t))
           {
-            console.log(newQuestion);
             state.qsOpened[round-1].push(newQuestion);
             //Vue.set(state.qsOpened, (round - 1), state.qsOpened[round -1].push(newQuestion));
           }
@@ -156,7 +153,6 @@ export default function (...plugins) {
       },
       initializeCoins(state, coins) {
         state.coins = coins;
-        console.log("Coins initialized", coins);
         state.coinsInitialized = true;
       },
       removeCoin(state, coin) {
@@ -174,7 +170,6 @@ export default function (...plugins) {
         
         if(!currentMatchIndex || currentMatchIndex < 0) return 0;
         
-        console.log(`Current round:${currentMatchIndex + 1}, based on time ${timeString}`);
         return currentMatchIndex + 1;
       },
       afterRoundPeriod: (state, getters) => {
@@ -319,7 +314,6 @@ export default function (...plugins) {
         for(let i=1; i < 5 && (i<currentRound || (i == currentRound && isAfterRound)); i++)
         {
           const questions = ctx.state.qsOpened[i - 1] || [];
-          console.log(currentRound, isAfterRound, i, questions, ctx.state.qsOpened[i - 1]);
           if (questions.length == 0) {
             ctx.commit("unlockNewQuestions", i)
           }

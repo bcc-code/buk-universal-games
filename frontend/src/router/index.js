@@ -12,6 +12,7 @@ import AdminLeagueStatus from "@/pages/AdminLeagueStatus.vue";
 import AdminSelectLeague from "@/pages/AdminSelectLeague.vue";
 import AdminGames from "@/pages/AdminGames.vue";
 import AdminMatchListGame from "@/pages/AdminMatchListGame.vue";
+import AdminGameInfoDetail from "@/pages/AdminGameInfoDetail.vue";
 import AdminMap from "@/pages/AdminMap.vue";
 
 const routes = [
@@ -59,7 +60,7 @@ const routes = [
   {
     path: "/admin/games/:game",
     name: "AdminGameInfoDetail",
-    component: GameInfoDetail,
+    component: AdminGameInfoDetail,
     props: true
   },
   {

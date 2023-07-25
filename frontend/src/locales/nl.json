@@ -78,6 +78,8 @@
     "gameroundtitle": "Ronde {round}",
     "back_to_overview": "Terug naar het overzicht",
     "noroundyet": "Nog niet beschikbaar. Kom terug na de wedstrijd.",
+    "submitfailed": "Het verzenden van je antwoorden is mislukt. Zorg ervoor dat je verbonden bent en probeer opnieuw",
+    "no_coins": "Je hebt geen munten meer. Je kunt geen vragen meer beantwoorden",
     "explanation": "Uitleg",
     "explanation_text": "Na elke wedstrijd, behalve de laatste, worden 2 vragen in willekeurige volgorde ontgrendeld, dus in totaal 8 vragen. Je hebt 10 minuten de tijd om ze te beantwoorden, tot de volgende wedstrijd begint.\nJe hebt in totaal 8 munten. Elke vraag die je begint kost een munt, zelfs als je er geen antwoord op geeft. Dus, als je dezelfde vraag opnieuw probeert, moet je een andere vraag overslaan.\nZodra je een vraag hebt beantwoord, kun je deze niet opnieuw beantwoorden.\n\nJe team verdient bonuspunten op basis van hoeveel teamleden een correct antwoord insturen voor elke vraag.\nKom na elke wedstrijd terug om meer punten voor je team te verdienen!",
     "questiontypes": {
@@ -110,7 +112,7 @@
     },
     "insight": {
       "q": "Welk achtbaankarretje bereikt als eerste de bodem?",
-      "intro": "Bekijk de afbeelding",
+      "intro": "Bekijk de afbeelding. Welk achtbaankarretje bereikt als eerste de bodem?",
       "a": {
         "red": "Rood",
         "green": "Groen",
@@ -140,7 +142,7 @@
     },
     "math": {
       "q": "Welk getal hoort er op het vraagteken?",
-      "intro": "Bekijk de afbeelding.",
+      "intro": "Bekijk de afbeelding. Welk getal hoort er op de plaats van het vraagteken?",
       "a": {
         "30": "30",
         "81": "81",

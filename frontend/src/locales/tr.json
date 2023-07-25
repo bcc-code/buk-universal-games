@@ -79,14 +79,16 @@
     "gameroundtitle": "Tur {round}",
     "back_to_overview": "Genel Bakışa Dön",
     "noroundyet": "Henüz mevcut değil. Maçtan sonra geri gelin.",
+    "submitfailed": "Cevaplarını gönderme başarısız oldu. Bağlantınız olduğundan emin olun ve tekrar deneyin",
+    "no_coins": "Artık jetonun kalmadı. Daha fazla soru cevaplayamazsın",
     "explanation": "Açıklama",
     "explanation_text": "Son maç hariç her maçtan sonra, rastgele sırayla 2 soru açılacak, toplamda 8 soru olacak. Bu soruları yanıtlamak için 10 dakikanız var, sonraki maç başlayana kadar.\nToplamda 8 jetonunuz var. Başlattığınız her soru, ona cevap vermeseniz bile bir jetonunuzu tüketir. Bu nedenle aynı soruyu tekrar denerseniz, başka bir soruyu atlamak zorunda kalırsınız.\nBir soruya cevap verdikten sonra tekrar cevaplayamazsınız.\n\nTakımınız, her soru için kaç takım üyesinin doğru cevap gönderdiğine bağlı olarak bonus puanlar kazanır.\nTakımınıza daha fazla puan kazandırmak için her maçtan sonra geri dönün!",
     "questiontypes": {
-      "math": "Matematik",
+      "math": "Mat",
       "knowledge": "Bilgi",
       "recognize": "Tani",
       "insight": "Anlayış",
-      "remember": "Hatırlama",
+      "remember": "Hatırla",
       "guess": "Tahmin"
     }
   },
@@ -110,8 +112,8 @@
       }
     },
     "insight": {
-      "q": "Amerikan Montajlı Tekerlekli Arabalarda hangi arabalar en önce alt noktaya ulaşır?",
-      "intro": "Resme bakın",
+      "q": "Hangi lunapark treni en önce aşağıya ulaşır?",
+      "intro": "Resme bakın. Hangi lunapark treni en önce aşağıya ulaşır?",
       "a": {
         "red": "Kırmızı",
         "green": "Yeşil",
@@ -141,7 +143,7 @@
     },
     "math": {
       "q": "Soru işareti kaç olmalıdır?",
-      "intro": "Resme bakın.",
+      "intro": "Resme bakın. Soru işareti kaç olmalıdır?",
       "a": {
         "30": "30",
         "81": "81",

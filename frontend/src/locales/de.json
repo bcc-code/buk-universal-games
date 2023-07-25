@@ -78,13 +78,15 @@
     "gameroundtitle": "Runde {round}",
     "back_to_overview": "Zurück zur Übersicht",
     "noroundyet": "Noch nicht verfügbar. Komm nach dem Match zurück.",
+    "submitfailed": "Das Abschicken deiner Antworten hat nicht geklappt. Stell sicher, dass du eine Verbindung hast und probiere es erneut",
+    "no_coins": "Du hast keine Münzen mehr übrig. Du kannst keine weiteren Fragen beantworten",
     "explanation": "Erklärung",
     "explanation_text": "Nach jedem Match, außer dem letzten, werden 2 Fragen in zufälliger Reihenfolge freigeschaltet, insgesamt also 8 Fragen. Sie haben 10 Minuten Zeit, um sie zu beantworten, bis das nächste Match beginnt.\nSie haben insgesamt 8 Münzen. Jede Frage, die Sie beginnen, kostet eine Münze, auch wenn Sie sie nicht beantworten. Also, wenn Sie dieselbe Frage erneut versuchen, müssen Sie eine andere Frage überspringen.\nSobald Sie eine Frage beantwortet haben, können Sie sie nicht erneut beantworten.\n\nIhr Team erhält Bonuspunkte basierend darauf, wie viele Mitglieder Ihres Teams eine richtige Antwort für jede Frage einsenden.\nKommen Sie nach jedem Match zurück, um mehr Punkte für Ihr Team zu verdienen!",
     "questiontypes": {
       "math": "Mathe",
       "knowledge": "Wissen",
       "recognize": "Erkennen",
-      "insight": "Einblick",
+      "insight": "Einsicht",
       "remember": "Erinnern",
       "guess": "Raten"
     }
@@ -110,7 +112,7 @@
     },
     "insight": {
       "q": "Welcher Achterbahnwagen wird als erster unten ankommen?",
-      "intro": "Schau dir das Bild an",
+      "intro": "Schau dir das Bild an. Welcher Achterbahnwagen wird als erster unten ankommen?",
       "a": {
         "red": "Rot",
         "green": "Grün",
@@ -140,7 +142,7 @@
     },
     "math": {
       "q": "Welche Zahl sollte im Fragezeichen stehen?",
-      "intro": "Schau dir das Bild an.",
+      "intro": "Schau dir das Bild an. Welche Zahl sollte im Fragezeichen stehen?",
       "a": {
         "30": "30",
         "81": "81",

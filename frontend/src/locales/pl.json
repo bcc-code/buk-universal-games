@@ -78,15 +78,17 @@
     "gameroundtitle": "Runda {round}",
     "back_to_overview": "Powrót do przeglądu",
     "noroundyet": "Nie dostępne jeszcze. Wróć po meczu.",
+    "submitfailed": "Ups! Nie udało się przesłać twoich odpowiedzi. Upewnij się, że masz połączenie i spróbuj ponownie",
+    "no_coins": "Nie masz już monet. Nie możesz odpowiedzieć na więcej pytań",
     "explanation": "Wyjaśnienie",
     "explanation_text": "Po każdym meczu, za wyjątkiem ostatniego, zostaną odblokowane 2 pytania w losowej kolejności, łącznie 8 pytań. Masz 10 minut na ich odpowiedź, do rozpoczęcia kolejnego meczu.\nMasz w sumie 8 monet. Każde pytanie, które zaczniesz, kosztuje monetę, nawet jeśli nie odpowiesz na nie. Więc, jeśli spróbujesz ponownie odpowiedzieć na to samo pytanie, będziesz musiał(a) pominąć inne pytanie.\nGdy już odpowiesz na pytanie, nie możesz odpowiedzieć na nie ponownie.\n\nTwój zespół zdobywa dodatkowe punkty za to, ile członków zespołu przesyła poprawne odpowiedzi na każde pytanie.\nSprawdź po każdym meczu, aby zdobyć więcej punktów dla swojego zespołu!",
     "questiontypes": {
-      "math": "Matematyka",
+      "math": "Mat",
       "knowledge": "Wiedza",
-      "recognize": "Rozpoznawanie",
-      "insight": "Spostrzeżenie",
-      "remember": "Zapamiętywanie",
-      "guess": "Zgadywanie"
+      "recognize": "Rozpoznaj",
+      "insight": "Intuicja",
+      "remember": "Zapamiętaj",
+      "guess": "Zgaduj"
     }
   },
   "questions": {
@@ -110,7 +112,7 @@
     },
     "insight": {
       "q": "Która karta z kolejki górskiej dotrze na dół jako pierwsza?",
-      "intro": "Popatrz na obrazek",
+      "intro": "Popatrz na obrazek. Która karta z kolejki górskiej dotrze na dół jako pierwsza?",
       "a": {
         "red": "Czerwona",
         "green": "Zielona",
@@ -140,7 +142,7 @@
     },
     "math": {
       "q": "Jaka liczba powinna być na znaku zapytania?",
-      "intro": "Popatrz na obrazek.",
+      "intro": "Popatrz na obrazek. Jaka liczba powinna być na znaku zapytania?",
       "a": {
         "30": "30",
         "81": "81",

@@ -78,14 +78,16 @@
         "gameroundtitle": "Ronda {round}",
         "back_to_overview": "Volver a la vista general",
         "noroundyet": "Aún no disponible. Vuelve después del partido.",
+        "submitfailed": "Falló el envío de tus respuestas. Asegúrate de tener conexión e inténtalo de nuevo",
+        "no_coins": "Ya no tienes más monedas. No puedes responder más preguntas",
         "explanation": "Explicación",
         "explanation_text": "Después de cada partido, excepto el último, se desbloquearán 2 preguntas en orden aleatorio, un total de 8 preguntas. Tienes 10 minutos para responderlas, hasta que comience el siguiente partido.\nTienes un total de 8 monedas. Cada pregunta que comiences te costará una moneda, incluso si no la respondes. Así que, si vuelves a intentar la misma pregunta, deberás saltarte otra pregunta.\nUna vez que hayas respondido una pregunta, no podrás responderla de nuevo.\n\nTu equipo obtiene puntos extra según cuántos miembros de tu equipo envíen una respuesta correcta para cada pregunta.\n¡Vuelve después de cada partido para obtener más puntos para tu equipo!",
         "questiontypes": {
-            "math": "Matemáticas",
-            "knowledge": "Conocimiento",
-            "recognize": "Reconocimiento",
-            "insight": "Comprensión",
-            "remember": "Recuerdo",
+            "math": "Mates",
+            "knowledge": "Conocer",
+            "recognize": "Reconocer",
+            "insight": "Comprender",
+            "remember": "Recordar",
             "guess": "Adivinar"
         }
     },
@@ -110,7 +112,7 @@
         },
         "insight": {
             "q": "¿Qué carro de montaña rusa llegará primero abajo?",
-            "intro": "Mira la imagen",
+            "intro": "Mira la imagen. ¿Qué carro de montaña rusa llegará primero abajo?",
             "a": {
                 "red": "Rojo",
                 "green": "Verde",
@@ -140,7 +142,7 @@
         },
         "math": {
             "q": "¿Qué número debería estar en el signo de interrogación?",
-            "intro": "Mira la imagen.",
+            "intro": "Mira la imagen. ¿Qué número debería estar en el signo de interrogación?",
             "a": {
                 "30": "30",
                 "81": "81",

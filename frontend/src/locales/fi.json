@@ -77,15 +77,17 @@
     "submityouranswers": "Lähetä vastauksesi",
     "gameroundtitle": "Kierros {round}",
     "back_to_overview": "Palaa yleiskatsaukseen",
+    "submitfailed": "Vastaustesi lähettäminen epäonnistui. Varmista, että sinulla on yhteys, ja yritä uudelleen",
+    "no_coins": "Sinulla ei ole enää kolikoita. Et voi vastata enää kysymyksiin",
     "explanation": "Selitys",
     "explanation_text": "Jokaisen kierroksen jälkeen, paitsi viimeisen, kaksi kysymystä avataan satunnaisessa järjestyksessä, yhteensä 8 kysymystä. Voit vastata niihin, kunnes seuraava ottelu alkaa.\n\nJos et vastaa kysymykseen tai poistut siitä, menetät yhden 8 kolikostasi. Jos yrität uudelleen samaa kysymystä, sinun on ohitettava toinen kysymys. \n\nTiimisi ansaitsee bonuspisteitä sen mukaan, kuinka monta joukkueen jäsentä lähettää oikean vastauksen kuhunkin kysymykseen.",
     "noroundyet": "Ei vielä saatavilla. Palaa ottelun jälkeen",
     "questiontypes": {
-      "math": "Matematiikka",
+      "math": "Matikka",
       "knowledge": "Tietämys",
-      "recognize": "Tunnistaminen",
+      "recognize": "Tunnista",
       "insight": "Oivallus",
-      "remember": "Muistaminen",
+      "remember": "Muista",
       "guess": "Arvaa"
     }
   },
@@ -110,7 +112,7 @@
     },
     "insight": {
       "q": "Mikä vuoristoradan vaunuista saavuttaa pohjan ensin?",
-      "intro": "Katso kuvaa",
+      "intro": "Katso kuvaa. Mikä vuoristoradan vaunuista saavuttaa pohjan ensin?",
       "a": {
         "red": "Punainen",
         "green": "Vihreä",
@@ -140,7 +142,7 @@
     },
     "math": {
       "q": "Mikä numero tulisi kysymysmerkin paikalle?",
-      "intro": "Katso kuvaa.",
+      "intro": "Katso kuvaa. Mikä numero tulisi kysymysmerkin paikalle?",
       "a": {
         "30": "30",
         "81": "81",

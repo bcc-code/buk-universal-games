@@ -77,16 +77,18 @@
     "submityouranswers": "Invia le tue risposte",
     "gameroundtitle": "Round {round}",
     "back_to_overview": "Torna alla panoramica",
+    "submitfailed": "Impossibile inviare le tue risposte. Assicurati di essere connesso e riprova",
+    "no_coins": "Non hai più gettoni. Non puoi rispondere ad altre domande",
     "explanation": "Spiegazione",
     "explanation_text": "Dopo ogni round tranne l'ultimo, verranno sbloccate casualmente 2 domande, quindi un totale di 8 domande. Puoi rispondere alle domande fino a quando inizia la partita successiva.\n\nSe non rispondi alla domanda o esci da essa, perdi uno dei tuoi 8 gettoni. Se riprovi la stessa domanda, dovrai saltare un'altra domanda. \n\nLa tua squadra guadagna punti bonus in base a quante persone della tua squadra inviano una risposta corretta per ogni domanda.",
     "noroundyet": "Non ancora disponibile. Torna dopo la partita",
     "questiontypes": {
-      "math": "Matematica",
+      "math": "Mat",
       "knowledge": "Conoscenza",
-      "recognize": "Riconoscimento",
+      "recognize": "Riconosci",
       "insight": "Intuizione",
-      "remember": "Memoria",
-      "guess": "Indovinare"
+      "remember": "Ricorda",
+      "guess": "Indovina"
     }
   },
   "questions": {
@@ -110,7 +112,7 @@
     },
     "insight": {
       "q": "Quale carrello della montagna russa raggiungerà per primo il fondo?",
-      "intro": "Guarda l'immagine",
+      "intro": "Guarda l'immagine. Quale carrello della montagna russa raggiungerà per primo il fondo?",
       "a": {
         "red": "Rosso",
         "green": "Verde",
@@ -140,7 +142,7 @@
     },
     "math": {
       "q": "Quale numero dovrebbe essere il punto interrogativo?",
-      "intro": "Guarda l'immagine.",
+      "intro": "Guarda l'immagine. Quale numero dovrebbe essere il punto interrogativo?",
       "a": {
         "30": "30",
         "81": "81",

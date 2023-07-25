@@ -78,6 +78,8 @@
     "gameroundtitle": "Kör {round}",
     "back_to_overview": "Vissza az áttekintéshez",
     "noroundyet": "Még nem elérhető. Gyere vissza a mérkőzés után.",
+    "submitfailed": "Nem sikerült elküldeni a válaszaidat. Győződj meg róla, hogy van kapcsolat, és próbáld újra",
+    "no_coins": "Elfogytak a pénzed. Nem tudsz több kérdésre válaszolni",
     "explanation": "Magyarázat",
     "explanation_text": "Minden mérkőzés után, kivéve az utolsót, 2 kérdés lesz véletlenszerű sorrendben feloldva, összesen 8 kérdés. 10 perc áll rendelkezésedre válaszolni rájuk, a következő mérkőzés kezdetéig.\nÖsszesen 8 érméd van. Minden kérdés, amit elkezdesz, egy érmet kerül, még akkor is, ha nem válaszolsz rá. Tehát, ha újra megpróbálod ugyanazt a kérdést, egy másik kérdést kell kihagynod.\nMiután válaszoltál egy kérdésre, már nem válaszolhatsz rá újra.\n\nCsapatod bónuszpontokat szerez attól függően, hogy hány csapattag küld be helyes választ minden kérdésre.\nGyere vissza minden mérkőzés után, hogy még több pontot szerezz a csapatodnak!",
     "questiontypes": {
@@ -110,7 +112,7 @@
     },
     "insight": {
       "q": "Melyik hullámvasúti kocsi ér le először a mélypontra?",
-      "intro": "Nézze meg a képet",
+      "intro": "Nézze meg a képet. Melyik hullámvasúti kocsi ér le először a mélypontra?",
       "a": {
         "red": "Piros",
         "green": "Zöld",
@@ -140,7 +142,7 @@
     },
     "math": {
       "q": "Milyen számot kell beírni a kérdőjel helyére?",
-      "intro": "Nézze meg a képet.",
+      "intro": "Nézze meg a képet. Milyen számot kell beírni a kérdőjel helyére?",
       "a": {
         "30": "30",
         "81": "81",
