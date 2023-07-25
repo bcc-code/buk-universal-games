@@ -58,7 +58,8 @@
   "league": {
     "rankingisempty": "Ancora nessuna squadra ha registrato punti. Torna qui dopo la prima fase.",
     "viewgamerankings": "Visualizza classifica per ogni gioco",
-    "viewgamerankings-title": "Puoi visualizzare le classifiche per gioco sulle pagine dei dettagli del gioco."
+    "viewgamerankings-title": "Puoi visualizzare le classifiche per gioco sulle pagine dei dettagli del gioco.",
+    "ranking-frozen": "La classifica è ora congelata fino all'annuncio dei vincitori"
   },
   "admin": {
     "select_league": {

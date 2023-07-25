@@ -58,7 +58,8 @@
   "league": {
     "rankingisempty": "Mikään joukkue ei ole vielä rekisteröinyt pisteitä. Tarkista tilanne uudelleen ensimmäisen kierroksen jälkeen.",
     "viewgamerankings": "Näytä sijoitukset jokaiselle pelille",
-    "viewgamerankings-title": "Voit tarkastella sijoituksia pelikohtaisesti pelisivuilla."
+    "viewgamerankings-title": "Voit tarkastella sijoituksia pelikohtaisesti pelisivuilla.",
+    "ranking-frozen": "Sijoitus on nyt jäädytetty voittajien ilmoittamiseen asti"
   },
   "admin": {
     "select_league": {
