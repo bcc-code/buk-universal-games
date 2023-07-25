@@ -46,7 +46,7 @@ public class StatusController : ControllerBase
             var beginAndEnd = hideHighScore.Split("|");
 
             if (DateTime.TryParse(beginAndEnd[0], out var hideHighScoreDate) && hideHighScoreDate < now
-                && beginAndEnd.Length < 2 || !DateTime.TryParse(beginAndEnd[1], out var showAgainDate) || showAgainDate > now)
+                && (beginAndEnd.Length < 2 || !DateTime.TryParse(beginAndEnd[1], out var showAgainDate) || showAgainDate > now))
             {
                 return new ExceptionResult(Strings.HighScoreHidden, 406);
             }
