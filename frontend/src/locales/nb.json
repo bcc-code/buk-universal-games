@@ -3,21 +3,21 @@
   "menu": {
     "home": "Hjem",
     "league": "Liga",
-    "sidequest": "Sideoppdrag",
+    "sidequest": "Sidequest",
     "games": "Spill",
     "map": "Kart"
   },
   "games": {
-    "monkeybars": "Apereir",
-    "nervespiral": "Nerve-spiral",
-    "tickettwist": "Billettriks",
-    "minefield": "Minefelt",
-    "tablesurfing": "Publikumsurfing"
+    "monkeybars": "Monkeybars",
+    "nervespiral": "Nerve Spiral",
+    "tickettwist": "Ticket Twist",
+    "minefield": "Mine Field",
+    "tablesurfing": "Crowd Surfing"
   },
   "score": {
-    "monkeybars": "{score} stenger",
+    "monkeybars": "{score} stang",
     "nervespiral": "{score} sekunder",
-    "tickettwist": "{score} billetter",
+    "tickettwist": "{score} brikker",
     "minefield": "{score} sekunder",
     "tablesurfing": "{score} sekunder"
   },
@@ -43,7 +43,7 @@
     "tablesurfing": "16 gutter og 16 jenter deltar, 1 surfer og 15 rullende personer|Det er ikke tillatt å berøre bakken (både flytende og surfer)|Hindringer kan ikke flyttes, og rullende personer kan ikke bevege seg utenfor det merkede området"
   },
   "general_error": "Noe gikk galt",
-  "pleaserefresh": "Vennligst prøv å oppdatere siden",
+  "pleaserefresh": "Prøv å oppdatere siden",
   "points": "Poeng",
   "coins": "Mynter",
   "game": "Spill",
@@ -56,7 +56,7 @@
     "teamcode_invalid": "Beklager, lagkoden din er ikke gyldig"
   },
   "league": {
-    "rankingisempty": "Ingen lag har ennå registrert poeng. Sjekk tilbake her etter første runde.",
+    "rankingisempty": "Ingen poeng er opptjent enda. Sjekk tilbake her etter første runde.",
     "viewgamerankings": "Se rangering for hvert spill",
     "viewgamerankings-title": "Du kan se rangeringene per spill på spilldetaljsidene.",
     "ranking-frozen": "Rangeringen er nå frosset til vinnerne blir kunngjort"
@@ -83,10 +83,10 @@
     "questiontypes": {
       "math": "Matematikk",
       "knowledge": "Kunnskap",
-      "recognize": "Gjenkjennelse",
+      "recognize": "Gjenkjenne",
       "insight": "Innsikt",
-      "remember": "Husk",
-      "guess": "Gjett"
+      "remember": "Huske",
+      "guess": "Gjette"
     }
   },
   "questions": {
@@ -95,11 +95,11 @@
       "intro": "Har du hørt på Fra Kåre i år?"
     },
     "guesshowmany2": {
-      "q": "Hvor mange personer har besøkt leirene i 2023?",
-      "intro": "Er du god til å telle?"
+      "q": "Hvor mange personer har besøkt campene i 2023?",
+      "intro": "Er du flink til å telle?"
     },
     "remember": {
-      "q": "Hva er den riktige rekkefølgen på Herman Shuffle dansetrinnene?",
+      "q": "Hva er riktig rekkefølge på dansetrinnene i Herman Shuffle?",
       "intro": "Danset du med på dette i morges?",
       "a": {
         "lwd": "Lean, Wave, Drift ",
