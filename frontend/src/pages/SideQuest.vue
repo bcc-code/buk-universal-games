@@ -7,6 +7,10 @@
       :refresh="refresh"
     />
 
+    <section class="error-popup" v-if="submitAnswersFailed">
+      <p><span>{{ $t("Answers not submitted. Make sure you are online and try again") }}</span></p>
+    </section>
+
     <section>
       <h2>{{ $t("menu.sidequest") }}</h2>
       <div class="introduction">
@@ -20,7 +24,9 @@
         <p>
           <span>{{ $t("sidequest.youhaveunsubmittedanswers", { numAnswers: unsubmittedAnswers.length}) }}</span>
         </p>
+        
         <button class="btn-success" @click="trySubmitAnswers">{{ $t("sidequest.submityouranswers") }}</button>
+        
       </div>
     </section>
     <section v-for="(questions,index) in questionsPerRound" :key="index">
@@ -58,7 +64,8 @@ export default {
       loading: false,
       resultParsed: null,
       isExplanationVisible: false,
-      showExplanationText: false
+      showExplanationText: false,
+      submitAnswersFailed: false
     };
   },
   mounted() {
@@ -81,7 +88,15 @@ export default {
       }, 1000);
     },
     trySubmitAnswers() {
-      this.$store.dispatch("submitAnswers");
+      this.$store.dispatch("submitAnswers").then((x) => {
+        console.log(x);
+        if (x == "failed") {
+          this.submitAnswersFailed = true;
+          setTimeout(() => {
+            this.submitAnswersFailed = false;
+          }, 5000);
+        }
+      });
     },
     showExplanation() {
       this.isExplanationVisible = !this.isExplanationVisible;
@@ -159,6 +174,16 @@ export default {
   justify-content: center;
   align-items: center;
   margin: auto;
+}
+.error-popup {
+  max-width: 900px;
+  position: absolute;
+  top: 4em;
+  background-color: var(--red);
+  color: #fff;
+  padding:1em;
+  margin-right:1em;
+  border-radius:1em;
 }
 
 .heading-icon.failure {

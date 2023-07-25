@@ -213,9 +213,18 @@ export default function (...plugins) {
       },
       async submitAnswers(ctx) {
         const answers = ctx.state.answers.slice();
-        const result = await postData(`sidequest/guesses`, answers);
+        try {
+          const result = await postData(`sidequest/guesses`, answers);
+          
         if (!result.error) {
           ctx.commit("setAnswersSubmitted", answers);
+          return "success";
+        }else {
+          return "failed";
+        }
+        
+        } catch (error) {
+          return "failed";
         }
       },
       async confirmTeamResult(ctx, payload) {

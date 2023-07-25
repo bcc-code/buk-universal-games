@@ -129,6 +129,7 @@ const preCacheUris = [
   'icon/sq-knowledge.svg',
   'icon/sq-math.svg',
   'icon/sq-remember.svg',
+  'icon/sq-recognize.svg',
   'image/4.jpg',
   'image/5.jpg',
   'image/6.jpg',

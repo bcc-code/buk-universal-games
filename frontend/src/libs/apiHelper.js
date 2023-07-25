@@ -153,26 +153,25 @@ export function getData(store, url, data) {
   })
 }
 
-export function postData(url, data) {
+export async function postData(url, data) {
   const teamCode = myGetTeamCodeFunction()
-  return fetch(rootUrl + url, {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      "x-ubg-teamcode": teamCode,
-    },
-    body: JSON.stringify(data),
-  })
-    .then((r) => r.json())
-    .then((r) => {
-      console.log("POST data response OK", r);
-      return r
-    })
-    .catch((e) => {
-      console.log("POST data response ERROR", e);
-      return e
+  try {
+    const r = await fetch(rootUrl + url, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "x-ubg-teamcode": teamCode,
+      },
+      body: JSON.stringify(data),
     });
+    const r_1 = await r.json();
+    console.log("POST data response OK", r_1);
+    return r_1;
+  } catch (e) {
+    console.log("POST data response ERROR", e);
+    throw e;
+  }
 }
 
 export function postStickerCode(stickerCode) {
