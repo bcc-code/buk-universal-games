@@ -1,9 +1,15 @@
 <template>
     <div class="locale-changer">
-        <select v-model="selectedLanguage" @change="changeLanguage">
-            <option v-for="locale in Object.keys(locales)" :key="`locale-${locale}`" :value="locale">
-                {{ locales[locale] }}</option>
-        </select>
+        
+        <div class="dropdown" :class="{ open: isOpen }">
+            <div class="selected-item" @click="toggleDropdown(null)">{{ selectedLanguage.toUpperCase() }}</div>
+            <div class="background" v-if="isOpen" @click="toggleDropdown(null)"></div>
+            <div class="dropdown-menu" ref="languagePickerMenu">
+                <div v-for="locale in Object.keys(locales)" :key="`locale-${locale}`" class="dropdown-item" @click="changeLanguage(locale)">
+                {{ locales[locale] }}
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -32,16 +38,99 @@ export default {
                 ru: "Русский",
                 tr: "Türkçe",
                 ua: "українська",
-            }
+            },
+            isOpen: false
         };
     },
     methods: {
-        changeLanguage() {
-            this.$store.commit("setUserLanguage", this.selectedLanguage);
-            setI18nLanguage(this.$i18n, this.selectedLanguage);
-            localStorage.setItem("userLanguage", this.selectedLanguage);
+        toggleDropdown(override = null) {
+            console.log(override, this.isOpen, override || !this.isOpen)
+            this.isOpen = override || !this.isOpen;
+            if (this.isOpen) {
+                setTimeout(() => {
+                    console.log("add handler")
+                    document.addEventListener('click', this.closeDropdown);
+                }, 100);
+            } else {
+                console.log("remove handler")
+                document.removeEventListener('click', this.closeDropdown);
+            }
         },
-    },
+        changeLanguage(locale) {
+            this.$store.commit("setUserLanguage", locale);
+            setI18nLanguage(this.$i18n, locale);
+            this.selectedLanguage = locale;
+            localStorage.setItem("userLanguage", locale);
+            this.toggleDropdown(false);
+        },
+        closeDropdown(event) {
+            event.stopPropagation();
+            if(!this.$refs.languagePickerMenu)
+            {
+                console.log("remove handler")
+                document.removeEventListener('click', this.closeDropdown);
+                return;
+            }
+            if (!this.$refs.languagePickerMenu.contains(event.target)) {
+                this.toggleDropdown(false);
+            }
+        }
+    }
 };
 
 </script>
+
+<style scoped>
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 998;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.selected-item {
+  padding: 0.2rem 0.3em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin:0em -0.5em 0.3em 0.5em;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 70%;
+  right: 0;
+  z-index: 999;
+  display: none;
+  min-width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color:var(--dark);
+  box-shadow: 2px 2px 2px #ccc;
+}
+
+.dropdown.open .dropdown-menu {
+  display: block;
+}
+
+.dropdown-item {
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #f2f2f2;
+}
+</style>
+```

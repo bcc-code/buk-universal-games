@@ -12,7 +12,7 @@
       <h1 class="card-dark-text">{{ stickers ?? "-" }}</h1>
     </div>
     <div></div>
-    <div>
+    <div class="right-section">
       <LanguageSwitcher />
       <button class="card-btn" @click="refresh"><img src="icon/refresh.svg" /></button>
     </div>
@@ -46,7 +46,7 @@ button {
 
 .card-dark {
   background-color: var(--dark);
-  padding: 1.5em 1em;
+  padding: 1em;
   border-radius: 1em;
   display: flex;
   flex-direction: row;
@@ -69,9 +69,13 @@ button {
 }
 
 .card-btn {
-  border-left: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 0;
-  padding: 0.15em 0.15em 0.15em 0.65em;
+  margin-left:.5em;
+  padding: 0.15em 0.15em 0.15em 0.15em;
+}
+
+.right-section {
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .loading {
