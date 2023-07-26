@@ -44,6 +44,7 @@ public class CacheController : ControllerBase
     {
         var leagues = await _leagueRepository.GetLeagues();
         var games = await _gameRepository.GetGames();
+        await _statusService.GuaranteeAnswersInCache();
 
         foreach (var league in leagues)
         {
@@ -53,7 +54,6 @@ public class CacheController : ControllerBase
                 await _statusService.BuildAndCacheRankingForGameInLeague(game, league.LeagueId);
             await _statusService.BuildAndCacheRankingForSidequest(league.LeagueId);
             await _statusService.BuildAndCacheLeagueRanking(league.LeagueId);
-            await _statusService.GuaranteeAnswersInCache();
         }
         return Ok();
     }
