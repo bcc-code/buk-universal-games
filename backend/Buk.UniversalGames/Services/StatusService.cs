@@ -8,9 +8,13 @@ using Buk.UniversalGames.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using NPOI.HSSF.Record;
+using NPOI.HSSF.Record.Chart;
 using NPOI.OpenXmlFormats.Spreadsheet;
+using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using Org.BouncyCastle.Math.EC.Rfc7748;
+using StackExchange.Redis;
+using System.Linq.Expressions;
 
 namespace Buk.UniversalGames.Services
 {
@@ -215,50 +219,98 @@ namespace Buk.UniversalGames.Services
             font.FontName = "Calibri";
             font.IsBold = true;
 
-            var style = xlsWorkbook.CreateCellStyle();
-            style.SetFont(font);
+            var boldCellStyle = xlsWorkbook.CreateCellStyle();
+            boldCellStyle.SetFont(font);
 
             var leagues = await _leagueLeagueRepository.GetLeagues();
 
+            var mainSheet = xlsWorkbook.CreateSheet("Winners");
+
+            var titleRow = mainSheet.CreateRow(0);
+            Cell(titleRow, 2, "B-League", boldCellStyle);
+            Cell(titleRow, 3, "U-League", boldCellStyle);
+            Cell(titleRow, 4, "K-League", boldCellStyle);
+
+            var overallWinnerRow = mainSheet.CreateRow(1);
+            Cell(overallWinnerRow, 0, "Overall winner", boldCellStyle);
+
+            var games = (GameType[])Enum.GetValues(typeof(GameType));
+
+            var gameIndex = (GameType game) => game switch
+            {
+                GameType.NerveSpiral => 3,
+                GameType.TableSurfing => 4,
+                GameType.MineField => 5,
+                GameType.TicketTwist => 6,
+                GameType.MonkeyBars => 7,
+                _ => throw new Exception()
+            };
+
+            var gameRows = games.ToDictionary(x => x, x => mainSheet.CreateRow(gameIndex(x)));
+
             foreach (var league in leagues)
             {
-                var xlsSheet = xlsWorkbook.CreateSheet(league.Name);
+                var status = await GetLeagueRankings(league.LeagueId);
 
-                var rowIndex = 0;
-                var row = xlsSheet.CreateRow(rowIndex);
+                if (!status["total"].Any()) continue;
 
-                var cell = row.CreateCell(0);
-                cell.CellStyle = style;
-                cell.SetCellValue("Position");
-
-                cell = row.CreateCell(1);
-                cell.CellStyle = style;
-                cell.SetCellValue("Team");
-
-                cell = row.CreateCell(2);
-                cell.CellStyle = style;
-                cell.SetCellValue("Points");
-
-                cell = row.CreateCell(3);
-                cell.CellStyle = style;
-                cell.SetCellValue("Stickers");
-
-                var statuses = await _statusRepository.GetLeagueStatus(league.LeagueId);
-
-                rowIndex++;
-                foreach (var status in statuses)
+                var leagueCol = league.Name switch
                 {
-                    row = xlsSheet.CreateRow(rowIndex);
-                    row.CreateCell(0).SetCellValue(rowIndex);
-                    row.CreateCell(1).SetCellValue(status.Team);
-                    row.CreateCell(2).SetCellValue(status.Points);
+                    "B-League" => 2,
+                    "U-League" => 3,
+                    "K-League" => 4,
+                    _ => 5
+                };
 
+                var leagueSheet = xlsWorkbook.CreateSheet(league.Name);
+                var leagueTitleRow = leagueSheet.CreateRow(0);
+
+                //fill league winner in main sheet
+                Cell(overallWinnerRow, leagueCol, status["total"].First().Team);
+
+                //overall ranking
+                Cell(leagueTitleRow, 1, "Overall");
+
+                var rowIndex = 2;
+                foreach (var team in status["total"])
+                {
+                    var row = leagueSheet.CreateRow(rowIndex);
+                    Cell(row, 1, team.Team);
                     rowIndex++;
                 }
-            }
 
+                foreach (var game in games)
+                {
+                    var gameRanking = status[game.ToString().ToLowerInvariant()];
+
+                    if (!gameRanking.Any()) continue;
+
+                    // fill game winner on main sheet
+                    Cell(gameRows[game], leagueCol, gameRanking.First().Team);
+
+                    // handle league sheet
+                    Cell(leagueTitleRow, gameIndex(game), game.ToString());
+
+                    rowIndex = 2;
+                    foreach (var team in gameRanking)
+                    {
+                        Cell(leagueSheet.GetRow(rowIndex), gameIndex(game), team.Team);
+                        rowIndex++;
+                    }
+                }
+            }
             xlsWorkbook.Write(stream);
             return stream.ToArray();
+        }
+
+        private static ICell Cell(IRow row, int index, string value, ICellStyle cellStyle = null)
+        {
+            var cell = row.CreateCell(index);
+            if(cellStyle != null)
+                cell.CellStyle = cellStyle;
+
+            cell.SetCellValue(value);
+            return cell;
         }
     }
 }

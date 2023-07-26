@@ -2,6 +2,7 @@ using Buk.UniversalGames.Api.Authorization;
 using Buk.UniversalGames.Data.Interfaces;
 using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Enums;
+using Buk.UniversalGames.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Buk.UniversalGames.Api.Controllers.SystemAdmin;
@@ -44,5 +45,12 @@ public class StatusController : ControllerBase
             await _statusService.BuildAndCacheRankingForSidequest(league.LeagueId);
             await _statusService.BuildAndCacheLeagueRanking(league.LeagueId);
         }
+    }
+
+    [HttpGet("Export")]
+    public async Task<IActionResult> GetStatus()
+    {
+        var xls = await _statusService.ExportStatus();
+        return File(xls, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
     }
 }

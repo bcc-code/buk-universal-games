@@ -31,14 +31,10 @@ export default class NotificationService {
     }, 1000);
   }
   requestExternal() {
-    if(!navigator.serviceWorker) { return;}
-    Notification.requestPermission().then((result) => {
-      if (result === "granted") {
-        this.notifyExternal("Success!", {
-          body: "System notifications have been enabled",
-        });
-      }
-    });
+    if(navigator.serviceWorker && this.canAskForPermission())
+    {
+      Notification.requestPermission();
+    }
   }
   notify(title, options) {
     this.canNotifyExternal

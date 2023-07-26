@@ -19,5 +19,6 @@ namespace Buk.UniversalGames.Interfaces
         Task<List<TeamStatus>> GetGameRanking(GameType gameType, int leagueId);
         Task<Dictionary<string, List<TeamStatus>>> GetLeagueRankings(int leagueId);
         Task GuaranteeAnswersInCache();
+        Task<byte[]> ExportStatus();
     }
 }
