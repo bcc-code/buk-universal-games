@@ -105,7 +105,7 @@ namespace Buk.UniversalGames.Services
             foreach (var rankingPosition in groupedByRank)
             {
                 rank += rankingPosition.Count();
-                ranking.AddRange(rankingPosition.Select(x => new TeamStatus(x.TeamId, x.Name, _scoreByRank[rank])));
+                ranking.AddRange(rankingPosition.Select(x => new TeamStatus(x.TeamId, x.Name, rank < 0 ? 0 : _scoreByRank[rank])));
             }
 
             await _cache.Set($"sidequest_ranking_{leagueId}", ranking);
