@@ -79,14 +79,14 @@ export default {
   },
   mounted() {
     const q = this.$store.state.qs.find((q) => q.id == this.id);
-    // if (!this.$store.state.qsOpened[this.$store.getters.currentRound - 1].some((q) => q.id == this.id)) {
-    //   this.$router.back();
-    //   return;
-    // }
-    // if (this.$store.state.answers.some((a) => a.questionId == this.id) || this.$store.state.submittedAnswers.some((a) => a.questionId == this.id)) {
-    //   this.step = 'alreadyAnswered';
-    //   return;
-    // }
+    if (!this.$store.state.qsOpened[this.$store.getters.currentRound - 1].some((q) => q.id == this.id)) {
+      this.$router.back();
+      return;
+    }
+    if (this.$store.state.answers.some((a) => a.questionId == this.id) || this.$store.state.submittedAnswers.some((a) => a.questionId == this.id)) {
+      this.step = 'alreadyAnswered';
+      return;
+    }
     if(this.coins.length == 0)
     {
       this.$router.back();
@@ -107,7 +107,6 @@ export default {
       default:
         this.questionTime = 10;
     }
-    this.questionTime = q.id == 7 ? 40 : q.id == 8 ? 60 : 10;
 
     const shuffled = q.a.slice();
     for (let i = shuffled.length - 1; i > 0; i--) {

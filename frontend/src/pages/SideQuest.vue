@@ -70,14 +70,7 @@ export default {
     };
   },
   mounted() {
-    //this.$store.dispatch("checkNewQuestions", this.$store.state.matches);
-    for(let i = 0; i < this.$store.state.qsOpened.length; i++)
-    {
-      if(this.$store.state.qsOpened[i].length == 0)
-      {
-        this.$store.commit("unlockNewQuestions", i + 1);
-      }
-    }
+    this.$store.dispatch("checkNewQuestions", this.$store.state.matches);
   },
   methods: {
     refresh() {
@@ -115,10 +108,10 @@ export default {
           }, 5000);
         return;
       }
-      // if(round === this.$store.getters.currentRound)
-      // {
+      if(round === this.$store.getters.currentRound)
+      {
         this.$router.push(`/sidequest/question/${questionId}`);
-      // }
+      }
     },
   },
   computed: {

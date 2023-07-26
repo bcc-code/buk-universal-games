@@ -137,26 +137,27 @@ export default function (...plugins) {
         }
       },
       unlockNewQuestions(state, round) {
-        if(state.qsOpened[round -1] && state.qsOpened[round -1].length > 0)
-        {
-          return;
-        }
-        while(state.qsOpened[round -1].length < 2)
-        {
-          const newQuestion = state.qs[Math.floor(Math.random() * state.qs.length)]
-          if(!state.qsOpened.flat().includes(newQuestion) && !state.qsOpened[round -1].some(q => q.t == newQuestion.t))
-          {
-            state.qsOpened[round-1].push(newQuestion);
-            //Vue.set(state.qsOpened, (round - 1), state.qsOpened[round -1].push(newQuestion));
-          }
-        }
+        return;
+        // if(state.qsOpened[round -1] && state.qsOpened[round -1].length > 0)
+        // {
+        //   return;
+        // }
+        // while(state.qsOpened[round -1].length < 2)
+        // {
+        //   const newQuestion = state.qs[Math.floor(Math.random() * state.qs.length)]
+        //   if(!state.qsOpened.flat().includes(newQuestion) && !state.qsOpened[round -1].some(q => q.t == newQuestion.t))
+        //   {
+        //     state.qsOpened[round-1].push(newQuestion);
+        //     //Vue.set(state.qsOpened, (round - 1), state.qsOpened[round -1].push(newQuestion));
+        //   }
+        // }
       },
       initializeCoins(state, coins) {
         state.coins = coins;
         state.coinsInitialized = true;
       },
       removeCoin(state, coin) {
-        state.coins = state.coins.filter(c => c !== coin);
+        //state.coins = state.coins.filter(c => c !== coin);
       },
       setUserLanguage(state, language) {
         state.userLanguage = language;
