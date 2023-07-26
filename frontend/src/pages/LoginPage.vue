@@ -33,6 +33,11 @@ export default {
   },
   methods: {
     async tryLogin(ev) {
+      if(this.teamCode.toUpperCase() != "TRANSLATE" && !this.teamCode.startsWith("TEA"))
+      {
+        this.$store.commit('setLoginMessage', 'Cannot sign in yet')
+        return;
+      }
       try{
       this.notificationService.requestExternal();
       }catch(e){
@@ -43,6 +48,8 @@ export default {
       {
         ev.preventDefault();
       }
+
+
       window.localStorage.setItem("teamCode", this.teamCode.toUpperCase());
       const loginData = await this.$store.dispatch("signIn")
       this.$store.commit('setLoginMessage', '')

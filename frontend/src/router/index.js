@@ -114,12 +114,12 @@ export default function (store) {
   });
 
   router.beforeEach(async (to, from) => {
-    if (!store.state.loginData && window.localStorage.getItem('teamCode')) {
+    if (!store.state.loginData && window.localStorage.getItem('testTeamCode')) {
       await store.dispatch('signIn')
       await store.dispatch('getGames')
     }
 
-    if (window.localStorage.getItem('teamCode') && to.path === '/' && !from.matched.length) {
+    if (window.localStorage.getItem('testTeamCode') && to.path === '/' && !from.matched.length) {
       if(store.state.loginData.access === 'admin') {
         await store.dispatch('getAdminLeagues')
         await store.dispatch('getAdminLeagueStatus')

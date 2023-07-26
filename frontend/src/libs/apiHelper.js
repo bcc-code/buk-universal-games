@@ -192,5 +192,5 @@ export function postStickerCode(stickerCode) {
 }
 
 export function myGetTeamCodeFunction() {
-  return window.localStorage.getItem('teamCode');
+  return window.localStorage.getItem('testTeamCode');
 }

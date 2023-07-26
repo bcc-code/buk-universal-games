@@ -1,5 +1,5 @@
 const putInCache = async (request, response) => {
-  const cache = await caches.open("v1");
+  const cache = await caches.open("_notopen");
   await cache.put(request, response);
 };
 
