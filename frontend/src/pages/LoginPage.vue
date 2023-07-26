@@ -44,12 +44,10 @@ export default {
         return;
       }
       try{
-      this.notificationService.requestExternal();
+        this.notificationService.requestExternal();
       }catch(e){
         console.log(e);
       }
-
-
 
       window.localStorage.setItem("testTeamCode", this.teamCode.toUpperCase());
       const loginData = await this.$store.dispatch("signIn")
@@ -63,9 +61,10 @@ export default {
         }
       }
       else {
-        this.$store.dispatch('getGames')
+        await this.$store.dispatch('getGames')
+
         if (loginData.access.toLowerCase() === 'admin') {
-          this.$store.dispatch('getAdminLeagues')
+          await this.$store.dispatch('getAdminLeagues')
           this.$store.dispatch('getAdminLeagueStatus')
           this.$router.push({ name: 'AdminSelectLeague' })
         }

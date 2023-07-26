@@ -31,7 +31,11 @@ export default class NotificationService {
     }, 1000);
   }
   requestExternal() {
-    if(navigator.serviceWorker && this.canAskForPermission())
+    // this.notifyInternal("Success!", {
+    //   body: "System notifications have been enabled",
+    //   icon: "image/ubg-logo.svg",
+    // });
+    if(navigator.serviceWorker && this.canAskForPermission)
     {
       Notification.requestPermission();
     }

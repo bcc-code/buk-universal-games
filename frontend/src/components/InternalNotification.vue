@@ -46,10 +46,14 @@ dialog {
   bottom: 0;
   left: 0;
   right: 0;
+  padding: 1.5em;
   margin: auto;
   display: grid;
   grid-template: 'icon title' auto
-    'body body' auto / auto auto;
+    'body body' auto / 70px auto;
+  border:4px solid var(--darkgreen);
+  border-radius:1em;
+  box-shadow: 3px 3px 9px rgba(0,0,0,0.3);
 }
 
 dialog .title {
@@ -67,9 +71,11 @@ dialog .body {
 
 dialog .close {
   cursor: pointer;
-  font-size: 5em;
+  font-size: 4em;
   line-height: 0.5em;
   position: absolute;
+  padding:.1em;
+  color:var(--darkgreen);
   top: 0;
   right: 0;
 }

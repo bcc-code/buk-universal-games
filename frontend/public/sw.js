@@ -62,7 +62,6 @@ const networkFirst = async (request) => {
 };
 
 self.addEventListener("activate", (event) => {
-  console.log("Service worker activating...", self.clients);
   clients.claim();
   event.waitUntil(async () => {
     if (self.registration.navigationPreload) {
@@ -73,7 +72,7 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("install", (event) => {
-  event.waitUntil(caches.open("v1").then(cache => cache.addAll(preCacheUris)));
+  event.waitUntil(caches.open("_notopen").then(cache => cache.addAll(preCacheUris)));
 });
 
 self.addEventListener("fetch", (event) => {
