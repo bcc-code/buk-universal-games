@@ -14,6 +14,7 @@ namespace Buk.UniversalGames.Interfaces
 
         Task ClearStatusAndMatches();
         Task<List<TeamStatus>> BuildAndCacheLeagueRanking(int leagueId);
+        Task<List<TeamStatus>> BuildAndCacheRankingForSidequest(int leagueId);
         Task<List<TeamStatus>> BuildAndCacheRankingForGameInLeague(Game game, int leagueId);
         Task<List<TeamStatus>> GetGameRanking(GameType gameType, int leagueId);
         Task<Dictionary<string, List<TeamStatus>>> GetLeagueRankings(int leagueId);
