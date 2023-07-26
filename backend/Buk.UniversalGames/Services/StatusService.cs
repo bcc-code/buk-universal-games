@@ -96,6 +96,7 @@ namespace Buk.UniversalGames.Services
                         .Where(x => x.TeamId == t.TeamId)
                         .Sum(x => x.Percentage)
                 })
+                .Where(x => x.ScoreSum > 0)
                 .OrderByDescending(x => x.ScoreSum);
 
             var groupedByRank = sumScore.GroupBy(x => x.ScoreSum);
