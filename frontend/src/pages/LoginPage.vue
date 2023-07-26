@@ -33,6 +33,11 @@ export default {
   },
   methods: {
     async tryLogin(ev) {
+      // Do not perform normal HTML form submit.
+      if(ev)
+      {
+        ev.preventDefault();
+      }
       if(this.teamCode.toUpperCase() != "TRANSLATE" && !this.teamCode.startsWith("TEA"))
       {
         this.$store.commit('setLoginMessage', 'Cannot sign in yet')
@@ -43,11 +48,7 @@ export default {
       }catch(e){
         console.log(e);
       }
-      // Do not perform normal HTML form submit.
-      if(ev)
-      {
-        ev.preventDefault();
-      }
+
 
 
       window.localStorage.setItem("teamCode", this.teamCode.toUpperCase());

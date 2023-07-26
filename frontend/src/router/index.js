@@ -132,6 +132,10 @@ export default function (store) {
         return { name: 'LeagueList' };
       }
     }
+
+    if(!window.localStorage.getItem('testTeamCode') && to.path !== '/') {
+      return { name: 'Login' };
+    }
   })
   return router;
 }
