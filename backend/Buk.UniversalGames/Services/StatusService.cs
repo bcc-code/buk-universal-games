@@ -30,7 +30,7 @@ namespace Buk.UniversalGames.Services
 
         private readonly int[] _scoreByRank = new int[]
         {
-            20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1
+            20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0,0,0,0
         };
 
         private string gameCacheKey(GameType type, int leagueId) => $"ranking_{type}_{leagueId}";
