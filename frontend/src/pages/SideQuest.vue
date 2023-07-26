@@ -97,7 +97,7 @@ export default {
     showExplanation() {
       this.isExplanationVisible = !this.isExplanationVisible;
     },
-    questionClicked(questionId) {
+    questionClicked(questionId, round) {
       if(this.coins.length == 0)
       {
         this.popupErrorMessage = this.$t("sidequest.no_coins");

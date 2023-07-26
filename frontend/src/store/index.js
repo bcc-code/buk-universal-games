@@ -136,7 +136,9 @@ export default function (...plugins) {
           state.currentAmountOfRequestRetries[requestUrl] = null
         }
       },
+      
       unlockNewQuestions(state, round) {
+        console.log(state, round)
         return;
         // if(state.qsOpened[round -1] && state.qsOpened[round -1].length > 0)
         // {
@@ -157,6 +159,7 @@ export default function (...plugins) {
         state.coinsInitialized = true;
       },
       removeCoin(state, coin) {
+        console.log(state, coin)
         //state.coins = state.coins.filter(c => c !== coin);
       },
       setUserLanguage(state, language) {
