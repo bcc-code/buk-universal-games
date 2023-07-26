@@ -72,6 +72,7 @@ namespace Buk.UniversalGames.Services
             var answers = answerString.Split(',');
 
             var teamsWithSize = (from team in _db.Teams
+                                 where team.TeamType == "participant"
                                  select new { team.TeamId, team.Name, team.MemberCount }).ToList();
 
             var teamSizeDict = teamsWithSize.ToDictionary(x => x.TeamId, x => x.MemberCount);
@@ -81,7 +82,7 @@ namespace Buk.UniversalGames.Services
                              group guess by new { guess.TeamId, guess.QuestionId } into t
                              select new { t.Key.TeamId, t.Key.QuestionId, Count = t.Count() };
 
-            var relativeScores = (await teamScores.ToListAsync()).Select(x => new { x.TeamId, x.QuestionId, x.Count, Percentage = teamSizeDict[x.TeamId] > 0 ? (decimal)x.Count / teamSizeDict[x.TeamId] : 0 });
+            var relativeScores = (await teamScores.ToListAsync()).Select(x => new { x.TeamId, x.QuestionId, x.Count, Percentage = (teamSizeDict[x.TeamId] == 0 || x.Count > Math.Ceiling(teamSizeDict[x.TeamId] * 1.10)) ? 0 : (decimal)x.Count / teamSizeDict[x.TeamId] });
             var sumScore = teamsWithSize
                 .Select(t => new
                 {
@@ -141,9 +142,9 @@ namespace Buk.UniversalGames.Services
         {
             var teams = await _leagueLeagueRepository.GetTeams(leagueId);
 
-            var matchWinners = from m in _db.Matches
+            var matchWinners = await (from m in _db.Matches
                                where m.LeagueId == leagueId && m.WinnerId.HasValue
-                               select m.WinnerId!.Value;
+                               select m.WinnerId!.Value).ToListAsync();
 
             var nerveSpiral = (await GetGameRanking(GameType.NerveSpiral, leagueId)).ToDictionary(x => x.TeamId);
             var monkeyBars = (await GetGameRanking(GameType.MonkeyBars, leagueId)).ToDictionary(x => x.TeamId);
@@ -162,8 +163,8 @@ namespace Buk.UniversalGames.Services
                                     + GetPointsForSubRanking(ticketTwist, team)
                                     + GetPointsForSubRanking(minefield, team)
                                     + GetPointsForSubRanking(tableSurfing, team)
-                                    + GetPointsForSubRanking(sidequest, team) * .7
-                                    + _matchWinnerPoints * matchWinners.Count(x => x == team.TeamId);
+                                    + (GetPointsForSubRanking(sidequest, team) * .7M)
+                                    + (_matchWinnerPoints * matchWinners.Count(x => x == team.TeamId));
 
                 leagueRanking.Add(new TeamStatus(team.TeamId, team.Name, (int)(totalPoints * 10)));
             }
