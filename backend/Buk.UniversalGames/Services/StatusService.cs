@@ -66,8 +66,10 @@ namespace Buk.UniversalGames.Services
 
         public async Task<List<TeamStatus>> BuildAndCacheRankingForSidequest(int leagueId)
         {
-            var answers = await _cache.Get<string[]>("sidequest_answers");
-            if (answers is null || answers.Length == 0) throw new InvalidOperationException("Answers haven't been loaded");
+            var answerString = await _cache.Get<string>("sidequest_answers");
+            if (answerString is null || answerString.Length == 0) throw new InvalidOperationException("Answers haven't been loaded");
+
+            var answers = answerString.Split(',');
 
             var teamsWithSize = (from team in _db.Teams
                                  select new { team.TeamId, team.Name, team.MemberCount }).ToList();
@@ -79,19 +81,19 @@ namespace Buk.UniversalGames.Services
                              group guess by new { guess.TeamId, guess.QuestionId } into t
                              select new { t.Key.TeamId, t.Key.QuestionId, Count = t.Count() };
 
-            var relativeScores = teamScores.Select(x => new { x.TeamId, x.QuestionId, x.Count, Percentage = (decimal)x.Count / teamSizeDict[x.TeamId] });
-            var averageScores = teamsWithSize
+            var relativeScores = (await teamScores.ToListAsync()).Select(x => new { x.TeamId, x.QuestionId, x.Count, Percentage = teamSizeDict[x.TeamId] > 0 ? (decimal)x.Count / teamSizeDict[x.TeamId] : 0 });
+            var sumScore = teamsWithSize
                 .Select(t => new
                 {
                     t.TeamId,
                     t.Name,
-                    AverageScore = relativeScores
+                    ScoreSum = relativeScores
                         .Where(x => x.TeamId == t.TeamId)
-                        .Average(x => x.Percentage)
+                        .Sum(x => x.Percentage)
                 })
-                .OrderByDescending(x => x.AverageScore);
+                .OrderByDescending(x => x.ScoreSum);
 
-            var groupedByRank = averageScores.GroupBy(x => x.AverageScore);
+            var groupedByRank = sumScore.GroupBy(x => x.ScoreSum);
 
             var rank = -1;
             var ranking = new List<TeamStatus>();
@@ -198,11 +200,7 @@ namespace Buk.UniversalGames.Services
 
         public async Task GuaranteeAnswersInCache()
         {
-            var answers = await _db.Settings.FindAsync("answers");
-            if (answers is null)
-            {
-                throw new InvalidOperationException("Did not find the answers to cache");
-            }
+            var answers = await _db.Settings.FindAsync("answers") ?? throw new InvalidOperationException("Did not find the answers to cache");
             await _cache.Set("sidequest_answers", answers.Value);
         }
 
