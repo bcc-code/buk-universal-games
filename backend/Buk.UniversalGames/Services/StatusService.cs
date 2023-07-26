@@ -199,7 +199,11 @@ namespace Buk.UniversalGames.Services
         public async Task GuaranteeAnswersInCache()
         {
             var answers = await _db.Settings.FindAsync("answers");
-            await _cache.Set("sidequest_answers", answers);
+            if (answers is null)
+            {
+                throw new InvalidOperationException("Did not find the answers to cache");
+            }
+            await _cache.Set("sidequest_answers", answers.Value);
         }
 
         public async Task<byte[]> ExportStatus()
