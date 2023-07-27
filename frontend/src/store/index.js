@@ -7,7 +7,7 @@ const storageKeyPrefix = 'buk-universal-games-';
 
 const vuexLocal = new VuexPersistence({
   storage: window.localStorage,
-  key: `ubg-store-pre`,
+  key: `ubg-store-prod`,
 })
 
 export default function (...plugins) {
