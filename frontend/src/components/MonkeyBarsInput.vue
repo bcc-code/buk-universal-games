@@ -26,7 +26,7 @@ export default {
       } else {
         this.averageBars = 0;
       }
-      this.$emit("update:model-value", this.averageBars);
+      this.$emit("update:model-value", Math.ceil(this.averageBars * 10));
     },
   },
 };

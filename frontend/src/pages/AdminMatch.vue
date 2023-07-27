@@ -24,7 +24,7 @@
         }"
       >
         <p>{{ match?.team1 }}</p>
-        <p v-if="match?.team1Result"><strong>Score ({{ units[game?.gameType]}}):</strong> {{ match?.team1Result }}</p>
+        <p v-if="match?.team1Result"><strong>Score:</strong> {{ match?.team1Result }}</p>
 
         <button class="btn btn-blank" v-if="!isChangingScore1 && match?.team1Result > 0" @click="isChangingScore1 = true">Change</button>
 
@@ -89,6 +89,8 @@ export default {
       isChangingScore1: false,
       isChangingScore2: false,
       selectedTeam: null,
+      match: null,
+      game: null,
       units: {
         nervespiral: "seconds",
         minefield: "seconds",
@@ -105,6 +107,9 @@ export default {
     if(!this.$store.state.adminMatches.length) {
         this.$store.dispatch("getAdminMatches");
     }
+    if(this.matchId) {
+      this.loadMatch();
+    }
   },
   mounted() {
     if (!this.matchId) {
@@ -120,6 +125,11 @@ export default {
             },
           })
     },
+    loadMatch()
+    {
+      this.match = this.matches?.find((match) => match.matchId == this.matchId);
+      this.game = this.games?.find((game) => game.id == this.match?.gameId);
+    },
     async confirmTeamResult(teamId, result) {
       if (result) {
         const payload = { matchId: this.match.matchId, teamId, result };
@@ -134,6 +144,7 @@ export default {
           this.match.team2Result = this.team2Result;
           this.isChangingScore2 = false;
         }
+        this.loadMatch();
       } else {
         alert("Please enter a result");
       }
@@ -143,14 +154,8 @@ export default {
     matches() {
       return this.$store.state.adminMatches;
     },
-    match() {
-      return this.matches?.find((match) => match.matchId == this.matchId);
-    },
     games() {
       return this.$store.state.games;
-    },
-    game() {
-      return this.games?.find((game) => game.id == this.match?.gameId);
     }
   },
 };

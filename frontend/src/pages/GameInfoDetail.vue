@@ -49,7 +49,7 @@
       </div>
     </section>
     <section class="user-section" v-for="(status, i) in ranking" :key="status.id">
-      <LeagueListItem :class="{ 'card-light': i > 4, 'green-font': status.teamId == teamStatus?.status?.teamId }"
+      <LeagueListItem :class="{ 'card-light': status.teamId != teamStatus?.teamId, 'card-currentTeam': status.teamId == teamStatus?.teamId }"
         :index="i + 1" :team="status.team" :stickers="status.stickers" :points="status.points" />
     </section>
   </UserPageLayout>
@@ -82,10 +82,10 @@ export default {
   methods: {},
   computed: {
     teamStatus() {
-      return this.$store.state.teamStatus;
+      return this?.leagueStatus?.status?.total?.find((score) => score.team == this.$store.state.loginData?.team);
     },
     match() {
-      return this.$store.state.matches.find((match) => match.teamId == this.teamStatus?.status?.teamId && match.gameId == this.gameParsed?.id);
+      return this.$store.state.matches.find((match) => match.gameId == this.gameParsed?.id);
     },
     ranking() {
       const gameType = this.gameParsed?.gameType;
@@ -185,5 +185,13 @@ header h2 {
   font-size: 0.85em;
   color: var(--gray-2);
   margin: 1em 0 0;
+}
+
+
+.card-currentTeam {
+  color: var(--dark);
+  padding:.1em 1em;
+  box-shadow:2px 2px;
+  background-color: var(--yellow);
 }
 </style>
