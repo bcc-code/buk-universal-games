@@ -38,7 +38,7 @@ export default {
       {
         ev.preventDefault();
       }
-      if(this.teamCode.toUpperCase() != "TRANSLATE" && !this.teamCode.startsWith("TEA"))
+      if(this.teamCode.toUpperCase() != "TRANSLATE" && !this.teamCode.toUpperCase().startsWith("TEA"))
       {
         this.$store.commit('setLoginMessage', 'Cannot sign in yet')
         return;
