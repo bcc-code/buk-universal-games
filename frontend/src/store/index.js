@@ -185,6 +185,12 @@ export default function (...plugins) {
         const afterRoundStart = new Date(currentRoundStart.getTime() + (15 * 60_000));
         const afterRoundEnd = new Date(afterRoundStart.getTime() + (10 * 60_000));
 
+        if(now > new Date(afterRoundStart.getTime() + (60 * 60_000)))
+        {
+          console.log("Games are not active now. Setting round to 0")
+          return { isAfterRound: false, round: 0 };
+        }
+
         if (now >= afterRoundStart && now <= afterRoundEnd) {
           return { isAfterRound: true, round: round };
         }
@@ -228,23 +234,30 @@ export default function (...plugins) {
         try {
           const result = await postData(`sidequest/guesses`, answers);
           
-        if (!result.error) {
-          ctx.commit("setAnswersSubmitted", answers);
-          return "success";
-        }else {
-          return "failed";
-        }
+          if (!result.error) {
+            ctx.commit("setAnswersSubmitted", answers);
+            return "success";
+          } else {
+            return "failed";
+          }
         
         } catch (error) {
           return "failed";
         }
       },
       async confirmTeamResult(ctx, payload) {
-        const result = await postData(`matches/${payload.matchId}/results`, payload)
-        if (!result.error) {
-          ctx.commit("replaceMatch", result)
+        try {
+          const result = await postData(`matches/${payload.matchId}/results`, payload)
+          if (!result.error) {
+            ctx.commit("replaceMatch", result)
+            return result;
+          } else {
+            return "failed";
+          }
+          
+        } catch (error) {
+          return "failed";
         }
-        return result
       },
       async getLeagueStatus(ctx, override) {
         const cacheAge = getCachedDataAge('leagueStatus')
@@ -299,11 +312,12 @@ export default function (...plugins) {
           }
         }
 
-        if (!matches || matches.error) {
-          matches = getFromCache('matches', [])
+        // if (!matches || matches.error) {
+        //   matches = getFromCache('matches', [])
+        // }
+        if(matches && !matches.error) {
+          ctx.commit("setMatches", matches);
         }
-
-        ctx.commit("setMatches", matches)
 
         return matches
       },
@@ -335,11 +349,10 @@ export default function (...plugins) {
           }
         }
 
-        if (!games) {
-          games = getFromCache('games', [])
+        if (games && !games.error) {
+          ctx.commit("setGames", games)
         }
 
-        ctx.commit("setGames", games)
         ctx.commit('setGamesLoading', false)
 
         return games

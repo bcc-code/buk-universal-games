@@ -1,11 +1,12 @@
 const putInCache = async (request, response) => {
-  const cache = await caches.open("_notopen");
+  const cache = await caches.open("v2");
   await cache.put(request, response);
 };
 
 const cacheFirst = async ({ request, preloadResponsePromise }) => {
   // First try to get the resource from the cache
-  const responseFromCache = await caches.match(request);
+  const cache = await caches.open("v2");
+  const responseFromCache = cache.match(request);
   if (responseFromCache) {
     return responseFromCache;
   }
@@ -47,7 +48,8 @@ const networkFirst = async (request) => {
     return responseFromNetwork;
   } catch (error) {
     // Fallback to the cache
-    const responseFromCache = await caches.match(request);
+    const cache = await caches.open("v2");
+    const responseFromCache = await cache.match(request);
     if (responseFromCache) {
       return responseFromCache;
     }
@@ -72,7 +74,7 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("install", (event) => {
-  event.waitUntil(caches.open("_notopen").then(cache => cache.addAll(preCacheUris)));
+  event.waitUntil(caches.open("v2").then(cache => cache.addAll(preCacheUris)));
 });
 
 self.addEventListener("fetch", (event) => {

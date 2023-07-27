@@ -237,7 +237,7 @@ namespace Buk.UniversalGames.Services
 
             var games = (GameType[])Enum.GetValues(typeof(GameType));
 
-            var gameIndex = (GameType game) => game switch
+            var gameRowIndex = (GameType game) => game switch
             {
                 GameType.NerveSpiral => 3,
                 GameType.TableSurfing => 4,
@@ -247,7 +247,17 @@ namespace Buk.UniversalGames.Services
                 _ => throw new Exception()
             };
 
-            var gameRows = games.ToDictionary(x => x, x => mainSheet.CreateRow(gameIndex(x)));
+            var gameColumnIndex = (GameType game) => game switch
+            {
+                GameType.NerveSpiral => 4,
+                GameType.TableSurfing => 6,
+                GameType.MineField => 8,
+                GameType.TicketTwist => 10,
+                GameType.MonkeyBars => 12,
+                _ => throw new Exception()
+            };
+
+            var gameRows = games.ToDictionary(x => x, x => mainSheet.CreateRow(gameRowIndex(x)));
 
             foreach (var league in leagues)
             {
@@ -258,9 +268,9 @@ namespace Buk.UniversalGames.Services
                 var leagueCol = league.Name switch
                 {
                     "B-League" => 2,
-                    "U-League" => 3,
-                    "K-League" => 4,
-                    _ => 5
+                    "U-League" => 4,
+                    "K-League" => 6,
+                    _ => 8
                 };
 
                 var leagueSheet = xlsWorkbook.CreateSheet(league.Name);
@@ -268,6 +278,7 @@ namespace Buk.UniversalGames.Services
 
                 //fill league winner in main sheet
                 Cell(overallWinnerRow, leagueCol, status["total"].First().Team);
+                Cell(overallWinnerRow, leagueCol + 1, status["total"].First().Team);
 
                 //overall ranking
                 Cell(leagueTitleRow, 1, "Overall");
@@ -277,6 +288,7 @@ namespace Buk.UniversalGames.Services
                 {
                     var row = leagueSheet.CreateRow(rowIndex);
                     Cell(row, 1, team.Team);
+                    Cell(row, 2, team.Points.ToString());
                     rowIndex++;
                 }
 
@@ -287,15 +299,19 @@ namespace Buk.UniversalGames.Services
                     if (!gameRanking.Any()) continue;
 
                     // fill game winner on main sheet
+                    Cell(gameRows[game], 1, game.ToString());
                     Cell(gameRows[game], leagueCol, gameRanking.First().Team);
+                    Cell(gameRows[game], leagueCol + 1, gameRanking.First().Points.ToString());
 
                     // handle league sheet
-                    Cell(leagueTitleRow, gameIndex(game), game.ToString());
+                    Cell(leagueTitleRow, gameColumnIndex(game), game.ToString());
+                    Cell(leagueTitleRow, gameColumnIndex(game) + 1, $"Score {game})" );
 
                     rowIndex = 2;
                     foreach (var team in gameRanking)
                     {
-                        Cell(leagueSheet.GetRow(rowIndex), gameIndex(game), team.Team);
+                        Cell(leagueSheet.GetRow(rowIndex), gameColumnIndex(game), team.Team);
+                        Cell(leagueSheet.GetRow(rowIndex), gameColumnIndex(game) + 1, team.Points.ToString());
                         rowIndex++;
                     }
                 }

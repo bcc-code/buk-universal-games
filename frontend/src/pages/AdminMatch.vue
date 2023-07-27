@@ -5,6 +5,10 @@
       <button @click="this.showGameInfo(game)">Game-info</button>
     </nav>
 
+    <section class="error-popup" v-if="showErrorPopup">
+      <p><span>{{ popupErrorMessage }}</span></p>
+    </section>
+
     <header>
       <h3>
         <img class="icon" :src="`icon/game-${game.gameType}.svg`" />
@@ -46,7 +50,7 @@
         }"
       >
         <p>{{ match?.team2 }}</p>
-        <p v-if="match?.team2Result"><strong>Score ({{ units[game?.gameType]}}):</strong> {{ match?.team2Result }}</p>
+        <p v-if="match?.team2Result"><strong>Score:</strong> {{ match?.team2Result }}</p>
 
         <button class="btn btn-blank" v-if="!isChangingScore2 && match?.team2Result > 0" @click="isChangingScore2 = true">Change</button>
         <div v-if="isChangingScore2 || !match?.team2Result">
@@ -89,6 +93,8 @@ export default {
       isChangingScore1: false,
       isChangingScore2: false,
       selectedTeam: null,
+      showErrorPopup: false,
+      popupErrorMessage: null,
       match: null,
       game: null,
       units: {
@@ -133,7 +139,17 @@ export default {
     async confirmTeamResult(teamId, result) {
       if (result) {
         const payload = { matchId: this.match.matchId, teamId, result };
-        await this.$store.dispatch("confirmTeamResult", payload);
+        var response = await this.$store.dispatch("confirmTeamResult", payload);
+        console.log(response, response === "failed");
+        if(response === "failed") {
+          this.popupErrorMessage = "Submitting failed, please check connection and try again";
+          this.showErrorPopup = true;
+          setTimeout(() => {
+            this.showErrorPopup = false;
+            this.popupErrorMessage = null;
+          }, 5000);
+          return;
+        }
         this.$forceUpdate();
         this.$store.dispatch("getAdminLeagueStatus");
         if(teamId === this.match.team1Id) {
@@ -265,5 +281,17 @@ header h2 {
   display: flex;
   align-items: center;
   gap: 0.5em;
+}
+.error-popup {
+  position: fixed;
+  top: 4em;
+  left:1em;
+  right:1em;
+  z-index:800;
+  background-color: var(--red);
+  color: #fff;
+  padding:1.5em 1em;
+  border-radius:1em;
+  box-shadow: 2px 5px 5px 0px rgba(0,0,0,0.5);
 }
 </style>

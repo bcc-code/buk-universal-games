@@ -77,12 +77,10 @@ export default {
     if (!this.$store.state.adminLeagues.length) {
       this.getAdminLeagues();
     }
-    if (!this.$store.state.adminMatches.length) {
-      this.getMatches();
-    }
     if (!this.$store.state.games.length) {
       this.getGames();
     }
+    this.getMatches();
   },
   methods: {
     getAdminLeagues() {

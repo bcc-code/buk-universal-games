@@ -58,7 +58,6 @@ namespace Buk.UniversalGames.Services
         {
             var match = _db.Matches.AsTracking().Include(x => x.Game).Single(x => x.MatchId == matchId) ?? throw new ArgumentException("No match found", nameof(matchId));
             var matchResult = await _gameRepository.StoreMatchResult(match, teamId, result);
-            await _statusService.UpdateGameRanking(match.Game, match.LeagueId);
             return matchResult;
         }
 

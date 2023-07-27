@@ -1,5 +1,7 @@
 using Buk.UniversalGames.Api.Authorization;
+using Buk.UniversalGames.Data;
 using Buk.UniversalGames.Data.Interfaces;
+using Buk.UniversalGames.Data.Models;
 using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Enums;
 using Buk.UniversalGames.Services;
@@ -16,13 +18,15 @@ public class StatusController : ControllerBase
     private readonly IStatusService _statusService;
     private readonly ILeagueRepository _leagueRepository;
     private readonly IGameRepository _gameRepository;
+    private readonly ICacheContext _cacheContext;
 
-    public StatusController(ILogger<StatusController> logger, IStatusService statusService, ILeagueRepository leagueRepository, IGameRepository gameRepository)
+    public StatusController(ILogger<StatusController> logger, IStatusService statusService, ILeagueRepository leagueRepository, IGameRepository gameRepository, ICacheContext cacheContext)
     {
         _logger = logger;
         _statusService = statusService;
         _leagueRepository = leagueRepository;
         _gameRepository = gameRepository;
+        _cacheContext = cacheContext;
     }
 
     [HttpGet("ClearStatusAndMatches")]
@@ -44,6 +48,10 @@ public class StatusController : ControllerBase
 
             await _statusService.BuildAndCacheRankingForSidequest(league.LeagueId);
             await _statusService.BuildAndCacheLeagueRanking(league.LeagueId);
+
+            var cacheKey = $"Matches_{league.LeagueId}";
+            await _cacheContext.Remove(cacheKey);
+            await _gameRepository.GetMatches(league.LeagueId);
         }
     }
 
