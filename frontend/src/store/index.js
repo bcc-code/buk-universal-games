@@ -170,6 +170,8 @@ export default function (...plugins) {
         const timeString = `${(now.getHours()).toString().padStart(2,'0')}:${(now.getMinutes()).toString().padStart(2,'0')}`;
         const currentMatchIndex = state.matches?.findLastIndex(match => match.start <= timeString);
         
+        if(timeString > "17:00") return 0;
+
         if(!currentMatchIndex || currentMatchIndex < 0) return 0;
         
         return currentMatchIndex + 1;
