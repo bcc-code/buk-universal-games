@@ -228,9 +228,9 @@ namespace Buk.UniversalGames.Services
             var mainSheet = xlsWorkbook.CreateSheet("Winners");
 
             var titleRow = mainSheet.CreateRow(0);
-            Cell(titleRow, 2, "B-League", boldCellStyle);
-            Cell(titleRow, 3, "U-League", boldCellStyle);
-            Cell(titleRow, 4, "K-League", boldCellStyle);
+            Cell(titleRow, 3, "B-League", boldCellStyle);
+            Cell(titleRow, 5, "U-League", boldCellStyle);
+            Cell(titleRow, 7, "K-League", boldCellStyle);
 
             var overallWinnerRow = mainSheet.CreateRow(1);
             Cell(overallWinnerRow, 0, "Overall winner", boldCellStyle);
@@ -267,9 +267,9 @@ namespace Buk.UniversalGames.Services
 
                 var leagueCol = league.Name switch
                 {
-                    "B-League" => 2,
-                    "U-League" => 4,
-                    "K-League" => 6,
+                    "B-League" => 9,
+                    "U-League" => 5,
+                    "K-League" => 7,
                     _ => 8
                 };
 
@@ -288,7 +288,7 @@ namespace Buk.UniversalGames.Services
                 {
                     var row = leagueSheet.CreateRow(rowIndex);
                     Cell(row, 1, team.Team);
-                    Cell(row, 2, team.Points.ToString());
+                    Cell(row, 2, team.Points);
                     rowIndex++;
                 }
 
@@ -301,7 +301,7 @@ namespace Buk.UniversalGames.Services
                     // fill game winner on main sheet
                     Cell(gameRows[game], 1, game.ToString());
                     Cell(gameRows[game], leagueCol, gameRanking.First().Team);
-                    Cell(gameRows[game], leagueCol + 1, gameRanking.First().Points.ToString());
+                    Cell(gameRows[game], leagueCol + 1, gameRanking.First().Points);
 
                     // handle league sheet
                     Cell(leagueTitleRow, gameColumnIndex(game), game.ToString());
@@ -311,7 +311,7 @@ namespace Buk.UniversalGames.Services
                     foreach (var team in gameRanking)
                     {
                         Cell(leagueSheet.GetRow(rowIndex), gameColumnIndex(game), team.Team);
-                        Cell(leagueSheet.GetRow(rowIndex), gameColumnIndex(game) + 1, team.Points.ToString());
+                        Cell(leagueSheet.GetRow(rowIndex), gameColumnIndex(game) + 1, team.Points);
                         rowIndex++;
                     }
                 }
@@ -320,10 +320,20 @@ namespace Buk.UniversalGames.Services
             return stream.ToArray();
         }
 
-        private static ICell Cell(IRow row, int index, string value, ICellStyle cellStyle = null)
+        private static ICell Cell(IRow row, int index, string value, ICellStyle? cellStyle = null)
         {
             var cell = row.CreateCell(index);
             if(cellStyle != null)
+                cell.CellStyle = cellStyle;
+
+            cell.SetCellValue(value);
+            return cell;
+        }
+
+        private static ICell Cell(IRow row, int index, int value, ICellStyle? cellStyle = null)
+        {
+            var cell = row.CreateCell(index);
+            if (cellStyle != null)
                 cell.CellStyle = cellStyle;
 
             cell.SetCellValue(value);
