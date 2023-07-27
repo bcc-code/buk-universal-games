@@ -138,29 +138,26 @@ export default function (...plugins) {
       },
       
       unlockNewQuestions(state, round) {
-        console.log(state, round)
-        return;
-        // if(state.qsOpened[round -1] && state.qsOpened[round -1].length > 0)
-        // {
-        //   return;
-        // }
-        // while(state.qsOpened[round -1].length < 2)
-        // {
-        //   const newQuestion = state.qs[Math.floor(Math.random() * state.qs.length)]
-        //   if(!state.qsOpened.flat().includes(newQuestion) && !state.qsOpened[round -1].some(q => q.t == newQuestion.t))
-        //   {
-        //     state.qsOpened[round-1].push(newQuestion);
-        //     //Vue.set(state.qsOpened, (round - 1), state.qsOpened[round -1].push(newQuestion));
-        //   }
-        // }
+        if(state.qsOpened[round -1] && state.qsOpened[round -1].length > 0)
+        {
+          return;
+        }
+        while(state.qsOpened[round -1].length < 2)
+        {
+          const newQuestion = state.qs[Math.floor(Math.random() * state.qs.length)]
+          if(!state.qsOpened.flat().includes(newQuestion) && !state.qsOpened[round -1].some(q => q.t == newQuestion.t))
+          {
+            state.qsOpened[round-1].push(newQuestion);
+            //Vue.set(state.qsOpened, (round - 1), state.qsOpened[round -1].push(newQuestion));
+          }
+        }
       },
       initializeCoins(state, coins) {
         state.coins = coins;
         state.coinsInitialized = true;
       },
       removeCoin(state, coin) {
-        console.log(state, coin)
-        //state.coins = state.coins.filter(c => c !== coin);
+        state.coins = state.coins.filter(c => c !== coin);
       },
       setUserLanguage(state, language) {
         state.userLanguage = language;
@@ -168,6 +165,7 @@ export default function (...plugins) {
     },
     getters: {
       currentRound: (state) => {
+        
         const now = new Date();
         const timeString = `${(now.getHours()).toString().padStart(2,'0')}:${(now.getMinutes()).toString().padStart(2,'0')}`;
         const currentMatchIndex = state.matches?.findLastIndex(match => match.start <= timeString);
@@ -177,6 +175,7 @@ export default function (...plugins) {
         return currentMatchIndex + 1;
       },
       afterRoundPeriod: (state, getters) => {
+
         const round = getters.currentRound;
         if(round < 1) return { isAfterRound: false, round: round };
 
