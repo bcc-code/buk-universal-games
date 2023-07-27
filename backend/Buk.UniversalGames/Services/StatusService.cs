@@ -233,27 +233,27 @@ namespace Buk.UniversalGames.Services
             Cell(titleRow, 7, "K-League", boldCellStyle);
 
             var overallWinnerRow = mainSheet.CreateRow(1);
-            Cell(overallWinnerRow, 0, "Overall winner", boldCellStyle);
+            Cell(overallWinnerRow, 1, "Overall winner", boldCellStyle);
 
             var games = (GameType[])Enum.GetValues(typeof(GameType));
 
             var gameRowIndex = (GameType game) => game switch
             {
-                GameType.NerveSpiral => 3,
-                GameType.TableSurfing => 4,
-                GameType.MineField => 5,
-                GameType.TicketTwist => 6,
-                GameType.MonkeyBars => 7,
+                GameType.NerveSpiral => 5,
+                GameType.TableSurfing => 6,
+                GameType.MineField => 7,
+                GameType.TicketTwist => 8,
+                GameType.MonkeyBars => 9,
                 _ => throw new Exception()
             };
 
             var gameColumnIndex = (GameType game) => game switch
             {
-                GameType.NerveSpiral => 4,
-                GameType.TableSurfing => 6,
-                GameType.MineField => 8,
-                GameType.TicketTwist => 10,
-                GameType.MonkeyBars => 12,
+                GameType.NerveSpiral => 3,
+                GameType.TableSurfing => 5,
+                GameType.MineField => 7,
+                GameType.TicketTwist => 9,
+                GameType.MonkeyBars => 11,
                 _ => throw new Exception()
             };
 
@@ -267,7 +267,7 @@ namespace Buk.UniversalGames.Services
 
                 var leagueCol = league.Name switch
                 {
-                    "B-League" => 9,
+                    "B-League" => 3,
                     "U-League" => 5,
                     "K-League" => 7,
                     _ => 8
@@ -278,7 +278,7 @@ namespace Buk.UniversalGames.Services
 
                 //fill league winner in main sheet
                 Cell(overallWinnerRow, leagueCol, status["total"].First().Team);
-                Cell(overallWinnerRow, leagueCol + 1, status["total"].First().Team);
+                Cell(overallWinnerRow, leagueCol + 1, status["total"].First().Points);
 
                 //overall ranking
                 Cell(leagueTitleRow, 1, "Overall");
@@ -304,8 +304,8 @@ namespace Buk.UniversalGames.Services
                     Cell(gameRows[game], leagueCol + 1, gameRanking.First().Points);
 
                     // handle league sheet
-                    Cell(leagueTitleRow, gameColumnIndex(game), game.ToString());
-                    Cell(leagueTitleRow, gameColumnIndex(game) + 1, $"Score {game})" );
+                    Cell(leagueTitleRow, gameColumnIndex(game), game.ToString(),boldCellStyle);
+                    Cell(leagueTitleRow, gameColumnIndex(game) + 1, $"Score ({game})", boldCellStyle);
 
                     rowIndex = 2;
                     foreach (var team in gameRanking)

@@ -78,6 +78,7 @@
     "submityouranswers": "Yanıtlarınızı gönderin",
     "gameroundtitle": "Tur {round}",
     "back_to_overview": "Genel Bakışa Dön",
+    "alreadyAnswered": "Bu soruyu zaten cevapladınız",
     "noroundyet": "Henüz mevcut değil. Maçtan sonra geri gelin.",
     "submitfailed": "Cevaplarını gönderme başarısız oldu. Bağlantınız olduğundan emin olun ve tekrar deneyin",
     "no_coins": "Artık jetonun kalmadı. Daha fazla soru cevaplayamazsın",

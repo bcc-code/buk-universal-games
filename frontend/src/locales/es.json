@@ -77,6 +77,7 @@
         "submityouranswers": "Enviar tus respuestas",
         "gameroundtitle": "Ronda {round}",
         "back_to_overview": "Volver a la vista general",
+        "alreadyAnswered": "Ya has respondido a esta pregunta",
         "noroundyet": "Aún no disponible. Vuelve después del partido.",
         "submitfailed": "Falló el envío de tus respuestas. Asegúrate de tener conexión e inténtalo de nuevo",
         "no_coins": "Ya no tienes más monedas. No puedes responder más preguntas",

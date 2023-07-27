@@ -77,6 +77,7 @@
     "submityouranswers": "Send inn svarene dine",
     "gameroundtitle": "Runde {round}",
     "back_to_overview": "Tilbake til oversikten",
+    "alreadyAnswered": "Du har allerede svart på dette spørsmålet",
     "noroundyet": "Ikke tilgjengelig ennå. Kom tilbake etter kampen.",
     "submitfailed": "Kunne ikke sende inn svarene dine. Sjekk at du har tilkobling og prøv igjen",
     "no_coins": "Du har ingen mynter igjen. Du kan ikke svare på flere spørsmål",

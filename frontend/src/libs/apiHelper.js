@@ -165,8 +165,17 @@ export async function postData(url, data) {
       },
       body: JSON.stringify(data),
     });
-    const r_1 = await r.json();
-    return r_1;
+    
+    if(r.ok) {
+      if(r.bodyUsed && r.body.startsWith('{')) {
+        return JSON.parse(r.body);
+      }
+      return r.body;
+    }
+    return {
+      error: r.statusText,
+      response: r
+    }
   } catch (e) {
     console.log("POST data response ERROR", e);
     throw e;

@@ -77,6 +77,7 @@
     "submityouranswers": "Lähetä vastauksesi",
     "gameroundtitle": "Kierros {round}",
     "back_to_overview": "Palaa yleiskatsaukseen",
+    "alreadyAnswered": "Olet jo vastannut tähän kysymykseen",
     "submitfailed": "Vastaustesi lähettäminen epäonnistui. Varmista, että sinulla on yhteys, ja yritä uudelleen",
     "no_coins": "Sinulla ei ole enää kolikoita. Et voi vastata enää kysymyksiin",
     "explanation": "Selitys",

@@ -77,6 +77,7 @@
     "submityouranswers": "提交您的答案",
     "gameroundtitle": "第{round}回合",
     "back_to_overview": "返回概述",
+    "alreadyAnswered": "您已经回答过这个问题了",
     "noroundyet": "暂时还不可用。比赛结束后请回来。",
     "submitfailed": "提交答案失败。请确保您有连接，并重试",
     "no_coins": "没有剩余的金币啦，没法回答更多问题哦！",

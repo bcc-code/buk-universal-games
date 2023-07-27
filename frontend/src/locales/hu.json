@@ -77,6 +77,7 @@
     "submityouranswers": "Adja be a válaszait",
     "gameroundtitle": "Kör {round}",
     "back_to_overview": "Vissza az áttekintéshez",
+    "alreadyAnswered": "Már válaszoltál erre a kérdésre",
     "noroundyet": "Még nem elérhető. Gyere vissza a mérkőzés után.",
     "submitfailed": "Nem sikerült elküldeni a válaszaidat. Győződj meg róla, hogy van kapcsolat, és próbáld újra",
     "no_coins": "Elfogytak a pénzed. Nem tudsz több kérdésre válaszolni",
