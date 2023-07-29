@@ -1,12 +1,11 @@
 const putInCache = async (request, response) => {
-  const cache = await caches.open("v2");
+  const cache = await caches.open("v3");
   await cache.put(request, response);
 };
 
 const cacheFirst = async ({ request, preloadResponsePromise }) => {
   // First try to get the resource from the cache
-  const cache = await caches.open("v2");
-  const responseFromCache = cache.match(request);
+  const responseFromCache = await caches.match(request);
   if (responseFromCache) {
     return responseFromCache;
   }
@@ -25,7 +24,10 @@ const cacheFirst = async ({ request, preloadResponsePromise }) => {
     // response may be used only once
     // we need to save clone to put one copy in cache
     // and serve second one
-    putInCache(request, responseFromNetwork.clone());
+    if(responseFromNetwork.ok)
+    {
+      putInCache(request, responseFromNetwork.clone());
+    }
     return responseFromNetwork;
   } catch (error) {
     // There is nothing we can do, but we must always
@@ -44,12 +46,14 @@ const networkFirst = async (request) => {
     // response may be used only once
     // we need to save clone to put one copy in cache
     // and serve second one
-    putInCache(request, responseFromNetwork.clone());
+    if(responseFromNetwork.ok)
+    {
+      putInCache(request, responseFromNetwork.clone());
+    }
     return responseFromNetwork;
   } catch (error) {
     // Fallback to the cache
-    const cache = await caches.open("v2");
-    const responseFromCache = await cache.match(request);
+    const responseFromCache = await caches.match(request);
     if (responseFromCache) {
       return responseFromCache;
     }
@@ -70,21 +74,31 @@ self.addEventListener("activate", (event) => {
       // Enable navigation preloads!
       await self.registration.navigationPreload.enable();
     }
+    const keys = await caches.keys();
+    const deleteKeys = keys.filter((key) => key !== 'v3');
+    await Promise.all(deleteKeys.map((key) => caches.delete(key)));
+
   });
 });
 
 self.addEventListener("install", (event) => {
-  event.waitUntil(caches.open("v2").then(cache => cache.addAll(preCacheUris)));
+  event.waitUntil(caches.open("v3").then(cache => cache.addAll(preCacheUris)));
 });
 
 self.addEventListener("fetch", (event) => {
   if (event.request.method === "GET") {
-    if (cacheableDestinations.includes(event.request.destination)) {
+    if (cacheableDestinations.includes(event.request.destination) && !event.request.url.contains('sw.js')) {
       event.respondWith(
         cacheFirst({
           request: event.request,
           preloadResponsePromise: event.preloadResponse,
-        }).catch((x) => console.log(x))
+        }).catch((x) => {
+          return new Response("Network or general error happened", {
+            status: 408,
+            headers: { "Content-Type": "text/plain" },
+            body: x
+          })
+        })
       );
     } else {
       event.respondWith(

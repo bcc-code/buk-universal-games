@@ -31,6 +31,7 @@ export default function (...plugins) {
       gamesLoading: true,
       coins: [],
       coinsInitialized: false,
+      gotCoins: false,
       qs: [
         { id: 1, t: "guess", q: "guesshowmany1", a: ["115000","93000","50000","140000"]},
         { id: 2, t: "guess", q: "guesshowmany2", a: ["11200","7400","9900","13500"]},
@@ -154,7 +155,7 @@ export default function (...plugins) {
       },
       initializeCoins(state, coins) {
         state.coins = coins;
-        state.coinsInitialized = true;
+        state.gotCoins = true;
       },
       removeCoin(state, coin) {
         state.coins = state.coins.filter(c => c !== coin);
@@ -169,8 +170,6 @@ export default function (...plugins) {
         const now = new Date();
         const timeString = `${(now.getHours()).toString().padStart(2,'0')}:${(now.getMinutes()).toString().padStart(2,'0')}`;
         const currentMatchIndex = state.matches?.findLastIndex(match => match.start <= timeString);
-        
-        if(timeString > "17:00") return 0;
 
         if(!currentMatchIndex || currentMatchIndex < 0) return 0;
         
@@ -186,12 +185,6 @@ export default function (...plugins) {
         const afterRoundStart = new Date(currentRoundStart.getTime() + (15 * 60_000));
         const afterRoundEnd = new Date(afterRoundStart.getTime() + (10 * 60_000));
 
-        if(now > new Date(afterRoundStart.getTime() + (60 * 60_000)))
-        {
-          console.log("Games are not active now. Setting round to 0")
-          return { isAfterRound: false, round: 0 };
-        }
-
         if (now >= afterRoundStart && now <= afterRoundEnd) {
           return { isAfterRound: true, round: round };
         }
@@ -205,7 +198,7 @@ export default function (...plugins) {
         ctx.commit("setLoginMessage", 'Logging you in, please wait ...')
         const loginData = await initData(store, "start/")
         ctx.commit("setLoginData", loginData)
-        if(!ctx.state.coinsInitialized && ctx.state.coins.length == 0)
+        if(!ctx.state.gotCoins && ctx.state.coins.length == 0 && loginData?.coins?.length > 0)
         {
           ctx.commit("initializeCoins", loginData.coins)
         }
@@ -263,6 +256,11 @@ export default function (...plugins) {
       async getLeagueStatus(ctx, override) {
         const cacheAge = getCachedDataAge('leagueStatus')
         let leagueStatus
+
+        if(!ctx.state.gotCoins && ctx.state.coins.length == 0 && ctx.state.loginData?.coins?.length > 0)
+        {
+          ctx.commit("initializeCoins", ctx.state.loginData.coins)
+        }
 
         if (cacheAge === null || cacheAge > 30 || (cacheAge > 5 && override)) {
           leagueStatus = await getData(store, "status/league")

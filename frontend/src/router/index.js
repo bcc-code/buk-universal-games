@@ -133,7 +133,7 @@ export default function (store) {
       }
     }
 
-    if(!window.localStorage.getItem('testTeamCode') && to.path !== '/') {
+    if(!window.localStorage.getItem('testTeamCode') && (to.path !== '/' && !to.path.startsWith('/start'))) {
       return { name: 'Login' };
     }
   })
