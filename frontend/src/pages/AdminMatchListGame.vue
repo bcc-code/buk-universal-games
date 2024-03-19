@@ -124,7 +124,7 @@ export default {
     adminMatchGroups() {
       const matchGroups = [];
 
-      this?.$store.state.adminMatches.forEach((match) => {
+      this?.$store?.state?.adminMatches?.forEach?.((match) => {
         let shouldPush = true;
 
         if (this?.$store.state.adminFilterGameSelected !== null && match.gameId !== this?.$store.state.adminFilterGameSelected) {

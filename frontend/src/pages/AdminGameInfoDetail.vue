@@ -6,13 +6,13 @@
 
     <header>
       <h2>
-        <img class="icon" :src="`icon/game-${gameParsed.gameType}.svg`" />
+        <img class="icon" :src="`icon/game-${gameType}.svg`" />
         <span>{{ $t(`games.${gameParsed.gameType}`) }}</span>
       </h2>
 
       <div class="banner">
         <video autoplay muted playsinline controls>
-          <source :src="`/video/${gameParsed.gameType}.mp4`" type="video/mp4" />
+          <source :src="`/video/${gameType}.mp4`" type="video/mp4" />
         </video>
       </div>
     </header>
@@ -85,6 +85,9 @@ export default {
     rules() {
       return this.$t('rules.' + this.gameParsed.gameType).split('|');
     },
+    gameType() {
+      return this.gameParsed.gameType.replaceAll('_', '');
+    },
   },
 };
 </script>
@@ -99,7 +102,7 @@ export default {
   color: #fff;
   display: flex;
   justify-content: space-between;
-  align-items: end;
+  align-items: flex-end;
   background-size: 80%;
   background-position: center;
   background-repeat: no-repeat;

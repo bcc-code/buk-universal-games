@@ -110,7 +110,7 @@ export default {
     if (!this.$store.state.games.length) {
       this.$store.dispatch("getGames");
     }
-    if(!this.$store.state.adminMatches.length) {
+    if(!this?.$store?.state?.adminMatches?.length) {
         this.$store.dispatch("getAdminMatches");
     }
     if(this.matchId) {
@@ -188,7 +188,7 @@ export default {
   color: #fff;
   display: flex;
   justify-content: space-between;
-  align-items: end;
+  align-items: flex-end;
   background-size: 80%;
   background-position: center;
   background-repeat: no-repeat;

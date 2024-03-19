@@ -11,7 +11,7 @@
   </div>
   <ul v-else class="games">
     <li class="game" v-for="game in games" :key="game.id" @click="$emit('clicked', game)">
-      <img class="game-icon" :src="`icon/game-${game.gameType}.svg`" />
+      <img class="game-icon" :src="`icon/game-${game.gameType.replaceAll('_','')}.svg`" />
       <h3 class="game-title">{{ $t(`games.${game.gameType}`) }}</h3>
     </li>
   </ul>
@@ -45,7 +45,7 @@ export default {
   padding: 1.5em;
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
   justify-content: center;
 }
 
