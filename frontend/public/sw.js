@@ -87,7 +87,6 @@ self.addEventListener("install", (event) => {
 
 self.addEventListener("fetch", (event) => {
   if (event.request.method === "GET") {
-    console.log("fetch", event.request.url);
     if (cacheableDestinations.includes(event.request.destination) && event?.request?.url && !event?.request?.url?.contains?.('sw.js')) {
       event.respondWith(
         cacheFirst({
