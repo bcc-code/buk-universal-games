@@ -10,7 +10,7 @@
 	{
 		"team_id": 6,
 		"name": "Admin",
-		"code": "team5rules",
+		"code": "TEAM5RULES",
 		"league_id": null,
 		"type": "admin",
 		"color": ""
