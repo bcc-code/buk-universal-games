@@ -18,6 +18,10 @@ Note: To allow a PWA to work in development in Chromium browsers you must start 
 ```sh
 chromium --ignore-certificate-errors http://localhost:8080
 ```
+Or in PowerShell:
+```ps
+Start-Process "C:\Program Files\Google\Chrome\Application\chrome.exe" -ArgumentList "--ignore-certificate-errors", "http://localhost:8080"
+```
 
 ## Test data
 
@@ -47,7 +51,7 @@ You can import the test data files in Directus in this order:
 On Windows and MacOS, these DNS entries are auto-added. On Linux systems, this doesn't seem to be the case.
 
 Instead run `ip route` to get a list of adapter routes:
-
+  
 ```sh
 default via 192.168.2.254 dev eth0 proto dhcp metric 100
 172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown

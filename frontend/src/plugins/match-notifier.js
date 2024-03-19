@@ -6,6 +6,7 @@ export default (notificationService, timeOffset = -300_000) => (store) => {
       for (let match of mutation.payload) {
         const time = new Date(new Date().setHours(...match.start.split(":").concat([0, 0])) + timeOffset)
         const game = state.games.find(g => g.id === match.gameId);
+        console.log(game)
         notificationService.schedule(time, `${match.start} ${game.name}`, { body: `${match.team1} — ${match.team2}`, icon: `icon/game-${game.gameType}.svg` })
       }
     }

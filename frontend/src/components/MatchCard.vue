@@ -3,8 +3,8 @@
     <section>
       <div class="card-dark-column">
         <h1 class="gameinfo card-dark-text" @click="showGameInfo">
-          <img class="icon" :src="`icon/game-${game.gameType}.svg`"/>
-          <span>{{ $t(`games.${game.gameType}`) }}</span><span class="title-arrow">></span>
+          <img class="icon" :src="`icon/game-${game?.gameType}.svg`"/>
+          <span>{{ $t(`games.${game?.gameType}`) }}</span><span class="title-arrow">></span>
         </h1>
       </div>
     </section>
@@ -12,14 +12,14 @@
       <div class="card-dark-column">
         <h2 class="card-dark-text">{{ selectedMatch?.team1 }}</h2>
         <div v-if="selectedMatch.winner">
-          <h2 :class="{ 'card-dark-text' : true, 'winner' : selectedMatch.winnerId == selectedMatch.team1Id }">{{ selectedMatch.team1Result ? $t("score." + game.gameType, { score:selectedMatch.team1Result}) : '-' }}</h2>
+          <h2 :class="{ 'card-dark-text' : true, 'winner' : selectedMatch.winnerId == selectedMatch.team1Id }">{{ selectedMatch.team1Result ? $t("score." + game?.gameType, { score:selectedMatch.team1Result}) : '-' }}</h2>
         </div>
       </div>
       <div class="vl"></div>
       <div class="card-dark-column">
         <h2 class="card-dark-text">{{ selectedMatch?.team2 }}</h2>
         <div v-if="selectedMatch.winner">
-          <h2 :class="{ 'card-dark-text' : true, 'winner' : selectedMatch.winnerId == selectedMatch.team2Id }">{{ selectedMatch.team2Result ? $t("score." + game.gameType, { score:selectedMatch.team2Result}) : "-" }}</h2>
+          <h2 :class="{ 'card-dark-text' : true, 'winner' : selectedMatch.winnerId == selectedMatch.team2Id }">{{ selectedMatch.team2Result ? $t("score." + game?.gameType, { score:selectedMatch.team2Result}) : "-" }}</h2>
         </div>
       </div>
     </section>
@@ -38,7 +38,7 @@ export default {
       this.$router.push({
             name: 'GameInfoDetail',
             params: {
-              game: this.game.id,
+              game: this.game?.id,
             },
           })
     },

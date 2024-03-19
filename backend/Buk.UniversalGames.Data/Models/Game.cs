@@ -13,15 +13,28 @@ public class Game {
 
     public string Name { get; set; } = "";
 
-    public virtual GameType Type => GameType switch
+    public virtual GameType Type
     {
-      "nervespiral" => Library.Enums.GameType.NerveSpiral,
-      "monkeybars" => Library.Enums.GameType.MonkeyBars,
-      "tickettwist" => Library.Enums.GameType.TicketTwist,
-      "minefield" => Library.Enums.GameType.MineField,
-      "tablesurfing" => Library.Enums.GameType.TableSurfing,
-      _ => throw new NotImplementedException("Invalid game type. Please migrate your data manually")
-    };
+        get
+        {
+            Console.WriteLine($"Game type: {GameType}"); // Log the GameType value
+
+            return GameType switch
+            {
+                "nervespiral" => Library.Enums.GameType.NerveSpiral,
+                "monkeybars" => Library.Enums.GameType.MonkeyBars,
+                "tickettwist" => Library.Enums.GameType.TicketTwist,
+                "minefield" => Library.Enums.GameType.MineField,
+                "tablesurfing" => Library.Enums.GameType.TableSurfing,
+                "nerve_spiral" => Library.Enums.GameType.NerveSpiral,
+                "monkey_bars" => Library.Enums.GameType.MonkeyBars,
+                "ticket_twist" => Library.Enums.GameType.TicketTwist,
+                "mine_field" => Library.Enums.GameType.MineField,
+                "table_surfing" => Library.Enums.GameType.TableSurfing,
+                _ => throw new NotImplementedException("Invalid game type. Please migrate your data manually"),
+            };
+        }
+    }
 
     [Column("type")]
     public string GameType { get; set; }
