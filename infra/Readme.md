@@ -32,8 +32,8 @@
 
 3. Run the following commands to deploy the infrastructure:
     ```
-    ./init_prod.bat 
-    ./apply_prod.bat
+    ./init_prod.sh 
+    ./apply_prod.sh
     ```
 
 
