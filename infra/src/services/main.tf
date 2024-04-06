@@ -39,13 +39,15 @@ provider "azapi" {
 locals {
   environment-name-uppercase = upper(var.environment-name)
   api-service-name = "buk-universal-games-api-${var.environment-name}"
-  site-service-name = "buk-universal-games-ui-${var.environment-name}"
+  site-service-name = "buk-universal-games-frontend-${var.environment-name}"
   directus-service-name = "buk-universal-games-directus-${var.environment-name}"
 }
 
-data "azurerm_application_insights" "application_insights" {
-  name                = "buk-universal-games"
-  resource_group_name = "buk-universal-games"
+resource "azurerm_application_insights" "application_insights" {
+  name                = "universal-games-prod"
+  resource_group_name = "universal-games-prod"
+  location            = "westeurope"
+  application_type    = "web"
 }
 
 module "postgres-instance" {
@@ -110,8 +112,8 @@ module "buk-universal-games-api" {
   service-account-email        = google_service_account.github-build.email
   environment-secrets = {
     POSTGRES_PASSWORD   = module.buk-universal-games-db.db-password
-    APPLICATIONINSIGHTS_CONNECTION_STRING = data.azurerm_application_insights.application_insights.connection_string
-    APPLICATIONINSIGHTS__CONNECTIONSTRING = data.azurerm_application_insights.application_insights.connection_string
+    APPLICATIONINSIGHTS_CONNECTION_STRING = azurerm_application_insights.application_insights.connection_string
+    APPLICATIONINSIGHTS__CONNECTIONSTRING = azurerm_application_insights.application_insights.connection_string
     NEW_RELIC_LICENSE_KEY                 = var.new-relic-licence-key
   }
   environment-variables = {

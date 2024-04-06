@@ -1,1 +1,1 @@
-gcp-project-id   = "buk-universal-games-prod"
+gcp-project-id   = "universal-games-prod-wq05c7"
