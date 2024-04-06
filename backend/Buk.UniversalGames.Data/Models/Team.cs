@@ -23,7 +23,7 @@ public class Team
     {
         "participant" => Library.Enums.TeamType.Participant,
         "admin" => Library.Enums.TeamType.Admin,
-        "systemadmin" => Library.Enums.TeamType.SystemAdmin
+        "system_admin" => Library.Enums.TeamType.SystemAdmin
     };
 
     public int MemberCount { get; set; }
