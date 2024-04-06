@@ -45,7 +45,9 @@ builder.Services.AddDbContext<DataContext>(options =>
     var dbPassword = Environment.GetEnvironmentVariable("POSTGRES_PASSWORD");
     var dataSourceBuilder = new Npgsql.NpgsqlDataSourceBuilder($"Host={dbHost}{(dbPort != "5432" ? ";Port=" + (dbPort ?? "") : "")};Database={dbName};Username={dbUser};Password={dbPassword};Pooling=false;Connection Idle Lifetime=0;Server Compatibility Mode=NoTypeLoading");
 
-    options.UseNpgsql(dataSourceBuilder.Build()).LogTo(Console.WriteLine, LogLevel.Information);
+    options.UseNpgsql(dataSourceBuilder.Build());
+    // .LogTo(Console.WriteLine, LogLevel.Information);
+    // Uncomment line above to log all sql queries to console.
 });
 
 if (builder.Environment.IsDevelopment())
