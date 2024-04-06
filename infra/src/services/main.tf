@@ -158,6 +158,7 @@ module "buk-universal-games-directus" {
     CACHE_ENABLED     = true
     CACHE_STORE       = "redis"
     CACHE_REDIS       = "redis://${module.redis-cache.service.host}:${module.redis-cache.service.port}"
+    REDIS             = "redis://${module.redis-cache.service.host}:${module.redis-cache.service.port}"
     # PUBLIC_URL        = "https://${var.domain-name}/directus"
   }
 }
