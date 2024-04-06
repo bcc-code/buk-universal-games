@@ -31,6 +31,7 @@ You can import the test data files in Directus in this order:
 2. leagues…json
 3. teams…json
 4. matches…json
+5. settings…json
 
 ### Accessing Database
 
