@@ -149,7 +149,7 @@ module "buk-universal-games-directus" {
   environment-variables = {
     KEY               = random_uuid.directus-key.result
     SECRET            = random_uuid.directus-secret.result
-    ADMIN_EMAIL       = "admin@admin.com"    
+    ADMIN_EMAIL       = "it@bcc.no"    
     DB_CLIENT         = "pg"
     DB_HOST           = "/cloudsql/${module.postgres-instance.connection-name}"
     DB_PORT           = 5432
