@@ -50,10 +50,7 @@ namespace Buk.UniversalGames.Services
             var dict = new Dictionary<string, List<TeamStatus>>();
             foreach (var type in (GameType[])Enum.GetValues(typeof(GameType)))
             {
-                var gameRanking = await GetGameRanking(type, leagueId);
-                    
-
-                dict.Add(type.ToString().ToLowerInvariant(), gameRanking);
+                dict.Add(type.ToString().ToLowerInvariant(), await GetGameRanking(type, leagueId));
             }
             dict.Add("total", await _cache.Get<List<TeamStatus>>(leagueCacheKey(leagueId)) ?? new List<TeamStatus>());
 
@@ -62,12 +59,7 @@ namespace Buk.UniversalGames.Services
 
         public async Task<List<TeamStatus>> GetGameRanking(GameType gameType, int leagueId)
         {
-            var key = gameCacheKey(gameType, leagueId);
-            Console.WriteLine($"GetGameRanking Key: {key}");
-            var cacheEntry = await _cache.Get<List<TeamStatus>>(gameCacheKey(gameType, leagueId));
-            Console.WriteLine($"GetGameRanking Value: {cacheEntry}");
-            
-            return  cacheEntry ?? new List<TeamStatus>();
+            return await _cache.Get<List<TeamStatus>>(gameCacheKey(gameType, leagueId)) ?? new List<TeamStatus>();
         }
 
         public async Task<List<TeamStatus>> UpdateGameRanking(Game game, int leagueId)
