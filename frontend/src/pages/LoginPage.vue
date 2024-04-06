@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     async tryLogin(ev) {
-      // Do not perform normal HTML form submit.
+      // Do not perform normal HTML form submit. 
       if(ev)
       {
         ev.preventDefault();
