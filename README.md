@@ -99,3 +99,7 @@ Migrations are automatically applied when the a new version of the application i
 When having refresh loops in the frontend, go to devtools > Application > (in the sidebar) Service workers, and enable "Update on reload" and "Bypass for network".
 
 To log out or clear the cache because of changes to the source code, go to devtools > Application > (in the sidebar) Storage > Clear site data.
+
+## To update the leaderboard
+
+Go to https://universalgames.buk.no/api/OVERLORDS/cache/warmup
