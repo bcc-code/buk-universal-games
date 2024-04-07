@@ -102,11 +102,10 @@ app.UseExceptionHandler(c => c.Run(async context =>
     {
         context.Response.StatusCode = 500;
     }
-    await context.Response.WriteAsJsonAsync(new
-    {
-        Error = exception?.Message,
-        StackTrace = exception?.StackTrace
-    });
+    
+    string exceptionDetails = $"{exception?.Message}\n{exception?.StackTrace}";
+    context.Response.ContentType = "text/plain";
+    await context.Response.WriteAsync(exceptionDetails);
 }));
 
 // Automatically migrate database
