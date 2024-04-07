@@ -21,16 +21,11 @@ public class Game {
 
             return GameType switch
             {
-                "nervespiral" => Library.Enums.GameType.NerveSpiral,
-                "monkeybars" => Library.Enums.GameType.MonkeyBars,
-                "tickettwist" => Library.Enums.GameType.TicketTwist,
-                "minefield" => Library.Enums.GameType.MineField,
-                "tablesurfing" => Library.Enums.GameType.TableSurfing,
-                "nerve_spiral" => Library.Enums.GameType.NerveSpiral,
-                "monkey_bars" => Library.Enums.GameType.MonkeyBars,
-                "ticket_twist" => Library.Enums.GameType.TicketTwist,
-                "mine_field" => Library.Enums.GameType.MineField,
-                "table_surfing" => Library.Enums.GameType.TableSurfing,
+                "logic" => Library.Enums.GameType.Logic,
+                "strength" => Library.Enums.GameType.Strength,
+                "teamwork" => Library.Enums.GameType.Teamwork,
+                "human-shuffle" => Library.Enums.GameType.HumanShuffle,
+                "reaction" => Library.Enums.GameType.Reaction,
                 _ => throw new NotImplementedException("Invalid game type. Please migrate your data manually"),
             };
         }
