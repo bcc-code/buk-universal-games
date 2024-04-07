@@ -97,11 +97,16 @@ app.UseExceptionHandler(c => c.Run(async context =>
     if (exception is BadRequestException)
     {
         context.Response.StatusCode = 403;
-        await context.Response.WriteAsJsonAsync(new
-        {
-            Error = exception.Message
-        });
     }
+    else
+    {
+        context.Response.StatusCode = 500;
+    }
+    await context.Response.WriteAsJsonAsync(new
+    {
+        Error = exception?.Message,
+        StackTrace = exception?.StackTrace
+    });
 }));
 
 // Automatically migrate database
