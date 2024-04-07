@@ -1,17 +1,11 @@
 <template>
-  <section :class="{ card: true, 'text-label-1': true, loading }">
-    <div class="card-dark-column index-column">
+  <section class="flex align-middle items-center" :class="{ card: true, 'text-label-1': true, loading }">
       <p class="text-label-1">{{ index }}</p>
-    </div>
-    <div class="card-dark-column">
-      <div class="card-row my-5 ">
+      <div class="flex my-5 ">
         <span class="buk-icon"><img src="icon/buk-icon.svg" /></span>
         <p class="text-label-1 hide-text-overflow">{{ team }}</p>
       </div>
-    </div>
-    <div class="card-dark-column">
       <p class="text-label-1">{{ points }}</p>
-    </div>
   </section>
 </template>
 
