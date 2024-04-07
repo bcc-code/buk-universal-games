@@ -1,4 +1,4 @@
-export const rootUrl = location.hostname === 'universalgames.buk.no' ? 'https://universalgames.buk.no/api/' : `https://buk-universal-games-directus-prod-lo75nlp2va-ez.a.run.app/`
+export const rootUrl = location.hostname === 'universalgames.buk.no' ? 'https://universalgames.buk.no/api/' : `https://universalgames.buk.no/api/`
 const retryRequestAmount = 5; // Retry the request x times
 const secondsBetweenRetry = 2; // Wait x seconds between each request
 

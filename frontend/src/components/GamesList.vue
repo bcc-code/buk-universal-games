@@ -9,12 +9,12 @@
     <h2>{{ $t("general_error") }}</h2>
     <p>{{ $t("please_refresh") }}</p>
   </div>
-  <ul v-else class="games">
-    <li class="game" v-for="game in games" :key="game.id" @click="$emit('clicked', game)">
-      <img class="game-icon" :src="`icon/game-${game.gameType.replaceAll('_','')}.svg`" />
-      <h3 class="game-title">{{ $t(`games.${game.gameType}`) }}</h3>
-    </li>
-  </ul>
+  <div v-else class="space-y-5 ">
+    <div class="bg-vanilla hover:bg-ice-blue rounded-md flex items-center py-3 px-5" v-for="game in games" :key="game.id" @click="$emit('clicked', game)">
+      <img class="h-10 w-10 mr-7" :src="`icon/game-${game.gameType.replaceAll('_','')}.svg`" />
+      <p class="w-full">{{ $t(`games.${game.gameType}`) }}</p>
+    </div>
+  </div>
 </template>
 
 <script>

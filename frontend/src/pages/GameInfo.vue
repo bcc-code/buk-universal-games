@@ -56,14 +56,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.banner {
-  width: 100%;
-  padding: 2em;
-  border-radius: 1em;
-  margin: 2em auto;
-  background-color: var(--dark);
-  color: var(--green);
-}
-</style>
