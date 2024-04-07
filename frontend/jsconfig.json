@@ -15,5 +15,10 @@
       "dom.iterable",
       "scripthost"
     ]
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "tailwind.config.js" // Add this line to exclude tailwind.config.js
+  ]
 }

@@ -5,6 +5,7 @@ import initStore from '../src/store'
 import { setupI18n } from './libs/i18n'
 import NotificationService from './services/notification.service'
 import createMatchNotifierPlugin from './plugins/match-notifier'
+import './index.css'
 
 const notificationService = new NotificationService();
 const matchNotifierPlugin = createMatchNotifierPlugin(notificationService);

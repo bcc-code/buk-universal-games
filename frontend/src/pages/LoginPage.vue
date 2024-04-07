@@ -1,5 +1,5 @@
 <template>
-  <section class="bg">
+  <section class="bg-slate-100">
     <form class="content" @submit="tryLogin">
       <p class="install-hint">{{ $t('install_hint') }}</p>
       <img src="image/logo_icon.svg" alt="" class="logo" />
