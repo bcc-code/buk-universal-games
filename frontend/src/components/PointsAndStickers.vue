@@ -4,11 +4,11 @@
       <img src="image/logo_icon.svg" class="logo" />
     </div>
     <div class="card-dark-column">
-      <div class="card-dark-heading">{{ $t('points') }}</div>
+      <div class="text-dark-blue">{{ $t('points') }}</div>
       <h1 class="card-dark-text">{{ points ?? "-" }}</h1>
     </div>
     <div class="card-dark-column">
-      <div class="card-dark-heading">{{ $t('coins') }}</div>
+      <div class="text-dark-blue">{{ $t('coins') }}</div>
       <h1 class="card-dark-text">{{ stickers ?? "-" }}</h1>
     </div>
     <div></div>

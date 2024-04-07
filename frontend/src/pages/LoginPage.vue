@@ -2,7 +2,7 @@
   <section class="px-5">
     <form class="content" @submit="tryLogin">
       <div class="mx-auto my-10 text-center">
-        <p class="text-slate-100">{{ $t('install_hint') }}</p>
+        <p class="text-ice-blue">{{ $t('install_hint') }}</p>
       </div>
       <img src="image/logo_icon.svg" alt="" class="logo" />
       <input type="text" class="codeInput" :placeholder="$t('login.teamcode')" v-model="teamCode" />

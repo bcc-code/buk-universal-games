@@ -146,9 +146,9 @@
       "intro": "Look at the image. What number should the question mark be?",
       "a": {
         "30": "30",
+        "67": "67",
         "81": "81",
-        "200": "200",
-        "67": "67"
+        "200": "200"
       }
     },
     "knowledge": {
@@ -162,5 +162,6 @@
       }
     }
   },
-  "back": "Back"
+  "back": "Back",
+  "please_refresh": "Please refresh"
 }

@@ -1,8 +1,10 @@
 <template>
   <nav class="user-menu">
     <div class="user-menu-btn-small-wrapper">
+      <Icon name="heroicons:check" class="h-4" />
       <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'LeagueList' }"
         @click="$router.push({ name: 'LeagueList' })"><img src="icon/home.svg" /></button>
+        
       <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'MatchList' }"
         @click="$router.push({ name: 'MatchList' })"><img src="icon/calendar.svg" /></button>
     </div>

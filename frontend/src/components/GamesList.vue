@@ -13,6 +13,11 @@
     <div class="bg-vanilla hover:bg-ice-blue rounded-md flex items-center py-3 px-5" v-for="game in games" :key="game.id" @click="$emit('clicked', game)">
       <img class="h-10 w-10 mr-7" :src="`icon/game-${game.gameType.replaceAll('_','')}.svg`" />
       <p class="w-full">{{ $t(`games.${game.gameType}`) }}</p>
+      <div>
+      <Icon name="heroicons:check" class="h-4 text-dark-blue" />
+    </div>
+
+
     </div>
   </div>
 </template>
@@ -65,7 +70,7 @@ export default {
   background-color: var(--dark);
   background-repeat: no-repeat;
   background-size: 10em 100%;
-  background-image: linear-gradient(to right, var(--dark) 0%, hsl(323, 50%, 33%) 50%, var(--dark) 100%);
+  background-image: linear-gradient(to right, var(--dark) 0%,  var(--dark-blue) 50%, var(--dark) 100%);
   animation-duration: 750ms;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;
@@ -85,7 +90,7 @@ export default {
 
 .games-loading .game .game-title,
 .games-loading .game .game-icon {
-  color: hsl(323, 50%, 33%);
-  background-color: hsl(323, 50%, 33%);
+  color:  var(--dark-blue);
+  background-color:  var(--dark-blue);
 }
 </style>

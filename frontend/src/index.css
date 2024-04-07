@@ -11,14 +11,16 @@
     --warm-brown: #CEAB9D;
     --dusty-blue: #426083;
     --ice-blue: #DCE9EA;
-    --grey: #A4A4A4;
-      --dark: #F7EAD0;
-      --gray-1: #e5e5e5;
-      --gray-2: #999;
-      --green: #816668;
-      --red: #426083;
-      --darkgreen:#CEAB9D;
-      --yellow: #F7EAD0;
+    --grey: #A4A4A4;    
+    --label-1: #323538;
+    --label-3: #7c7878;
+    --dark: #F7EAD0;
+    --gray-1: #e5e5e5;
+    --gray-2: #999;
+    --green: #816668;
+    --red: #426083;
+    --darkgreen:#CEAB9D;
+    --yellow: #F7EAD0;
       /* These values yield colours extremely similar to the colours above, through applied CSS filters.
       This means they can be used to colourise SVG elements inserted through <img /> tags. */
       --active-green-button: brightness(0) saturate(100%) invert(48%) sepia(43%) saturate(1337%) hue-rotate(114deg) brightness(96%) contrast(101%);
