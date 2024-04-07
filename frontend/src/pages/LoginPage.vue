@@ -2,7 +2,7 @@
   <section class="bg">
     <form class="content" @submit="tryLogin">
       <p class="install-hint">{{ $t('install_hint') }}</p>
-      <img src="image/ubg-logo.svg" alt="" class="logo" />
+      <img src="image/logo_icon.svg" alt="" class="logo" />
       <input type="text" class="codeInput" :placeholder="$t('login.teamcode')" v-model="teamCode" />
       <button v-if="teamCode.length > 3" class="btn-primary">{{ $t('login.login_button') }}</button>
       <p v-if="loginMessage" class="login-msg">{{ loginMessage }}</p>
