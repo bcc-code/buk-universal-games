@@ -18,12 +18,17 @@ module.exports = {
       'warm-brown': '#CEAB9D',
       'dusty-blue': '#426083',
       'ice-blue': '#DCE9EA',
+      'label-1': '#323538',
+      'label-2': '#7c7878',
+      'label-3': '#e5e5e5',
       'grey': '#A4A4A4',
     },
+
     fontFamily: {
-      sans: ['Times', 'sans-serif'],
-      serif: ['Times New Roman', 'serif'],
+      fontFamily: {
+        sans: ["Roboto", "sans-serif"]
     },
+  },
     extend: {
       spacing: {
         '128': '32rem',

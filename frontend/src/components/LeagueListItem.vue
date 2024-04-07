@@ -1,16 +1,16 @@
 <template>
-  <section :class="{ card: true, 'card-dark': true, loading }">
+  <section :class="{ card: true, 'text-label-1': true, loading }">
     <div class="card-dark-column index-column">
-      <h2 class="card-dark-text">{{ index }}</h2>
+      <h2 class="text-label-1">{{ index }}</h2>
     </div>
     <div class="card-dark-column">
-      <div class="card-row">
+      <div class="card-row my-5 ">
         <span class="buk-icon"><img src="icon/buk-icon.svg" /></span>
-        <h2 class="card-dark-text hide-text-overflow">{{ team }}</h2>
+        <h2 class="text-label-1 hide-text-overflow">{{ team }}</h2>
       </div>
     </div>
     <div class="card-dark-column">
-      <h2 class="card-dark-text">{{ points }}</h2>
+      <h2 class="text-label-1">{{ points }}</h2>
     </div>
   </section>
 </template>
@@ -51,13 +51,13 @@ button {
 }
 
 .card-dark {
-  background-color: var(--dark);
+  background-color: var(--label-1);
   color: white;
 }
 
 .card-light {
   background-color: white;
-  color: var(--dark);
+  color: var(--label-1);
 }
 
 .card-dark-column:nth-child(-n + 3) {

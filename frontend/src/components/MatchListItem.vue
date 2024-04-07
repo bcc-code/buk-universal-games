@@ -1,21 +1,21 @@
 <template>
-  <section class="card card-light" @click="() => { if (clickFunc) clickFunc() }">
-    <div class="card-light-column">
-      <span class="card-light-text game-title">
-        <img class="icon" :src="`icon/game-${gameType?.replaceAll('_','')}.svg`" />
+  <section class="rounded-md py-2 px-2 text-label-1 bg-ice-blue flex w-full" @click="() => { if (clickFunc) clickFunc() }">
+    <div class="flex flex-col w-full">
+      <span class="text-xs game-title">
+        <img class="w-10 h-10" :src="`icon/game-${gameType?.replaceAll('_','')}.svg`" />
         <span class="text">{{ $t(`games.${gameType}`) }} - {{ gameAddOn || '' }}</span>
       </span>
     </div>
-    <div class="card-light-column">
-      <span :class="{ 'card-light-text': true, 'card-teams': true, winner: team1 === winner, loser: team2 === winner }">
+    <div class="text-label-1 flex flex-col w-full">
+      <span :class="{ 'text-xs': true, 'card-teams': true, winner: team1 === winner, loser: team2 === winner }">
         <span>{{ team1 }}</span>
       </span>
-      <span :class="{ 'card-light-text': true, 'card-teams': true, winner: team2 === winner, loser: team1 === winner }">
+      <span :class="{ 'text-xs': true, 'card-teams': true, winner: team2 === winner, loser: team1 === winner }">
         <span>{{ team2 }}</span>
       </span>
     </div>
-    <div class="card-light-column">
-      <span class="card-light-text">{{ start }}</span>
+    <div class="flex flex-col w-full">
+      <span class="text-xs">{{ start }}</span>
     </div>
   </section>
 </template>
@@ -40,45 +40,8 @@ export default {
 </script>
 
 <style scoped>
-button {
-  background-color: inherit;
-}
 
-.icon {
-  width: 3em;
-  height: 3em;
-  margin-right: 0.5em;
-}
 
-.card {
-  padding: 0.25em 0.5em;
-  border-radius: 0.75em;
-  display: grid;
-  grid-template-columns: 40% 47% 13%;
-  align-items: center;
-}
-
-.card-light {
-  background-color: white;
-  color: var(--dark);
-}
-
-.card-light-column {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.card-dark {
-  background-color: var(--dark);
-  color: white;
-}
-
-.card-light-text {
-  font-size: 0.85em;
-  color: inherit;
-  margin: 0.35em;
-}
 
 .card-btn {
   border-left: 1px solid rgba(255, 255, 255, 0.3);

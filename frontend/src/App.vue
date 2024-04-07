@@ -72,11 +72,11 @@ h1 {
 }
 
 .btn-blank {
-  border: 2px solid var(--dark);
+  border: 2px solid var(--dark-blue);
 }
 
 .btn-primary {
-  background-color: var(--dark);
+  background-color: var(--vanilla);
   color: white;
 }
 

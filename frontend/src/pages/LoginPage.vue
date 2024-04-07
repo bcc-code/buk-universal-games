@@ -1,13 +1,14 @@
 <template>
-  <section class="px-5">
-    <form class="content" @submit="tryLogin">
-      <div class="mx-auto my-10 text-center">
-        <p class="text-ice-blue">{{ $t('install_hint') }}</p>
-      </div>
+  <section class="px-5 flex justify-center items-center h-screen">
+    <form class="flex flex-col py-10 space-y-10 justify-center align-middle" @submit="tryLogin">
       <img src="image/logo_icon.svg" alt="" class="logo" />
-      <input type="text" class="codeInput" :placeholder="$t('login.teamcode')" v-model="teamCode" />
-      <button v-if="teamCode.length > 3" class="btn-primary">{{ $t('login.login_button') }}</button>
+      <input type="text" class="text-center p-3 w-full uppercase tracking-wide bg-ice-blue/20" :placeholder="$t('login.teamcode')" v-model="teamCode" />
+      <button v-if="teamCode.length > 3" class="bg-vanilla text-lg text-dark-brown py-3 px-2">{{ $t('login.login_button') }}</button>
+      
       <p v-if="loginMessage" class="login-msg">{{ loginMessage }}</p>
+      <div class="mx-auto text-center bg-hazy-green/10 rounded-md p-3">
+        <p class="text-label-3 text-xs ">{{ $t('install_hint') }}</p>
+      </div>
     </form>
   </section>
 </template>
@@ -92,29 +93,10 @@ export default {
 }
 
 .codeInput {
-  margin: 1em auto;
-  width: 100%;
-  max-width: 600px;
-  text-align: center;
-  font-size: 1.3rem;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  border: none;
-  background-color: rgba(255, 255, 255, 0.8);
-  color: var(--dark);
   text-transform: uppercase;
-  letter-spacing: 0.1rem;
-  outline: none;
 }
 
-.content {
 
-  padding-top: 10rem;
-  padding-bottom: 10rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 
 .btn-primary {
   margin: 1em auto;

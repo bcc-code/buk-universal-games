@@ -1,5 +1,5 @@
 <template>
-  <section :class="{ 'card-dark': true, loading }">
+  <section :class="{ 'bg-vanilla py-5 px-3 border-r-2 border-dark flex justify-between rounded-md': true, loading }">
     <div class="card-dark-column">
       <img src="image/logo_icon.svg" class="logo" />
     </div>

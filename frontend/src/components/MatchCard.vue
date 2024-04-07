@@ -1,5 +1,5 @@
 <template>
-  <section v-if="selectedMatch?.team1" class="card card-dark">
+  <section v-if="selectedMatch?.team1" class="card bg-vanilla p-1">
     <section>
       <div class="card-dark-column">
         <h1 class="gameinfo card-dark-text" @click="showGameInfo">
@@ -8,15 +8,15 @@
         </h1>
       </div>
     </section>
-    <section class="card-row">
-      <div class="card-dark-column">
+    <section class="flex justify-center align-center w-full">
+      <div class="flex flex-col justify-center align-center w-full">
         <h2 class="card-dark-text">{{ selectedMatch?.team1 }}</h2>
         <div v-if="selectedMatch.winner">
           <h2 :class="{ 'card-dark-text' : true, 'winner' : selectedMatch.winnerId == selectedMatch.team1Id }">{{ selectedMatch.team1Result ? $t("score." + game?.gameType, { score:selectedMatch.team1Result}) : '-' }}</h2>
         </div>
       </div>
       <div class="vl"></div>
-      <div class="card-dark-column">
+      <div class="flex flex-col justify-center align-center w-full">
         <h2 class="card-dark-text">{{ selectedMatch?.team2 }}</h2>
         <div v-if="selectedMatch.winner">
           <h2 :class="{ 'card-dark-text' : true, 'winner' : selectedMatch.winnerId == selectedMatch.team2Id }">{{ selectedMatch.team2Result ? $t("score." + game?.gameType, { score:selectedMatch.team2Result}) : "-" }}</h2>
@@ -93,7 +93,7 @@ button {
 }
 
 .card-dark {
-  background-color: var(--dark);
+  background-color: var(--label-1);
   color: white;
 }
 
