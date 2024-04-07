@@ -2,11 +2,11 @@
 {
     public enum GameType
     {
-        Reaction = 1,
-        Teamwork = 2,
-        Strength = 3,
-        HumanShuffle = 4,
-        Logic = 5,
+        NerveSpiral = 1,
+        TicketTwist = 2,
+        MonkeyBars = 3,
+        MineField = 4,
+        TableSurfing = 5,
 
     }
 }
