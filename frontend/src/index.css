@@ -29,6 +29,40 @@
   }
 
 body {
-    background-color: var(--dark-blue);  
+    background-color: var(--dark-blue);
+    
 }
-  
+
+h1 {
+  @apply text-3xl font-light text-label-1;
+}
+
+h2 {
+  @apply text-xl font-light text-label-1;
+}
+
+h3 {
+  @apply text-4xl font-light text-label-1;
+}
+
+h4 {
+  @apply text-3xl;
+}
+
+p {
+  @apply text-sm
+}
+
+.label {
+  @apply text-xs tracking-widest
+}
+
+@media (min-width: 768px) {
+  h1 {
+      @apply text-3xl font-light;
+  }
+
+  h2 {
+      @apply text-2xl font-light;
+  }
+}

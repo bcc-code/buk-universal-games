@@ -2,7 +2,7 @@
   <section class="px-5 flex justify-center items-center h-screen">
     <form class="flex flex-col py-10 space-y-10 justify-center align-middle" @submit="tryLogin">
       <img src="image/logo_icon.svg" alt="" class="logo" />
-      <input type="text" class="text-center p-3 w-full uppercase tracking-wide bg-ice-blue/20" :placeholder="$t('login.teamcode')" v-model="teamCode" />
+      <input type="text" class="text-center text-vanilla p-3 w-full uppercase tracking-wide bg-ice-blue/20" :placeholder="$t('login.teamcode')" v-model="teamCode" />
       <button v-if="teamCode.length > 3" class="bg-vanilla text-lg text-dark-brown py-3 px-2">{{ $t('login.login_button') }}</button>
       
       <p v-if="loginMessage" class="login-msg">{{ loginMessage }}</p>

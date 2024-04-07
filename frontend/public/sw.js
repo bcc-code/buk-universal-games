@@ -123,8 +123,6 @@ const cacheableDestinations = [
 ];
 
 const preCacheUris = [
-  'font/ClashGrotesk-Medium.otf',
-  'font/ClashGrotesk-Semibold.otf',
   'icon/ball.svg',
   'icon/buk-icon.svg',
   'icon/calendar.svg',

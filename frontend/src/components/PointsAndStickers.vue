@@ -1,21 +1,21 @@
 <template>
-  <section :class="{ 'bg-vanilla py-5 px-3 border-r-2 border-dark flex justify-between rounded-md': true, loading }">
-    <div class="card-dark-column">
-      <img src="image/logo_icon.svg" class="logo" />
+  <section :class="{ 'bg-vanilla py-3 px-3 border-r-2 border-dark flex justify-between rounded-md': true, loading }">
+    <div class="h-10 w-10">
+      <img src="image/logo_icon.svg" class="rounded-md" />
+    </div>
+    <div class="">
+      <p class="text-label-2 label uppercase">{{ $t('team') }}</p>
+      <h2 class="text-label-1 ">{{ teamName ?? "-" }}</h2>
     </div>
     <div class="card-dark-column">
-      <div class="text-dark-blue">{{ $t('points') }}</div>
-      <h1 class="card-dark-text">{{ points ?? "-" }}</h1>
-    </div>
-    <div class="card-dark-column">
-      <div class="text-dark-blue">{{ $t('coins') }}</div>
-      <h1 class="card-dark-text">{{ stickers ?? "-" }}</h1>
+      <p class="text-label-2 label uppercase">{{ $t('points') }}</p>
+      <h1 class="text-label-1">{{ points ?? "-" }}</h1>
     </div>
     <div></div>
-    <div class="right-section">
+    <div class="align-middle flex">
       <LanguageSwitcher />
-      <button class="card-btn" @click="refresh"><img src="icon/refresh.svg" /></button>
-    </div>
+<!--       <button class="ml-3 card-btn" @click="refresh"><img src="icon/refresh.svg" /></button>
+ -->    </div>
   </section>
 </template>
 
@@ -29,6 +29,7 @@ export default {
     points: Number,
     stickers: Number,
     refresh: Function,
+    teamName: String,
     loading: {
       required: false,
       type: Boolean,

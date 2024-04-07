@@ -3,6 +3,7 @@ import VuexPersistence from "vuex-persist";
 import roundfinishedMonitor from "@/plugins/roundfinished-monitor";
 import { initData, getData, postData } from "../libs/apiHelper"
 
+
 const storageKeyPrefix = 'buk-universal-games-';
 
 const vuexLocal = new VuexPersistence({
@@ -28,6 +29,7 @@ export default function (...plugins) {
       matches: [],
       adminMatches: [],
       games: [],
+      teamName: 'Winnner',
       gamesLoading: true,
       coins: [],
       coinsInitialized: false,
@@ -66,6 +68,9 @@ export default function (...plugins) {
       },
       setTeamStatus(state, data) {
         state.teamStatus = data
+      },
+      setTeamName(state, data) {
+        state.teamName = data
       },
       setLeagueStatus(state, data) {
         state.leagueStatus = data

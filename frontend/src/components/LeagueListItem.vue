@@ -1,16 +1,16 @@
 <template>
   <section :class="{ card: true, 'text-label-1': true, loading }">
     <div class="card-dark-column index-column">
-      <h2 class="text-label-1">{{ index }}</h2>
+      <p class="text-label-1">{{ index }}</p>
     </div>
     <div class="card-dark-column">
       <div class="card-row my-5 ">
         <span class="buk-icon"><img src="icon/buk-icon.svg" /></span>
-        <h2 class="text-label-1 hide-text-overflow">{{ team }}</h2>
+        <p class="text-label-1 hide-text-overflow">{{ team }}</p>
       </div>
     </div>
     <div class="card-dark-column">
-      <h2 class="text-label-1">{{ points }}</h2>
+      <p class="text-label-1">{{ points }}</p>
     </div>
   </section>
 </template>

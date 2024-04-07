@@ -6,9 +6,10 @@
         :points="teamStatus?.points"
         :stickers="coins.length"
         :refresh="refresh"
+        :teamName="teamName"
       />
       <div v-if="teamStatus?.error">
-        <h2>{{ $t("general_error") }}</h2>
+        <p>{{ $t("general_error") }}</p>
         <p>{{ teamStatus.error }}</p>
         <p>{{ $t("please_refresh") }}</p>
       </div>
@@ -17,10 +18,10 @@
       <section class="ranking-title">
         <div class="ranking-title-column index-column"></div>
         <div class="ranking-title-column">
-          <h2 class="ranking-title-text">Team</h2>
+          <p class="ranking-title-text">Team</p>
         </div>
         <div class="ranking-title-column">
-          <h2 class="ranking-title-text">Points</h2>
+          <p class="ranking-title-text">Points</p>
         </div>
       </section>
       <section class="user-section" v-for="i in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]" :key="i">
@@ -37,7 +38,7 @@
     <div v-else>
       <div v-if="leagueStatus.error">
         <div v-if="leagueStatus.errorCode != 406">
-          <h2>{{ $t("general_error") }}</h2>
+          <p>{{ $t("general_error") }}</p>
 
           <div class="message">
             <p class="message-text">{{ leagueStatus.error }}</p>
@@ -53,15 +54,15 @@
         <button class="btn-success" @click="this.$router.push('games')">{{ $t("league.viewgamerankings") }}</button>
       </div>
       <div class="rankingfrozen-message" v-if="$store.getters.currentRound > 3">
-        <h3>{{ $t("league.ranking-frozen") }}</h3>
+        <p>{{ $t("league.ranking-frozen") }}</p>
       </div>
       <section class="ranking-title" v-if="leagueStatus.status?.total.length">
         <div class="ranking-title-column index-column"></div>
         <div class="ranking-title-column">
-          <h2 class="ranking-title-text">Team</h2>
+          <p class="ranking-title-text">Team</p>
         </div>
         <div class="ranking-title-column">
-          <h2 class="ranking-title-text">Points</h2>
+          <p class="ranking-title-text">Points</p>
         </div>
       </section>
       <section v-else>
@@ -124,6 +125,9 @@ export default {
     },
     leagueStatus() {
       return this?.$store.state.leagueStatus;
+    },
+    teamName() {
+      return this?.$store.state.teamName;
     },
   },
 };

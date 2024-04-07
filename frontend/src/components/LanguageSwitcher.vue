@@ -6,7 +6,7 @@
             <div class="background" v-if="isOpen" @click="toggleDropdown(null)"></div>
             <div class="dropdown-menu" ref="languagePickerMenu">
                 <div v-for="locale in Object.keys(locales)" :key="`locale-${locale}`" class="dropdown-item" @click="changeLanguage(locale)">
-                {{ locales[locale] }}
+               <p> {{ locales[locale] }}</p>
                 </div>
             </div>
         </div>

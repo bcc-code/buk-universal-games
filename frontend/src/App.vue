@@ -23,12 +23,6 @@ html {
   height: 100%;
 }
 
-body {
-  margin: 0;
-  font-size: 16px;
-  font-family: "ClashGrotesk-Medium", sans-serif;
-  height: 100%;
-}
 
 main {
   height: 100%;
@@ -57,15 +51,6 @@ input,
   font: inherit;
 }
 
-h1,
-p {
-  margin: 0;
-}
-
-h1 {
-  font-family: "ClashGrotesk-Semibold", sans-serif;
-  font-size: 1.5em;
-}
 
 .btn-success {
   background-color: var(--green);
