@@ -31,7 +31,7 @@ public class Game {
                 "ticket_twist" => Library.Enums.GameType.TicketTwist,
                 "mine_field" => Library.Enums.GameType.MineField,
                 "table_surfing" => Library.Enums.GameType.TableSurfing,
-                _ => throw new NotImplementedException("Invalid game type. Please migrate your data manually"),
+                _ => throw new NotImplementedException($"Invalid game type '{GameType}'. Please migrate your data manually"),
             };
         }
     }
