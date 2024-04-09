@@ -1,13 +1,23 @@
 <template>
-  <section class="rounded-md py-2 px-2 text-label-1 bg-ice-blue flex w-full"
+  <section class="bg-vanilla hover:bg-ice-blue rounded-md flex flex-col items-center py-3 px-3"
     @click="() => { if (clickFunc) clickFunc() }">
-    <div class="flex flex-col w-full">
-      <span class="text-xs game-title">
+    <div class="flex w-full">
+    <div class="flex w-full ">
+      <span class="text-xs flex space-x-5 ">
         <img class="w-10 h-10" :src="`icon/game-${gameType?.replaceAll('_', '')}.svg`" />
-        <span class="text">{{ $t(`games.${gameType}`) }} - {{ gameAddOn || '' }}</span>
+        <p class="text">{{ $t(`games.${gameType}`) }} </p>
       </span>
     </div>
-    <div class="text-label-1 flex flex-col w-full">
+
+    <div class="flex flex-col ">
+      <span class="text-xs">{{ start }}</span>
+    </div>
+  </div>
+  <div v-if="team2!=='noteam'">
+    <hr class="bg-dark-blue w-full">
+  </div>
+  <div v-if="team2!=='noteam'" class="text-label-1 flex flex-col w-full items-center">
+    <div class="flex space-x-5">
       <span :class="{ 'text-xs': true, 'card-teams': true, winner: team1 === winner, loser: team2 === winner }">
         <span>{{ team1 }}</span>
       </span>
@@ -15,9 +25,7 @@
         <span>{{ team2 }}</span>
       </span>
     </div>
-    <div class="flex flex-col w-full">
-      <span class="text-xs">{{ start }}</span>
-    </div>
+  </div>
   </section>
 </template>
 

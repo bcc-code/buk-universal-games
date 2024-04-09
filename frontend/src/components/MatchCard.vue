@@ -15,7 +15,6 @@
           <h2 :class="{ 'card-dark-text' : true, 'winner' : selectedMatch.winnerId == selectedMatch.team1Id }">{{ selectedMatch.team1Result ? $t("score." + game?.gameType, { score:selectedMatch.team1Result}) : '-' }}</h2>
         </div>
       </div>
-      <div class="vl"></div>
       <div class="flex flex-col justify-center align-center w-full">
         <h2 class="card-dark-text">{{ selectedMatch?.team2 }}</h2>
         <div v-if="selectedMatch.winner">

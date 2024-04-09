@@ -10,24 +10,23 @@
     <p>{{ $t("please_refresh") }}</p>
   </div>
   <div v-else class="space-y-5 ">
-    <div class="bg-vanilla hover:bg-ice-blue rounded-md flex items-center py-3 px-5" v-for="game in games"
-      :key="game.id" @click="$emit('clicked', game)">
-      <img class="h-10 w-10 mr-7" :src="`icon/game-${game.gameType.replace(/_/g, '')}.svg`" />
+    <div  v-for="game in games"
+      :key="game.gameId" @click="$emit('clicked', game)">
+      <
+      <GamesListItem :game-id="game.id" :game-type="game.gameType" :game-start="game.start" />
 
-      <p class="w-full">{{ $t(`games.${game.gameType}`) }}</p>
-      <div>
-
-        <CheckIcon class="h-4 text-dark-blue" />
-
-      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { CheckIcon } from '@heroicons/vue/24/solid'
-
-defineProps<{ games: Array<{ gameType: string, id: string | number }>, loading: boolean }>()
+import GamesListItem from './GamesListItem.vue'
+defineProps<{ games: Array<{ 
+  gameType: string, 
+  gameId: string | number
+  id: string | number
+  start: string }>, 
+  loading: boolean }>()
 </script>
 
 <style scoped>

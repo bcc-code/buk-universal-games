@@ -37,7 +37,6 @@
     </section>
   </UserPageLayout>
 </template>
-
 <script>
 import UserPageLayout from '../components/UserPageLayout.vue'
 import MatchListItem from '../components/MatchListItem.vue'
