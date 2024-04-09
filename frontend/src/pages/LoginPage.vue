@@ -1,7 +1,7 @@
 <template>
   <section class="px-5 flex justify-center items-center h-screen">
     <form class="flex flex-col py-10 space-y-10 justify-center align-middle" @submit="tryLogin">
-      <img src="../assets/image/logo_icon.svg" alt="" class="logo" />
+      <img src="/image/logo_icon.svg" alt="" class="logo" />
       <input
         type="text"
         class="text-center text-vanilla p-3 w-full uppercase tracking-wide bg-ice-blue/20"
