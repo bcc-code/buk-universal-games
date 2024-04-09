@@ -1,5 +1,5 @@
 # buk-universal-games
-This is a default readme
+This is a default readme.
 
 ```sh
 npm install
@@ -38,3 +38,10 @@ npm run test:e2e -- tests/example.spec.ts
 # Runs the tests in debug mode
 npm run test:e2e -- --debug
 ```
+
+### Config references
+[Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)  
+[Vite Configuration Reference](https://vitejs.dev/config/)  
+[Vitest](https://vitest.dev/)  
+[Playwright](https://playwright.dev)  
+[ESLint](https://eslint.org/)  
