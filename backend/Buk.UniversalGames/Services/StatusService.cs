@@ -251,7 +251,7 @@ namespace Buk.UniversalGames.Services
             {
                 GameType.LandWaterBeach => 3,
                 GameType.IronGrip => 5,
-                GameType.MineField => 7,
+                GameType.Mastermind => 7,
                 GameType.Labyrinth => 9,
                 GameType.HumanShuffleBoard => 11,
                 _ => throw new Exception()
