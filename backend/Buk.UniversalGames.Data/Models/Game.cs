@@ -28,8 +28,6 @@ public class Game {
                 "irongrip" => Library.Enums.GameType.IronGrip,
                 "land_water_beach" => Library.Enums.GameType.LandWaterBeach,
                 "human_shuffleboard" => Library.Enums.GameType.HumanShuffleBoard,
-                "labyrinth" => Library.Enums.GameType.Labyrinth,
-                "mastermind" => Library.Enums.GameType.Mastermind,
                 "iron_grip" => Library.Enums.GameType.IronGrip,
                 _ => throw new NotImplementedException($"Invalid game type '{GameType}'. Please migrate your data manually"),
             };

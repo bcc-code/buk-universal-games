@@ -83,7 +83,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(240, 6, 166, 0.849);
   z-index: 998;
 }
 
@@ -109,9 +109,9 @@ export default {
   min-width: 100%;
   padding: 0.5rem;
   margin-top: 0.5rem;
-  border: 1px solid #ccc;
+  border: 1px solid #9d0101;
   border-radius: 4px;
-  background-color: #fff;
+  background-color: #ba1414;
   color:var(--dark);
   box-shadow: 2px 2px 2px #ccc;
 }
