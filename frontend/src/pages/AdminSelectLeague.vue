@@ -5,7 +5,7 @@
       'background-color': '#a0e3be'
     }"
   >
-    <img src="../assets/image/ubg-logo.svg" alt="" class="logo" />
+    <img src="/image/ubg-logo.svg" alt="" class="logo" />
     <section class="leagues">
       <p>
         {{ $t('admin.select_league.intro') }}
