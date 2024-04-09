@@ -1,7 +1,7 @@
 import { createStore } from "vuex"; 
 import VuexPersistence from "vuex-persist";
-import roundfinishedMonitor from "@/plugins/roundfinished-monitor";
-import { initData, getData, postData } from "../libs/apiHelper"
+import roundfinishedMonitor from "../plugins/roundfinished-monitor";
+ import { initData, getData, postData } from "../libs/apiHelper"
 
 
 const storageKeyPrefix = 'buk-universal-games-';

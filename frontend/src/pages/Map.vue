@@ -2,34 +2,34 @@
   <div class="root">
     <div ref="map" class="map-wrapper">
       <img :src="map" alt="" />
-      <img :src="icons" style="position:absolute;" alt="" />
+      <img :src="icons" style="position: absolute" alt="" />
     </div>
     <UserMenu />
   </div>
 </template>
 
 <script>
-import UserMenu from "@/components/UserMenu.vue";
-import PinchZoom from "pinch-zoom-js";
+import UserMenu from '@/components/UserMenu.vue'
+import PinchZoom from 'pinch-zoom-js'
 
 export default {
-  name: "MapPage",
+  name: 'MapPage',
   components: { UserMenu },
   data() {
     return {
-      loginError: "Map",
+      loginError: 'Map',
       map: null,
-      icons: null,
-    };
+      icons: null
+    }
   },
   created() {
-    if (this.league == "k") {
-      this.map = "/image/ubg-beach-small.png";
+    if (this.league == 'k') {
+      this.map = '/image/ubg-beach-small.png'
     } else {
-      this.map = "/image/ubg-arena-small.png";
+      this.map = '/image/ubg-arena-small.png'
       this.defaultZoom
     }
-    this.icons = `/image/ubg-${this.league}-liga-icons.svg`;
+    this.icons = `/image/ubg-${this.league}-liga-icons.svg`
   },
   mounted() {
     new PinchZoom(this.$refs.map, {
@@ -37,16 +37,16 @@ export default {
       maxZoom: 10,
       animationDuration: 150,
       tapZoomFactor: 3,
-      draggableUnzoomed: true,
-    });
+      draggableUnzoomed: true
+    })
   },
   methods: {},
   computed: {
     league() {
-      return this.$store.state.loginData.league?.substring(0, 1).toLowerCase();
-    },
+      return this.$store.state.loginData.league?.substring(0, 1).toLowerCase()
+    }
   }
-};
+}
 </script>
 
 <style scoped>

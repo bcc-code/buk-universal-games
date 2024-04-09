@@ -1,11 +1,11 @@
+
 <template>
   <main>
-    <router-view :key="$route.fullPath"></router-view>
-    <internal-notification></internal-notification>
+    <router-view :key="$route.fullPath" />
+    <InternalNotification></InternalNotification>
   </main>
 </template>
-
-<script setup>
+<script setup lang="ts">
 import InternalNotification from '@/components/InternalNotification.vue';
 </script>
 
@@ -16,13 +16,10 @@ import InternalNotification from '@/components/InternalNotification.vue';
   box-sizing: inherit;
 }
 
-
-
 html {
   box-sizing: border-box;
   height: 100%;
 }
-
 
 main {
   height: 100%;
@@ -50,7 +47,6 @@ input,
   font-size: 1em;
   font: inherit;
 }
-
 
 .btn-success {
   background-color: var(--green);

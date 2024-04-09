@@ -5,8 +5,7 @@
       'background-color': '#a0e3be'
     }"
   >
-
-  <img src="image/ubg-logo.svg" alt="" class="logo" />
+    <img src="/image/ubg-logo.svg" alt="" class="logo" />
     <section class="leagues">
       <p>
         {{ $t('admin.select_league.intro') }}
@@ -23,31 +22,31 @@
 </template>
 
 <script>
-import AdminLeagueSelector from "@/components/AdminLeagueSelector.vue";
+import AdminLeagueSelector from '@/components/AdminLeagueSelector.vue'
 
 export default {
-  name: "AdminSelectLeague",
+  name: 'AdminSelectLeague',
   components: { AdminLeagueSelector },
   created() {
     if (!this.$store.state.adminLeagues.length) {
-      this.getAdminLeagues();
+      this.getAdminLeagues()
     }
   },
   methods: {
     getAdminLeagues() {
-      this.$store.dispatch("getAdminLeagues");
+      this.$store.dispatch('getAdminLeagues')
     },
     async selectLeague(id) {
-      await this.$store.dispatch("setAdminLeagueSelected", id);
-      this.$router.push({ name: "AdminLeagueStatus" });
-    },
+      await this.$store.dispatch('setAdminLeagueSelected', id)
+      this.$router.push({ name: 'AdminLeagueStatus' })
+    }
   },
   computed: {
     adminLeagues() {
-      return this?.$store.state.adminLeagues;
-    },
-  },
-};
+      return this?.$store.state.adminLeagues
+    }
+  }
+}
 </script>
 
 <style scoped>

@@ -1,97 +1,107 @@
 <template>
   <UserPageLayout>
     <div v-if="matches.error">
-      <h2>{{ $t("general_error") }}</h2>
+      <h2>{{ $t('general_error') }}</h2>
       <div class="message">
         <p class="message-text">{{ matches.error }}</p>
-        <p class="message-text">{{ $t("pleaserefresh") }}</p>
+        <p class="message-text">{{ $t('pleaserefresh') }}</p>
       </div>
     </div>
     <MatchCard :selectedMatch="selectedMatch" :game="whichGame(selectedMatch?.gameId)" />
     <section class="match-title" v-if="matches.length">
       <div class="match-title-column">
-        <h2 class="match-title-text">{{ $t("game") }}</h2>
+        <h2 class="match-title-text">{{ $t('game') }}</h2>
       </div>
       <div class="match-title-column">
-        <h2 class="match-title-text">{{ $t("team1team2") }}</h2>
+        <h2 class="match-title-text">{{ $t('team1team2') }}</h2>
       </div>
       <div class="match-title-column">
-        <h2 class="match-title-text">{{ $t("start") }}</h2>
+        <h2 class="match-title-text">{{ $t('start') }}</h2>
       </div>
     </section>
     <section class="user-section" v-for="match in matches" :key="match.id">
-      <div style="height:2px;width:100%;background-color: var(--dark);margin:5px 0 10px 0;"
-        v-if="match == currentActiveMatch"></div>
-      <MatchListItem :class="{ 'card-dark': match == selectedMatch }" :gameType="whichGame(match.gameId)?.gameType"
-        :gameAddOn="match.addOn" :team1="match.team1" :team2="match.team2" :start="match.start" :winner="match.winner"
-        :clickFunc="() => matchClicked(match)" />
+      <div
+        style="height: 2px; width: 100%; background-color: var(--dark); margin: 5px 0 10px 0"
+        v-if="match == currentActiveMatch"
+      ></div>
+      <MatchListItem
+        :class="{ 'card-dark': match == selectedMatch }"
+        :gameType="whichGame(match.gameId)?.gameType"
+        :gameAddOn="match.addOn"
+        :team1="match.team1"
+        :team2="match.team2"
+        :start="match.start"
+        :winner="match.winner"
+        :clickFunc="() => matchClicked(match)"
+      />
     </section>
   </UserPageLayout>
 </template>
 
 <script>
-import UserPageLayout from "../components/UserPageLayout.vue";
-import MatchListItem from "../components/MatchListItem.vue";
-import MatchCard from "../components/MatchCard.vue";
+import UserPageLayout from '../components/UserPageLayout.vue'
+import MatchListItem from '../components/MatchListItem.vue'
+import MatchCard from '../components/MatchCard.vue'
 
 export default {
-  name: "MatchList",
+  name: 'MatchList',
   props: {
-    data: String,
+    data: String
   },
   components: { UserPageLayout, MatchListItem, MatchCard },
   data() {
     return {
-      loginError: "Match List",
+      loginError: 'Match List',
       selectedMatch: {},
       currentActiveMatch: {}
-    };
+    }
   },
   created() {
-    this.$store.dispatch("getMatches", false);
-    this.$store.dispatch("getGames", false);
+    this.$store.dispatch('getMatches', false)
+    this.$store.dispatch('getGames', false)
   },
   mounted() {
-    this.getMatches();
+    this.getMatches()
   },
   methods: {
     async getMatches() {
-      let minutesBeforeNow = 20;
-      let now = new Date(new Date().getTime() - (minutesBeforeNow * 60 * 1000));
-      let currentTime = now.getHours() + ':' + now.getMinutes();
+      let minutesBeforeNow = 20
+      let now = new Date(new Date().getTime() - minutesBeforeNow * 60 * 1000)
+      let currentTime = now.getHours() + ':' + now.getMinutes()
       //let currentTime = "12:49";
 
-      this.initMatch(this.matches.filter((match) => match.start >= currentTime)[0] || this.matches[0]);
+      this.initMatch(
+        this.matches.filter((match) => match.start >= currentTime)[0] || this.matches[0]
+      )
     },
-    getGames() {
-    },
+    getGames() {},
     whichGame(id) {
       if (this.games.error) {
-        return {};
+        return {}
       }
 
-      let game = this.games.find((game) => game.id == id);
-      return game;
+      let game = this.games.find((game) => game.id == id)
+      return game
     },
     matchClicked(match) {
-      this.selectedMatch = match;
+      this.selectedMatch = match
     },
     initMatch(match) {
-      this.selectedMatch = match;
+      this.selectedMatch = match
       if (match != this.matches[0]) {
-        this.currentActiveMatch = match;
+        this.currentActiveMatch = match
       }
-    },
+    }
   },
   computed: {
     matches() {
-      return this.$store.state.matches;
+      return this.$store.state.matches
     },
     games() {
-      return this.$store.state.games;
-    },
-  },
-};
+      return this.$store.state.games
+    }
+  }
+}
 </script>
 
 <style scoped>

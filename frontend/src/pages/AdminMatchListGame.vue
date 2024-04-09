@@ -43,8 +43,17 @@
       </div>
     </section>
     <section class="user-section">
-      <div class="user-section-single" v-for="matchGroupKey in Object.keys(adminMatchGroups)" :key="matchGroupKey">
-        <p class="user-section-single-seperator" v-if="Object.keys(adminMatchGroups)[0] !== matchGroupKey">{{ matchGroupKey }}</p>
+      <div
+        class="user-section-single"
+        v-for="matchGroupKey in Object.keys(adminMatchGroups)"
+        :key="matchGroupKey"
+      >
+        <p
+          class="user-section-single-seperator"
+          v-if="Object.keys(adminMatchGroups)[0] !== matchGroupKey"
+        >
+          {{ matchGroupKey }}
+        </p>
         <MatchListItem
           v-for="match in adminMatchGroups[matchGroupKey].matches"
           :key="match.id"
@@ -62,94 +71,97 @@
 </template>
 
 <script>
-import AdminPageLayout from "@/components/AdminPageLayout.vue";
-import MatchListItem from "@/components/MatchListItem.vue";
-import AdminLeagueSelector from "@/components/AdminLeagueSelector.vue";
+import AdminPageLayout from '@/components/AdminPageLayout.vue'
+import MatchListItem from '@/components/MatchListItem.vue'
+import AdminLeagueSelector from '@/components/AdminLeagueSelector.vue'
 
 export default {
-  name: "AdminMatchListGame",
+  name: 'AdminMatchListGame',
   components: {
     AdminPageLayout,
     MatchListItem,
-    AdminLeagueSelector,
+    AdminLeagueSelector
   },
   created() {
     if (!this.$store.state.adminLeagues.length) {
-      this.getAdminLeagues();
+      this.getAdminLeagues()
     }
     if (!this.$store.state.games.length) {
-      this.getGames();
+      this.getGames()
     }
-    this.getMatches();
+    this.getMatches()
   },
   methods: {
     getAdminLeagues() {
-      this.$store.dispatch("getAdminLeagues");
+      this.$store.dispatch('getAdminLeagues')
     },
     getAdminLeagueStatus() {
-      this.$store.dispatch("getAdminLeagueStatus");
+      this.$store.dispatch('getAdminLeagueStatus')
     },
     async selectLeague(id) {
-      await this.$store.dispatch("setAdminLeagueSelected", id);
-      this.getMatches();
-      this.getAdminLeagueStatus();
+      await this.$store.dispatch('setAdminLeagueSelected', id)
+      this.getMatches()
+      this.getAdminLeagueStatus()
     },
     getMatches() {
-      this.$store.dispatch("getAdminMatches");
+      this.$store.dispatch('getAdminMatches')
     },
     getGames() {
-      this.$store.dispatch("getGames");
+      this.$store.dispatch('getGames')
     },
     getGameById(id) {
       if (this.games.error) {
-        return {};
+        return {}
       }
 
-      let game = this.games.find((game) => game.id == id);
-      return game;
+      let game = this.games.find((game) => game.id == id)
+      return game
     },
     matchClicked(match) {
       this.$router.push({
-        name: "AdminMatch",
+        name: 'AdminMatch',
         params: {
-          matchId: match.matchId.toString(),
-        },
-      });
-    },
+          matchId: match.matchId.toString()
+        }
+      })
+    }
   },
   computed: {
     adminLeagues() {
-      return this?.$store.state.adminLeagues;
+      return this?.$store.state.adminLeagues
     },
     adminMatchGroups() {
-      const matchGroups = [];
+      const matchGroups = []
 
       this?.$store?.state?.adminMatches?.forEach?.((match) => {
-        let shouldPush = true;
+        let shouldPush = true
 
-        if (this?.$store.state.adminFilterGameSelected !== null && match.gameId !== this?.$store.state.adminFilterGameSelected) {
-          shouldPush = false;
+        if (
+          this?.$store.state.adminFilterGameSelected !== null &&
+          match.gameId !== this?.$store.state.adminFilterGameSelected
+        ) {
+          shouldPush = false
         }
 
         if (shouldPush) {
           if (matchGroups[match.start]) {
-            shouldPush && matchGroups[match.start].matches.push(match);
+            shouldPush && matchGroups[match.start].matches.push(match)
           } else {
             matchGroups[match.start] = {
               id: match.start,
-              matches: [match],
-            };
+              matches: [match]
+            }
           }
         }
-      });
+      })
 
-      return matchGroups;
+      return matchGroups
     },
     games() {
-      return this?.$store.state.games;
-    },
-  },
-};
+      return this?.$store.state.games
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -227,7 +239,7 @@ export default {
 
 .user-section-single-seperator::before,
 .user-section-single-seperator::after {
-  content: " ";
+  content: ' ';
   position: absolute;
   top: 50%;
   transform: translateY(-50%);

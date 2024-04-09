@@ -1,4 +1,3 @@
-
 export default () => (store) => {
     store.subscribe(async (mutation) => {
         if(mutation.type === 'setMatches') {

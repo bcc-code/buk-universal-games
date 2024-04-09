@@ -5,41 +5,41 @@
 </template>
 
 <script>
-import { postStickerCode, myGetTeamCodeFunction } from "@/libs/apiHelper";
+import { postStickerCode, myGetTeamCodeFunction } from '@/libs/apiHelper'
 
 export default {
-  name: "ScanProcessing",
+  name: 'ScanProcessing',
   data() {
     return {
-      a: "b",
-    };
+      a: 'b'
+    }
   },
   mounted() {
-    const stickerCode = this.$store.state.scanning.stickerCode;
-    const teamCode = myGetTeamCodeFunction();
+    const stickerCode = this.$store.state.scanning.stickerCode
+    const teamCode = myGetTeamCodeFunction()
 
-    console.log(JSON.stringify(this.$store.state.loginData));
+    console.log(JSON.stringify(this.$store.state.loginData))
     // const handlingURL = this.$store.state.scanning.handlingURL;
 
     if (stickerCode && teamCode) {
       postStickerCode(stickerCode).then((r) => {
-        this.$store.commit("setScanning", { handlingURL: false, stickerCode: null });
+        this.$store.commit('setScanning', { handlingURL: false, stickerCode: null })
 
         this.$router.push({
-          name: "ScanResult",
-          params: { code: teamCode, result: JSON.stringify(r) },
-        });
-      });
+          name: 'ScanResult',
+          params: { code: teamCode, result: JSON.stringify(r) }
+        })
+      })
     } else {
-      console.log("Something went wrong, going back to login");
-      console.log("stickerCode", stickerCode);
-      console.log("teamCode", teamCode);
-      this.$router.push({ name: "Login" });
+      console.log('Something went wrong, going back to login')
+      console.log('stickerCode', stickerCode)
+      console.log('teamCode', teamCode)
+      this.$router.push({ name: 'Login' })
     }
   },
   methods: {},
-  computed: {},
-};
+  computed: {}
+}
 </script>
 
 <style scoped>

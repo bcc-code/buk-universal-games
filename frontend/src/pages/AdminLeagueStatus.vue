@@ -18,7 +18,7 @@
         <h2 class="league-title-text">Points</h2>
       </div>
     </section>
-    <section class="user-section" v-for="(status,i) in adminLeagueStatus?.total" :key="status.id">
+    <section class="user-section" v-for="(status, i) in adminLeagueStatus?.total" :key="status.id">
       <LeagueListItem
         :class="{ 'card-light': i > 4 }"
         :index="i + 1"
@@ -30,48 +30,48 @@
 </template>
 
 <script>
-import AdminPageLayout from "@/components/AdminPageLayout.vue";
-import LeagueListItem from "@/components/LeagueListItem.vue";
-import AdminLeagueSelector from "@/components/AdminLeagueSelector.vue";
+import AdminPageLayout from '@/components/AdminPageLayout.vue'
+import LeagueListItem from '@/components/LeagueListItem.vue'
+import AdminLeagueSelector from '@/components/AdminLeagueSelector.vue'
 
 export default {
-  name: "AdminLeagueStatus",
+  name: 'AdminLeagueStatus',
   components: { AdminPageLayout, LeagueListItem, AdminLeagueSelector },
   created() {
     if (!this.$store.state.adminLeagues.length) {
-      this.getAdminLeagues();
+      this.getAdminLeagues()
     }
 
     if (Object.keys(this.$store.state.adminLeagueStatus).length === 0) {
-      this.getAdminLeagueStatus();
+      this.getAdminLeagueStatus()
     }
   },
   methods: {
     getAdminLeagues() {
-      this.$store.dispatch("getAdminLeagues");
+      this.$store.dispatch('getAdminLeagues')
     },
     getAdminLeagueStatus() {
-      this.$store.dispatch("getAdminLeagueStatus");
+      this.$store.dispatch('getAdminLeagueStatus')
     },
     async selectLeague(id) {
-      await this.$store.dispatch("setAdminLeagueSelected", id);
-      this.getAdminLeagueStatus();
-      this.getMatches();
+      await this.$store.dispatch('setAdminLeagueSelected', id)
+      this.getAdminLeagueStatus()
+      this.getMatches()
     },
     getMatches() {
-      this.$store.dispatch("getAdminMatches");
-    },
+      this.$store.dispatch('getAdminMatches')
+    }
   },
   computed: {
     adminLeagueStatus() {
       // return this?.$store.state.adminLeagueStatus.status?.slice(0, 10)
-      return this?.$store.state.adminLeagueStatus.status;
+      return this?.$store.state.adminLeagueStatus.status
     },
     adminLeagues() {
-      return this?.$store.state.adminLeagues;
-    },
-  },
-};
+      return this?.$store.state.adminLeagues
+    }
+  }
+}
 </script>
 
 <style scoped>

@@ -1,36 +1,52 @@
 <template>
   <nav class="user-menu">
     <div class="user-menu-btn-small-wrapper">
-      <Icon name="heroicons:check" class="h-4" />
-      <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'LeagueList' }"
-        @click="$router.push({ name: 'LeagueList' })"><img src="icon/home.svg" /></button>
-        
-      <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'MatchList' }"
-        @click="$router.push({ name: 'MatchList' })"><img src="icon/calendar.svg" /></button>
+      <button :class="{ 'user-menu-btn-small': true, 'selected-component': isSelected('LeagueList') }"
+        @click="navigateTo('LeagueList')"><img src="/icon/home.svg" /></button>
+
+      <button :class="{ 'user-menu-btn-small': true, 'selected-component': isSelected('MatchList') }"
+        @click="navigateTo('MatchList')"><img src="/icon/calendar.svg" /></button>
     </div>
     <div class="user-menu-btn-big-wrapper">
-      <button class="user-menu-btn-big" @click="$router.push({ name: 'SideQuest' })">
-        <img src="icon/sidequest.svg" style="width:5em" />
+      <button class="user-menu-btn-big" @click="navigateTo('SideQuest')">
+        <img src="/icon/sidequest.svg" style="width:5em" />
       </button>
     </div>
     <div class="user-menu-btn-small-wrapper">
-      <button
-        :class="{ 'user-menu-btn-small': true, 'selected-component': ['GameInfo', 'GameInfoDetail'].includes($route.name) }"
-        @click="$router.push({ name: 'GameInfo' })"><img src="icon/ball.svg" /></button>
-      <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'Map' }"
-        @click="$router.push({ name: 'Map' })"><img src="icon/place.svg" /></button>
+      <button :class="{ 'user-menu-btn-small': true, 'selected-component': isSelected('GameInfo', 'GameInfoDetail') }"
+        @click="navigateTo('GameInfo')"><img src="/icon/ball.svg" /></button>
+      <button :class="{ 'user-menu-btn-small': true, 'selected-component': isSelected('Map') }"
+        @click="navigateTo('Map')"><img src="/icon/place.svg" /></button>
     </div>
   </nav>
 </template>
 
 <script>
+import { defineComponent, reactive, toRefs } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 
-export default {
+export default defineComponent({
   name: "UserMenu",
-  components: {
+  setup() {
+    const router = useRouter();
+    const route = useRoute();
+
+    const state = reactive({
+      selectedRoute: route.name,
+    });
+
+    const navigateTo = (name) => {
+      router.push({ name });
+      state.selectedRoute = name;
+    };
+
+    const isSelected = (name, additionalName = null) => {
+      return state.selectedRoute === name || state.selectedRoute === additionalName;
+    };
+
+    return { ...toRefs(state), navigateTo, isSelected };
   },
-  methods: {},
-};
+});
 </script>
 
 <style scoped>

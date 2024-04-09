@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <title>Universal BUK Games</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="shortcut icon" href="/favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="/icon/192.png"/>
+    <link rel="apple-touch-icon" sizes="192x192" href="/icon/192.png" />
+    <link href="/splashscreen/2048x2732.png" sizes="2048x2732" rel="apple-touch-startup-image" />
+    <link href="/splashscreen/1668x2224.png" sizes="1668x2224" rel="apple-touch-startup-image" />
+    <link href="/splashscreen/1536x2048.png" sizes="1536x2048" rel="apple-touch-startup-image" />
+    <link href="/splashscreen/1125x2436.png" sizes="1125x2436" rel="apple-touch-startup-image" />
+    <link href="/splashscreen/1242x2208.png" sizes="1242x2208" rel="apple-touch-startup-image" />
+    <link href="/splashscreen/750x1334.png" sizes="750x1334" rel="apple-touch-startup-image" />
+    <link href="/splashscreen/640x1136.png" sizes="640x1136" rel="apple-touch-startup-image" />
+    <link rel="manifest" href="ubg.webmanifest" />
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', async () => {
+          const registration = await navigator.serviceWorker.register('sw.js')
+          try {
+            await registration.update();
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          }
+          catch {
+            console.warn('Failed to update serviceworker. Running the cached version.');
+          }
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

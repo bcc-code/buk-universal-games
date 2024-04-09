@@ -1,10 +1,14 @@
 <template>
   <UserPageLayout>
-    <PointsAndStickers :loading="loading" :points="teamStatus?.points" :stickers="coins.length"
-      :refresh="refresh" />
+    <PointsAndStickers
+      :loading="loading"
+      :points="teamStatus?.points"
+      :stickers="coins.length"
+      :refresh="refresh"
+    />
     <section v-if="step == 'pre'">
       <div class="heading-text">
-        <h2>{{ $t("sidequest.areyouready") }}</h2>
+        <h2>{{ $t('sidequest.areyouready') }}</h2>
       </div>
       <Timer class="timer-center" :seconds="3" @timer-finished="startQuestion" />
     </section>
@@ -33,26 +37,27 @@
       <div class="heading-text">
         <h2>{{ $t(doneMessage[step]) }}</h2>
       </div>
-      <button class="btn-blank btn-return" @click="$router.back()">{{ $t("sidequest.back_to_overview") }}</button>
+      <button class="btn-blank btn-return" @click="$router.back()">
+        {{ $t('sidequest.back_to_overview') }}
+      </button>
     </section>
   </UserPageLayout>
 </template>
 
 <script>
-
-import { markRaw } from "vue";
-import UserPageLayout from "@/components/UserPageLayout.vue";
-import PointsAndStickers from "@/components/PointsAndStickers.vue";
-import MultipleChoiceSelector from "@/components/MultipleChoiceSelector.vue";
-import Timer from "@/components/CircularTimer.vue";
+import { markRaw } from 'vue'
+import UserPageLayout from '@/components/UserPageLayout.vue'
+import PointsAndStickers from '@/components/PointsAndStickers.vue'
+import MultipleChoiceSelector from '@/components/MultipleChoiceSelector.vue'
+import Timer from '@/components/CircularTimer.vue'
 
 export default {
-  name: "SideQuestQuestion",
+  name: 'SideQuestQuestion',
   components: { UserPageLayout, PointsAndStickers, Timer },
   props: {
     id: {
       type: Number
-    },
+    }
   },
   data() {
     return {
@@ -68,105 +73,116 @@ export default {
       questionTime: 10,
       step: 'pre',
       doneMessage: {
-        done: "sidequest.thanks",
-        alreadyAnswered: "sidequest.alreadyAnswered",
-        timeranout: "sidequest.timeranout",
+        done: 'sidequest.thanks',
+        alreadyAnswered: 'sidequest.alreadyAnswered',
+        timeranout: 'sidequest.timeranout'
       }
-    };
+    }
   },
   created() {
-    this.answerComponent = markRaw(MultipleChoiceSelector);
+    this.answerComponent = markRaw(MultipleChoiceSelector)
   },
   mounted() {
-    const q = this.$store.state.qs.find((q) => q.id == this.id);
-    if (!this.$store.state.qsOpened[this.$store.getters.currentRound - 1].some((q) => q.id == this.id)) {
-      this.$router.back();
-      return;
+    const q = this.$store.state.qs.find((q) => q.id == this.id)
+    if (
+      !this.$store.state.qsOpened[this.$store.getters.currentRound - 1].some((q) => q.id == this.id)
+    ) {
+      this.$router.back()
+      return
     }
-    if (this.$store.state.answers.some((a) => a.questionId == this.id) || this.$store.state.submittedAnswers.some((a) => a.questionId == this.id)) {
-      this.step = 'alreadyAnswered';
-      return;
+    if (
+      this.$store.state.answers.some((a) => a.questionId == this.id) ||
+      this.$store.state.submittedAnswers.some((a) => a.questionId == this.id)
+    ) {
+      this.step = 'alreadyAnswered'
+      return
     }
-    if(this.coins.length == 0)
-    {
-      this.$router.back();
-      return;
+    if (this.coins.length == 0) {
+      this.$router.back()
+      return
     }
-    this.coin = this.coins.slice(-1)[0];
-    this.$store.commit("removeCoin", this.coin);
-    this.question = this.$t("questions." + q.q + ".q");
-    this.intro = this.$t("questions." + q.q + ".intro");
-    this.hasImage = q.i;
+    this.coin = this.coins.slice(-1)[0]
+    this.$store.commit('removeCoin', this.coin)
+    this.question = this.$t('questions.' + q.q + '.q')
+    this.intro = this.$t('questions.' + q.q + '.intro')
+    this.hasImage = q.i
     switch (q.id) {
       case 7:
-        this.questionTime = 45;
-        break;
+        this.questionTime = 45
+        break
       case 4:
-        this.questionTime = 20;
-        break;
+        this.questionTime = 20
+        break
       default:
-        this.questionTime = 10;
+        this.questionTime = 10
     }
 
-    const shuffled = q.a.slice();
+    const shuffled = q.a.slice()
     for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
     }
 
     this.options = shuffled.map((option) => ({
-      label: [1,2].includes(q.id) ? this.$n(parseInt(option)) : this.$t("questions." + q.q + ".a." + option),
-      value: option,
-    }));
+      label: [1, 2].includes(q.id)
+        ? this.$n(parseInt(option))
+        : this.$t('questions.' + q.q + '.a.' + option),
+      value: option
+    }))
   },
   methods: {
     refresh() {
-      this.loading = true;
-      this.$store.dispatch("getLeagueStatus", true);
+      this.loading = true
+      this.$store.dispatch('getLeagueStatus', true)
 
       setTimeout(() => {
-        this.loading = false;
-      }, 1000);
+        this.loading = false
+      }, 1000)
     },
     startQuestion() {
-      this.step = "question";
+      this.step = 'question'
     },
     questionFinished() {
-      this.step = "answer";
+      this.step = 'answer'
     },
     answerFinished() {
-      if(this.step != "answer") return;
+      if (this.step != 'answer') return
 
       if (this.selectedAnswer) {
-        this.$store.commit("addAnswer", { questionId: this.id, answer: this.selectedAnswer, coin: this.coin });
-        this.step = 'done';
+        this.$store.commit('addAnswer', {
+          questionId: this.id,
+          answer: this.selectedAnswer,
+          coin: this.coin
+        })
+        this.step = 'done'
+      } else {
+        this.step = 'timeranout'
       }
-      else {
-        this.step = 'timeranout';
-      }
-    },
+    }
   },
   computed: {
     coins() {
-      return this.$store.state.coins;
+      return this.$store.state.coins
     },
     qs() {
-      return this.$store.state.qs;
+      return this.$store.state.qs
     },
     teamStatus() {
-      return this?.leagueStatus?.status?.total?.find((score) => score.team == this.$store.state.loginData?.team);
+      return this?.leagueStatus?.status?.total?.find(
+        (score) => score.team == this.$store.state.loginData?.team
+      )
     },
     leagueStatus() {
-      return this?.$store.state.leagueStatus;
-    },
-  },
-};
+      return this?.$store.state.leagueStatus
+    }
+  }
+}
 </script>
 
 <style scoped>
 .heading-text {
   text-align: center;
-  margin-top: 20%
+  margin-top: 20%;
 }
 
 .circle {
@@ -198,7 +214,7 @@ export default {
   align-items: center;
 }
 
-.heading-icon>span {
+.heading-icon > span {
   width: 3em;
   height: 3em;
   display: flex;
@@ -247,7 +263,7 @@ export default {
 }
 
 .next-button {
-  margin-top:1em;
+  margin-top: 1em;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -9,9 +9,9 @@
         :teamName="teamName"
       />
       <div v-if="teamStatus?.error">
-        <p>{{ $t("general_error") }}</p>
+        <p>{{ $t('general_error') }}</p>
         <p>{{ teamStatus.error }}</p>
-        <p>{{ $t("please_refresh") }}</p>
+        <p>{{ $t('please_refresh') }}</p>
       </div>
     </section>
     <div v-if="loading">
@@ -38,23 +38,25 @@
     <div v-else>
       <div v-if="leagueStatus.error">
         <div v-if="leagueStatus.errorCode != 406">
-          <p>{{ $t("general_error") }}</p>
+          <p>{{ $t('general_error') }}</p>
 
           <div class="message">
             <p class="message-text">{{ leagueStatus.error }}</p>
             <br />
-            <p class="message-text">{{ $t("pleaserefresh") }}</p>
+            <p class="message-text">{{ $t('pleaserefresh') }}</p>
           </div>
         </div>
       </div>
       <div class="message-white">
         <p>
-          {{$t('league.viewgamerankings-title')}}
+          {{ $t('league.viewgamerankings-title') }}
         </p>
-        <button class="btn-success" @click="this.$router.push('games')">{{ $t("league.viewgamerankings") }}</button>
+        <button class="btn-success" @click="this.$router.push('games')">
+          {{ $t('league.viewgamerankings') }}
+        </button>
       </div>
       <div class="rankingfrozen-message" v-if="$store.getters.currentRound > 3">
-        <p>{{ $t("league.ranking-frozen") }}</p>
+        <p>{{ $t('league.ranking-frozen') }}</p>
       </div>
       <section class="ranking-title" v-if="leagueStatus.status?.total.length">
         <div class="ranking-title-column index-column"></div>
@@ -67,12 +69,19 @@
       </section>
       <section v-else>
         <div class="nodata">
-          <p class="message-text">{{ $t("league.rankingisempty") }}</p>
+          <p class="message-text">{{ $t('league.rankingisempty') }}</p>
         </div>
       </section>
-      <section class="user-section" v-for="(status, i) in leagueStatus?.status?.total.sort((a, b) => b.points - a.points)" :key="status.id">
+      <section
+        class="user-section"
+        v-for="(status, i) in leagueStatus?.status?.total.sort((a, b) => b.points - a.points)"
+        :key="status.id"
+      >
         <LeagueListItem
-          :class="{ 'card-light': status.teamId != teamStatus?.teamId, 'card-currentTeam': status.teamId == teamStatus?.teamId }"
+          :class="{
+            'card-light': status.teamId != teamStatus?.teamId,
+            'card-currentTeam': status.teamId == teamStatus?.teamId
+          }"
           :index="i + 1"
           :team="status.team"
           :stickers="status.stickers"
@@ -85,52 +94,54 @@
 </template>
 
 <script>
-import UserPageLayout from "../components/UserPageLayout.vue";
-import PointsAndStickers from "../components/PointsAndStickers.vue";
-import LeagueListItem from "../components/LeagueListItem.vue";
+import UserPageLayout from '../components/UserPageLayout.vue'
+import PointsAndStickers from '../components/PointsAndStickers.vue'
+import LeagueListItem from '../components/LeagueListItem.vue'
 
 export default {
-  name: "LeagueList",
+  name: 'LeagueList',
   components: { UserPageLayout, PointsAndStickers, LeagueListItem },
   data() {
     return {
-      loading: false,
-    };
+      loading: false
+    }
   },
   created() {
-    this.getLeagueStatus(false);
+    this.getLeagueStatus(false)
   },
   methods: {
     getTeamStatus(override) {
-      this.$store.dispatch("getTeamStatus", override);
+      this.$store.dispatch('getTeamStatus', override)
     },
     getLeagueStatus(override) {
-      this.$store.dispatch("getLeagueStatus", override);
+      this.$store.dispatch('getLeagueStatus', override)
     },
     refresh() {
-      this.loading = true;
-      this.getLeagueStatus(true);
+      this.loading = true
+      this.getLeagueStatus(true)
 
       setTimeout(() => {
-        this.loading = false;
-      }, 1000);
-    },
+        this.loading = false
+      }, 1000)
+    }
   },
   computed: {
     coins() {
-      return this.$store.state.coins;
+      return this.$store.state.coins
     },
     teamStatus() {
-      return this?.leagueStatus?.status?.total?.find((score) => score.team == this.$store.state.loginData?.team);
+      return this?.leagueStatus?.status?.total?.find(
+        (score) => score.team == this.$store.state.loginData?.team
+      )
     },
     leagueStatus() {
-      return this?.$store.state.leagueStatus;
+      return this?.$store.state.leagueStatus
     },
     teamName() {
-      return this?.$store.state.teamName;
-    },
-  },
-};
+      return this?.$store.state.teamName
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -147,7 +158,6 @@ export default {
   width: 100%;
 }
 
-
 .ranking-title-text {
   font-size: 0.85em;
   color: var(--gray-2);
@@ -160,8 +170,8 @@ export default {
 
 .card-currentTeam {
   color: var(--dark);
-  padding:.1em 1em;
-  box-shadow:2px 2px;
+  padding: 0.1em 1em;
+  box-shadow: 2px 2px;
   background-color: var(--yellow);
 }
 
@@ -191,20 +201,20 @@ export default {
 .rankingfrozen-message {
   border-radius: 1em;
   margin-top: 1em;
-  padding: .5em;
+  padding: 0.5em;
   background-color: var(--yellow);
   color: var(--red);
   text-align: center;
 }
 
 .btn-success {
-  color:#333;
+  color: #333;
 }
 
 .message-white button {
-  margin-top:10px;
-  float:right;
-  padding:10px;
+  margin-top: 10px;
+  float: right;
+  padding: 10px;
 }
 
 .message .message-text {

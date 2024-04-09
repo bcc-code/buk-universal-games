@@ -103,3 +103,9 @@ To log out or clear the cache because of changes to the source code, go to devto
 ## To update the leaderboard
 
 Go to https://universalgames.buk.no/api/OVERLORDS/cache/warmup
+
+## Access directus in prod
+https://buk-universal-games-directus-prod-lo75nlp2va-ez.a.run.app/
+
+## Testing team code
+A84BQ9

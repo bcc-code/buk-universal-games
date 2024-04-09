@@ -1,36 +1,40 @@
 <template>
   <AdminPageLayout>
-    <h2>{{ $t("menu.games") }}</h2>
+    <h2>{{ $t('menu.games') }}</h2>
 
-    <GamesList :games="$store.state.games" :loading="$store.state.gamesLoading" @clicked="gameClicked"></GamesList>
+    <GamesList
+      :games="$store.state.games"
+      :loading="$store.state.gamesLoading"
+      @clicked="gameClicked"
+    ></GamesList>
   </AdminPageLayout>
 </template>
 
 <script>
-import AdminPageLayout from "@/components/AdminPageLayout.vue";
-import GamesList from "@/components/GamesList.vue";
+import AdminPageLayout from '@/components/AdminPageLayout.vue'
+import GamesList from '@/components/GamesList.vue'
 
 export default {
-  name: "AdminGames",
+  name: 'AdminGames',
   components: { AdminPageLayout, GamesList },
   data() {
-    return {};
+    return {}
   },
   created() {
-    this.$store.dispatch("getGames");
+    this.$store.dispatch('getGames')
   },
   methods: {
     gameClicked(game) {
       this.$router.push({
-        name: "AdminGameInfoDetail",
+        name: 'AdminGameInfoDetail',
         params: {
-          game: game.id,
-        },
-      });
-    },
+          game: game.id
+        }
+      })
+    }
   },
-  computed: {},
-};
+  computed: {}
+}
 </script>
 
 <style scoped></style>
