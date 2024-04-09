@@ -1,5 +1,6 @@
 <template>
   <nav class="user-menu">
+    
     <div class="user-menu-btn-small-wrapper">
       <button :class="{ 'user-menu-btn-small': true, 'selected-component': isSelected('LeagueList') }"
         @click="navigateTo('LeagueList')"><img src="/icon/home.svg" /></button>

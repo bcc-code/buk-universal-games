@@ -13,18 +13,14 @@
     </div>
     <div></div>
     <div class="align-middle flex">
-      <LanguageSwitcher />
-      <!--       <button class="ml-3 card-btn" @click="refresh"><img src="icon/refresh.svg" /></button> -->
-    </div>
+<!--       <button class="ml-3 card-btn" @click="refresh"><img src="icon/refresh.svg" /></button>
+ -->    </div>
   </section>
 </template>
 
 <script>
-import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
-
 export default {
   name: "PointsAndStickers",
-  components: { LanguageSwitcher },
   props: {
     points: Number,
     stickers: Number,
