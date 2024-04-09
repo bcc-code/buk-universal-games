@@ -15,7 +15,6 @@
     <div class="align-middle flex">
       <LanguageSwitcher />
       <!--       <button class="ml-3 card-btn" @click="refresh"><img src="icon/refresh.svg" /></button> -->
-      <LogOut />
     </div>
   </section>
 </template>
