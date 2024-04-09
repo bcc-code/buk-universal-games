@@ -108,7 +108,7 @@ const routes = [
   }
 ]
 
-export function initRouter(store) {
+export function initRouter(store:any) {
   const router = createRouter({
     history: createWebHashHistory(),
     routes
