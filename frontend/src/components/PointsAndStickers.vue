@@ -14,8 +14,9 @@
     <div></div>
     <div class="align-middle flex">
       <LanguageSwitcher />
-<!--       <button class="ml-3 card-btn" @click="refresh"><img src="icon/refresh.svg" /></button>
- -->    </div>
+      <!--       <button class="ml-3 card-btn" @click="refresh"><img src="icon/refresh.svg" /></button> -->
+      <LogOut />
+    </div>
   </section>
 </template>
 
@@ -71,7 +72,7 @@ button {
 
 .card-btn {
   border-radius: 0;
-  margin-left:.5em;
+  margin-left: .5em;
   padding: 0.15em 0.15em 0.15em 0.15em;
 }
 
