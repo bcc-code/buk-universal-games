@@ -1,14 +1,14 @@
-<script setup lang="ts">
-import InternalNotification from '@/components/InternalNotification.vue';
-</script>
 
 <template>
   <main>
-    <RouterView :key="$route.fullPath" />
+    <router-view :key="$route.fullPath" />
     <!-- shit -->
     <internal-notification></internal-notification>
   </main>
 </template>
+<script>
+import InternalNotification from '@/components/InternalNotification.vue';
+</script>
 
 <style>
 *,

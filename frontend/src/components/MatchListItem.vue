@@ -3,7 +3,7 @@
     @click="() => { if (clickFunc) clickFunc() }">
     <div class="flex flex-col w-full">
       <span class="text-xs game-title">
-        <img class="w-10 h-10" :src="`icon/game-${gameType?.replaceAll('_','')}.svg`" />
+        <img class="w-10 h-10" :src="`icon/game-${gameType?.replaceAll('_', '')}.svg`" />
         <span class="text">{{ $t(`games.${gameType}`) }} - {{ gameAddOn || '' }}</span>
       </span>
     </div>
@@ -22,8 +22,6 @@
 </template>
 
 <script>
-
-
 export default {
   name: "MatchListItem",
   props: {
