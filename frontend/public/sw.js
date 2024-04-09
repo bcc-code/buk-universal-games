@@ -1,3 +1,5 @@
+// shit this should be refactored to use TS. Maybe figure out what it does, and refactor, or create from scratch.
+
 const putInCache = async (request, response) => {
   const cache = await caches.open("v3");
   await cache.put(request, response);
@@ -82,7 +84,7 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("install", (event) => {
-  event.waitUntil(caches.open("v3").then(cache => cache.addAll(preCacheUris)));
+  event.waitUntil(caches.open("v3").then(cache => cache.addAll(preCacheUris.map(uri => "assets/" + uri))));
 });
 
 self.addEventListener("fetch", (event) => {

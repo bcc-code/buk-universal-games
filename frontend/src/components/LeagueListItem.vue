@@ -2,7 +2,7 @@
   <section class="flex align-middle items-center" :class="{ card: true, 'text-label-1': true, loading }">
       <p class="text-label-1">{{ index }}</p>
       <div class="flex my-5 ">
-        <span class="buk-icon"><img src="icon/buk-icon.svg" /></span>
+        <span class="buk-icon"><img src="/icon/buk-icon.svg" /></span>
         <p class="text-label-1 hide-text-overflow">{{ team }}</p>
       </div>
       <p class="text-label-1">{{ points }}</p>

@@ -1,7 +1,7 @@
 <template>
   <section :class="{ 'bg-vanilla py-3 px-3 border-r-2 border-dark flex justify-between rounded-md': true, loading }">
     <div class="h-10 w-10">
-      <img src="image/logo_icon.svg" class="rounded-md" />
+      <img src="../assets/image/logo_icon.svg" class="rounded-md" />
     </div>
     <div class="">
       <p class="text-label-2 label uppercase">{{ $t('team') }}</p>

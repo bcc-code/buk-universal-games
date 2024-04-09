@@ -3,22 +3,22 @@
     <div class="user-menu-btn-small-wrapper">
       <Icon name="heroicons:check" class="h-4" />
       <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'LeagueList' }"
-        @click="$router.push({ name: 'LeagueList' })"><img src="icon/home.svg" /></button>
+        @click="$router.push({ name: 'LeagueList' })"><img src="/icon/home.svg" /></button>
         
       <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'MatchList' }"
-        @click="$router.push({ name: 'MatchList' })"><img src="icon/calendar.svg" /></button>
+        @click="$router.push({ name: 'MatchList' })"><img src="/icon/calendar.svg" /></button>
     </div>
     <div class="user-menu-btn-big-wrapper">
       <button class="user-menu-btn-big" @click="$router.push({ name: 'SideQuest' })">
-        <img src="icon/sidequest.svg" style="width:5em" />
+        <img src="/icon/sidequest.svg" style="width:5em" />
       </button>
     </div>
     <div class="user-menu-btn-small-wrapper">
       <button
         :class="{ 'user-menu-btn-small': true, 'selected-component': ['GameInfo', 'GameInfoDetail'].includes($route.name) }"
-        @click="$router.push({ name: 'GameInfo' })"><img src="icon/ball.svg" /></button>
+        @click="$router.push({ name: 'GameInfo' })"><img src="/icon/ball.svg" /></button>
       <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'Map' }"
-        @click="$router.push({ name: 'Map' })"><img src="icon/place.svg" /></button>
+        @click="$router.push({ name: 'Map' })"><img src="/icon/place.svg" /></button>
     </div>
   </nav>
 </template>

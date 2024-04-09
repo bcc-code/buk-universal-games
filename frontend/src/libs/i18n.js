@@ -1,4 +1,3 @@
-// shit todo rewrite to ts
 
 import { nextTick } from 'vue'
 import { createI18n } from 'vue-i18n'

@@ -1,53 +1,52 @@
 {
-  "name": "buk-universal-games-ui",
-  "version": "1.0.0",
+  "name": "buk-universal-games",
+  "version": "0.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "dev": "vite",
+    "build": "run-p type-check \"build-only {@}\" --",
+    "preview": "vite preview",
+    "test:unit": "vitest",
+    "test:e2e": "playwright test",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build --force",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "format": "prettier --write src/"
   },
   "dependencies": {
-    "@heroicons/vue": "^2.1.3",
-    "core-js": "^3.8.3",
-    "html5-qrcode": "^2.2.1",
-    "pinch-zoom-js": "^2.3.4",
-    "vue": "^3.2.13",
-    "vue-i18n": "^9.2.2",
-    "vue-router": "^4.1.1",
-    "vuex": "^4.0.2",
+    "html5-qrcode": "^2.3.8",
+    "pinch-zoom-js": "^2.3.5",
+    "pinia": "^2.1.7",
+    "vue": "^3.4.21",
+    "vue-i18n": "^9.11.0",
+    "vue-router": "^4.3.0",
+    "vuex": "^4.1.0",
     "vuex-persist": "^3.1.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.16",
-    "@babel/eslint-parser": "^7.12.16",
-    "@vue/cli-plugin-babel": "~5.0.0",
-    "@vue/cli-plugin-eslint": "~5.0.0",
-    "@vue/cli-service": "~5.0.0",
+    "@playwright/test": "^1.42.1",
+    "@rushstack/eslint-patch": "^1.3.3",
+    "@tsconfig/node20": "^20.1.2",
+    "@types/jsdom": "^21.1.6",
+    "@types/node": "^20.11.28",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "@vue/eslint-config-prettier": "^8.0.0",
+    "@vue/eslint-config-typescript": "^12.0.0",
+    "@vue/test-utils": "^2.4.5",
+    "@vue/tsconfig": "^0.5.1",
     "autoprefixer": "^10.4.19",
-    "eslint": "^7.32.0",
-    "eslint-plugin-vue": "^8.0.3",
+    "eslint": "^8.49.0",
+    "eslint-plugin-playwright": "^1.5.2",
+    "eslint-plugin-vue": "^9.17.0",
+    "jsdom": "^24.0.0",
+    "npm-run-all2": "^6.1.2",
     "postcss": "^8.4.38",
-    "tailwindcss": "^3.4.3"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "@babel/eslint-parser"
-    },
-    "rules": {}
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead",
-    "not ie 11"
-  ]
+    "prettier": "^3.0.3",
+    "tailwindcss": "^3.4.3",
+    "typescript": "~5.4.0",
+    "vite": "^5.1.6",
+    "vitest": "^1.4.0",
+    "vue-tsc": "^2.0.6"
+  }
 }
