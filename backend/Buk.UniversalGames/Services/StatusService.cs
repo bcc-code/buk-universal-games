@@ -122,7 +122,7 @@ namespace Buk.UniversalGames.Services
             var teamScores = await teamScoresQuery.ToListAsync();
             var teamsGroupedByPoints = teamScores.GroupBy(x => x.Points);
 
-            if (game.Type == GameType.TicketTwist || game.Type == GameType.MonkeyBars)
+            if (game.Type == GameType.Labyrinth || game.Type == GameType.HumanShuffleBoard)
             {
                 teamsGroupedByPoints = teamsGroupedByPoints.OrderByDescending(x => x.Key);
             }
@@ -151,11 +151,11 @@ namespace Buk.UniversalGames.Services
                                where m.LeagueId == leagueId && m.WinnerId.HasValue
                                select m.WinnerId!.Value).ToListAsync();
 
-            var nerveSpiral = (await GetGameRanking(GameType.NerveSpiral, leagueId)).ToDictionary(x => x.TeamId);
-            var monkeyBars = (await GetGameRanking(GameType.MonkeyBars, leagueId)).ToDictionary(x => x.TeamId);
-            var ticketTwist = (await GetGameRanking(GameType.TicketTwist, leagueId)).ToDictionary(x => x.TeamId);
-            var minefield = (await GetGameRanking(GameType.MineField, leagueId)).ToDictionary(x => x.TeamId);
-            var tableSurfing = (await GetGameRanking(GameType.TableSurfing, leagueId)).ToDictionary(x => x.TeamId);
+            var landWaterBeach = (await GetGameRanking(GameType.LandWaterBeach, leagueId)).ToDictionary(x => x.TeamId);
+            var humanShuffleBoard = (await GetGameRanking(GameType.HumanShuffleBoard, leagueId)).ToDictionary(x => x.TeamId);
+            var labyrinth = (await GetGameRanking(GameType.Labyrinth, leagueId)).ToDictionary(x => x.TeamId);
+            var mastermind = (await GetGameRanking(GameType.Mastermind, leagueId)).ToDictionary(x => x.TeamId);
+            var ironGrip = (await GetGameRanking(GameType.IronGrip, leagueId)).ToDictionary(x => x.TeamId);
 
             var sidequest = (await _cache.Get<List<TeamStatus>>($"sidequest_ranking_{leagueId}"))?.ToDictionary(x => x.TeamId) ?? new Dictionary<int, TeamStatus>();
 
@@ -163,11 +163,11 @@ namespace Buk.UniversalGames.Services
 
             foreach (var team in teams)
             {
-                var totalPoints = GetPointsForSubRanking(nerveSpiral, team)
-                                    + GetPointsForSubRanking(monkeyBars, team)
-                                    + GetPointsForSubRanking(ticketTwist, team)
-                                    + GetPointsForSubRanking(minefield, team)
-                                    + GetPointsForSubRanking(tableSurfing, team)
+                var totalPoints = GetPointsForSubRanking(landWaterBeach, team)
+                                    + GetPointsForSubRanking(humanShuffleBoard, team)
+                                    + GetPointsForSubRanking(labyrinth, team)
+                                    + GetPointsForSubRanking(mastermind, team)
+                                    + GetPointsForSubRanking(ironGrip, team)
                                     + (GetPointsForSubRanking(sidequest, team) * .7M)
                                     + (_matchWinnerPoints * matchWinners.Count(x => x == team.TeamId));
 
@@ -239,21 +239,21 @@ namespace Buk.UniversalGames.Services
 
             var gameRowIndex = (GameType game) => game switch
             {
-                GameType.NerveSpiral => 5,
-                GameType.TableSurfing => 6,
-                GameType.MineField => 7,
-                GameType.TicketTwist => 8,
-                GameType.MonkeyBars => 9,
+                GameType.LandWaterBeach => 5,
+                GameType.IronGrip => 6,
+                GameType.Mastermind => 7,
+                GameType.Labyrinth => 8,
+                GameType.HumanShuffleBoard => 9,
                 _ => throw new Exception()
             };
 
             var gameColumnIndex = (GameType game) => game switch
             {
-                GameType.NerveSpiral => 3,
-                GameType.TableSurfing => 5,
+                GameType.LandWaterBeach => 3,
+                GameType.IronGrip => 5,
                 GameType.MineField => 7,
-                GameType.TicketTwist => 9,
-                GameType.MonkeyBars => 11,
+                GameType.Labyrinth => 9,
+                GameType.HumanShuffleBoard => 11,
                 _ => throw new Exception()
             };
 

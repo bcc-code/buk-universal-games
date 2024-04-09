@@ -8,11 +8,11 @@
     "map": "Map"
   },
   "games": {
-    "monkey_bars": "Monkey Bars",
-    "nerve_spiral": "Nerve Spiral",
-    "ticket_twist": "Ticket Twist",
-    "mine_field": "Mine Field",
-    "table_surfing": "Crowd Surfing"
+    "iron_grip": "The iron grip",
+    "land_water_beach": "Land, water, beach",
+    "mastermind": "Mastermind",
+    "human_shuffleboard": "Human Shuffleboard",
+    "labyrinth": "Labyrinth"
   },
   "score": {
     "monkey_bars": "{score} bars",

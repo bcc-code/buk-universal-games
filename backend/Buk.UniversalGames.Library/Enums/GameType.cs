@@ -2,11 +2,11 @@
 {
     public enum GameType
     {
-        NerveSpiral = 1,
-        TicketTwist = 2,
-        MonkeyBars = 3,
-        MineField = 4,
-        TableSurfing = 5,
+        LandWaterBeach = 1,
+        Labyrinth = 2,
+        HumanShuffleBoard = 3,
+        Mastermind = 4,
+        IronGrip = 5,
 
     }
 }
