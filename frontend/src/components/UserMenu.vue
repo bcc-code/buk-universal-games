@@ -37,7 +37,7 @@ export default defineComponent({
 
     const navigateTo = (name) => {
       router.push({ name });
-      state.selectedRoute = name; // Optional: Manage state for active route
+      state.selectedRoute = name;
     };
 
     const isSelected = (name, additionalName = null) => {
