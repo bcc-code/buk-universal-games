@@ -2,16 +2,16 @@
 import './index.css'
 import { createApp } from 'vue'
 import App from './App.vue'
-import { initRouter } from '../src/router'
+import { initRouter } from './router'
 import { setupI18n } from './libs/i18n'
 
 // ------------------ pinia section
 // import { createPinia } from 'pinia'
 // const store = createPinia()
 // ------------------ vuex section
-import initStore from './old/store'
-import createMatchNotifierPlugin from './old/plugins/match-notifier'
-import NotificationService from './old/services/notification.service'
+import initStore from './store'
+import createMatchNotifierPlugin from './plugins/match-notifier'
+import NotificationService from './services/notification.service'
 
 const notificationService = new NotificationService()
 const matchNotifierPlugin = createMatchNotifierPlugin(notificationService)
