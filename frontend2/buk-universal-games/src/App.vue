@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// import InternalNotification from '@/components/InternalNotification.vue';
+import InternalNotification from '@/components/InternalNotification.vue';
 </script>
 
 <template>
