@@ -2,10 +2,10 @@
 <template>
   <main>
     <router-view :key="$route.fullPath" />
-    <internal-notification></internal-notification>
+    <InternalNotification></InternalNotification>
   </main>
 </template>
-<script>
+<script setup lang="ts">
 import InternalNotification from '@/components/InternalNotification.vue';
 </script>
 
