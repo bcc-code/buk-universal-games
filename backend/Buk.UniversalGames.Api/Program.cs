@@ -69,7 +69,7 @@ else
     });
     builder.Services.AddCors(options => options.AddPolicy(CorsPolicyName, policyBuilder =>
     {
-        policyBuilder.WithOrigins("https://universalgames.buk.no", "http://localhost:8080", "http://localhost:5173",)
+        policyBuilder.WithOrigins("https://universalgames.buk.no", "http://localhost:8080", "http://localhost:5173")
                 .WithHeaders("x-ubg-teamcode", "content-type")
               .WithMethods("GET", "POST", "OPTIONS").Build();
     }));
