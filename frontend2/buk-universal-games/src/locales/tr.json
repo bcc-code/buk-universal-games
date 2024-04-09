@@ -1,0 +1,167 @@
+{
+  "install_hint": "İpucu:\nBu web uygulamasını ana ekranınıza kurun, daha iyi çalışacak!",
+  "menu": {
+    "home": "Ana Sayfa",
+    "league": "Lig",
+    "sidequest": "Yan Görev",
+    "games": "Oyunlar",
+    "map": "Harita"
+  },
+  "games": {
+    "monkeybars": "Maymun Barları",
+    "nervespiral": "Sinirli Spiral",
+    "tickettwist": "Bilet Kıvırma",
+    "minefield": "Mayın Tarlası",
+    "tablesurfing": "Kalabalık Sörf"
+  },
+  "score": {
+    "monkeybars": "{score} çubuk",
+    "nervespiral": "{score} saniye",
+    "tickettwist": "{score} bilet",
+    "minefield": "{score} saniye",
+    "tablesurfing": "{score} saniye"
+  },
+  "leadstory": {
+    "monkeybars": "Takımınız, arızalanan bir dönme dolapta mahsur kalmış kişilere yardım edebilir mi? Dönme dolaba tırmanmak zorlu olabilir ve ilk yardım malzemelerini taşımanın önemini unutmamak önemlidir. Lütfen takımınızın diğer tarafa ulaşmasını ve bu yardıma muhtaç kişileri kurtarmasını sağlayın.",
+    "nervespiral": "Sıranızın bir sonraki oyuna kadar sabırla beklerken, birdenbire bir güç arızası meydana gelir. Endişelenmeye gerek yok. Takımınız bu beklenmedik durumu ustaca yönlendirebilecek mi? Elektrik çarpması olmadan sıradan ayrılmak için takımınıza güvenin ve bu zorluğun üstesinden sakinlik ve nezaketle gelin.",
+    "tickettwist": "İnsanlar bilet almak için sırada bekliyor. Takımınız hız ve stresle başa çıkabilecek mi? Bu oyun hızlı düşünmeyi, dayanıklılığı, hızı ve takım çalışmasını birleştirir. Odaklanın ve mümkün olduğunca çok biletin rengini takımınıza çevirin. Bu zorluğa hazır mısınız?",
+    "minefield": "Takımınız, kaçan vahşi hayvanlara karşı dikkatli olmaları gereken zorlu bir durumla karşı karşıya. Hedefleri bu hayvanlar tarafından saldırıya uğramadan hedeflerine ulaşmaktır.",
+    "tablesurfing": "Tren rayları hasar gördü, önemli bir problem oluşturuyor. Ancak takımınız, birlikte çalışarak bu durumla başa çıkabilir. Yeteneklerinizi birleştirin, eylemlerinizi koordine edin ve trenin sorunsuz bir şekilde ilerlemesini sağlayacak bir yol bulun."
+  },
+  "explanation": {
+    "monkeybars": "Birinci oyuncu Maymun Barları'na tırmanmaya başlar ve yapabildiği kadar ilerler. 12. çubuğa ulaştığında, bir sonraki oyuncu başlangıçtan başlayabilir.\n\nÖrnek: Birinci oyuncu son olarak 26. çubuğa dokundu, bu nedenle puanı 26 olur. İkinci oyuncu 18. çubukta düştü, bu nedenle puanı 18 olur. Tüm oyuncuların puanları toplanır ve takımın toplam puanı takım üye sayısına bölünür.",
+    "nervespiral": "Başlangıç işareti seslendiğinde, ilk iki oyuncu spirale gidebilir, her biri metal halkanın bir tarafını alır ve tüpe temas etmeden ilk kontrol noktasına ulaşmaya çalışır.\n\n İki oyuncu bir kontrol noktasına ulaştığında geri dönerler ve iki yeni oyuncu oyunun içine girer. Bu iki oyuncu spiral dokunduğunda, takımlarına geri döner ve iki yeni oyuncu son kontrol noktasından devam eder. Bu şekilde, spiralin sonuna ulaşılana kadar devam edilir. İlk bitiren takım kazanır.",
+    "tickettwist": "Bu oyunda, oyuna katılan her oyuncu takımının renginde bir kurdele takmak zorundadır. Her takımdan 10 oyuncu alan oyunda, amacı takımının rengine mümkün olduğunca çok bilet çevirmektir. Oyuncular alan içinde diledikleri kadar değişebilir, ancak yeni oyuncu oyuna \"eski\" oyuncunun kurdelesini almalı ve ardından yeni oyuncu oyunu devam ettirebilir. Oyun 8 dakikalık 1 turdan oluşur. Süre dolduğunda, tüm oyuncular alanı terk eder ve biletler renklere göre sayılır. En çok bilet çeviren takım oyunu kazanır.",
+    "minefield": "Bu oyun büyük bir alanda küçük bölümler halinde gerçekleşir. Her takımın alanın kenarlarında iki kaptanı vardır ve bu kaptanlar telefon veya başka bir yardımcı araç kullanmadan katılımcıları yönlendirir. Birinci oyuncu başlar ve yanlış kutuya basmadan alana geçmeye çalışır. Doğru veya yanlış kutuda olduğunuzu anlamak için her kutuda sesli uyarı veren bir sinyalizatör kullanırsınız. Sinyalizatör alarm sinyali verdiğinde, yanlış kutuda olduğunuzu anlamış olursunuz ve yeni bir oyuncu için oyuncuyu değiştirmeniz gerekir. Her oyuncu her kutuyu kontrol eder, hatta bu kutunun kesinlikle bir mayın içermediğine yüzde 100 emin olsa bile. Kaptanlar doğru yolu hatırlamada yardımcı olur. Bitişe ulaşana kadar devam eder ve ardından zamanınız durur. En hızlı sürede bitiren takım oyunu kazanır.",
+    "tablesurfing": "Bu oyunun amacı, flamingo üzerindeki bir kişiyi diğer tarafa geçirmektir. Takımınızla birlikte birkaç tur almanız ve üstteki kişinin yere düşmemesini sağlamanız gerekir. Rota sonunda bir yokuş bulunur. Erkekler yokuşa tırmandıktan sonra zil çalar ve takımlar değişir. İkinci takım (kızlar) aynı rotayı geri dönerken, yokuşa iner ve tüm dönemeçlerden dolaşır. Finiş çizgisini ilk geçen takım oyunu kazanır."
+  },
+  "rules": {
+    "monkeybars": "Takımın tüm üyeleri katılır",
+    "nervespiral": "30 - 50 takım üyesi katılır (15-25 çift)",
+    "tickettwist": "Sadece takım kurdelesi taşıyan kişilere sahaya giriş izni vardır (takım başına 10)|Kurdele taşıyan katılımcılar sınırsız sayıda değiştirilebilir, ancak sahaya girerken takım kurdelesi takmalıdır",
+    "minefield": "Yaklaşık 30 takım üyesi katılır|Zaman içinde sadece 1 kişi alanda olabilir|2 takım kaptanı katılımcıları alanda yönlendirir|Takım kaptanları hatırlamak için araç kullanamaz",
+    "tablesurfing": "16 erkek ve 16 kız katılır, 1 sörfçü ve 15 yuvarlanan|Yere dokunmak yasaktır (hem yuvarlananlar hem de sörfçü)|Engeller hareket ettirilemez ve yuvarlananlar işaretlenen alanın dışına çıkamaz"
+  },
+  "general_error": "Bir şeyler ters gitti",
+  "pleaserefresh": "Lütfen sayfayı yeniden yüklemeyi deneyin",
+  "points": "Puanlar",
+  "coins": "Jetonlar",
+  "game": "Oyun",
+  "team1team2": "Takım 1 / Takım 2",
+  "start": "Başla",
+  "rulestitle": "Kurallar",
+  "login": {
+    "login_button": "Giriş",
+    "teamcode": "Takım kodu",
+    "teamcode_invalid": "Üzgünüz, takım anahtarınız geçersiz",
+    "viewgamerankings-title": "Oyun detay sayfalarında oyunlara göre sıralamaları görüntüleyebilirsiniz."
+  },
+  "league": {
+    "rankingisempty": "Henüz hiçbir takım puan kaydetmedi. İlk turdan sonra burayı kontrol edin.",
+    "viewgamerankings": "Her oyun için sıralamayı görüntüle",
+    "viewgamerankings-title": "Oyun ayrıntı sayfalarında her oyun için sıralamayı görebilirsin",
+    "ranking-frozen": "Sıralama şimdi kazananlar açıklanana kadar dondurulmuştur"
+  },
+  "admin": {
+    "select_league": {
+      "intro": "Yönetmek istediğiniz ligi seçin"
+    }
+  },
+  "yourmatch": "Maçınız",
+  "sidequest": {
+    "thanks": "Teşekkürler, yanıtınız kaydedildi",
+    "timeranout": "Süre doldu, bir sonraki sefere daha iyi şanslar",
+    "areyouready": "Hazır mısınız?",
+    "checkanswerlater": "Oyun bittikten sonra yanıtı kontrol edin",
+    "question_locked": "Süresi Dolmuş",
+    "youhaveunsubmittedanswers": "Gönderilmemiş {numAnswers} yanıtınız var. Şimdi göndermek ister misiniz?",
+    "submityouranswers": "Yanıtlarınızı gönderin",
+    "gameroundtitle": "Tur {round}",
+    "back_to_overview": "Genel Bakışa Dön",
+    "alreadyAnswered": "Bu soruyu zaten cevapladınız",
+    "noroundyet": "Henüz mevcut değil. Maçtan sonra geri gelin.",
+    "submitfailed": "Cevaplarını gönderme başarısız oldu. Bağlantınız olduğundan emin olun ve tekrar deneyin",
+    "no_coins": "Artık jetonun kalmadı. Daha fazla soru cevaplayamazsın",
+    "explanation": "Açıklama",
+    "explanation_text": "Son maç hariç her maçtan sonra, rastgele sırayla 2 soru açılacak, toplamda 8 soru olacak. Bu soruları yanıtlamak için 10 dakikanız var, sonraki maç başlayana kadar.\nToplamda 8 jetonunuz var. Başlattığınız her soru, ona cevap vermeseniz bile bir jetonunuzu tüketir. Bu nedenle aynı soruyu tekrar denerseniz, başka bir soruyu atlamak zorunda kalırsınız.\nBir soruya cevap verdikten sonra tekrar cevaplayamazsınız.\n\nTakımınız, her soru için kaç takım üyesinin doğru cevap gönderdiğine bağlı olarak bonus puanlar kazanır.\nTakımınıza daha fazla puan kazandırmak için her maçtan sonra geri dönün!",
+    "questiontypes": {
+      "math": "Mat",
+      "knowledge": "Bilgi",
+      "recognize": "Tani",
+      "insight": "Anlayış",
+      "remember": "Hatırla",
+      "guess": "Tahmin"
+    }
+  },
+  "questions": {
+    "guesshowmany1": {
+      "q": "Bu yıl Fra Kåre müziği kaç saat dinlendi?",
+      "intro": "Bu yıl Fra Kåre müziğini dinlediniz mi?"
+    },
+    "guesshowmany2": {
+      "q": "2023'te kamplara kaç kişi katıldı?",
+      "intro": "İyi sayma yapabiliyor musunuz?"
+    },
+    "remember": {
+      "q": "Herman Shuffle dans hareketlerinin doğru sırası nedir?",
+      "intro": "Bu sabah dans ettiniz mi?",
+      "a": {
+        "lwd": "Lean, Wave, Drift",
+        "wld": "Wave, Lean, Drift",
+        "ldw": "Lean, Drift, Wave",
+        "wdl": "Wave, Drift, Lean"
+      }
+    },
+    "insight": {
+      "q": "Hangi lunapark treni en önce aşağıya ulaşır?",
+      "intro": "Resme bakın. Hangi lunapark treni en önce aşağıya ulaşır?",
+      "a": {
+        "red": "Kırmızı",
+        "green": "Yeşil",
+        "yellow": "Sarı",
+        "sametime": "Aynı anda alt noktaya ulaşırlar"
+      }
+    },
+    "recognize1": {
+      "q": "Bunu tanıyor veya hatırlıyor musun?",
+      "intro": "Bu resimde kimleri görüyoruz (veya görmüyoruz) biliyor musun?",
+      "a": {
+        "opta": "Gershon Twilley",
+        "optb": "Harald Kronstad",
+        "optc": "Gunnar Gangsø",
+        "optd": "Bernt-Aksel Larsen"
+      }
+    },
+    "recognize2": {
+      "q": "Bu kim olduğunu hatırlayabilir misiniz?",
+      "intro": "Bu yılki projeleri takip ettiniz mi? Resme bakın.",
+      "a": {
+        "peter": "Peter",
+        "john": "John",
+        "matthew": "Matthew",
+        "paul": "Paul"
+      }
+    },
+    "math": {
+      "q": "Soru işareti kaç olmalıdır?",
+      "intro": "Resme bakın. Soru işareti kaç olmalıdır?",
+      "a": {
+        "30": "30",
+        "81": "81",
+        "200": "200",
+        "67": "67"
+      }
+    },
+    "knowledge": {
+      "q": "BCC'nin hangi ülkede kilisesi yok?",
+      "intro": "Nerelisiniz?",
+      "a": {
+        "singapore": "Singapur",
+        "serbia": "Sırbistan",
+        "japan": "Japonya",
+        "peru": "Peru"
+      }
+    }
+  },
+  "back": "Geri"
+}

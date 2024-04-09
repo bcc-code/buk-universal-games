@@ -15,8 +15,11 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "html5-qrcode": "^2.3.8",
+    "pinch-zoom-js": "^2.3.5",
     "pinia": "^2.1.7",
     "vue": "^3.4.21",
+    "vue-i18n": "^9.11.0",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {

@@ -1,0 +1,166 @@
+{
+  "install_hint": "Hinweis:\nInstallieren Sie diese Web-App auf Ihrem Startbildschirm, sie funktioniert besser!",
+  "menu": {
+    "home": "Home",
+    "league": "Liga",
+    "sidequest": "Sidequest",
+    "games": "Spiele",
+    "map": "Karte"
+  },
+  "games": {
+    "monkeybars": "Monkeybars",
+    "nervespiral": "Nervenspirale",
+    "tickettwist": "Ticketdreher",
+    "minefield": "Minenfeld",
+    "tablesurfing": "Crowdsurfen"
+  },
+  "score": {
+    "monkeybars": "{score} Stangen",
+    "nervespiral": "{score} Sekunden",
+    "tickettwist": "{score} Tickets",
+    "minefield": "{score} Sekunden",
+    "tablesurfing": "{score} Sekunden"
+  },
+  "leadstory": {
+    "monkeybars": "Kann dein Team bei der Rettung von Menschen helfen, die in einem defekten Riesenrad feststecken? Das Klettern auf einem Riesenrad kann herausfordernd sein, und es ist wichtig, die Bedeutung des Mitführens von Erste-Hilfe-Materialien zu beachten. Bringe dein Team auf die andere Seite und rette diese hilflosen Menschen in Not.",
+    "nervespiral": "Während du geduldig auf deinen Platz in der Schlange für die nächste Fahrt wartest, tritt plötzlich ein Stromausfall auf. Keine Panik nötig. Kann dein Team geschickt mit dieser unerwarteten Situation umgehen und die Schlange sicher verlassen, ohne einen Stromschlag zu erleiden? Bleibt ruhig und vertraut darauf, dass dein Team die Herausforderung mit Besonnenheit und Anmut meistern kann.",
+    "tickettwist": "Die Leute stehen in der Schlange, um ihre Eintrittskarten zu erhalten. Kann dein Team mit der Geschwindigkeit und dem Stress umgehen, der an der Kasse aufkommt? Dieses Spiel kombiniert schnelles Denken, Ausdauer, Geschwindigkeit und Teamarbeit. Bleibt konzentriert und dreht möglichst viele Tickets in die Farbe eures Teams um. Seid ihr bereit für die Herausforderung?",
+    "minefield": "Dein Team steht vor einer schwierigen Situation, bei der es auf die andere Seite gelangen muss und gleichzeitig auf wilden Tieren achtgeben muss, die entkommen sind. Das Ziel ist es, das Ziel zu erreichen, ohne von diesen Tieren angegriffen zu werden.",
+    "tablesurfing": "Die Gleise der Eisenbahn sind beschädigt, was ein ernsthaftes Problem verursacht. Dein Team kann diese Situation jedoch bewältigen, indem es als Team zusammenarbeitet. Kombiniert eure Fähigkeiten, koordiniert eure Aktionen und findet einen Weg, den Zug reibungslos in Bewegung zu halten."
+  },
+  "explanation": {
+    "monkeybars": "Spieler eins beginnt, die Monkeybars so weit wie möglich zu erklimmen. Sobald er die 12. Stange erreicht hat, kann der nächste Spieler von vorne beginnen.\n\nBeispiel: Spieler eins hat als Letzter die 26. Stange berührt, daher beträgt seine Punktzahl 26 Punkte. Spieler zwei ist an der 18. Stange gefallen, daher beträgt seine Punktzahl 18 Punkte. Die Punktzahlen aller Spieler werden addiert und durch die Gesamtzahl der Spieler im Team geteilt. Das ergibt die Gesamtpunktzahl deines Teams.",
+    "nervespiral": "Wenn das Startsignal ertönt, können die ersten beiden Spieler zur Nervenspirale gehen. Beide nehmen eine Seite des Metallrings und versuchen, bis zur ersten Checkpoint zu gelangen, ohne das Rohr zu berühren.\n\nSobald die beiden Spieler einen Checkpoint erreicht haben, kehren sie zurück, und zwei neue Spieler betreten das Spiel. Wenn diese beiden Spieler die Nervenspirale berühren, kehren sie zum Team zurück, und zwei neue Spieler setzen ab dem letzten Checkpoint fort. Ihr setzt dies fort, bis ihr das Ende der Nervenspirale erreicht habt. Das Team, das zuerst fertig wird, gewinnt.",
+    "tickettwist": "Für dieses Spiel müssen alle teilnehmenden Spieler ein Band in der Farbe ihres Teams tragen. Je zehn Spieler pro Team treten auf dem Spielfeld gegeneinander an. Das Ziel dieses Spiels ist es, so viele Kacheln wie möglich in die Farbe deines Teams zu drehen. Die Spieler auf dem Spielfeld können so oft wechseln, wie sie möchten, solange der neue Spieler ein Band des 'alten' Spielers erhält und dann das Spiel fortsetzen kann. Das Spiel besteht aus einer Runde von 8 Minuten. Wenn die Zeit abgelaufen ist, verlassen alle Spieler das Spielfeld, und die Kacheln werden nach Farben gezählt. Das Team, das die meisten Kacheln in seine Farbe gedreht hat, gewinnt das Spiel.",
+    "minefield": "Dieses Spiel findet auf einem großen Feld mit kleinen Abschnitten statt. Jedes Team hat zwei Kapitäne an der Seitenlinie, die die Spieler ohne die Verwendung von Handys oder anderen Hilfsmitteln durch den Parcours führen. Spieler eins beginnt und versucht, durch das Feld zu gehen, ohne in ein falsches Feld zu treten. Um festzustellen, ob du dich in einem richtigen oder falschen Feld befindest, benutzt du ein Piepgerät in jedem Feld. Wenn das Piepgerät Alarm schlägt, bist du in einem falschen Feld und musst den Spieler gegen einen neuen Spieler austauschen. Jeder Spieler überprüft jedes Feld, selbst wenn du zu 100% sicher bist, dass es keine Mine ist. Die Kapitäne helfen dabei, sich an den richtigen Weg zu erinnern. Ihr geht weiter, bis ihr das Ziel erreicht habt, und dann wird die Zeit gestoppt. Das Team mit der schnellsten Zeit gewinnt das Spiel.",
+    "tablesurfing": "Das Ziel dieses Spiels ist es, eine Person auf der anderen Seite der Strecke auf dem Flamingo über rollende Personen zu bringen. Mit deinem Team musst du mehrere Runden drehen und versuchen, zu verhindern, dass die Person oben auf den Boden fällt. Am Ende der Strecke findest du eine Steigung. Sobald die Jungen die Steigung erklommen haben, ertönt die Glocke und die Teams wechseln. Das zweite Team (Mädchen) legt die gleiche Strecke auf dem Rückweg aus, indem es die Steigung hinunterfährt und alle Kurven umrundet. Das Team, das als erstes die Ziellinie überquert, gewinnt."
+  },
+  "rules": {
+    "monkeybars": "Alle Mitglieder des Teams nehmen teil",
+    "nervespiral": "30 - 50 Teammitglieder nehmen teil (in 15-25 Paaren)",
+    "tickettwist": "Nur die Personen mit einem Teamband dürfen das Spielfeld betreten (10 pro Team)|Es ist erlaubt, die Teilnehmer beliebig oft zu wechseln, solange sie beim Betreten des Spielfelds ein Teamband tragen",
+    "minefield": "Etwa 30 Teammitglieder nehmen teil|Es ist nur eine Person gleichzeitig auf dem Parcours erlaubt|2 Teamkapitäne führen die Teilnehmer durch den Parcours|Die Teamkapitäne dürfen keine Hilfsmittel verwenden, um sich an die Route zu erinnern",
+    "tablesurfing": "16 Jungen und 16 Mädchen nehmen teil, 1 Surfer und 15 Rollende|Es ist nicht erlaubt, den Boden zu berühren (sowohl der Surfer als auch die Rollenden)|Die Hindernisse dürfen nicht bewegt werden, und die Rollenden dürfen das markierte Gebiet nicht verlassen"
+  },
+  "general_error": "Etwas ist schiefgelaufen",
+  "pleaserefresh": "Bitte versuche die Seite neu zu laden",
+  "points": "Punkte",
+  "coins": "Münzen",
+  "game": "Spiel",
+  "team1team2": "Team 1 / Team 2",
+  "start": "Start",
+  "rulestitle": "Regeln",
+  "login": {
+    "login_button": "Anmelden",
+    "teamcode": "Team-Code",
+    "teamcode_invalid": "Entschuldigung, dein Team-Code ist ungültig"
+  },
+  "league": {
+    "rankingisempty": "Kein Team hat bisher Punkte registriert. Schau nach der ersten Runde hier wieder vorbei.",
+    "viewgamerankings": "Zeige Rangliste für jedes Spiel an",
+    "viewgamerankings-title": "Sie können die Rangliste pro Spiel auf den Detailseiten des Spiels anzeigen.",
+    "ranking-frozen": "Die Rangliste ist jetzt eingefroren, bis die Gewinner bekannt gegeben werden"
+  },
+  "admin": {
+    "select_league": {
+      "intro": "Wähle die Liga aus, die du verwalten möchtest"
+    }
+  },
+  "yourmatch": "Dein Spiel",
+  "sidequest": {
+    "thanks": "Vielen Dank, deine Antwort wurde registriert",
+    "timeranout": "Die Zeit ist abgelaufen, beim nächsten Mal klappt es vielleicht besser",
+    "areyouready": "Bist du bereit?",
+    "checkanswerlater": "Überprüfe die Antwort, wenn das Spiel vorbei ist",
+    "question_locked": "Abgelaufen",
+    "youhaveunsubmittedanswers": "Du hast {numAnswers} Antworten. Möchtest du sie jetzt senden?",
+    "submityouranswers": "Sende deine Antworten",
+    "gameroundtitle": "Runde {round}",
+    "back_to_overview": "Zurück zur Übersicht",
+    "alreadyAnswered": "Du hast diese Frage bereits beantwortet",
+    "noroundyet": "Noch nicht verfügbar. Komm nach dem Match zurück.",
+    "submitfailed": "Das Abschicken deiner Antworten hat nicht geklappt. Stell sicher, dass du eine Verbindung hast und probiere es erneut",
+    "no_coins": "Du hast keine Münzen mehr übrig. Du kannst keine weiteren Fragen beantworten",
+    "explanation": "Erklärung",
+    "explanation_text": "Nach jedem Match, außer dem letzten, werden 2 Fragen in zufälliger Reihenfolge freigeschaltet, insgesamt also 8 Fragen. Sie haben 10 Minuten Zeit, um sie zu beantworten, bis das nächste Match beginnt.\nSie haben insgesamt 8 Münzen. Jede Frage, die Sie beginnen, kostet eine Münze, auch wenn Sie sie nicht beantworten. Also, wenn Sie dieselbe Frage erneut versuchen, müssen Sie eine andere Frage überspringen.\nSobald Sie eine Frage beantwortet haben, können Sie sie nicht erneut beantworten.\n\nIhr Team erhält Bonuspunkte basierend darauf, wie viele Mitglieder Ihres Teams eine richtige Antwort für jede Frage einsenden.\nKommen Sie nach jedem Match zurück, um mehr Punkte für Ihr Team zu verdienen!",
+    "questiontypes": {
+      "math": "Mathe",
+      "knowledge": "Wissen",
+      "recognize": "Erkennen",
+      "insight": "Einsicht",
+      "remember": "Erinnern",
+      "guess": "Raten"
+    }
+  },
+  "questions": {
+    "guesshowmany1": {
+      "q": "Wie viele Stunden wurde Fra Kåre in diesem Jahr gehört?",
+      "intro": "Hast du Fra Kåre in diesem Jahr gehört?"
+    },
+    "guesshowmany2": {
+      "q": "Wie viele Personen haben die Camps im Jahr 2023 besucht?",
+      "intro": "Bist du gut im Zählen?"
+    },
+    "remember": {
+      "q": "Was ist die richtige Reihenfolge der Tanzbewegungen von Herman Shuffle?",
+      "intro": "Hast du heute Morgen dazu getanzt?",
+      "a": {
+        "lwd": "Lean, Wave, Drift",
+        "wld": "Wave, Lean, Drift",
+        "ldw": "Lean, Drift, Wave",
+        "wdl": "Wave, Drift, Lean"
+      }
+    },
+    "insight": {
+      "q": "Welcher Achterbahnwagen wird als erster unten ankommen?",
+      "intro": "Schau dir das Bild an. Welcher Achterbahnwagen wird als erster unten ankommen?",
+      "a": {
+        "red": "Rot",
+        "green": "Grün",
+        "yellow": "Gelb",
+        "sametime": "Sie kommen gleichzeitig unten an"
+      }
+    },
+    "recognize1": {
+      "q": "Erkennst du oder erinnerst du dich, wer das ist?",
+      "intro": "Wissen Sie, wen wir auf diesem Bild (nicht) sehen?",
+      "a": {
+        "opta": "Gershon Twilley",
+        "optb": "Harald Kronstad",
+        "optc": "Gunnar Gangsø",
+        "optd": "Bernt-Aksel Larsen"
+      }
+    },
+    "recognize2": {
+      "q": "Kannst du dich daran erinnern, wer diese Person ist?",
+      "intro": "Hast du die Projekte in diesem Jahr verfolgt? Schau dir das Bild an.",
+      "a": {
+        "peter": "Peter",
+        "john": "Johannes",
+        "matthew": "Matthäus",
+        "paul": "Paulus"
+      }
+    },
+    "math": {
+      "q": "Welche Zahl sollte im Fragezeichen stehen?",
+      "intro": "Schau dir das Bild an. Welche Zahl sollte im Fragezeichen stehen?",
+      "a": {
+        "30": "30",
+        "81": "81",
+        "200": "200",
+        "67": "67"
+      }
+    },
+    "knowledge": {
+      "q": "In welchem Land hat BCC keine Kirche?",
+      "intro": "Woher kommst du?",
+      "a": {
+        "singapore": "Singapur",
+        "serbia": "Serbien",
+        "japan": "Japan",
+        "peru": "Peru"
+      }
+    }
+  },
+  "back": "Zurück"  
+}

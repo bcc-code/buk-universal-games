@@ -1,85 +1,72 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+// import InternalNotification from '@/components/InternalNotification.vue';
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
   <RouterView />
+  <!-- shit -->
+  <internal-notification></internal-notification>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+<style>
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+html {
+  box-sizing: border-box;
+  height: 100%;
 }
 
-nav {
+main {
+  height: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+#app {
+  height: 100%;
+}
+
+img {
   width: 100%;
-  font-size: 12px;
+  max-width: 100%;
+}
+
+button,
+input,
+.btn-primary,
+.btn {
+  border-radius: 0.5em;
+  padding: 0.75em;
   text-align: center;
-  margin-top: 2rem;
+  border: none;
+  font-size: 1em;
+  font: inherit;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+.btn-success {
+  background-color: var(--green);
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+.btn-blank {
+  border: 2px solid var(--dark-blue);
 }
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+.btn-primary {
+  background-color: var(--vanilla);
+  color: white;
 }
 
-nav a:first-of-type {
-  border: 0;
+.user-section {
+  padding: 0.2em 0;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+.external-notification-bell {
+  position: fixed;
+  top: 1em;
+  right: 1em;
 }
 </style>

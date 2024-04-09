@@ -1,0 +1,168 @@
+{
+  "install_hint": "Hint:\nInstall this web-app to your home screen, it'll work better!",
+  "menu": {
+    "home": "Home",
+    "league": "League",
+    "sidequest": "Side quest",
+    "games": "Games",
+    "map": "Map"
+  },
+  "games": {
+    "monkey_bars": "Monkey Bars",
+    "nerve_spiral": "Nerve Spiral",
+    "ticket_twist": "Ticket Twist",
+    "mine_field": "Mine Field",
+    "table_surfing": "Crowd Surfing"
+  },
+  "score": {
+    "monkey_bars": "{score} bars",
+    "nerve_spiral": "{score} seconds",
+    "ticket_twist": "{score} tickets",
+    "mine_field": "{score} seconds",
+    "table_surfing": "{score} seconds"
+  },
+  "leadstory": {
+    "monkey_bars": "Can your team provide assistance in rescuing people trapped on a malfunctioning Ferris wheel? Climbing a Ferris wheel can be challenging, and it's crucial to remember the importance of carrying first aid supplies. Please get your team to reach the other side and rescue these helpless individuals in need.",
+    "nerve_spiral": "As you patiently await your turn in line for the next ride, suddenly there is an event of a power failure, there's no need to panic. Can your team skilfully navigate through this unexpected situation, safely departing from the line without experiencing any electrical shocks? Stay calm and trust in your team's ability to handle this challenge with composure and grace. ",
+    "ticket_twist": "People are waiting in line to get their ticket. Is your team capable of handling the speed and stress that comes at the ticket booth. This game combines quick thinking, endurance, speed and teamwork. Stay focused and flip as many tickets to your team color. Are you ready for the challenge?",
+    "mine_field": "Your team is faced with a difficult situation where they need to cross to the other side while being cautious of wild animals that have escaped. The goal is to reach their destination without being attacked by these animals.",
+    "table_surfing": "The train tracks are damaged, causing a significant problem. However, your team can tackle this situation by working together as a team. Combine your skills, coordinate your actions, and find a way to keep the train moving smoothly."
+  },
+  "explanation": {
+    "monkey_bars": "Player one starts climbing the Monkey Bars as far as they can. Once they have reached the 12th bar, the next player can start from the beginning.\n\nExample: Player one has touched the 26th bar last, so his score will be 26 points. Player two fell at the 18th bar, so her score is 18 points. The points of all the players will be added up and divided by the total number of players in the team. That will be your teams' total points.",
+    "nerve_spiral": "When the start signal sounds, the first two players can go to the spiral, both take one side of the metal ring and try to get to the first checkpoint without touching the tube.\n\n When the two players get to one checkpoint, they go back and two new players enter the game. When these two players touch the spiral, they go back to the team and two new players continue from the last checkpoint. You continue until you reach the end of the spiral. The team that finishes first wins.",
+    "ticket_twist": "For this game, every player that participates in the game, needs to wear a ribbon of his or her team's color. 10 players of each team will compete against each other in the field. The goal of this game is to flip as many tiles as possible to your team's color. The players in the field can switch as often as they want, but then the new player needs the ribbon from the 'old' player and then the new player can continue with the game. The game consists of 1 round of 8 minutes. When the time is up, all players leave the field and the tiles will be counted by color. The team that flipped the most tiles to their color, wins the game.",
+    "mine_field": "This game will take place in a big field with small sections. Each team has two captains on the sidelines guiding the player without using phones or any other aid. Player one starts and tries to go through the field without stepping in a wrong box. To know if you're in a right or wrong box, you use the beeper in each box. When the beeper gives the alarm signal, you're in the wrong box and you have to switch the player for a new player. Each player checks each box, even though it is 100% certain it is not a mine. The captains help with remembering the right pathway. You go on until you've reached the finish and then your time will stop. The team with the fastest time, wins the game.",
+    "table_surfing": "The goal of this game is to get one person to the other side of the track on the flamingo over rolling persons. With your team you need to take several turns and try to not let the person on top fall on the ground. At the end of the track, you'll find a slope. Once the boys have climbed the slope, the bell rings and you switch teams. The second team (girls) will lay out the same track on the way back, with going down the slope and around all the curves. The team that crosses the finish line first, wins."
+  },
+  "rules": {
+    "monkey_bars": "All members of the team participate",
+    "nerve_spiral": "30 - 50 team members participate (in 15-25 pairs)",
+    "ticket_twist": "Only the persons with a team ribbon are allowed to enter the field (10 per team)|It is permitted to switch participants without limitation, as long as they are wearing a team ribbon when entering the field",
+    "mine_field": "Approx. 30 team members participate|Only 1 person at a time is allowed on the course|2 team captains guide the participants through the course|Team captains may not use tools to remember the route",
+    "table_surfing": "16 boys and 16 girls participate, 1 surfer and 15 rollers|It is not allowed to touch the ground (both float and surfer)|The obstacles may not be moved and rollers cannot move outside marked area"
+  },
+  "general_error": "Something went wrong",
+  "pleaserefresh": "Please try refreshing the page",
+  "points": "Points",
+  "coins": "Coins",
+  "game": "Game",
+  "team1team2": "Team 1 / Team 2",
+  "start": "Start",
+  "rulestitle": "Rules",
+  "login": {
+    "login_button": "Logg inn",
+    "teamcode": "Team code",
+    "teamcode_invalid": "Sorry, your team key is not valid"
+  },
+  "league": {
+    "rankingisempty": "No team has yet registered points. Check back here after the first round.",
+    "viewgamerankings": "View ranking for each game",
+    "viewgamerankings-title": "You can view the rankings per game on the game detail pages.",
+    "ranking-frozen": "The ranking is now frozen until the winners are announced"
+  },
+  "admin": {
+    "select_league": {
+      "intro": "Choose the league you want to manage"
+    }
+  },
+  "yourmatch": "Your match",
+  "sidequest": {
+    "thanks": "Thanks, your answer has been recorded",
+    "timeranout": "Time ran out, better luck next time",
+    "areyouready": "Are you ready?",
+    "checkanswerlater": "Check the answer when the game is over",
+    "question_locked": "Expired",
+    "youhaveunsubmittedanswers": "You have {numAnswers} answers. Do you want to send them now?",
+    "submityouranswers": "Submit your answers",
+    "gameroundtitle": "Round {round}",
+    "back_to_overview": "Return to the overview",
+    "alreadyAnswered": "You have already answered this question",
+    "explanation": "Explanation",
+    "explanation_text": "After every round except the last one, 2 questions will be unlocked in random order, so 8 questions total. You can answer them until the next match starts.\n\nIf you don't answer the question or back out of it, you loose one of your 8 coins. If you retry the same question you will have to skip another question. \n\nYour team earns bonus points based on how many of your team sends in a correct answer for each question.",
+    "noroundyet": "Not yet available. Come back after the match",
+    "submitfailed": "Failed to submit your answers. Make sure you have connection and try again",
+    "no_coins": "You don't have any coins left. You can't answer any more questions",
+    "questiontypes": {
+      "math": "Math",
+      "knowledge": "Knowledge",
+      "recognize": "Recognize",
+      "insight": "Insight",
+      "remember": "Remember",
+      "guess": "Guess"
+    }
+  },
+  "questions": {
+    "guesshowmany1": {
+      "q": "How many hours of Fra Kåre have there been listened to this year?",
+      "intro": "Have you been listening to Fra Kåre this year?"
+    },
+    "guesshowmany2": {
+      "q": "How many people have visited the camps in 2023?",
+      "intro": "Are you good at counting?"
+    },
+    "remember": {
+      "q": "What is the correct order of the Herman Shuffle dance moves?",
+      "intro": "Did you dance along this morning?",
+      "a": {
+        "lwd": "Lean, Wave, Drift",
+        "wld": "Wave, Lean, Drift",
+        "ldw": "Lean, Drift, Wave",
+        "wdl": "Wave, Drift, Lean"
+      }
+    },
+    "insight": {
+      "q": "Which rollercoaster cart will reach the bottom first?",
+      "intro": "Look at the image. Which rollercoaster cart will reach the bottom first?",
+      "a": {
+        "red": "Red",
+        "green": "Green",
+        "yellow": "Yellow",
+        "sametime": "They reach the bottom at the same time"
+      }
+    },
+    "recognize1": {
+      "q": "Do you recognize or remember who this is?",
+      "intro": "Do you know who we are (not) seeing in this image?",
+      "a": {
+        "opta": "Gershon Twilley",
+        "optb": "Harald Kronstad",
+        "optc": "Gunnar Gangsø",
+        "optd": "Bernt-Aksel Larsen"
+      }
+    },
+    "recognize2": {
+      "q": "Can you remember who this is?",
+      "intro": "Did you follow the projects this year? Look at the image.",
+      "a": {
+        "peter": "Peter",
+        "john": "John",
+        "matthew": "Matthew",
+        "paul": "Paul"
+      }
+    },
+    "math": {
+      "q": "What number should the question mark be?",
+      "intro": "Look at the image. What number should the question mark be?",
+      "a": {
+        "30": "30",
+        "67": "67",
+        "81": "81",
+        "200": "200"
+      }
+    },
+    "knowledge": {
+      "q": "In what country does BCC not have a church?",
+      "intro": "Where are you from?",
+      "a": {
+        "singapore": "Singapore",
+        "serbia": "Serbia",
+        "japan": "Japan",
+        "peru": "Peru"
+      }
+    }
+  },
+  "back": "Back",
+  "please_refresh": "Please refresh",
+  "team": "Team"
+}

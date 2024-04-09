@@ -1,0 +1,166 @@
+{
+  "install_hint": "Suggerimento:\nInstalla questa web-app sulla tua schermata principale, funzionerà meglio!",
+  "menu": {
+    "home": "Home",
+    "league": "Campionato",
+    "sidequest": "Missione secondaria",
+    "games": "Giochi",
+    "map": "Mappa"
+  },
+  "games": {
+    "monkeybars": "Trapezio",
+    "nervespiral": "Spirale Nervosa",
+    "tickettwist": "Ticket Twist",
+    "minefield": "Campo Minato",
+    "tablesurfing": "Surf da Tavolo"
+  },
+  "score": {
+    "monkeybars": "{score} stanghe",
+    "nervespiral": "{score} secondi",
+    "tickettwist": "{score} biglietti",
+    "minefield": "{score} secondi",
+    "tablesurfing": "{score} secondi"
+  },
+  "leadstory": {
+    "monkeybars": "Il tuo team può fornire assistenza nel salvataggio delle persone intrappolate su una ruota panoramica malfunzionante? Scalare una ruota panoramica può essere una sfida, ed è fondamentale ricordare l'importanza di portare con sé materiale di pronto soccorso. Porta il tuo team dall'altro lato e salva queste persone indifese bisognose.",
+    "nervespiral": "Mentre aspetti pazientemente il tuo turno nella fila per il prossimo giro, improvvisamente si verifica un guasto di alimentazione, ma non c'è bisogno di panico. Il tuo team può navigare abilmente in questa situazione imprevista, uscendo dalla fila senza subire scosse elettriche? Rimanete calmi e fidatevi della capacità del vostro team di affrontare questa sfida con compostezza e grazia.",
+    "tickettwist": "Le persone sono in fila per ottenere il biglietto. Il tuo team è in grado di gestire la velocità e lo stress che si presentano alla biglietteria? Questo gioco combina il pensiero rapido, la resistenza, la velocità e il lavoro di squadra. Rimanete concentrati e girate più biglietti possibile con il colore del vostro team. Siete pronti per la sfida?",
+    "minefield": "Il tuo team si trova di fronte a una situazione difficile in cui deve attraversare dall'altro lato stando attento agli animali selvatici scappati. L'obiettivo è raggiungere la destinazione senza essere attaccati da questi animali.",
+    "tablesurfing": "I binari del treno sono danneggiati, causando un problema significativo. Tuttavia, il tuo team può affrontare questa situazione lavorando insieme come una squadra. Unite le vostre abilità, coordinate le vostre azioni e trovate un modo per far muovere il treno senza intoppi."
+  },
+  "explanation": {
+    "monkeybars": "Il giocatore uno inizia a scalare il trapezio fino a quando può. Una volta raggiunta la dodicesima stanghetta, il giocatore successivo può iniziare dall'inizio.\n\nEsempio: Il giocatore uno ha toccato l'ultima ventiseiesima stanghetta, quindi il suo punteggio sarà di 26 punti. Il giocatore due è caduto alla diciottesima stanghetta, quindi il suo punteggio è di 18 punti. I punti di tutti i giocatori verranno sommati e divisi per il numero totale di giocatori nella squadra. Questo sarà il punteggio totale del vostro team.",
+    "nervespiral": "Quando suona il segnale di inizio, i primi due giocatori possono andare alla spirale, prendere ciascuno un lato dell'anello di metallo e cercare di raggiungere il primo checkpoint senza toccare il tubo.\n\n Quando i due giocatori raggiungono un checkpoint, tornano indietro e due nuovi giocatori entrano nel gioco. Quando questi due giocatori toccano la spirale, tornano indietro alla squadra e due nuovi giocatori continuano dall'ultimo checkpoint. Si continua fino a raggiungere la fine della spirale. La squadra che finisce per prima vince.",
+    "tickettwist": "Per questo gioco, ogni giocatore che partecipa al gioco deve indossare un nastro del colore della sua squadra. 10 giocatori di ogni squadra gareggeranno tra loro nel campo. L'obiettivo di questo gioco è girare il maggior numero possibile di piastrelle con il colore della tua squadra. I giocatori nel campo possono cambiare quanti volte vogliono, ma il nuovo giocatore deve avere il nastro del giocatore 'vecchio' e poi può continuare il gioco. Il gioco consiste in una sola fase di 8 minuti. Quando il tempo è scaduto, tutti i giocatori lasciano il campo e le piastrelle vengono contate per colore. La squadra che ha girato il maggior numero di piastrelle nel proprio colore vince il gioco.",
+    "minefield": "Questo gioco si svolgerà in un grande campo con piccole sezioni. Ogni squadra ha due capitani sulle linee guida dei giocatori senza usare telefoni o altri ausili. Il giocatore uno inizia e cerca di attraversare il campo senza mettere piede su una casella sbagliata. Per sapere se sei su una casella giusta o sbagliata, usi il segnalatore acustico in ogni casella. Quando il segnalatore acustico dà il segnale di allarme, sei su una casella sbagliata e devi cambiare il giocatore con un nuovo giocatore. Ogni giocatore controlla ogni casella, anche se è certo al 100% che non sia una mina. I capitani aiutano a ricordare il percorso giusto. Si prosegue fino a raggiungere il traguardo e poi il tempo si ferma. La squadra con il tempo più veloce vince il gioco.",
+    "tablesurfing": "L'obiettivo di questo gioco è far arrivare una persona dall'altra parte della pista sul fenicottero sopra le persone rotolanti. Con la tua squadra devi fare diverse rotazioni e cercare di non far cadere la persona in cima a terra. Alla fine della pista, troverai una discesa. Una volta che i ragazzi hanno scalato la discesa, suona la campanella e si cambiano le squadre. La seconda squadra (le ragazze) preparerà la stessa pista sul percorso di ritorno, scendendo la discesa e girando tutte le curve. La squadra che attraversa per prima il traguardo, vince."
+  },
+  "rules": {
+    "monkeybars": "Partecipano tutti i membri della squadra",
+    "nervespiral": "Partecipano 30 - 50 membri della squadra (in 15-25 coppie)",
+    "tickettwist": "Solo le persone con un nastro della squadra possono entrare nel campo (10 per squadra)|È permesso cambiare i partecipanti senza limitazioni, purché indossino un nastro della squadra quando entrano nel campo",
+    "minefield": "Partecipano circa 30 membri della squadra|Sul percorso è consentita una sola persona alla volta|2 capitani della squadra guidano i partecipanti attraverso il percorso|I capitani della squadra non possono usare strumenti per ricordare il percorso",
+    "tablesurfing": "Partecipano 16 ragazzi e 16 ragazze, 1 surfista e 15 rotolatori|Non è consentito toccare il suolo (sia il surfista che i rotolatori)|Gli ostacoli non possono essere spostati e i rotolatori non possono uscire dall'area segnata"
+  },
+  "general_error": "Qualcosa è andato storto",
+  "pleaserefresh": "Per favore, prova a ricaricare la pagina",
+  "points": "Punti",
+  "coins": "Gettoni",
+  "game": "Gioco",
+  "team1team2": "Squadra 1 / Squadra 2",
+  "start": "Inizio",
+  "rulestitle": "Regole",
+  "login": {
+    "login_button": "Accedi",
+    "teamcode": "Codice squadra",
+    "teamcode_invalid": "Spiacente, il tuo codice squadra non è valido"
+  },
+  "league": {
+    "rankingisempty": "Ancora nessuna squadra ha registrato punti. Torna qui dopo la prima fase.",
+    "viewgamerankings": "Visualizza classifica per ogni gioco",
+    "viewgamerankings-title": "Puoi visualizzare le classifiche per gioco sulle pagine dei dettagli del gioco.",
+    "ranking-frozen": "La classifica è ora congelata fino all'annuncio dei vincitori"
+  },
+  "admin": {
+    "select_league": {
+      "intro": "Scegli il campionato che desideri gestire"
+    }
+  },
+  "yourmatch": "La tua partita",
+  "sidequest": {
+    "thanks": "Grazie, la tua risposta è stata registrata",
+    "timeranout": "Il tempo è scaduto, meglio fortuna la prossima volta",
+    "areyouready": "Sei pronto?",
+    "checkanswerlater": "Controlla la risposta quando il gioco è finito",
+    "question_locked": "Scaduto",
+    "youhaveunsubmittedanswers": "Hai {numAnswers} risposte. Vuoi inviarle ora?",
+    "submityouranswers": "Invia le tue risposte",
+    "gameroundtitle": "Round {round}",
+    "back_to_overview": "Torna alla panoramica",
+    "alreadyAnswered": "Hai già risposto a questa domanda",
+    "submitfailed": "Impossibile inviare le tue risposte. Assicurati di essere connesso e riprova",
+    "no_coins": "Non hai più gettoni. Non puoi rispondere ad altre domande",
+    "explanation": "Spiegazione",
+    "explanation_text": "Dopo ogni round tranne l'ultimo, verranno sbloccate casualmente 2 domande, quindi un totale di 8 domande. Puoi rispondere alle domande fino a quando inizia la partita successiva.\n\nSe non rispondi alla domanda o esci da essa, perdi uno dei tuoi 8 gettoni. Se riprovi la stessa domanda, dovrai saltare un'altra domanda. \n\nLa tua squadra guadagna punti bonus in base a quante persone della tua squadra inviano una risposta corretta per ogni domanda.",
+    "noroundyet": "Non ancora disponibile. Torna dopo la partita",
+    "questiontypes": {
+      "math": "Mat",
+      "knowledge": "Conoscenza",
+      "recognize": "Riconosci",
+      "insight": "Intuizione",
+      "remember": "Ricorda",
+      "guess": "Indovina"
+    }
+  },
+  "questions": {
+    "guesshowmany1": {
+      "q": "Quante ore di Fra Kåre sono state ascoltate quest'anno?",
+      "intro": "Hai ascoltato Fra Kåre quest'anno?"
+    },
+    "guesshowmany2": {
+      "q": "Quante persone hanno visitato i campi nel 2023?",
+      "intro": "Sei bravo a contare?"
+    },
+    "remember": {
+      "q": "Qual è l'ordine corretto delle mosse di Herman Shuffle?",
+      "intro": "Hai ballato insieme stamattina?",
+      "a": {
+        "lwd": "Lean, Wave, Drift",
+        "wld": "Wave, Lean, Drift",
+        "ldw": "Lean, Drift, Wave",
+        "wdl": "Wave, Drift, Lean"
+      }
+    },
+    "insight": {
+      "q": "Quale carrello della montagna russa raggiungerà per primo il fondo?",
+      "intro": "Guarda l'immagine. Quale carrello della montagna russa raggiungerà per primo il fondo?",
+      "a": {
+        "red": "Rosso",
+        "green": "Verde",
+        "yellow": "Giallo",
+        "sametime": "Arriveranno entrambi alla fine contemporaneamente"
+      }
+    },
+    "recognize1": {
+      "q": "Riconosci o ricordi chi è questa persona?",
+      "intro": "Sai chi stiamo (non) vedendo in questa immagine?",
+      "a": {
+        "opta": "Gershon Twilley",
+        "optb": "Harald Kronstad",
+        "optc": "Gunnar Gangsø",
+        "optd": "Bernt-Aksel Larsen"
+      }
+    },
+    "recognize2": {
+      "q": "Ricordi chi è questa persona?",
+      "intro": "Hai seguito i progetti quest'anno? Guarda l'immagine.",
+      "a": {
+        "peter": "Pietro",
+        "john": "Giovanni",
+        "matthew": "Matteo",
+        "james": "Giacomo"
+      }
+    },
+    "math": {
+      "q": "Quale numero dovrebbe essere il punto interrogativo?",
+      "intro": "Guarda l'immagine. Quale numero dovrebbe essere il punto interrogativo?",
+      "a": {
+        "30": "30",
+        "81": "81",
+        "200": "200",
+        "67": "67"
+      }
+    },
+    "knowledge": {
+      "q": "In quale paese BCC non ha una chiesa?",
+      "intro": "Da quale paese provieni?",
+      "a": {
+        "singapore": "Singapore",
+        "serbia": "Serbia",
+        "japan": "Giappone",
+        "peru": "Perù"
+      }
+    }
+  },
+  "back": "Indietro"
+}
