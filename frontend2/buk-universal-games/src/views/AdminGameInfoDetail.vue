@@ -6,7 +6,7 @@
 
     <header>
       <h2>
-        <img class="icon" :src="`icon/game-${gameType}.svg`" />
+        <img class="icon" :src="`/icon/game-${gameType}.svg`" />
         <span>{{ $t(`games.${gameParsed.gameType}`) }}</span>
       </h2>
 
@@ -21,7 +21,7 @@
       {{ $t("leadstory." + gameParsed.gameType) }}
     </p>
     <p class="description">
-      <img src="../assets/icon/circle-info.svg" />
+      <img src="/icon/circle-info.svg" />
       {{ $t("explanation." + gameParsed.gameType) }}
     </p>
 

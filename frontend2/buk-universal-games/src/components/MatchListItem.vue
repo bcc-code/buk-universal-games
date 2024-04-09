@@ -1,5 +1,6 @@
 <template>
-  <section class="rounded-md py-2 px-2 text-label-1 bg-ice-blue flex w-full" @click="() => { if (clickFunc) clickFunc() }">
+  <section class="rounded-md py-2 px-2 text-label-1 bg-ice-blue flex w-full"
+    @click="() => { if (clickFunc) clickFunc() }">
     <div class="flex flex-col w-full">
       <span class="text-xs game-title">
         <img class="w-10 h-10" :src="`icon/game-${gameType?.replaceAll('_','')}.svg`" />
@@ -22,6 +23,7 @@
 
 <script>
 
+
 export default {
   name: "MatchListItem",
   props: {
@@ -40,9 +42,6 @@ export default {
 </script>
 
 <style scoped>
-
-
-
 .card-btn {
   border-left: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 0;

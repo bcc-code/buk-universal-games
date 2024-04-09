@@ -2,13 +2,13 @@
   <nav class="user-menu">
     <div class="user-menu-btn-small-wrapper">
       <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'AdminLeagueStatus' }"
-        @click="$router.push({ name: 'AdminLeagueStatus' })"><img src="../assets/icon/home.svg" /></button>
+        @click="$router.push({ name: 'AdminLeagueStatus' })"><img src="/icon/home.svg" /></button>
       <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'AdminMatchListGame' }"
-        @click="$router.push({ name: 'AdminMatchListGame' })"><img src="../assets/icon/calendar.svg" /></button>
+        @click="$router.push({ name: 'AdminMatchListGame' })"><img src="/icon/calendar.svg" /></button>
       <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'AdminGames' }"
-        @click="$router.push({ name: 'AdminGames' })"><img src="../assets/icon/ball.svg" /></button>
+        @click="$router.push({ name: 'AdminGames' })"><img src="/icon/ball.svg" /></button>
       <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'AdminMap' }"
-        @click="$router.push({ name: 'AdminMap' })"><img src="../assets/icon/place.svg" /></button>
+        @click="$router.push({ name: 'AdminMap' })"><img src="/icon/place.svg" /></button>
     </div>
   </nav>
   <CameraScanner ref="cameraScanner"></CameraScanner>

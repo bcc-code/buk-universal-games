@@ -3,7 +3,7 @@
     <section>
       <div class="card-dark-column">
         <h1 class="gameinfo card-dark-text" @click="showGameInfo">
-          <img class="icon" :src="`icon/game-${game?.gameType.replaceAll('_','')}.svg`"/>
+          <img class="icon" :src="`/icon/game-${game?.gameType.replaceAll('_','')}.svg`"/>
           <span>{{ $t(`games.${game?.gameType}`) }}</span><span class="title-arrow">></span>
         </h1>
       </div>

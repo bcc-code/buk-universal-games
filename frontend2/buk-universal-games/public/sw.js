@@ -84,7 +84,7 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("install", (event) => {
-  event.waitUntil(caches.open("v3").then(cache => cache.addAll(preCacheUris)));
+  event.waitUntil(caches.open("v3").then(cache => cache.addAll(preCacheUris.map(uri => "assets/" + uri))));
 });
 
 self.addEventListener("fetch", (event) => {

@@ -3,9 +3,11 @@ import InternalNotification from '@/components/InternalNotification.vue';
 </script>
 
 <template>
-  <RouterView />
-  <!-- shit -->
-  <internal-notification></internal-notification>
+  <main>
+    <RouterView :key="$route.fullPath" />
+    <!-- shit -->
+    <internal-notification></internal-notification>
+  </main>
 </template>
 
 <style>

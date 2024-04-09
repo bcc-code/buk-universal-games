@@ -13,7 +13,7 @@
 
     <header>
       <h3>
-        <img class="icon" :src="`icon/game-${game.gameType}.svg`" />
+        <img class="icon" :src="`/icon/game-${game.gameType}.svg`" />
         <span>{{ $t('games.' + game.gameType) }}</span>
       </h3>
       <h2>
