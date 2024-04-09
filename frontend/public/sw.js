@@ -1,4 +1,3 @@
-
 const putInCache = async (request, response) => {
   const cache = await caches.open("v3");
   await cache.put(request, response);

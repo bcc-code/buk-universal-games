@@ -2,7 +2,6 @@
 <template>
   <main>
     <router-view :key="$route.fullPath" />
-    <!-- shit -->
     <internal-notification></internal-notification>
   </main>
 </template>
