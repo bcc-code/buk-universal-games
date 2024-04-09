@@ -9,6 +9,7 @@
 <script setup>
 import { inject, reactive } from 'vue';
 const notificationService = inject('notificationService');
+
 const state = reactive({
   action: () => { },
   body: null,
@@ -16,6 +17,7 @@ const state = reactive({
   style: { visibility: 'hidden' },
   title: null,
 });
+
 notificationService.registerInternalNotifier((title, options) => {
   if (options.onClick) {
     state.action = options.onClick;
