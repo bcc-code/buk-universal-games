@@ -1,17 +1,19 @@
 <template>
-  <section class="flex align-middle items-center" :class="{ card: true, 'text-label-1': true, loading }">
-      <p class="text-label-1">{{ index }}</p>
-      <div class="flex my-5 ">
-        <span class="buk-icon"><img src="/icon/buk-icon.svg" /></span>
-        <p class="text-label-1 hide-text-overflow">{{ team }}</p>
-      </div>
-      <p class="text-label-1">{{ points }}</p>
+  <section
+    class="flex align-middle items-center"
+    :class="{ card: true, 'text-label-1': true, loading }"
+  >
+    <p class="text-label-1">{{ index }}</p>
+    <div class="flex my-5">
+      <p class="text-label-1 hide-text-overflow">{{ team }}</p>
+    </div>
+    <p class="text-label-1">{{ points }}</p>
   </section>
 </template>
 
 <script>
 export default {
-  name: "LeagueListItem",
+  name: 'LeagueListItem',
   props: {
     index: Number,
     team: String,
@@ -90,7 +92,12 @@ button {
 .loading {
   background-repeat: no-repeat;
   background-size: 24em 100%;
-  background-image: linear-gradient(to right, transparent 0%, hsl(323, 50%, 33%) 50%, transparent 100%);
+  background-image: linear-gradient(
+    to right,
+    transparent 0%,
+    hsl(323, 50%, 33%) 50%,
+    transparent 100%
+  );
   animation-duration: 1000ms;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;

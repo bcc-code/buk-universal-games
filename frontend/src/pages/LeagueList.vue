@@ -24,7 +24,11 @@
           <p class="ranking-title-text">Points</p>
         </div>
       </section>
-      <section class="user-section" v-for="i in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]" :key="i">
+      <section
+        class="user-section"
+        v-for="i in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]"
+        :key="i"
+      >
         <LeagueListItem
           :class="{ 'card-light': i > 4 }"
           :index="i + 1"
@@ -74,13 +78,15 @@
       </section>
       <section
         class="user-section"
-        v-for="(status, i) in leagueStatus?.status?.total.sort((a, b) => b.points - a.points)"
+        v-for="(status, i) in leagueStatus?.status?.total.sort(
+          (a, b) => b.points - a.points,
+        )"
         :key="status.id"
       >
         <LeagueListItem
           :class="{
             'card-light': status.teamId != teamStatus?.teamId,
-            'card-currentTeam': status.teamId == teamStatus?.teamId
+            'card-currentTeam': status.teamId == teamStatus?.teamId,
           }"
           :index="i + 1"
           :team="status.team"
@@ -94,54 +100,54 @@
 </template>
 
 <script>
-import UserPageLayout from '../components/UserPageLayout.vue'
-import PointsAndStickers from '../components/PointsAndStickers.vue'
-import LeagueListItem from '../components/LeagueListItem.vue'
+import UserPageLayout from '../components/UserPageLayout.vue';
+import PointsAndStickers from '../components/PointsAndStickers.vue';
+import LeagueListItem from '../components/LeagueListItem.vue';
 
 export default {
   name: 'LeagueList',
   components: { UserPageLayout, PointsAndStickers, LeagueListItem },
   data() {
     return {
-      loading: false
-    }
+      loading: false,
+    };
   },
   created() {
-    this.getLeagueStatus(false)
+    this.getLeagueStatus(false);
   },
   methods: {
     getTeamStatus(override) {
-      this.$store.dispatch('getTeamStatus', override)
+      this.$store.dispatch('getTeamStatus', override);
     },
     getLeagueStatus(override) {
-      this.$store.dispatch('getLeagueStatus', override)
+      this.$store.dispatch('getLeagueStatus', override);
     },
     refresh() {
-      this.loading = true
-      this.getLeagueStatus(true)
+      this.loading = true;
+      this.getLeagueStatus(true);
 
       setTimeout(() => {
-        this.loading = false
-      }, 1000)
-    }
+        this.loading = false;
+      }, 1000);
+    },
   },
   computed: {
     coins() {
-      return this.$store.state.coins
+      return this.$store.state.coins;
     },
     teamStatus() {
       return this?.leagueStatus?.status?.total?.find(
-        (score) => score.team == this.$store.state.loginData?.team
-      )
+        (score) => score.team == this.$store.state.loginData?.team,
+      );
     },
     leagueStatus() {
-      return this?.$store.state.leagueStatus
+      return this?.$store.state.leagueStatus;
     },
     teamName() {
-      return this?.$store.state.teamName
-    }
-  }
-}
+      return this?.$store.state.teamName;
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -169,7 +175,7 @@ export default {
 }
 
 .card-currentTeam {
-  color: var(--dark);
+  color: var(--dark-brown);
   padding: 0.1em 1em;
   box-shadow: 2px 2px;
   background-color: var(--yellow);
