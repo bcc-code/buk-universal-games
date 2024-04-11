@@ -3,34 +3,48 @@
 @tailwind utilities;
 
 :root {
-    --dark-blue: #0B1725;
-    --vanilla: #F7EAD0;
-    --blue-grey: #72898B;
-    --dark-brown: #816668;
-    --hazy-green: #A0ACA7;
-    --warm-brown: #CEAB9D;
-    --dusty-blue: #426083;
-    --ice-blue: #DCE9EA;
-    --grey: #A4A4A4;    
-    --label-1: #323538;
-    --label-2: #7c7878;
-    --label-3: #e5e5e5;
-    --dark: #f21198;
-    --gray-1: #e5e5e5;
-    --gray-2: #999;
-    --green: #816668;
-    --red: #426083;
-    --darkgreen:#CEAB9D;
-    --yellow: #F7EAD0;
-      /* These values yield colours extremely similar to the colours above, through applied CSS filters.
+  --dark-blue: #0b1725;
+  --vanilla: #f7ead0;
+  --blue-grey: #72898b;
+  --dark-brown: #816668;
+  --hazy-green: #a0aca7;
+  --warm-brown: #ceab9d;
+  --dusty-blue: #426083;
+  --ice-blue: #dce9ea;
+  --grey: #a4a4a4;
+  --label-1: #323538;
+  --label-2: #7c7878;
+  --label-3: #e5e5e5;
+  --dark: #f21198;
+  --gray-1: #e5e5e5;
+  --gray-2: #999;
+  --green: #816668;
+  --red: #426083;
+  --darkgreen: #ceab9d;
+  --yellow: #f7ead0;
+  /* These values yield colours extremely similar to the colours above, through applied CSS filters.
       This means they can be used to colourise SVG elements inserted through <img /> tags. */
-      --active-green-button: brightness(0) saturate(100%) invert(48%) sepia(43%) saturate(1337%) hue-rotate(114deg) brightness(96%) contrast(101%);
-      --inactive-yellow-button: brightness(0) saturate(100%) invert(81%) sepia(58%) saturate(4717%) hue-rotate(11deg) brightness(107%) contrast(112%);
-  }
+  --active-green-button: brightness(0) saturate(100%) invert(48%) sepia(43%)
+    saturate(1337%) hue-rotate(114deg) brightness(96%) contrast(101%);
+  --inactive-yellow-button: brightness(0) saturate(100%) invert(81%) sepia(58%)
+    saturate(4717%) hue-rotate(11deg) brightness(107%) contrast(112%);
+}
+
+.watermark {
+  content: '';
+  background-image: url('public/image/watermark.svg');
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Ensure that the watermark doesn't block user interactions */
+  z-index: -1; /* Place the watermark behind other content */
+}
 
 body {
-    background-color: var(--dark-blue);
-    
+  background-color: var(--dark-blue);
+  @apply watermark; /* Apply the watermark class directly to the body */
 }
 
 h1 {
@@ -50,19 +64,19 @@ h4 {
 }
 
 p {
-  @apply text-sm
+  @apply text-sm;
 }
 
 .label {
-  @apply text-xs tracking-widest
+  @apply text-xs tracking-widest;
 }
 
 @media (min-width: 768px) {
   h1 {
-      @apply text-3xl font-light;
+    @apply text-3xl font-light;
   }
 
   h2 {
-      @apply text-2xl font-light;
+    @apply text-2xl font-light;
   }
 }
