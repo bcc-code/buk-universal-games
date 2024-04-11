@@ -1,12 +1,14 @@
 <template>
-  <section class="card card-dark">
+  <section
+    class="bg-vanilla text-dark-brown rounded-md hover:bg-ice-blue w-full p-1 m-1 flex flex-col justify-center items-center"
+  >
     {{ name }}
   </section>
 </template>
 
 <script>
 export default {
-  name: "AdminLeagueSelector",
+  name: 'AdminLeagueSelector',
   props: {
     name: String,
   },

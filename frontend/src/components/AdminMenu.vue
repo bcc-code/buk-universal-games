@@ -1,24 +1,52 @@
 <template>
-  <nav class="user-menu">
-    <div class="user-menu-btn-small-wrapper">
-      <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'AdminLeagueStatus' }"
-        @click="$router.push({ name: 'AdminLeagueStatus' })"><img src="/icon/home.svg" /></button>
-      <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'AdminMatchListGame' }"
-        @click="$router.push({ name: 'AdminMatchListGame' })"><img src="/icon/calendar.svg" /></button>
-      <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'AdminGames' }"
-        @click="$router.push({ name: 'AdminGames' })"><img src="/icon/ball.svg" /></button>
-      <button :class="{ 'user-menu-btn-small': true, 'selected-component': $route.name == 'AdminMap' }"
-        @click="$router.push({ name: 'AdminMap' })"><img src="/icon/place.svg" /></button>
+  <nav
+    class="flex w-full bottom-0 bg-ice-blue absolute align-middle p-2 justify-between"
+  >
+    <div class="flex w-1/2 justify-between align-middle">
+      <button
+        class="flex w-1/2 justify-between align-middle"
+        :class="{
+          'user-menu-btn-small': true,
+          'selected-component': $route.name == 'AdminLeagueStatus',
+        }"
+        @click="$router.push({ name: 'AdminLeagueStatus' })"
+      >
+        <img class="h-10 w-10" src="/icon/leaderlist.png" />
+      </button>
+    </div>
+    <div class="justify-center flex w-full">
+      <button
+        class="flex w-1/2 justify-between align-middle"
+        :class="{
+          'user-menu-btn-big': true,
+          'selected-component': $route.name == 'AdminMatchListGame',
+        }"
+        @click="$router.push({ name: 'AdminMatchListGame' })"
+      >
+        <img class="h-10 w-10" src="/icon/match.png" />
+      </button>
+    </div>
+    <div class="flex w-1/2 justify-between">
+      <button
+        class="flex w-1/2 justify-between align-middle"
+        :class="{
+          'user-menu-btn-small': true,
+          'selected-component': $route.name == 'AdminMap',
+        }"
+        @click="$router.push({ name: 'AdminMap' })"
+      >
+        <img class="h-10 w-10" src="/icon/place.svg" />
+      </button>
     </div>
   </nav>
   <CameraScanner ref="cameraScanner"></CameraScanner>
 </template>
 
 <script>
-import CameraScanner from "@/components/CameraScanner.vue";
+import CameraScanner from '@/components/CameraScanner.vue';
 
 export default {
-  name: "UserMenu",
+  name: 'UserMenu',
   components: {
     CameraScanner,
   },
@@ -27,7 +55,7 @@ export default {
 </script>
 
 <style scoped>
-input[type="file"] {
+input[type='file'] {
   display: none;
 }
 
@@ -60,13 +88,22 @@ button {
   padding: 0;
 }
 
-.user-menu-btn-small>img {
-  /* This trick allows us to colourise <img /> tag SVGs. */
-  filter: var(--inactive-yellow-button)
-}
-
-.selected-component>img {
+.selected-component > img {
   /* This trick allows us to colourise <img /> tag SVGs. */
   filter: var(--active-green-button);
+}
+.user-menu-btn-big {
+  position: absolute;
+  height: 5em;
+  width: 5em;
+  top: -1.5em;
+  background-color: var(--ice-blue);
+  color: white;
+  border-radius: 10em;
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid white;
 }
 </style>
