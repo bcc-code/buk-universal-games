@@ -1,6 +1,6 @@
 <template>
   <section
-    class="bg-vanilla text-dark-brown rounded-md hover:bg-ice-blue w-full p-1 m-1 flex flex-col justify-center items-center"
+    class="text-dark-brown rounded-md w-full p-1 m-1 flex flex-col justify-center items-center"
   >
     {{ name }}
   </section>

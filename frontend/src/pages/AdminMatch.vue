@@ -27,11 +27,13 @@
           teamresult: true,
           selected: match?.team1Id === selectedTeam,
           winner: match?.team1Id === match?.winnerId,
-          loser: match?.team2Id === match?.winnerId
+          loser: match?.team2Id === match?.winnerId,
         }"
       >
         <p>{{ match?.team1 }}</p>
-        <p v-if="match?.team1Result"><strong>Score:</strong> {{ match?.team1Result }}</p>
+        <p v-if="match?.team1Result">
+          <strong>Score:</strong> {{ match?.team1Result }}
+        </p>
 
         <button
           class="btn btn-blank"
@@ -42,23 +44,34 @@
         </button>
 
         <div v-if="isChangingScore1 || !match?.team1Result">
-          <TableSurfingInput v-if="game?.gameType === 'tablesurfing'" v-model="team1Result" />
+          <TableSurfingInput
+            v-if="game?.gameType === 'tablesurfing'"
+            v-model="team1Result"
+          />
           <TimeInput
             v-else-if="['minefield', 'nervespiral'].includes(game?.gameType)"
             v-model="team1Result"
           />
-          <MonkeyBarsInput v-else-if="game?.gameType === 'monkeybars'" v-model="team1Result" />
+          <MonkeyBarsInput
+            v-else-if="game?.gameType === 'monkeybars'"
+            v-model="team1Result"
+          />
           <input
             v-else
             type="number"
             v-model="team1Result"
             :placeholder="'Result (in ' + units[game?.gameType] + ')'"
           />
-          <button class="btn btn-blank" @click="confirmTeamResult(match?.team1Id, team1Result)">
+          <button
+            class="btn btn-blank"
+            @click="confirmTeamResult(match?.team1Id, team1Result)"
+          >
             Confirm
           </button>
         </div>
-        <span class="tag" v-if="match?.team1Id === match?.winnerId">Winner</span>
+        <span class="tag" v-if="match?.team1Id === match?.winnerId"
+          >Winner</span
+        >
       </div>
       <div
         v-if="match?.team1Id !== match?.team2Id"
@@ -66,11 +79,13 @@
           teamresult: true,
           selected: match?.team2Id === selectedTeam,
           winner: match?.team2Id === match?.winnerId,
-          loser: match?.team1Id === match?.winnerId
+          loser: match?.team1Id === match?.winnerId,
         }"
       >
         <p>{{ match?.team2 }}</p>
-        <p v-if="match?.team2Result"><strong>Score:</strong> {{ match?.team2Result }}</p>
+        <p v-if="match?.team2Result">
+          <strong>Score:</strong> {{ match?.team2Result }}
+        </p>
 
         <button
           class="btn btn-blank"
@@ -80,44 +95,55 @@
           Change
         </button>
         <div v-if="isChangingScore2 || !match?.team2Result">
-          <TableSurfingInput v-if="game?.gameType === 'tablesurfing'" v-model="team2Result" />
+          <TableSurfingInput
+            v-if="game?.gameType === 'tablesurfing'"
+            v-model="team2Result"
+          />
           <TimeInput
             v-else-if="['minefield', 'nervespiral'].includes(game?.gameType)"
             v-model="team2Result"
           />
-          <MonkeyBarsInput v-else-if="game?.gameType === 'monkeybars'" v-model="team2Result" />
+          <MonkeyBarsInput
+            v-else-if="game?.gameType === 'monkeybars'"
+            v-model="team2Result"
+          />
           <input
             v-else
             type="number"
             v-model="team2Result"
             :placeholder="'Result (in ' + units[game.gameType] + ')'"
           />
-          <button class="btn btn-blank" @click="confirmTeamResult(match?.team2Id, team2Result)">
+          <button
+            class="btn btn-blank"
+            @click="confirmTeamResult(match?.team2Id, team2Result)"
+          >
             Confirm
           </button>
         </div>
-        <span class="tag" v-if="match?.team2Id === match?.winnerId">Winner</span>
+        <span class="tag" v-if="match?.team2Id === match?.winnerId"
+          >Winner</span
+        >
       </div>
     </div>
   </AdminPageLayout>
 </template>
 
 <script>
-import AdminPageLayout from '@/components/AdminPageLayout.vue'
-import TableSurfingInput from '@/components/TableSurfingInput.vue'
-import TimeInput from '@/components/TimeInput.vue'
-import MonkeyBarsInput from '@/components/MonkeyBarsInput.vue'
+import AdminPageLayout from '@/components/AdminPageLayout.vue';
+import TableSurfingInput from '@/components/TableSurfingInput.vue';
+import TimeInput from '@/components/TimeInput.vue';
+import MonkeyBarsInput from '@/components/MonkeyBarsInput.vue';
 
 export default {
   name: 'AdminMatch',
   props: {
-    matchId: String
+    matchId: String,
   },
   components: {
     AdminPageLayout,
     TableSurfingInput,
     TimeInput,
-    MonkeyBarsInput
+    MonkeyBarsInput,
   },
   data() {
     return {
@@ -138,24 +164,24 @@ export default {
         minefield: 'seconds',
         monkeybars: 'bars completed',
         tablesurfing: 'seconds',
-        tickettwist: 'nr of tickets'
-      }
-    }
+        tickettwist: 'nr of tickets',
+      },
+    };
   },
   created() {
     if (!this.$store.state.games.length) {
-      this.$store.dispatch('getGames')
+      this.$store.dispatch('getGames');
     }
     if (!this?.$store?.state?.adminMatches?.length) {
-      this.$store.dispatch('getAdminMatches')
+      this.$store.dispatch('getAdminMatches');
     }
     if (this.matchId) {
-      this.loadMatch()
+      this.loadMatch();
     }
   },
   mounted() {
     if (!this.matchId) {
-      this.$router.back()
+      this.$router.back();
     }
   },
   methods: {
@@ -163,52 +189,53 @@ export default {
       this.$router.push({
         name: 'AdminGameInfoDetail',
         params: {
-          game: game.id
-        }
-      })
+          game: game.id,
+        },
+      });
     },
     loadMatch() {
-      this.match = this.matches?.find((match) => match.matchId == this.matchId)
-      this.game = this.games?.find((game) => game.id == this.match?.gameId)
+      this.match = this.matches?.find((match) => match.matchId == this.matchId);
+      this.game = this.games?.find((game) => game.id == this.match?.gameId);
     },
     async confirmTeamResult(teamId, result) {
       if (result) {
-        const payload = { matchId: this.match.matchId, teamId, result }
-        var response = await this.$store.dispatch('confirmTeamResult', payload)
-        console.log(response, response === 'failed')
+        const payload = { matchId: this.match.matchId, teamId, result };
+        var response = await this.$store.dispatch('confirmTeamResult', payload);
+        console.log(response, response === 'failed');
         if (response === 'failed') {
-          this.popupErrorMessage = 'Submitting failed, please check connection and try again'
-          this.showErrorPopup = true
+          this.popupErrorMessage =
+            'Submitting failed, please check connection and try again';
+          this.showErrorPopup = true;
           setTimeout(() => {
-            this.showErrorPopup = false
-            this.popupErrorMessage = null
-          }, 5000)
-          return
+            this.showErrorPopup = false;
+            this.popupErrorMessage = null;
+          }, 5000);
+          return;
         }
-        this.$forceUpdate()
-        this.$store.dispatch('getAdminLeagueStatus')
+        this.$forceUpdate();
+        this.$store.dispatch('getAdminLeagueStatus');
         if (teamId === this.match.team1Id) {
-          this.match.team1Result = this.team1Result
-          this.isChangingScore1 = false
+          this.match.team1Result = this.team1Result;
+          this.isChangingScore1 = false;
         } else {
-          this.match.team2Result = this.team2Result
-          this.isChangingScore2 = false
+          this.match.team2Result = this.team2Result;
+          this.isChangingScore2 = false;
         }
-        this.loadMatch()
+        this.loadMatch();
       } else {
-        alert('Please enter a result')
+        alert('Please enter a result');
       }
-    }
+    },
   },
   computed: {
     matches() {
-      return this.$store.state.adminMatches
+      return this.$store.state.adminMatches;
     },
     games() {
-      return this.$store.state.games
-    }
-  }
-}
+      return this.$store.state.games;
+    },
+  },
+};
 </script>
 
 <style scoped>

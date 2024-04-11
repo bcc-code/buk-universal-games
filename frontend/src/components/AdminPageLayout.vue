@@ -9,10 +9,10 @@
 </template>
 
 <script>
-import AdminMenu from "../components/AdminMenu.vue";
+import AdminMenu from '../components/AdminMenu.vue';
 
 export default {
-  name: "AdminPageLayout",
+  name: 'AdminPageLayout',
   components: { AdminMenu },
   props: { title: String },
   mounted() {
@@ -37,7 +37,6 @@ export default {
 .content-area {
   width: 100%;
   padding: 1em 1em 10em;
-  background-color: var(--gray-1);
 }
 
 .title {

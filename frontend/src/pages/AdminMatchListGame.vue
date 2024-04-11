@@ -6,7 +6,11 @@
         <div class="single-filter">
           <AdminLeagueSelector
             v-for="league in adminLeagues"
-            :class="{ 'green-font': league.id === $store.state.adminLeagueSelected }"
+            class="bg-vanilla hover:bg-ice-blue"
+            :class="{
+              'bg-dark-brown text-white':
+                league.id === $store.state.adminLeagueSelected,
+            }"
             :key="league.id"
             :name="league.name"
             @click="selectLeague(league.id)"
@@ -18,13 +22,21 @@
         <div class="single-filter">
           <AdminLeagueSelector
             name="All"
-            :class="{ 'green-font': $store.state.adminFilterGameSelected === null }"
+            class="bg-ice-blue hover:bg-vanilla"
+            :class="{
+              'bg-dark-blue text-white':
+                $store.state.adminFilterGameSelected === null,
+            }"
             @click="$store.commit('resetAdminFilterGameSelected')"
           />
           <AdminLeagueSelector
             v-for="game in games"
             :key="game.id"
-            :class="{ 'green-font': game.id === $store.state.adminFilterGameSelected }"
+            class="bg-ice-blue hover:bg-vanilla"
+            :class="{
+              'bg-dark-blue text-white':
+                game.id === $store.state.adminFilterGameSelected,
+            }"
             :name="game.name"
             @click="$store.commit('setAdminFilterGameSelected', game.id)"
           />
@@ -61,6 +73,8 @@
           :gameAddOn="match.addOn"
           :team1="match.team1"
           :team2="match.team2"
+          :team1result="match.team1result"
+          :team2result="match.team2result"
           :start="match.start"
           :winner="match.winner"
           :clickFunc="() => matchClicked(match)"
@@ -71,97 +85,97 @@
 </template>
 
 <script>
-import AdminPageLayout from '@/components/AdminPageLayout.vue'
-import MatchListItem from '@/components/MatchListItem.vue'
-import AdminLeagueSelector from '@/components/AdminLeagueSelector.vue'
+import AdminPageLayout from '@/components/AdminPageLayout.vue';
+import MatchListItem from '@/components/MatchListItem.vue';
+import AdminLeagueSelector from '@/components/AdminLeagueSelector.vue';
 
 export default {
   name: 'AdminMatchListGame',
   components: {
     AdminPageLayout,
     MatchListItem,
-    AdminLeagueSelector
+    AdminLeagueSelector,
   },
   created() {
     if (!this.$store.state.adminLeagues.length) {
-      this.getAdminLeagues()
+      this.getAdminLeagues();
     }
     if (!this.$store.state.games.length) {
-      this.getGames()
+      this.getGames();
     }
-    this.getMatches()
+    this.getMatches();
   },
   methods: {
     getAdminLeagues() {
-      this.$store.dispatch('getAdminLeagues')
+      this.$store.dispatch('getAdminLeagues');
     },
     getAdminLeagueStatus() {
-      this.$store.dispatch('getAdminLeagueStatus')
+      this.$store.dispatch('getAdminLeagueStatus');
     },
     async selectLeague(id) {
-      await this.$store.dispatch('setAdminLeagueSelected', id)
-      this.getMatches()
-      this.getAdminLeagueStatus()
+      await this.$store.dispatch('setAdminLeagueSelected', id);
+      this.getMatches();
+      this.getAdminLeagueStatus();
     },
     getMatches() {
-      this.$store.dispatch('getAdminMatches')
+      this.$store.dispatch('getAdminMatches');
     },
     getGames() {
-      this.$store.dispatch('getGames')
+      this.$store.dispatch('getGames');
     },
     getGameById(id) {
       if (this.games.error) {
-        return {}
+        return {};
       }
 
-      let game = this.games.find((game) => game.id == id)
-      return game
+      let game = this.games.find((game) => game.id == id);
+      return game;
     },
     matchClicked(match) {
       this.$router.push({
         name: 'AdminMatch',
         params: {
-          matchId: match.matchId.toString()
-        }
-      })
-    }
+          matchId: match.matchId.toString(),
+        },
+      });
+    },
   },
   computed: {
     adminLeagues() {
-      return this?.$store.state.adminLeagues
+      return this?.$store.state.adminLeagues;
     },
     adminMatchGroups() {
-      const matchGroups = []
+      const matchGroups = [];
 
       this?.$store?.state?.adminMatches?.forEach?.((match) => {
-        let shouldPush = true
+        let shouldPush = true;
 
         if (
           this?.$store.state.adminFilterGameSelected !== null &&
           match.gameId !== this?.$store.state.adminFilterGameSelected
         ) {
-          shouldPush = false
+          shouldPush = false;
         }
 
         if (shouldPush) {
           if (matchGroups[match.start]) {
-            shouldPush && matchGroups[match.start].matches.push(match)
+            shouldPush && matchGroups[match.start].matches.push(match);
           } else {
             matchGroups[match.start] = {
               id: match.start,
-              matches: [match]
-            }
+              matches: [match],
+            };
           }
         }
-      })
+      });
 
-      return matchGroups
+      return matchGroups;
     },
     games() {
-      return this?.$store.state.games
-    }
-  }
-}
+      return this?.$store.state.games;
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -245,7 +259,6 @@ export default {
   transform: translateY(-50%);
   width: 50%;
   height: 1px;
-  background-color: var(--gray-2);
 }
 
 .user-section-single-seperator::before {
