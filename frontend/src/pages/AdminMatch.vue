@@ -147,11 +147,11 @@ export default {
       match: null,
       game: null,
       units: {
-        nervespiral: 'seconds',
-        minefield: 'seconds',
-        monkeybars: 'bars completed',
-        tablesurfing: 'seconds',
-        tickettwist: 'nr of tickets',
+        nervespiral: 'points',
+        minefield: 'points',
+        monkeybars: 'points',
+        tablesurfing: 'points',
+        tickettwist: 'points',
       },
     };
   },
