@@ -30,21 +30,30 @@
     saturate(4717%) hue-rotate(11deg) brightness(107%) contrast(112%);
 }
 
-.watermark {
-  content: '';
-  background-image: url('public/image/watermark.svg');
+.watermark-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none; /* Ensure that the watermark doesn't block user interactions */
-  z-index: -1; /* Place the watermark behind other content */
+  pointer-events: none; /* Ensure that the watermark container doesn't block user interactions */
+  z-index: -1; /* Place the watermark container behind other content */
+}
+
+.watermark {
+  content: '';
+  background-image: url('public/image/watermark.svg');
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Place the watermark container behind other content */
 }
 
 body {
   background-color: var(--dark-blue);
-  @apply watermark; /* Apply the watermark class directly to the body */
+  background-image: url('public/image/watermark.svg');
 }
 
 h1 {
