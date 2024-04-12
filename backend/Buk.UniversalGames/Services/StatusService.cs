@@ -153,7 +153,6 @@ namespace Buk.UniversalGames.Services
 
             var landWaterBeach = (await GetGameRanking(GameType.LandWaterBeach, leagueId)).ToDictionary(x => x.TeamId);
             var humanShuffleBoard = (await GetGameRanking(GameType.HumanShuffleBoard, leagueId)).ToDictionary(x => x.TeamId);
-            throw new Exception(await GetGameRanking(GameType.Labyrinth, leagueId));
             var labyrinth = (await GetGameRanking(GameType.Labyrinth, leagueId)).ToDictionary(x => x.TeamId);
             var mastermind = (await GetGameRanking(GameType.Mastermind, leagueId)).ToDictionary(x => x.TeamId);
             var ironGrip = (await GetGameRanking(GameType.IronGrip, leagueId)).ToDictionary(x => x.TeamId);
