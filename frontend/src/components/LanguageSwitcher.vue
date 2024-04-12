@@ -2,7 +2,7 @@
     <div class="locale-changer">
         
         <div class="dropdown" :class="{ open: isOpen }">
-            <div class="selected-item" @click="toggleDropdown(null)">{{ selectedLanguage.toUpperCase() }}</div>
+            <div class="selected-item bg-slate-200" @click="toggleDropdown(null)">{{ selectedLanguage.toUpperCase() }}</div>
             <div class="background" v-if="isOpen" @click="toggleDropdown(null)"></div>
             <div class="dropdown-menu" ref="languagePickerMenu">
                 <div v-for="locale in Object.keys(locales)" :key="`locale-${locale}`" class="dropdown-item" @click="changeLanguage(locale)">
