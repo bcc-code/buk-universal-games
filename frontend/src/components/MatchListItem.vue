@@ -21,6 +21,11 @@
             :src="`icon/game-${gameType?.replaceAll('_', '')}.svg`"
           />
           <p class="text">{{ $t(`games.${gameType}`) }}</p>
+
+          <div v-if="$route.name==='AdminMatchListGame'" class="flex space-x-3">
+            <p class="text-xs font-bold w-7">Team:</p>
+            <p class="text-xs w-full">{{ team1 }}</p>
+          </div>
         </span>
       </div>
 
@@ -89,7 +94,7 @@ const props = defineProps({
 console.log(props.currentActiveMatch, 'current active match');
 
 const passed = props.winner !== '';
-const twoteams = props.team2 !== 'noteam';
+const twoteams = props.team2 !== props.team1;
 </script>
 
 <style scoped>
