@@ -79,13 +79,6 @@ namespace Buk.UniversalGames.Services
                                  where team.TeamType == "participant"
                                  select new { team.TeamId, team.Name, team.MemberCount }).ToList();
 
-            string teamsInfo = string.Join(", ", teamsWithSize.Select(x => $"TeamId: {x.TeamId}, Name: {x.Name}, MemberCount: {x.MemberCount}"));
-
-            // Throw the formatted string as part of an exception for debugging
-            throw new Exception($"Debug - Teams with Size: {teamsInfo}");
-
-
-
             var teamSizeDict = teamsWithSize.ToDictionary(x => x.TeamId, x => x.MemberCount);
 
             var teamScores = from guess in _db.Guesses
@@ -155,8 +148,8 @@ namespace Buk.UniversalGames.Services
             var teams = await _leagueLeagueRepository.GetTeams(leagueId);
 
             var matchWinners = await (from m in _db.Matches
-                                      where m.LeagueId == leagueId && m.WinnerId.HasValue
-                                      select m.WinnerId!.Value).ToListAsync();
+                               where m.LeagueId == leagueId && m.WinnerId.HasValue
+                               select m.WinnerId!.Value).ToListAsync();
 
             var landWaterBeach = (await GetGameRanking(GameType.LandWaterBeach, leagueId)).ToDictionary(x => x.TeamId);
             var humanShuffleBoard = (await GetGameRanking(GameType.HumanShuffleBoard, leagueId)).ToDictionary(x => x.TeamId);
@@ -311,7 +304,7 @@ namespace Buk.UniversalGames.Services
                     Cell(gameRows[game], leagueCol + 1, gameRanking.First().Points);
 
                     // handle league sheet
-                    Cell(leagueTitleRow, gameColumnIndex(game), game.ToString(), boldCellStyle);
+                    Cell(leagueTitleRow, gameColumnIndex(game), game.ToString(),boldCellStyle);
                     Cell(leagueTitleRow, gameColumnIndex(game) + 1, $"Score ({game})", boldCellStyle);
 
                     rowIndex = 2;
@@ -330,7 +323,7 @@ namespace Buk.UniversalGames.Services
         private static ICell Cell(IRow row, int index, string value, ICellStyle? cellStyle = null)
         {
             var cell = row.CreateCell(index);
-            if (cellStyle != null)
+            if(cellStyle != null)
                 cell.CellStyle = cellStyle;
 
             cell.SetCellValue(value);
