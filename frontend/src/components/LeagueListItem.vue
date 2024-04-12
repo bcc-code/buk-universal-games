@@ -3,7 +3,9 @@
     class="flex align-middle items-center"
     :class="{ card: true, 'text-label-1': true, loading }"
   >
-    <p class="text-label-1">{{ index }}</p>
+    <img v-if="index <= 3" class="w-5" :src="`image/${index}_place.png`" />
+
+    <p v-if="index > 3" class="text-label-1">{{ index }}</p>
     <div class="flex my-5">
       <p class="text-label-1 hide-text-overflow">{{ team }}</p>
     </div>
