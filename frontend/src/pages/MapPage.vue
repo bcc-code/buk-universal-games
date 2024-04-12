@@ -8,7 +8,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { computed } from 'vue';
 import UserMenu from '../components/UserMenu.vue'
 import { useStore } from 'vuex'
