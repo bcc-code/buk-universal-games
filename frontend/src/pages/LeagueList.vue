@@ -144,7 +144,7 @@ export default {
       return this?.$store.state.leagueStatus;
     },
     teamName() {
-      return this?.$store.state.teamName;
+      return this?.$store.state.loginData.team;
     },
   },
 };
