@@ -42,7 +42,7 @@
 
 .watermark {
   content: '';
-  background-image: url('public/image/watermark.svg');
+  background-image: url('/image/watermark.svg');
   position: absolute;
   top: 0;
   left: 0;
@@ -53,7 +53,7 @@
 
 body {
   background-color: var(--dark-blue);
-  background-image: url('public/image/watermark.svg');
+  background-image: url('/image/watermark.svg');
 }
 
 h1 {
