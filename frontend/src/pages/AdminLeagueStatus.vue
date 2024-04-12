@@ -56,9 +56,7 @@ export default {
       this.getAdminLeagues();
     }
 
-    if (Object.keys(this.$store.state.adminLeagueStatus).length === 0) {
-      this.getAdminLeagueStatus();
-    }
+    this.getAdminLeagueStatus();
   },
   methods: {
     getAdminLeagues() {
