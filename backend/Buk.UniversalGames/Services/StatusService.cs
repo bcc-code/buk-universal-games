@@ -148,15 +148,32 @@ namespace Buk.UniversalGames.Services
             var teams = await _leagueLeagueRepository.GetTeams(leagueId);
 
             var matchWinners = await (from m in _db.Matches
-                               where m.LeagueId == leagueId && m.WinnerId.HasValue
-                               select m.WinnerId!.Value).ToListAsync();
+                                      where m.LeagueId == leagueId && m.WinnerId.HasValue
+                                      select m.WinnerId!.Value).ToListAsync();
 
-            var landWaterBeach = (await GetGameRanking(GameType.LandWaterBeach, leagueId)).ToDictionary(x => x.TeamId);
-            var humanShuffleBoard = (await GetGameRanking(GameType.HumanShuffleBoard, leagueId)).ToDictionary(x => x.TeamId);
-            throw new Exception(await GetGameRanking(GameType.Labyrinth, leagueId));
-            var labyrinth = (await GetGameRanking(GameType.Labyrinth, leagueId)).ToDictionary(x => x.TeamId);
-            var mastermind = (await GetGameRanking(GameType.Mastermind, leagueId)).ToDictionary(x => x.TeamId);
-            var ironGrip = (await GetGameRanking(GameType.IronGrip, leagueId)).ToDictionary(x => x.TeamId);
+            // Fetching rankings
+            var landWaterBeachRankings = await GetGameRanking(GameType.LandWaterBeach, leagueId);
+            var humanShuffleBoardRankings = await GetGameRanking(GameType.HumanShuffleBoard, leagueId);
+            var labyrinthRankings = await GetGameRanking(GameType.Labyrinth, leagueId);
+            var mastermindRankings = await GetGameRanking(GameType.Mastermind, leagueId);
+            var ironGripRankings = await GetGameRanking(GameType.IronGrip, leagueId);
+
+            // Formatting the string
+            var errorMessage = $"LandWaterBeach: {FormatRankings(landWaterBeachRankings)}, " +
+                               $"HumanShuffleBoard: {FormatRankings(humanShuffleBoardRankings)}, " +
+                               $"Labyrinth: {FormatRankings(labyrinthRankings)}, " +
+                               $"Mastermind: {FormatRankings(mastermindRankings)}, " +
+                               $"IronGrip: {FormatRankings(ironGripRankings)}";
+
+            // Throw the formatted string as part of an exception
+            throw new Exception(errorMessage);
+
+            // Proceed with converting to dictionaries and calculating points
+            var landWaterBeach = landWaterBeachRankings.ToDictionary(x => x.TeamId);
+            var humanShuffleBoard = humanShuffleBoardRankings.ToDictionary(x => x.TeamId);
+            var labyrinth = labyrinthRankings.ToDictionary(x => x.TeamId);
+            var mastermind = mastermindRankings.ToDictionary(x => x.TeamId);
+            var ironGrip = ironGripRankings.ToDictionary(x => x.TeamId);
 
             var sidequest = (await _cache.Get<List<TeamStatus>>($"sidequest_ranking_{leagueId}"))?.ToDictionary(x => x.TeamId) ?? new Dictionary<int, TeamStatus>();
 
@@ -182,6 +199,12 @@ namespace Buk.UniversalGames.Services
             static int GetPointsForSubRanking(Dictionary<int, TeamStatus> subRanking, Team team)
                 => subRanking.TryGetValue(team.TeamId, out var status) ? status.Points : 0;
         }
+
+        private string FormatRankings(List<TeamStatus> rankings)
+        {
+            return string.Join(", ", rankings.Select(x => $"TeamId: {x.TeamId}, Team: {x.Team}, Points: {x.Points}, Score: {x.Score}"));
+        }
+
 
         public async Task<TeamStatusReport> GetTeamStatus(Team team)
         {
@@ -305,7 +328,7 @@ namespace Buk.UniversalGames.Services
                     Cell(gameRows[game], leagueCol + 1, gameRanking.First().Points);
 
                     // handle league sheet
-                    Cell(leagueTitleRow, gameColumnIndex(game), game.ToString(),boldCellStyle);
+                    Cell(leagueTitleRow, gameColumnIndex(game), game.ToString(), boldCellStyle);
                     Cell(leagueTitleRow, gameColumnIndex(game) + 1, $"Score ({game})", boldCellStyle);
 
                     rowIndex = 2;
@@ -324,7 +347,7 @@ namespace Buk.UniversalGames.Services
         private static ICell Cell(IRow row, int index, string value, ICellStyle? cellStyle = null)
         {
             var cell = row.CreateCell(index);
-            if(cellStyle != null)
+            if (cellStyle != null)
                 cell.CellStyle = cellStyle;
 
             cell.SetCellValue(value);
