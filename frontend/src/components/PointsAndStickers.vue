@@ -13,7 +13,7 @@
     </div>
     <div></div>
     <div class="align-middle flex">
-<!--       <button class="ml-3 card-btn" @click="refresh"><img src="icon/refresh.svg" /></button>
+<!--       <button class="ml-3 card-btn" @click="refresh"><img src="/icon/refresh.svg" /></button>
  -->    </div>
   </section>
 </template>
