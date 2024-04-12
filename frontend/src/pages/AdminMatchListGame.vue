@@ -6,10 +6,9 @@
         <div class="single-filter">
           <AdminLeagueSelector
             v-for="league in adminLeagues"
-            class="bg-vanilla hover:bg-ice-blue"
+            class="bg-vanilla"
             :class="{
-              'bg-dark-brown text-white':
-                league.id === $store.state.adminLeagueSelected,
+              'bg-dark-brown ': league.id === $store.state.adminLeagueSelected,
             }"
             :key="league.id"
             :name="league.name"
@@ -22,20 +21,18 @@
         <div class="single-filter">
           <AdminLeagueSelector
             name="All"
-            class="bg-ice-blue hover:bg-vanilla"
+            class="bg-ice-blue"
             :class="{
-              'bg-dark-blue text-white':
-                $store.state.adminFilterGameSelected === null,
+              'bg-dark-blue': $store.state.adminFilterGameSelected === null,
             }"
             @click="$store.commit('resetAdminFilterGameSelected')"
           />
           <AdminLeagueSelector
             v-for="game in games"
             :key="game.id"
-            class="bg-ice-blue hover:bg-vanilla"
+            class="bg-ice-blue"
             :class="{
-              'bg-dark-blue text-white':
-                game.id === $store.state.adminFilterGameSelected,
+              'bg-dark-blue ': game.id === $store.state.adminFilterGameSelected,
             }"
             :name="game.name"
             @click="$store.commit('setAdminFilterGameSelected', game.id)"
@@ -54,18 +51,18 @@
         <h2 class="match-title-text">Start</h2>
       </div>
     </section>
-    <section class="user-section">
+    <section class="space-y-5 mt-4">
       <div
-        class="user-section-single"
+        class=""
         v-for="matchGroupKey in Object.keys(adminMatchGroups)"
         :key="matchGroupKey"
       >
-        <p
-          class="user-section-single-seperator"
+        <h2
+          class="text-white mb-3"
           v-if="Object.keys(adminMatchGroups)[0] !== matchGroupKey"
         >
           {{ matchGroupKey }}
-        </p>
+        </h2>
         <MatchListItem
           v-for="match in adminMatchGroups[matchGroupKey].matches"
           :key="match.id"

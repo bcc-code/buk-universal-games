@@ -13,10 +13,10 @@
 
     <header>
       <h3>
-        <img class="icon" :src="`/icon/game-${game.gameType}.svg`" />
-        <span>{{ $t('games.' + game.gameType) }}</span>
+        <img class="icon h-10 w-10" :src="`/icon/game-${game.gameType}.svg`" />
+        <span class="text-white">{{ $t('games.' + game.gameType) }}</span>
       </h3>
-      <h2>
+      <h2 class="text-white">
         <span>Start: {{ match?.start }}</span>
       </h2>
     </header>
@@ -44,20 +44,7 @@
         </button>
 
         <div v-if="isChangingScore1 || !match?.team1Result">
-          <TableSurfingInput
-            v-if="game?.gameType === 'tablesurfing'"
-            v-model="team1Result"
-          />
-          <TimeInput
-            v-else-if="['minefield', 'nervespiral'].includes(game?.gameType)"
-            v-model="team1Result"
-          />
-          <MonkeyBarsInput
-            v-else-if="game?.gameType === 'monkeybars'"
-            v-model="team1Result"
-          />
           <input
-            v-else
             type="number"
             v-model="team1Result"
             :placeholder="'Result (in ' + units[game?.gameType] + ')'"
