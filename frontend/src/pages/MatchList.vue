@@ -97,11 +97,14 @@ export default {
       let minutesBeforeNow = 20;
       let now = new Date(new Date().getTime() - minutesBeforeNow * 60 * 1000);
       let currentTime = now.getHours() + ':' + now.getMinutes();
-      return match.start >= currentTime;
+      
+      // return this.match.start >= currentTime;
+      return false;
     },
   },
   computed: {
     matches() {
+      console.log(this.$store.state.matches)
       return this.$store.state.matches;
     },
     games() {
