@@ -3,40 +3,42 @@
     <nav class="text-white">
       <button @click="$router.back()">&lt; {{ $t("back") }}</button>
     </nav>
-    <div>
+    <div class="mb-5">
       <h2 class="text-white flex space-x-7">
         <img class="h-10 w-10" :src="`/icon/game-${gameParsed.gameType.replaceAll('_','')}.svg`" />
         <span>{{ $t(`games.${gameParsed.gameType}`) }}</span>
       </h2>
-
+      <!-- 
       <div class="banner">
         <video autoplay muted playsinline controls>
           <source :src="`/video/${gameParsed.gameType.replaceAll('_','')}.mp4`" type="video/mp4" />
         </video>
-      </div>
+      </div> -->
     </div>
-
-    <p class="text-white">
+    <div class="bg-ice-blue rounded-md p-4 ">
+    <p class="text-dark-blue">
       {{ $t("leadstory." + gameParsed.gameType) }}
     </p>
-    <p class="text-white w-10 h-10">
-      <img src="/icon/circle-info.svg" />
+    <p class="text-dark-blue flex mt-4">
+      <img class=" w-5 h-5 mr-3" src="/icon/circle-info.svg" />
       {{ $t("explanation." + gameParsed.gameType) }}
     </p>
-
-    <p class="text-white">
-      <span>{{ $t("rulestitle") }}</span>
+    <p class="text-dark-blue my-5">
+      <span class="font-bold ">{{ $t("rulestitle") }}</span>
     <ul>
       <li v-for="(rule, index) in rules" :key="index">
         {{ rule }}
       </li>
     </ul>
     </p>
+  </div>
+
     <section>
-      <h2 class="text-white">{{ $t("yourmatch") }}</h2>
+      <h2 class="text-white my-3">{{ $t("yourmatch") }}</h2>
       <MatchListItem v-if="match" :gameType="gameParsed.gameType" :gameAddOn="match.addOn" :team1="match.team1"
         :team2="match.team2" :start="match.start" :winner="match.winner" :class="{ 'card-light': true }"></MatchListItem>
     </section>
+
     <section class="league-title" v-if="ranking?.length">
       <div class="league-title-column index-column"></div>
       <div class="league-title-column">
