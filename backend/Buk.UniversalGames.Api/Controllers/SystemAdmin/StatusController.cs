@@ -43,15 +43,18 @@ public class StatusController : ControllerBase
 
         foreach (var league in leagues)
         {
+            await _cache.Remove($"Matches_{team.LeagueId.Value}");
+            await _cache.Remove($"LeagueStatus_{team.LeagueId.Value}");
+            await _leagueRepository.GetTeams(league.LeagueId);
+            await _gameRepository.GetMatches(league.LeagueId);
+
             foreach (var game in games)
                 await _statusService.BuildAndCacheRankingForGameInLeague(game, league.LeagueId);
 
             await _statusService.BuildAndCacheRankingForSidequest(league.LeagueId);
             await _statusService.BuildAndCacheLeagueRanking(league.LeagueId);
 
-            var cacheKey = $"Matches_{league.LeagueId}";
-            await _cacheContext.Remove(cacheKey);
-            await _gameRepository.GetMatches(league.LeagueId);
+
         }
     }
 

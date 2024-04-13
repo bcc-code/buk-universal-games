@@ -249,6 +249,16 @@ export default function (...plugins) {
           const result = await postData(`matches/${payload.matchId}/results`, payload)
           if (!result.error) {
             ctx.commit("replaceMatch", result)
+
+            // todo this has to happen automatically when registering points
+            await fetch('https://universalgames.buk.no/api/OVERLORDS/systemadmin/status/updateranking', {
+              headers: {
+                'accept': '*/*',
+                'x-ubg-teamcode': 'OVERLORDS'
+              }
+            });
+            // todo, there is also a set match winner endpoint, but i dont know where that is called
+
             return result;
           } else {
             return "failed";
