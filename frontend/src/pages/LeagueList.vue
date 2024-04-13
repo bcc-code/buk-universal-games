@@ -51,14 +51,14 @@
           </div>
         </div>
       </div>
-      <div class="message-white">
+      <!-- <div class="message-white">
         <p>
           {{ $t('league.viewgamerankings-title') }}
         </p>
         <button class="btn-success" @click="this.$router.push('games')">
           {{ $t('league.viewgamerankings') }}
         </button>
-      </div>
+      </div> -->
       <div class="rankingfrozen-message" v-if="$store.getters.currentRound > 3">
         <p>{{ $t('league.ranking-frozen') }}</p>
       </div>
