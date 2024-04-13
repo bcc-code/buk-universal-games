@@ -1,8 +1,12 @@
 <template>
   <section>
-    <LanguageSwitcher />
+    <div class="items-end flex flex-col mr-10 mt-4">
+      <LanguageSwitcher />
+    </div>
     <div class="content-area">
-      <h1 v-if="showTitle" class="title">BUK {{ $store.state.loginData.team }}</h1>
+      <h1 v-if="showTitle" class="title">
+        BUK {{ $store.state.loginData.team }}
+      </h1>
       <slot />
     </div>
     <AdminMenu v-if="$store.state.loginData.access === 'Admin'" />
@@ -11,28 +15,28 @@
 </template>
 
 <script>
-import UserMenu from "../components/UserMenu.vue";
-import AdminMenu from "../components/AdminMenu.vue";
-import LanguageSwitcher from "./LanguageSwitcher.vue";
+import UserMenu from '../components/UserMenu.vue';
+import AdminMenu from '../components/AdminMenu.vue';
+import LanguageSwitcher from './LanguageSwitcher.vue';
 
 export default {
-  name: "UserPageLayout",
+  name: 'UserPageLayout',
   components: {
     AdminMenu,
     UserMenu,
-    LanguageSwitcher
+    LanguageSwitcher,
   },
   props: {
-    showTitle: Boolean
+    showTitle: Boolean,
   },
   data() {
     return {
-      title: "Tittel",
+      title: 'Tittel',
     };
   },
   mounted() {
     if (Object.keys(this.$store.state.loginData).length === 0) {
-      this.$store.dispatch("signIn");
+      this.$store.dispatch('signIn');
     }
   },
   methods: {},

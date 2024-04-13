@@ -40,6 +40,7 @@
         :winner="match.winner"
         :clickFunc="() => matchClicked(match)"
         :currentActiveMatch="initMatch(match)"
+        @click="gameClicked(whichGame(match.gameId)?.gameType)"
       />
     </section>
   </UserPageLayout>
@@ -81,6 +82,14 @@ export default {
           this.matches[0],
       );
     },
+    gameClicked(game) {
+      this.$router.push({
+        name: 'GameInfoDetail',
+        params: {
+          game: game.id,
+        },
+      });
+    },
     getGames() {},
     whichGame(id) {
       if (this.games.error) {
@@ -97,14 +106,14 @@ export default {
       let minutesBeforeNow = 20;
       let now = new Date(new Date().getTime() - minutesBeforeNow * 60 * 1000);
       let currentTime = now.getHours() + ':' + now.getMinutes();
-      
+
       // return this.match.start >= currentTime;
       return false;
     },
   },
   computed: {
     matches() {
-      console.log(this.$store.state.matches)
+      console.log(this.$store.state.matches);
       return this.$store.state.matches;
     },
     games() {
