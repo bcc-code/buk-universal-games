@@ -15,32 +15,32 @@
     "labyrinth": "Labyrinth"
   },
   "score": {
-    "monkey_bars": "{score} bars",
-    "nerve_spiral": "{score} seconds",
-    "ticket_twist": "{score} tickets",
-    "mine_field": "{score} seconds",
-    "table_surfing": "{score} seconds"
-  },
-  "leadstory": {
-    "iron_grip": "Can your team provide assistance in rescuing people trapped on a malfunctioning Ferris wheel? Climbing a Ferris wheel can be challenging, and it's crucial to remember the importance of carrying first aid supplies. Please get your team to reach the other side and rescue these helpless individuals in need.",
-    "land_water_beach": "As you patiently await your turn in line for the next ride, suddenly there is an event of a power failure, there's no need to panic. Can your team skilfully navigate through this unexpected situation, safely departing from the line without experiencing any electrical shocks? Stay calm and trust in your team's ability to handle this challenge with composure and grace. ",
-    "mastermind": "People are waiting in line to get their ticket. Is your team capable of handling the speed and stress that comes at the ticket booth. This game combines quick thinking, endurance, speed and teamwork. Stay focused and flip as many tickets to your team color. Are you ready for the challenge?",
-    "mine_field": "Your team is faced with a difficult situation where they need to cross to the other side while being cautious of wild animals that have escaped. The goal is to reach their destination without being attacked by these animals.",
-    "human_shuffleboard": "The train tracks are damaged, causing a significant problem. However, your team can tackle this situation by working together as a team. Combine your skills, coordinate your actions, and find a way to keep the train moving smoothly."
+    "iron_grip": "{score} points",
+    "land_water_beach": "{score} points",
+    "mastermind": "{score} points",
+    "human_shuffleboard": "{score} points",
+    "labyrinth": "{score} secpointsonds"
   },
   "explanation": {
-    "iron_grip": "Player one starts climbing the Monkey Bars as far as they can. Once they have reached the 12th bar, the next player can start from the beginning.\n\nExample: Player one has touched the 26th bar last, so his score will be 26 points. Player two fell at the 18th bar, so her score is 18 points. The points of all the players will be added up and divided by the total number of players in the team. That will be your teams' total points.",
-    "land_water_beach": "When the start signal sounds, the first two players can go to the spiral, both take one side of the metal ring and try to get to the first checkpoint without touching the tube.\n\n When the two players get to one checkpoint, they go back and two new players enter the game. When these two players touch the spiral, they go back to the team and two new players continue from the last checkpoint. You continue until you reach the end of the spiral. The team that finishes first wins.",
-    "mastermind": "For this game, every player that participates in the game, needs to wear a ribbon of his or her team's color. 10 players of each team will compete against each other in the field. The goal of this game is to flip as many tiles as possible to your team's color. The players in the field can switch as often as they want, but then the new player needs the ribbon from the 'old' player and then the new player can continue with the game. The game consists of 1 round of 8 minutes. When the time is up, all players leave the field and the tiles will be counted by color. The team that flipped the most tiles to their color, wins the game.",
-    "mine_field": "This game will take place in a big field with small sections. Each team has two captains on the sidelines guiding the player without using phones or any other aid. Player one starts and tries to go through the field without stepping in a wrong box. To know if you're in a right or wrong box, you use the beeper in each box. When the beeper gives the alarm signal, you're in the wrong box and you have to switch the player for a new player. Each player checks each box, even though it is 100% certain it is not a mine. The captains help with remembering the right pathway. You go on until you've reached the finish and then your time will stop. The team with the fastest time, wins the game.",
-    "human_shuffleboard": "The goal of this game is to get one person to the other side of the track on the flamingo over rolling persons. With your team you need to take several turns and try to not let the person on top fall on the ground. At the end of the track, you'll find a slope. Once the boys have climbed the slope, the bell rings and you switch teams. The second team (girls) will lay out the same track on the way back, with going down the slope and around all the curves. The team that crosses the finish line first, wins."
+    "iron_grip": "Can your team provide assistance in rescuing people trapped on a malfunctioning Ferris wheel? Climbing a Ferris wheel can be challenging, and it's crucial to remember the importance of carrying first aid supplies. Please get your team to reach the other side and rescue these helpless individuals in need.",
+    "land_water_beach": "Denne posten er en reaksjonspost, hvor dere konkurrerer mot et annet lag. Ti deltakere fra hvert lag starter i sonen i midten, og skal reagere så raskt som mulig på tre ulike signaler:\n\nGult signal betyr at man skal bli stående stille, strand\nGrønt signal betyr at man skal flytte seg til sonen bak, land\nBlått signal betyr at man skal flytte seg til sonen foran, vann\n\nDet laget hvor alle 10 deltakere flytter seg raskest til riktig sone, er det laget som får poeng. Hvis dere er like raske, får begge lag ett poeng. Altså må man reagere raskt, og bevege seg til riktig sone. Hvis man beveger seg til feil sone, får det andre laget ett poeng. Etter tre signal, skal dere bytte ut de ti deltakene med ti nye deltakere fra laget. Dette gjennomføres tre runder.",
+    "mastermind": "På denne posten skal laget finne ut av hvilken fargekode som skjuler seg i boksen. Laget skal ha plukket ut 5 deltakere til å være deres «Codebreakers». Resten av laget brukes som fargebrikker i spillet etter hvert som «Codebreakers» plasser sine løsninger på spillbrettet.\nNår «Codebreakers» har lagt ut et forslag på løsning, kontakter de dommeren som vil plassere «svar-pinner» i boksen plassert ved siden av hver rad. «Svar-pinnene» viser hvor mange riktige farger (svart) og riktig farge som er riktig plassert (rød) «Codebreakers» har plassert ut i sitt forslag.\n\nPoeng gis etter antall runder brukt på å løse fargekoden.",
+    "labyrinth": "Velkommen\nBallen skal igjennom labyrinten. Det er hull og checkpoints på brettet\n12 personer kan holde rundt brettet\nSpillet er igang da dommer plasserer ballen på start.\nIkke lov å bevege ballen med hendene når den er i spill på brettet.\nIkke lov å krabbe under labyrint når spillet er igang. Det er kun lov når ballen fallet gjennom et hull\nFaller ballen ned i et hull, må den plukkes opp og legges tilbake til siste checkpoint eller start\nBallen skal alltid ligge på brettet. Ikke lov å kaste ballen opp med brettet for å prøve å komme over hinder på brettet\nDet er 3 checkpoints på brettet. Alle spillerne bytter plass med nye spillere. Totalt 36 personer får spilt.\nNår labyrinten er ferdig eller tiden er ute, plasserer deltakerne brettet rolig ned på bakken",
+    "human_shuffleboard": "1. To lag konkurrer mot hverandre.\n2. Lagene stiller med 9 deltakere per omgang.\n3. Det skal sitte en person i baderingen til enhver tid, armer og ben kan ikke touche bakken eller aktivt skyve på andre baderinger som er i spill.\n4. Laget med blå baderinger starter første omgang. Det spilles annenhver farge inntil alle baderinger er spilt.\n5. I omgang nr. 2 starter rødt lag.\n6. Stein, saks, papir avgjør hvem som starter omgang nr. 3.\n7. Spillet starter med at en deltaker plassers i baderingen, mens to personer skal dytte baderingen, de kan ikke passere den røde streken (slipp sone) på banen.\n8. Etter at alle har skjøvet sine tre baderinger, telles scoren på alle baderinger som ligger innenfor scoringsområdet.\n9. Hele baderingen må ligge innenfor poengområdet for at det skal telles med.\n10. Hvis baderingen berører streken, er det den bakerste poengsonen som er tellende.\n11. Det spilles 3 omganger, med 3 skyv av baderinger per omgang.\n12. Poengene fra hver omgang telles opp til en totalsum.\n13. Det laget med flest poeng vinner konkurransen."
+  },
+  "leadstory": {
+    "iron_grip": "",
+    "labyrinth": "",
+    "land_water_beach": "",
+    "mine_field": "",
+    "human_shuffleboard": ""
   },
   "rules": {
-    "iron_grip": "All members of the team participate",
-    "nerve_spiral": "30 - 50 team members participate (in 15-25 pairs)",
-    "land_water_beach": "Only the persons with a team ribbon are allowed to enter the field (10 per team)|It is permitted to switch participants without limitation, as long as they are wearing a team ribbon when entering the field",
-    "mastermind": "Approx. 30 team members participate|Only 1 person at a time is allowed on the course|2 team captains guide the participants through the course|Team captains may not use tools to remember the route",
-    "human_shuffleboard": "16 boys and 16 girls participate, 1 surfer and 15 rollers|It is not allowed to touch the ground (both float and surfer)|The obstacles may not be moved and rollers cannot move outside marked area"
+    "iron_grip": "",
+    "labyrinth": "Coming soon",
+    "land_water_beach": "",
+    "mastermind": "Tid: 10 min\nAntall deltakere: 5 stk codebreakers + 32 stk fargebrikker (maksimalt).",
+    "human_shuffleboard": ""
   },
   "general_error": "Something went wrong",
   "pleaserefresh": "Please try refreshing the page",

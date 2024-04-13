@@ -19,7 +19,7 @@
     <p class="text-dark-blue">
       {{ $t("leadstory." + gameParsed.gameType) }}
     </p>
-    <p class="text-dark-blue flex mt-4">
+    <p class="text-dark-blue flex mt-4 whitespace-pre-line">
       <img class=" w-5 h-5 mr-3" src="/icon/circle-info.svg" />
       {{ $t("explanation." + gameParsed.gameType) }}
     </p>
