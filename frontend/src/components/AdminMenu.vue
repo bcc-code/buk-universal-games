@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="flex w-full bottom-0 bg-ice-blue absolute align-middle p-2 justify-between"
+    class="flex w-full bottom-0 bg-ice-blue fixed z-10 align-middle p-2 justify-between"
   >
     <div class="flex w-1/2 justify-between align-middle">
       <button

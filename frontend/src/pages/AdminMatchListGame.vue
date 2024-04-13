@@ -18,10 +18,10 @@
       </div>
       <div class="filter">
         <p>Game type:</p>
-        <div class="single-filter">
+        <div class="single-filter flex">
           <AdminLeagueSelector
             name="All"
-            class="bg-ice-blue"
+            class="bg-ice-blue min-w-min whitespace-nowrap"
             :class="{
               'bg-dark-blue': $store.state.adminFilterGameSelected === null,
             }"
@@ -30,7 +30,7 @@
           <AdminLeagueSelector
             v-for="game in games"
             :key="game.id"
-            class="bg-ice-blue"
+            class="bg-ice-blue min-w-min whitespace-nowrap"
             :class="{
               'bg-dark-blue ': game.id === $store.state.adminFilterGameSelected,
             }"
