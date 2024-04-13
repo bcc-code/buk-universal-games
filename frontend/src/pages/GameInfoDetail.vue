@@ -35,8 +35,21 @@
 
     <section>
       <h2 class="text-white my-3">{{ $t("yourmatch") }}</h2>
-      <MatchListItem v-if="match" :gameType="gameParsed.gameType" :gameAddOn="match.addOn" :team1="match.team1"
-        :team2="match.team2" :start="match.start" :winner="match.winner" :class="{ 'card-light': true }"></MatchListItem>
+      <MatchListItem
+      v-if="match" 
+            :key="match.id"
+            :gameType="getGameById(match.gameId)?.gameType"
+            :gameAddOn="match.addOn"
+            :team1="match.team1"
+            :team2="match.team2"
+            :team1result="match.team1Result"
+            :team2result="match.team2Result"
+            :start="match.start"
+            :winner="match.winner"
+            :clickFunc="() => matchClicked(match)"
+          />
+<!--       <MatchListItem v-if="match" :gameType="gameParsed.gameType" :gameAddOn="match.addOn" :team1="match.team1"
+        :team2="match.team2" :start="match.start" :winner="match.winner" :class="{ 'card-light': true }"></MatchListItem> -->
     </section>
 
     <section class="league-title" v-if="ranking?.length">
@@ -79,7 +92,16 @@ export default {
       this.$router.back();
     }
   },
-  methods: {},
+  methods: {
+    getGameById(id) {
+      if (this.games.error) {
+        return {};
+      }
+
+      let game = this.games.find((game) => game.id == id);
+      return game;
+    },
+  },
   computed: {
     teamStatus() {
       return this?.leagueStatus?.status?.total?.find((score) => score.team == this.$store.state.loginData?.team);
@@ -97,6 +119,9 @@ export default {
     },
     rules() {
       return this.$t('rules.' + this.gameParsed.gameType).split('|');
+    },
+    games() {
+      return this?.$store.state.games;
     },
   },
 };
