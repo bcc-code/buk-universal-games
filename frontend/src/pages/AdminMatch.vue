@@ -2,7 +2,13 @@
   <AdminPageLayout>
     <nav>
       <!-- todo, use classes to make text black -->
-      <button @click="$router.back()" class="btn-primary text-black" style="color:black">&lt; Back</button>
+      <button
+        @click="$router.back()"
+        class="btn-primary text-black"
+        style="color: black"
+      >
+        &lt; Back
+      </button>
       <button @click="this.showGameInfo(game)">Game-info</button>
     </nav>
 
@@ -14,7 +20,10 @@
 
     <header>
       <h3>
-        <img class="icon h-10 w-10" :src="`/icon/game-${game.gameType}.svg`" />
+        <img
+          class="icon h-10 w-10"
+          :src="`/icon/game-${game.gameType.replace(/_/g, '')}.svg`"
+        />
         <span class="text-white">{{ $t('games.' + game.gameType) }}</span>
       </h3>
       <h2 class="text-white">
@@ -23,55 +32,83 @@
     </header>
 
     <div class="teams">
-      <div :class="{
-        teamresult: true,
-        selected: match?.team1Id === selectedTeam,
-        winner: match?.team1Id === match?.winnerId,
-        loser: match?.team2Id === match?.winnerId,
-      }">
+      <div
+        :class="{
+          teamresult: true,
+          selected: match?.team1Id === selectedTeam,
+          winner: match?.team1Id === match?.winnerId,
+          loser: match?.team2Id === match?.winnerId,
+        }"
+      >
         <p>{{ match?.team1 }}</p>
         <p v-if="match?.team1Result">
           <strong>Score:</strong> {{ match?.team1Result }}
         </p>
 
-        <button class="btn btn-blank" v-if="!isChangingScore1 && match?.team1Result > 0"
-          @click="isChangingScore1 = true">
+        <button
+          class="btn btn-blank"
+          v-if="!isChangingScore1 && match?.team1Result > 0"
+          @click="isChangingScore1 = true"
+        >
           Change
         </button>
 
         <div v-if="isChangingScore1 || !match?.team1Result">
-          <input type="number" v-model="team1Result" :placeholder="'Result (in ' + units[game?.gameType] + ')'" />
-          <button class="btn btn-blank" @click="confirmTeamResult(match?.team1Id, team1Result)">
+          <input
+            class="bg-slate-100"
+            type="number"
+            v-model="team1Result"
+            :placeholder="'Input result'"
+          />
+          <button
+            class="btn btn-blank"
+            @click="confirmTeamResult(match?.team1Id, team1Result)"
+          >
             Confirm
           </button>
         </div>
-        <span class="tag" v-if="match?.team1Id === match?.winnerId">Winner</span>
+        <span class="tag" v-if="match?.team1Id === match?.winnerId"
+          >Winner</span
+        >
       </div>
-      <div v-if="match?.team1Id !== match?.team2Id" :class="{
-        teamresult: true,
-        selected: match?.team2Id === selectedTeam,
-        winner: match?.team2Id === match?.winnerId,
-        loser: match?.team1Id === match?.winnerId,
-      }">
+      <div
+        v-if="match?.team1Id !== match?.team2Id"
+        :class="{
+          teamresult: true,
+          selected: match?.team2Id === selectedTeam,
+          winner: match?.team2Id === match?.winnerId,
+          loser: match?.team1Id === match?.winnerId,
+        }"
+      >
         <p>{{ match?.team2 }}</p>
         <p v-if="match?.team2Result">
           <strong>Score:</strong> {{ match?.team2Result }}
         </p>
 
-        <button class="btn btn-blank" v-if="!isChangingScore2 && match?.team2Result > 0"
-          @click="isChangingScore2 = true">
+        <button
+          class="btn btn-blank"
+          v-if="!isChangingScore2 && match?.team2Result > 0"
+          @click="isChangingScore2 = true"
+        >
           Change
         </button>
         <div v-if="isChangingScore2 || !match?.team2Result">
-          <TableSurfingInput v-if="game?.gameType === 'tablesurfing'" v-model="team2Result" />
-          <TimeInput v-else-if="['minefield', 'nervespiral'].includes(game?.gameType)" v-model="team2Result" />
-          <MonkeyBarsInput v-else-if="game?.gameType === 'monkeybars'" v-model="team2Result" />
-          <input v-else type="number" v-model="team2Result" :placeholder="'Result (in ' + units[game.gameType] + ')'" />
-          <button class="btn btn-blank" @click="confirmTeamResult(match?.team2Id, team2Result)">
+          <input
+            class="bg-slate-100"
+            type="number"
+            v-model="team2Result"
+            :placeholder="'Input result'"
+          />
+          <button
+            class="btn btn-blank"
+            @click="confirmTeamResult(match?.team2Id, team2Result)"
+          >
             Confirm
           </button>
         </div>
-        <span class="tag" v-if="match?.team2Id === match?.winnerId">Winner</span>
+        <span class="tag" v-if="match?.team2Id === match?.winnerId"
+          >Winner</span
+        >
       </div>
     </div>
   </AdminPageLayout>
