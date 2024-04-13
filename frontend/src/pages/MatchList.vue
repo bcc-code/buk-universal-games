@@ -34,8 +34,8 @@
         :gameAddOn="match.addOn"
         :team1="match.team1"
         :team2="match.team2"
-        :team1result="match.team1result"
-        :team2result="match.team2result"
+        :team1result="match.team1Result"
+        :team2result="match.team2Result"
         :start="match.start"
         :winner="match.winner"
         :clickFunc="() => matchClicked(match)"
@@ -114,6 +114,7 @@ export default {
   computed: {
     matches() {
       console.log(this.$store.state.matches);
+      console.log('stop here');
       return this.$store.state.matches;
     },
     games() {

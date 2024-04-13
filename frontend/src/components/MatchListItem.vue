@@ -22,7 +22,10 @@
           />
           <p class="text">{{ $t(`games.${gameType}`) }}</p>
 
-          <div v-if="$route.name==='AdminMatchListGame'" class="flex space-x-3">
+          <div
+            v-if="$route.name === 'AdminMatchListGame'"
+            class="flex space-x-3"
+          >
             <p class="text-xs font-bold w-7">Team:</p>
             <p class="text-xs w-full">{{ team1 }}</p>
           </div>
@@ -35,9 +38,11 @@
       </div>
     </div>
     <div
-      v-if="twoteams"
-      class="text-label-1 border-t-2 border-dark-blue flex flex-col w-full items-center"
+      v-if="twoteams || passed"
+      class="text-label-1 flex flex-col w-full items-center"
     >
+      <hr class="w-full border-b-1 border-dark-blue mt-2 mb-4" />
+
       <div class="flex space-x-5">
         <span
           class="flex flex-col justify-center"
@@ -47,29 +52,31 @@
             loser: team2 === winner,
           }"
         >
-          <span>{{ team1 }}</span>
-          <div v-if="passed">
+          <span v-if="twoteams">{{ team1 }}</span>
+          <div v-if="passed && twoteams">
             <p :class="[winner === team1 ? 'text-green-500' : 'text-red-700']">
               {{ winner === team1 ? 'Winner' : 'Loser' }}
             </p>
-            <p>{{ team1result }}</p>
+            <p v-if="passed">{{ team1result }} {{ $t('points') }}</p>
           </div>
         </span>
-        <img class="h-10 w-10" :src="`icon/match.png`" />
+        <img v-if="twoteams" class="h-10 w-10" :src="`icon/match.png`" />
         <span
-          class="flex flex-col justify-center"
+          class="flex flex-col justify-center text-xs"
           :class="{
-            'text-xs': true,
             winner: team2 === winner,
             loser: team1 === winner,
           }"
         >
-          <span>{{ team2 }}</span>
-          <div v-if="passed">
-            <p :class="[winner === team2 ? 'text-green-500' : 'text-red-700']">
+          <span v-if="twoteams">{{ team2 }}</span>
+          <div>
+            <p
+              v-if="passed && twoteams"
+              :class="[winner === team2 ? 'text-green-500' : 'text-red-700']"
+            >
               {{ winner === team2 ? 'Winner' : 'Loser' }}
             </p>
-            <p>{{ team2result }}</p>
+            <p v-if="passed">{{ team2result }} {{ $t('points') }}</p>
           </div>
         </span>
       </div>
@@ -77,7 +84,7 @@
   </section>
 </template>
 
-<script setup >
+<script setup>
 const props = defineProps({
   gameType: String,
   gameAddOn: String,
@@ -91,9 +98,8 @@ const props = defineProps({
   currentActiveMatch: String,
 });
 
-console.log(props.currentActiveMatch, 'current active match');
-
-const passed = props.winner !== '';
+const passed = props.team1result !== null;
+console.log(props.team1result);
 const twoteams = props.team2 !== props.team1;
 </script>
 
