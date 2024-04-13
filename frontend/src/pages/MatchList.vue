@@ -40,7 +40,7 @@
         :winner="match.winner"
         :clickFunc="() => matchClicked(match)"
         :currentActiveMatch="initMatch(match)"
-        @click="gameClicked(whichGame(match.gameId)?.gameType)"
+        @click="gameClicked(match.gameId)"
       />
     </section>
   </UserPageLayout>
@@ -82,11 +82,11 @@ export default {
           this.matches[0],
       );
     },
-    gameClicked(game) {
+    gameClicked(id) {
       this.$router.push({
         name: 'GameInfoDetail',
         params: {
-          game: game.id,
+          game: id,
         },
       });
     },

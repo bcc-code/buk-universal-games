@@ -8,39 +8,39 @@
     "map": "Kart"
   },
   "games": {
-    "monkeybars": "Monkeybars",
-    "nervespiral": "Nerve Spiral",
-    "tickettwist": "Ticket Twist",
-    "minefield": "Mine Field",
-    "tablesurfing": "Crowd Surfing"
+    "iron_grip": "The iron grip",
+    "land_water_beach": "Land, water, beach",
+    "mastermind": "Mastermind",
+    "human_shuffleboard": "Human Shuffleboard",
+    "labyrinth": "Labyrinth"
   },
   "score": {
-    "monkeybars": "{score} stang",
-    "nervespiral": "{score} sekunder",
-    "tickettwist": "{score} brikker",
-    "minefield": "{score} sekunder",
-    "tablesurfing": "{score} sekunder"
+    "monkey_bars": "{score} bars",
+    "nerve_spiral": "{score} seconds",
+    "ticket_twist": "{score} tickets",
+    "mine_field": "{score} seconds",
+    "table_surfing": "{score} seconds"
   },
   "leadstory": {
-    "monkeybars": "Kan ditt lag bistå med å redde folk som er fanget på et feilfungerende pariserhjul? Å klatre på et pariserhjul kan være utfordrende, og det er viktig å huske betydningen av å ha førstehjelpsutstyr med seg. Få teamet ditt til å nå den andre siden og redde disse hjelpeløse individene som trenger hjelp.",
-    "nervespiral": "Mens du tålmodig venter på din tur i køen til den neste attraksjonen, skjer det plutselig strømbrudd. Ikke panikk. Kan ditt lag dyktig navigere gjennom denne uventede situasjonen og trygt forlate køen uten å oppleve noen elektriske støt? Hold roen og stol på teamets evne til å håndtere denne utfordringen med ro og verdighet.",
-    "tickettwist": "Mennesker står i kø for å få billetten sin. Er ditt lag i stand til å håndtere hastigheten og stresset som følger med billettkiosken? Dette spillet kombinerer rask tenkning, utholdenhet, hastighet og samarbeid. Hold fokus og snu så mange billetter som mulig til fargen til ditt lag. Er dere klare for utfordringen?",
-    "minefield": "Ditt lag står overfor en vanskelig situasjon der de må krysse til den andre siden samtidig som de er forsiktige med ville dyr som har rømt. Målet er å nå destinasjonen deres uten å bli angrepet av disse dyrene.",
-    "tablesurfing": "Jernbanesporene er skadet, noe som skaper et betydelig problem. Men ditt lag kan takle denne situasjonen ved å jobbe sammen som et team. Kombiner ferdighetene deres, koordiner handlingene deres, og finn en måte å holde toget i bevegelse jevnt på."
+    "iron_grip": "Can your team provide assistance in rescuing people trapped on a malfunctioning Ferris wheel? Climbing a Ferris wheel can be challenging, and it's crucial to remember the importance of carrying first aid supplies. Please get your team to reach the other side and rescue these helpless individuals in need.",
+    "land_water_beach": "As you patiently await your turn in line for the next ride, suddenly there is an event of a power failure, there's no need to panic. Can your team skilfully navigate through this unexpected situation, safely departing from the line without experiencing any electrical shocks? Stay calm and trust in your team's ability to handle this challenge with composure and grace. ",
+    "mastermind": "People are waiting in line to get their ticket. Is your team capable of handling the speed and stress that comes at the ticket booth. This game combines quick thinking, endurance, speed and teamwork. Stay focused and flip as many tickets to your team color. Are you ready for the challenge?",
+    "mine_field": "Your team is faced with a difficult situation where they need to cross to the other side while being cautious of wild animals that have escaped. The goal is to reach their destination without being attacked by these animals.",
+    "human_shuffleboard": "The train tracks are damaged, causing a significant problem. However, your team can tackle this situation by working together as a team. Combine your skills, coordinate your actions, and find a way to keep the train moving smoothly."
   },
   "explanation": {
-    "monkeybars": "Spiller én begynner å klatre på apereiret så langt som de kan. Når de har nådd den 12. stangen, kan neste spiller begynne fra begynnelsen.\n\nEksempel: Spiller én berørte sist den 26. stangen, så poengsummen hans vil være 26 poeng. Spiller to falt på den 18. stangen, så poengsummen hennes er 18 poeng. Poengene til alle spillerne blir lagt sammen og delt på det totale antallet spillere på laget. Det blir lagets totale poengsum.",
-    "nervespiral": "Når startsignalet høres, kan de første to spillerne gå til spiralen. De tar hver sin side av metallringen og prøver å komme til det første kontrollpunktet uten å berøre røret.\n\nNår de to spillerne når ett kontrollpunkt, går de tilbake, og to nye spillere kommer inn i spillet. Når disse to spillerne berører spiralen, går de tilbake til laget, og to nye spillere fortsetter fra det siste kontrollpunktet. Dette fortsetter til du når enden av spiralen. Laget som avslutter først, vinner.",
-    "tickettwist": "For dette spillet må hver spiller som deltar i spillet, ha et bånd i fargen til laget sitt. 10 spillere fra hvert lag vil konkurrere mot hverandre på banen. Målet med dette spillet er å snu så mange fliser som mulig til fargen til laget ditt. Spillerne på banen kan bytte så ofte de vil, men da må den nye spilleren ha båndet fra 'gamle' spilleren og kan deretter fortsette med spillet. Spillet består av 1 runde på 8 minutter. Når tiden er ute, forlater alle spillerne banen, og flisene blir telt etter farge. Laget som har snudd flest fliser til fargen sin, vinner spillet.",
-    "minefield": "Dette spillet vil finne sted på et stort felt med små seksjoner. Hvert lag har to kapteiner på sidelinjen som guider spillerne uten å bruke telefoner eller andre hjelpemidler. Spiller én begynner og prøver å gå gjennom feltet uten å tråkke på feil boks. For å vite om du er i en riktig eller feil boks, bruker du lydsignalet i hver boks. Når lydsignalet gir alarmen, er du i feil boks, og du må bytte spiller til en ny spiller. Hver spiller sjekker hver boks, selv om det er 100% sikkert at det ikke er en mine. Kapteinene hjelper med å huske den riktige ruten. Du fortsetter til du har nådd målet, og da stopper tiden din. Laget med den raskeste tiden, vinner spillet.",
-    "tablesurfing": "Målet med dette spillet er å få en person til den andre siden av sporet på flamingoen, over rullende personer. Med teamet ditt tar du flere runder og prøver å forhindre at personen på toppen faller på bakken. På enden av sporet finner du en bakke. Når guttene har klatret bakken, ringer klokken, og dere bytter lag. Det andre laget (jenter) legger ut samme spor på vei tilbake, med å gå ned bakken og rundt alle kurvene. Laget som krysser målstreken først, vinner."
+    "iron_grip": "Player one starts climbing the Monkey Bars as far as they can. Once they have reached the 12th bar, the next player can start from the beginning.\n\nExample: Player one has touched the 26th bar last, so his score will be 26 points. Player two fell at the 18th bar, so her score is 18 points. The points of all the players will be added up and divided by the total number of players in the team. That will be your teams' total points.",
+    "land_water_beach": "When the start signal sounds, the first two players can go to the spiral, both take one side of the metal ring and try to get to the first checkpoint without touching the tube.\n\n When the two players get to one checkpoint, they go back and two new players enter the game. When these two players touch the spiral, they go back to the team and two new players continue from the last checkpoint. You continue until you reach the end of the spiral. The team that finishes first wins.",
+    "mastermind": "For this game, every player that participates in the game, needs to wear a ribbon of his or her team's color. 10 players of each team will compete against each other in the field. The goal of this game is to flip as many tiles as possible to your team's color. The players in the field can switch as often as they want, but then the new player needs the ribbon from the 'old' player and then the new player can continue with the game. The game consists of 1 round of 8 minutes. When the time is up, all players leave the field and the tiles will be counted by color. The team that flipped the most tiles to their color, wins the game.",
+    "mine_field": "This game will take place in a big field with small sections. Each team has two captains on the sidelines guiding the player without using phones or any other aid. Player one starts and tries to go through the field without stepping in a wrong box. To know if you're in a right or wrong box, you use the beeper in each box. When the beeper gives the alarm signal, you're in the wrong box and you have to switch the player for a new player. Each player checks each box, even though it is 100% certain it is not a mine. The captains help with remembering the right pathway. You go on until you've reached the finish and then your time will stop. The team with the fastest time, wins the game.",
+    "human_shuffleboard": "The goal of this game is to get one person to the other side of the track on the flamingo over rolling persons. With your team you need to take several turns and try to not let the person on top fall on the ground. At the end of the track, you'll find a slope. Once the boys have climbed the slope, the bell rings and you switch teams. The second team (girls) will lay out the same track on the way back, with going down the slope and around all the curves. The team that crosses the finish line first, wins."
   },
   "rules": {
-    "monkeybars": "Alle medlemmer av laget deltar",
-    "nervespiral": "30 - 50 lagmedlemmer deltar (i 15-25 par)",
-    "tickettwist": "Bare personer med et lagsbånd har lov til å gå inn på banen (10 per lag)|Det er tillatt å bytte deltakere uten begrensning, så lenge de har på seg et lagsbånd når de går inn på banen",
-    "minefield": "Omtrent 30 lagmedlemmer deltar|Bare én person av gangen er tillatt på banen|2 lagkapteiner guider deltakerne gjennom banen|Lagkapteinene kan ikke bruke verktøy for å huske ruten",
-    "tablesurfing": "16 gutter og 16 jenter deltar, 1 surfer og 15 rullende personer|Det er ikke tillatt å berøre bakken (både flytende og surfer)|Hindringer kan ikke flyttes, og rullende personer kan ikke bevege seg utenfor det merkede området"
+    "iron_grip": "All members of the team participate",
+    "nerve_spiral": "30 - 50 team members participate (in 15-25 pairs)",
+    "land_water_beach": "Only the persons with a team ribbon are allowed to enter the field (10 per team)|It is permitted to switch participants without limitation, as long as they are wearing a team ribbon when entering the field",
+    "mastermind": "Approx. 30 team members participate|Only 1 person at a time is allowed on the course|2 team captains guide the participants through the course|Team captains may not use tools to remember the route",
+    "human_shuffleboard": "16 boys and 16 girls participate, 1 surfer and 15 rollers|It is not allowed to touch the ground (both float and surfer)|The obstacles may not be moved and rollers cannot move outside marked area"
   },
   "general_error": "Noe gikk galt",
   "pleaserefresh": "Prøv å oppdatere siden",

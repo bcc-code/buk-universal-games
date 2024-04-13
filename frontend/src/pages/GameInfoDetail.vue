@@ -1,12 +1,11 @@
 <template>
   <UserPageLayout :showTitle="false">
-    <nav>
+    <nav class="text-white">
       <button @click="$router.back()">&lt; {{ $t("back") }}</button>
     </nav>
-
-    <header>
-      <h2>
-        <img class="icon" :src="`/icon/game-${gameParsed.gameType.replaceAll('_','')}.svg`" />
+    <div>
+      <h2 class="text-white flex space-x-7">
+        <img class="h-10 w-10" :src="`/icon/game-${gameParsed.gameType.replaceAll('_','')}.svg`" />
         <span>{{ $t(`games.${gameParsed.gameType}`) }}</span>
       </h2>
 
@@ -15,17 +14,17 @@
           <source :src="`/video/${gameParsed.gameType.replaceAll('_','')}.mp4`" type="video/mp4" />
         </video>
       </div>
-    </header>
+    </div>
 
-    <p class="leadstory">
+    <p class="text-white">
       {{ $t("leadstory." + gameParsed.gameType) }}
     </p>
-    <p class="description">
+    <p class="text-white w-10 h-10">
       <img src="/icon/circle-info.svg" />
       {{ $t("explanation." + gameParsed.gameType) }}
     </p>
 
-    <p class="description">
+    <p class="text-white">
       <span>{{ $t("rulestitle") }}</span>
     <ul>
       <li v-for="(rule, index) in rules" :key="index">
@@ -34,11 +33,10 @@
     </ul>
     </p>
     <section>
-      <h2>{{ $t("yourmatch") }}</h2>
+      <h2 class="text-white">{{ $t("yourmatch") }}</h2>
       <MatchListItem v-if="match" :gameType="gameParsed.gameType" :gameAddOn="match.addOn" :team1="match.team1"
         :team2="match.team2" :start="match.start" :winner="match.winner" :class="{ 'card-light': true }"></MatchListItem>
     </section>
-
     <section class="league-title" v-if="ranking?.length">
       <div class="league-title-column index-column"></div>
       <div class="league-title-column">
