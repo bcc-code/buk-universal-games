@@ -63,19 +63,22 @@
         >
           {{ matchGroupKey }}
         </h2>
-        <MatchListItem
-          v-for="match in adminMatchGroups[matchGroupKey].matches"
-          :key="match.id"
-          :gameType="getGameById(match.gameId)?.gameType"
-          :gameAddOn="match.addOn"
-          :team1="match.team1"
-          :team2="match.team2"
-          :team1result="match.team1result"
-          :team2result="match.team2result"
-          :start="match.start"
-          :winner="match.winner"
-          :clickFunc="() => matchClicked(match)"
-        />
+        <div v-for="match in adminMatchGroups[matchGroupKey].matches">
+          <!--           <p class="text-white">{{ match }}</p>
+ -->
+          <MatchListItem
+            :key="match.id"
+            :gameType="getGameById(match.gameId)?.gameType"
+            :gameAddOn="match.addOn"
+            :team1="match.team1"
+            :team2="match.team2"
+            :team1result="match.team1Result"
+            :team2result="match.team2Result"
+            :start="match.start"
+            :winner="match.winner"
+            :clickFunc="() => matchClicked(match)"
+          />
+        </div>
       </div>
     </section>
   </AdminPageLayout>
