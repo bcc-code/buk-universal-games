@@ -48,8 +48,8 @@ public class CacheController : ControllerBase
 
         foreach (var league in leagues)
         {
-            await _cache.Remove($"Matches_{team.LeagueId.Value}");
-            await _cache.Remove($"LeagueStatus_{team.LeagueId.Value}");
+            await _cache.Remove($"Matches_{league.LeagueId}");
+            await _cache.Remove($"LeagueStatus_{league.LeagueId}");
             await _leagueRepository.GetTeams(league.LeagueId);
             await _gameRepository.GetMatches(league.LeagueId);
             foreach(var game in games)
