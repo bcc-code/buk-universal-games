@@ -28,24 +28,41 @@ namespace Buk.UniversalGames.Data
 
         public Task<T> Set<T>(string key, T value)
         {
+            var expirationOptions = new DistributedCacheEntryOptions
+            {
+                AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(250),
+                SlidingExpiration = TimeSpan.FromHours(250)
+            };
+            string setValue = JsonSerializer.Serialize(value);
+
             return Retry(async () =>
             {
-                var expirationOptions = new DistributedCacheEntryOptions
-                {
-                    AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(250),
-                    SlidingExpiration = TimeSpan.FromHours(250)
-                };
-                
-                await _cache.SetStringAsync(key, JsonSerializer.Serialize(value), expirationOptions);
+
+                await _cache.SetStringAsync(key, setValue, expirationOptions);
 
                 var cacheKeys = await GetCacheKeys();
                 cacheKeys.Add(key);
                 await SetCacheKeys(cacheKeys);
 
+                LogSetOperation(key, setValue, cacheKeys);
+
                 return value;
             });
-            
+
         }
+
+        private static void LogSetOperation<T>(string key, T value, List<string> cacheKeys)
+        {
+            Console.WriteLine("SETTING");
+            Console.WriteLine($"    KEY: {key}");
+            Console.WriteLine($"    VALUE: {JsonSerializer.Serialize(value)}");
+            Console.WriteLine("NEW CACHEKEYS:");
+            foreach (var cacheKey in cacheKeys)
+            {
+                Console.WriteLine($"    {cacheKey}");
+            }
+        }
+
 
         public Task Remove(string key)
         {
@@ -58,7 +75,7 @@ namespace Buk.UniversalGames.Data
                 await SetCacheKeys(cacheKeys);
                 return true;
             });
-            
+
         }
 
         public Task Clear()
@@ -71,7 +88,7 @@ namespace Buk.UniversalGames.Data
                 await _cache.RemoveAsync("CacheKeys");
                 return true;
             });
-            
+
         }
 
 
