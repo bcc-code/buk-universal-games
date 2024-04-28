@@ -187,8 +187,8 @@ export default function (...plugins) {
 
         const now = new Date();
         const currentRoundStart = new Date(`${now.toDateString()} ${state.matches?.[round - 1].start}`);
-        const afterRoundStart = new Date(currentRoundStart.getTime() + (15 * 60_000));
-        const afterRoundEnd = new Date(afterRoundStart.getTime() + (10 * 60_000));
+        const afterRoundStart = new Date(currentRoundStart.getTime() + (15 * 60000));
+        const afterRoundEnd = new Date(afterRoundStart.getTime() + (10 * 60000));
 
         if (now >= afterRoundStart && now <= afterRoundEnd) {
           return { isAfterRound: true, round: round };
@@ -250,14 +250,6 @@ export default function (...plugins) {
           if (!result.error) {
             ctx.commit("replaceMatch", result)
 
-            // todo this has to happen automatically when registering points
-            await fetch('https://universalgames.buk.no/api/OVERLORDS/systemadmin/status/updateranking', {
-              headers: {
-                'accept': '*/*',
-                'x-ubg-teamcode': 'OVERLORDS'
-              }
-            });
-            // todo, there is also a set match winner endpoint, but i dont know where that is called
 
             return result;
           } else {
