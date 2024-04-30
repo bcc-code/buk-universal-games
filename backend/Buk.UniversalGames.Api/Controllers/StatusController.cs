@@ -1,10 +1,12 @@
 using Buk.UniversalGames.Api.Authorization;
 using Buk.UniversalGames.Api.Exceptions;
+using Buk.UniversalGames.Data;
 using Buk.UniversalGames.Data.Models;
 using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Cultures;
 using Buk.UniversalGames.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace Buk.UniversalGames.Api.Controllers;
 
@@ -16,12 +18,14 @@ public class StatusController : ControllerBase
     private readonly ILogger<StatusController> _logger;
     private readonly IStatusService _statusService;
     private readonly ISettingsService _settingsService;
+    private readonly ICacheContext _cacheContext;
 
-    public StatusController(ILogger<StatusController> logger, IStatusService statusService, ISettingsService settingsService)
+    public StatusController(ILogger<StatusController> logger, IStatusService statusService, ISettingsService settingsService, ICacheContext cacheContext)
     {
         _logger = logger;
         _statusService = statusService;
         _settingsService = settingsService;
+        _cacheContext = cacheContext;
     }
 
     [HttpGet]
@@ -36,7 +40,7 @@ public class StatusController : ControllerBase
     {
         var team = HttpContext.Items["ValidatedTeam"] as Team;
 
-        if(!team!.LeagueId.HasValue)
+        if (!team!.LeagueId.HasValue)
             return new ExceptionResult(Strings.TeamNotPartOfALeague, 403);
 
         var hideHighScore = await _settingsService.GetSetting("hide_highscore");
@@ -52,6 +56,8 @@ public class StatusController : ControllerBase
             }
         }
 
+
+        // shit this should be cached
         return await _statusService.GetLeagueStatus(team.LeagueId.Value);
     }
 }

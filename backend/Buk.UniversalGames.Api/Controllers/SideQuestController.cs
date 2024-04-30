@@ -10,6 +10,7 @@ using NPOI.OpenXmlFormats;
 
 namespace Buk.UniversalGames.Api.Controllers;
 
+[Obsolete("Deprecated")]
 [ApiController]
 [Route("[controller]")]
 public class SideQuestController : ControllerBase
@@ -26,6 +27,7 @@ public class SideQuestController : ControllerBase
         _db = db;
     }
 
+    [Obsolete("Deprecated")]
     [Participant]
     [HttpPost("/sidequest/guesses")]
     public async Task<ActionResult<ScanResult>> Guess([FromBody] GuessDto[] guesses)

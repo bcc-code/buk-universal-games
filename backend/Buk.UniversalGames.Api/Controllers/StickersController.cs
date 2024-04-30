@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Buk.UniversalGames.Api.Controllers;
 
+[Obsolete("Deprecated")]
 [ApiController]
 [Route("{code}/[controller]")]
 public class StickersController : ControllerBase
@@ -19,6 +20,7 @@ public class StickersController : ControllerBase
         _stickerService = stickerService;
     }
 
+    [Obsolete("Deprecated")]
     [Participant]
     [HttpPost("{stickerCode}/Scan")]
     public async Task<ActionResult<ScanResult>> Scan(string stickerCode)

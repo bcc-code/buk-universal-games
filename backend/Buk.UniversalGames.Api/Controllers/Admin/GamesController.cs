@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Buk.UniversalGames.Api.Controllers.Admin;
 
 [ApiController]
-[TeamType(TeamType.Admin,TeamType.SystemAdmin)]
+[TeamType(TeamType.Admin, TeamType.SystemAdmin)]
 public class GamesController : ControllerBase
 {
     private readonly ILogger<GamesController> _logger;
@@ -23,11 +23,12 @@ public class GamesController : ControllerBase
 
 
     [HttpPost("matches/{matchId}/results")]
-    public async Task<ActionResult<MatchListItem>> PostMatchResult([FromBody]MatchResultDto matchResult)
+    public async Task<ActionResult<MatchListItem>> PostMatchResult([FromBody] MatchResultDto matchResult)
     {
         return await _gameService.ReportTeamMatchResult(matchResult.MatchId, matchResult.TeamId, matchResult.Result);
     }
 
+    [Obsolete("Deprecated")]
     [HttpPost("matches/{matchId}/Winner/{teamId}")]
     public async Task<ActionResult<MatchWinnerResult>> SetMatchWinner(int matchId, int teamId)
     {

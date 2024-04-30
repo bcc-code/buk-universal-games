@@ -27,6 +27,7 @@ public class GamesController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<List<Game>>> GetGames()
     {
+        // shit this should be cached
         return await _gameService.GetGames();
     }
 
@@ -43,6 +44,7 @@ public class GamesController : ControllerBase
     public async Task<ActionResult<List<MatchListItem>>> GetMatches()
     {
         var team = HttpContext.Items["ValidatedTeam"] as Team;
+        // shit this should be cached.
         return await _gameService.GetMatches(team);
     }
 }

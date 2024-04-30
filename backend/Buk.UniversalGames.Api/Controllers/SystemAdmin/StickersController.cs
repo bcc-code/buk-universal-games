@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Buk.UniversalGames.Api.Controllers.SystemAdmin;
 
+[Obsolete("Deprecated")]
 [ApiController]
 [TeamType(TeamType.SystemAdmin)]
 [Route("{code}/SystemAdmin/[controller]")]

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Buk.UniversalGames.Api.Controllers;
 
+[Obsolete("Deprecated")]
 [ApiController]
 [Route("[controller]")]
 public class QRController : ControllerBase
@@ -20,6 +21,7 @@ public class QRController : ControllerBase
     }
 
 
+    [Obsolete("Deprecated")]
     [HttpGet("{stickerCode}")]
     public async Task<IActionResult> GetStickerQR(string stickerCode)
     {
@@ -29,6 +31,7 @@ public class QRController : ControllerBase
         return File(qr, "image/png");
     }
 
+    [Obsolete("Deprecated")]
     [HttpGet("AppLink")]
     public IActionResult GetAppLink()
     {
