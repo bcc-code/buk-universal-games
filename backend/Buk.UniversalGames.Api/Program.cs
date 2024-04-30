@@ -24,7 +24,7 @@ builder.Services.AddSwaggerGen(options => options.OperationFilter<TeamCodeHeader
 builder.Services.AddScoped<ILeagueService, LeagueService>();
 builder.Services.AddScoped<IGameService, GameService>();
 builder.Services.AddScoped<IStickerService, StickerService>();
-builder.Services.AddScoped<IStatusService, StatusService>();
+builder.Services.AddScoped<StatusService>();
 builder.Services.AddScoped<ISettingsService, SettingsService>();
 
 builder.Services.AddScoped<ILeagueRepository, LeagueCacheRepository>();

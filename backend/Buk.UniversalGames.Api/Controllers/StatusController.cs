@@ -5,6 +5,7 @@ using Buk.UniversalGames.Data.Models;
 using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Cultures;
 using Buk.UniversalGames.Models;
+using Buk.UniversalGames.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
@@ -16,11 +17,11 @@ namespace Buk.UniversalGames.Api.Controllers;
 public class StatusController : ControllerBase
 {
     private readonly ILogger<StatusController> _logger;
-    private readonly IStatusService _statusService;
+    private readonly StatusService _statusService;
     private readonly ISettingsService _settingsService;
-    private readonly IValidatingCacheService _validatingCacheService;
+    private readonly ValidatingCacheService _validatingCacheService;
 
-    public StatusController(ILogger<StatusController> logger, IStatusService statusService, ISettingsService settingsService, IValidatingCacheService validatingCacheService)
+    public StatusController(ILogger<StatusController> logger, StatusService statusService, ISettingsService settingsService, ValidatingCacheService validatingCacheService)
     {
         _logger = logger;
         _statusService = statusService;

@@ -15,12 +15,12 @@ namespace Buk.UniversalGames.Api.Controllers.SystemAdmin;
 public class StatusController : ControllerBase
 {
     private readonly ILogger<StatusController> _logger;
-    private readonly IStatusService _statusService;
+    private readonly StatusService _statusService;
     private readonly ILeagueRepository _leagueRepository;
     private readonly IGameRepository _gameRepository;
     private readonly ICacheContext _cacheContext;
 
-    public StatusController(ILogger<StatusController> logger, IStatusService statusService, ILeagueRepository leagueRepository, IGameRepository gameRepository, ICacheContext cacheContext)
+    public StatusController(ILogger<StatusController> logger, StatusService statusService, ILeagueRepository leagueRepository, IGameRepository gameRepository, ICacheContext cacheContext)
     {
         _logger = logger;
         _statusService = statusService;

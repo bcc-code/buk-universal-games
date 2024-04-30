@@ -20,9 +20,9 @@ public class CacheController : ControllerBase
     private readonly ILeagueRepository _leagueRepository;
     private readonly IGameRepository _gameRepository;
     private readonly IStickerRepository _stickerRepository;
-    private readonly IStatusService _statusService;
+    private readonly StatusService _statusService;
 
-    public CacheController(ILogger<CacheController> logger, IStatusService statusService, ILeagueRepository leagueRepository, IGameRepository gameRepository, IStickerRepository stickerRepository, ICacheContext cache)
+    public CacheController(ILogger<CacheController> logger, StatusService statusService, ILeagueRepository leagueRepository, IGameRepository gameRepository, IStickerRepository stickerRepository, ICacheContext cache)
     {
         _logger = logger;
         _cache = cache;

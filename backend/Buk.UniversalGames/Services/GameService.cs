@@ -19,10 +19,10 @@ namespace Buk.UniversalGames.Services
         private readonly ILogger<GameService> _logger;
         private readonly IGameRepository _gameRepository;
         private readonly ILeagueRepository _leagueRepository;
-        private readonly IStatusService _statusService;
+        private readonly StatusService _statusService;
         private readonly DataContext _db;
 
-        public GameService(ILogger<GameService> logger, IGameRepository gameRepository , ILeagueRepository leagueRepository, IStatusService statusService, DataContext db)
+        public GameService(ILogger<GameService> logger, IGameRepository gameRepository , ILeagueRepository leagueRepository, StatusService statusService, DataContext db)
         {
             _logger = logger;
             _gameRepository = gameRepository;
