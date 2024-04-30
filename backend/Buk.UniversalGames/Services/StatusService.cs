@@ -18,7 +18,7 @@ using System.Linq.Expressions;
 
 namespace Buk.UniversalGames.Services
 {
-    public class StatusService 
+    public class StatusService
     {
         private static readonly int _matchWinnerPoints = 3;
 
@@ -61,7 +61,7 @@ namespace Buk.UniversalGames.Services
 
         public async Task<List<TeamStatus>> GetGameRanking(GameType gameType, int leagueId)
         {
-            List<TeamStatus> gameRanking = await this.BuildAndCacheRankingForGameInLeague(gameType, leagueId);
+            List<TeamStatus> gameRanking = await BuildAndCacheRankingForGameInLeague(gameType, leagueId);
             return gameRanking ?? new List<TeamStatus>();
         }
 
@@ -118,6 +118,7 @@ namespace Buk.UniversalGames.Services
         }
 
 
+        // shit make private
         public async Task<List<TeamStatus>> BuildAndCacheRankingForGameInLeague(GameType gameType, int leagueId)
         {
             var teamScoresQuery = from score in _db.Points
@@ -147,6 +148,7 @@ namespace Buk.UniversalGames.Services
             return ranking;
         }
 
+        // shit make private
         public async Task<List<TeamStatus>> BuildAndCacheLeagueRanking(int leagueId)
         {
             var teams = await _leagueLeagueRepository.GetTeams(leagueId);

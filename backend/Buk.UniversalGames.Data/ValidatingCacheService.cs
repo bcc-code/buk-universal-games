@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Distributed;
 
 namespace Buk.UniversalGames.Data
 {
-    public class ValidatingCacheService 
+    public class ValidatingCacheService
     {
         private readonly ICacheContext _cacheContext;
 
