@@ -21,79 +21,41 @@ namespace Buk.UniversalGames.Data.CacheRepositories
             _validatingCacheService = validatingCacheService;
         }
 
-
-
-        public async Task<List<Game>> GetGames()
+        public Task<List<Game>> GetGames()
         {
-            // get from cache
-            var cacheKey = "Games";
-            var result = await _cache.Get<List<Game>>(cacheKey);
-            if (result is null)
-            {
-                // fallback to db and set in cache
-                result = await _data.GetGames();
-                await _cache.Set(cacheKey, result);
-            }
-            return result;
+            return _validatingCacheService.WriteThrough("Games", _data.GetGames);
         }
 
         public Task<Match> GetMatch(int matchId)
         {
-            return _data.GetMatch(matchId);
-        }
-
-        // shit this should call the underlying repo instead.
-        public async Task<List<MatchListItem>> GetMatches(Team team)
-        {
-            if (team.LeagueId is null) throw new ArgumentException("Team doesn't have a league assigned", nameof(team));
-
-            var cacheKey = $"Matches_team_{team.TeamId}";
-
-            var teamMatches = await _cache.Get<List<MatchListItem>>(cacheKey);
-            if (teamMatches == null)
+            return _validatingCacheService.WriteThrough("GetMatch_" + matchId, () =>
             {
-                teamMatches = await _data.GetMatches(team);
-                await _cache.Set(cacheKey, teamMatches);
-            }
-
-
-            List<MatchListItem> allMatchesInLeague = await GetMatches(team.LeagueId.Value);
-
-            List<MatchListItem> allMatchesForTeam = allMatchesInLeague.Where(s => s.Team1Id == team.TeamId || s.Team2Id == team.TeamId).ToList();
-            return allMatchesForTeam;
+                return _data.GetMatch(matchId);
+            });
         }
 
-        // shit gameid should be passed to repository.Pb
-        public async Task<List<MatchListItem>> GetMatches(int leagueId, int? gameId = null)
+        public Task<List<MatchListItem>> GetMatches(Team team)
         {
-            var cacheKey = $"Matches_{leagueId}";
-            var matches = await _cache.Get<List<MatchListItem>>(cacheKey);
-            if (matches == null)
+
+            return _validatingCacheService.WriteThrough($"Matches_team_{team.TeamId}", () =>
             {
-                matches = await _data.GetMatches(leagueId);
-                await _cache.Set(cacheKey, matches);
-            }
-
-            if (gameId == null)
-                return matches;
-            return matches.Where(s => s.GameId == gameId.Value).ToList();
+                return _data.GetMatches(team);
+            });
         }
 
-        public async Task<MatchWinnerResult> SetMatchWinner(Game game, int matchId, Team team)
+        public Task<List<MatchListItem>> GetMatches(int leagueId, int? gameId = null)
         {
-            if (team.LeagueId is null) throw new ArgumentException("Team doesn't belong to any league", nameof(team));
-            var result = await _data.SetMatchWinner(game, matchId, team);
 
-            // clear match lists for league and league status
-            await _cache.Remove($"Matches_{team.LeagueId.Value}");
-            await _cache.Remove($"LeagueStatus_{team.LeagueId.Value}");
-
-            return result;
+            return _validatingCacheService.WriteThrough($"Matches_{leagueId}", () =>
+            {
+                return _data.GetMatches(leagueId, gameId);
+            });
         }
 
         public async Task<MatchListItem> StoreMatchResult(Match match, int teamId, int measuredResult)
         {
             var teamResult = await _data.StoreMatchResult(match, teamId, measuredResult);
+
             var leagueId = match.LeagueId;
             await _cache.Remove($"Matches_{leagueId}");
             await _cache.Remove($"LeagueStatus_{leagueId}");

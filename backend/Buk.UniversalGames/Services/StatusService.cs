@@ -14,16 +14,12 @@ namespace Buk.UniversalGames.Services
 {
     public class StatusService
     {
-        private static readonly int _matchWinnerPoints = 3;
-
         private readonly ILogger<StatusService> _logger;
         private readonly IStatusRepository _statusRepository;
         private readonly ILeagueRepository _leagueLeagueRepository;
         private readonly DataContext _db;
         private readonly ICacheContext _cache;
         private readonly IGameRepository _gameRepository;
-
-
 
         public StatusService(ILogger<StatusService> logger, IStatusRepository statusRepository, ILeagueRepository leagueLeagueRepository, DataContext db, ICacheContext cache, IGameRepository gameRepository)
         {
@@ -87,10 +83,6 @@ namespace Buk.UniversalGames.Services
         public async Task<List<TeamStatus>> BuildAndCacheLeagueRanking(int leagueId)
         {
             var teams = await _leagueLeagueRepository.GetTeams(leagueId);
-
-            var matchWinners = await (from m in _db.Matches
-                                      where m.LeagueId == leagueId && m.WinnerId.HasValue
-                                      select m.WinnerId!.Value).ToListAsync();
 
             // shit replace with query to game
             var landWaterBeach = (await GetGameRanking(GameType.LandWaterBeach, leagueId)).ToDictionary(x => x.TeamId);

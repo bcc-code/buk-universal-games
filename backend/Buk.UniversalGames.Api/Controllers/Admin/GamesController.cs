@@ -39,10 +39,4 @@ public class GamesController : ControllerBase
         return teamMatchResult;
     }
 
-    [Obsolete("Deprecated")]
-    [HttpPost("matches/{matchId}/Winner/{teamId}")]
-    public async Task<ActionResult<MatchWinnerResult>> SetMatchWinner(int matchId, int teamId)
-    {
-        return await _gameService.SetMatchWinner(matchId, teamId);
-    }
 }

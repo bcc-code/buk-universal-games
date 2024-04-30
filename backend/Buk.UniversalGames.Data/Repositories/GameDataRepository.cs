@@ -46,6 +46,8 @@ namespace Buk.UniversalGames.Data.Repositories
 
         public async Task<List<MatchListItem>> GetMatches(Team team)
         {
+            if (team.LeagueId is null) throw new ArgumentException("Team doesn't have a league assigned", nameof(team));
+
             return await (
                 from match in _db.Matches
                 where match.Team1Id == team.TeamId || match.Team2Id == team.TeamId
@@ -89,65 +91,6 @@ namespace Buk.UniversalGames.Data.Repositories
                     Team2Result = pointsreg2.Points,
                     Start = match.Start.ToLocalTime().ToString("HH:mm"),
                 }).ToListAsync();
-        }
-
-        public async Task<MatchWinnerResult> SetMatchWinner(Game game, int matchId, Team winningTeam)
-        {
-            var match = await _db.Matches
-                .AsTracking()
-                .FirstOrDefaultAsync(s => s.MatchId == matchId)
-                ?? throw new BadRequestException(Strings.UnknownMatchId);
-            var existingPointsRegistrations = await _db.Points.Where(s => s.MatchId == matchId).ToListAsync();
-
-            match.WinnerId = winningTeam.TeamId;
-
-            PointsRegistration? winningPointsRegistration = null;
-            PointsRegistration? losingPointsRegistration = null;
-
-            if (existingPointsRegistrations.Count > 0)
-            {
-                foreach (var pointsRegistration in existingPointsRegistrations)
-                {
-                    if (pointsRegistration.TeamId == winningTeam.TeamId)
-                    {
-                        pointsRegistration.Points = game.WinnerPoints;
-                        winningPointsRegistration = pointsRegistration;
-                    }
-                    else
-                    {
-                        pointsRegistration.Points = game.LooserPoints;
-                        losingPointsRegistration = pointsRegistration;
-                    }
-                }
-            }
-            else
-            {
-                winningPointsRegistration = new PointsRegistration
-                {
-                    TeamId = winningTeam.TeamId,
-                    Points = game.WinnerPoints,
-                    MatchId = matchId,
-                    GameId = game.GameId,
-                    Added = DateTime.Now,
-                };
-
-                var losingTeamId = match.Team1Id == winningTeam.TeamId ? match.Team2Id : match.Team1Id;
-
-                losingPointsRegistration = new PointsRegistration
-                {
-                    TeamId = losingTeamId,
-                    Points = game.LooserPoints,
-                    MatchId = matchId,
-                    GameId = game.GameId,
-                    Added = DateTime.Now
-                };
-
-                await _db.Points.AddRangeAsync(winningPointsRegistration, losingPointsRegistration);
-            }
-
-            await _db.SaveChangesAsync();
-
-            return new MatchWinnerResult(match, winningPointsRegistration, losingPointsRegistration);
         }
 
         public async Task<MatchListItem> StoreMatchResult(Match match, int teamId, int measuredResult)
