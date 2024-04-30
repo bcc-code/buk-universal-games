@@ -12,6 +12,8 @@
     }
   ],
   "compilerOptions": {
-    "lib": ["ESNext"]
+    "lib": ["ES2021"],
+    "target": "ES2021",
+    "module": "ESNext"
   }
 }

@@ -4,10 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "serve": "vite",
+    "serve": "vite --clearScreen false",
     "build": "run-p type-check \"build-only {@}\" --",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "dev": "vite",
+    "dev": "run-p type-watch serve",
+    "type-watch":"vue-tsc --noEmit --watch --preserveWatchOutput",
     "preview": "vite preview",
     "test:unit": "vitest",
     "test:e2e": "playwright test",
