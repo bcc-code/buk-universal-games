@@ -2,9 +2,7 @@
 using Buk.UniversalGames.Data.Interfaces;
 using Buk.UniversalGames.Data.Models;
 using Buk.UniversalGames.Data.Models.Matches;
-using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Cultures;
-using Buk.UniversalGames.Library.Enums;
 using Buk.UniversalGames.Library.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,21 +12,23 @@ using StackExchange.Redis;
 
 namespace Buk.UniversalGames.Services
 {
-    public class GameService : IGameService
+    public class GameService
     {
         private readonly ILogger<GameService> _logger;
         private readonly IGameRepository _gameRepository;
         private readonly ILeagueRepository _leagueRepository;
         private readonly StatusService _statusService;
         private readonly DataContext _db;
+        private readonly ValidatingCacheService _validatingCacheService;
 
-        public GameService(ILogger<GameService> logger, IGameRepository gameRepository , ILeagueRepository leagueRepository, StatusService statusService, DataContext db)
+        public GameService(ILogger<GameService> logger, IGameRepository gameRepository, ILeagueRepository leagueRepository, StatusService statusService, DataContext db, ValidatingCacheService validatingCacheService)
         {
             _logger = logger;
             _gameRepository = gameRepository;
             _leagueRepository = leagueRepository;
             _statusService = statusService;
             _db = db;
+            _validatingCacheService = validatingCacheService;
         }
 
         public async Task<List<Game>> GetGames()
@@ -49,7 +49,7 @@ namespace Buk.UniversalGames.Services
         public async Task<MatchWinnerResult> SetMatchWinner(int matchId, int winnerTeamId)
         {
             var team = await _leagueRepository.GetTeam(winnerTeamId) ?? throw new BadRequestException(Strings.UnknownTeam);
-            var match = (await GetMatches(team)).FirstOrDefault(s=>s.MatchId == matchId) ?? throw new BadRequestException(Strings.UnknownMatchId);
+            var match = (await GetMatches(team)).FirstOrDefault(s => s.MatchId == matchId) ?? throw new BadRequestException(Strings.UnknownMatchId);
             var game = (await GetGames()).FirstOrDefault(s => s.GameId == match.GameId) ?? throw new BadRequestException(Strings.UnknownGame);
             return await _gameRepository.SetMatchWinner(game, matchId, team);
         }

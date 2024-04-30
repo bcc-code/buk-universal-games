@@ -7,10 +7,13 @@ namespace Buk.UniversalGames.Data.Interfaces
     {
         Task<List<Game>> GetGames();
 
+        Task<Match> GetMatch(int matchId);
+
+
         Task<List<MatchListItem>> GetMatches(Team team);
 
         Task<List<MatchListItem>> GetMatches(int leagueId, int? gameId = null);
-      
+
         Task<MatchWinnerResult> SetMatchWinner(Game game, int matchId, Team team);
         Task<MatchListItem> StoreMatchResult(Match match, int teamId, int measuredResult);
     }

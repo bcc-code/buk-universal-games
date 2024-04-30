@@ -6,8 +6,8 @@ using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Exceptions;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
-using Buk.UniversalGames.Library.Enums;
 using Buk.UniversalGames.Api.Authorization;
+using Buk.UniversalGames.Data.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,14 +22,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options => options.OperationFilter<TeamCodeHeaderFilter>());
 
 builder.Services.AddScoped<ILeagueService, LeagueService>();
-builder.Services.AddScoped<IGameService, GameService>();
-builder.Services.AddScoped<IStickerService, StickerService>();
+builder.Services.AddScoped<GameService, GameService>();
 builder.Services.AddScoped<StatusService>();
 builder.Services.AddScoped<ISettingsService, SettingsService>();
 
-builder.Services.AddScoped<ILeagueRepository, LeagueCacheRepository>();
-builder.Services.AddScoped<IGameRepository, GameCacheRepository>();
-builder.Services.AddScoped<IStickerRepository, StickerCacheRepository>();
+builder.Services.AddScoped<ILeagueRepository, LeagueDataRepository>();
+builder.Services.AddScoped<IGameRepository, GameDataRepository>();
 builder.Services.AddScoped<IStatusRepository, StatusCacheRepository>();
 builder.Services.AddScoped<ISettingsRepository, SettingsCacheRepository>();
 

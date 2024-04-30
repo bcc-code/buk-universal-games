@@ -11,13 +11,17 @@ namespace Buk.UniversalGames.Data.CacheRepositories
         private readonly ILogger<GameCacheRepository> _logger;
         private readonly GameDataRepository _data;
         private readonly ICacheContext _cache;
+        private readonly ValidatingCacheService _validatingCacheService;
 
-        public GameCacheRepository(ILogger<GameCacheRepository> logger, DataContext dataContext, ICacheContext cache)
+        public GameCacheRepository(ILogger<GameCacheRepository> logger, DataContext dataContext, ICacheContext cache, ValidatingCacheService validatingCacheService)
         {
             _logger = logger;
             _data = new GameDataRepository(dataContext);
             _cache = cache;
+            _validatingCacheService = validatingCacheService;
         }
+
+
 
         public async Task<List<Game>> GetGames()
         {
@@ -32,6 +36,12 @@ namespace Buk.UniversalGames.Data.CacheRepositories
             }
             return result;
         }
+
+        public Task<Match> GetMatch(int matchId)
+        {
+            return _data.GetMatch(matchId);
+        }
+
         // shit this should call the underlying repo instead.
         public async Task<List<MatchListItem>> GetMatches(Team team)
         {
@@ -53,7 +63,7 @@ namespace Buk.UniversalGames.Data.CacheRepositories
             return allMatchesForTeam;
         }
 
-        // shit gameid should be passed to repository.
+        // shit gameid should be passed to repository.Pb
         public async Task<List<MatchListItem>> GetMatches(int leagueId, int? gameId = null)
         {
             var cacheKey = $"Matches_{leagueId}";

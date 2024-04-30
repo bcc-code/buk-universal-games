@@ -1,8 +1,6 @@
 using Buk.UniversalGames.Api.Authorization;
 using Buk.UniversalGames.Data;
 using Buk.UniversalGames.Data.Interfaces;
-using Buk.UniversalGames.Data.Models;
-using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Enums;
 using Buk.UniversalGames.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -49,9 +47,8 @@ public class StatusController : ControllerBase
             await _gameRepository.GetMatches(league.LeagueId);
 
             foreach (var game in games)
-                await _statusService.BuildAndCacheRankingForGameInLeague(game.Type, league.LeagueId);
+                await _statusService.BuildAndCacheRankingForGameInLeague(game, league.LeagueId);
 
-            await _statusService.BuildAndCacheRankingForSidequest(league.LeagueId);
             await _statusService.BuildAndCacheLeagueRanking(league.LeagueId);
 
 
@@ -65,3 +62,5 @@ public class StatusController : ControllerBase
         return File(xls, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
     }
 }
+
+

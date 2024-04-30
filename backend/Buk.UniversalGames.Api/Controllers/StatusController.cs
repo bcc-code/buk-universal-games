@@ -7,7 +7,6 @@ using Buk.UniversalGames.Library.Cultures;
 using Buk.UniversalGames.Models;
 using Buk.UniversalGames.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace Buk.UniversalGames.Api.Controllers;
 
@@ -59,9 +58,14 @@ public class StatusController : ControllerBase
             }
         }
 
-        return await _validatingCacheService.WriteThrough("LeagueStatus_leagueId_" + team.LeagueId, () =>
+        return await _validatingCacheService.WriteThrough(LeagueStatusCacheKey(team.LeagueId.Value), () =>
         {
             return _statusService.GetLeagueStatus(team.LeagueId.Value);
         });
+    }
+
+    public static string LeagueStatusCacheKey(int leagueId)
+    {
+        return "LeagueStatus_leagueId_" + leagueId;
     }
 }

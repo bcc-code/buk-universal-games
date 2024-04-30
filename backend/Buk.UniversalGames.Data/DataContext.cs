@@ -4,8 +4,6 @@ using Buk.UniversalGames.Data.Models.SideQuest;
 using Buk.UniversalGames.Library.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using Npgsql;
-using System.Xml.Linq;
 
 namespace Buk.UniversalGames.Data;
 

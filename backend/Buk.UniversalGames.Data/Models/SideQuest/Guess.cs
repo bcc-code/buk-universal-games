@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Buk.UniversalGames.Data.Models.SideQuest
+﻿namespace Buk.UniversalGames.Data.Models.SideQuest
 {
     public class Guess
     {

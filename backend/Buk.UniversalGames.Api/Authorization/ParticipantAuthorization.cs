@@ -1,9 +1,6 @@
-﻿using Buk.UniversalGames.Api.Exceptions;
-using Buk.UniversalGames.Interfaces;
-using Buk.UniversalGames.Library.Cultures;
+﻿using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Enums;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Buk.UniversalGames.Api.Authorization
 {

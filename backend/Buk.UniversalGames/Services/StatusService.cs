@@ -2,19 +2,13 @@ using Buk.UniversalGames.Data;
 using Buk.UniversalGames.Data.Interfaces;
 using Buk.UniversalGames.Data.Models;
 using Buk.UniversalGames.Data.Models.Internal;
-using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Enums;
 using Buk.UniversalGames.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using NPOI.HSSF.Record;
-using NPOI.HSSF.Record.Chart;
-using NPOI.OpenXmlFormats.Spreadsheet;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
-using Org.BouncyCastle.Math.EC.Rfc7748;
 using StackExchange.Redis;
-using System.Linq.Expressions;
 
 namespace Buk.UniversalGames.Services
 {
@@ -27,31 +21,32 @@ namespace Buk.UniversalGames.Services
         private readonly ILeagueRepository _leagueLeagueRepository;
         private readonly DataContext _db;
         private readonly ICacheContext _cache;
+        private readonly IGameRepository _gameRepository;
 
-        private readonly int[] _scoreByRank = new int[]
-        {
-            20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0,0,0,0
-        };
 
-        private string gameCacheKey(GameType type, int leagueId) => $"ranking_{type}_{leagueId}";
-        private string leagueCacheKey(int leagueId) => $"ranking_total_{leagueId}";
 
-        public StatusService(ILogger<StatusService> logger, IStatusRepository statusRepository, ILeagueRepository leagueLeagueRepository, DataContext db, ICacheContext cache)
+        public StatusService(ILogger<StatusService> logger, IStatusRepository statusRepository, ILeagueRepository leagueLeagueRepository, DataContext db, ICacheContext cache, IGameRepository gameRepository)
         {
             _logger = logger;
             _statusRepository = statusRepository ?? throw new ArgumentNullException(nameof(statusRepository));
             _leagueLeagueRepository = leagueLeagueRepository;
             _db = db;
             _cache = cache;
+            _gameRepository = gameRepository;
         }
 
         public async Task<Dictionary<string, List<TeamStatus>>> GetLeagueRankings(int leagueId)
         {
+            var games = await _gameRepository.GetGames();
+
+            // shit should the key to this be string or gametype? 
             var dict = new Dictionary<string, List<TeamStatus>>();
-            foreach (var type in (GameType[])Enum.GetValues(typeof(GameType)))
+
+            foreach (var game in games)
             {
-                string gameTypeString = type.ToString().ToLowerInvariant();
-                List<TeamStatus> gameRanking = await GetGameRanking(type, leagueId);
+                string gameTypeString = game.GameType.ToLowerInvariant();
+                List<TeamStatus> gameRanking = await BuildAndCacheRankingForGameInLeague(game, leagueId);
+
                 dict.Add(gameTypeString, gameRanking);
             }
 
@@ -63,92 +58,32 @@ namespace Buk.UniversalGames.Services
 
         public async Task<List<TeamStatus>> GetGameRanking(GameType gameType, int leagueId)
         {
-            List<TeamStatus> gameRanking = await BuildAndCacheRankingForGameInLeague(gameType, leagueId);
+            var games = await _gameRepository.GetGames();
+            var game = games.First(g => g.Type == gameType);
+            List<TeamStatus> gameRanking = await BuildAndCacheRankingForGameInLeague(game, leagueId);
             return gameRanking ?? new List<TeamStatus>();
         }
 
         public async Task<List<TeamStatus>> UpdateGameRanking(Game game, int leagueId)
         {
-            await BuildAndCacheRankingForGameInLeague(game.Type, leagueId);
+            await BuildAndCacheRankingForGameInLeague(game, leagueId);
             return await BuildAndCacheLeagueRanking(leagueId);
         }
 
-        public async Task<List<TeamStatus>> BuildAndCacheRankingForSidequest(int leagueId)
+        public async Task<List<TeamStatus>> BuildAndCacheRankingForGameInLeague(Game game, int leagueId)
+
         {
-            var answerString = await _cache.Get<string>("sidequest_answers");
-            if (answerString is null || answerString.Length == 0) throw new InvalidOperationException("Answers haven't been loaded");
 
-            var answers = answerString.Split(',');
-
-            var teamsWithSize = (from team in _db.Teams
-                                 where team.TeamType == "participant"
-                                 select new { team.TeamId, team.Name, team.MemberCount }).ToList();
-
-            var teamSizeDict = teamsWithSize.ToDictionary(x => x.TeamId, x => x.MemberCount);
-
-            var teamScores = from guess in _db.Guesses
-                             where guess.Team.LeagueId == leagueId && answers.Contains(guess.Answer)
-                             group guess by new { guess.TeamId, guess.QuestionId } into t
-                             select new { t.Key.TeamId, t.Key.QuestionId, Count = t.Count() };
-
-            var relativeScores = (await teamScores.ToListAsync()).Select(x => new { x.TeamId, x.QuestionId, x.Count, Percentage = (teamSizeDict[x.TeamId] == 0 || x.Count > Math.Ceiling(teamSizeDict[x.TeamId] * 1.10)) ? 0 : (decimal)x.Count / teamSizeDict[x.TeamId] });
-            var sumScore = teamsWithSize
-                .Select(t => new
-                {
-                    t.TeamId,
-                    t.Name,
-                    ScoreSum = relativeScores
-                        .Where(x => x.TeamId == t.TeamId)
-                        .Sum(x => x.Percentage)
-                })
-                .Where(x => x.ScoreSum > 0)
-                .OrderByDescending(x => x.ScoreSum);
-
-            var groupedByRank = sumScore.GroupBy(x => x.ScoreSum);
-
-            var rank = -1;
-            var ranking = new List<TeamStatus>();
-            foreach (var rankingPosition in groupedByRank)
-            {
-                rank += rankingPosition.Count();
-                ranking.AddRange(rankingPosition.Select(x => new TeamStatus(x.TeamId, x.Name, rank < 0 ? 0 : _scoreByRank[rank])));
-            }
-
-            await _cache.Set($"sidequest_ranking_{leagueId}", ranking);
-
-            return ranking;
-        }
-
-
-        // shit make private
-        public async Task<List<TeamStatus>> BuildAndCacheRankingForGameInLeague(GameType gameType, int leagueId)
-        {
             var teamScoresQuery = from score in _db.Points
-                                  where score.Game.GameType == gameType.ToString() && score.Match!.LeagueId == leagueId
+                                  where score.Game == game && score.Match!.LeagueId == leagueId
                                   select new { score.TeamId, score.Team.Name, score.Points };
+
             var teamScores = await teamScoresQuery.ToListAsync();
-            var teamsGroupedByPoints = teamScores.GroupBy(x => x.Points);
 
-            if (gameType == GameType.Labyrinth || gameType == GameType.HumanShuffleBoard)
-            {
-                teamsGroupedByPoints = teamsGroupedByPoints.OrderByDescending(x => x.Key);
-            }
-            else
-            {
-                teamsGroupedByPoints = teamsGroupedByPoints.OrderBy(x => x.Key);
-            }
-            var rank = -1;
-            var ranking = new List<TeamStatus>();
-            foreach (var rankingPosition in teamsGroupedByPoints)
-            {
-                rank += rankingPosition.Count();
-                ranking.AddRange(rankingPosition.Select(x => new TeamStatus(x.TeamId, x.Name, _scoreByRank[rank]) { Score = x.Points }));
-            }
-
-            return ranking;
+            return teamScores.Select(score => new TeamStatus(score.TeamId, score.Name, score.Points)).ToList();
         }
 
-        // shit make private
+        // shit make private and rename
         public async Task<List<TeamStatus>> BuildAndCacheLeagueRanking(int leagueId)
         {
             var teams = await _leagueLeagueRepository.GetTeams(leagueId);
@@ -157,13 +92,14 @@ namespace Buk.UniversalGames.Services
                                       where m.LeagueId == leagueId && m.WinnerId.HasValue
                                       select m.WinnerId!.Value).ToListAsync();
 
+            // shit replace with query to game
             var landWaterBeach = (await GetGameRanking(GameType.LandWaterBeach, leagueId)).ToDictionary(x => x.TeamId);
             var humanShuffleBoard = (await GetGameRanking(GameType.HumanShuffleBoard, leagueId)).ToDictionary(x => x.TeamId);
             var labyrinth = (await GetGameRanking(GameType.Labyrinth, leagueId)).ToDictionary(x => x.TeamId);
             var mastermind = (await GetGameRanking(GameType.Mastermind, leagueId)).ToDictionary(x => x.TeamId);
             var ironGrip = (await GetGameRanking(GameType.IronGrip, leagueId)).ToDictionary(x => x.TeamId);
 
-            var sidequest = (await _cache.Get<List<TeamStatus>>($"sidequest_ranking_{leagueId}"))?.ToDictionary(x => x.TeamId) ?? new Dictionary<int, TeamStatus>();
+
 
             var leagueRanking = new List<TeamStatus>();
 
@@ -173,11 +109,9 @@ namespace Buk.UniversalGames.Services
                                     + GetPointsForSubRanking(humanShuffleBoard, team)
                                     + GetPointsForSubRanking(labyrinth, team)
                                     + GetPointsForSubRanking(mastermind, team)
-                                    + GetPointsForSubRanking(ironGrip, team)
-                                    + (GetPointsForSubRanking(sidequest, team) * .7M)
-                                    + (_matchWinnerPoints * matchWinners.Count(x => x == team.TeamId));
+                                    + GetPointsForSubRanking(ironGrip, team);
 
-                leagueRanking.Add(new TeamStatus(team.TeamId, team.Name, (int)(totalPoints * 10)));
+                leagueRanking.Add(new TeamStatus(team.TeamId, team.Name, totalPoints));
             }
 
             var sortedRanking = leagueRanking.OrderByDescending(x => x.Points).ToList();
@@ -214,6 +148,7 @@ namespace Buk.UniversalGames.Services
         {
             var answers = await _db.Settings.FindAsync("answers") ?? throw new InvalidOperationException("Did not find the answers to cache");
             await _cache.Set("sidequest_answers", answers.Value);
+
         }
 
         public async Task<byte[]> ExportStatus()

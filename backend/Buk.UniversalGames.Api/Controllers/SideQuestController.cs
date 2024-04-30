@@ -3,10 +3,8 @@ using Buk.UniversalGames.Api.Dto;
 using Buk.UniversalGames.Data;
 using Buk.UniversalGames.Data.Models;
 using Buk.UniversalGames.Data.Models.SideQuest;
-using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Models;
 using Microsoft.AspNetCore.Mvc;
-using NPOI.OpenXmlFormats;
 
 namespace Buk.UniversalGames.Api.Controllers;
 

@@ -2,7 +2,6 @@
 using Buk.UniversalGames.Data.Models;
 using Buk.UniversalGames.Data.Models.Matches;
 using Buk.UniversalGames.Library.Cultures;
-using Buk.UniversalGames.Library.Enums;
 using Buk.UniversalGames.Library.Exceptions;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,6 +19,29 @@ namespace Buk.UniversalGames.Data.Repositories
         public Task<List<Game>> GetGames()
         {
             return _db.Games.ToListAsync();
+        }
+
+        public async Task<Match> GetMatch(int matchId)
+        {
+            return await (
+                from match in _db.Matches
+                where match.MatchId == matchId
+                select new Match
+                {
+                    MatchId = match.MatchId,
+                    GameId = match.GameId,
+                    AddOn = match.AddOn,
+                    Team1Id = match.Team1Id,
+                    Team1 = match.Team1,
+                    Team2Id = match.Team2Id,
+                    Team2 = match.Team2,
+                    WinnerId = match.WinnerId.GetValueOrDefault(),
+                    Start = match.Start.ToLocalTime(),
+                    Game = match.Game,
+                    League = match.League,
+                    LeagueId = match.LeagueId
+                }
+            ).FirstAsync();
         }
 
         public async Task<List<MatchListItem>> GetMatches(Team team)
@@ -51,22 +73,22 @@ namespace Buk.UniversalGames.Data.Repositories
                 join pointsreg2 in _db.Points on new { MatchId = (int?)match.MatchId, TeamId = match.Team2Id } equals new { pointsreg2.MatchId, pointsreg2.TeamId } into joinedPoints2
                 from pointsreg2 in joinedPoints2.DefaultIfEmpty()
                 where match.LeagueId == leagueId && (!gameId.HasValue || match.GameId == gameId.Value)
-                    orderby match.Start, match.GameId, match.Team1.Name
-                    select new MatchListItem
-                    {
-                        MatchId = match.MatchId,
-                        GameId = match.GameId,
-                        AddOn = match.AddOn,
-                        Team1Id = match.Team1Id,
-                        Team1 = match.Team1.Name,
-                        Team2Id = match.Team2Id,
-                        Team2 = match.Team2.Name,
-                        WinnerId = match.WinnerId.GetValueOrDefault(),
-                        Winner = match.WinnerId.HasValue ? (match.WinnerId!.Value == match.Team1Id ? match.Team1.Name : match.Team2.Name) : "",
-                        Team1Result = pointsreg1.Points,
-                        Team2Result = pointsreg2.Points,
-                        Start = match.Start.ToLocalTime().ToString("HH:mm"),
-                    }).ToListAsync();
+                orderby match.Start, match.GameId, match.Team1.Name
+                select new MatchListItem
+                {
+                    MatchId = match.MatchId,
+                    GameId = match.GameId,
+                    AddOn = match.AddOn,
+                    Team1Id = match.Team1Id,
+                    Team1 = match.Team1.Name,
+                    Team2Id = match.Team2Id,
+                    Team2 = match.Team2.Name,
+                    WinnerId = match.WinnerId.GetValueOrDefault(),
+                    Winner = match.WinnerId.HasValue ? (match.WinnerId!.Value == match.Team1Id ? match.Team1.Name : match.Team2.Name) : "",
+                    Team1Result = pointsreg1.Points,
+                    Team2Result = pointsreg2.Points,
+                    Start = match.Start.ToLocalTime().ToString("HH:mm"),
+                }).ToListAsync();
         }
 
         public async Task<MatchWinnerResult> SetMatchWinner(Game game, int matchId, Team winningTeam)
@@ -108,7 +130,7 @@ namespace Buk.UniversalGames.Data.Repositories
                     GameId = game.GameId,
                     Added = DateTime.Now,
                 };
-                
+
                 var losingTeamId = match.Team1Id == winningTeam.TeamId ? match.Team2Id : match.Team1Id;
 
                 losingPointsRegistration = new PointsRegistration

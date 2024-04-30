@@ -1,5 +1,4 @@
-﻿using System;
-using Buk.UniversalGames.Library.Enums;
+﻿using Buk.UniversalGames.Library.Enums;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 

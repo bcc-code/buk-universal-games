@@ -17,9 +17,9 @@ public class LeaguesController : ControllerBase
     private readonly ILogger<LeaguesController> _logger;
     private readonly ILeagueService _leagueService;
     private readonly StatusService _statusService;
-    private readonly IGameService _gameService;
+    private readonly GameService _gameService;
 
-    public LeaguesController(ILogger<LeaguesController> logger, ILeagueService leagueService , StatusService statusService, IGameService gameService)
+    public LeaguesController(ILogger<LeaguesController> logger, ILeagueService leagueService , StatusService statusService, GameService gameService)
     {
         _logger = logger;
         _leagueService = leagueService;
