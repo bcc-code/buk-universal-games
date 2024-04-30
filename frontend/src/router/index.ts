@@ -5,8 +5,6 @@ import LeagueList from '../pages/LeagueList.vue'
 import MatchList from '../pages/MatchList.vue'
 import GameInfo from '../pages/GameInfo.vue'
 import GameInfoDetail from '../pages/GameInfoDetail.vue'
-import SideQuest from '../pages/SideQuest.vue'
-import SideQuestQuestion from '../pages/SideQuestQuestion.vue'
 import Map from '../pages/MapPage.vue'
 import AdminMatch from '../pages/AdminMatch.vue'
 import AdminLeagueStatus from '../pages/AdminLeagueStatus.vue'
@@ -68,17 +66,6 @@ const routes = [
     path: '/admin/map',
     name: 'AdminMap',
     component: AdminMap
-  },
-  {
-    path: '/sidequest',
-    name: 'SideQuest',
-    component: SideQuest
-  },
-  {
-    path: '/sidequest/question/:id',
-    name: 'SideQuestQuestion',
-    component: SideQuestQuestion,
-    props: true
   },
   {
     path: '/league-status',

@@ -187,23 +187,6 @@ export async function postData(url, data) {
   }
 }
 
-export function postStickerCode(stickerCode) {
-  const teamCode = myGetTeamCodeFunction()
-  return fetch(`${rootUrl}${teamCode}/stickers/${stickerCode}/scan`, {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-    },
-  })
-    .then((r) => r.json())
-    .then((r) => {
-      return r
-    })
-    .catch((e) => {
-      console.log("Sticker response ERROR", e);
-      return e
-    });
-}
 
 export function myGetTeamCodeFunction() {
   return window.localStorage.getItem('testTeamCode');

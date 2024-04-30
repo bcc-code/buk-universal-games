@@ -136,7 +136,6 @@ const preCacheUris = [
   'icon/home.svg',
   'icon/place.svg',
   'icon/refresh.svg',
-  'icon/sidequest.svg',
   'icon/sq-guess.svg',
   'icon/sq-insight.svg',
   'icon/sq-knowledge.svg',

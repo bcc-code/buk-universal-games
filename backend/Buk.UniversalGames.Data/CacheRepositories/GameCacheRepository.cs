@@ -32,13 +32,28 @@ namespace Buk.UniversalGames.Data.CacheRepositories
             }
             return result;
         }
-
+        // shit this should call the underlying repo instead.
         public async Task<List<MatchListItem>> GetMatches(Team team)
         {
-            if(team.LeagueId is null) throw new ArgumentException("Team doesn't have a league assigned", nameof(team));
-            return (await GetMatches(team.LeagueId.Value)).Where(s => s.Team1Id == team.TeamId || s.Team2Id == team.TeamId).ToList();
+            if (team.LeagueId is null) throw new ArgumentException("Team doesn't have a league assigned", nameof(team));
+
+            var cacheKey = $"Matches_team_{team.TeamId}";
+
+            var teamMatches = await _cache.Get<List<MatchListItem>>(cacheKey);
+            if (teamMatches == null)
+            {
+                teamMatches = await _data.GetMatches(team);
+                await _cache.Set(cacheKey, teamMatches);
+            }
+
+
+            List<MatchListItem> allMatchesInLeague = await GetMatches(team.LeagueId.Value);
+
+            List<MatchListItem> allMatchesForTeam = allMatchesInLeague.Where(s => s.Team1Id == team.TeamId || s.Team2Id == team.TeamId).ToList();
+            return allMatchesForTeam;
         }
 
+        // shit gameid should be passed to repository.
         public async Task<List<MatchListItem>> GetMatches(int leagueId, int? gameId = null)
         {
             var cacheKey = $"Matches_{leagueId}";
@@ -56,7 +71,7 @@ namespace Buk.UniversalGames.Data.CacheRepositories
 
         public async Task<MatchWinnerResult> SetMatchWinner(Game game, int matchId, Team team)
         {
-            if(team.LeagueId is null) throw new ArgumentException("Team doesn't belong to any league", nameof (team));
+            if (team.LeagueId is null) throw new ArgumentException("Team doesn't belong to any league", nameof(team));
             var result = await _data.SetMatchWinner(game, matchId, team);
 
             // clear match lists for league and league status

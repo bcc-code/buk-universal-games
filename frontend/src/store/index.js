@@ -228,22 +228,6 @@ export default function (...plugins) {
 
         return teamStatus
       },
-      async submitAnswers(ctx) {
-        const answers = ctx.state.answers.slice();
-        try {
-          const result = await postData(`sidequest/guesses`, answers);
-          
-          if (!result.error) {
-            ctx.commit("setAnswersSubmitted", answers);
-            return "success";
-          } else {
-            return "failed";
-          }
-        
-        } catch (error) {
-          return "failed";
-        }
-      },
       async confirmTeamResult(ctx, payload) {
         try {
           const result = await postData(`matches/${payload.matchId}/results`, payload)
@@ -363,10 +347,6 @@ export default function (...plugins) {
 
         return games
       },
-      async setWinner(ctx, payload) {
-        let winner = await postData("admin/games/" + payload.matchId + "/winner/" + payload.teamId)
-        return winner
-      }
     }
   });
   return store;
