@@ -18,16 +18,18 @@ public class StatusController : ControllerBase
     private readonly ILogger<StatusController> _logger;
     private readonly IStatusService _statusService;
     private readonly ISettingsService _settingsService;
-    private readonly ICacheContext _cacheContext;
+    private readonly IValidatingCacheService _validatingCacheService;
 
-    public StatusController(ILogger<StatusController> logger, IStatusService statusService, ISettingsService settingsService, ICacheContext cacheContext)
+    public StatusController(ILogger<StatusController> logger, IStatusService statusService, ISettingsService settingsService, IValidatingCacheService validatingCacheService)
     {
         _logger = logger;
         _statusService = statusService;
         _settingsService = settingsService;
-        _cacheContext = cacheContext;
+        _validatingCacheService = validatingCacheService;
     }
 
+
+    [Obsolete("Deprecated")]
     [HttpGet]
     public async Task<ActionResult<TeamStatusReport>> Status()
     {
@@ -56,8 +58,9 @@ public class StatusController : ControllerBase
             }
         }
 
-
-        // shit this should be cached
-        return await _statusService.GetLeagueStatus(team.LeagueId.Value);
+        return await _validatingCacheService.WriteThrough("LeagueStatus_leagueId_" + team.LeagueId, () =>
+        {
+            return _statusService.GetLeagueStatus(team.LeagueId.Value);
+        });
     }
 }

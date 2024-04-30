@@ -52,10 +52,12 @@ public class CacheController : ControllerBase
             await _cache.Remove($"LeagueStatus_{league.LeagueId}");
             await _leagueRepository.GetTeams(league.LeagueId);
             await _gameRepository.GetMatches(league.LeagueId);
-            foreach(var game in games)
-                await _statusService.BuildAndCacheRankingForGameInLeague(game, league.LeagueId);
-            await _statusService.BuildAndCacheRankingForSidequest(league.LeagueId);
+
+            foreach (var game in games)
+                await _statusService.BuildAndCacheRankingForGameInLeague(game.Type, league.LeagueId);
             await _statusService.BuildAndCacheLeagueRanking(league.LeagueId);
+
+            await _statusService.BuildAndCacheRankingForSidequest(league.LeagueId);
         }
         return Ok();
     }

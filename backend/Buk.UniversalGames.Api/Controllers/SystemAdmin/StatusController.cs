@@ -49,7 +49,7 @@ public class StatusController : ControllerBase
             await _gameRepository.GetMatches(league.LeagueId);
 
             foreach (var game in games)
-                await _statusService.BuildAndCacheRankingForGameInLeague(game, league.LeagueId);
+                await _statusService.BuildAndCacheRankingForGameInLeague(game.Type, league.LeagueId);
 
             await _statusService.BuildAndCacheRankingForSidequest(league.LeagueId);
             await _statusService.BuildAndCacheLeagueRanking(league.LeagueId);

@@ -50,7 +50,9 @@ namespace Buk.UniversalGames.Services
             var dict = new Dictionary<string, List<TeamStatus>>();
             foreach (var type in (GameType[])Enum.GetValues(typeof(GameType)))
             {
-                dict.Add(type.ToString().ToLowerInvariant(), await GetGameRanking(type, leagueId));
+                string gameTypeString = type.ToString().ToLowerInvariant();
+                List<TeamStatus> gameRanking = await GetGameRanking(type, leagueId);
+                dict.Add(gameTypeString, gameRanking);
             }
             dict.Add("total", await _cache.Get<List<TeamStatus>>(leagueCacheKey(leagueId)) ?? new List<TeamStatus>());
 
@@ -59,12 +61,13 @@ namespace Buk.UniversalGames.Services
 
         public async Task<List<TeamStatus>> GetGameRanking(GameType gameType, int leagueId)
         {
-            return await _cache.Get<List<TeamStatus>>(gameCacheKey(gameType, leagueId)) ?? new List<TeamStatus>();
+            List<TeamStatus> gameRanking = await this.BuildAndCacheRankingForGameInLeague(gameType, leagueId);
+            return gameRanking ?? new List<TeamStatus>();
         }
 
         public async Task<List<TeamStatus>> UpdateGameRanking(Game game, int leagueId)
         {
-            await BuildAndCacheRankingForGameInLeague(game, leagueId);
+            await BuildAndCacheRankingForGameInLeague(game.Type, leagueId);
             return await BuildAndCacheLeagueRanking(leagueId);
         }
 
@@ -114,15 +117,16 @@ namespace Buk.UniversalGames.Services
             return ranking;
         }
 
-        public async Task<List<TeamStatus>> BuildAndCacheRankingForGameInLeague(Game game, int leagueId)
+
+        public async Task<List<TeamStatus>> BuildAndCacheRankingForGameInLeague(GameType gameType, int leagueId)
         {
             var teamScoresQuery = from score in _db.Points
-                                  where score.Game == game && score.Match!.LeagueId == leagueId
+                                  where score.Game.Type == gameType && score.Match!.LeagueId == leagueId
                                   select new { score.TeamId, score.Team.Name, score.Points };
             var teamScores = await teamScoresQuery.ToListAsync();
             var teamsGroupedByPoints = teamScores.GroupBy(x => x.Points);
 
-            if (game.Type == GameType.Labyrinth || game.Type == GameType.HumanShuffleBoard)
+            if (gameType == GameType.Labyrinth || gameType == GameType.HumanShuffleBoard)
             {
                 teamsGroupedByPoints = teamsGroupedByPoints.OrderByDescending(x => x.Key);
             }
@@ -138,7 +142,7 @@ namespace Buk.UniversalGames.Services
                 ranking.AddRange(rankingPosition.Select(x => new TeamStatus(x.TeamId, x.Name, _scoreByRank[rank]) { Score = x.Points }));
             }
 
-            await _cache.Set(gameCacheKey(game.Type, leagueId), ranking);
+            // await _cache.Set(gameCacheKey(gameType, leagueId), ranking);
 
             return ranking;
         }
@@ -148,8 +152,8 @@ namespace Buk.UniversalGames.Services
             var teams = await _leagueLeagueRepository.GetTeams(leagueId);
 
             var matchWinners = await (from m in _db.Matches
-                               where m.LeagueId == leagueId && m.WinnerId.HasValue
-                               select m.WinnerId!.Value).ToListAsync();
+                                      where m.LeagueId == leagueId && m.WinnerId.HasValue
+                                      select m.WinnerId!.Value).ToListAsync();
 
             var landWaterBeach = (await GetGameRanking(GameType.LandWaterBeach, leagueId)).ToDictionary(x => x.TeamId);
             var humanShuffleBoard = (await GetGameRanking(GameType.HumanShuffleBoard, leagueId)).ToDictionary(x => x.TeamId);
@@ -304,7 +308,7 @@ namespace Buk.UniversalGames.Services
                     Cell(gameRows[game], leagueCol + 1, gameRanking.First().Points);
 
                     // handle league sheet
-                    Cell(leagueTitleRow, gameColumnIndex(game), game.ToString(),boldCellStyle);
+                    Cell(leagueTitleRow, gameColumnIndex(game), game.ToString(), boldCellStyle);
                     Cell(leagueTitleRow, gameColumnIndex(game) + 1, $"Score ({game})", boldCellStyle);
 
                     rowIndex = 2;
@@ -323,7 +327,7 @@ namespace Buk.UniversalGames.Services
         private static ICell Cell(IRow row, int index, string value, ICellStyle? cellStyle = null)
         {
             var cell = row.CreateCell(index);
-            if(cellStyle != null)
+            if (cellStyle != null)
                 cell.CellStyle = cellStyle;
 
             cell.SetCellValue(value);

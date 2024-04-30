@@ -33,8 +33,9 @@ builder.Services.AddScoped<IStickerRepository, StickerCacheRepository>();
 builder.Services.AddScoped<IStatusRepository, StatusCacheRepository>();
 builder.Services.AddScoped<ISettingsRepository, SettingsCacheRepository>();
 
+// shit can this be removed when validating cache is the only one left usage of icachecontext?
 builder.Services.AddScoped<ICacheContext, CacheContext>();
-
+builder.Services.AddScoped<ValidatingCacheService>();
 
 builder.Services.AddDbContext<DataContext>(options =>
 {
