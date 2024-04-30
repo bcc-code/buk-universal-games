@@ -54,7 +54,9 @@ namespace Buk.UniversalGames.Services
                 List<TeamStatus> gameRanking = await GetGameRanking(type, leagueId);
                 dict.Add(gameTypeString, gameRanking);
             }
-            dict.Add("total", await _cache.Get<List<TeamStatus>>(leagueCacheKey(leagueId)) ?? new List<TeamStatus>());
+
+            List<TeamStatus> teamStatuses = await BuildAndCacheLeagueRanking(leagueId);
+            dict.Add("total", teamStatuses);
 
             return dict;
         }
@@ -143,8 +145,6 @@ namespace Buk.UniversalGames.Services
                 ranking.AddRange(rankingPosition.Select(x => new TeamStatus(x.TeamId, x.Name, _scoreByRank[rank]) { Score = x.Points }));
             }
 
-            // await _cache.Set(gameCacheKey(gameType, leagueId), ranking);
-
             return ranking;
         }
 
@@ -181,7 +181,7 @@ namespace Buk.UniversalGames.Services
             }
 
             var sortedRanking = leagueRanking.OrderByDescending(x => x.Points).ToList();
-            await _cache.Set(leagueCacheKey(leagueId), sortedRanking);
+
             return sortedRanking;
 
             static int GetPointsForSubRanking(Dictionary<int, TeamStatus> subRanking, Team team)
@@ -201,7 +201,7 @@ namespace Buk.UniversalGames.Services
 
         public async Task<LeagueStatusReport> GetLeagueStatus(int leagueId)
         {
-            return new LeagueStatusReport(DateTime.Now, await GetLeagueRankings(leagueId));
+            return new LeagueStatusReport(await GetLeagueRankings(leagueId));
         }
 
         public async Task ClearStatusAndMatches()

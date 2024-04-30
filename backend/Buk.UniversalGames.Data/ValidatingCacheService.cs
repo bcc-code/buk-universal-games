@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Distributed;
@@ -34,7 +34,11 @@ namespace Buk.UniversalGames.Data
 
             if (!JsonSerializer.Serialize(cachedData).Equals(JsonSerializer.Serialize(databaseData)))
             {
-                throw new InvalidOperationException($"Cache data mismatch for key {key}: Cache Value - {JsonSerializer.Serialize(cachedData)}, Database Value - {JsonSerializer.Serialize(databaseData)}");
+                string prettyPrintedDifferenceString = JsonSerializer.Serialize(
+                    new { cache = cachedData, database = databaseData },
+                    new JsonSerializerOptions() { WriteIndented = true }
+                );
+                throw new InvalidOperationException($"Cache data mismatch for key {key}:\n{prettyPrintedDifferenceString}");
             }
 
             return cachedData;
