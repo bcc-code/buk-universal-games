@@ -72,7 +72,7 @@ const props = defineProps<{
   winner: string,
   start: string,
   clickFunc: () => void,
-  currentActiveMatch: string,
+  currentActiveMatch: boolean,
 }>();
 
 const passed = props.team1result !== null;
