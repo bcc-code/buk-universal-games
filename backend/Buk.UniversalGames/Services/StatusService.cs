@@ -18,16 +18,14 @@ namespace Buk.UniversalGames.Services
         private readonly IStatusRepository _statusRepository;
         private readonly ILeagueRepository _leagueLeagueRepository;
         private readonly DataContext _db;
-        private readonly ICacheContext _cache;
         private readonly IGameRepository _gameRepository;
 
-        public StatusService(ILogger<StatusService> logger, IStatusRepository statusRepository, ILeagueRepository leagueLeagueRepository, DataContext db, ICacheContext cache, IGameRepository gameRepository)
+        public StatusService(ILogger<StatusService> logger, IStatusRepository statusRepository, ILeagueRepository leagueLeagueRepository, DataContext db, IGameRepository gameRepository)
         {
             _logger = logger;
             _statusRepository = statusRepository ?? throw new ArgumentNullException(nameof(statusRepository));
             _leagueLeagueRepository = leagueLeagueRepository;
             _db = db;
-            _cache = cache;
             _gameRepository = gameRepository;
         }
 
@@ -136,12 +134,6 @@ namespace Buk.UniversalGames.Services
             await _statusRepository.ClearStatus(leagues);
         }
 
-        public async Task GuaranteeAnswersInCache()
-        {
-            var answers = await _db.Settings.FindAsync("answers") ?? throw new InvalidOperationException("Did not find the answers to cache");
-            await _cache.Set("sidequest_answers", answers.Value);
-
-        }
 
         public async Task<byte[]> ExportStatus()
         {

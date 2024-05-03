@@ -327,7 +327,6 @@ export default function (...plugins) {
           }
         }
       },
-      // shit this can be hardcoded in the frontend.
       async getGames(ctx) {
         const savedDataAge = getCachedDataAge('games')
         let games

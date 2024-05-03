@@ -16,15 +16,13 @@ public class StatusController : ControllerBase
     private readonly StatusService _statusService;
     private readonly ILeagueRepository _leagueRepository;
     private readonly IGameRepository _gameRepository;
-    private readonly ICacheContext _cacheContext;
 
-    public StatusController(ILogger<StatusController> logger, StatusService statusService, ILeagueRepository leagueRepository, IGameRepository gameRepository, ICacheContext cacheContext)
+    public StatusController(ILogger<StatusController> logger, StatusService statusService, ILeagueRepository leagueRepository, IGameRepository gameRepository)
     {
         _logger = logger;
         _statusService = statusService;
         _leagueRepository = leagueRepository;
         _gameRepository = gameRepository;
-        _cacheContext = cacheContext;
     }
 
     [HttpGet("ClearStatusAndMatches")]
@@ -33,27 +31,6 @@ public class StatusController : ControllerBase
         await _statusService.ClearStatusAndMatches();
     }
 
-    [HttpGet("UpdateRanking")]
-    public async Task UpdateRanking()
-    {
-        var leagues = await _leagueRepository.GetLeagues();
-        var games = await _gameRepository.GetGames();
-
-        foreach (var league in leagues)
-        {
-            await _cacheContext.Remove($"Matches_{league.LeagueId}");
-            await _cacheContext.Remove($"LeagueStatus_{league.LeagueId}");
-            await _leagueRepository.GetTeams(league.LeagueId);
-            await _gameRepository.GetMatches(league.LeagueId);
-
-            foreach (var game in games)
-                await _statusService.BuildAndCacheRankingForGameInLeague(game, league.LeagueId);
-
-            await _statusService.BuildAndCacheLeagueRanking(league.LeagueId);
-
-
-        }
-    }
 
     [HttpGet("Export")]
     public async Task<IActionResult> GetStatus()
