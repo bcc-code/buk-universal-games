@@ -70,11 +70,11 @@ namespace Buk.UniversalGames.Services
 
             var teamScoresQuery = from score in _db.Points
                                   where score.Game == game && score.Match!.LeagueId == leagueId
-                                  select new { score.TeamId, score.Team.Name, score.Points };
+                                  select new { score.TeamId, score.Team.Name, score.Points, score.Team.FamilyId };
 
             var teamScores = await teamScoresQuery.ToListAsync();
 
-            return teamScores.Select(score => new TeamStatus(score.TeamId, score.Name, score.Points)).ToList();
+            return teamScores.Select(score => new TeamStatus(score.TeamId, score.Name, score.Points, score.FamilyId)).ToList();
         }
 
         // shit make private and rename
@@ -101,7 +101,7 @@ namespace Buk.UniversalGames.Services
                                     + GetPointsForSubRanking(mastermind, team)
                                     + GetPointsForSubRanking(ironGrip, team);
 
-                leagueRanking.Add(new TeamStatus(team.TeamId, team.Name, totalPoints));
+                leagueRanking.Add(new TeamStatus(team.TeamId, team.Name, totalPoints, team.FamilyId));
             }
 
             var sortedRanking = leagueRanking.OrderByDescending(x => x.Points).ToList();
