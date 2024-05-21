@@ -31,6 +31,8 @@ public class Team
     [Column("type")]
     public string TeamType { get; set; }
 
+    public int FamilyId { get; set; }
+
     [JsonIgnore]
     public League? League { get; set; }
     [JsonIgnore]
