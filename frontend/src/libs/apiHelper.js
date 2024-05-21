@@ -1,4 +1,4 @@
-const useProdDatabaseInDev = false;
+const useProdDatabaseInDev = true;
 export const rootUrl =
   location.hostname === 'universalgames.buk.no' || useProdDatabaseInDev
     ? 'https://universalgames.buk.no/api/'
