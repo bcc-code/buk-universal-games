@@ -1,5 +1,12 @@
 <template>
   <UserPageLayout>
+    <PointsAndStickers
+      :loading="loading"
+      :points="teamStatus?.points"
+      :stickers="coins.length"
+      :refresh="refresh"
+      :teamName="teamName"
+    />
     <div v-if="matches.error">
       <h2>{{ $t('general_error') }}</h2>
       <div class="message">
@@ -49,15 +56,17 @@
 import UserPageLayout from '../components/UserPageLayout.vue';
 import MatchListItem from '../components/MatchListItem.vue';
 import MatchCard from '../components/MatchCard.vue';
+import PointsAndStickers from '../components/PointsAndStickers.vue';
 
 export default {
   name: 'MatchList',
   props: {
     data: String,
   },
-  components: { UserPageLayout, MatchListItem, MatchCard },
+  components: { UserPageLayout, MatchListItem, MatchCard, PointsAndStickers },
   data() {
     return {
+      loading: false,
       loginError: 'Match List',
       selectedMatch: {},
       currentActiveMatch: {},
@@ -71,6 +80,17 @@ export default {
     this.getMatches();
   },
   methods: {
+    getTeamStatus(override) {
+      this.$store.dispatch('getTeamStatus', override);
+    },
+    refresh() {
+      this.loading = true;
+      this.getLeagueStatus(true);
+
+      setTimeout(() => {
+        this.loading = false;
+      }, 1000);
+    },
     async getMatches() {
       let minutesBeforeNow = 20;
       let now = new Date(new Date().getTime() - minutesBeforeNow * 60 * 1000);
@@ -119,6 +139,20 @@ export default {
     },
     games() {
       return this.$store.state.games;
+    },
+    coins() {
+      return this.$store.state.coins;
+    },
+    teamStatus() {
+      return this?.leagueStatus?.status?.total?.find(
+        (score) => score.team == this.$store.state.loginData?.team,
+      );
+    },
+    leagueStatus() {
+      return this?.$store.state.leagueStatus;
+    },
+    teamName() {
+      return this?.$store.state.loginData.team;
     },
   },
 };

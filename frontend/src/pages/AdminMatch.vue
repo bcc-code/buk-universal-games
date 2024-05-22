@@ -1,17 +1,22 @@
 <template>
   <AdminPageLayout>
-    <nav>
-      <!-- todo, use classes to make text black -->
-      <button
-        @click="$router.back()"
-        class="btn-primary text-black"
-        style="color: black"
-      >
-        &lt; Back
-      </button>
-      <button @click="this.showGameInfo(game)">Game-info</button>
-    </nav>
-
+    <div class="flex">
+      <nav class="text-dark mr-4">
+        <div
+          @click="$router.back()"
+          class="p-1 bg-ice-blue cursor-pointer rounded-md hover:bg-vanilla text-dark-blue"
+        >
+          <ArrowLeftIcon class="h-5" />
+        </div>
+      </nav>
+      <h1 class="text-white font-bold py-2 px-2 rounded-md flex space-x-3">
+        <img
+          class="h-10 w-10"
+          :src="`/icon/game-${game.gameType.replace(/_/g, '')}.svg`"
+        />
+        <span class="text-white">{{ $t('games.' + game.gameType) }}</span>
+      </h1>
+    </div>
     <section class="error-popup" v-if="showErrorPopup">
       <p>
         <span>{{ popupErrorMessage }}</span>
@@ -19,13 +24,6 @@
     </section>
 
     <header>
-      <h3>
-        <img
-          class="icon h-10 w-10"
-          :src="`/icon/game-${game.gameType.replace(/_/g, '')}.svg`"
-        />
-        <span class="text-white">{{ $t('games.' + game.gameType) }}</span>
-      </h3>
       <h2 class="text-white">
         <span>Start: {{ match?.start }}</span>
       </h2>
@@ -119,7 +117,7 @@ import AdminPageLayout from '@/components/AdminPageLayout.vue';
 import TableSurfingInput from '@/components/TableSurfingInput.vue';
 import TimeInput from '@/components/TimeInput.vue';
 import MonkeyBarsInput from '@/components/MonkeyBarsInput.vue';
-
+import { ArrowLeftIcon } from '@heroicons/vue/24/solid';
 export default {
   name: 'AdminMatch',
   props: {
@@ -130,6 +128,7 @@ export default {
     TableSurfingInput,
     TimeInput,
     MonkeyBarsInput,
+    ArrowLeftIcon,
   },
   data() {
     return {

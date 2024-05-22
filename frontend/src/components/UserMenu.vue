@@ -1,38 +1,36 @@
 <template>
-  <nav class="flex w-full bottom-0 bg-ice-blue fixed z-10 p-2 justify-between">
-    <div class="flex w-1/2 justify-between align-middle">
-      <button
-        :class="{
-          'align-start': true,
-          'selected-component': isSelected('LeagueList'),
-        }"
-        @click="navigateTo('LeagueList')"
-      >
-        <img class="h-10 w-10" src="/icon/leaderlist.png" />
-      </button>
-    </div>
-    <div class="justify-center flex w-full">
-      <button
-        class="user-menu-btn-big bg-white"
-        @click="navigateTo('MatchList')"
-        :class="{
-          'selected-component': isSelected('MatchList'),
-        }"
-      >
-        <img src="/icon/match.png" style="width: 5em" />
-      </button>
-    </div>
-    <div class="flex w-1/2 justify-between">
-      <button
-        :class="{
-          'align-start': true,
-          'selected-component': isSelected('Map'),
-        }"
-        @click="navigateTo('Map')"
-      >
-        <img src="/icon/place.svg" />
-      </button>
-    </div>
+  <nav
+    class="fixed bottom-0 w-full bg-ice-blue z-10 p-2 flex justify-around items-center"
+  >
+    <button
+      :class="{
+        'selected-component': isSelected('LeagueList'),
+      }"
+      @click="navigateTo('LeagueList')"
+      class="flex flex-col items-center"
+    >
+      <img class="h-10 w-10" src="/icon/leaderlist.png" />
+    </button>
+
+    <button
+      class="flex flex-col items-center user-menu-btn-big bg-white"
+      @click="navigateTo('MatchList')"
+      :class="{
+        'selected-component': isSelected('MatchList'),
+      }"
+    >
+      <img src="/icon/match.png" class="h-20 w-20" />
+    </button>
+
+    <button
+      :class="{
+        'selected-component': isSelected('Map'),
+      }"
+      @click="navigateTo('Map')"
+      class="flex flex-col items-center"
+    >
+      <img class="h-10 w-10" src="/icon/place.svg" />
+    </button>
   </nav>
 </template>
 

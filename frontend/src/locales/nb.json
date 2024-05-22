@@ -8,11 +8,11 @@
     "map": "Kart"
   },
   "games": {
-    "iron_grip": "The iron grip",
-    "land_water_beach": "Land, water, beach",
+    "iron_grip": "Jerngrepet",
+    "land_water_beach": "Land, vann, strand",
     "mastermind": "Mastermind",
     "human_shuffleboard": "Human Shuffleboard",
-    "labyrinth": "Labyrinth"
+    "labyrinth": "Labyrint"
   },
   "score": {
     "monkey_bars": "{score} bars",
@@ -44,7 +44,7 @@
   },
   "general_error": "Noe gikk galt",
   "pleaserefresh": "Prøv å oppdatere siden",
-  "points": "Poeng",
+  "points": "Saldo",
   "coins": "Mynter",
   "game": "Spill",
   "team1team2": "Lag 1 / Lag 2",
@@ -146,9 +146,9 @@
       "intro": "Se på bildet. Hvilket tall skal stå på spørsmålstegnet?",
       "a": {
         "30": "30",
+        "67": "67",
         "81": "81",
-        "200": "200",
-        "67": "67"
+        "200": "200"
       }
     },
     "knowledge": {
@@ -162,5 +162,9 @@
       }
     }
   },
-  "back": "Tilbake"
+  "back": "Tilbake",
+  "teamName": "Lag",
+  "family": "Familie",
+  "familyBalance": "Familie saldo",
+  "results": "Resultater for dette spillet"
 }

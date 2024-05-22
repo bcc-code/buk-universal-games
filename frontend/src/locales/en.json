@@ -44,7 +44,7 @@
   },
   "general_error": "Something went wrong",
   "pleaserefresh": "Please try refreshing the page",
-  "points": "Points",
+  "points": "Balance",
   "coins": "Coins",
   "game": "Game",
   "team1team2": "Team 1 / Team 2",
@@ -66,7 +66,7 @@
       "intro": "Choose the league you want to manage"
     }
   },
-  "yourmatch": "Your match",
+  "yourmatch": "Your match in this game",
   "sidequest": {
     "thanks": "Thanks, your answer has been recorded",
     "timeranout": "Time ran out, better luck next time",
@@ -164,5 +164,9 @@
   },
   "back": "Back",
   "please_refresh": "Please refresh",
-  "team": "Team"
+  "team": "Team",
+  "teamName": "Team",
+  "family": "Family",
+  "familyBalance": "Family Balance",
+  "results": "Results on this game"
 }

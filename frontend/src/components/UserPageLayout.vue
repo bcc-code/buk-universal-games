@@ -1,8 +1,6 @@
 <template>
   <section>
-    <div class="items-end flex flex-col mr-10 mt-4">
-      <LanguageSwitcher />
-    </div>
+    <div class="items-end flex flex-col mr-10 mt-4"></div>
     <div class="content-area">
       <h1 v-if="showTitle" class="title">
         BUK {{ $store.state.loginData.team }}

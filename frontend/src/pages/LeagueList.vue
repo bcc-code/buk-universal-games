@@ -1,13 +1,7 @@
 <template>
   <UserPageLayout class="league-list">
     <section class="user-section">
-      <PointsAndStickers
-        :loading="loading"
-        :points="teamStatus?.points"
-        :stickers="coins.length"
-        :refresh="refresh"
-        :teamName="teamName"
-      />
+      <PointsAndStickers />
       <div v-if="teamStatus?.error">
         <p>{{ $t('general_error') }}</p>
         <p>{{ teamStatus.error }}</p>
@@ -116,25 +110,11 @@ export default {
     this.getLeagueStatus(false);
   },
   methods: {
-    getTeamStatus(override) {
-      this.$store.dispatch('getTeamStatus', override);
-    },
     getLeagueStatus(override) {
       this.$store.dispatch('getLeagueStatus', override);
     },
-    refresh() {
-      this.loading = true;
-      this.getLeagueStatus(true);
-
-      setTimeout(() => {
-        this.loading = false;
-      }, 1000);
-    },
   },
   computed: {
-    coins() {
-      return this.$store.state.coins;
-    },
     teamStatus() {
       return this?.leagueStatus?.status?.total?.find(
         (score) => score.team == this.$store.state.loginData?.team,
@@ -142,9 +122,6 @@ export default {
     },
     leagueStatus() {
       return this?.$store.state.leagueStatus;
-    },
-    teamName() {
-      return this?.$store.state.loginData.team;
     },
   },
 };

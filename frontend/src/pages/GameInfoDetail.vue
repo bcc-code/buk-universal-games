@@ -1,13 +1,15 @@
 <template>
   <UserPageLayout :showTitle="false">
-    <nav class="text-white">
-      <button @click="$router.back()">&lt; {{ $t("back") }}</button>
-    </nav>
-    <div class="mb-5">
-      <h2 class="text-white flex space-x-7">
+    <div class="flex">
+     <nav class="text-dark mr-4">
+      <div  @click="$router.back()" class="p-1 bg-ice-blue cursor-pointer rounded-md hover:bg-vanilla text-dark-blue"><ArrowLeftIcon class="h-5"/></div>
+      </nav>
+      <h1 class="text-white font-bold py-2 px-2 rounded-md flex space-x-3">
         <img class="h-10 w-10" :src="`/icon/game-${gameParsed.gameType.replaceAll('_','')}.svg`" />
         <span>{{ $t(`games.${gameParsed.gameType}`) }}</span>
-      </h2>
+      </h1>
+    </div>
+    <div class="mb-5">
       <!-- 
       <div class="banner">
         <video autoplay muted playsinline controls>
@@ -34,7 +36,7 @@
   </div>
 
     <section>
-      <h2 class="text-white my-3">{{ $t("yourmatch") }}</h2>
+      <h2 class="text-white mt-10 mb-3">{{ $t("yourmatch") }}</h2>
       <MatchListItem
       v-if="match" 
             :key="match.id"
@@ -51,7 +53,7 @@
 <!--       <MatchListItem v-if="match" :gameType="gameParsed.gameType" :gameAddOn="match.addOn" :team1="match.team1"
         :team2="match.team2" :start="match.start" :winner="match.winner" :class="{ 'card-light': true }"></MatchListItem> -->
     </section>
-
+    <h2 class="text-white mt-10">{{ $t("results") }}</h2>
     <section class="league-title" v-if="ranking?.length">
       <div class="league-title-column index-column"></div>
       <div class="league-title-column">
@@ -72,13 +74,14 @@
 import UserPageLayout from "@/components/UserPageLayout.vue";
 import LeagueListItem from "@/components/LeagueListItem.vue";
 import MatchListItem from "@/components/MatchListItem.vue";
+import { ArrowLeftIcon } from '@heroicons/vue/24/solid';
 
 export default {
   name: "GameInfoDetail",
   props: {
     game: String,
   },
-  components: { UserPageLayout, LeagueListItem, MatchListItem },
+  components: { UserPageLayout, LeagueListItem, MatchListItem, ArrowLeftIcon },
   data() {
     return {
       gameParsed: {},

@@ -1,14 +1,21 @@
 <template>
   <AdminPageLayout :showTitle="false">
+    <div class="flex">
     <nav>
-      <button @click="$router.back()">&lt; {{ $t("back") }}</button>
-    </nav>
-
-    <header>
+    <div
+          @click="$router.back()"
+          class="p-1 bg-ice-blue cursor-pointer rounded-md hover:bg-vanilla text-dark-blue"
+        >
+          <ArrowLeftIcon class="h-5" />
+        </div>
+      </nav>
       <h2>
         <img class="icon" :src="`/icon/game-${gameType}.svg`" />
         <span>{{ $t(`games.${gameParsed.gameType}`) }}</span>
       </h2>
+    </div>
+    <header>
+
 
       <div class="banner">
         <video autoplay muted playsinline controls>
@@ -53,13 +60,14 @@
 <script>
 import AdminPageLayout from "@/components/AdminPageLayout.vue";
 import LeagueListItem from "@/components/LeagueListItem.vue";
+import { ArrowLeftIcon } from '@heroicons/vue/24/solid';
 
 export default {
   name: "GameInfoDetail",
   props: {
     game: String,
   },
-  components: { LeagueListItem, AdminPageLayout },
+  components: { LeagueListItem, AdminPageLayout, ArrowLeftIcon },
   data() {
     return {
       gameParsed: {},

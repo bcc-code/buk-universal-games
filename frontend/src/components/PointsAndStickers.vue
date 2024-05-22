@@ -1,38 +1,96 @@
 <template>
-  <section :class="{ 'bg-vanilla py-3 px-3 border-r-2 border-dark flex justify-between rounded-md': true, loading }">
-    <div class="h-10 w-10">
+  <section
+    :class="{
+      'bg-vanilla py-3 px-3 border-r-2 border-dark flex w-full rounded-md': true,
+      loading,
+    }"
+  >
+    <div class="w-40 mr-10">
       <img src="/image/logo_icon.svg" class="rounded-md" />
     </div>
-    <div class="">
-      <p class="text-label-2 label uppercase">{{ $t('team') }}</p>
-      <h2 class="text-label-1 ">{{ teamName ?? "-" }}</h2>
+    <div class="space-y-4 w-full">
+      <div class="flex w-full space-x-6">
+        <div class="w-full">
+          <p class="text-label-2 label uppercase">{{ $t('team') }}</p>
+          <h2 class="text-label-1">{{ teamName ?? '-' }}</h2>
+        </div>
+        <div class="w-full">
+          <p class="text-label-2 label uppercase">{{ $t('points') }}</p>
+          <h2 class="text-label-1">{{ teamStatus?.points }}</h2>
+        </div>
+      </div>
+      <div class="flex w-full space-x-6">
+        <div class="w-full">
+          <p class="text-label-2 label uppercase">{{ $t('family') }}</p>
+          <h2 class="text-label-1">{{ familyName ?? '-' }}</h2>
+        </div>
+        <div class="w-full">
+          <p class="text-label-2 label uppercase">{{ $t('points') }}</p>
+          <h2 class="text-label-1">{{ teamStatus?.points ?? '-' }}</h2>
+        </div>
+      </div>
     </div>
-    <div class="card-dark-column">
-      <p class="text-label-2 label uppercase">{{ $t('points') }}</p>
-      <h1 class="text-label-1">{{ points ?? "-" }}</h1>
+    <div>
+      <LanguageSwitcher />
+      <ArrowRightStartOnRectangleIcon
+        class="h-10 mt-3 bg-white rounded-md p-2"
+      />
     </div>
-    <div></div>
     <div class="align-middle flex">
-<!--       <button class="ml-3 card-btn" @click="refresh"><img src="/icon/refresh.svg" /></button>
- -->    </div>
+      <!--       <button class="ml-3 card-btn" @click="refresh"><img src="/icon/refresh.svg" /></button>
+ -->
+    </div>
   </section>
 </template>
 
 <script>
+import LanguageSwitcher from './LanguageSwitcher.vue';
+import { ArrowRightStartOnRectangleIcon } from '@heroicons/vue/24/solid';
+
 export default {
-  name: "PointsAndStickers",
-  props: {
-    points: Number,
-    stickers: Number,
-    refresh: Function,
-    teamName: String,
-    loading: {
-      required: false,
-      type: Boolean,
-      default: false,
+  name: 'PointsAndStickers',
+  components: { LanguageSwitcher, ArrowRightStartOnRectangleIcon },
+  data() {
+    return {
+      loading: false,
+    };
+  },
+  created() {
+    this.getLeagueStatus(false);
+  },
+  methods: {
+    getTeamStatus(override) {
+      this.$store.dispatch('getTeamStatus', override);
+    },
+    getLeagueStatus(override) {
+      this.$store.dispatch('getLeagueStatus', override);
+    },
+    refresh() {
+      this.loading = true;
+      this.getLeagueStatus(true);
+
+      setTimeout(() => {
+        this.loading = false;
+      }, 1000);
     },
   },
-  methods: {},
+  computed: {
+    leagueStatus() {
+      return this?.$store.state.leagueStatus;
+    },
+    teamStatus() {
+      return this?.leagueStatus?.status?.total?.find(
+        (score) => score.team == this.$store.state.loginData?.team,
+      );
+    },
+
+    teamName() {
+      return this?.$store.state.loginData.team;
+    },
+    familyName() {
+      return this?.$store.state.loginData.team;
+    },
+  },
 };
 </script>
 
@@ -67,7 +125,7 @@ button {
 
 .card-btn {
   border-radius: 0;
-  margin-left: .5em;
+  margin-left: 0.5em;
   padding: 0.15em 0.15em 0.15em 0.15em;
 }
 
@@ -78,7 +136,12 @@ button {
 .loading {
   background-repeat: no-repeat;
   background-size: 24em 100%;
-  background-image: linear-gradient(to right, var(--dark) 0%, hsl(323, 50%, 33%) 50%, var(--dark) 100%);
+  background-image: linear-gradient(
+    to right,
+    var(--dark) 0%,
+    hsl(323, 50%, 33%) 50%,
+    var(--dark) 100%
+  );
   animation-duration: 750ms;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;
