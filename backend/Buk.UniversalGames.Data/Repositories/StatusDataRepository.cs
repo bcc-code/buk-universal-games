@@ -17,7 +17,7 @@ namespace Buk.UniversalGames.Data.Repositories
         public async Task<TeamStatus?> GetTeamStatus(Team team)
         {
             var points = await _db.Points.Where(p => p.TeamId == team.TeamId).ToListAsync();
-            return new TeamStatus(team.TeamId, team.Name, points.Sum(s => s.Points));
+            return new TeamStatus(team.TeamId, team.Name, points.Sum(s => s.Points), team.FamilyId);
         }
 
         public async Task<List<TeamStatus>> GetLeagueStatus(int leagueId)
@@ -29,7 +29,7 @@ namespace Buk.UniversalGames.Data.Repositories
                           group teamPoint by new { team.TeamId, team.Name, team.FamilyId }
                     into grouped
                           select new TeamStatus
-                          (grouped.Key.TeamId, grouped.Key.Name, grouped.Sum(s => s.Points))
+                          (grouped.Key.TeamId, grouped.Key.Name, grouped.Sum(s => s.Points), grouped.Key.FamilyId)
                 ).OrderByDescending(s => s.Points).ThenBy(s => s.Team).ToListAsync();
         }
 
