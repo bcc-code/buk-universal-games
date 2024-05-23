@@ -17,11 +17,7 @@ namespace Buk.UniversalGames.Data.Repositories
         public async Task<TeamStatus?> GetTeamStatus(Team team)
         {
             var points = await _db.Points.Where(p => p.TeamId == team.TeamId).ToListAsync();
-            if (team.FamilyId.HasValue)
-            {
-                return new TeamStatus(team.TeamId, team.Name, points.Sum(s => s.Points), team.FamilyId.Value);
-            }
-            return null;
+            return new TeamStatus(team.TeamId, team.Name, points.Sum(s => s.Points));
         }
 
         public async Task<List<TeamStatus>> GetLeagueStatus(int leagueId)
@@ -31,17 +27,12 @@ namespace Buk.UniversalGames.Data.Repositories
                           join point in _db.Points on team.TeamId equals point.TeamId into teamPoints
                           from teamPoint in teamPoints.DefaultIfEmpty()
                           group teamPoint by new { team.TeamId, team.Name, team.FamilyId }
-                      into grouped
-                          where grouped.Key.FamilyId.HasValue
+                    into grouped
                           select new TeamStatus
-                          (
-                              grouped.Key.TeamId,
-                              grouped.Key.Name,
-                              grouped.Sum(s => s == null ? 0 : s.Points),
-                              grouped.Key.FamilyId.Value
-                          )
-                    ).OrderByDescending(s => s.Points).ThenBy(s => s.Team).ToListAsync();
+                          (grouped.Key.TeamId, grouped.Key.Name, grouped.Sum(s => s.Points))
+                ).OrderByDescending(s => s.Points).ThenBy(s => s.Team).ToListAsync();
         }
+
         public async Task ClearStatus(List<League> leagues)
         {
             await _db.Database.ExecuteSqlRawAsync("TRUNCATE TABLE points");
