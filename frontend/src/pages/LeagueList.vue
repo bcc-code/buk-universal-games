@@ -8,6 +8,7 @@
         <p>{{ $t('please_refresh') }}</p>
       </div>
     </section>
+    <FamilyStatus></FamilyStatus>
     <div v-if="loading">
       <section class="ranking-title">
         <div class="ranking-title-column index-column"></div>
@@ -18,19 +19,9 @@
           <p class="ranking-title-text">Points</p>
         </div>
       </section>
-      <section
-        class="user-section"
-        v-for="i in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]"
-        :key="i"
-      >
-        <LeagueListItem
-          :class="{ 'card-light': i > 4 }"
-          :index="i + 1"
-          :team="'Team ' + (i + 1)"
-          :stickers="Math.ceil(100 / (i + 1))"
-          :points="Math.ceil(10000 / (i + 1))"
-          :loading="loading"
-        />
+      <section class="user-section" v-for="i in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]" :key="i">
+        <LeagueListItem :class="{ 'card-light': i > 4 }" :index="i + 1" :team="'Team ' + (i + 1)"
+          :stickers="Math.ceil(100 / (i + 1))" :points="Math.ceil(10000 / (i + 1))" :loading="loading" />
       </section>
     </div>
     <div v-else>
@@ -70,24 +61,14 @@
           <p class="message-text">{{ $t('league.rankingisempty') }}</p>
         </div>
       </section>
-      <section
-        class="user-section"
-        v-for="(status, i) in leagueStatus?.status?.total.sort(
-          (a, b) => b.points - a.points,
-        )"
-        :key="status.id"
-      >
-        <LeagueListItem
-          :class="{
-            'card-light': status.teamId != teamStatus?.teamId,
-            'card-currentTeam': status.teamId == teamStatus?.teamId,
-          }"
-          :index="i + 1"
-          :team="status.team"
-          :stickers="status.stickers"
-          :points="status.points"
-          :loading="loading"
-        />
+      <section class="user-section" v-for="(status, i) in leagueStatus?.status?.total.sort(
+        (a, b) => b.points - a.points,
+      )" :key="status.id">
+        <LeagueListItem :class="{
+          'card-light': status.teamId != teamStatus?.teamId,
+          'card-currentTeam': status.teamId == teamStatus?.teamId,
+        }" :index="i + 1" :team="status.team" :stickers="status.stickers" :points="status.points"
+          :loading="loading" />
       </section>
     </div>
   </UserPageLayout>
@@ -97,10 +78,11 @@
 import UserPageLayout from '../components/UserPageLayout.vue';
 import PointsAndStickers from '../components/PointsAndStickers.vue';
 import LeagueListItem from '../components/LeagueListItem.vue';
+import FamilyStatus from '@/components/FamilyStatus.vue';
 
 export default {
   name: 'LeagueList',
-  components: { UserPageLayout, PointsAndStickers, LeagueListItem },
+  components: { UserPageLayout, PointsAndStickers, LeagueListItem,FamilyStatus },
   data() {
     return {
       loading: false,
