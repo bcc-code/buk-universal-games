@@ -27,6 +27,7 @@ builder.Services.AddScoped<StatusService>();
 builder.Services.AddScoped<ISettingsService, SettingsService>();
 
 builder.Services.AddScoped<ILeagueRepository, LeagueDataRepository>();
+builder.Services.AddScoped<IFamilyRepository, FamilyDataRepository>();
 builder.Services.AddScoped<IGameRepository, GameDataRepository>();
 builder.Services.AddScoped<IStatusRepository, StatusCacheRepository>();
 builder.Services.AddScoped<ISettingsRepository, SettingsCacheRepository>();

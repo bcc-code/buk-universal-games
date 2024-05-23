@@ -7,6 +7,8 @@ using Buk.UniversalGames.Library.Cultures;
 using Buk.UniversalGames.Models;
 using Buk.UniversalGames.Services;
 using Microsoft.AspNetCore.Mvc;
+using Buk.UniversalGames.Data.Models.Internal;
+using Buk.UniversalGames.Data.Repositories;
 
 namespace Buk.UniversalGames.Api.Controllers;
 
@@ -19,13 +21,16 @@ public class StatusController : ControllerBase
     private readonly StatusService _statusService;
     private readonly ISettingsService _settingsService;
     private readonly ValidatingCacheService _validatingCacheService;
+    private readonly IFamilyRepository _familyRepository;
 
-    public StatusController(ILogger<StatusController> logger, StatusService statusService, ISettingsService settingsService, ValidatingCacheService validatingCacheService)
+
+    public StatusController(ILogger<StatusController> logger, StatusService statusService, ISettingsService settingsService, ValidatingCacheService validatingCacheService, IFamilyRepository familyRepository)
     {
         _logger = logger;
         _statusService = statusService;
         _settingsService = settingsService;
         _validatingCacheService = validatingCacheService;
+        _familyRepository = familyRepository;
     }
 
 
@@ -68,4 +73,27 @@ public class StatusController : ControllerBase
     {
         return "LeagueStatus_leagueId_" + leagueId;
     }
+
+    [HttpGet("Family")]
+    public async Task<ActionResult<FamilyStatusReport>> FamilyStatus()
+    {
+        var hideHighScore = await _settingsService.GetSetting("hide_highscore");
+        if (!string.IsNullOrEmpty(hideHighScore))
+        {
+            var now = DateTime.UtcNow;
+            var beginAndEnd = hideHighScore.Split("|");
+
+            if (DateTime.TryParse(beginAndEnd[0], out var hideHighScoreDate) && hideHighScoreDate < now
+                && (beginAndEnd.Length < 2 || !DateTime.TryParse(beginAndEnd[1], out var showAgainDate) || showAgainDate > now))
+            {
+                return new ExceptionResult(Strings.HighScoreHidden, 406);
+            }
+        }
+
+        return await _validatingCacheService.WriteThrough("FamilyStatusCacheKey", async () =>
+        {
+            return await _familyRepository.GetFamilyStatus();
+        });
+    }
+
 }
