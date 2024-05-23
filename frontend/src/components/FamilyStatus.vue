@@ -3,7 +3,7 @@
     <div v-else-if="error">Error: {{ error.message }}</div>
     <div v-else>
         <div v-for="family in familyStatus?.families" :key="family.id">
-            <h2>{{ family.name }} (Points: {{ family.points }})</h2>
+            <h2 class="mt-5">{{ family.name }} (Points: {{ family.points }})</h2>
             <ul>
                 <li v-for="team in family.teams" :key="team.teamId">
                     {{ team.team }} (Points: {{ team.points }})
