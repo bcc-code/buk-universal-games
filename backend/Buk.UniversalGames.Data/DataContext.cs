@@ -14,6 +14,7 @@ public class DataContext : DbContext
     }
 
     public DbSet<League> Leagues{ get; init; }
+    public DbSet<Family> Families{ get; init; }
     public DbSet<Team> Teams { get; init; }
     public DbSet<Sticker> Stickers { get; init; }
     public DbSet<StickerScan> StickerScans { get; init; }
@@ -33,6 +34,8 @@ public class DataContext : DbContext
         builder.HasPostgresEnum<TeamType>();
 
         builder.Entity<League>().HasKey(t => t.LeagueId);
+
+        builder.Entity<Family>().HasKey(t => t.FamilyId);
 
         builder.Entity<Team>().HasKey(t => t.TeamId);
         builder.Entity<Team>().HasIndex(t => t.Code);

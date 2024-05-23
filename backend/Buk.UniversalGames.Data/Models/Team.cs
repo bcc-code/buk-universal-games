@@ -17,7 +17,6 @@ public class Team
 
     public string Color { get; set; }
 
-    public int? LeagueId { get; set; }
 
     public virtual TeamType Type => TeamType switch
     {
@@ -31,11 +30,16 @@ public class Team
     [Column("type")]
     public string TeamType { get; set; }
 
-    public int FamilyId { get; set; }
 
+    public int? LeagueId { get; set; }
     [JsonIgnore]
     public League? League { get; set; }
+
+    public int? FamilyId { get; set; }
     [JsonIgnore]
+    public Family? Family { get; set; }
+    [JsonIgnore]
+
     public List<PointsRegistration> Points { get; set; }
     [JsonIgnore]
     public List<StickerScan> StickerScans { get; set; }
