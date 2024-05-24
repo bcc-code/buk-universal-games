@@ -1,55 +1,28 @@
 <template>
-  <nav
-    class="flex w-full bottom-0 bg-ice-blue fixed z-10 align-middle p-2 justify-between"
-  >
-    <div class="flex w-1/2 justify-between align-middle">
-      <button
-        class="flex w-1/2 justify-between align-middle"
-        :class="{
-          'user-menu-btn-small': true,
-          'selected-component': $route.name == 'AdminLeagueStatus',
-        }"
-        @click="$router.push({ name: 'AdminLeagueStatus' })"
-      >
-        <img class="h-10 w-10" src="/icon/leaderlist.png" />
-      </button>
-    </div>
-    <div class="justify-center flex w-full">
-      <button
-        class="flex w-1/2 justify-between align-middle"
-        :class="{
-          'user-menu-btn-big': true,
-          'selected-component': $route.name == 'AdminMatchListGame',
-        }"
-        @click="$router.push({ name: 'AdminMatchListGame' })"
-      >
-        <img class="h-10 w-10" src="/icon/match.png" />
-      </button>
-    </div>
-    <div class="flex w-1/2 justify-between">
-      <button
-        class="flex w-1/2 justify-between align-middle"
-        :class="{
-          'user-menu-btn-small': true,
-          'selected-component': $route.name == 'AdminMap',
-        }"
-        @click="$router.push({ name: 'AdminMap' })"
-      >
-        <img class="h-10 w-10" src="/icon/place.svg" />
-      </button>
-    </div>
+  <nav class="fixed bottom-0 w-full bg-ice-blue z-10 p-2 flex justify-around items-center mx-auto"
+    style="max-width: 960px;">
+    <button class="flex flex-col items-center w-1/3" :class="{
+      'selected-component': $route.name == 'AdminLeagueStatus',
+    }" @click="$router.push({ name: 'AdminLeagueStatus' })">
+      <img class="h-10 w-10" src="/icon/leaderlist.png" />
+    </button>
+    <button class="flex flex-col items-center user-menu-btn-big bg-white w-1/3" :class="{
+      'selected-component': $route.name == 'AdminMatchListGame',
+    }" @click="$router.push({ name: 'AdminMatchListGame' })">
+      <img class="h-20 w-20" src="/icon/match.png" />
+    </button>
+    <button class="flex flex-col items-center w-1/3" :class="{
+      'selected-component': $route.name == 'AdminMap',
+    }" @click="$router.push({ name: 'AdminMap' })">
+      <img class="h-10 w-10" src="/icon/place.svg" />
+    </button>
   </nav>
-  <CameraScanner ref="cameraScanner"></CameraScanner>
 </template>
 
 <script>
-import CameraScanner from '@/components/CameraScanner.vue';
 
 export default {
   name: 'UserMenu',
-  components: {
-    CameraScanner,
-  },
   methods: {},
 };
 </script>
@@ -88,10 +61,11 @@ button {
   padding: 0;
 }
 
-.selected-component > img {
+.selected-component>img {
   /* This trick allows us to colourise <img /> tag SVGs. */
   filter: var(--active-green-button);
 }
+
 .user-menu-btn-big {
   position: absolute;
   height: 5em;
