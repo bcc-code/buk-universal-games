@@ -1,5 +1,5 @@
 <template>
-  <nav class="fixed bottom-0 w-full bg-ice-blue z-10 p-2 flex justify-around items-center">
+  <nav class="fixed bottom-0 w-full bg-ice-blue z-10 p-2 flex justify-around items-center" style="max-width: 960px;">
     <button :class="{
       'selected-component': isSelected('LeagueList'),
     }" @click="navigateTo('LeagueList')" class="flex flex-col items-center">
