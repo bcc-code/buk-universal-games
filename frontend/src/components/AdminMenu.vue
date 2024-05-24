@@ -19,12 +19,7 @@
   </nav>
 </template>
 
-<script>
-
-export default {
-  name: 'UserMenu',
-  methods: {},
-};
+<script setup lang="ts">
 </script>
 
 <style scoped>
