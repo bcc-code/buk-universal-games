@@ -55,7 +55,6 @@
 <script>
 import UserPageLayout from '../components/UserPageLayout.vue';
 import MatchListItem from '../components/MatchListItem.vue';
-import MatchCard from '../components/MatchCard.vue';
 import PointsAndStickers from '../components/PointsAndStickers.vue';
 
 export default {
@@ -63,7 +62,7 @@ export default {
   props: {
     data: String,
   },
-  components: { UserPageLayout, MatchListItem, MatchCard, PointsAndStickers },
+  components: { UserPageLayout, MatchListItem,  PointsAndStickers },
   data() {
     return {
       loading: false,

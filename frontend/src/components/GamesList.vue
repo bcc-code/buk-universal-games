@@ -10,9 +10,8 @@
     <p>{{ $t("please_refresh") }}</p>
   </div>
   <div v-else class="space-y-5 ">
-    <div  v-for="game in games"
-      :key="game.gameId" @click="$emit('clicked', game)">
-      <
+    <div v-for="game in games" :key="game.gameId" @click="$emit('clicked', game)">
+
       <GamesListItem :game-id="game.id" :game-type="game.gameType" :game-start="game.start" />
 
     </div>
@@ -21,12 +20,15 @@
 
 <script setup lang="ts">
 import GamesListItem from './GamesListItem.vue'
-defineProps<{ games: Array<{ 
-  gameType: string, 
-  gameId: string | number
-  id: string | number
-  start: string }>, 
-  loading: boolean }>()
+defineProps<{
+  games: Array<{
+    gameType: string,
+    gameId: string | number
+    id: string | number
+    start: string
+  }>,
+  loading: boolean
+}>()
 </script>
 
 <style scoped>

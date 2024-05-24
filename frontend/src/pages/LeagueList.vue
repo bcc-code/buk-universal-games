@@ -9,67 +9,11 @@
       </div>
     </section>
     <FamilyStatus></FamilyStatus>
-    <div v-if="loading">
-      <section class="ranking-title">
-        <div class="ranking-title-column index-column"></div>
-        <div class="ranking-title-column">
-          <p class="ranking-title-text">Team</p>
-        </div>
-        <div class="ranking-title-column">
-          <p class="ranking-title-text">Points</p>
-        </div>
-      </section>
-      <section class="user-section" v-for="i in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]" :key="i">
-        <LeagueListItem :class="{ 'card-light': i > 4 }" :index="i + 1" :team="'Team ' + (i + 1)"
-          :stickers="Math.ceil(100 / (i + 1))" :points="Math.ceil(10000 / (i + 1))" :loading="loading" />
-      </section>
-    </div>
-    <div v-else>
-      <div v-if="leagueStatus.error">
-        <div v-if="leagueStatus.errorCode != 406">
-          <p>{{ $t('general_error') }}</p>
+    <div>
 
-          <div class="message">
-            <p class="message-text">{{ leagueStatus.error }}</p>
-            <br />
-            <p class="message-text">{{ $t('pleaserefresh') }}</p>
-          </div>
-        </div>
-      </div>
-      <!-- <div class="message-white">
-        <p>
-          {{ $t('league.viewgamerankings-title') }}
-        </p>
-        <button class="btn-success" @click="this.$router.push('games')">
-          {{ $t('league.viewgamerankings') }}
-        </button>
-      </div> -->
       <div class="rankingfrozen-message" v-if="$store.getters.currentRound > 3">
         <p>{{ $t('league.ranking-frozen') }}</p>
       </div>
-      <section class="ranking-title" v-if="leagueStatus.status?.total.length">
-        <div class="ranking-title-column index-column"></div>
-        <div class="ranking-title-column">
-          <p class="ranking-title-text">Team</p>
-        </div>
-        <div class="ranking-title-column">
-          <p class="ranking-title-text">Points</p>
-        </div>
-      </section>
-      <section v-else>
-        <div class="nodata">
-          <p class="message-text">{{ $t('league.rankingisempty') }}</p>
-        </div>
-      </section>
-      <section class="user-section" v-for="(status, i) in leagueStatus?.status?.total.sort(
-        (a, b) => b.points - a.points,
-      )" :key="status.id">
-        <LeagueListItem :class="{
-          'card-light': status.teamId != teamStatus?.teamId,
-          'card-currentTeam': status.teamId == teamStatus?.teamId,
-        }" :index="i + 1" :team="status.team" :stickers="status.stickers" :points="status.points"
-          :loading="loading" />
-      </section>
     </div>
   </UserPageLayout>
 </template>
@@ -77,12 +21,11 @@
 <script>
 import UserPageLayout from '../components/UserPageLayout.vue';
 import PointsAndStickers from '../components/PointsAndStickers.vue';
-import LeagueListItem from '../components/LeagueListItem.vue';
 import FamilyStatus from '@/components/FamilyStatus.vue';
 
 export default {
   name: 'LeagueList',
-  components: { UserPageLayout, PointsAndStickers, LeagueListItem,FamilyStatus },
+  components: { UserPageLayout, PointsAndStickers,  FamilyStatus },
   data() {
     return {
       loading: false,

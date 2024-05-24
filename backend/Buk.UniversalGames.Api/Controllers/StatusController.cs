@@ -9,11 +9,12 @@ using Buk.UniversalGames.Services;
 using Microsoft.AspNetCore.Mvc;
 using Buk.UniversalGames.Data.Models.Internal;
 using Buk.UniversalGames.Data.Repositories;
+using Buk.UniversalGames.Library.Enums;
 
 namespace Buk.UniversalGames.Api.Controllers;
 
 [ApiController]
-[Participant]
+[TeamType(TeamType.Admin, TeamType.SystemAdmin, TeamType.Participant)]
 [Route("[controller]")]
 public class StatusController : ControllerBase
 {
@@ -74,6 +75,7 @@ public class StatusController : ControllerBase
         return "LeagueStatus_leagueId_" + leagueId;
     }
 
+    // [TeamType(TeamType.Admin, TeamType.SystemAdmin, TeamType.Participant)]
     [HttpGet("Family")]
     public async Task<ActionResult<FamilyStatusReport>> FamilyStatus()
     {

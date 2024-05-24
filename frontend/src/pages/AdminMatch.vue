@@ -170,14 +170,6 @@ export default {
     }
   },
   methods: {
-    showGameInfo(game) {
-      this.$router.push({
-        name: 'AdminGameInfoDetail',
-        params: {
-          game: game.id,
-        },
-      });
-    },
     loadMatch() {
       this.match = this.matches?.find((match) => match.matchId == this.matchId);
       this.game = this.games?.find((game) => game.id == this.match?.gameId);
