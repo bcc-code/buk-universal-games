@@ -15,14 +15,12 @@
 <script>
 import UserMenu from '../components/UserMenu.vue';
 import AdminMenu from '../components/AdminMenu.vue';
-import LanguageSwitcher from './LanguageSwitcher.vue';
 
 export default {
   name: 'UserPageLayout',
   components: {
     AdminMenu,
     UserMenu,
-    LanguageSwitcher,
   },
   props: {
     showTitle: Boolean,
