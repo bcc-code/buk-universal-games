@@ -168,5 +168,7 @@
   "teamName": "Team",
   "family": "Family",
   "familyBalance": "Family Balance",
-  "results": "Results on this game"
+  "results": "Results on this game",
+  "pointstitle": "Points",
+  "categorytitle": "Category"
 }

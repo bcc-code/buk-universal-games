@@ -11,7 +11,7 @@
     "iron_grip": "Jerngrepet",
     "land_water_beach": "Land, vann, strand",
     "mastermind": "Mastermind",
-    "human_shuffleboard": "Human Shuffleboard",
+    "human_shuffleboard": "Hamsterhjulet",
     "labyrinth": "Labyrint"
   },
   "score": {
@@ -22,29 +22,36 @@
     "table_surfing": "{score} seconds"
   },
   "explanation": {
-    "iron_grip": "Can your team provide assistance in rescuing people trapped on a malfunctioning Ferris wheel? Climbing a Ferris wheel can be challenging, and it's crucial to remember the importance of carrying first aid supplies. Please get your team to reach the other side and rescue these helpless individuals in need.",
-    "land_water_beach": "Denne posten er en reaksjonspost, hvor dere konkurrerer mot et annet lag. Ti deltakere fra hvert lag starter i sonen i midten, og skal reagere så raskt som mulig på tre ulike signaler:\n\nGult signal betyr at man skal bli stående stille, strand\nGrønt signal betyr at man skal flytte seg til sonen bak, land\nBlått signal betyr at man skal flytte seg til sonen foran, vann\n\nDet laget hvor alle 10 deltakere flytter seg raskest til riktig sone, er det laget som får poeng. Hvis dere er like raske, får begge lag ett poeng. Altså må man reagere raskt, og bevege seg til riktig sone. Hvis man beveger seg til feil sone, får det andre laget ett poeng. Etter tre signal, skal dere bytte ut de ti deltakene med ti nye deltakere fra laget. Dette gjennomføres tre runder.",
-    "mastermind": "På denne posten skal laget finne ut av hvilken fargekode som skjuler seg i boksen. Laget skal ha plukket ut 5 deltakere til å være deres «Codebreakers». Resten av laget brukes som fargebrikker i spillet etter hvert som «Codebreakers» plasser sine løsninger på spillbrettet.\nNår «Codebreakers» har lagt ut et forslag på løsning, kontakter de dommeren som vil plassere «svar-pinner» i boksen plassert ved siden av hver rad. «Svar-pinnene» viser hvor mange riktige farger (svart) og riktig farge som er riktig plassert (rød) «Codebreakers» har plassert ut i sitt forslag.\n\nPoeng gis etter antall runder brukt på å løse fargekoden.",
-    "labyrinth": "Velkommen\nBallen skal igjennom labyrinten. Det er hull og checkpoints på brettet\n12 personer kan holde rundt brettet\nSpillet er igang da dommer plasserer ballen på start.\nIkke lov å bevege ballen med hendene når den er i spill på brettet.\nIkke lov å krabbe under labyrint når spillet er igang. Det er kun lov når ballen fallet gjennom et hull\nFaller ballen ned i et hull, må den plukkes opp og legges tilbake til siste checkpoint eller start\nBallen skal alltid ligge på brettet. Ikke lov å kaste ballen opp med brettet for å prøve å komme over hinder på brettet\nDet er 3 checkpoints på brettet. Alle spillerne bytter plass med nye spillere. Totalt 36 personer får spilt.\nNår labyrinten er ferdig eller tiden er ute, plasserer deltakerne brettet rolig ned på bakken",
-    "human_shuffleboard": "1. To lag konkurrer mot hverandre.\n2. Lagene stiller med 9 deltakere per omgang.\n3. Det skal sitte en person i baderingen til enhver tid, armer og ben kan ikke touche bakken eller aktivt skyve på andre baderinger som er i spill.\n4. Laget med blå baderinger starter første omgang. Det spilles annenhver farge inntil alle baderinger er spilt.\n5. I omgang nr. 2 starter rødt lag.\n6. Stein, saks, papir avgjør hvem som starter omgang nr. 3.\n7. Spillet starter med at en deltaker plassers i baderingen, mens to personer skal dytte baderingen, de kan ikke passere den røde streken (slipp sone) på banen.\n8. Etter at alle har skjøvet sine tre baderinger, telles scoren på alle baderinger som ligger innenfor scoringsområdet.\n9. Hele baderingen må ligge innenfor poengområdet for at det skal telles med.\n10. Hvis baderingen berører streken, er det den bakerste poengsonen som er tellende.\n11. Det spilles 3 omganger, med 3 skyv av baderinger per omgang.\n12. Poengene fra hver omgang telles opp til en totalsum.\n13. Det laget med flest poeng vinner konkurransen."
+    "iron_grip": "I konkurransen 'Jerngrepet' møter ni deltakere hverandre i en utfordring der målet er å henge i et stillas så lenge som mulig i løpet av en ti-minutters periode. Alle deltakerne begynner å henge samtidig, med håndflaten vendt fremover, når nedtellingen starter. \n\nEn dommer, referert til som dommer (a), har ansvaret for å stoppe og starte klokken. Klokken stoppes når alle ni deltakere er på plass og henger fra stillaset, og den startes på nytt hver gang noen slipper taket. En annen dommer, dommer (b), holder øye med den totale tiden på ti minutter som deltakerne har til rådighet. \n\nDeltakerne kan bytte med lagkamerater som venter ved siden av, klar til å klatre opp stigen og ta over. Det er ingen begrensninger på antall bytter eller hvor mange ganger en deltaker kan henge. Konkurransen dreier seg om å akkumulere mest mulig tid hengende fra stillaset innenfor den gitte tidsrammen på ti minutter.",
+    "land_water_beach": "Denne posten er en reaksjonspost der lagene konkurrerer mot hverandre. Ti deltakere fra hvert lag starter i sonen i midten.\nI denne utfordringen får det laget hvor alle 10 deltakere flytter seg raskest til riktig sone, ett poeng. Ved lik reaksjonstid får begge lag ett poeng. Det er derfor avgjørende å reagere raskt og bevege seg til riktig sone. Feil bevegelser resulterer i at det andre laget får ett poeng. Etter tre signaler bytter dere ut de ti deltakerne med ti nye deltakere fra laget. Dette gjentas over tre runder.\nReaksjonstiden er avgjørende for å vinne.",
+    "mastermind": "Posten er inspirert av konseptet fra spillet Mastermind.\n\nLaget skal løse en fargekode skjult i en boks. Fem deltakere er utpekt som Codebreakers, mens resten av laget fungerer som fargebrikker.\n\nCodebreakers plasserer sine løsninger på spillbrettet, og kontakter deretter dommeren. Dommeren plasserer 'svar-pinner' i boksen ved siden av hver rad. Disse pinnene viser hvor mange farger som er riktig farge og riktig plassert (rød) og hvor mange farger som er riktig farge, men ikke riktig plassert (hvit) i Codebreakers sitt forslag.",
+    "labyrinth": "På denne posten vil laget bli utfordret til å samarbeide ved å navigere en kule gjennom en labyrint på en plate.\nDommeren starter spillet ved å plassere ballen på startpunktet og starter tidtakeren. Det er tre checkpoints på brettet, og alle spillerne bytter plass med nye 12 spillere ved hvert checkpoint, slik at totalt 36 personer får spilt.\nNår labyrinten er fullført eller tiden er ute, plasserer deltakerne brettet rolig ned på bakken.",
+    "human_shuffleboard": "På denne posten skal 2 lag konkurrer mot hverandre i hvert sitt “Hamsterhjul”. Laget som er raskest gjennom løypa uten å tråkke utenfor hjulet vinner. Det spilles 1 omgang, men det gjøres bytte av alle deltakere etter 1 runde. Førstemann i mål etter 2 runder vinner. Tiden lagene bruker vil også medregnes antall poeng de får på posten."
   },
-  "leadstory": {
-    "iron_grip": "",
-    "labyrinth": "",
-    "mastermind": "",
-    "mine_field": "",
-    "human_shuffleboard": ""
+  "points": "Saldo",
+  "pointexplenation": {
+    "iron_grip": "Poengene rangeres etter konkurransen basert på hvem som klarte å henge lengst. Som dommer a, er det din oppgave å notere tiden der alle 9 deltakere henger samtidig.",
+    "labyrinth": "Poeng gis etter antall klarte checkpoints samt tid på å fullføre labyrinten.",
+    "mastermind": "Poengene tildeles basert på antall runder laget bruker på å løse fargekoden.",
+    "land_water_beach": "Laget får ett poeng for hvert signal de vinner. Begge lag får ett poeng dersom lagene er like raske",
+    "human_shuffleboard": "Poengene tildeles basert på om laget vinner og tiden de brukte på runden. "
+  },
+  "category": {
+    "iron_grip": "Styrke",
+    "labyrinth": "Samarbeid",
+    "mastermind": "Logikk",
+    "land_water_beach": "Reaksjon",
+    "human_shuffleboard": "X-faktor"
   },
   "rules": {
-    "iron_grip": "Coming soon",
-    "labyrinth": "Coming soon",
-    "land_water_beach": "Coming soon",
-    "mastermind": "Tid: 10 min\nAntall deltakere: 5 stk codebreakers + 32 stk fargebrikker (maksimalt).",
-    "human_shuffleboard": "Coming soon"
+    "iron_grip": "• Deltakerne må henge med håndflaten frem\n• Tiden stoppes av dommer (a) når ikke alle ni deltakere henger samtidig.",
+    "labyrinth": "Spillet starter da dommeren har plassert kula på brettet.\n• 12 personer må holde rundt brettet mens spillet pågår.\n• Det er ikke tillatt å berøre ballen med hendene når den er på brettet, og heller ikke å krabbe under labyrinten mens spillet pågår, med mindre ballen faller gjennom et hull.\n• Hvis ballen faller ned i et hull, må den plukkes opp og plasseres tilbake ved forrige checkpoint eller startpunkt.\n• Ballen må alltid være på brettet, og det er ikke tillatt å kaste ballen opp for å forsøke å overvinne hindringer.\n• For hvert checkpoint kula kommer til, må alle 12 deltakere byttes ut til 12 nye.",
+    "land_water_beach": "De må reagere raskt på tre ulike signaler:\n• Gult signal: Stå stille som en strand.\n• Grønt signal: Flytt deg bakover til 'land' sonen.\n• Blått signal: Flytt deg fremover til 'vann' sonen.",
+    "mastermind": "• Laget har 10 minutter på å løse fargekoden.\n• Bare de utnevnte codebreakers har tillatelse til å sette opp brikkene og foreslå løsninger.\n• Laget sier i fra til hoveddommer når de har avgitt svaret sitt.",
+    "human_shuffleboard": "Lagene har 15-20 deltakere hver, inne i hamsterhjulet.\n• Det er +10 sek tilleggstid om laget tråkker på utsiden av hjulet.\n• Hele laget på 15 stk byttes ut etter 1 runde med 15 nye deltakere.\n• Hele hjulet må være over linjen for å kunne gjøre bytte.\nHele hjulet må over linjen for at tiden stoppes."
   },
   "general_error": "Noe gikk galt",
   "pleaserefresh": "Prøv å oppdatere siden",
-  "points": "Saldo",
   "coins": "Mynter",
   "game": "Spill",
   "team1team2": "Lag 1 / Lag 2",
@@ -166,5 +173,7 @@
   "teamName": "Lag",
   "family": "Familie",
   "familyBalance": "Familie saldo",
-  "results": "Resultater for dette spillet"
+  "results": "Resultater for dette spillet",
+  "pointstitle": "Poeng",
+  "categorytitle": "Kategori"
 }
