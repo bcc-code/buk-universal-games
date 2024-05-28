@@ -26,7 +26,7 @@
         <h2 class="match-title-text">{{ $t('start') }}</h2>
       </div>
     </section>
-    <section class="user-section" v-for="match in matches" :key="match.id">
+    <section class="user-section my-3" v-for="match in matches" :key="match.id">
       <div
         style="
           height: 2px;
@@ -62,7 +62,7 @@ export default {
   props: {
     data: String,
   },
-  components: { UserPageLayout, MatchListItem,  PointsAndStickers },
+  components: { UserPageLayout, MatchListItem, PointsAndStickers },
   data() {
     return {
       loading: false,

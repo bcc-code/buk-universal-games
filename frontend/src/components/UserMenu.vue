@@ -1,20 +1,35 @@
 <template>
-  <nav class="fixed bottom-0 w-full bg-ice-blue z-10 p-2 flex justify-around items-center" style="max-width: 960px;">
-    <button :class="{
-      'selected-component': isSelected('LeagueList'),
-    }" @click="navigateTo('LeagueList')" class="flex flex-col items-center">
+  <nav
+    class="fixed bottom-0 w-full bg-teal-50 z-10 p-2 flex justify-around items-center"
+    style="max-width: 960px"
+  >
+    <button
+      :class="{
+        'selected-component': isSelected('LeagueList'),
+      }"
+      @click="navigateTo('LeagueList')"
+      class="flex flex-col items-center"
+    >
       <img class="h-10 w-10" src="/icon/leaderlist.png" />
     </button>
 
-    <button class="flex flex-col items-center user-menu-btn-big bg-white" @click="navigateTo('MatchList')" :class="{
-      'selected-component': isSelected('MatchList'),
-    }">
+    <button
+      class="flex flex-col items-center user-menu-btn-big bg-white"
+      @click="navigateTo('MatchList')"
+      :class="{
+        'selected-component': isSelected('MatchList'),
+      }"
+    >
       <img src="/icon/match.png" class="h-20 w-20" />
     </button>
 
-    <button :class="{
-      'selected-component': isSelected('Map'),
-    }" @click="navigateTo('Map')" class="flex flex-col items-center">
+    <button
+      :class="{
+        'selected-component': isSelected('Map'),
+      }"
+      @click="navigateTo('Map')"
+      class="flex flex-col items-center"
+    >
       <img class="h-10 w-10" src="/icon/place.svg" />
     </button>
   </nav>
@@ -55,7 +70,7 @@ input[type='file'] {
   display: none;
 }
 
-.user-menu-btn-small>img {
+.user-menu-btn-small > img {
   /* This trick allows us to colourise <img /> tag SVGs. */
   filter: var(--dark-brown);
 }
@@ -65,7 +80,7 @@ input[type='file'] {
   height: 5em;
   width: 5em;
   top: -1.5em;
-  background-color: var(--ice-blue);
+  background-color: var(--teal-50);
   color: white;
   border-radius: 10em;
   display: flex;
@@ -75,8 +90,8 @@ input[type='file'] {
   border: 5px solid white;
 }
 
-.selected-component>img {
+.selected-component > img {
   /* This trick allows us to colourise <img /> tag SVGs. */
-  filter: var(--active-green-button);
+  filter: var(--active-yellow-button);
 }
 </style>

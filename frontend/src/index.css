@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --dark-blue: #d1dfe8;
+  --dark-blue: #b5b331;
   --vanilla: #f7ead0;
   --blue-grey: #72898b;
   --dark-brown: #816668;
@@ -12,9 +12,6 @@
   --dusty-blue: #426083;
   --ice-blue: #dce9ea;
   --grey: #a4a4a4;
-  --label-1: #323538;
-  --label-2: #7c7878;
-  --label-3: #e5e5e5;
   --dark: #f21198;
   --gray-1: #e5e5e5;
   --gray-2: #999;
@@ -22,38 +19,41 @@
   --red: #426083;
   --darkgreen: #ceab9d;
   --yellow: #f7ead0;
+
+  --ice-100: #f8fafc;
+  --ice-200: #e2e8f0;
+  --teal-50: #acd1d6;
+  --teal-100: #3e9aa8;
+  --teal-200: #296a75;
+  --peach-50: #f8c1a9;
+  --peach-100: #f18165;
+  --peach-200: #d35332;
+  --green-50: #e4eacf;
+  --green-100: #cbd996;
+  --green-200: #285428;
+  --yellow-50: #f7f5d4;
+  --yellow-100: #fcf09d;
+  --yellow-200: #facc78;
+  --grey-100: #696969;
+  --grey-800: #313131;
+  --label-1: #313131;
+  --label-2: #696969;
+  --label-3: #e5e5e5;
+
   /* These values yield colours extremely similar to the colours above, through applied CSS filters.
       This means they can be used to colourise SVG elements inserted through <img /> tags. */
   --active-green-button: brightness(0) saturate(100%) invert(39%) sepia(56%)
     saturate(183%) hue-rotate(307deg) brightness(92%) contrast(79%);
 
+  --active-yellow-button: invert(87%) sepia(24%) saturate(597%)
+    hue-rotate(356deg) brightness(107%) contrast(98%);
+
   --inactive-yellow-button: brightness(0) saturate(100%) invert(81%) sepia(58%)
     saturate(4717%) hue-rotate(11deg) brightness(107%) contrast(112%);
 }
 
-.watermark-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none; /* Ensure that the watermark container doesn't block user interactions */
-  z-index: -1; /* Place the watermark container behind other content */
-}
-
-.watermark {
-  content: '';
-  background-image: url('/image/watermark.svg');
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* Place the watermark container behind other content */
-}
-
 body {
-  background-color: var(--dark-blue);
+  background-color: var(--ice-100);
   background-image: url('/image/watermark.svg');
 }
 
@@ -78,7 +78,7 @@ p {
 }
 
 .label {
-  @apply text-xs tracking-widest;
+  @apply text-xs tracking-wider;
 }
 
 @media (min-width: 768px) {

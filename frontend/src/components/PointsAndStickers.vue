@@ -1,11 +1,11 @@
 <template>
   <section
     :class="{
-      'bg-vanilla py-3 px-3 border-r-2 border-dark flex w-full rounded-md': true,
+      'bg-peach-50 py-3 px-3 border-1 border-peach-200 flex w-full rounded-md': true,
       loading,
     }"
   >
-    <div class="w-40 mr-10">
+    <div class="w-40 mr-5">
       <img src="/image/logo_icon.svg" class="rounded-md" />
     </div>
     <div class="space-y-4 w-full">
@@ -32,9 +32,7 @@
     </div>
     <div>
       <LanguageSwitcher />
-      <ArrowRightStartOnRectangleIcon
-        class="h-10 mt-3 bg-white rounded-md p-2"
-      />
+      <LogOutButton class="mt-3" />
     </div>
     <div class="align-middle flex">
       <!--       <button class="ml-3 card-btn" @click="refresh"><img src="/icon/refresh.svg" /></button>
@@ -45,11 +43,11 @@
 
 <script>
 import LanguageSwitcher from './LanguageSwitcher.vue';
-import { ArrowRightStartOnRectangleIcon } from '@heroicons/vue/24/solid';
+import LogOutButton from './LogOutButton.vue';
 
 export default {
   name: 'PointsAndStickers',
-  components: { LanguageSwitcher, ArrowRightStartOnRectangleIcon },
+  components: { LanguageSwitcher, LogOutButton },
   data() {
     return {
       loading: false,
@@ -88,7 +86,7 @@ export default {
       return this?.$store.state.loginData.team;
     },
     familyName() {
-      return this?.$store.state.loginData.team;
+      return this?.$store.state.familyName;
     },
   },
 };

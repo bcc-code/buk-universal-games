@@ -7,20 +7,20 @@
       <img src="/image/logo_icon.svg" alt="" class="logo" />
       <input
         type="text"
-        class="text-center text-vanilla p-3 w-full uppercase tracking-wide bg-ice-blue/20"
+        class="text-center text-label-1 p-3 w-full shadow-md uppercase tracking-wide bg-white"
         :placeholder="$t('login.teamcode')"
         v-model="teamCode"
       />
       <button
-        class="bg-vanilla text-lg text-dark-brown py-3 px-2"
+        class="bg-peach-50 text-lg shadow-md border-2-peach-200 text-peach-200 py-3 px-2"
         :class="[teamCode.length < 3 ? 'opacity-0' : 'opacity-100']"
       >
         {{ $t('login.login_button') }}
       </button>
 
       <p v-if="loginMessage" class="login-msg">{{ loginMessage }}</p>
-      <div class="mx-auto text-center bg-hazy-green/10 rounded-md p-3">
-        <p class="text-label-3 text-xs">{{ $t('install_hint') }}</p>
+      <div class="mx-auto text-center bg-teal-50 rounded-md p-3">
+        <p class="text-label-1 text-xs">{{ $t('install_hint') }}</p>
       </div>
     </form>
   </section>
