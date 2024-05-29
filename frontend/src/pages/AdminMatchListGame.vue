@@ -2,7 +2,7 @@
   <AdminPageLayout title="Match list">
     <section class="filters">
       <div class="filter">
-        <p>League:</p>
+        <p>Zone:</p>
         <div class="single-filter">
           <AdminLeagueSelector
             v-for="league in adminLeagues"

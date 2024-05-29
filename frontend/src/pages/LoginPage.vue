@@ -10,9 +10,6 @@
       </button>
 
       <p v-if="loginMessage" class="login-msg">{{ loginMessage }}</p>
-      <div class="mx-auto text-center bg-teal-50 rounded-md p-3">
-        <p class="text-label-1 text-xs">{{ $t('install_hint') }}</p>
-      </div>
     </form>
   </section>
 </template>

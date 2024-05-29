@@ -63,7 +63,7 @@
   },
   "admin": {
     "select_league": {
-      "intro": "Choose the league you want to manage"
+      "intro": "Choose the zone you are in"
     }
   },
   "yourmatch": "Your match in this game",
