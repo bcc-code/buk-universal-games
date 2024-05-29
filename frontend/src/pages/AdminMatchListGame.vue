@@ -40,17 +40,6 @@
         </div>
       </div>
     </section>
-    <section class="match-title">
-      <div class="match-title-column">
-        <h2 class="match-title-text">Game</h2>
-      </div>
-      <div class="match-title-column">
-        <h2 class="match-title-text">Team 1 / Team 2</h2>
-      </div>
-      <div class="match-title-column">
-        <h2 class="match-title-text">Start</h2>
-      </div>
-    </section>
     <section class="space-y-5 mt-4">
       <div
         class=""
@@ -63,9 +52,7 @@
         >
           {{ matchGroupKey }}
         </h2>
-        <div v-for="match in adminMatchGroups[matchGroupKey].matches">
-          <!--           <p class="text-white">{{ match }}</p>
- -->
+        <div v-for="match in adminMatchGroups[matchGroupKey].matches" :key="match.id">
           <MatchListItem
             :key="match.id"
             :gameType="getGameById(match.gameId)?.gameType"

@@ -5,9 +5,9 @@
       ? 'bg-yellow-50 border-yellow-100 border-1 shadow-md'
       : 'bg-white border-ice-200 border-1 shadow-md',
   ]" @click="() => {
-        clickFunc?.();
-      }
-      ">
+    clickFunc?.();
+  }
+    ">
     <p class="label text-label-2" v-if="currentActiveMatch">{{ 'CURRENT' }}</p>
     <div class="flex w-full">
       <div class="flex w-full">
@@ -41,7 +41,7 @@
             <p v-if="winner" :class="[winner === team1 ? 'text-green-500' : 'text-red-700']">
               {{ winner === team1 ? 'Winner' : 'Loser' }}
             </p>
-            <p v-if="passed">{{ team1result }} {{ $t('points') }}</p>
+            <p v-if="passed">{{ formatPoints(team1result ?? 0) }}</p>
           </div>
         </span>
         <img v-if="twoteams" class="h-10 w-10" :src="`icon/match.png`" />
@@ -54,7 +54,7 @@
             <p v-if="winner && passed && twoteams" :class="[winner === team2 ? 'text-green-500' : 'text-red-700']">
               {{ winner === team2 ? 'Winner' : 'Loser' }}
             </p>
-            <p v-if="passed">{{ team2result }} {{ $t('points') }}</p>
+            <p v-if="passed">{{ formatPoints(team2result ?? 0) }}</p>
           </div>
         </span>
       </div>
@@ -76,6 +76,7 @@ const props = defineProps<{
 }>();
 
 import { computed } from 'vue';
+import { formatPoints } from './formatPoints';
 
 const passed = computed(() => props.team1result !== null);
 const twoteams = computed(() => props.team2 !== props.team1);

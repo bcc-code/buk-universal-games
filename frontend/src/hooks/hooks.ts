@@ -1,5 +1,5 @@
 import { createApiClient } from '@/types/api';
-import { useQuery } from '@tanstack/vue-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query';
 import type { Ref } from 'vue';
 
 const useProdDatabaseInDev = true;
@@ -49,5 +49,67 @@ export const useSigninResponse = (teamCode?: () => Ref<string>) => {
     // don't re-run requests unless this amount of milliseconds have passed
     staleTime: 1000 * 60 * 60 * 2,
     gcTime: 1000 * 60 * 60 * 2,
+  });
+};
+
+export const useAdminMatches = (leagueId: number) => {
+  const teamCode = getTeamCode();
+
+  return useQuery({
+    queryKey: ['adminMatches', leagueId],
+    queryFn: () =>
+      api.get(`/admin/leagues/:leagueId/matches`, {
+        params: {
+          leagueId,
+        },
+        headers: {
+          'x-ubg-teamcode': teamCode,
+        },
+      }),
+  });
+};
+
+export const useGames = () => {
+  const teamCode = getTeamCode();
+
+  return useQuery({
+    queryKey: ['games'],
+    queryFn: () =>
+      api.get('/games', {
+        headers: {
+          'x-ubg-teamcode': teamCode,
+        },
+      }),
+  });
+};
+
+export const useConfirmTeamResult = () => {
+  const queryClient = useQueryClient();
+  
+  return useMutation({
+    mutationFn: ({
+      matchId,
+      teamId,
+      result,
+    }: {
+      matchId: number;
+      teamId: number;
+      result: number;
+    }) =>
+      api.post(
+        `/matches/:matchId/results`,
+        { result, matchId: matchId, teamId: teamId },
+        {
+          params: {
+            matchId: matchId.toString(),
+          },
+          headers: {
+            'x-ubg-teamcode': getTeamCode(),
+          },
+        },
+      ),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['adminMatches'] });
+    },
   });
 };

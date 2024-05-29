@@ -8,22 +8,20 @@
     <div class="space-y-4 w-full">
       <div class="flex w-full space-x-6">
         <div class="w-full">
-          <p class="text-label-2 label uppercase">{{ $t('team') }}</p>
-          <h2 class="text-label-1">{{ teamName ?? '-' }}</h2>
-        </div>
-        <div class="w-full">
-          <p class="text-label-2 label uppercase">{{ $t('points') }}</p>
-          <h2 class="text-label-1">{{ formatPoints(teamPoints) }}</h2>
-        </div>
-      </div>
-      <div class="flex w-full space-x-6">
-        <div class="w-full">
           <p class="text-label-2 label uppercase">{{ $t('family') }}</p>
           <h2 class="text-label-1">{{ familyName ?? '-' }}</h2>
         </div>
         <div class="w-full">
-          <p class="text-label-2 label uppercase">{{ $t('points') }}</p>
-          <h2 class="text-label-1">{{ formatPoints(familyPoints) ?? '-' }}</h2>
+          <h2 class="text-label-1 text-3xl font-bold">{{ formatPoints(familyPoints) ?? '-' }}</h2>
+        </div>
+      </div>
+      <div class="flex w-full space-x-6">
+        <div class="w-full">
+          <p class="text-label-2 label uppercase">{{ $t('team') }}</p>
+          <h2 class="text-label-1">{{ teamName ?? '-' }}</h2>
+        </div>
+        <div class="w-full">
+          <h2 class="text-label-1 text-2xl font-bold">{{ formatPoints(teamPoints) }}</h2>
         </div>
       </div>
     </div>

@@ -15,17 +15,6 @@
       </div>
     </div>
 
-    <section class="match-title" v-if="matches.length">
-      <div class="match-title-column">
-        <h2 class="match-title-text">{{ $t('game') }}</h2>
-      </div>
-      <div class="match-title-column">
-        <h2 class="match-title-text">{{ $t('team1team2') }}</h2>
-      </div>
-      <div class="match-title-column">
-        <h2 class="match-title-text">{{ $t('start') }}</h2>
-      </div>
-    </section>
     <section class="user-section my-3" v-for="match in matches" :key="match.id">
       <div
         style="

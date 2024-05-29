@@ -7,7 +7,7 @@
         </div>
       </nav>
       <h1 class="text-white font-bold py-2 px-2 rounded-md flex space-x-3">
-        <img class="h-10 w-10" :src="`/icon/game-${game?.gameType.replace(/_/g, '')}.svg`" />
+        <img class="h-10 w-10" :src="`/icon/game-${game?.gameType?.replace(/_/g, '')}.svg`" />
         <span class="text-label-1">{{ $t('games.' + game?.gameType) }}</span>
       </h1>
     </div>
@@ -17,16 +17,13 @@
       </p>
     </section>
 
-    <header>
-      <h2 class="text-white">
-        <span>Start: {{ match?.start }}</span>
-      </h2>
-    </header>
+    <MatchListItem class="mb-5" v-if="match && match.team1 && match.team2" :key="match.matchId" :team1="match.team1"
+      :team2="match.team2" :team1result="match.team1Result ?? null" :team2result="match.team2Result ?? null"
+      :start="match.start ?? ''" :winner="match.winner" :gameType="game?.gameType ?? ''" addOn="" gameAddOn="" />
 
     <div class="teams">
       <div :class="{
         teamresult: true,
-        selected: match?.team1Id === selectedTeam,
         winner: match?.team1Id === match?.winnerId,
         loser: match?.team2Id === match?.winnerId,
       }">
@@ -34,22 +31,16 @@
         <p v-if="match?.team1Result">
           <strong>Score:</strong> {{ match?.team1Result }}
         </p>
-
-        <button class="btn btn-blank" v-if="!isChangingScore1 && match?.team1Result > 0"
-          @click="isChangingScore1 = true">
-          Change
-        </button>
-
-        <div v-if="isChangingScore1 || !match?.team1Result">
+        <div>
           <input class="bg-slate-100" type="number" v-model="team1Result" :placeholder="'Input result'" />
-          <button class="btn btn-blank" @click="confirmTeamResult(match?.team1Id, team1Result)">
-            Confirm
+          <button class="btn btn-blank" @click="confirmTeamResult(match?.team1Id, team1Result)"
+            :disabled="confirmDisabled">
+            Save
           </button>
         </div>
       </div>
       <div v-if="match?.team1Id !== match?.team2Id" :class="{
         teamresult: true,
-        selected: match?.team2Id === selectedTeam,
         winner: match?.team2Id === match?.winnerId,
         loser: match?.team1Id === match?.winnerId,
       }">
@@ -58,14 +49,11 @@
           <strong>Score:</strong> {{ match?.team2Result }}
         </p>
 
-        <button class="btn btn-blank" v-if="!isChangingScore2 && match?.team2Result > 0"
-          @click="isChangingScore2 = true">
-          Change
-        </button>
-        <div v-if="isChangingScore2 || !match?.team2Result">
+        <div>
           <input class="bg-slate-100" type="number" v-model="team2Result" :placeholder="'Input result'" />
-          <button class="btn btn-blank" @click="confirmTeamResult(match?.team2Id, team2Result)">
-            Confirm
+          <button class="btn btn-blank" @click="confirmTeamResult(match?.team2Id, team2Result)"
+            :disabled="confirmDisabled">
+            Save
           </button>
         </div>
       </div>
@@ -74,84 +62,74 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, defineProps } from 'vue';
-import { useRouter } from 'vue-router';
-import { useStore } from 'vuex';
+import { ref, computed, watch } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+import { useAdminMatches, useGames, useConfirmTeamResult } from '@/hooks/hooks';
 import AdminPageLayout from '@/components/AdminPageLayout.vue';
 import { ArrowLeftIcon } from '@heroicons/vue/24/solid';
+import { useStore } from 'vuex';
+import MatchListItem from '@/components/MatchListItem.vue';
 
-const props = defineProps<{
-  matchId: string;
-}>();
-
+const route = useRoute();
 const router = useRouter();
-const store = useStore();
+const matchId = Number(route.params.matchId as string);
+const leagueId = useStore().state.adminLeagueSelected; // Assuming you have the league ID
 
-const team1Result = ref<number | null>(null);
-const team2Result = ref<number | null>(null);
+const { data: matches } = useAdminMatches(leagueId);
+const { data: games } = useGames();
+const { mutate: confirmResult, isPending } = useConfirmTeamResult();
+
 const isChangingScore1 = ref(false);
 const isChangingScore2 = ref(false);
-const selectedTeam = ref<string | null>(null);
 const showErrorPopup = ref(false);
 const popupErrorMessage = ref<string | null>(null);
-const match = ref<any>(null);
-const game = ref<any>(null);
 
+const match = computed(() => matches.value?.find((m: any) => m.matchId == matchId));
+const game = computed(() => games.value?.find((g: any) => g.id == match.value?.gameId));
+const team1Result = ref<number | null>(match.value?.team1Result ?? null);
+const team2Result = ref<number | null>(match.value?.team1Result ?? null);
 
-const matches = computed(() => store.state.adminMatches);
-const games = computed(() => store.state.games);
+const confirmDisabled = computed(() => isPending.value);
 
-const loadMatch = () => {
-  match.value = matches.value?.find((m: any) => m.matchId == props.matchId);
-  game.value = games.value?.find((g: any) => g.id == match.value?.gameId);
-};
+watch(match, (newMatch) => {
+  if (newMatch) {
+    team1Result.value = newMatch.team1Result ?? null;
+    team2Result.value = newMatch.team2Result ?? null;
+  }
+});
 
-const confirmTeamResult = async (teamId: string, result: number | null) => {
-  if (
-    typeof result === 'number' &&
-    Number.isInteger(result) &&
-    result >= 1 &&
-    result <= 20
-  ) {
-    const payload = { matchId: match.value.matchId, teamId, result };
-    const response = await store.dispatch('confirmTeamResult', payload);
-    if (response === 'failed') {
-      popupErrorMessage.value =
-        'Submitting failed, please check connection and try again';
-      showErrorPopup.value = true;
-      setTimeout(() => {
-        showErrorPopup.value = false;
-        popupErrorMessage.value = null;
-      }, 5000);
-      return;
-    }
-    store.dispatch('getAdminLeagueStatus');
-    if (teamId === match.value.team1Id) {
-      match.value.team1Result = team1Result.value;
-      isChangingScore1.value = false;
-    } else {
-      match.value.team2Result = team2Result.value;
-      isChangingScore2.value = false;
-    }
-    loadMatch();
+const confirmTeamResult = async (teamId: number | undefined, result: number | null) => {
+  if (!match.value || !teamId) {
+    alert('noe gikk galt');
+    return;
+  }
+  if (typeof result === 'number' && Number.isInteger(result) && result >= 1 && result <= 20) {
+    confirmResult({ matchId, teamId, result }, {
+      onSuccess: () => {
+        if (teamId === match.value?.team1Id) {
+          team1Result.value = result;
+          isChangingScore1.value = false;
+        } else {
+          team2Result.value = result;
+          isChangingScore2.value = false;
+        }
+      },
+      onError: () => {
+        popupErrorMessage.value = 'Submitting failed, please check connection and try again';
+        showErrorPopup.value = true;
+        setTimeout(() => {
+          showErrorPopup.value = false;
+          popupErrorMessage.value = null;
+        }, 5000);
+      }
+    });
   } else {
     alert('Please enter a whole number between 1 and 20');
   }
 };
 
-onMounted(() => {
-  if (!props.matchId) {
-    router.back();
-  } else {
-    loadMatch();
-  }
-});
-
-if (!store.state.games.length) {
-  store.dispatch('getGames');
-}
-if (!store.state.adminMatches.length) {
-  store.dispatch('getAdminMatches');
+if (!matchId) {
+  router.back();
 }
 </script>
 
@@ -272,5 +250,11 @@ header h2 {
   padding: 1.5em 1em;
   border-radius: 1em;
   box-shadow: 2px 5px 5px 0px rgba(0, 0, 0, 0.5);
+}
+
+button[disabled] {
+  background-color: #e0e0e0;
+  color: #a0a0a0;
+  cursor: not-allowed;
 }
 </style>
