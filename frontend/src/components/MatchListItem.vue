@@ -1,6 +1,6 @@
 <template>
-  <section class="rounded-md flex flex-col items-center py-3 px-3 " :class="[
-    passed ? 'bg-gray-200' : 'bg-white',
+  <section class="rounded-md flex flex-col items-center py-3 px-3 bg-white" :class="[
+    passed ? 'brightness-90' : '',
     currentActiveMatch
       ? 'bg-yellow-50 border-yellow-100 border-1'
       : ' border-ice-200 border-1',
