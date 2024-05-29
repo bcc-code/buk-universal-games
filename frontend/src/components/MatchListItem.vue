@@ -31,19 +31,19 @@
         <p class="font-bold">{{ team1 }}</p>
         <p v-if="winner" :class="[winner === team1 ? 'text-green-500' : 'text-red-700']">{{ winner === team1 ? 'Winner'
           : 'Loser' }}</p>
-        <p>+ {{ formatPoints(team1result ?? 0) }}</p>
+        <p v-if="team1result">+ {{ formatPoints(team1result) }}</p>
       </span>
       <img class="h-10 w-10 mx-5" :src="`icon/match.png`" />
       <span class="flex flex-col items-center w-1/3">
         <p class="font-bold">{{ team2 }}</p>
         <p v-if="winner" :class="[winner === team2 ? 'text-green-500' : 'text-red-700']">{{ winner === team2 ? 'Winner'
           : 'Loser' }}</p>
-        <p>+ {{ formatPoints(team2result ?? 0) }}</p>
+        <p v-if="team2result">+ {{ formatPoints(team2result ) }}</p>
       </span>
     </div>
     <div v-else class="w-full mt-4 text-center">
       <p class="font-bold">{{ team1 }}</p>
-      <p v-if="passed">+ {{ formatPoints(team1result ?? 0) }}</p>
+      <p v-if="team1result">+ {{ formatPoints(team1result ) }}</p>
     </div>
   </section>
 </template>
