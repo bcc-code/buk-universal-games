@@ -14,7 +14,7 @@
           class="h-10 w-10"
           :src="`/icon/game-${game.gameType.replace(/_/g, '')}.svg`"
         />
-        <span class="text-white">{{ $t('games.' + game.gameType) }}</span>
+        <span class="text-label-1">{{ $t('games.' + game.gameType) }}</span>
       </h1>
     </div>
     <section class="error-popup" v-if="showErrorPopup">
