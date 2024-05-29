@@ -63,6 +63,9 @@ const tryLogin = async () => {
 };
 
 onMounted(() => {
-  if (code) tryLogin();
+  if (code) {
+    window.localStorage.clear()
+    tryLogin();
+  }
 });
 </script>
