@@ -31,13 +31,14 @@ const store = useStore();
 const router = useRouter();
 
 watch(teamCode, (newVal) => {
+  console.log(newVal)
   if (newVal) {
     teamCode.value = newVal.toUpperCase();
     window.localStorage.setItem('testTeamCode', teamCode.value);
   }
 }, { immediate: true });
 
-const { data: signInResponse, isLoading, refetch, error } = useSigninResponse(teamCode);
+const { data: signInResponse, isLoading, refetch, error } = useSigninResponse(() => teamCode);
 
 const loginMessage = computed(() => {
   if (isLoading.value) return 'Logging you in, please wait ...';

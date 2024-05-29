@@ -10,15 +10,6 @@ export const rootUrl =
 
 const api = createApiClient(rootUrl);
 
-// don't re-run requests unless this amount of seconds has passed
-const cacheRequestForSeconds = 10;
-
-const getTeamCode = (): string => {
-  const teamCode = window.localStorage.getItem('testTeamCode');
-  if (!teamCode) throw Error('Team code is not defined. Should log out.');
-  return teamCode;
-};
-
 export const useFamilyStatus = () => {
   const teamCode = getTeamCode();
 
@@ -30,20 +21,34 @@ export const useFamilyStatus = () => {
           'x-ubg-teamcode': teamCode,
         },
       }),
-    staleTime: 1000 * cacheRequestForSeconds,
+    // don't re-run requests unless this amount of milliseconds have passed
+    staleTime: 1000 * 10,
+    gcTime: 1000 * 10,
   });
 };
 
-export const useSigninResponse = (teamCode: Ref<string>) => {
-  console.log(teamCode.value);
+const getTeamCode = (): string => {
+  const teamCode = window.localStorage.getItem('testTeamCode');
+  if (!teamCode) throw Error('Team code is not defined. Should log out.');
+  return teamCode;
+};
+
+export const useSigninResponse = (teamCode?: () => Ref<string>) => {
+  const getTeamCodeLocal = (): string => {
+    if (teamCode === undefined) {
+      return getTeamCode();
+    } else return teamCode().value;
+  };
+  console.log(getTeamCodeLocal);
   return useQuery({
-    queryKey: ['signinResponse', teamCode.value],
+    queryKey: ['signinResponse', getTeamCodeLocal()],
     queryFn: () =>
       api.get('/start/:code', {
-        params: { code: teamCode.value },
+        params: { code: getTeamCodeLocal() },
       }),
-    enabled: !!teamCode.value, // Only run if teamCode is truthy
-    staleTime: 1000 * 60 * 60 * 2, // 2 hours in milliseconds
-    gcTime: 1000 * 60 * 60 * 2, // Optional, defaults to 5 minutes if not specified
+    enabled: !!getTeamCodeLocal(),
+    // don't re-run requests unless this amount of milliseconds have passed
+    staleTime: 1000 * 60 * 60 * 2,
+    gcTime: 1000 * 60 * 60 * 2,
   });
 };

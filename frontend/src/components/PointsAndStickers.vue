@@ -1,10 +1,7 @@
 <template>
-  <section
-    :class="{
-      'bg-peach-50 py-3 px-3 border-1 border-peach-200 flex w-full rounded-md': true,
-      loading,
-    }"
-  >
+  <section :class="{
+    'bg-peach-50 py-3 px-3 border-1 border-peach-200 flex w-full rounded-md': true,
+  }">
     <div class="w-40 mr-5">
       <img src="/image/logo_icon.svg" class="rounded-md" />
     </div>
@@ -16,7 +13,7 @@
         </div>
         <div class="w-full">
           <p class="text-label-2 label uppercase">{{ $t('points') }}</p>
-          <h2 class="text-label-1">{{ teamStatus?.points }}</h2>
+          <h2 class="text-label-1">{{ teamPoints ?? "-" }}</h2>
         </div>
       </div>
       <div class="flex w-full space-x-6">
@@ -26,7 +23,7 @@
         </div>
         <div class="w-full">
           <p class="text-label-2 label uppercase">{{ $t('points') }}</p>
-          <h2 class="text-label-1">{{ teamStatus?.points ?? '-' }}</h2>
+          <h2 class="text-label-1">{{ familyPoints ?? '-' }}</h2>
         </div>
       </div>
     </div>
@@ -41,56 +38,23 @@
   </section>
 </template>
 
-<script>
+<script setup lang="ts">
+import { computed } from 'vue';
 import LanguageSwitcher from './LanguageSwitcher.vue';
 import LogOutButton from './LogOutButton.vue';
+import { useFamilyStatus, useSigninResponse } from '@/hooks/hooks';
 
-export default {
-  name: 'PointsAndStickers',
-  components: { LanguageSwitcher, LogOutButton },
-  data() {
-    return {
-      loading: false,
-    };
-  },
-  created() {
-    this.getLeagueStatus(false);
-  },
-  methods: {
-    getTeamStatus(override) {
-      this.$store.dispatch('getTeamStatus', override);
-    },
-    getLeagueStatus(override) {
-      this.$store.dispatch('getLeagueStatus', override);
-    },
-    refresh() {
-      this.loading = true;
-      this.getLeagueStatus(true);
+const { data } = useSigninResponse()
 
-      setTimeout(() => {
-        this.loading = false;
-      }, 1000);
-    },
-  },
-  computed: {
-    leagueStatus() {
-      return this?.$store.state.leagueStatus;
-    },
-    teamStatus() {
-      return this?.leagueStatus?.status?.total?.find(
-        (score) => score.team == this.$store.state.loginData?.team,
-      );
-    },
+const { data: familyStatus } = useFamilyStatus();
 
-    teamName() {
-      return this?.$store.state.loginData.team;
-    },
-    familyName() {
-      return this?.$store.state.familyName;
-    },
-  },
-};
+const teamName = computed(() => data.value?.team);
+const familyName = computed(() => data.value?.familyName);
+const familyPoints = computed(() => familyStatus.value?.myStatus?.familyPoints)
+const teamPoints = computed(() => familyStatus.value?.myStatus?.teamPoints)
+
 </script>
+
 
 <style scoped>
 button {
@@ -134,12 +98,10 @@ button {
 .loading {
   background-repeat: no-repeat;
   background-size: 24em 100%;
-  background-image: linear-gradient(
-    to right,
-    var(--dark) 0%,
-    hsl(323, 50%, 33%) 50%,
-    var(--dark) 100%
-  );
+  background-image: linear-gradient(to right,
+      var(--dark) 0%,
+      hsl(323, 50%, 33%) 50%,
+      var(--dark) 100%);
   animation-duration: 750ms;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;
