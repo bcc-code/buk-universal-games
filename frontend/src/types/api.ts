@@ -85,7 +85,7 @@ const SignInSuccessResponse = z
     leagueId: z.number().int().nullable(),
     league: z.string().nullable(),
     coins: z.array(z.string()).nullable(),
-    familyId: z.number().int(),
+    familyId: z.number().int().nullable(),
     familyName: z.string().nullable(),
   })
   .partial();

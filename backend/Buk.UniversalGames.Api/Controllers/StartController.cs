@@ -41,8 +41,8 @@ public class StartController : ControllerBase
                 _ => null
             },
             Enumerable.Range(0, 8).Select(x => GetCoins()),
-            team.FamilyId.Value,
-            team.Family.Name
+            team.FamilyId,
+            team.Family?.Name
             );
     }
 
