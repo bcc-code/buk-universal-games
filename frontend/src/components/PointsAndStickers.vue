@@ -13,7 +13,7 @@
         </div>
         <div class="w-full">
           <p class="text-label-2 label uppercase">{{ $t('points') }}</p>
-          <h2 class="text-label-1">{{ teamPoints ?? "-" }}</h2>
+          <h2 class="text-label-1">{{ formatPoints(teamPoints) }}</h2>
         </div>
       </div>
       <div class="flex w-full space-x-6">
@@ -23,7 +23,7 @@
         </div>
         <div class="w-full">
           <p class="text-label-2 label uppercase">{{ $t('points') }}</p>
-          <h2 class="text-label-1">{{ familyPoints ?? '-' }}</h2>
+          <h2 class="text-label-1">{{ formatPoints(familyPoints) ?? '-' }}</h2>
         </div>
       </div>
     </div>
@@ -32,8 +32,6 @@
       <LogOutButton class="mt-3" />
     </div>
     <div class="align-middle flex">
-      <!--       <button class="ml-3 card-btn" @click="refresh"><img src="/icon/refresh.svg" /></button>
- -->
     </div>
   </section>
 </template>
@@ -43,6 +41,7 @@ import { computed } from 'vue';
 import LanguageSwitcher from './LanguageSwitcher.vue';
 import LogOutButton from './LogOutButton.vue';
 import { useFamilyStatus, useSigninResponse } from '@/hooks/hooks';
+import { formatPoints } from './formatPoints';
 
 const { data } = useSigninResponse()
 
@@ -52,10 +51,7 @@ const teamName = computed(() => data.value?.team);
 const familyName = computed(() => data.value?.familyName);
 const familyPoints = computed(() => familyStatus.value?.myStatus?.familyPoints)
 const teamPoints = computed(() => familyStatus.value?.myStatus?.teamPoints)
-
 </script>
-
-
 <style scoped>
 button {
   background-color: inherit;

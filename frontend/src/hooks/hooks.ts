@@ -39,7 +39,6 @@ export const useSigninResponse = (teamCode?: () => Ref<string>) => {
       return getTeamCode();
     } else return teamCode().value;
   };
-  console.log(getTeamCodeLocal);
   return useQuery({
     queryKey: ['signinResponse', getTeamCodeLocal()],
     queryFn: () =>

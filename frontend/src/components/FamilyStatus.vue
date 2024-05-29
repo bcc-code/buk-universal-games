@@ -4,8 +4,6 @@
         <div v-else-if="error" class="text-center text-red-500">Scream in panic! <br /> An error happened. {{
             error.message }}</div>
         <div v-else>
-            My family points: {{ formatPoints(familyStatus?.myStatus?.familyPoints) }}. My team points: {{
-                formatPoints(familyStatus?.myStatus?.teamPoints) }}
             <div v-for="(family, familyIndex) in familyStatus?.families" :key="family.id" class="mb-8">
                 <div class="bg-white p-6 rounded-lg shadow-md">
                     <div class="flex items-center justify-between mb-4">
@@ -42,25 +40,8 @@
 </template>
 
 <script setup lang="ts">
-import { toRaw, watch } from 'vue';
 import { useFamilyStatus } from '../hooks/hooks';
+import { formatPoints } from './formatPoints';
 
 const { data: familyStatus, isLoading, error } = useFamilyStatus();
-
-watch(familyStatus, (familyStatus) => {
-    console.log(toRaw(familyStatus))
-})
-
-function formatPoints(points: number | undefined): string {
-    if (points === undefined) {
-        return '£ ?';
-    }
-
-    if (points < 1000) {
-        return `£ ${points.toFixed(0)}k`;
-    } else {
-        return `£ ${(points / 1000).toFixed(2)}M`;
-    }
-}
-
 </script>
