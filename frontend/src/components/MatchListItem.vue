@@ -1,9 +1,9 @@
 <template>
-  <section class="rounded-md flex flex-col items-center py-3 px-3 bg-gray-200" :class="[
+  <section class="rounded-md flex flex-col items-center py-3 px-3 " :class="[
     passed ? 'bg-gray-200' : 'bg-white',
     currentActiveMatch
       ? 'bg-yellow-50 border-yellow-100 border-1'
-      : 'bg-white border-ice-200 border-1',
+      : ' border-ice-200 border-1',
     clickFunc ? 'shadow-lg' : '',
   ]" @click="() => {
     clickFunc?.();
@@ -27,15 +27,15 @@
     <hr class="w-full border-b-1 border-dark-blue mt-2 mb-4" />
 
     <div v-if="twoteams" class="text-label-1 flex w-full justify-between items-center">
-      <span class="flex flex-col items-center w-1/3" :class="{ winner: team1 === winner, loser: team2 === winner }">
-        <span class="font-bold">{{ team1 }}</span>
+      <span class="flex flex-col items-center w-1/3">
+        <p class="font-bold">{{ team1 }}</p>
         <p v-if="winner" :class="[winner === team1 ? 'text-green-500' : 'text-red-700']">{{ winner === team1 ? 'Winner'
           : 'Loser' }}</p>
         <p>+ {{ formatPoints(team1result ?? 0) }}</p>
       </span>
       <img class="h-10 w-10 mx-5" :src="`icon/match.png`" />
-      <span class="flex flex-col items-center w-1/3" :class="{ winner: team2 === winner, loser: team1 === winner }">
-        <span class="font-bold">{{ team2 }}</span>
+      <span class="flex flex-col items-center w-1/3">
+        <p class="font-bold">{{ team2 }}</p>
         <p v-if="winner" :class="[winner === team2 ? 'text-green-500' : 'text-red-700']">{{ winner === team2 ? 'Winner'
           : 'Loser' }}</p>
         <p>+ {{ formatPoints(team2result ?? 0) }}</p>
