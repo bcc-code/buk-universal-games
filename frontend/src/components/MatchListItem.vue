@@ -1,63 +1,54 @@
 <template>
   <section class="rounded-md flex flex-col items-center py-3 px-3" :class="[
-    passed ? 'opacity-70' : 'opacity-100',
+    passed ? 'bg-gray-100' : 'bg-white',
     currentActiveMatch
       ? 'bg-yellow-50 border-yellow-100 border-1 shadow-md'
       : 'bg-white border-ice-200 border-1 shadow-md',
   ]" @click="() => {
-    clickFunc?.();
-  }
-    ">
+      clickFunc?.();
+    }">
     <p class="label text-label-2" v-if="currentActiveMatch">{{ 'CURRENT' }}</p>
-    <div class="flex w-full">
-      <div class="flex w-full">
-        <span class="text-xs flex space-x-5">
-          <img class="w-10 h-10" :src="`icon/game-${gameType.replace(/_/g, '')}.svg`" />
-          <p class="text">{{ $t(`games.${gameType}`) }}</p>
-
-          <div v-if="$route.name === 'AdminMatchListGame' && !twoteams" class="flex space-x-3">
-            <p class="text-xs font-bold w-7">Team:</p>
-            <p class="text-xs w-full">{{ team1 }}</p>
-          </div>
-        </span>
+    <div class="flex w-full justify-between items-center">
+      <div class="flex items-center space-x-5">
+        <img class="w-10 h-10" :src="`icon/game-${gameType.replace(/_/g, '')}.svg`" />
+        <p class="text text-center">{{ $t(`games.${gameType}`) }}</p>
       </div>
-
       <div class="flex space-x-3">
-        <p class="text-xs font-bold w-full">Start</p>
-        <p class="text-xs w-full">{{ start }}</p>
+        <p class="text-xs">{{ start }}</p>
+        <p class="text-xs font-bold">Start</p>
+        <div v-if="clickFunc" class="flex items-center space-x-1">
+          <p class="text-xs">Details</p>
+          <ArrowRightIcon class="h-4 w-4" />
+        </div>
       </div>
     </div>
-    <div v-if="twoteams || passed" class="text-label-1 flex flex-col w-full items-center">
-      <hr class="w-full border-b-1 border-dark-blue mt-2 mb-4" />
+    <hr class="w-full border-b-1 border-dark-blue mt-2 mb-4" />
 
-      <div class="flex space-x-5">
-        <span class="flex flex-col justify-center" :class="{
-          'text-xs': true,
-          winner: team1 === winner,
-          loser: team2 === winner,
-        }">
-          <span v-if="twoteams">{{ team1 }}</span>
-          <div v-if="passed && twoteams">
-            <p v-if="winner" :class="[winner === team1 ? 'text-green-500' : 'text-red-700']">
-              {{ winner === team1 ? 'Winner' : 'Loser' }}
-            </p>
-            <p v-if="passed">{{ formatPoints(team1result ?? 0) }}</p>
-          </div>
-        </span>
-        <img v-if="twoteams" class="h-10 w-10" :src="`icon/match.png`" />
-        <span class="flex flex-col justify-center text-xs" :class="{
-          winner: team2 === winner,
-          loser: team1 === winner,
-        }">
-          <span v-if="twoteams">{{ team2 }}</span>
-          <div>
-            <p v-if="winner && passed && twoteams" :class="[winner === team2 ? 'text-green-500' : 'text-red-700']">
-              {{ winner === team2 ? 'Winner' : 'Loser' }}
-            </p>
-            <p v-if="passed">{{ formatPoints(team2result ?? 0) }}</p>
-          </div>
-        </span>
-      </div>
+    <div v-if="twoteams" class="text-label-1 flex w-full justify-between items-center">
+      <span class="flex flex-col items-center w-1/3" :class="{
+        winner: team1 === winner,
+        loser: team2 === winner,
+      }">
+        <span>{{ team1 }}</span>
+        <p v-if="winner" :class="[winner === team1 ? 'text-green-500' : 'text-red-700']">
+          {{ winner === team1 ? 'Winner' : 'Loser' }}
+        </p>
+        <p>{{ formatPoints(team1result ?? 0) }}</p>
+      </span>
+      <img class="h-10 w-10" :src="`icon/match.png`" />
+      <span class="flex flex-col items-center w-1/3" :class="{
+        winner: team2 === winner,
+        loser: team1 === winner,
+      }">
+        <span>{{ team2 }}</span>
+        <p v-if="winner" :class="[winner === team2 ? 'text-green-500' : 'text-red-700']">
+          {{ winner === team2 ? 'Winner' : 'Loser' }}
+        </p>
+        <p>{{ formatPoints(team2result ?? 0) }}</p>
+      </span>
+    </div>
+    <div v-else class="w-full mt-4">
+      <p class="text-center">{{ team1 }}</p>
     </div>
   </section>
 </template>
@@ -77,6 +68,7 @@ const props = defineProps<{
 
 import { computed } from 'vue';
 import { formatPoints } from './formatPoints';
+import { ArrowRightIcon } from '@heroicons/vue/24/solid';
 
 const passed = computed(() => props.team1result !== null);
 const twoteams = computed(() => props.team2 !== props.team1);
@@ -94,44 +86,93 @@ const winner = computed(() => {
 </script>
 
 <style scoped>
-.card-btn {
-  border-left: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 0;
-  padding: 0.15em 0.15em 0.15em 0.65em;
+.winner {
+  font-weight: bold;
+  color: var(--green);
 }
 
-.card-teams {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  position: relative;
-  padding-left: 1.5em;
+.loser {
+  font-weight: bold;
+  color: var(--red);
 }
 
-.card-teams::after {
-  content: ' ';
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  background-color: black;
-  width: 1em;
-  height: 1em;
-  border-radius: 100%;
+.text-xs {
+  font-size: 0.75rem;
 }
 
-.card-teams.winner::after {
-  background-color: var(--green);
+.text-label-1 {
+  font-size: 1rem;
 }
 
-.card-teams.loser::after {
-  background-color: var(--red);
+.text-label-2 {
+  font-size: 1.25rem;
 }
 
-.game-title {
+.bg-yellow-50 {
+  background-color: #fef3c7;
+}
+
+.border-yellow-100 {
+  border-color: #fde68a;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.border-ice-200 {
+  border-color: #e0f2fe;
+}
+
+.shadow-md {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.rounded-md {
+  border-radius: 0.375rem;
+}
+
+.flex {
   display: flex;
-  justify-content: center;
+}
+
+.items-center {
   align-items: center;
-  flex-direction: column;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.space-x-3> :not([hidden])~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0.75rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-x-5> :not([hidden])~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1.25rem * var(--tw-space-x-reverse));
+  margin-left: calc(1.25rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.bg-gray-100 {
+  background-color: #e5e5e5;
+}
+
+.text-gray-500 {
+  color: #6b7280;
 }
 </style>
