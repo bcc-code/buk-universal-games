@@ -4,6 +4,8 @@
         <div v-else-if="error" class="text-center text-red-500">Scream in panic! <br /> An error happened. {{
             error.message }}</div>
         <div v-else>
+            My family points: {{ formatPoints(familyStatus?.myStatus?.familyPoints) }}. My team points: {{
+                formatPoints(familyStatus?.myStatus?.teamPoints) }}
             <div v-for="(family, familyIndex) in familyStatus?.families" :key="family.id" class="mb-8">
                 <div class="bg-white p-6 rounded-lg shadow-md">
                     <div class="flex items-center justify-between mb-4">

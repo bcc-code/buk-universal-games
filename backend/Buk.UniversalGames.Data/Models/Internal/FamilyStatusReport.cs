@@ -1,8 +1,15 @@
-﻿namespace  Buk.UniversalGames.Data.Models.Internal
+﻿namespace Buk.UniversalGames.Data.Models.Internal
 {
     public class FamilyStatusReport
     {
-        public List<FamilyStatus> Families { get; set; } = new();
+        public List<FamilyStatus> Families { get; set; } = new List<FamilyStatus>();
+        public MyStatus MyStatus { get; set; } = new MyStatus();
+    }
+
+    public class MyStatus
+    {
+        public int TeamPoints { get; set; }
+        public int FamilyPoints { get; set; }
     }
 
     public class FamilyStatus
@@ -20,3 +27,4 @@
         public int Points { get; set; }
     }
 }
+

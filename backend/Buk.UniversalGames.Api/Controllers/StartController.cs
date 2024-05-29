@@ -40,7 +40,9 @@ public class StartController : ControllerBase
                 6 => "K-League",
                 _ => null
             },
-            Enumerable.Range(0, 8).Select(x => GetCoins())
+            Enumerable.Range(0, 8).Select(x => GetCoins()),
+            team.FamilyId.Value,
+            team.Family.Name
             );
     }
 

@@ -85,6 +85,8 @@ const SignInSuccessResponse = z
     leagueId: z.number().int().nullable(),
     league: z.string().nullable(),
     coins: z.array(z.string()).nullable(),
+    familyId: z.number().int(),
+    familyName: z.string().nullable(),
   })
   .partial();
 const TeamFamilyStatus = z
@@ -102,8 +104,11 @@ const FamilyStatus = z
     teams: z.array(TeamFamilyStatus).nullable(),
   })
   .partial();
+const MyStatus = z
+  .object({ teamPoints: z.number().int(), familyPoints: z.number().int() })
+  .partial();
 const FamilyStatusReport = z
-  .object({ families: z.array(FamilyStatus).nullable() })
+  .object({ families: z.array(FamilyStatus).nullable(), myStatus: MyStatus })
   .partial();
 
 export const schemas = {
@@ -119,6 +124,7 @@ export const schemas = {
   SignInSuccessResponse,
   TeamFamilyStatus,
   FamilyStatus,
+  MyStatus,
   FamilyStatusReport,
 };
 

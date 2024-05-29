@@ -92,10 +92,25 @@ public class StatusController : ControllerBase
             }
         }
 
-        return await _validatingCacheService.WriteThrough("FamilyStatusCacheKey", async () =>
+        FamilyStatusReport report = await _validatingCacheService.WriteThrough("FamilyStatusCacheKey", async () =>
         {
             return await _familyRepository.GetFamilyStatus();
         });
-    }
 
+        var team = HttpContext.Items["ValidatedTeam"] as Team;
+        if (team != null)
+        {
+            var currentTeamStatus = report.Families
+                .SelectMany(f => f.Teams)
+                .FirstOrDefault(t => t.TeamId == team.TeamId);
+
+            var currentFamilyStatus = report.Families
+                .FirstOrDefault(f => f.Id == team.FamilyId);
+
+            report.MyStatus.TeamPoints = currentTeamStatus?.Points ?? 0;
+            report.MyStatus.FamilyPoints = currentFamilyStatus?.Points ?? 0;
+        }
+
+        return report;
+    }
 }
