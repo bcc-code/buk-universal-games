@@ -46,7 +46,6 @@
             Confirm
           </button>
         </div>
-        <span class="tag" v-if="match?.team1Id === match?.winnerId">Winner</span>
       </div>
       <div v-if="match?.team1Id !== match?.team2Id" :class="{
         teamresult: true,
@@ -69,7 +68,6 @@
             Confirm
           </button>
         </div>
-        <span class="tag" v-if="match?.team2Id === match?.winnerId">Winner</span>
       </div>
     </div>
   </AdminPageLayout>
