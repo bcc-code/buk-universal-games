@@ -16,7 +16,7 @@
         </div>
       </div>
       <div class="filter">
-        <p>Game type:</p>
+        <p>Post type:</p>
         <div class="single-filter flex">
           <AdminLeagueSelector
             name="All"
