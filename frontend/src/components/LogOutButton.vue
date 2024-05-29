@@ -12,8 +12,8 @@ export default {
   components: { ArrowRightStartOnRectangleIcon },
   methods: {
     logout() {
-      this.$store.dispatch('logout'); // Dispatch the logout action
-      this.$router.push('/'); // Redirect to login page after logout
+      window.localStorage.clear()
+      this.$router.push('/');
     },
   },
 };

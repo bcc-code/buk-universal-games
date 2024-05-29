@@ -1,17 +1,18 @@
 <template>
   <AdminPageLayout title="League status">
+    <div class="flex justify-end">
+      <div class="max-w-10 shadow-md ml-4">
+        <LogOutButton></LogOutButton>
+      </div>
+    </div>
     <FamilyStatus></FamilyStatus>
   </AdminPageLayout>
 </template>
 
-<script>
+<script setup lang="ts">
 import AdminPageLayout from '@/components/AdminPageLayout.vue';
 import FamilyStatus from '@/components/FamilyStatus.vue';
-
-export default {
-  name: 'AdminLeagueStatus',
-  components: { AdminPageLayout, FamilyStatus },
-};
+import LogOutButton from '@/components/LogOutButton.vue';
 </script>
 
 <style scoped>

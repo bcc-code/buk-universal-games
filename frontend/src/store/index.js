@@ -44,12 +44,6 @@ export default function (...plugins) {
       setLoginData(state, data) {
         state.loginData = data;
       },
-      clearUserData(state) {
-        state.isAuthenticated = false;
-        state.loginData = {};
-        state.coins = [];
-        state.gotCoins = false;
-      },
       setLoginMessage(state, error) {
         state.loginMessage = error;
       },
@@ -210,10 +204,6 @@ export default function (...plugins) {
           ctx.commit('initializeCoins', loginData.coins);
         }
         return loginData;
-      },
-      async logout(ctx) {
-        ctx.commit('clearUserData');
-        console.log('clearing');
       },
       async getTeamStatus(ctx, override) {
         const cacheAge = getCachedDataAge('teamStatus');
