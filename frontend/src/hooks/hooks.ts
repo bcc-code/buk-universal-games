@@ -30,3 +30,7 @@ export const useFamilyStatus = () => {
     staleTime: 1000 * cacheRequestForSeconds,
   });
 };
+
+export const useSigninResponse = ()=>{
+  
+}

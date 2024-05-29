@@ -1,4 +1,4 @@
-import {rootUrl} from "../hooks/useFamilyStatus";
+import {rootUrl} from "../hooks/hooks";
 
 const retryRequestAmount = 5; // Retry the request x times
 const secondsBetweenRetry = 2; // Wait x seconds between each request

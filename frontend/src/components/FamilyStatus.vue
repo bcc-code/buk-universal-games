@@ -43,7 +43,7 @@
 
 <script setup lang="ts">
 import { toRaw, watch } from 'vue';
-import { useFamilyStatus } from '../hooks/useFamilyStatus';
+import { useFamilyStatus } from '../hooks/hooks';
 
 const { data: familyStatus, isLoading, error } = useFamilyStatus();
 
