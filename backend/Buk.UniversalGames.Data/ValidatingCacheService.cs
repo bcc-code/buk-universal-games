@@ -14,8 +14,9 @@ namespace Buk.UniversalGames.Data
         public async Task<T> WriteThrough<T>(string key, Func<Task<T>> fetchFromDatabase)
         {
             // shit disable in prod
-            var cachedData = await _cacheContext.Get<T>(key);
             var databaseData = await fetchFromDatabase();
+            return databaseData;
+            var cachedData = await _cacheContext.Get<T>(key);
 
             if (cachedData == null)
             {
