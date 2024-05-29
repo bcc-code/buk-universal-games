@@ -32,11 +32,13 @@ namespace Buk.UniversalGames.Data.Repositories
                         TeamId = team.TeamId,
                         Team = team.Name,
                         Points = team.Points.Sum(p => p.Points)
-                    }).ToList(),
+                    })
+                    .OrderByDescending(team => team.Points)
+                    .ToList(),
                     Points = family.Teams.SelectMany(team => team.Points).Sum(p => p.Points)
                 })
+                .OrderByDescending(family => family.Points)
                 .ToListAsync();
-
 
             return new FamilyStatusReport
             {
