@@ -46,10 +46,12 @@ namespace Buk.UniversalGames.Data.Repositories
 
         public async Task<List<MatchListItem>> GetMatches(Team team)
         {
-            if (team.LeagueId is null) throw new ArgumentException("Team doesn't have a league assigned", nameof(team));
-
             return await (
                 from match in _db.Matches
+                join pointsreg1 in _db.Points on new { MatchId = (int?)match.MatchId, TeamId = match.Team1Id } equals new { pointsreg1.MatchId, pointsreg1.TeamId } into joinedPoints1
+                from pointsreg1 in joinedPoints1.DefaultIfEmpty()
+                join pointsreg2 in _db.Points on new { MatchId = (int?)match.MatchId, TeamId = match.Team2Id } equals new { pointsreg2.MatchId, pointsreg2.TeamId } into joinedPoints2
+                from pointsreg2 in joinedPoints2.DefaultIfEmpty()
                 where match.Team1Id == team.TeamId || match.Team2Id == team.TeamId
                 orderby match.Start
                 select new MatchListItem
@@ -62,8 +64,9 @@ namespace Buk.UniversalGames.Data.Repositories
                     Team2Id = match.Team2Id,
                     Team2 = match.Team2.Name,
                     WinnerId = match.WinnerId.GetValueOrDefault(),
-                    Winner = match.WinnerId.HasValue ? (match.WinnerId.Value == match.Team1Id ? match.Team1.Name : match.Team2.Name) : "",
                     Start = match.Start.ToLocalTime().ToString("HH:mm"),
+                    Team1Result = pointsreg1.Points,
+                    Team2Result = pointsreg2.Points,
                 }).ToListAsync();
         }
         public async Task<List<MatchListItem>> GetMatches(int leagueId, int? gameId = null)
@@ -86,7 +89,6 @@ namespace Buk.UniversalGames.Data.Repositories
                     Team2Id = match.Team2Id,
                     Team2 = match.Team2.Name,
                     WinnerId = match.WinnerId.GetValueOrDefault(),
-                    Winner = match.WinnerId.HasValue ? (match.WinnerId!.Value == match.Team1Id ? match.Team1.Name : match.Team2.Name) : "",
                     Team1Result = pointsreg1.Points,
                     Team2Result = pointsreg2.Points,
                     Start = match.Start.ToLocalTime().ToString("HH:mm"),
