@@ -4,7 +4,7 @@
       <img src="/image/logo_icon.svg" alt="" class="logo" />
       <input type="text" class="text-center text-label-1 p-3 w-full shadow-md uppercase tracking-wide bg-white"
         :placeholder="$t('login.teamcode')" v-model="teamCode" />
-      <button class="bg-peach-50 text-lg shadow-md border-2-peach-200 text-peach-200 py-3 px-2"
+      <button class="bg-peach-50 text-lg shadow-lg border-2-peach-200 text-peach-200 py-3 px-2"
         :class="[teamCode.length < 3 ? 'opacity-0' : 'opacity-100']" type="submit">
         {{ $t('login.login_button') }}
       </button>

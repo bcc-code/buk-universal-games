@@ -1,21 +1,23 @@
 <template>
-  <section class="rounded-md flex flex-col items-center py-3 px-3" :class="[
-    passed ? 'bg-gray-100' : 'bg-white',
+  <section class="rounded-md flex flex-col items-center py-3 px-3 bg-gray-200" :class="[
+    passed ? 'bg-gray-200' : 'bg-white',
     currentActiveMatch
-      ? 'bg-yellow-50 border-yellow-100 border-1 shadow-md'
-      : 'bg-white border-ice-200 border-1 shadow-md',
+      ? 'bg-yellow-50 border-yellow-100 border-1'
+      : 'bg-white border-ice-200 border-1',
+    clickFunc ? 'shadow-lg' : '',
   ]" @click="() => {
-      clickFunc?.();
-    }">
-    <p class="label text-label-2" v-if="currentActiveMatch">{{ 'CURRENT' }}</p>
-    <div class="flex w-full justify-between items-center">
+    clickFunc?.();
+  }">
+    <div class="flex w-full justify-between items-center mb-1">
       <div class="flex items-center space-x-5">
         <img class="w-10 h-10" :src="`icon/game-${gameType.replace(/_/g, '')}.svg`" />
-        <p class="text text-center">{{ $t(`games.${gameType}`) }}</p>
+        <p class="text font-bold">{{ $t(`games.${gameType}`) }}</p>
       </div>
-      <div class="flex space-x-3">
-        <p class="text-xs">{{ start }}</p>
-        <p class="text-xs font-bold">Start</p>
+      <div class="flex items-center space-x-3 flex-col">
+        <p class="text-right">
+          <span class="text-xs font-bold">Start: </span>
+          <span class="text-xs">{{ start }}</span>
+        </p>
         <div v-if="clickFunc" class="flex items-center space-x-1">
           <p class="text-xs">Details</p>
           <ArrowRightIcon class="h-4 w-4" />
@@ -25,30 +27,23 @@
     <hr class="w-full border-b-1 border-dark-blue mt-2 mb-4" />
 
     <div v-if="twoteams" class="text-label-1 flex w-full justify-between items-center">
-      <span class="flex flex-col items-center w-1/3" :class="{
-        winner: team1 === winner,
-        loser: team2 === winner,
-      }">
-        <span>{{ team1 }}</span>
-        <p v-if="winner" :class="[winner === team1 ? 'text-green-500' : 'text-red-700']">
-          {{ winner === team1 ? 'Winner' : 'Loser' }}
-        </p>
-        <p>{{ formatPoints(team1result ?? 0) }}</p>
+      <span class="flex flex-col items-center w-1/3" :class="{ winner: team1 === winner, loser: team2 === winner }">
+        <span class="font-bold">{{ team1 }}</span>
+        <p v-if="winner" :class="[winner === team1 ? 'text-green-500' : 'text-red-700']">{{ winner === team1 ? 'Winner'
+          : 'Loser' }}</p>
+        <p>+ {{ formatPoints(team1result ?? 0) }}</p>
       </span>
-      <img class="h-10 w-10" :src="`icon/match.png`" />
-      <span class="flex flex-col items-center w-1/3" :class="{
-        winner: team2 === winner,
-        loser: team1 === winner,
-      }">
-        <span>{{ team2 }}</span>
-        <p v-if="winner" :class="[winner === team2 ? 'text-green-500' : 'text-red-700']">
-          {{ winner === team2 ? 'Winner' : 'Loser' }}
-        </p>
-        <p>{{ formatPoints(team2result ?? 0) }}</p>
+      <img class="h-10 w-10 mx-5" :src="`icon/match.png`" />
+      <span class="flex flex-col items-center w-1/3" :class="{ winner: team2 === winner, loser: team1 === winner }">
+        <span class="font-bold">{{ team2 }}</span>
+        <p v-if="winner" :class="[winner === team2 ? 'text-green-500' : 'text-red-700']">{{ winner === team2 ? 'Winner'
+          : 'Loser' }}</p>
+        <p>+ {{ formatPoints(team2result ?? 0) }}</p>
       </span>
     </div>
-    <div v-else class="w-full mt-4">
-      <p class="text-center">{{ team1 }}</p>
+    <div v-else class="w-full mt-4 text-center">
+      <p class="font-bold">{{ team1 }}</p>
+      <p v-if="passed">+ {{ formatPoints(team1result ?? 0) }}</p>
     </div>
   </section>
 </template>
@@ -87,12 +82,10 @@ const winner = computed(() => {
 
 <style scoped>
 .winner {
-  font-weight: bold;
   color: var(--green);
 }
 
 .loser {
-  font-weight: bold;
   color: var(--red);
 }
 
@@ -106,6 +99,18 @@ const winner = computed(() => {
 
 .text-label-2 {
   font-size: 1.25rem;
+}
+
+.border-b-1 {
+  border-bottom-width: 1px;
+}
+
+.border-dark-blue {
+  border-color: #b9c9da;
+}
+
+.bg-gray-200 {
+  background-color: #e5e5e5;
 }
 
 .bg-yellow-50 {
@@ -122,10 +127,6 @@ const winner = computed(() => {
 
 .border-ice-200 {
   border-color: #e0f2fe;
-}
-
-.shadow-md {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .rounded-md {
@@ -166,13 +167,5 @@ const winner = computed(() => {
 
 .mt-4 {
   margin-top: 1rem;
-}
-
-.bg-gray-100 {
-  background-color: #e5e5e5;
-}
-
-.text-gray-500 {
-  color: #6b7280;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <AdminPageLayout title="League status">
     <div class="flex justify-end">
-      <div class="max-w-10 shadow-md ml-4">
+      <div class="max-w-10 shadow-lg ml-4">
         <LogOutButton></LogOutButton>
       </div>
     </div>
