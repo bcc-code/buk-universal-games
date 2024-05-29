@@ -64,6 +64,9 @@
   "admin": {
     "select_league": {
       "intro": "Choose the zone you are in"
+    },
+    "select_game": {
+      "intro": "Choose the post you are a referee for"
     }
   },
   "yourmatch": "Your match in this game",

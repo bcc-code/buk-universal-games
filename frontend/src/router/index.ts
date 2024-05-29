@@ -9,6 +9,7 @@ import Map from '../pages/MapPage.vue'
 import AdminMatch from '../pages/AdminMatch.vue'
 import AdminLeagueStatus from '../pages/AdminLeagueStatus.vue'
 import AdminSelectLeague from '../pages/AdminSelectLeague.vue'
+import AdminSelectGame from '../pages/AdminSelectGame.vue'
 import AdminMatchListGame from '../pages/AdminMatchListGame.vue'
 import AdminMap from '../pages/AdminMap.vue'
 
@@ -34,6 +35,12 @@ const routes = [
     path: '/admin/leagues',
     name: 'AdminSelectLeague',
     component: AdminSelectLeague,
+    props: true
+  },
+  {
+    path: '/admin/games',
+    name: 'AdminSelectGame',
+    component: AdminSelectGame,
     props: true
   },
   {

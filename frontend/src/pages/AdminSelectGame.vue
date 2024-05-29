@@ -4,12 +4,12 @@
       <img src="/image/logo_icon.svg" alt="" class="logo" />
       <div class="w-full justify-center flex">
         <p>
-          {{ $t('admin.select_league.intro') }}
+          {{ $t('admin.select_game.intro') }}
         </p>
       </div>
       <div class="flex space-x-5">
-        <AdminLeagueSelector v-for="league in adminLeagues" class="bg-vanilla" :key="league.id" :name="league.name"
-          @click="selectLeague(league.id)" />
+        <AdminLeagueSelector v-for="game in adminGames" class="bg-vanilla" :key="game.id" :name="game.name"
+          @click="selectGame(game.id)" />
       </div>
 
       <p v-if="loginMessage" class="login-msg">{{ loginMessage }}</p>
@@ -21,25 +21,22 @@
 import AdminLeagueSelector from '@/components/AdminLeagueSelector.vue';
 
 export default {
-  name: 'AdminSelectLeague',
+  name: 'AdminSelectGame',
   components: { AdminLeagueSelector },
-  created() {
-    if (!this.$store.state.adminLeagues.length) {
-      this.getAdminLeagues();
-    }
-  },
   methods: {
-    getAdminLeagues() {
-      this.$store.dispatch('getAdminLeagues');
+    getAdminGames() {
+      this.$store.dispatch('getAdminGames');
     },
-    async selectLeague(id) {
-      await this.$store.dispatch('setAdminLeagueSelected', id);
-      this.$router.push({ name: 'AdminSelectGame' });
+    async selectGame(id) {
+      console.log(id)
+      await this.$store.commit('setAdminFilterGameSelected', id);
+      
+      this.$router.push({ name: 'AdminMatchListGame' });
     },
   },
   computed: {
-    adminLeagues() {
-      return this?.$store.state.adminLeagues;
+    adminGames() {
+      return this?.$store.state.games;
     },
   },
 };
@@ -65,7 +62,7 @@ export default {
   border-radius: 80px;
 }
 
-.league-card {
+.game-card {
   margin: 0.25em 0;
 }
 </style>

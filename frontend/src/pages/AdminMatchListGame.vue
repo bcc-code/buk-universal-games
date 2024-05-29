@@ -6,10 +6,9 @@
         <div class="single-filter">
           <AdminLeagueSelector
             v-for="league in adminLeagues"
-            class="bg-vanilla"
-            :class="{
-              'bg-dark-brown ': league.id === $store.state.adminLeagueSelected,
-            }"
+            :class="[
+               league.id === $store.state.adminLeagueSelected ? 'bg-dark-brown text-white' : 'bg-vanilla'
+            ]"
             :key="league.id"
             :name="league.name"
             @click="selectLeague(league.id)"
@@ -21,19 +20,19 @@
         <div class="single-filter flex">
           <AdminLeagueSelector
             name="All"
-            class="bg-ice-blue min-w-min whitespace-nowrap"
-            :class="{
-              'bg-dark-blue': $store.state.adminFilterGameSelected === null,
-            }"
+            class="min-w-min whitespace-nowrap"
+            :class="[
+              $store.state.adminFilterGameSelected === null?'bg-dark-blue text-white': 'bg-ice-blue',
+            ]"
             @click="$store.commit('resetAdminFilterGameSelected')"
           />
           <AdminLeagueSelector
             v-for="game in games"
             :key="game.id"
-            class="bg-ice-blue min-w-min whitespace-nowrap"
-            :class="{
-              'bg-dark-blue ': game.id === $store.state.adminFilterGameSelected,
-            }"
+            class="min-w-min whitespace-nowrap"
+            :class="[
+              $store.state.adminFilterGameSelected === game.id?'bg-dark-blue text-white': 'bg-ice-blue',
+            ]"
             :name="game.name"
             @click="$store.commit('setAdminFilterGameSelected', game.id)"
           />
@@ -41,8 +40,9 @@
       </div>
     </section>
     <section class="space-y-5 mt-4">
+      <div class = "w-full text-center mt-24" v-if="Object.keys(adminMatchGroups).length === 0">Ingen kamper for dette filteret</div>
       <div
-        class=""
+        v-else
         v-for="matchGroupKey in Object.keys(adminMatchGroups)"
         :key="matchGroupKey"
       >
