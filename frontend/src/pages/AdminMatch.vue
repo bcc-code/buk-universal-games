@@ -24,8 +24,6 @@
     <div class="teams">
       <div :class="{
         teamresult: true,
-        winner: match?.team1Id === match?.winnerId,
-        loser: match?.team2Id === match?.winnerId,
       }">
         <p>{{ match?.team1 }}</p>
         <p v-if="match?.team1Result">
@@ -41,8 +39,6 @@
       </div>
       <div v-if="match?.team1Id !== match?.team2Id" :class="{
         teamresult: true,
-        winner: match?.team2Id === match?.winnerId,
-        loser: match?.team1Id === match?.winnerId,
       }">
         <p>{{ match?.team2 }}</p>
         <p v-if="match?.team2Result">
@@ -62,7 +58,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue';
+import { ref, computed } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useAdminMatches, useGames, useConfirmTeamResult } from '@/hooks/hooks';
 import AdminPageLayout from '@/components/AdminPageLayout.vue';
@@ -73,7 +69,7 @@ import MatchListItem from '@/components/MatchListItem.vue';
 const route = useRoute();
 const router = useRouter();
 const matchId = Number(route.params.matchId as string);
-const leagueId = useStore().state.adminLeagueSelected; // Assuming you have the league ID
+const leagueId = useStore().state.adminLeagueSelected;
 
 const { data: matches } = useAdminMatches(leagueId);
 const { data: games } = useGames();
@@ -87,16 +83,9 @@ const popupErrorMessage = ref<string | null>(null);
 const match = computed(() => matches.value?.find((m: any) => m.matchId == matchId));
 const game = computed(() => games.value?.find((g: any) => g.id == match.value?.gameId));
 const team1Result = ref<number | null>(match.value?.team1Result ?? null);
-const team2Result = ref<number | null>(match.value?.team1Result ?? null);
+const team2Result = ref<number | null>(match.value?.team2Result ?? null);
 
 const confirmDisabled = computed(() => isPending.value);
-
-watch(match, (newMatch) => {
-  if (newMatch) {
-    team1Result.value = newMatch.team1Result ?? null;
-    team2Result.value = newMatch.team2Result ?? null;
-  }
-});
 
 const confirmTeamResult = async (teamId: number | undefined, result: number | null) => {
   if (!match.value || !teamId) {
@@ -107,10 +96,8 @@ const confirmTeamResult = async (teamId: number | undefined, result: number | nu
     confirmResult({ matchId, teamId, result }, {
       onSuccess: () => {
         if (teamId === match.value?.team1Id) {
-          team1Result.value = result;
           isChangingScore1.value = false;
         } else {
-          team2Result.value = result;
           isChangingScore2.value = false;
         }
       },

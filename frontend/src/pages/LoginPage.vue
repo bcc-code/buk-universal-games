@@ -45,9 +45,9 @@ const loginMessage = computed(() => {
 
 const tryLogin = async () => {
   if (!teamCode.value) return;
-  await refetch();
+  const response = await refetch();
   console.log(error, signInResponse)
-  if (signInResponse.value && !error.value) {
+  if (signInResponse.value && !error.value && !response.isError) {
     await store.dispatch('getGames');
     if (signInResponse.value.access?.toLowerCase() === 'admin') {
       await store.dispatch('getAdminLeagues');
