@@ -1,15 +1,16 @@
 <template>
-  <section class="px-5 flex justify-center items-center h-screen">
-    <form class="flex flex-col py-10 space-y-10 justify-center align-middle" @submit="tryLogin">
+  <section class="px-5 flex justify-center items-center h-screen w-full">
+    <form class="flex flex-col py-10 space-y-10 justify-center align-middlew-full" @submit="tryLogin">
       <img src="/image/logo_icon.svg" alt="" class="logo" />
-      <div class="w-full justify-center flex">
-        <p>
+      <div class="w-full justify-center flex text-lg">
+        <p class="text-xl">
           {{ $t('admin.select_game.intro') }}
         </p>
       </div>
       <div class="flex space-x-5">
-        <AdminLeagueSelector v-for="game in adminGames" class="bg-vanilla" :key="game.id" :name="game.name"
-          @click="selectGame(game.id)" />
+        <AdminLeagueSelector v-for="game in adminGames" class="min-w-min whitespace-nowrap" :class="[
+          $store.state.adminFilterGameSelected === game.id ? 'bg-dark-blue text-white' : 'bg-ice-blue',
+        ]" :key="game.id" :name="game.name" @click="selectGame(game.id)" />
       </div>
 
       <p v-if="loginMessage" class="login-msg">{{ loginMessage }}</p>
@@ -30,7 +31,7 @@ export default {
     async selectGame(id) {
       console.log(id)
       await this.$store.commit('setAdminFilterGameSelected', id);
-      
+
       this.$router.push({ name: 'AdminMatchListGame' });
     },
   },

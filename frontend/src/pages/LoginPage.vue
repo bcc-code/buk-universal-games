@@ -1,6 +1,6 @@
 <template>
-  <section class="px-5 flex items-start pt-20 h-screen">
-    <form class="flex flex-col py-10 space-y-10 justify-center align-middle" @submit.prevent="tryLogin">
+  <section class="px-5 flex justify-center items-center h-screen w-full">
+    <form class="flex flex-col py-10 space-y-10 justify-center align-middle w-full" @submit.prevent="tryLogin">
       <img src="/image/logo_icon.svg" alt="" class="logo" />
       <input type="text" class="text-center text-label-1 p-3 w-full shadow-md uppercase tracking-wide bg-white"
         :placeholder="$t('login.teamcode')" v-model="teamCode" />
@@ -69,3 +69,14 @@ onMounted(() => {
   }
 });
 </script>
+
+<style scoped>
+.logo {
+  width: 80%;
+  max-width: 400px;
+  margin: 0 auto 2em auto;
+  display: block;
+  border: 10px solid white;
+  border-radius: 80px;
+}
+</style>

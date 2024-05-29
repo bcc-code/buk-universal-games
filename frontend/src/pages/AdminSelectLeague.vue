@@ -1,11 +1,12 @@
 <template>
-  <section class="px-5 flex justify-center items-center h-screen">
-    <form class="flex flex-col py-10 space-y-10 justify-center align-middle" @submit="tryLogin">
+  <section class="px-5 flex justify-center items-center h-screen w-full">
+    <form class="flex flex-col py-10 space-y-10 justify-center align-middle w-full" @submit="tryLogin">
       <img src="/image/logo_icon.svg" alt="" class="logo" />
       <div class="w-full justify-center flex">
-        <p>
+        <p class="text-xl">
           {{ $t('admin.select_league.intro') }}
         </p>
+        
       </div>
       <div class="flex space-x-5">
         <AdminLeagueSelector v-for="league in adminLeagues" class="bg-vanilla" :key="league.id" :name="league.name"

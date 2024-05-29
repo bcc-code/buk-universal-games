@@ -50,22 +50,22 @@
     />
     <link rel="manifest" href="ubg.webmanifest" />
     <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', async () => {
-          const registration = await navigator.serviceWorker.register('sw.js');
-          try {
-            await registration.update();
-            console.log(
-              'ServiceWorker registration successful with scope: ',
-              registration.scope,
-            );
-          } catch {
-            console.warn(
-              'Failed to update serviceworker. Running the cached version.',
-            );
-          }
-        });
-      }
+      // if ('serviceWorker' in navigator) {
+      //   window.addEventListener('load', async () => {
+      //     const registration = await navigator.serviceWorker.register('sw.js');
+      //     try {
+      //       await registration.update();
+      //       console.log(
+      //         'ServiceWorker registration successful with scope: ',
+      //         registration.scope,
+      //       );
+      //     } catch {
+      //       console.warn(
+      //         'Failed to update serviceworker. Running the cached version.',
+      //       );
+      //     }
+      //   });
+      // }
     </script>
   </head>
   <body>

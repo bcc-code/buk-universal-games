@@ -40,7 +40,7 @@
       </div>
     </section>
     <section class="space-y-5 mt-4">
-      <div class = "w-full text-center mt-24" v-if="Object.keys(adminMatchGroups).length === 0">Ingen kamper for dette filteret</div>
+      <div class = "w-full text-center mt-24" v-if="Object.keys(adminMatchGroups).length === 0">No matches for this filter</div>
       <div
         v-else
         v-for="matchGroupKey in Object.keys(adminMatchGroups)"
