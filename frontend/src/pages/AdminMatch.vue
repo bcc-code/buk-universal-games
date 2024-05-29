@@ -7,8 +7,8 @@
         </div>
       </nav>
       <h1 class="text-white font-bold py-2 px-2 rounded-md flex space-x-3">
-        <img class="h-10 w-10" :src="`/icon/game-${game.gameType.replace(/_/g, '')}.svg`" />
-        <span class="text-label-1">{{ $t('games.' + game.gameType) }}</span>
+        <img class="h-10 w-10" :src="`/icon/game-${game?.gameType.replace(/_/g, '')}.svg`" />
+        <span class="text-label-1">{{ $t('games.' + game?.gameType) }}</span>
       </h1>
     </div>
     <section class="error-popup" v-if="showErrorPopup">
@@ -73,107 +73,86 @@
   </AdminPageLayout>
 </template>
 
-<script>
+<script setup lang="ts">
+import { ref, computed, onMounted, defineProps } from 'vue';
+import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
 import AdminPageLayout from '@/components/AdminPageLayout.vue';
-import TableSurfingInput from '@/components/TableSurfingInput.vue';
-import TimeInput from '@/components/TimeInput.vue';
-import MonkeyBarsInput from '@/components/MonkeyBarsInput.vue';
 import { ArrowLeftIcon } from '@heroicons/vue/24/solid';
-export default {
-  name: 'AdminMatch',
-  props: {
-    matchId: String,
-  },
-  components: {
-    AdminPageLayout,
-    TableSurfingInput,
-    TimeInput,
-    MonkeyBarsInput,
-    ArrowLeftIcon,
-  },
-  data() {
-    return {
-      loginError: 'Game Info',
-      team1Result: null,
-      team2Result: null,
-      canEnterResults: false,
-      loading: true,
-      isChangingScore1: false,
-      isChangingScore2: false,
-      selectedTeam: null,
-      showErrorPopup: false,
-      popupErrorMessage: null,
-      match: null,
-      game: null,
-      units: {
-        nervespiral: 'points',
-        minefield: 'points',
-        monkeybars: 'points',
-        tablesurfing: 'points',
-        tickettwist: 'points',
-      },
-    };
-  },
-  created() {
-    if (!this.$store.state.games.length) {
-      this.$store.dispatch('getGames');
-    }
-    if (!this?.$store?.state?.adminMatches?.length) {
-      this.$store.dispatch('getAdminMatches');
-    }
-    if (this.matchId) {
-      this.loadMatch();
-    }
-  },
-  mounted() {
-    if (!this.matchId) {
-      this.$router.back();
-    }
-  },
-  methods: {
-    loadMatch() {
-      this.match = this.matches?.find((match) => match.matchId == this.matchId);
-      this.game = this.games?.find((game) => game.id == this.match?.gameId);
-    },
-    async confirmTeamResult(teamId, result) {
-      if (typeof result === 'number' && Number.isInteger(result) && result >= 1 && result <= 20) {
-        const payload = { matchId: this.match.matchId, teamId, result };
-        var response = await this.$store.dispatch('confirmTeamResult', payload);
-        console.log(response, response === 'failed');
-        if (response === 'failed') {
-          this.popupErrorMessage =
-            'Submitting failed, please check connection and try again';
-          this.showErrorPopup = true;
-          setTimeout(() => {
-            this.showErrorPopup = false;
-            this.popupErrorMessage = null;
-          }, 5000);
-          return;
-        }
-        this.$forceUpdate();
-        this.$store.dispatch('getAdminLeagueStatus');
-        if (teamId === this.match.team1Id) {
-          this.match.team1Result = this.team1Result;
-          this.isChangingScore1 = false;
-        } else {
-          this.match.team2Result = this.team2Result;
-          this.isChangingScore2 = false;
-        }
-        this.loadMatch();
-      } else {
-        alert('Please enter a whole number between 1 and 20');
-      }
-    },
-  },
-  computed: {
-    matches() {
-      return this.$store.state.adminMatches;
-    },
-    games() {
-      return this.$store.state.games;
-    },
-  },
+
+const props = defineProps<{
+  matchId: string;
+}>();
+
+const router = useRouter();
+const store = useStore();
+
+const team1Result = ref<number | null>(null);
+const team2Result = ref<number | null>(null);
+const isChangingScore1 = ref(false);
+const isChangingScore2 = ref(false);
+const selectedTeam = ref<string | null>(null);
+const showErrorPopup = ref(false);
+const popupErrorMessage = ref<string | null>(null);
+const match = ref<any>(null);
+const game = ref<any>(null);
+
+
+const matches = computed(() => store.state.adminMatches);
+const games = computed(() => store.state.games);
+
+const loadMatch = () => {
+  match.value = matches.value?.find((m: any) => m.matchId == props.matchId);
+  game.value = games.value?.find((g: any) => g.id == match.value?.gameId);
 };
+
+const confirmTeamResult = async (teamId: string, result: number | null) => {
+  if (
+    typeof result === 'number' &&
+    Number.isInteger(result) &&
+    result >= 1 &&
+    result <= 20
+  ) {
+    const payload = { matchId: match.value.matchId, teamId, result };
+    const response = await store.dispatch('confirmTeamResult', payload);
+    if (response === 'failed') {
+      popupErrorMessage.value =
+        'Submitting failed, please check connection and try again';
+      showErrorPopup.value = true;
+      setTimeout(() => {
+        showErrorPopup.value = false;
+        popupErrorMessage.value = null;
+      }, 5000);
+      return;
+    }
+    store.dispatch('getAdminLeagueStatus');
+    if (teamId === match.value.team1Id) {
+      match.value.team1Result = team1Result.value;
+      isChangingScore1.value = false;
+    } else {
+      match.value.team2Result = team2Result.value;
+      isChangingScore2.value = false;
+    }
+    loadMatch();
+  } else {
+    alert('Please enter a whole number between 1 and 20');
+  }
+};
+
+onMounted(() => {
+  if (!props.matchId) {
+    router.back();
+  } else {
+    loadMatch();
+  }
+});
+
+if (!store.state.games.length) {
+  store.dispatch('getGames');
+}
+if (!store.state.adminMatches.length) {
+  store.dispatch('getAdminMatches');
+}
 </script>
 
 <style scoped>

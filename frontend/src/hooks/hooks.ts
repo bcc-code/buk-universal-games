@@ -10,6 +10,12 @@ export const rootUrl =
 
 const api = createApiClient(rootUrl);
 
+const getTeamCode = (): string => {
+  const teamCode = window.localStorage.getItem('testTeamCode');
+  if (!teamCode) throw Error('Team code is not defined. Should log out.');
+  return teamCode;
+};
+
 export const useFamilyStatus = () => {
   const teamCode = getTeamCode();
 
@@ -25,12 +31,6 @@ export const useFamilyStatus = () => {
     staleTime: 1000 * 10,
     gcTime: 1000 * 10,
   });
-};
-
-const getTeamCode = (): string => {
-  const teamCode = window.localStorage.getItem('testTeamCode');
-  if (!teamCode) throw Error('Team code is not defined. Should log out.');
-  return teamCode;
 };
 
 export const useSigninResponse = (teamCode?: () => Ref<string>) => {
