@@ -65,6 +65,7 @@ const tryLogin = async () => {
 onMounted(() => {
   if (code) {
     window.localStorage.clear()
+    window.localStorage.setItem('testTeamCode', teamCode.value);
     tryLogin();
   }
 });
