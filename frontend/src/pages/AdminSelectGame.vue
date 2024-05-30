@@ -10,10 +10,10 @@
           {{ $t('admin.select_game.intro') }}
         </p>
       </div>
-      <div class="flex space-x-5">
+      <div class="flex flex-wrap space-x-5">
         <AdminLeagueSelector
           v-for="game in adminGames"
-          class="min-w-min whitespace-nowrap"
+          class="min-w-min"
           :class="[
             $store.state.adminFilterGameSelected === game.id
               ? 'bg-dark-blue text-white'
@@ -77,5 +77,11 @@ export default {
 
 .game-card {
   margin: 0.25em 0;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap onto the next line as needed */
+  gap: 5px; /* Spacing between items, equivalent to your space-x-5 */
 }
 </style>
