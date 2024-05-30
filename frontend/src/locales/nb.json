@@ -28,7 +28,7 @@
     "labyrinth": "På denne posten vil laget bli utfordret til å samarbeide ved å navigere en kule gjennom en labyrint på en plate.\nDommeren starter spillet ved å plassere ballen på startpunktet og starter tidtakeren. Det er tre checkpoints på brettet, og alle spillerne bytter plass med nye 12 spillere ved hvert checkpoint, slik at totalt 36 personer får spilt.\nNår labyrinten er fullført eller tiden er ute, plasserer deltakerne brettet rolig ned på bakken.",
     "human_shuffleboard": "På denne posten skal 2 lag konkurrer mot hverandre i hvert sitt “Hamsterhjul”. Laget som er raskest gjennom løypa uten å tråkke utenfor hjulet vinner. Det spilles 1 omgang, men det gjøres bytte av alle deltakere etter 1 runde. Førstemann i mål etter 2 runder vinner. Tiden lagene bruker vil også medregnes antall poeng de får på posten."
   },
-  "points": "Saldo",
+  "points": "M £",
   "pointexplenation": {
     "iron_grip": "Poengene rangeres etter konkurransen basert på hvem som klarte å henge lengst. Som dommer a, er det din oppgave å notere tiden der alle 9 deltakere henger samtidig.",
     "labyrinth": "Poeng gis etter antall klarte checkpoints samt tid på å fullføre labyrinten.",
