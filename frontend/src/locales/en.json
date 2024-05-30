@@ -1,132 +1,136 @@
 {
-  "install_hint": "Hint:\nInstall this web-app to your home screen, it'll work better!",
+  "install_hint": "Hint:\nInstaller denne webappen på startskjermen din, den vil fungere bedre!",
   "menu": {
-    "home": "Home",
-    "league": "League",
-    "sidequest": "Side quest",
-    "games": "Games",
-    "map": "Map"
+    "home": "Hjem",
+    "league": "Liga",
+    "sidequest": "Sidequest",
+    "games": "Spill",
+    "map": "Kart"
   },
   "games": {
-    "iron_grip": "The iron grip",
-    "land_water_beach": "Land, water, beach",
+    "iron_grip": "Jerngrepet",
+    "land_water_beach": "Land, vann, strand",
     "mastermind": "Mastermind",
-    "human_shuffleboard": "Human Shuffleboard",
-    "labyrinth": "Labyrinth"
+    "human_shuffleboard": "Hamsterhjulet",
+    "labyrinth": "Labyrint"
   },
   "score": {
-    "iron_grip": "{score} points",
-    "land_water_beach": "{score} points",
-    "mastermind": "{score} points",
-    "human_shuffleboard": "{score} points",
-    "labyrinth": "{score} secpointsonds"
+    "monkey_bars": "{score} bars",
+    "nerve_spiral": "{score} seconds",
+    "ticket_twist": "{score} tickets",
+    "mine_field": "{score} seconds",
+    "table_surfing": "{score} seconds"
   },
   "explanation": {
-    "iron_grip": "I Jerngrepet utfordres ni deltakere om gangen til å henge i et stillas mest mulig i løpet av en ti-minutters periode. Når nedtellingen starter, må alle ni deltakere begynne å henge med håndflaten fremover. \nEn dommer (a) stopper klokken når alle ni deltakere henger, og starter den igjen hvis noen slipper taket, mens en annen dommer (b) overvåker den ti minutters perioden de har til disposisjon.\nDeltakerne på laget som ikke henger i øyeblikket, står klar ved stigen for å bytte deltakere ved behov. Det er ingen begrensning på hvor mange ganger deltakerne kan henge i jerngrepet, og konkurransen fortsetter til de ti minuttene er omme.\nDet er om å gjøre å samle mest tid hengende i løpet av de 10 minuttene oppgaven varer",
-    "land_water_beach": "Denne posten er en reaksjonspost, hvor dere konkurrerer mot et annet lag. Ti deltakere fra hvert lag starter i sonen i midten, og skal reagere så raskt som mulig på tre ulike signaler:\n\nGult signal betyr at man skal bli stående stille, strand\nGrønt signal betyr at man skal flytte seg til sonen bak, land\nBlått signal betyr at man skal flytte seg til sonen foran, vann\n\nDet laget hvor alle 10 deltakere flytter seg raskest til riktig sone, er det laget som får poeng. Hvis dere er like raske, får begge lag ett poeng. Altså må man reagere raskt, og bevege seg til riktig sone. Hvis man beveger seg til feil sone, får det andre laget ett poeng. Etter tre signal, skal dere bytte ut de ti deltakene med ti nye deltakere fra laget. Dette gjennomføres tre runder.",
-    "mastermind": "På denne posten skal laget finne ut av hvilken fargekode som skjuler seg i boksen. Laget skal ha plukket ut 5 deltakere til å være deres «Codebreakers». Resten av laget brukes som fargebrikker i spillet etter hvert som «Codebreakers» plasser sine løsninger på spillbrettet.\nNår «Codebreakers» har lagt ut et forslag på løsning, kontakter de dommeren som vil plassere «svar-pinner» i boksen plassert ved siden av hver rad. «Svar-pinnene» viser hvor mange riktige farger (svart) og riktig farge som er riktig plassert (rød) «Codebreakers» har plassert ut i sitt forslag.\n\nPoeng gis etter antall runder brukt på å løse fargekoden.",
-    "labyrinth": "Velkommen\nBallen skal igjennom labyrinten. Det er hull og checkpoints på brettet\n12 personer kan holde rundt brettet\nSpillet er igang da dommer plasserer ballen på start.\nIkke lov å bevege ballen med hendene når den er i spill på brettet.\nIkke lov å krabbe under labyrint når spillet er igang. Det er kun lov når ballen fallet gjennom et hull\nFaller ballen ned i et hull, må den plukkes opp og legges tilbake til siste checkpoint eller start\nBallen skal alltid ligge på brettet. Ikke lov å kaste ballen opp med brettet for å prøve å komme over hinder på brettet\nDet er 3 checkpoints på brettet. Alle spillerne bytter plass med nye spillere. Totalt 36 personer får spilt.\nNår labyrinten er ferdig eller tiden er ute, plasserer deltakerne brettet rolig ned på bakken",
-    "human_shuffleboard": "1. To lag konkurrer mot hverandre.\n2. Lagene stiller med 9 deltakere per omgang.\n3. Det skal sitte en person i baderingen til enhver tid, armer og ben kan ikke touche bakken eller aktivt skyve på andre baderinger som er i spill.\n4. Laget med blå baderinger starter første omgang. Det spilles annenhver farge inntil alle baderinger er spilt.\n5. I omgang nr. 2 starter rødt lag.\n6. Stein, saks, papir avgjør hvem som starter omgang nr. 3.\n7. Spillet starter med at en deltaker plassers i baderingen, mens to personer skal dytte baderingen, de kan ikke passere den røde streken (slipp sone) på banen.\n8. Etter at alle har skjøvet sine tre baderinger, telles scoren på alle baderinger som ligger innenfor scoringsområdet.\n9. Hele baderingen må ligge innenfor poengområdet for at det skal telles med.\n10. Hvis baderingen berører streken, er det den bakerste poengsonen som er tellende.\n11. Det spilles 3 omganger, med 3 skyv av baderinger per omgang.\n12. Poengene fra hver omgang telles opp til en totalsum.\n13. Det laget med flest poeng vinner konkurransen."
+    "iron_grip": "I konkurransen 'Jerngrepet' møter ni deltakere hverandre i en utfordring der målet er å henge i et stillas så lenge som mulig i løpet av en ti-minutters periode. Alle deltakerne begynner å henge samtidig, med håndflaten vendt fremover, når nedtellingen starter. \n\nEn dommer, referert til som dommer (a), har ansvaret for å stoppe og starte klokken. Klokken stoppes når alle ni deltakere er på plass og henger fra stillaset, og den startes på nytt hver gang noen slipper taket. En annen dommer, dommer (b), holder øye med den totale tiden på ti minutter som deltakerne har til rådighet. \n\nDeltakerne kan bytte med lagkamerater som venter ved siden av, klar til å klatre opp stigen og ta over. Det er ingen begrensninger på antall bytter eller hvor mange ganger en deltaker kan henge. Konkurransen dreier seg om å akkumulere mest mulig tid hengende fra stillaset innenfor den gitte tidsrammen på ti minutter.",
+    "land_water_beach": "Denne posten er en reaksjonspost der lagene konkurrerer mot hverandre. Ti deltakere fra hvert lag starter i sonen i midten.\nI denne utfordringen får det laget hvor alle 10 deltakere flytter seg raskest til riktig sone, ett poeng. Ved lik reaksjonstid får begge lag ett poeng. Det er derfor avgjørende å reagere raskt og bevege seg til riktig sone. Feil bevegelser resulterer i at det andre laget får ett poeng. Etter tre signaler bytter dere ut de ti deltakerne med ti nye deltakere fra laget. Dette gjentas over tre runder.\nReaksjonstiden er avgjørende for å vinne.",
+    "mastermind": "Posten er inspirert av konseptet fra spillet Mastermind.\n\nLaget skal løse en fargekode skjult i en boks. Fem deltakere er utpekt som Codebreakers, mens resten av laget fungerer som fargebrikker.\n\nCodebreakers plasserer sine løsninger på spillbrettet, og kontakter deretter dommeren. Dommeren plasserer 'svar-pinner' i boksen ved siden av hver rad. Disse pinnene viser hvor mange farger som er riktig farge og riktig plassert (rød) og hvor mange farger som er riktig farge, men ikke riktig plassert (hvit) i Codebreakers sitt forslag.",
+    "labyrinth": "På denne posten vil laget bli utfordret til å samarbeide ved å navigere en kule gjennom en labyrint på en plate.\nDommeren starter spillet ved å plassere ballen på startpunktet og starter tidtakeren. Det er tre checkpoints på brettet, og alle spillerne bytter plass med nye 12 spillere ved hvert checkpoint, slik at totalt 36 personer får spilt.\nNår labyrinten er fullført eller tiden er ute, plasserer deltakerne brettet rolig ned på bakken.",
+    "human_shuffleboard": "På denne posten skal 2 lag konkurrer mot hverandre i hvert sitt “Hamsterhjul”. Laget som er raskest gjennom løypa uten å tråkke utenfor hjulet vinner. Det spilles 1 omgang, men det gjøres bytte av alle deltakere etter 1 runde. Førstemann i mål etter 2 runder vinner. Tiden lagene bruker vil også medregnes antall poeng de får på posten."
   },
-  "leadstory": {
-    "iron_grip": "",
-    "labyrinth": "",
-    "land_water_beach": "",
-    "mine_field": "",
-    "human_shuffleboard": ""
+  "points": "M £",
+  "pointexplenation": {
+    "iron_grip": "Poengene rangeres etter konkurransen basert på hvem som klarte å henge lengst. Som dommer a, er det din oppgave å notere tiden der alle 9 deltakere henger samtidig.",
+    "labyrinth": "Poeng gis etter antall klarte checkpoints samt tid på å fullføre labyrinten.",
+    "mastermind": "Poengene tildeles basert på antall runder laget bruker på å løse fargekoden.",
+    "land_water_beach": "Laget får ett poeng for hvert signal de vinner. Begge lag får ett poeng dersom lagene er like raske",
+    "human_shuffleboard": "Poengene tildeles basert på om laget vinner og tiden de brukte på runden. "
+  },
+  "category": {
+    "iron_grip": "Styrke",
+    "labyrinth": "Samarbeid",
+    "mastermind": "Logikk",
+    "land_water_beach": "Reaksjon",
+    "human_shuffleboard": "X-faktor"
   },
   "rules": {
-    "iron_grip": "",
-    "labyrinth": "Coming soon",
-    "land_water_beach": "",
-    "mastermind": "Tid: 10 min\nAntall deltakere: 5 stk codebreakers + 32 stk fargebrikker (maksimalt).",
-    "human_shuffleboard": ""
+    "iron_grip": "• Deltakerne må henge med håndflaten frem\n• Tiden stoppes av dommer (a) når ikke alle ni deltakere henger samtidig.",
+    "labyrinth": "Spillet starter da dommeren har plassert kula på brettet.\n• 12 personer må holde rundt brettet mens spillet pågår.\n• Det er ikke tillatt å berøre ballen med hendene når den er på brettet, og heller ikke å krabbe under labyrinten mens spillet pågår, med mindre ballen faller gjennom et hull.\n• Hvis ballen faller ned i et hull, må den plukkes opp og plasseres tilbake ved forrige checkpoint eller startpunkt.\n• Ballen må alltid være på brettet, og det er ikke tillatt å kaste ballen opp for å forsøke å overvinne hindringer.\n• For hvert checkpoint kula kommer til, må alle 12 deltakere byttes ut til 12 nye.",
+    "land_water_beach": "De må reagere raskt på tre ulike signaler:\n• Gult signal: Stå stille som en strand.\n• Grønt signal: Flytt deg bakover til 'land' sonen.\n• Blått signal: Flytt deg fremover til 'vann' sonen.",
+    "mastermind": "• Laget har 10 minutter på å løse fargekoden.\n• Bare de utnevnte codebreakers har tillatelse til å sette opp brikkene og foreslå løsninger.\n• Laget sier i fra til hoveddommer når de har avgitt svaret sitt.",
+    "human_shuffleboard": "Lagene har 15-20 deltakere hver, inne i hamsterhjulet.\n• Det er +10 sek tilleggstid om laget tråkker på utsiden av hjulet.\n• Hele laget på 15 stk byttes ut etter 1 runde med 15 nye deltakere.\n• Hele hjulet må være over linjen for å kunne gjøre bytte.\nHele hjulet må over linjen for at tiden stoppes."
   },
-  "general_error": "Something went wrong",
-  "pleaserefresh": "Please try refreshing the page",
-  "points": "M £",
-  "coins": "Coins",
-  "game": "Game",
-  "team1team2": "Team 1 / Team 2",
+  "general_error": "Noe gikk galt",
+  "pleaserefresh": "Prøv å oppdatere siden",
+  "coins": "Mynter",
+  "game": "Spill",
+  "team1team2": "Lag 1 / Lag 2",
   "start": "Start",
-  "rulestitle": "Rules",
+  "rulestitle": "Regler",
   "login": {
     "login_button": "Logg inn",
-    "teamcode": "Team code",
-    "teamcode_invalid": "Sorry, your team key is not valid"
+    "teamcode": "Lagkode",
+    "teamcode_invalid": "Beklager, lagkoden din er ikke gyldig"
   },
   "league": {
-    "rankingisempty": "No team has yet registered points. Check back here after the first round.",
-    "viewgamerankings": "View ranking for each game",
-    "viewgamerankings-title": "You can view the rankings per game on the game detail pages.",
-    "ranking-frozen": "The ranking is now frozen until the winners are announced"
+    "rankingisempty": "Ingen poeng er opptjent enda. Sjekk tilbake her etter første runde.",
+    "viewgamerankings": "Se rangering for hvert spill",
+    "viewgamerankings-title": "Du kan se rangeringene per spill på spilldetaljsidene.",
+    "ranking-frozen": "Rangeringen er nå frosset til vinnerne blir kunngjort"
   },
   "admin": {
     "select_league": {
-      "intro": "Choose the zone you are in"
-    },
-    "select_game": {
-      "intro": "Choose the post you are a referee for"
+      "intro": "Velg ligaen du vil administrere"
     }
   },
-  "yourmatch": "Your match in this game",
+  "yourmatch": "Ditt spill",
   "sidequest": {
-    "thanks": "Thanks, your answer has been recorded",
-    "timeranout": "Time ran out, better luck next time",
-    "areyouready": "Are you ready?",
-    "checkanswerlater": "Check the answer when the game is over",
-    "question_locked": "Expired",
-    "youhaveunsubmittedanswers": "You have {numAnswers} answers. Do you want to send them now?",
-    "submityouranswers": "Submit your answers",
-    "gameroundtitle": "Round {round}",
-    "back_to_overview": "Return to the overview",
-    "alreadyAnswered": "You have already answered this question",
-    "explanation": "Explanation",
-    "explanation_text": "After every round except the last one, 2 questions will be unlocked in random order, so 8 questions total. You can answer them until the next match starts.\n\nIf you don't answer the question or back out of it, you loose one of your 8 coins. If you retry the same question you will have to skip another question. \n\nYour team earns bonus points based on how many of your team sends in a correct answer for each question.",
-    "noroundyet": "Not yet available. Come back after the match",
-    "submitfailed": "Failed to submit your answers. Make sure you have connection and try again",
-    "no_coins": "You don't have any coins left. You can't answer any more questions",
+    "thanks": "Takk, svaret ditt er registrert",
+    "timeranout": "Tiden gikk ut, bedre lykke neste gang",
+    "areyouready": "Er du klar?",
+    "checkanswerlater": "Sjekk svaret når spillet er over",
+    "question_locked": "Utgått",
+    "youhaveunsubmittedanswers": "Du har {numAnswers} svar. Vil du sende dem nå?",
+    "submityouranswers": "Send inn svarene dine",
+    "gameroundtitle": "Runde {round}",
+    "back_to_overview": "Tilbake til oversikten",
+    "alreadyAnswered": "Du har allerede svart på dette spørsmålet",
+    "noroundyet": "Ikke tilgjengelig ennå. Kom tilbake etter kampen.",
+    "submitfailed": "Kunne ikke sende inn svarene dine. Sjekk at du har tilkobling og prøv igjen",
+    "no_coins": "Du har ingen mynter igjen. Du kan ikke svare på flere spørsmål",
+    "explanation": "Forklaring",
+    "explanation_text": "Etter hver kamp, bortsett fra den siste, vil 2 spørsmål bli låst opp i tilfeldig rekkefølge, totalt 8 spørsmål. Du har 10 minutter til å svare på dem, til neste kamp begynner.\nDu har totalt 8 mynter. Hver spørsmål du starter koster en mynt, selv om du ikke svarer på det. Så, hvis du prøver å svare på samme spørsmål på nytt, må du hoppe over et annet spørsmål.\nNår du har svart på et spørsmål, kan du ikke svare på det igjen.\n\nLaget ditt tjener bonuspoeng basert på hvor mange av laget ditt som sender inn et riktig svar for hvert spørsmål.\nSjekk tilbake etter hver kamp for å tjene flere poeng for laget ditt!",
     "questiontypes": {
-      "math": "Math",
-      "knowledge": "Knowledge",
-      "recognize": "Recognize",
-      "insight": "Insight",
-      "remember": "Remember",
-      "guess": "Guess"
+      "math": "Matematikk",
+      "knowledge": "Kunnskap",
+      "recognize": "Gjenkjenne",
+      "insight": "Innsikt",
+      "remember": "Huske",
+      "guess": "Gjette"
     }
   },
   "questions": {
     "guesshowmany1": {
-      "q": "How many hours of Fra Kåre have there been listened to this year?",
-      "intro": "Have you been listening to Fra Kåre this year?"
+      "q": "Hvor mange timer har Fra Kåre blitt hørt i år?",
+      "intro": "Har du hørt på Fra Kåre i år?"
     },
     "guesshowmany2": {
-      "q": "How many people have visited the camps in 2023?",
-      "intro": "Are you good at counting?"
+      "q": "Hvor mange personer har besøkt campene i 2023?",
+      "intro": "Er du flink til å telle?"
     },
     "remember": {
-      "q": "What is the correct order of the Herman Shuffle dance moves?",
-      "intro": "Did you dance along this morning?",
+      "q": "Hva er riktig rekkefølge på dansetrinnene i Herman Shuffle?",
+      "intro": "Danset du med på dette i morges?",
       "a": {
-        "lwd": "Lean, Wave, Drift",
+        "lwd": "Lean, Wave, Drift ",
         "wld": "Wave, Lean, Drift",
         "ldw": "Lean, Drift, Wave",
         "wdl": "Wave, Drift, Lean"
       }
     },
     "insight": {
-      "q": "Which rollercoaster cart will reach the bottom first?",
-      "intro": "Look at the image. Which rollercoaster cart will reach the bottom first?",
+      "q": "Hvilken berg-og-dal-banevogn vil nå bunnen først?",
+      "intro": "Se på bildet. Hvilken berg-og-dal-banevogn vil nå bunnen først?",
       "a": {
-        "red": "Red",
-        "green": "Green",
-        "yellow": "Yellow",
-        "sametime": "They reach the bottom at the same time"
+        "red": "Rød",
+        "green": "Grønn",
+        "yellow": "Gul",
+        "sametime": "De når bunnen samtidig"
       }
     },
     "recognize1": {
-      "q": "Do you recognize or remember who this is?",
-      "intro": "Do you know who we are (not) seeing in this image?",
+      "q": "Gjenkjenner du eller husker du hvem dette er?",
+      "intro": "Vet du hvem vi ser (ikke) på dette bildet?",
       "a": {
         "opta": "Gershon Twilley",
         "optb": "Harald Kronstad",
@@ -135,18 +139,18 @@
       }
     },
     "recognize2": {
-      "q": "Can you remember who this is?",
-      "intro": "Did you follow the projects this year? Look at the image.",
+      "q": "Husker du hvem dette er?",
+      "intro": "Har du fulgt med på prosjektene i år? Se på bildet.",
       "a": {
         "peter": "Peter",
-        "john": "John",
-        "matthew": "Matthew",
-        "paul": "Paul"
+        "john": "Johannes",
+        "matthew": "Matteus",
+        "paul": "Paulus"
       }
     },
     "math": {
-      "q": "What number should the question mark be?",
-      "intro": "Look at the image. What number should the question mark be?",
+      "q": "Hvilket tall skal stå på spørsmålstegnet?",
+      "intro": "Se på bildet. Hvilket tall skal stå på spørsmålstegnet?",
       "a": {
         "30": "30",
         "67": "67",
@@ -155,8 +159,8 @@
       }
     },
     "knowledge": {
-      "q": "In what country does BCC not have a church?",
-      "intro": "Where are you from?",
+      "q": "I hvilket land har BCC ingen menigheter?",
+      "intro": "Hvor er du fra?",
       "a": {
         "singapore": "Singapore",
         "serbia": "Serbia",
@@ -165,13 +169,11 @@
       }
     }
   },
-  "back": "Back",
-  "please_refresh": "Please refresh",
-  "team": "Team",
-  "teamName": "Team",
-  "family": "Family",
-  "familyBalance": "Family Balance",
-  "results": "Results on this game",
-  "pointstitle": "Points",
-  "categorytitle": "Category"
+  "back": "Tilbake",
+  "teamName": "Lag",
+  "family": "Familie",
+  "familyBalance": "Familie saldo",
+  "results": "Resultater for dette spillet",
+  "pointstitle": "Poeng",
+  "categorytitle": "Kategori"
 }
