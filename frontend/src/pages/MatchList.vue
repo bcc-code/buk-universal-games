@@ -122,7 +122,6 @@ export default {
   computed: {
     matches() {
       console.log(this.$store.state.matches);
-      console.log('stop here');
       return this.$store.state.matches;
     },
     games() {

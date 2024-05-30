@@ -71,6 +71,9 @@
   "admin": {
     "select_league": {
       "intro": "Velg ligaen du vil administrere"
+    },
+    "select_game": {
+      "intro": "Velg hvilken lek du skal dømme"
     }
   },
   "yourmatch": "Ditt spill",
