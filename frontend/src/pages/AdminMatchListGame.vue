@@ -33,7 +33,7 @@
             :class="[
               $store.state.adminFilterGameSelected === game.id?'bg-dark-blue text-white': 'bg-ice-blue',
             ]"
-            :name="game.name"
+            :name="this.$t('games.'+game.gameType)"
             @click="$store.commit('setAdminFilterGameSelected', game.id)"
           />
         </div>
