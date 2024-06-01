@@ -15,7 +15,7 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
     "format": "prettier --write src/",
-    "generate:types": "openapi-zod-client http://localhost:5125/swagger/v1/swagger.json -o ./src/types/api.ts"
+    "generate:types": "openapi-zod-client http://localhost:5125/swagger/v1/swagger.json -o ./src/types/api.ts --implicit-required"
   },
   "dependencies": {
     "@heroicons/vue": "^2.1.3",

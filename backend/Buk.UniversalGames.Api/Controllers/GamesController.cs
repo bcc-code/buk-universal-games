@@ -28,7 +28,8 @@ public class GamesController : ControllerBase
     public async Task<ActionResult<List<Game>>> GetGames()
     {
         // shit this should be cached
-        return await _gameService.GetGames();
+        var games = await _gameService.GetGames();
+        return games;
     }
 
     [TeamType(TeamType.Participant, TeamType.Admin, TeamType.SystemAdmin)]

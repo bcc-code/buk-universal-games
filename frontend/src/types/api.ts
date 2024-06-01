@@ -8,108 +8,92 @@ const GameType = z.union([
   z.literal(4),
   z.literal(5),
 ]);
-const Game = z
-  .object({
-    id: z.number().int(),
-    name: z.string().nullable(),
-    type: GameType,
-    gameType: z.string().nullable(),
-    description: z.string().nullable(),
-    participantsInfo: z.string().nullable(),
-    safetyInfo: z.string().nullable(),
-    winnerPoints: z.number().int(),
-    looserPoints: z.number().int(),
-  })
-  .partial();
-const TeamStatus = z
-  .object({
-    teamId: z.number().int(),
-    team: z.string().nullable(),
-    points: z.number().int(),
-    familyId: z.number().int().nullable(),
-    score: z.number().int().nullable(),
-  })
-  .partial();
-const MatchListItem = z
-  .object({
-    matchId: z.number().int(),
-    gameId: z.number().int(),
-    addOn: z.string().nullable(),
-    team1Id: z.number().int(),
-    team1: z.string().nullable(),
-    team2Id: z.number().int(),
-    team2: z.string().nullable(),
-    start: z.string().nullable(),
-    winnerId: z.number().int(),
-    winner: z.string().nullable(),
-    team1Result: z.number().int().nullable(),
-    team2Result: z.number().int().nullable(),
-  })
-  .partial();
-const MatchResultDto = z
-  .object({
-    matchId: z.number().int(),
-    teamId: z.number().int(),
-    result: z.number().int(),
-  })
-  .partial();
-const League = z
-  .object({
-    id: z.number().int(),
-    name: z.string().nullable(),
-    color: z.string().nullable(),
-  })
-  .partial();
+const Game = z.object({
+  id: z.number().int(),
+  name: z.string().nullable(),
+  type: GameType,
+  gameType: z.string().nullable(),
+  description: z.string().nullable(),
+  participantsInfo: z.string().nullable(),
+  safetyInfo: z.string().nullable(),
+  winnerPoints: z.number().int(),
+  looserPoints: z.number().int(),
+});
+const TeamStatus = z.object({
+  teamId: z.number().int(),
+  team: z.string().nullable(),
+  points: z.number().int(),
+  familyId: z.number().int().nullable(),
+  score: z.number().int().nullable(),
+});
+const MatchListItem = z.object({
+  matchId: z.number().int(),
+  gameId: z.number().int(),
+  addOn: z.string().nullable(),
+  team1Id: z.number().int(),
+  team1: z.string().nullable(),
+  team2Id: z.number().int(),
+  team2: z.string().nullable(),
+  start: z.string().nullable(),
+  winnerId: z.number().int(),
+  winner: z.string().nullable(),
+  team1Result: z.number().int().nullable(),
+  team2Result: z.number().int().nullable(),
+});
+const MatchResultDto = z.object({
+  matchId: z.number().int(),
+  teamId: z.number().int(),
+  result: z.number().int(),
+});
+const League = z.object({
+  id: z.number().int(),
+  name: z.string().nullable(),
+  color: z.string().nullable(),
+});
 const TeamType = z.union([z.literal(1), z.literal(2), z.literal(3)]);
-const Team = z
-  .object({
-    id: z.number().int(),
-    name: z.string().nullable(),
-    code: z.string().nullable(),
-    color: z.string().nullable(),
-    type: TeamType,
-    memberCount: z.number().int(),
-    teamType: z.string().nullable(),
-    leagueId: z.number().int().nullable(),
-    familyId: z.number().int().nullable(),
-  })
-  .partial();
-const LeagueStatusReport = z
-  .object({ status: z.record(z.array(TeamStatus)).nullable() })
-  .partial();
-const SignInSuccessResponse = z
-  .object({
-    code: z.string().nullable(),
-    team: z.string().nullable(),
-    access: z.string().nullable(),
-    leagueId: z.number().int().nullable(),
-    league: z.string().nullable(),
-    coins: z.array(z.string()).nullable(),
-    familyId: z.number().int().nullable(),
-    familyName: z.string().nullable(),
-  })
-  .partial();
-const TeamFamilyStatus = z
-  .object({
-    teamId: z.number().int(),
-    team: z.string().nullable(),
-    points: z.number().int(),
-  })
-  .partial();
-const FamilyStatus = z
-  .object({
-    id: z.number().int(),
-    name: z.string().nullable(),
-    points: z.number().int(),
-    teams: z.array(TeamFamilyStatus).nullable(),
-  })
-  .partial();
-const MyStatus = z
-  .object({ teamPoints: z.number().int(), familyPoints: z.number().int() })
-  .partial();
-const FamilyStatusReport = z
-  .object({ families: z.array(FamilyStatus).nullable(), myStatus: MyStatus })
-  .partial();
+const Team = z.object({
+  id: z.number().int(),
+  name: z.string().nullable(),
+  code: z.string().nullable(),
+  color: z.string().nullable(),
+  type: TeamType,
+  memberCount: z.number().int(),
+  teamType: z.string().nullable(),
+  leagueId: z.number().int().nullable(),
+  familyId: z.number().int().nullable(),
+});
+const LeagueStatusReport = z.object({
+  status: z.record(z.array(TeamStatus)).nullable(),
+});
+const SignInSuccessResponse = z.object({
+  code: z.string().nullable(),
+  team: z.string().nullable(),
+  access: z.string().nullable(),
+  leagueId: z.number().int().nullable(),
+  league: z.string().nullable(),
+  coins: z.array(z.string()).nullable(),
+  familyId: z.number().int().nullable(),
+  familyName: z.string().nullable(),
+});
+const TeamFamilyStatus = z.object({
+  teamId: z.number().int(),
+  team: z.string().nullable(),
+  points: z.number().int(),
+});
+const FamilyStatus = z.object({
+  id: z.number().int(),
+  name: z.string().nullable(),
+  points: z.number().int(),
+  teams: z.array(TeamFamilyStatus).nullable(),
+});
+const MyStatus = z.object({
+  teamPoints: z.number().int(),
+  familyPoints: z.number().int(),
+});
+const FamilyStatusReport = z.object({
+  families: z.array(FamilyStatus).nullable(),
+  myStatus: MyStatus,
+});
 
 export const schemas = {
   GameType,

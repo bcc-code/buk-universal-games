@@ -17,14 +17,12 @@ const getTeamCode = (): string => {
 };
 
 export const useFamilyStatus = () => {
-  const teamCode = getTeamCode();
-
   return useQuery({
     queryKey: ['familyStatus'],
     queryFn: () =>
       api.get('/status/family', {
         headers: {
-          'x-ubg-teamcode': teamCode,
+          'x-ubg-teamcode': getTeamCode(),
         },
       }),
     // don't re-run requests unless this amount of milliseconds have passed
@@ -39,6 +37,7 @@ export const useSigninResponse = (teamCode?: () => Ref<string>) => {
       return getTeamCode();
     } else return teamCode().value;
   };
+
   return useQuery({
     queryKey: ['signinResponse', getTeamCodeLocal()],
     queryFn: () =>
@@ -53,8 +52,6 @@ export const useSigninResponse = (teamCode?: () => Ref<string>) => {
 };
 
 export const useAdminMatches = (leagueId: number) => {
-  const teamCode = getTeamCode();
-
   return useQuery({
     queryKey: ['adminMatches', leagueId],
     queryFn: () =>
@@ -63,29 +60,37 @@ export const useAdminMatches = (leagueId: number) => {
           leagueId,
         },
         headers: {
-          'x-ubg-teamcode': teamCode,
+          'x-ubg-teamcode': getTeamCode(),
         },
       }),
   });
 };
 
 export const useGames = () => {
-  const teamCode = getTeamCode();
-
   return useQuery({
     queryKey: ['games'],
     queryFn: () =>
       api.get('/games', {
         headers: {
-          'x-ubg-teamcode': teamCode,
+          'x-ubg-teamcode': getTeamCode(),
         },
+      }),
+  });
+};
+
+export const useLeagues = () => {
+  return useQuery({
+    queryKey: ['leagues'],
+    queryFn: () =>
+      api.get('/admin/leagues', {
+        headers: { 'x-ubg-teamcode': getTeamCode() },
       }),
   });
 };
 
 export const useConfirmTeamResult = () => {
   const queryClient = useQueryClient();
-  
+
   return useMutation({
     mutationFn: ({
       matchId,

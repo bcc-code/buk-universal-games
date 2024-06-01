@@ -8,34 +8,31 @@
         </p>
       </div>
       <div class="flex flex-wrap space-x-5">
-        <AdminLeagueSelector v-for="game in adminGames" class="min-w-min" :class="[
+        <AdminLeagueSelector v-for="game in games" class="min-w-min" :class="[
           store.state.adminFilterGameSelected === game.id
             ? 'bg-dark-blue text-white'
             : 'bg-ice-blue',
-        ]" :key="game.id" :name="game.name" @click="() => selectGame(game.id)" />
+        ]" :key="game.id" :name="game.name ?? ''" @click="() => selectGame(game.id)" />
       </div>
-      <p v-if="loginMessage" class="login-msg">{{ loginMessage }}</p>
     </form>
   </section>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
 import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
 import AdminLeagueSelector from '@/components/AdminLeagueSelector.vue';
+import { useGames } from '@/hooks/hooks';
 
 const store = useStore();
 const router = useRouter();
 
-const adminGames = computed(() => store.state.games);
+const { data: games } = useGames();
 
 async function selectGame(id: number) {
   await store.commit('setAdminFilterGameSelected', id);
   router.push({ name: 'AdminMatchListGame' });
 }
-
-const loginMessage = ref<string | null>(null);
 </script>
 
 <style scoped>
