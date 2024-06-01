@@ -1,9 +1,6 @@
 <template>
   <section class="px-5 flex justify-center items-center h-screen w-full">
-    <form
-      class="flex flex-col py-10 space-y-10 justify-center align-middle w-full"
-      @submit="tryLogin"
-    >
+    <form class="flex flex-col py-10 space-y-10 justify-center align-middle w-full" @submit="tryLogin">
       <img src="/image/logo_icon.svg" alt="" class="logo shadow-md" />
       <div class="w-full justify-center flex">
         <p class="text-xl">
@@ -11,18 +8,11 @@
         </p>
       </div>
       <div class="flex flex-wrap space-x-5">
-        <AdminLeagueSelector
-          v-for="game in adminGames"
-          class="min-w-min"
-          :class="[
-            $store.state.adminFilterGameSelected === game.id
-              ? 'bg-dark-blue text-white'
-              : 'bg-ice-blue',
-          ]"
-          :key="game.id"
-          :name="game.name"
-          @click="selectGame(game.id)"
-        />
+        <AdminLeagueSelector v-for="game in adminGames" class="min-w-min" :class="[
+          $store.state.adminFilterGameSelected === game.id
+            ? 'bg-dark-blue text-white'
+            : 'bg-ice-blue',
+        ]" :key="game.id" :name="game.name" @click="selectGame(game.id)" />
       </div>
 
       <p v-if="loginMessage" class="login-msg">{{ loginMessage }}</p>
@@ -81,7 +71,9 @@ export default {
 
 .flex {
   display: flex;
-  flex-wrap: wrap; /* Allows items to wrap onto the next line as needed */
-  gap: 5px; /* Spacing between items, equivalent to your space-x-5 */
+  flex-wrap: wrap;
+  /* Allows items to wrap onto the next line as needed */
+  gap: 5px;
+  /* Spacing between items, equivalent to your space-x-5 */
 }
 </style>
