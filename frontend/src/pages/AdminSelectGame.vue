@@ -1,6 +1,6 @@
 <template>
   <section class="px-5 flex justify-center items-center h-screen w-full">
-    <form class="flex flex-col py-10 space-y-10 justify-center align-middle w-full" @submit="tryLogin">
+    <form class="flex flex-col py-10 space-y-10 justify-center align-middle w-full">
       <img src="/image/logo_icon.svg" alt="" class="logo shadow-md" />
       <div class="w-full justify-center flex">
         <p class="text-xl">
@@ -9,40 +9,33 @@
       </div>
       <div class="flex flex-wrap space-x-5">
         <AdminLeagueSelector v-for="game in adminGames" class="min-w-min" :class="[
-          $store.state.adminFilterGameSelected === game.id
+          store.state.adminFilterGameSelected === game.id
             ? 'bg-dark-blue text-white'
             : 'bg-ice-blue',
-        ]" :key="game.id" :name="game.name" @click="selectGame(game.id)" />
+        ]" :key="game.id" :name="game.name" @click="() => selectGame(game.id)" />
       </div>
-
       <p v-if="loginMessage" class="login-msg">{{ loginMessage }}</p>
     </form>
   </section>
 </template>
 
-<script>
+<script setup lang="ts">
+import { ref, computed } from 'vue';
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
 import AdminLeagueSelector from '@/components/AdminLeagueSelector.vue';
 
-export default {
-  name: 'AdminSelectGame',
-  components: { AdminLeagueSelector },
-  methods: {
-    getAdminGames() {
-      this.$store.dispatch('getAdminGames');
-    },
-    async selectGame(id) {
-      console.log(id);
-      await this.$store.commit('setAdminFilterGameSelected', id);
+const store = useStore();
+const router = useRouter();
 
-      this.$router.push({ name: 'AdminMatchListGame' });
-    },
-  },
-  computed: {
-    adminGames() {
-      return this?.$store.state.games;
-    },
-  },
-};
+const adminGames = computed(() => store.state.games);
+
+async function selectGame(id: number) {
+  await store.commit('setAdminFilterGameSelected', id);
+  router.push({ name: 'AdminMatchListGame' });
+}
+
+const loginMessage = ref<string | null>(null);
 </script>
 
 <style scoped>
