@@ -4,7 +4,7 @@
       class="flex flex-col py-10 space-y-10 justify-center align-middle w-full"
       @submit.prevent="tryLogin"
     >
-      <img src="/image/logo_icon.svg" alt="" class="logo shadow-md" />
+      <BigLogo/>
       <input
         type="text"
         class="text-center text-label-1 p-3 w-full shadow-md uppercase tracking-wide bg-white"
@@ -29,6 +29,7 @@ import { ref, onMounted, computed, watch } from 'vue';
 import { useStore } from 'vuex';
 import { useRouter, useRoute } from 'vue-router';
 import { useSigninResponse } from '../hooks/hooks';
+import BigLogo from '@/components/BigLogo.vue';
 
 const route = useRoute();
 const code = route.params.code as string | undefined;
@@ -75,7 +76,7 @@ const tryLogin = async () => {
     if (signInResponse.value.access?.toLowerCase() === 'admin') {
       await store.dispatch('getAdminLeagues');
       store.dispatch('getAdminLeagueStatus');
-      router.push({ name: 'AdminSelectLeague' });
+      router.push({ name: 'AdminSelectGame' });
     } else {
       store.dispatch('getMatches');
       router.push({ name: 'LeagueList' });
