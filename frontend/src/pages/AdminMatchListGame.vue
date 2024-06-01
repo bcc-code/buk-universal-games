@@ -6,9 +6,9 @@
         <div class="single-filter">
           <AdminLeagueSelector
             v-for="league in adminLeagues"
-            :class="[
-               league.id === $store.state.adminLeagueSelected ? 'bg-dark-brown text-white' : 'bg-vanilla'
-            ]"
+            :isSelected="league.id === $store.state.adminLeagueSelected"
+            selectedClass='bg-dark-brown text-white'
+            unselectedClass='bg-vanilla'
             :key="league.id"
             :name="league.name"
             @click="selectLeague(league.id)"
@@ -19,20 +19,18 @@
         <p>Post type:</p>
         <div class="single-filter flex">
           <AdminLeagueSelector
+          :isSelected="$store.state.adminFilterGameSelected === null"
+          selectedClass="bg-dark-blue text-white"
+          unselectedClass= "bg-ice-blue"
             name="All"
-            class="min-w-min whitespace-nowrap"
-            :class="[
-              $store.state.adminFilterGameSelected === null?'bg-dark-blue text-white': 'bg-ice-blue',
-            ]"
             @click="$store.commit('resetAdminFilterGameSelected')"
           />
           <AdminLeagueSelector
             v-for="game in games"
             :key="game.id"
-            class="min-w-min whitespace-nowrap"
-            :class="[
-              $store.state.adminFilterGameSelected === game.id?'bg-dark-blue text-white': 'bg-ice-blue',
-            ]"
+            :isSelected="$store.state.adminFilterGameSelected === game.id"
+            selectedClass="bg-dark-blue text-white"
+            unselectedClass="bg-ice-blue"
             :name="this.$t('games.'+game.gameType)"
             @click="$store.commit('setAdminFilterGameSelected', game.id)"
           />

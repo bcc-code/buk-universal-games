@@ -7,12 +7,10 @@
           {{ $t('admin.select_game.intro') }}
         </p>
       </div>
-      <div class="flex flex-wrap space-x-5">
-        <AdminLeagueSelector v-for="game in games" class="min-w-min" :class="[
-          store.state.adminFilterGameSelected === game.id
-            ? 'bg-dark-blue text-white'
-            : 'bg-ice-blue',
-        ]" :key="game.id" :name="game.name ?? ''" @click="() => selectGame(game.id)" />
+      <div class="flex flex-wrap gap-1 justify-center">
+        <AdminLeagueSelector v-for="game in games" :isSelected="store.state.adminFilterGameSelected === game.id"
+          selectedClass="bg-dark-blue text-white" unselectedClass="bg-ice-blue" :key="game.id" :name="game.name ?? ''"
+          @click="() => selectGame(game.id)" />
       </div>
     </form>
   </section>
@@ -36,16 +34,6 @@ async function selectGame(id: number) {
 </script>
 
 <style scoped>
-.bg {
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 1em;
-}
-
 .logo {
   width: 60%;
   max-width: 400px;
@@ -53,17 +41,5 @@ async function selectGame(id: number) {
   display: block;
   border: 5px solid var(--peach-50);
   border-radius: 40px;
-}
-
-.game-card {
-  margin: 0.25em 0;
-}
-
-.flex {
-  display: flex;
-  flex-wrap: wrap;
-  /* Allows items to wrap onto the next line as needed */
-  gap: 5px;
-  /* Spacing between items, equivalent to your space-x-5 */
 }
 </style>

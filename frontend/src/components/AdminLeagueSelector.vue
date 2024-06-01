@@ -1,11 +1,15 @@
 <template>
-  <section class="text-dark-brown rounded-md w-full p-2 m-1 flex flex-col justify-center items-center">
+  <section :class="['whitespace-nowrap text-dark-brown rounded-md p-2 m-1 flex flex-col justify-center items-center', additionalClass]">
     {{ name }}
   </section>
 </template>
 
 <script setup lang="ts">
-defineProps<{ name: string }>()
+import { computed } from 'vue';
+
+const props = defineProps<{ name: string, selectedClass: string, unselectedClass: string, isSelected: boolean }>()
+
+const additionalClass = computed(() => props.isSelected ? props.selectedClass : props.unselectedClass)
 </script>
 
 <style scoped>

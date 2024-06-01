@@ -1,69 +1,39 @@
 <template>
   <section class="px-5 flex justify-center items-center h-screen w-full">
-    <form
-      class="flex flex-col py-10 space-y-10 justify-center align-middle w-full"
-      @submit="tryLogin"
-    >
+    <form class="flex flex-col py-10 space-y-10 justify-center align-middle w-full">
       <img src="/image/logo_icon.svg" alt="" class="logo shadow-md" />
       <div class="w-full justify-center flex">
         <p class="text-xl">
           {{ $t('admin.select_league.intro') }}
         </p>
       </div>
-      <div class="flex space-x-5">
-        <AdminLeagueSelector
-          v-for="league in adminLeagues"
-          class="bg-vanilla"
-          :key="league.id"
-          :name="league.name"
-          @click="selectLeague(league.id)"
-        />
+      <div class="flex flex-wrap gap-1 justify-center">
+        <AdminLeagueSelector v-for="league in leagues" :isSelected="store.state.adminLeagueSelected === league.id"
+          selectedClass="bg-dark-brown text-white" unselected-class="bg-vanilla" :key="league.id"
+          :name="league.name ?? ''" @click="() => selectLeague(league.id)" />
       </div>
-
-      <p v-if="loginMessage" class="login-msg">{{ loginMessage }}</p>
     </form>
   </section>
 </template>
 
-<script>
+<script setup lang="ts">
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
 import AdminLeagueSelector from '@/components/AdminLeagueSelector.vue';
+import { useLeagues } from '@/hooks/hooks';
 
-export default {
-  name: 'AdminSelectLeague',
-  components: { AdminLeagueSelector },
-  created() {
-    if (!this.$store.state.adminLeagues.length) {
-      this.getAdminLeagues();
-    }
-  },
-  methods: {
-    getAdminLeagues() {
-      this.$store.dispatch('getAdminLeagues');
-    },
-    async selectLeague(id) {
-      await this.$store.dispatch('setAdminLeagueSelected', id);
-      this.$router.push({ name: 'AdminSelectGame' });
-    },
-  },
-  computed: {
-    adminLeagues() {
-      return this?.$store.state.adminLeagues;
-    },
-  },
-};
+const store = useStore();
+const router = useRouter();
+
+const { data: leagues } = useLeagues();
+
+async function selectLeague(id: number) {
+  await store.commit('setAdminLeagueSelected', id);
+  router.push({ name: 'AdminSelectGame' });
+}
 </script>
 
 <style scoped>
-.bg {
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 1em;
-}
-
 .logo {
   width: 60%;
   max-width: 400px;
@@ -71,9 +41,5 @@ export default {
   display: block;
   border: 5px solid var(--peach-50);
   border-radius: 40px;
-}
-
-.league-card {
-  margin: 0.25em 0;
 }
 </style>
