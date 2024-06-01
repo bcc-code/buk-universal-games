@@ -1,21 +1,11 @@
 <template>
   <section class="px-5 flex justify-center items-center h-screen w-full">
-    <form
-      class="flex flex-col py-10 space-y-10 justify-center align-middle w-full"
-      @submit.prevent="tryLogin"
-    >
-      <BigLogo/>
-      <input
-        type="text"
-        class="text-center text-label-1 p-3 w-full shadow-md uppercase tracking-wide bg-white"
-        :placeholder="$t('login.teamcode')"
-        v-model="teamCode"
-      />
-      <button
-        class="bg-peach-50 text-lg shadow-lg border-2-peach-200 text-peach-200 py-3 px-2"
-        :class="[teamCode.length < 3 ? 'opacity-0' : 'opacity-100']"
-        type="submit"
-      >
+    <form class="flex flex-col py-10 space-y-10 justify-center align-middle w-full" @submit.prevent="tryLogin">
+      <BigLogo />
+      <input type="text" class="text-center text-label-1 p-3 w-full shadow-md uppercase tracking-wide bg-white"
+        :placeholder="$t('login.teamcode')" v-model="teamCode" />
+      <button class="bg-peach-50 text-lg shadow-lg border-2-peach-200 text-peach-200 py-3 px-2"
+        :class="[teamCode.length < 3 ? 'opacity-0' : 'opacity-100']" type="submit">
         {{ $t('login.login_button') }}
       </button>
 
@@ -64,7 +54,7 @@ const loginMessage = computed(() => {
       'Something went wrong, we could not log you in. Please try again.' +
       error.value.message
     );
-  return '';
+  return null;
 });
 
 const tryLogin = async () => {
