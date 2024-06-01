@@ -8,7 +8,7 @@
         </p>
       </div>
       <div class="flex flex-wrap gap-1 justify-center">
-        <AdminLeagueSelector v-for="game in games" :isSelected="store.state.adminFilterGameSelected === game.id"
+        <AdminLeagueSelector v-for="game in games" :isSelected="false/*store.state.adminFilterGameSelected === game.id*/"
           selectedClass="bg-dark-blue text-white" unselectedClass="bg-ice-blue" :key="game.id" :name="game.name ?? ''"
           @click="() => selectGame(game.id)" />
       </div>

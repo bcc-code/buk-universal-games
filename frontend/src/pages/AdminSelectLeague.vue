@@ -8,9 +8,10 @@
         </p>
       </div>
       <div class="flex flex-wrap gap-1 justify-center">
-        <AdminLeagueSelector v-for="league in leagues" :isSelected="store.state.adminLeagueSelected === league.id"
-          selectedClass="bg-dark-brown text-white" unselected-class="bg-vanilla" :key="league.id"
-          :name="league.name ?? ''" @click="() => selectLeague(league.id)" />
+        <AdminLeagueSelector v-for="league in leagues"
+          :isSelected="false/*store.state.adminLeagueSelected === league.id*/" selectedClass="bg-dark-brown text-white"
+          unselected-class="bg-vanilla" :key="league.id" :name="league.name ?? ''"
+          @click="() => selectLeague(league.id)" />
       </div>
     </form>
   </section>
