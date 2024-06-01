@@ -1,20 +1,13 @@
 <template>
-  <section
-    class="text-dark-brown rounded-md w-full p-2 m-1 flex flex-col justify-center items-center"
-  >
+  <section class="text-dark-brown rounded-md w-full p-2 m-1 flex flex-col justify-center items-center">
     {{ name }}
   </section>
 </template>
 
-<script>
-export default {
-  name: 'AdminLeagueSelector',
-  props: {
-    name: String,
-  },
-  mounted() {},
-  methods: {},
-};
+<script setup lang="ts">
+import { defineProps } from "vue"
+
+defineProps<{ name: string }>()
 </script>
 
 <style scoped>
