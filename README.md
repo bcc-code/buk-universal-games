@@ -11,7 +11,7 @@
 ## Running Locally
 
 Run `docker-compose up --build -d` for the backend. Visit http://localhost:5127/ for the Directus UI, credentials are admin@admin.com:password
-Run `cd frontend; npm install; npm run serve` for the front-end. Visit https://localhost:8080 to view it.
+Run `cd frontend; npm install; npm run dev` for the front-end. Visit https://localhost:8080 to view it. Bun is supported.
 
 Note: To allow a PWA to work in development in Chromium browsers you must start it with an additional command line flag `--ignore-certificate-errors`:
 

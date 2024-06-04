@@ -4,10 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "serve": "vite --clearScreen false",
+    "serve": "vite",
+    "dev": "vite",
     "build": "run-p type-check build-only",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "dev": "run-p type-watch serve",
     "type-watch": "vue-tsc --noEmit --watch",
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
