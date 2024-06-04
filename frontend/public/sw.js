@@ -35,13 +35,29 @@ const urlsToCache = [
   'splashscreen/2048x2732.png',
 ];
 
-// Install service worker
-self.addEventListener('install', function (event) {
-  // Perform install steps
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(function (cache) {
-      console.log('Opened cache');
-      return cache.addAll(urlsToCache);
+self.addEventListener('install', (e) => {
+  e.waitUntil(
+    caches.open(CACHE_NAME).then(async (cache) => {
+      let ok;
+
+      try {
+        ok = await cache.addAll(urlsToCache);
+      } catch (err) {
+        console.error('sw.js: Failed when running cache.addAll');
+        for (let url of urlsToCache) {
+          try {
+            ok = await cache.add(url);
+          } catch (err) {
+            console.error(
+              'sw.js: Failed when adding',
+              url,
+              'to service worker cache. Check urlsToCache.',
+            );
+          }
+        }
+      }
+
+      return ok;
     }),
   );
 });

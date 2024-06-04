@@ -193,7 +193,6 @@ export default function (...plugins) {
     },
     actions: {
       async signIn(ctx) {
-        console.log("logging in...")
         ctx.commit('setLoginMessage', 'Logging you in, please wait ...');
         const loginData = await initData(store, 'start/');
         ctx.commit('setLoginData', loginData);

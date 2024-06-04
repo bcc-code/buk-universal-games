@@ -17,7 +17,6 @@
 <script setup lang="ts">
 import { CheckIcon } from '@heroicons/vue/24/solid';
 import { cva, type VariantProps } from 'class-variance-authority';
-console.log('STOP');
 const gameslistitem = cva('gameslistitem', {
   variants: {
     result: {

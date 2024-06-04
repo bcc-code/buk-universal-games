@@ -86,7 +86,6 @@ const tryLogin = async () => {
 
   const response = await refetch();
 
-  console.log(error, signInResponse);
   if (signInResponse.value && !error.value && !response.isError) {
     await store.dispatch('getGames');
     if (signInResponse.value.access?.toLowerCase() === 'admin') {

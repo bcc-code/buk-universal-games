@@ -33,15 +33,11 @@
                   alt="Bronze Medal"
                   class="h-8 w-8"
                 />
-                <div v-else class="text-2xl font-bold text-gray-500">
+                <div v-else class="text-2xl font-bold text-gray-500 h-8 w-8">
                   {{ familyIndex + 1 }}
                 </div>
               </div>
-              <img
-                src="/icon/family-icon.svg"
-                alt="Family Icon"
-                class="h-16 w-16"
-              />
+              <img src="/icon/family-icon.svg" alt="Family Icon" class="w-12" />
               <h2 class="text-2xl font-bold">{{ family.name }}</h2>
             </div>
             <div class="flex items-center space-x-2">

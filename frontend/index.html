@@ -2,7 +2,7 @@
 <html lang="en" data-theme="ubg">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.png" />
     <title>Universal BUK Games</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
@@ -55,10 +55,6 @@
           const registration = await navigator.serviceWorker.register('sw.js');
           try {
             await registration.update();
-            console.log(
-              'ServiceWorker registration successful with scope: ',
-              registration.scope,
-            );
           } catch {
             console.warn(
               'Failed to update serviceworker. Running the cached version.',

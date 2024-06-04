@@ -121,7 +121,6 @@ export default {
   },
   computed: {
     matches() {
-      console.log(this.$store.state.matches);
       return this.$store.state.matches;
     },
     games() {
