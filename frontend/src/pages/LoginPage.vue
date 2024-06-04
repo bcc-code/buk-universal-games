@@ -4,11 +4,12 @@
       <BigLogo />
       <input type="text" class="text-center text-label-1 p-3 w-full shadow-md uppercase tracking-wide bg-white"
         :placeholder="$t('login.teamcode')" v-model="teamCode" />
-      <button class="bg-peach-50 text-lg shadow-lg border-2-peach-200 text-peach-200 py-3 px-2"
-        :class="[teamCode.length < 3 ? 'opacity-0' : 'opacity-100']" type="submit">
+      <button class="bg-peach-50 text-lg shadow-lg border-2-peach-200 text-peach-200 py-3 px-2" :class="[
+        teamCode.length < 3 ? 'opacity-0' : 'opacity-100',
+        isLoading ? 'opacity-50 cursor-not-allowed' : '',
+      ]" type="submit" :disabled="isLoading">
         {{ $t('login.login_button') }}
       </button>
-
 
       <div v-if="isLoading"
         class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"
@@ -83,10 +84,7 @@ const tryLogin = async () => {
 };
 
 onMounted(() => {
-  if (code) {
-    window.localStorage.clear();
-    tryLogin();
-  }
+  tryLogin();
 });
 </script>
 
