@@ -11,15 +11,14 @@
         :placeholder="$t('login.teamcode')"
         v-model="teamCode"
       />
-      <!-- bg-peach-50 text-lg shadow-lg border-2-peach-200 text-peach-200 -->
       <button
         class="btn btn-primary"
         :class="[
           teamCode.length < 3 ? 'opacity-0 btn-disabled' : 'opacity-100',
-          isLoading ? 'btn-disabled bg-' : '',
+          isSigningIn ? 'btn-disabled bg-' : '',
         ]"
         type="submit"
-        :disabled="isLoading"
+        :disabled="isSigningIn"
       >
         {{ $t('login.login_button') }}
       </button>
@@ -49,7 +48,6 @@
 
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
-import { useStore } from 'vuex';
 import { useRouter, useRoute } from 'vue-router';
 import { useSigninResponse } from '../hooks/hooks';
 import BigLogo from '@/components/BigLogo.vue';
@@ -57,15 +55,16 @@ import BigLogo from '@/components/BigLogo.vue';
 const route = useRoute();
 const code = route.params.code as string | undefined;
 
-const teamCode = ref(code ? code.toUpperCase() : '');
-const store = useStore();
+const teamCode = ref(code ?? '');
 const router = useRouter();
+const isSigningIn = computed(() => isLoading.value || isRefetching.value);
 
 const {
   data: signInResponse,
   isLoading,
   refetch,
   error,
+  isRefetching,
 } = useSigninResponse(() => teamCode);
 
 const errorMessage = computed(() => {
@@ -87,13 +86,9 @@ const tryLogin = async () => {
   const response = await refetch();
 
   if (signInResponse.value && !error.value && !response.isError) {
-    await store.dispatch('getGames');
     if (signInResponse.value.access?.toLowerCase() === 'admin') {
-      await store.dispatch('getAdminLeagues');
-      store.dispatch('getAdminLeagueStatus');
       router.push({ name: 'AdminSelectGame' });
     } else {
-      store.dispatch('getMatches');
       router.push({ name: 'LeagueList' });
     }
   } else {
@@ -105,4 +100,3 @@ onMounted(() => {
   tryLogin();
 });
 </script>
-
