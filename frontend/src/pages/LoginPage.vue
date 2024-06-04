@@ -9,7 +9,14 @@
         {{ $t('login.login_button') }}
       </button>
 
-      <p v-if="loginMessage" class="login-msg">{{ loginMessage }}</p>
+
+      <div v-if="isLoading"
+        class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"
+        role="status">
+        <span
+          class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+      </div>
+      <p v-else-if="errorMessage" class="login-msg">{{ errorMessage }}</p>
     </form>
   </section>
 </template>
@@ -47,8 +54,7 @@ const {
   error,
 } = useSigninResponse(() => teamCode);
 
-const loginMessage = computed(() => {
-  if (isLoading.value) return 'Logging you in, please wait ...';
+const errorMessage = computed(() => {
   if (error.value)
     return (
       'Something went wrong, we could not log you in. Please try again.' +

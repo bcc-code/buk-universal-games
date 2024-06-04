@@ -5,19 +5,23 @@ import { initRouter } from './router';
 import { setupI18n } from './libs/i18n';
 
 // ------------------ pinia section
-// import { createPinia } from 'pinia'
-// const store = createPinia()
+import { createPinia } from 'pinia';
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
+
+const piniaStore = createPinia();
+piniaStore.use(piniaPluginPersistedstate);
+
+import { VueQueryPlugin } from '@tanstack/vue-query';
+import NotificationService from './services/notification.service';
+
 // ------------------ vuex section
 import initStore from './store';
 import createMatchNotifierPlugin from './plugins/match-notifier';
-import NotificationService from './services/notification.service';
-
-import { VueQueryPlugin } from '@tanstack/vue-query';
 
 const notificationService = new NotificationService();
 const matchNotifierPlugin = createMatchNotifierPlugin(notificationService);
-const store = initStore(matchNotifierPlugin);
-// ------------------
+const vuexStore = initStore(matchNotifierPlugin);
+// ----------------
 
 const savedLanguage = localStorage.getItem('userLanguage');
 
@@ -30,8 +34,9 @@ const language = (
 const i18n = setupI18n({ locale: language });
 
 createApp(App)
-  .use(store)
-  .use(initRouter(store))
+  .use(piniaStore)
+  .use(vuexStore)
+  .use(initRouter(vuexStore))
   .use(i18n)
   .use(VueQueryPlugin)
   .provide('notificationService', notificationService)
