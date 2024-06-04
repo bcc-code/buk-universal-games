@@ -1,14 +1,31 @@
 <template>
   <div>
-    <input class="small-input" type="number" v-model="minutes" @input="updateTotal" :placeholder="'Minutes'" /><span>&nbsp;:&nbsp;</span> 
-    <input class="small-input" type="number" v-model="seconds" @input="updateTotal" :placeholder="'Seconds'" />
-    <input type="number" v-model="penaltyPoints" @input="updateTotal" :placeholder="'Penalty Points'" />
+    <input
+      class="small-input"
+      type="number"
+      v-model="minutes"
+      @input="updateTotal"
+      :placeholder="'Minutes'"
+    /><span>&nbsp;:&nbsp;</span>
+    <input
+      class="small-input"
+      type="number"
+      v-model="seconds"
+      @input="updateTotal"
+      :placeholder="'Seconds'"
+    />
+    <input
+      type="number"
+      v-model="penaltyPoints"
+      @input="updateTotal"
+      :placeholder="'Penalty Points'"
+    />
   </div>
 </template>
 
 <script>
 export default {
-  name: "TableSurfingInput",
+  name: 'TableSurfingInput',
   props: {
     modelValue: Number,
   },
@@ -24,7 +41,7 @@ export default {
   methods: {
     updateTotal() {
       this.totalSeconds = this.minutes * 60 + this.seconds + this.penaltyPoints;
-      this.$emit("update:model-value", this.totalSeconds);
+      this.$emit('update:model-value', this.totalSeconds);
     },
   },
 };

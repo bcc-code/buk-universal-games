@@ -1,28 +1,27 @@
 <template>
   <nav class="fixed bottom-0 w-full bg-teal-50 z-10 p-2 flex justify-around items-center" style="max-width: 960px">
     <button class="flex flex-col items-center w-1/3" :class="{
-      'selected-component': $route.name === ('LeagueList'),
+      'selected-component': $route.name === 'LeagueList',
     }" @click="$router.push({ name: 'LeagueList' })">
       <img class="h-10 w-10" src="/icon/leaderlist.png" />
     </button>
 
     <button class="flex flex-col items-center user-menu-btn-big bg-white w-1/3"
       @click="$router.push({ name: 'MatchList' })" :class="{
-        'selected-component': $route.name === ('MatchList'),
+        'selected-component': $route.name === 'MatchList',
       }">
       <img src="/icon/match.png" class="h-20 w-20" />
     </button>
 
     <button class="flex flex-col items-center w-1/3" :class="{
-      'selected-component': $route.name === ('Map'),
+      'selected-component': $route.name === 'Map',
     }" @click="$router.push({ name: 'Map' })">
       <img class="h-10 w-10" src="/icon/place.svg" />
     </button>
   </nav>
 </template>
 
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <style scoped>
 .user-menu-btn-big {

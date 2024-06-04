@@ -11,7 +11,7 @@ import { inject, reactive } from 'vue';
 const notificationService = inject('notificationService');
 
 const state = reactive({
-  action: () => { },
+  action: () => {},
   body: null,
   icon: null,
   style: { visibility: 'hidden' },
@@ -34,10 +34,10 @@ function click() {
 }
 
 function close() {
-  state.action = () => { };
+  state.action = () => {};
   state.body = null;
   state.icon = null;
-  state.style.visibility = 'hidden'
+  state.style.visibility = 'hidden';
   state.title = null;
 }
 </script>
@@ -51,11 +51,12 @@ dialog {
   padding: 1.5em;
   margin: auto;
   display: grid;
-  grid-template: 'icon title' auto
+  grid-template:
+    'icon title' auto
     'body body' auto / 70px auto;
-  border:4px solid var(--darkgreen);
-  border-radius:1em;
-  box-shadow: 3px 3px 9px rgba(0,0,0,0.3);
+  border: 4px solid var(--darkgreen);
+  border-radius: 1em;
+  box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.3);
 }
 
 dialog .title {
@@ -76,8 +77,8 @@ dialog .close {
   font-size: 4em;
   line-height: 0.5em;
   position: absolute;
-  padding:.1em;
-  color:var(--darkgreen);
+  padding: 0.1em;
+  color: var(--darkgreen);
   top: 0;
   right: 0;
 }

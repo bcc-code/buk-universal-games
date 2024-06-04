@@ -1,6 +1,8 @@
 <template>
   <section class="px-5 flex justify-center items-center h-screen w-full">
-    <form class="flex flex-col py-10 space-y-10 justify-center align-middle w-full">
+    <form
+      class="flex flex-col py-10 space-y-10 justify-center align-middle w-full"
+    >
       <BigLogo />
       <div class="w-full justify-center flex">
         <p class="text-xl">
@@ -8,10 +10,15 @@
         </p>
       </div>
       <div class="flex flex-wrap gap-1 justify-center">
-        <AdminLeagueSelector v-for="league in leagues"
-          :isSelected="false/*store.state.adminLeagueSelected === league.id*/" selectedClass="bg-dark-brown text-white"
-          unselected-class="bg-vanilla" :key="league.id" :name="league.name ?? ''"
-          @click="() => selectLeague(league.id)" />
+        <AdminLeagueSelector
+          v-for="league in leagues"
+          :isSelected="false /*store.state.adminLeagueSelected === league.id*/"
+          selectedClass="bg-dark-brown text-white"
+          unselected-class="bg-vanilla"
+          :key="league.id"
+          :name="league.name ?? ''"
+          @click="() => selectLeague(league.id)"
+        />
       </div>
     </form>
   </section>

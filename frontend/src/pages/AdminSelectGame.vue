@@ -1,6 +1,8 @@
 <template>
   <section class="px-5 flex justify-center items-center h-screen w-full">
-    <form class="flex flex-col py-10 space-y-10 justify-center align-middle w-full">
+    <form
+      class="flex flex-col py-10 space-y-10 justify-center align-middle w-full"
+    >
       <BigLogo />
       <div class="w-full justify-center flex">
         <p class="text-xl">
@@ -8,9 +10,17 @@
         </p>
       </div>
       <div class="flex flex-wrap gap-1 justify-center">
-        <AdminLeagueSelector v-for="game in games" :isSelected="false/*store.state.adminFilterGameSelected === game.id*/"
-          selectedClass="bg-dark-blue text-white" unselectedClass="bg-ice-blue" :key="game.id" :name="game.name ?? ''"
-          @click="() => selectGame(game.id)" />
+        <AdminLeagueSelector
+          v-for="game in games"
+          :isSelected="
+            false /*store.state.adminFilterGameSelected === game.id*/
+          "
+          selectedClass="bg-dark-blue text-white"
+          unselectedClass="bg-ice-blue"
+          :key="game.id"
+          :name="game.name ?? ''"
+          @click="() => selectGame(game.id)"
+        />
       </div>
     </form>
   </section>

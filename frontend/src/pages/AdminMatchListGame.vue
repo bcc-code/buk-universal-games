@@ -7,8 +7,8 @@
           <AdminLeagueSelector
             v-for="league in adminLeagues"
             :isSelected="league.id === $store.state.adminLeagueSelected"
-            selectedClass='bg-dark-brown text-white'
-            unselectedClass='bg-vanilla'
+            selectedClass="bg-dark-brown text-white"
+            unselectedClass="bg-vanilla"
             :key="league.id"
             :name="league.name"
             @click="selectLeague(league.id)"
@@ -19,9 +19,9 @@
         <p>Post type:</p>
         <div class="single-filter flex">
           <AdminLeagueSelector
-          :isSelected="$store.state.adminFilterGameSelected === null"
-          selectedClass="bg-dark-blue text-white"
-          unselectedClass= "bg-ice-blue"
+            :isSelected="$store.state.adminFilterGameSelected === null"
+            selectedClass="bg-dark-blue text-white"
+            unselectedClass="bg-ice-blue"
             name="All"
             @click="$store.commit('resetAdminFilterGameSelected')"
           />
@@ -31,14 +31,19 @@
             :isSelected="$store.state.adminFilterGameSelected === game.id"
             selectedClass="bg-dark-blue text-white"
             unselectedClass="bg-ice-blue"
-            :name="this.$t('games.'+game.gameType)"
+            :name="this.$t('games.' + game.gameType)"
             @click="$store.commit('setAdminFilterGameSelected', game.id)"
           />
         </div>
       </div>
     </section>
     <section class="space-y-5 mt-4">
-      <div class = "w-full text-center mt-24" v-if="Object.keys(adminMatchGroups).length === 0">No matches for this filter</div>
+      <div
+        class="w-full text-center mt-24"
+        v-if="Object.keys(adminMatchGroups).length === 0"
+      >
+        No matches for this filter
+      </div>
       <div
         v-else
         v-for="matchGroupKey in Object.keys(adminMatchGroups)"
@@ -50,7 +55,10 @@
         >
           {{ matchGroupKey }}
         </h2>
-        <div v-for="match in adminMatchGroups[matchGroupKey].matches" :key="match.id">
+        <div
+          v-for="match in adminMatchGroups[matchGroupKey].matches"
+          :key="match.id"
+        >
           <MatchListItem
             :key="match.id"
             :gameType="getGameById(match.gameId)?.gameType"

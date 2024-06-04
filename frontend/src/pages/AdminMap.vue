@@ -2,17 +2,29 @@
   <div class="root">
     <div ref="mapB" class="map-wrapper">
       <img src="/image/ubg-arena-small.png" alt="" />
-      <img src="/image/ubg-b-liga-icons.svg" style="position: absolute" alt="" />
+      <img
+        src="/image/ubg-b-liga-icons.svg"
+        style="position: absolute"
+        alt=""
+      />
       <span class="overlay-title-label">B-League - Arena</span>
     </div>
     <div ref="mapU" class="map-wrapper">
       <img src="/image/ubg-arena-small.png" alt="" />
-      <img src="/image/ubg-u-liga-icons.svg" style="position: absolute" alt="" />
+      <img
+        src="/image/ubg-u-liga-icons.svg"
+        style="position: absolute"
+        alt=""
+      />
       <span class="overlay-title-label">U-League - Arena</span>
     </div>
     <div ref="mapK" class="map-wrapper">
       <img src="/image/ubg-beach-small.png" alt="" />
-      <img src="/image/ubg-k-liga-icons.svg" style="position: absolute" alt="" />
+      <img
+        src="/image/ubg-k-liga-icons.svg"
+        style="position: absolute"
+        alt=""
+      />
       <span class="overlay-title-label">K-League - Beach</span>
     </div>
     <AdminMenu />
@@ -20,19 +32,19 @@
 </template>
 
 <script>
-import AdminMenu from '@/components/AdminMenu.vue'
+import AdminMenu from '@/components/AdminMenu.vue';
 
 export default {
   name: 'MapPage',
   components: { AdminMenu },
   data() {
     return {
-      loginError: 'Map'
-    }
+      loginError: 'Map',
+    };
   },
   mounted() {},
-  methods: {}
-}
+  methods: {},
+};
 </script>
 
 <style scoped>

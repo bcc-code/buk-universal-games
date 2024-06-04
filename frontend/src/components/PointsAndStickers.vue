@@ -1,7 +1,9 @@
 <template>
-  <section :class="{
-    'bg-peach-50 py-3 px-3 border-1 border-peach-200 flex w-full rounded-md': true,
-  }">
+  <section
+    :class="{
+      'bg-peach-50 py-3 px-3 border-1 border-peach-200 flex w-full rounded-md': true,
+    }"
+  >
     <div class="w-40 mr-5">
       <img src="/image/logo_icon.svg" class="rounded-md" />
     </div>
@@ -12,7 +14,9 @@
           <h2 class="text-label-1">{{ familyName ?? '-' }}</h2>
         </div>
         <div class="w-full">
-          <h2 class="text-label-1 text-3xl font-bold">{{ formatPoints(familyPoints) ?? '-' }}</h2>
+          <h2 class="text-label-1 text-3xl font-bold">
+            {{ formatPoints(familyPoints) ?? '-' }}
+          </h2>
         </div>
       </div>
       <div class="flex w-full space-x-6">
@@ -21,7 +25,9 @@
           <h2 class="text-label-1">{{ teamName ?? '-' }}</h2>
         </div>
         <div class="w-full">
-          <h2 class="text-label-1 text-2xl font-bold">{{ formatPoints(teamPoints) }}</h2>
+          <h2 class="text-label-1 text-2xl font-bold">
+            {{ formatPoints(teamPoints) }}
+          </h2>
         </div>
       </div>
     </div>
@@ -29,8 +35,7 @@
       <LanguageSwitcher />
       <LogOutButton class="mt-3" />
     </div>
-    <div class="align-middle flex">
-    </div>
+    <div class="align-middle flex"></div>
   </section>
 </template>
 
@@ -41,14 +46,14 @@ import LogOutButton from './LogOutButton.vue';
 import { useFamilyStatus, useSigninResponse } from '@/hooks/hooks';
 import { formatPoints } from './formatPoints';
 
-const { data } = useSigninResponse()
+const { data } = useSigninResponse();
 
 const { data: familyStatus } = useFamilyStatus();
 
 const teamName = computed(() => data.value?.team);
 const familyName = computed(() => data.value?.familyName);
-const familyPoints = computed(() => familyStatus.value?.myStatus?.familyPoints)
-const teamPoints = computed(() => familyStatus.value?.myStatus?.teamPoints)
+const familyPoints = computed(() => familyStatus.value?.myStatus?.familyPoints);
+const teamPoints = computed(() => familyStatus.value?.myStatus?.teamPoints);
 </script>
 <style scoped>
 button {
@@ -92,10 +97,12 @@ button {
 .loading {
   background-repeat: no-repeat;
   background-size: 24em 100%;
-  background-image: linear-gradient(to right,
-      var(--dark) 0%,
-      hsl(323, 50%, 33%) 50%,
-      var(--dark) 100%);
+  background-image: linear-gradient(
+    to right,
+    var(--dark) 0%,
+    hsl(323, 50%, 33%) 50%,
+    var(--dark) 100%
+  );
   animation-duration: 750ms;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;

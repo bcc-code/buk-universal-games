@@ -6,29 +6,35 @@
     </li>
   </ul>
   <div v-else-if="games.length === 0">
-    <h2>{{ $t("general_error") }}</h2>
-    <p>{{ $t("please_refresh") }}</p>
+    <h2>{{ $t('general_error') }}</h2>
+    <p>{{ $t('please_refresh') }}</p>
   </div>
-  <div v-else class="space-y-5 ">
-    <div v-for="game in games" :key="game.gameId" @click="$emit('clicked', game)">
-
-      <GamesListItem :game-id="game.id" :game-type="game.gameType" :game-start="game.start" />
-
+  <div v-else class="space-y-5">
+    <div
+      v-for="game in games"
+      :key="game.gameId"
+      @click="$emit('clicked', game)"
+    >
+      <GamesListItem
+        :game-id="game.id"
+        :game-type="game.gameType"
+        :game-start="game.start"
+      />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import GamesListItem from './GamesListItem.vue'
+import GamesListItem from './GamesListItem.vue';
 defineProps<{
   games: Array<{
-    gameType: string,
-    gameId: string | number
-    id: string | number
-    start: string
-  }>,
-  loading: boolean
-}>()
+    gameType: string;
+    gameId: string | number;
+    id: string | number;
+    start: string;
+  }>;
+  loading: boolean;
+}>();
 </script>
 
 <style scoped>
@@ -53,7 +59,7 @@ defineProps<{
 }
 
 .games .game .game-title {
-  margin: .5em 0 0 0;
+  margin: 0.5em 0 0 0;
   font-weight: 400;
 }
 
@@ -68,7 +74,12 @@ defineProps<{
   background-color: var(--dark);
   background-repeat: no-repeat;
   background-size: 10em 100%;
-  background-image: linear-gradient(to right, var(--dark) 0%, var(--dark-blue) 50%, var(--dark) 100%);
+  background-image: linear-gradient(
+    to right,
+    var(--dark) 0%,
+    var(--dark-blue) 50%,
+    var(--dark) 100%
+  );
   animation-duration: 750ms;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;

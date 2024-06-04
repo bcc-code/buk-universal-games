@@ -1,14 +1,26 @@
 <template>
   <div>
-    <input class="small-input" type="number" v-model="minutes" @input="updateTotal" :placeholder="'Minutes'" />
-    <span>&nbsp;:&nbsp;</span> 
-    <input class="small-input" type="number" v-model="seconds" @input="updateTotal" :placeholder="'Seconds'" />
+    <input
+      class="small-input"
+      type="number"
+      v-model="minutes"
+      @input="updateTotal"
+      :placeholder="'Minutes'"
+    />
+    <span>&nbsp;:&nbsp;</span>
+    <input
+      class="small-input"
+      type="number"
+      v-model="seconds"
+      @input="updateTotal"
+      :placeholder="'Seconds'"
+    />
   </div>
 </template>
 
 <script>
 export default {
-  name: "TimeInput",
+  name: 'TimeInput',
   props: {
     modelValue: Number,
   },
@@ -23,7 +35,7 @@ export default {
   methods: {
     updateTotal() {
       this.totalSeconds = this.minutes * 60 + this.seconds;
-      this.$emit("update:model-value", this.totalSeconds);
+      this.$emit('update:model-value', this.totalSeconds);
     },
   },
 };

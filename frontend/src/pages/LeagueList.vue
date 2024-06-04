@@ -10,7 +10,6 @@
     </section>
     <FamilyStatus></FamilyStatus>
     <div>
-
       <div class="rankingfrozen-message" v-if="$store.getters.currentRound > 3">
         <p>{{ $t('league.ranking-frozen') }}</p>
       </div>
@@ -25,7 +24,7 @@ import FamilyStatus from '@/components/FamilyStatus.vue';
 
 export default {
   name: 'LeagueList',
-  components: { UserPageLayout, PointsAndStickers,  FamilyStatus },
+  components: { UserPageLayout, PointsAndStickers, FamilyStatus },
   data() {
     return {
       loading: false,

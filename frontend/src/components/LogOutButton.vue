@@ -12,7 +12,7 @@ export default {
   components: { ArrowRightStartOnRectangleIcon },
   methods: {
     logout() {
-      window.localStorage.clear()
+      window.localStorage.clear();
       this.$router.push('/');
     },
   },

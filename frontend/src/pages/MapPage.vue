@@ -1,7 +1,7 @@
 <template>
   <div class="root">
-    <div ref="map" class="map-wrapper relative" >
-      <img :src="map"  alt=""  />
+    <div ref="map" class="map-wrapper relative">
+      <img :src="map" alt="" />
       <img :src="icons" class="absolute" alt="" />
     </div>
     <UserMenu />
@@ -10,25 +10,22 @@
 
 <script setup>
 import { computed } from 'vue';
-import UserMenu from '../components/UserMenu.vue'
-import { useStore } from 'vuex'
+import UserMenu from '../components/UserMenu.vue';
+import { useStore } from 'vuex';
 
-const $store = useStore()
+const $store = useStore();
 
 const league = computed(() => {
-  return $store.state.loginData.league?.substring(0, 1).toLowerCase()
-})
-
-
+  return $store.state.loginData.league?.substring(0, 1).toLowerCase();
+});
 
 const map = computed(() => {
-  return `/image/ubg-arena-small.png`
-})
+  return `/image/ubg-arena-small.png`;
+});
 
 const icons = computed(() => {
-  return `/image/ubg-${league.value}-liga-icons.svg`
-})
-
+  return `/image/ubg-${league.value}-liga-icons.svg`;
+});
 
 // import PinchZoom from 'pinch-zoom-js'
 
@@ -39,7 +36,6 @@ const icons = computed(() => {
 //     tapZoomFactor: 3,
 //     draggableUnzoomed: true
 //   })
-
 </script>
 
 <style scoped>

@@ -1,28 +1,41 @@
 <template>
-  <nav class="fixed bottom-0 w-full bg-teal-50 z-10 p-2 flex justify-around items-center mx-auto"
-    style="max-width: 960px;">
-    <button class="flex flex-col items-center w-1/3" :class="{
-      'selected-component': $route.name === 'AdminLeagueStatus',
-    }" @click="$router.push({ name: 'AdminLeagueStatus' })">
+  <nav
+    class="fixed bottom-0 w-full bg-teal-50 z-10 p-2 flex justify-around items-center mx-auto"
+    style="max-width: 960px"
+  >
+    <button
+      class="flex flex-col items-center w-1/3"
+      :class="{
+        'selected-component': $route.name === 'AdminLeagueStatus',
+      }"
+      @click="$router.push({ name: 'AdminLeagueStatus' })"
+    >
       <img class="h-10 w-10" src="/icon/leaderlist.png" />
     </button>
 
-    <button class="flex flex-col items-center user-menu-btn-big bg-white w-1/3" :class="{
-      'selected-component': $route.name === 'AdminMatchListGame',
-    }" @click="$router.push({ name: 'AdminMatchListGame' })">
+    <button
+      class="flex flex-col items-center user-menu-btn-big bg-white w-1/3"
+      :class="{
+        'selected-component': $route.name === 'AdminMatchListGame',
+      }"
+      @click="$router.push({ name: 'AdminMatchListGame' })"
+    >
       <img class="h-20 w-20" src="/icon/match.png" />
     </button>
 
-    <button class="flex flex-col items-center w-1/3" :class="{
-      'selected-component': $route.name === 'AdminMap',
-    }" @click="$router.push({ name: 'AdminMap' })">
+    <button
+      class="flex flex-col items-center w-1/3"
+      :class="{
+        'selected-component': $route.name === 'AdminMap',
+      }"
+      @click="$router.push({ name: 'AdminMap' })"
+    >
       <img class="h-10 w-10" src="/icon/place.svg" />
     </button>
   </nav>
 </template>
 
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <style scoped>
 .user-menu {
@@ -43,7 +56,7 @@ button {
   background-color: inherit;
 }
 
-.selected-component>img {
+.selected-component > img {
   filter: var(--active-yellow-button);
 }
 
