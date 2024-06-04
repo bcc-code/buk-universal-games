@@ -17,12 +17,13 @@ const getTeamCode = (): string => {
 };
 
 export const useFamilyStatus = () => {
+  const teamCode = getTeamCode();
   return useQuery({
-    queryKey: ['familyStatus'],
+    queryKey: ['familyStatus', teamCode],
     queryFn: () =>
       api.get('/status/family', {
         headers: {
-          'x-ubg-teamcode': getTeamCode(),
+          'x-ubg-teamcode': teamCode,
         },
       }),
     // don't re-run requests unless this amount of milliseconds have passed
@@ -53,38 +54,41 @@ export const useSigninResponse = (teamCode?: () => Ref<string>) => {
 };
 
 export const useAdminMatches = (leagueId: number) => {
+  const teamCode = getTeamCode();
   return useQuery({
-    queryKey: ['adminMatches', leagueId],
+    queryKey: ['adminMatches', leagueId, teamCode],
     queryFn: () =>
       api.get(`/admin/leagues/:leagueId/matches`, {
         params: {
           leagueId,
         },
         headers: {
-          'x-ubg-teamcode': getTeamCode(),
+          'x-ubg-teamcode': teamCode,
         },
       }),
   });
 };
 
 export const useGames = () => {
+  const teamCode = getTeamCode();
   return useQuery({
-    queryKey: ['games'],
+    queryKey: ['games', teamCode],
     queryFn: () =>
       api.get('/games', {
         headers: {
-          'x-ubg-teamcode': getTeamCode(),
+          'x-ubg-teamcode': teamCode,
         },
       }),
   });
 };
 
 export const useLeagues = () => {
+  const teamCode = getTeamCode();
   return useQuery({
-    queryKey: ['leagues'],
+    queryKey: ['leagues', teamCode],
     queryFn: () =>
       api.get('/admin/leagues', {
-        headers: { 'x-ubg-teamcode': getTeamCode() },
+        headers: { 'x-ubg-teamcode': teamCode },
       }),
   });
 };
