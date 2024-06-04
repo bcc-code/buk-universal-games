@@ -14,7 +14,6 @@ import UserMenu from '../components/UserMenu.vue';
 import { useStore } from 'vuex';
 import { useSigninResponse } from '../hooks/hooks';
 
-
 const { data } = useSigninResponse();
 const league = computed(() =>
   data.value?.league?.substring(0, 1).toLowerCase(),
