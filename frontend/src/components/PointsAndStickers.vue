@@ -5,7 +5,7 @@
     }"
   >
     <div class="w-40 mr-5">
-      <img src="/image/logo_icon.svg" class="rounded-md" />
+      <img src="/image/logo_icon.png" class="rounded-md" />
     </div>
     <div class="space-y-4 w-full">
       <div class="flex w-full space-x-6">
@@ -108,19 +108,6 @@ button {
   animation-iteration-count: infinite;
   animation-name: shimmer;
   animation-timing-function: linear;
-}
-
-.logo {
-  height: 5em;
-  width: 5em;
-  margin: -10px 0;
-  background-color: var(--dark);
-  color: white;
-  border-radius: 1em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 5px solid white;
 }
 
 .loading .card-dark-heading,

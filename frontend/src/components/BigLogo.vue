@@ -1,5 +1,5 @@
 <template>
-  <img src="/image/logo_icon.svg" alt="" class="logo shadow-md" />
+  <img src="/image/logo_icon.png" alt="" class="logo shadow-md" />
 </template>
 
 <style scoped>

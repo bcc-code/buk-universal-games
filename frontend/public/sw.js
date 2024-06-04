@@ -17,7 +17,7 @@ const urlsToCache = [
   'image/1_place.png',
   'image/2_place.png',
   'image/3_place.png',
-  'image/logo_icon.svg',
+  'image/logo_icon.png',
   'image/ubg-arena-small.png',
   'image/ubg-b-liga-icons.svg',
   'image/ubg-beach-small.png',
