@@ -8,16 +8,17 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue';
 import UserMenu from '../components/UserMenu.vue';
 import { useStore } from 'vuex';
+import { useSigninResponse } from '../hooks/hooks';
 
-const $store = useStore();
 
-const league = computed(() => {
-  return $store.state.loginData.league?.substring(0, 1).toLowerCase();
-});
+const { data } = useSigninResponse();
+const league = computed(() =>
+  data.value?.league?.substring(0, 1).toLowerCase(),
+);
 
 const map = computed(() => {
   return `/image/ubg-arena-small.png`;

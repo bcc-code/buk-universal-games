@@ -1,12 +1,12 @@
 <template>
   <section
-    class="rounded-md flex flex-col items-center py-3 px-3 bg-white"
+    class="rounded-md flex flex-col items-center py-3 px-3 bg-white border border-slate"
     :class="[
       passed ? 'brightness-90' : '',
       currentActiveMatch
         ? 'bg-yellow-50 border-yellow-100 border-1'
-        : ' border-ice-200 border-1',
-      clickFunc ? 'shadow-lg' : '',
+        : ' border-ice-200 border-1 unset-height',
+      clickFunc ? 'shadow-lg btn' : '',
     ]"
     @click="
       () => {
@@ -187,5 +187,9 @@ const winner = computed(() => {
 
 .mt-4 {
   margin-top: 1rem;
+}
+
+.unset-height {
+  height: unset;
 }
 </style>

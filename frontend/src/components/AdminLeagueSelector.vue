@@ -1,7 +1,7 @@
 <template>
   <section
     :class="[
-      'whitespace-nowrap text-dark-brown rounded-md p-2 m-1 flex flex-col justify-center items-center',
+      'whitespace-nowrap text-dark-brown rounded-md p-2 m-1 flex flex-col justify-center items-center btn shadow-md',
       additionalClass,
     ]"
   >

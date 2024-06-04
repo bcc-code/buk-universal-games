@@ -1,7 +1,10 @@
 <template>
   <div class="locale-changer">
     <div class="dropdown" :class="{ open: isOpen }">
-      <div class="bg-white rounded-md p-2" @click="toggleDropdown(null)">
+      <div
+        class="bg-white rounded-md p-2"
+        @click="toggleDropdown(null)"
+      >
         {{ selectedLanguage.toUpperCase() }}
       </div>
       <div class="background" v-if="isOpen" @click="toggleDropdown(null)"></div>

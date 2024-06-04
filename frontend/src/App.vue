@@ -15,9 +15,11 @@ import InternalNotification from '@/components/InternalNotification.vue';
   box-sizing: inherit;
 }
 
-html {
+html,
+:root {
   box-sizing: border-box;
   height: 100%;
+  /* background-color: white; */
 }
 
 main {
@@ -55,10 +57,10 @@ input,
   border: 2px solid var(--dark-blue);
 }
 
-.btn-primary {
+/* .btn-primary {
   background-color: var(--vanilla);
   color: white;
-}
+} */
 
 .user-section {
   padding: 0.2em 0;

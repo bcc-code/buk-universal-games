@@ -95,21 +95,30 @@ export function initRouter(store: any) {
   });
 
   router.beforeEach(async (to, from) => {
-    if (!store.state.loginData && window.localStorage.getItem('testTeamCode')) {
+    const teamCode = window.localStorage.getItem('testTeamCode');
+    console.log(
+      'running router before each. store.state.loginData',
+      store.state.loginData,
+      'testTeamCode',
+      window.localStorage.getItem('testTeamCode'),
+    );
+    if (!store.state.loginData && teamCode) {
+      console.log('dispatching signin');
       await store.dispatch('signIn');
       await store.dispatch('getGames');
     }
 
-    if (
-      window.localStorage.getItem('testTeamCode') &&
-      to.path === '/' &&
-      !from.matched.length
-    ) {
+    if (teamCode && to.path === '/' && !from.matched.length) {
+      console.log('login truthy detected');
+
       if (store.state.loginData.access === 'admin') {
+        console.log('logged in as admin, rerouting to adminselectleague');
+
         await store.dispatch('getAdminLeagues');
         await store.dispatch('getAdminLeagueStatus');
         return { name: 'AdminSelectLeague' };
       } else {
+        console.log('logged in as participant, rerouting to leaguelist');
         await store.dispatch('getLeagueStatus');
         await store.dispatch('getMatches');
         await store.dispatch('checkNewQuestions');
@@ -117,11 +126,8 @@ export function initRouter(store: any) {
       }
     }
 
-    if (
-      !window.localStorage.getItem('testTeamCode') &&
-      to.path !== '/' &&
-      !to.path.startsWith('/start')
-    ) {
+    if (!teamCode && to.path !== '/' && !to.path.startsWith('/start')) {
+      console.log('not logged in, routing to login. ');
       return { name: 'Login' };
     }
   });

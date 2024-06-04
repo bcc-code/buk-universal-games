@@ -11,7 +11,7 @@
         :key="family.id"
         class="mb-8"
       >
-        <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="bg-white p-6 rounded-lg border border-slate">
           <div class="flex items-center justify-between mb-4">
             <div class="flex items-center space-x-4">
               <div>
