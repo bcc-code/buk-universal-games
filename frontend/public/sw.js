@@ -1,7 +1,6 @@
 // Define the cache name and files to cache
 const CACHE_NAME = 'my-site-cache-v1';
 const urlsToCache = [
-  'favicon.ico',
   'favicon.png',
   'icon/192.png',
   'icon/buk-icon.svg',
