@@ -48,10 +48,10 @@ input,
   font-size: 1em;
   font: inherit;
 }
-
+/* 
 .btn-success {
   background-color: var(--green);
-}
+} */
 
 .btn-blank {
   border: 2px solid var(--dark-blue);

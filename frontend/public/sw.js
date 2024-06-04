@@ -1,5 +1,3 @@
-// Service worker file
-
 // Define the cache name and files to cache
 const CACHE_NAME = 'my-site-cache-v1';
 const urlsToCache = [

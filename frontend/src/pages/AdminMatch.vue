@@ -17,11 +17,12 @@
         <span class="text-label-1">{{ $t('games.' + game?.gameType) }}</span>
       </h1>
     </div>
-    <section class="error-popup" v-if="showErrorPopup">
-      <p>
-        <span>{{ popupErrorMessage }}</span>
-      </p>
-    </section>
+    <div class="toast toast-center toast-top" v-if="showErrorPopup">
+      <div class="alert alert-error block">{{ popupErrorMessage }}</div>
+    </div>
+    <div class="toast toast-center toast-top" v-if="showSuccess">
+      <div class="alert alert-success block">Lagret</div>
+    </div>
 
     <MatchListItem
       class="mb-5"
@@ -37,6 +38,7 @@
       addOn=""
       gameAddOn=""
     />
+    <button @click="showError">show Error</button>
 
     <div class="teams">
       <div
@@ -56,7 +58,7 @@
             :placeholder="'Input result'"
           />
           <button
-            class="btn btn-blank"
+            class="btn btn-success btn-blank ml-3"
             @click="confirmTeamResult(match?.team1Id, team1Result)"
             :disabled="confirmDisabled"
           >
@@ -83,7 +85,7 @@
             :placeholder="'Input result'"
           />
           <button
-            class="btn btn-blank"
+            class="btn btn-success btn-blank ml-3"
             @click="confirmTeamResult(match?.team2Id, team2Result)"
             :disabled="confirmDisabled"
           >
@@ -115,8 +117,8 @@ const { mutate: confirmResult, isPending } = useConfirmTeamResult();
 
 const isChangingScore1 = ref(false);
 const isChangingScore2 = ref(false);
-const showErrorPopup = ref(false);
 const popupErrorMessage = ref<string | null>(null);
+const showErrorPopup = computed(() => !!popupErrorMessage.value);
 
 const match = computed(() =>
   matches.value?.find((m: any) => m.matchId == matchId),
@@ -128,6 +130,23 @@ const team1Result = ref<number | null>(match.value?.team1Result ?? null);
 const team2Result = ref<number | null>(match.value?.team2Result ?? null);
 
 const confirmDisabled = computed(() => isPending.value);
+
+const showSuccess = ref<boolean>(false);
+
+const showError = () => {
+  popupErrorMessage.value =
+    'Submitting failed, please check connection and try again';
+  setTimeout(() => {
+    popupErrorMessage.value = null;
+  }, 5000);
+};
+
+const showSuccessToast = () => {
+  showSuccess.value = true;
+  setTimeout(() => {
+    showSuccess.value = false;
+  }, 3000);
+};
 
 const confirmTeamResult = async (
   teamId: number | undefined,
@@ -152,15 +171,10 @@ const confirmTeamResult = async (
           } else {
             isChangingScore2.value = false;
           }
+          showSuccessToast();
         },
         onError: () => {
-          popupErrorMessage.value =
-            'Submitting failed, please check connection and try again';
-          showErrorPopup.value = true;
-          setTimeout(() => {
-            showErrorPopup.value = false;
-            popupErrorMessage.value = null;
-          }, 5000);
+          showError();
         },
       },
     );
@@ -269,9 +283,9 @@ div.teamresult.winner .tag {
   width: 100%;
 }
 
-.btn-success {
+/* .btn-success {
   border: 2px solid hsl(158, 93%, 40%);
-}
+} */
 
 header h2 {
   display: flex;
