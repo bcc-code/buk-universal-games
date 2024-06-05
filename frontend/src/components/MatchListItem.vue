@@ -2,7 +2,7 @@
   <section
     class="rounded-md flex flex-col items-center py-3 px-3 bg-white border border-slate"
     :class="[
-      passed ? 'brightness-90' : '',
+      passed ? 'opacity-50' : '',
       currentActiveMatch
         ? 'bg-yellow-50 border-yellow-100 border-1'
         : ' border-ice-200 border-1 unset-height',
