@@ -2,18 +2,12 @@
   <AdminPageLayout>
     <div class="flex">
       <nav class="text-dark mr-4">
-        <div
-          @click="$router.back()"
-          class="p-1 bg-ice-blue cursor-pointer rounded-md hover:bg-vanilla text-dark-blue"
-        >
+        <div @click="$router.back()" class="p-1 bg-ice-blue cursor-pointer rounded-md hover:bg-vanilla text-dark-blue">
           <ArrowLeftIcon class="h-5" />
         </div>
       </nav>
       <h1 class="text-white font-bold py-2 px-2 rounded-md flex space-x-3">
-        <img
-          class="h-10 w-10"
-          :src="`/icon/game-${game?.gameType?.replace(/_/g, '')}.svg`"
-        />
+        <img class="h-10 w-10" :src="`/icon/game-${game?.gameType?.replace(/_/g, '')}.svg`" />
         <span class="text-label-1">{{ $t('games.' + game?.gameType) }}</span>
       </h1>
     </div>
@@ -24,71 +18,38 @@
       <div class="alert alert-success block">Lagret</div>
     </div>
 
-    <MatchListItem
-      class="mb-5"
-      v-if="match && match.team1 && match.team2"
-      :key="match.matchId"
-      :team1="match.team1"
-      :team2="match.team2"
-      :team1result="match.team1Result ?? null"
-      :team2result="match.team2Result ?? null"
-      :start="match.start ?? ''"
-      :winner="match.winner"
-      :gameType="game?.gameType ?? ''"
-      addOn=""
-      gameAddOn=""
-    />
-    <button @click="showError">show Error</button>
+    <MatchListItem class="mb-5" v-if="match && match.team1 && match.team2" :key="match.matchId" :team1="match.team1"
+      :team2="match.team2" :team1result="match.team1Result ?? null" :team2result="match.team2Result ?? null"
+      :start="match.start ?? ''" :winner="match.winner" :gameType="game?.gameType ?? ''" addOn="" gameAddOn="" />
 
     <div class="teams">
-      <div
-        :class="{
-          teamresult: true,
-        }"
-      >
+      <div :class="{
+        teamresult: true,
+      }">
         <p>{{ match?.team1 }}</p>
         <p v-if="match?.team1Result">
           <strong>Score:</strong> {{ match?.team1Result }}
         </p>
         <div>
-          <input
-            class="bg-slate-100"
-            type="number"
-            v-model="team1Result"
-            :placeholder="'Input result'"
-          />
-          <button
-            class="btn btn-success btn-blank ml-3"
-            @click="confirmTeamResult(match?.team1Id, team1Result)"
-            :disabled="confirmDisabled"
-          >
+          <input class="bg-slate-100" type="number" v-model="team1Result" :placeholder="'Input result'" />
+          <button class="btn btn-success btn-blank ml-3" @click="confirmTeamResult(match?.team1Id, team1Result)"
+            :disabled="confirmDisabled">
             Save
           </button>
         </div>
       </div>
-      <div
-        v-if="match?.team1Id !== match?.team2Id"
-        :class="{
-          teamresult: true,
-        }"
-      >
+      <div v-if="match?.team1Id !== match?.team2Id" :class="{
+        teamresult: true,
+      }">
         <p>{{ match?.team2 }}</p>
         <p v-if="match?.team2Result">
           <strong>Score:</strong> {{ match?.team2Result }}
         </p>
 
         <div>
-          <input
-            class="bg-slate-100"
-            type="number"
-            v-model="team2Result"
-            :placeholder="'Input result'"
-          />
-          <button
-            class="btn btn-success btn-blank ml-3"
-            @click="confirmTeamResult(match?.team2Id, team2Result)"
-            :disabled="confirmDisabled"
-          >
+          <input class="bg-slate-100" type="number" v-model="team2Result" :placeholder="'Input result'" />
+          <button class="btn btn-success btn-blank ml-3" @click="confirmTeamResult(match?.team2Id, team2Result)"
+            :disabled="confirmDisabled">
             Save
           </button>
         </div>
