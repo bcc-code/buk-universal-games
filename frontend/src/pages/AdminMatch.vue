@@ -1,15 +1,12 @@
 <template>
   <AdminPageLayout>
     <div class="flex">
-      <nav class="text-dark mr-4">
-        <div @click="$router.back()" class="p-1 bg-ice-blue cursor-pointer rounded-md hover:bg-vanilla text-dark-blue">
+      <nav class="text-dark mr-4 mb-5 bg-ice-blue cursor-pointer rounded-md hover:bg-vanilla text-dark-blue btn"
+        @click="$router.back()">
+        <div class=" ">
           <ArrowLeftIcon class="h-5" />
         </div>
       </nav>
-      <h1 class="text-white font-bold py-2 px-2 rounded-md flex space-x-3">
-        <img class="h-10 w-10" :src="`/icon/game-${game?.gameType?.replace(/_/g, '')}.svg`" />
-        <span class="text-label-1">{{ $t('games.' + game?.gameType) }}</span>
-      </h1>
     </div>
     <div class="toast toast-center toast-top" v-if="showErrorPopup">
       <div class="alert alert-error block">{{ popupErrorMessage }}</div>
@@ -150,43 +147,15 @@ if (!matchId) {
 </script>
 
 <style scoped>
-.banner {
-  width: 100%;
-  padding: 2em;
-  height: 20em;
-  border-radius: 1em;
-  margin: 2em auto;
-  background-color: var(--dark);
-  color: #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  background-size: 80%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-header h3 {
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-  margin: 0.5em 0;
-}
-
-.icon {
-  max-width: 4em;
-}
-
 div.teams {
   display: grid;
   gap: 1em;
-
   margin: 0 0 2em 0;
   padding: 0;
 }
@@ -200,20 +169,6 @@ div.teamresult {
   grid-template-rows: auto auto auto;
 }
 
-ul li.winner {
-  /* color: #fff;
-  background-color: var(--dark); */
-}
-
-ul li.selected {
-  color: #fff;
-  background-color: var(--dark);
-  /* background-color: #fff; */
-}
-
-/* ul li.winner.selected {
-
-} */
 
 div.teamresult .tag {
   position: absolute;
@@ -232,44 +187,5 @@ div.teamresult .tag {
 div.teamresult.winner .tag {
   color: #000;
   background-color: var(--green);
-}
-
-.buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-}
-
-.buttons button {
-  width: 100%;
-}
-
-/* .btn-success {
-  border: 2px solid hsl(158, 93%, 40%);
-} */
-
-header h2 {
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-}
-
-.error-popup {
-  position: fixed;
-  top: 4em;
-  left: 1em;
-  right: 1em;
-  z-index: 800;
-  background-color: var(--red);
-  color: #fff;
-  padding: 1.5em 1em;
-  border-radius: 1em;
-  box-shadow: 2px 5px 5px 0px rgba(0, 0, 0, 0.5);
-}
-
-button[disabled] {
-  background-color: #e0e0e0;
-  color: #a0a0a0;
-  cursor: not-allowed;
 }
 </style>
