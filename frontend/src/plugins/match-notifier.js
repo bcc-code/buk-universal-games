@@ -1,5 +1,5 @@
 /** Default time offset is 5 minutes before match starts */
-export default (notificationService, timeOffset = -300_000) =>
+export default (notificationService, timeOffset = -300 * 1000) =>
   (store) => {
     // called when the store is initialized
     store.subscribe(async (mutation, state) => {

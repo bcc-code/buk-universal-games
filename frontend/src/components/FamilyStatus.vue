@@ -37,7 +37,7 @@
                   {{ familyIndex + 1 }}
                 </div>
               </div>
-              <img src="/icon/family-icon.svg" alt="Family Icon" class="w-12" />
+              <img src="/image/mafia_family.png" alt="Family Icon" class="w-12" />
               <h2 class="text-2xl font-bold">{{ family.name }}</h2>
             </div>
             <div class="flex items-center space-x-2">
@@ -48,14 +48,11 @@
           </div>
           <hr class="border-t border-gray-200" />
           <div
-            v-for="(team, teamIndex) in family.teams"
+            v-for="team in family.teams"
             :key="team.teamId"
             class="flex items-center justify-between p-4 border-b border-gray-200 last:border-0"
           >
             <div class="flex items-center space-x-4">
-              <div class="text-lg font-bold text-gray-700">
-                {{ teamIndex + 1 }}
-              </div>
               <img src="/icon/buk-icon.svg" alt="Team Icon" class="h-6 w-6" />
               <span class="text-lg">{{ team.team }}</span>
             </div>
