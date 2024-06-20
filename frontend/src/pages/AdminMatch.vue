@@ -9,9 +9,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { computed } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
-import { useAdminMatches, useGames, useConfirmTeamResult } from '@/hooks/hooks';
+import { useAdminMatches, useGames } from '@/hooks/hooks';
 import AdminPageLayout from '@/components/AdminPageLayout.vue';
 import { useStore } from 'vuex';
 import AdminMatchInfo from './AdminMatchInfo.vue';
@@ -19,7 +19,6 @@ import { gameTypeSchema } from './GameType';
 import BackButton from './BackButton.vue';
 import { z } from 'zod';
 import AdminRegisterPoints from './AdminRegisterPoints.vue';
-import { isConstructorDeclaration } from 'typescript';
 
 const route = useRoute();
 
