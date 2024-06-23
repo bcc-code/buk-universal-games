@@ -1,36 +1,36 @@
-import { nextTick } from 'vue';
+import { usePiniaStore } from '@/store/piniaStore';
 import { createI18n, type Composer } from 'vue-i18n';
 
-export const SUPPORT_LOCALES = [
-  'cn',
-  'de',
-  'en',
-  'es',
-  'fi',
-  'fr',
-  'hu',
-  'it',
-  'nb',
-  'nl',
-  'pl',
-  'ro',
-  'ru',
-  'tr',
-  'ua',
-] as const;
+export const SUPPORTED_LOCALES = {
+  nb: 'Norsk',
+  en: 'English',
+  de: 'Deutsch',
+  es: 'Español',
+  nl: 'Nederlands',
+  pl: 'Polski',
+  cn: '中文',
+  fi: 'Suomi',
+  fr: 'Français',
+  hu: 'Magyar',
+  it: 'Italiano',
+  ro: 'Română',
+  ru: 'Русский',
+  tr: 'Türkçe',
+  ua: 'українська',
+} as const;
 
-type Locale = typeof SUPPORT_LOCALES[number];
+export type Locale = keyof typeof SUPPORTED_LOCALES;
 
-export async function setupI18n(locale: string = 'en') {
-  const fallbackLocale = 'en';
+export async function setupI18n() {
   const i18n = createI18n({
     legacy: false,
     globalInjection: true,
-    locale,
-    fallbackLocale,
+    fallbackLocale: 'en',
   });
 
-  await setI18nLanguage(i18n.global, locale);
+  const store = usePiniaStore()
+
+  await setI18nLanguage(i18n.global, store.userLanguage);
 
   return i18n;
 }
@@ -38,7 +38,7 @@ export async function setupI18n(locale: string = 'en') {
 export async function setI18nLanguage(i18n: Composer, locale: string) {
   let verifiedLocale: Locale;
 
-  if (locale && SUPPORT_LOCALES.includes(locale as Locale)) {
+  if (locale && (locale in SUPPORTED_LOCALES)) {
     verifiedLocale = locale as Locale;
   } else {
     console.warn(`The locale '${locale}' is not supported. Using 'en' as fallback.`);
@@ -53,4 +53,6 @@ export async function setI18nLanguage(i18n: Composer, locale: string) {
   const html = document.querySelector('html');
   if (!html) throw Error("Couldn't find html element");
   html.setAttribute('lang', verifiedLocale);
+
+  usePiniaStore().setUserLanguage(verifiedLocale)
 }

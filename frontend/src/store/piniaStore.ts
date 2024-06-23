@@ -1,3 +1,4 @@
+import type { Locale } from '@/libs/i18n';
 import { defineStore } from 'pinia';
 
 export const usePiniaStore = defineStore('piniaStore', {
@@ -5,7 +6,6 @@ export const usePiniaStore = defineStore('piniaStore', {
     adminFilterGameSelected: null as number | null,
     adminLeagueSelected: null as number | null,
     testTeamCode: null as string | null,
-    // 🧹make type locale, create validator for each usage
     userLanguage: navigator.language.split('-')[0] || 'en' as string,
   }),
   actions: {
@@ -18,7 +18,7 @@ export const usePiniaStore = defineStore('piniaStore', {
     setTestTeamCode(code: string) {
       this.testTeamCode = code;
     },
-    setUserLanguage(locale: string) {
+    setUserLanguage(locale: Locale) {
       this.userLanguage = locale;
     },
   },

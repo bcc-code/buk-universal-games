@@ -2,7 +2,7 @@
   <div class="locale-changer">
     <div class="dropdown" :class="{ open: isOpen }">
       <div class="bg-white rounded-md p-2 btn shadow-md" @click="toggleDropdown(null)">
-        {{ selectedLanguage.toUpperCase() }}
+        {{ store.userLanguage.toUpperCase() }}
       </div>
       <div class="background" v-if="isOpen" @click="toggleDropdown(null)"></div>
       <div class="dropdown-menu" ref="languagePickerMenu">
@@ -12,7 +12,7 @@
           class="dropdown-item"
           @click="changeLanguage(locale)"
         >
-          <p>{{ locales[locale] }}</p>
+          <p>{{ SUPPORTED_LOCALES[locale] }}</p>
         </div>
       </div>
     </div>
@@ -23,35 +23,15 @@
 import { ref, computed, onMounted, onUnmounted,watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 
-import { setI18nLanguage} from "../libs/i18n"
+import { SUPPORTED_LOCALES, setI18nLanguage, type Locale} from "../libs/i18n"
 import {usePiniaStore} from "../store/piniaStore"
 
-// 🧹 get this from libs/i18n
-const locales = {
-  nb: 'Norsk',
-  en: 'English',
-  de: 'Deutsch',
-  es: 'Español',
-  nl: 'Nederlands',
-  pl: 'Polski',
-  cn: '中文',
-  fi: 'Suomi',
-  fr: 'Français',
-  hu: 'Magyar',
-  it: 'Italiano',
-  ro: 'Română',
-  ru: 'Русский',
-  tr: 'Türkçe',
-  ua: 'українська',
-};
-
-const order:Array<keyof typeof locales> = ['nb', 'en', 'de', 'es', 'nl', 'pl'];
+const order:Locale[] = ['nb', 'en', 'de', 'es', 'nl', 'pl'];
 
 const store = usePiniaStore()
 const i18n = useI18n()
 const { locale, t } = i18n;
 
-const selectedLanguage = ref(locale.value);
 const isOpen = ref(false);
 const languagePickerMenu = ref<HTMLDivElement | null>(null);
 
@@ -69,10 +49,7 @@ const toggleDropdown = (override: boolean | null = null) => {
 
 
 const changeLanguage = (locale: string) => {
-  store.setUserLanguage(locale)
   setI18nLanguage(i18n, locale);
-  // 🧹get from store
-  selectedLanguage.value = locale;
   toggleDropdown(false);
 };
 
@@ -88,9 +65,9 @@ const closeDropdown = (event: MouseEvent) => {
 };
 
 const sortedLocales = computed(() => {
-  const remainingLocales = (Object.keys(locales) as Array<keyof typeof locales>)
-    .filter((locale) => !order.includes(locale))
-    .sort((a, b) => locales[a].localeCompare(locales[b]));
+  const remainingLocales = (Object.keys(SUPPORTED_LOCALES) as (keyof typeof SUPPORTED_LOCALES)[])
+    .filter((locale) => !order.includes(locale)) 
+    .sort((a, b) => SUPPORTED_LOCALES[a].localeCompare(SUPPORTED_LOCALES[b]));
 
   return [...order, ...remainingLocales];
 });

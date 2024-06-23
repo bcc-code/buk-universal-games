@@ -31,9 +31,8 @@ const app = createApp(App)
   .use(VueQueryPlugin)
   .provide('notificationService', notificationService);
   
-  const savedLanguage = usePiniaStore().userLanguage
 
-  const i18n = await setupI18n(savedLanguage);
+  const i18n = await setupI18n();
   
   app.use(i18n)
   
