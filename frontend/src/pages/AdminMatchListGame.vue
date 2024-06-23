@@ -77,7 +77,7 @@
   </AdminPageLayout>
 </template>
 
-<script lang="ts">
+<script>
 import AdminPageLayout from '@/components/AdminPageLayout.vue';
 import MatchListItem from '@/components/MatchListItem.vue';
 import AdminLeagueSelector from '@/components/AdminLeagueSelector.vue';

@@ -114,12 +114,13 @@ import '@vuepic/vue-datepicker/dist/main.css';
 import z from 'zod';
 import { useConfirmTeamResult } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';
+import type { TimeType } from './TimeType';
 
 const props = defineProps<{
   match: MatchListItemEntity;
 }>();
 
-const date = ref<unknown>();
+const date = ref<TimeType>();
 const finished = ref<boolean | undefined>(undefined);
 const checkpoints = ref<0 | 1 | 2 | 3 | undefined>(undefined);
 

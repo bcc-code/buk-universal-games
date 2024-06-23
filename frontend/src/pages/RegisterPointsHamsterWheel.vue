@@ -117,9 +117,9 @@ const props = defineProps<{
   match: MatchListItemEntity;
 }>();
 
-const team1Time = ref<unknown>();
+const team1Time = ref<TimeType>();
 const team1Steps = ref<number | ''>('');
-const team2Time = ref<unknown>();
+const team2Time = ref<TimeType>();
 const team2Steps = ref<number | ''>('');
 
 const timeSchema = z.object({
@@ -137,7 +137,6 @@ const validatedTeam1Time = computed(() => {
 
 const validatedTeam2Time = computed(() => {
   return timeSchemaOptional.parse(team2Time.value);
-  
 });
 
 const minScore = 2;

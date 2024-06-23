@@ -71,19 +71,15 @@ import z from 'zod'
 import { toRaw } from 'vue';
 import { useConfirmTeamResult } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';
+import { timeSchema, type TimeType } from './TimeType';
 
 const props = defineProps<{
   match: MatchListItemEntity;
 }>();
 
-const date = ref<unknown>();
+const date = ref<TimeType>();
 const cheats= ref<""|number>("");
 
-const timeSchema = z.object({
-  hours: z.number(),
-  minutes: z.number(),
-  seconds: z.number(),
-}).optional();
 
 // 🧹 move to time picker component. it should be used inside a form. Create that as a comment. 
 const validatedDate = computed(()=>{
