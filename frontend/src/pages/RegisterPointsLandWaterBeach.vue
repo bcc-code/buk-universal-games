@@ -3,33 +3,43 @@
   <div class="p-4 bg-white rounded-md">
 
     <form @submit.prevent="submitForm">
-      <div class="mb-4">
-        Poeng Team 1:
-        <input
-          class="shadow-md border-solid border-2 border-slate-200 rounded-md"
-          type="number"
-          v-model="pointsTeam1"
+       <div class="flex justify-evenly">
+
+         <div class="mb-4">
+           Poeng {{ match.team1 }}:
+          <br/>
+
+           <input
+           class="shadow-md border-solid border-2 border-slate-200 rounded-md w-36"
+           type="number"
+           v-model="pointsTeam1"
           min="0"
           max="9"
-          :placeholder="'Poeng for Team 1'"
+          :placeholder="'Poeng'"
           required
-        />
-      </div>
-      <div class="mb-4">
-        Poeng Team 2:
-        <input
-          class="shadow-md border-solid border-2 border-slate-200 rounded-md"
+          />
+          <div v-if="calculatedResult">
+          Beregnet score: {{calculatedResult.team1Result}}
+        </div>
+        </div>
+        <div class="mb-4">
+          Poeng {{ match.team2 }}:
+          <br/>
+          <input
+          class="shadow-md border-solid border-2 border-slate-200 rounded-md w-36"
           type="number"
           v-model="pointsTeam2"
           min="0"
           max="9"
-          :placeholder="'Poeng for Team 2'"
+          :placeholder="'Poeng'"
           required
-        />
+          />
+          <div v-if="calculatedResult">
+            Beregnet score: {{calculatedResult.team2Result}}
+          </div>
+        </div>
       </div>
-      <div class="mb-4" v-if="calculatedResult">
-        Beregnet score: Team 1: {{calculatedResult.team1Result}}, Team 2: {{calculatedResult.team2Result}}
-      </div>
+        
       <button type="submit" class="btn btn-success btn-blank h-14 p-4 shadow-md" :disabled="isPending">
         Lagre
       </button>
@@ -44,7 +54,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue';
+import { ref, computed } from 'vue';
 import z from 'zod';
 import { useConfirmTeamResult } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';
@@ -94,6 +104,7 @@ const showSuccessToast = () => {
   }, 3000);
 };
 
+// 🧹 create a new endpoint which both of these, or at least create a hook so we know what interface we want.
 const { mutate: confirmResultTeam1, isPending: isPendingTeam1, error: errorTeam1 } = useConfirmTeamResult();
 const { mutate: confirmResultTeam2, isPending: isPendingTeam2, error: errorTeam2 } = useConfirmTeamResult();
 
