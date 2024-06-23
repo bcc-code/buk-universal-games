@@ -45,6 +45,7 @@
       </button>
     </form>
   </div>
+  <!-- 🧹move to parent where we save. -->
   <div class="toast toast-center toast-bottom pb-24 z-20" v-if="error">
     <div class="alert alert-error block">{{ error.message }}</div>
   </div>
@@ -66,18 +67,12 @@ const props = defineProps<{
 const pointsTeam1 = ref<number | ''>('');
 const pointsTeam2 = ref<number | ''>('');
 
-const scoreSchema = z.object({
-  pointsTeam1: z.number().min(0).max(9),
-  pointsTeam2: z.number().min(0).max(9),
-}).optional();
-
-const validatedScores = computed(() => {
-  const newLocal = scoreSchema.safeParse({ pointsTeam1: pointsTeam1.value, pointsTeam2: pointsTeam2.value });
-  return newLocal.success ? newLocal.data : undefined;
-});
-
 const calculatedResult = computed<{ team1Result: number; team2Result: number } | undefined>(() => {
-  if (!validatedScores.value) return;
+  const validatedPointsTeam1 = pointsTeam1.value;
+  const validatedPointsTeam2 = pointsTeam2.value;
+  if (!(typeof validatedPointsTeam1==="number")) return;
+  if (!(typeof validatedPointsTeam2==="number")) return;
+
 
   const minScore = 1;
   const maxScore = 20;
@@ -86,8 +81,8 @@ const calculatedResult = computed<{ team1Result: number; team2Result: number } |
 
   const lerp = (min: number, max: number, t: number) => min + t * (max - min);
 
-  const team1Result = lerp(minScore, maxScore, (validatedScores.value.pointsTeam1 - minPoints) / (maxPoints - minPoints));
-  const team2Result = lerp(minScore, maxScore, (validatedScores.value.pointsTeam2 - minPoints) / (maxPoints - minPoints));
+  const team1Result = lerp(minScore, maxScore, (validatedPointsTeam1 - minPoints) / (maxPoints - minPoints));
+  const team2Result = lerp(minScore, maxScore, (validatedPointsTeam2 - minPoints) / (maxPoints - minPoints));
 
   return {
     team1Result: Math.round(team1Result),
