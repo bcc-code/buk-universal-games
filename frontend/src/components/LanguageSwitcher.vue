@@ -53,6 +53,7 @@ const isOpen = ref(false);
 const languagePickerMenu = ref<HTMLDivElement | null>(null);
 
 const toggleDropdown = (override: boolean | null = null) => {
+  console.log(override, isOpen.value)
   isOpen.value = override ?? !isOpen.value;
   if (isOpen.value) {
     setTimeout(() => {
@@ -65,7 +66,7 @@ const toggleDropdown = (override: boolean | null = null) => {
 
 const changeLanguage = (locale: string) => {
   store.commit('setUserLanguage', locale);
-  // setI18nLanguage(locale);
+  setI18nLanguage(locale);
   selectedLanguage.value = locale;
   localStorage.setItem('userLanguage', locale);
   toggleDropdown(false);
