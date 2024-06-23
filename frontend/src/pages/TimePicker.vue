@@ -40,6 +40,11 @@
             />
 
       </div>
+      <div class = 'mb-4' :v-if="typeof calculatedResult ==='number'">
+
+        Beregnet score: {{calculatedResult}}
+      </div>
+      
       <button type="submit" class="btn btn-success btn-blank h-14 p-4 shadow-md"
       :disabled="isPending"
       
@@ -69,8 +74,8 @@ const props = defineProps<{
   match: MatchListItemEntity;
 }>();
 
-const date = ref();
-const cheats= ref("");
+const date = ref<unknown>();
+const cheats= ref<""|number>("");
 
 const timeSchema = z.object({
   hours: z.number(),
@@ -85,7 +90,16 @@ const validatedDate = computed(()=>{
 watch(validatedDate,(val)=>console.log(toRaw(val) ),{immediate:true})
 watch(cheats,(val)=>console.log(toRaw(val),typeof val ),{immediate:true})
 
-const calculatedResult = computed(()=>1)
+const calculatedResult = computed<number|undefined>(()=>{
+  if(typeof cheats.value !== 'number') return;
+  if(!validatedDate.value) return;
+  cheats.value
+  validatedDate.value
+let score;
+// ...
+return score;
+
+})
 
 const showSuccess = ref<boolean>(false);
 
