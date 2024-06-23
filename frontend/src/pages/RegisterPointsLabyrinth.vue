@@ -218,21 +218,7 @@ const submitForm = () => {
 </script>
 
 <style scoped>
-/* .btn-secondary {
-  background-color: #ccc;
-  color: #000;
-}
-.btn-success {
-  background-color: #28a745;
-  color: #fff;
-}
-.btn-danger {
-  background-color: #dc3545;
-  color: #fff;
-}
- */
 .multiselect-button {
-  /* flex:0 0 1; */
   width: 0;
   padding-left: 2rem;
   padding-right: 2rem;
