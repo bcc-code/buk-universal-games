@@ -25,6 +25,7 @@
         :ui="{input:'h-14 inline'}"
         placeholder="Henge-tid"
         ></VueDatePicker>
+        <!-- inline -->
       </div>
       </div>
       <div class="mb-4">
@@ -40,8 +41,8 @@
             />
 
       </div>
-      <div class = 'mb-4' :v-if="typeof calculatedResult ==='number'">
 
+      <div class = 'mb-4' v-if="typeof calculatedResult ==='number'">
         Beregnet score: {{calculatedResult}}
       </div>
       
@@ -52,6 +53,7 @@
   </form>
 </div>
 <div class="toast toast-center toast-bottom pb-24 z-20" v-if="error">
+    <!-- 🧹test error from backend, it should show a good message. maybe do 0-20 validation. -->
     <div class="alert alert-error block">{{ error.message }}</div>
   </div>
   <div class="toast toast-center toast-bottom pb-24 z-20" v-if="showSuccess">
@@ -66,6 +68,7 @@ import { ref, watch ,computed} from 'vue';
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css'
 import z from 'zod'
+// 🧹 throw err on unused imports or variables
 import { toRaw } from 'vue';
 import { useConfirmTeamResult } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';
@@ -80,26 +83,64 @@ const cheats= ref<""|number>("");
 const timeSchema = z.object({
   hours: z.number(),
   minutes: z.number(),
-  seconds: z.number() ,
+  seconds: z.number(),
 }).optional();
 
+// 🧹 move to time picker component. it should be used inside a form. Create that as a comment. 
 const validatedDate = computed(()=>{
   return timeSchema.parse(date.value)
 })
 
-watch(validatedDate,(val)=>console.log(toRaw(val) ),{immediate:true})
-watch(cheats,(val)=>console.log(toRaw(val),typeof val ),{immediate:true})
+// 🧹remove
+// watch(validatedDate,(val)=>console.log(toRaw(val) ),{immediate:true})
+// watch(cheats,(val)=>console.log(toRaw(val),typeof val ),{immediate:true})
 
-const calculatedResult = computed<number|undefined>(()=>{
-  if(typeof cheats.value !== 'number') return;
-  if(!validatedDate.value) return;
-  cheats.value
-  validatedDate.value
-let score;
-// ...
-return score;
+// 🧹 the number should be returned from each registration component.
+// 🧹 remove comments
+const calculatedResult = computed<number | undefined>(() => {
 
-})
+  // 🧹handle time to number conversion centrally? a date should just be a number, and the size of the date object should never be relevant.
+  const timePenaltyPerCheat = 10 / (24 * 60 * 60); // Convert 10 seconds to fraction of a day
+  const lowerBoundEffectiveTime = 2 / (24 * 60); // Convert 2 minutes to fraction of a day
+  const upperBoundEffectiveTime = 7 / (24 * 60); // Convert 7 minutes to fraction of a day
+  const minScore = 1;
+  const maxScore = 20;
+  const minCheats = 0;
+  const maxCheats = 10;
+
+  if (typeof cheats.value !== 'number') return;
+  if (!validatedDate.value) return;
+
+  // 🧹use lerp
+  // Convert validatedDate to fractional minutes
+  const totalHengeTid =
+    (validatedDate.value.hours * 60 + validatedDate.value.minutes + validatedDate.value.seconds / 60) / (24 * 60);
+
+    // 🧹use clamp
+  // Calculate the time penalty
+  const timePenalty = Math.max(minCheats,Math.min(cheats.value,maxCheats)) * timePenaltyPerCheat;
+
+  // Calculate the effective henge-tid
+  const effectiveHengeTid = totalHengeTid - timePenalty;
+
+  // 🧹 create lerp func
+  // Calculate the unclamped score using LERP
+  const unclampedScore =
+    ((effectiveHengeTid - lowerBoundEffectiveTime) * (maxScore - minScore)) /
+      (upperBoundEffectiveTime - lowerBoundEffectiveTime) +
+    minScore;
+
+    // 🧹 create clamp func
+  // Clamp the score between minScore and maxScore
+  const clampedScore = Math.max(minScore, Math.min(unclampedScore, maxScore));
+
+  return floatToInt(clampedScore);
+});
+
+// 🧹 we should be able to take decimals on the backend, and save it. 
+function floatToInt(num:number):number{
+  return Math.round(num)
+}
 
 const showSuccess = ref<boolean>(false);
 
@@ -110,17 +151,29 @@ const showSuccessToast = () => {
   }, 3000);
 };
 
+// 🧹 move form and its submission to parent component. it should still include button, mutation, toasts, wrapper div.
 const { mutate: confirmResult, isPending, error } = useConfirmTeamResult();
+// 🧹remove
+watch(error,(val)=>console.log("error",toRaw(val),JSON.stringify(toRaw(val)) ),{immediate:true})
 
 const submitForm = () => {
-  const matchId:number =props.match.matchId
-  const result :number= calculatedResult.value
+  const matchId:number =props.match.matchId;
+  
+  if(! calculatedResult.value) throw Error('CalculatedResult returned undefined. The form is involid even if it can be submitted. You might be missing some validation on the form fields.')
+
+  const result = calculatedResult.value;
+
   const teamId :number= props.match.team1Id;
-   confirmResult({matchId:matchId, result:result, teamId:teamId},{onSuccess(){
+
+  const variables = { matchId: matchId, result: result, teamId: teamId };
+  console.log(variables)
+   confirmResult(variables,{
+    onSuccess(){
     showSuccessToast()
   }})
   
 }
+// 🧹 if the component is rendered and the score are already set, then show a confirmation before registering scores. We press it first to allow overwriting scores.
 
 </script>
 <style>

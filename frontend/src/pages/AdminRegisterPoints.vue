@@ -6,10 +6,11 @@
     <div class="alert alert-success block">Lagret</div>
   </div>
 
+  
   <TimePicker :match="match"></TimePicker>
   
-
-  <div class="teams">
+<!-- 🧹remove -->
+  <!-- <div class="teams">
     <div
       :class="{
         teamresult: true,
@@ -61,8 +62,9 @@
           Save
         </button>
       </div>
-    </div>
+    </div> 
   </div>
+  -->
 </template>
 
 <script setup lang="ts">
