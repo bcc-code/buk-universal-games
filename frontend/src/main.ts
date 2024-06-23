@@ -32,8 +32,10 @@ const app = createApp(App)
   .provide('notificationService', notificationService);
   
 
-  const i18n = await setupI18n();
+setupI18n().then(
+  (i18n)=>{
+    app.use(i18n)
+    app.mount('#app');
+  }
+);
   
-  app.use(i18n)
-  
-  app.mount('#app');
