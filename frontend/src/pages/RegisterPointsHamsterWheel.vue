@@ -1,7 +1,7 @@
 <template>
   <div class="p-4 bg-white rounded-md">
     <form @submit.prevent="submitForm">
-      <div class="flex justify-evenly">
+      <div class="flex justify-evenly gap-4">
         <div >
           <div class="font-bold">
             {{ match.team1 }} 
@@ -9,7 +9,7 @@
           <br/>
           Tid:
           <br/>
-          <div class="w-64 inline-block shadow-md">
+          <div class="inline-block shadow-md">
             <VueDatePicker
               v-model="team1Time"
               required
@@ -54,7 +54,7 @@
           <br/>
           Tid:
           <br/>
-          <div class="w-64 inline-block shadow-md">
+          <div class="inline-block shadow-md">
             <VueDatePicker
               v-model="team2Time"
               required
