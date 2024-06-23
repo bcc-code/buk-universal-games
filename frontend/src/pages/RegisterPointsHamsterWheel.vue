@@ -91,8 +91,8 @@ const team2Steps = ref<number | ''>('');
 
 const minScore = 2;
 const maxScore = 15;
-const minTime = 1 / (24 * 60); // Convert 1 minute to fraction of a day
-const maxTime = 4 / (24 * 60); // Convert 4 minutes to fraction of a day
+const minTime = timeToNumber({hours:0,minutes:1,seconds:0});
+const maxTime = timeToNumber({hours:0,minutes:4,seconds:0});
 const winBonus = 5;
 const penaltyPerStep = 0.2;
 const minStepPenalties = 0;
@@ -100,11 +100,11 @@ const maxStepPenalties = 10;
 
 const calculateScore = (time: NonNullable<TimeType>, steps: number): number => {
   const totalHengeTid = timeToNumber(time);
-  const clampedTime = clamp(minTime, totalHengeTid, maxTime);
-    const timePoints = lerp(minTime, maxTime, maxScore, minScore, clampedTime);
-    const clampedSteps = clamp(minStepPenalties, steps, maxStepPenalties);
-    const penaltyPoints = clampedSteps * penaltyPerStep;
-    return timePoints - penaltyPoints;
+  // Note: min and max are switched to invert scale
+  const timePoints = lerp(minTime, maxTime,maxScore ,minScore,  totalHengeTid, "clamp");
+  const clampedSteps = clamp(minStepPenalties, steps, maxStepPenalties);
+  const penaltyPoints = clampedSteps * penaltyPerStep;
+  return timePoints - penaltyPoints;
 };
 
 const calculatedResult = computed<{

@@ -17,8 +17,8 @@
               :placeholder="'Antall juks'"
               required
               name="reg" id="reg" 
+              min="0"
             />
-
       </div>
 
       <div class = 'mb-4' v-if="typeof calculatedResult ==='number'">
@@ -75,17 +75,16 @@ const calculatedResult = computed<number | undefined>(() => {
   const timePenalty = clamp(minCheats, cheats.value, maxCheats) * timePenaltyPerCheat;
   const effectiveHengeTid = totalHengeTid - timePenalty;
 
-  const unclampedScore = lerp(
+  const score = lerp(
       lowerBoundEffectiveHengeTid,
       upperBoundEffectiveHengeTid,
       minScore,
       maxScore,
-      effectiveHengeTid
+      effectiveHengeTid,
+      "clamp"
     );
 
-    const clampedScore = clamp(minScore, unclampedScore, maxScore);
-
-    return floatToInt(clampedScore);
+    return floatToInt(score);
 });
 
 

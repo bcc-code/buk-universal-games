@@ -109,8 +109,8 @@ const checkpoints = ref<0 | 1 | 2 | 3 | undefined>(undefined);
 
 const minScore = 0;
 const maxScore = 10;
-const minTime = 10 / (24 * 60); // Convert 10 minutes to fraction of a day
-const maxTime = 2 / (24 * 60); // Convert 2 minutes to fraction of a day
+const minTime = timeToNumber({hours:0, minutes:10, seconds:0});
+const maxTime = timeToNumber({hours:0, minutes:2, seconds:0});
 const completionBonus = 4;
 const pointsPerCheckpoint = 2;
 const totalCheckpoints = 3;
@@ -128,7 +128,8 @@ const calculatedResult = computed<number | undefined>(() => {
     effectiveTime = clamp(maxTime, timeToNumber(date.value), minTime);
   }
 
-  const timePoints = lerp(maxTime, minTime, minScore, maxScore, effectiveTime);
+  // Note: min and max are switched to invert scale
+  const timePoints = lerp(maxTime, minTime,  maxScore,minScore, effectiveTime);
   const totalScore = completedCheckpoints * pointsPerCheckpoint + completionBonusValue + timePoints;
   return floatToInt(totalScore);
 });

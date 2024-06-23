@@ -1,10 +1,11 @@
-// 🧹 we should be able to take decimals on the backend, and save it. 
 export function floatToInt(num:number):number{
   return Math.round(num)
 }
 
-export function clamp(min:number, value:number, max:number):number{
-  return Math.max(min,Math.min(value,max)) ;
+export function clamp<T extends number>(min:T, value:T, max:T):T{
+  if(min >=max ) throw Error("min is more or equal to max");
+
+  return Math.max(min,Math.min(value,max)) as T;
 }
 
 export function lerp(
@@ -12,10 +13,16 @@ export function lerp(
   inputMax: number,
   outputMin: number,
   outputMax: number,
-  value: number
+  value: number,
+  handleOutside :"throw"|"clamp"|"extend"= "throw"
 ): number {
-  if (value < inputMin || value > inputMax) {
-    throw new Error(`Value ${value} is outside the input range ${inputMin}-${inputMax}`);
-  }
-  return outputMin + ((value - inputMin) * (outputMax - outputMin)) / (inputMax - inputMin);
+  const isOutside = value < inputMin || value > inputMax;
+  if (isOutside && handleOutside === "throw") 
+    throw new Error(`Value ${value} is outside the input range ${inputMin}-${inputMax}`)
+  
+  const lerpedValue = outputMin + ((value - inputMin) * (outputMax - outputMin)) / (inputMax - inputMin);
+
+  if(isOutside && handleOutside ==="clamp") return clamp(Math.min(outputMin,outputMax), lerpedValue, Math.max(outputMin,outputMax));
+
+  return lerpedValue;
 }
