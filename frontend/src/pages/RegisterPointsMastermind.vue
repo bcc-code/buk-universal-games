@@ -24,7 +24,7 @@
       </div>
 
       <div class="mb-4" v-if="guessedAllColors === true">
-        Hvor mange turer brukte de?
+        Hvor mange runder brukte de?
         <div class="flex -m-2 flex-wrap">
           <button
             type="button"
