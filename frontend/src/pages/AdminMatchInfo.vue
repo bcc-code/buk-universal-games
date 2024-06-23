@@ -41,7 +41,7 @@ const AdminRefereeInfo = {
   iron_grip: AdminRefereeInfoIronGrip,
   land_water_beach: AdminRefereeInfoLandWaterBeach,
   labyrinth: AdminRefereeInfoLabyrinth,
-  human_shuffleboard: AdminRefereeInfoHamsterWheel,
+  hamster_wheel: AdminRefereeInfoHamsterWheel,
   mastermind: AdminRefereeInfoMastermind,
 }[props.gameType];
 </script>

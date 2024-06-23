@@ -84,19 +84,17 @@ namespace Buk.UniversalGames.Services
 
             // shit replace with query to game
             var landWaterBeach = (await GetGameRanking(GameType.LandWaterBeach, leagueId)).ToDictionary(x => x.TeamId);
-            var humanShuffleBoard = (await GetGameRanking(GameType.HumanShuffleBoard, leagueId)).ToDictionary(x => x.TeamId);
+            var hamsterWheel = (await GetGameRanking(GameType.HamsterWheel, leagueId)).ToDictionary(x => x.TeamId);
             var labyrinth = (await GetGameRanking(GameType.Labyrinth, leagueId)).ToDictionary(x => x.TeamId);
             var mastermind = (await GetGameRanking(GameType.Mastermind, leagueId)).ToDictionary(x => x.TeamId);
             var ironGrip = (await GetGameRanking(GameType.IronGrip, leagueId)).ToDictionary(x => x.TeamId);
-
-
 
             var leagueRanking = new List<TeamStatus>();
 
             foreach (var team in teams)
             {
                 var totalPoints = GetPointsForSubRanking(landWaterBeach, team)
-                                    + GetPointsForSubRanking(humanShuffleBoard, team)
+                                    + GetPointsForSubRanking(hamsterWheel, team)
                                     + GetPointsForSubRanking(labyrinth, team)
                                     + GetPointsForSubRanking(mastermind, team)
                                     + GetPointsForSubRanking(ironGrip, team);
@@ -168,7 +166,7 @@ namespace Buk.UniversalGames.Services
                 GameType.IronGrip => 6,
                 GameType.Mastermind => 7,
                 GameType.Labyrinth => 8,
-                GameType.HumanShuffleBoard => 9,
+                GameType.HamsterWheel => 9,
                 _ => throw new Exception()
             };
 
@@ -178,7 +176,7 @@ namespace Buk.UniversalGames.Services
                 GameType.IronGrip => 5,
                 GameType.Mastermind => 7,
                 GameType.Labyrinth => 9,
-                GameType.HumanShuffleBoard => 11,
+                GameType.HamsterWheel => 11,
                 _ => throw new Exception()
             };
 

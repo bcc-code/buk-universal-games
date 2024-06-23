@@ -5,7 +5,7 @@ export const gameTypeSchema = z.union([
   z.literal('land_water_beach'),
   z.literal('labyrinth'),
   // 🧹rename to hamster_wheel
-  z.literal('human_shuffleboard'),
+  z.literal('hamster_wheel'),
   z.literal('mastermind'),
 ]);
 

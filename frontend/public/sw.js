@@ -5,7 +5,7 @@ const urlsToCache = [
   'icon/192.png',
   'icon/buk-icon.svg',
   'icon/circle-info.svg',
-  'icon/game-humanshuffleboard.svg',
+  'icon/game-hamsterwheel.svg',
   'icon/game-irongrip.svg',
   'icon/game-labyrinth.svg',
   'icon/game-landwaterbeach.svg',

@@ -11,7 +11,7 @@
     "iron_grip": "Jerngrepet",
     "land_water_beach": "Land, vann, strand",
     "mastermind": "Mastermind",
-    "human_shuffleboard": "Hamsterhjulet",
+    "hamster_wheel": "Hamsterhjulet",
     "labyrinth": "Labyrint"
   },
   "score": {
@@ -26,7 +26,7 @@
     "land_water_beach": "Denne posten er en reaksjonspost der lagene konkurrerer mot hverandre. Ti deltakere fra hvert lag starter i sonen i midten.\nI denne utfordringen får det laget hvor alle 10 deltakere flytter seg raskest til riktig sone, ett poeng. Ved lik reaksjonstid får begge lag ett poeng. Det er derfor avgjørende å reagere raskt og bevege seg til riktig sone. Feil bevegelser resulterer i at det andre laget får ett poeng. Etter tre signaler bytter dere ut de ti deltakerne med ti nye deltakere fra laget. Dette gjentas over tre runder.\nReaksjonstiden er avgjørende for å vinne.",
     "mastermind": "Posten er inspirert av konseptet fra spillet Mastermind.\n\nLaget skal løse en fargekode skjult i en boks. Fem deltakere er utpekt som Codebreakers, mens resten av laget fungerer som fargebrikker.\n\nCodebreakers plasserer sine løsninger på spillbrettet, og kontakter deretter dommeren. Dommeren plasserer 'svar-pinner' i boksen ved siden av hver rad. Disse pinnene viser hvor mange farger som er riktig farge og riktig plassert (rød) og hvor mange farger som er riktig farge, men ikke riktig plassert (hvit) i Codebreakers sitt forslag.",
     "labyrinth": "På denne posten vil laget bli utfordret til å samarbeide ved å navigere en kule gjennom en labyrint på en plate.\nDommeren starter spillet ved å plassere ballen på startpunktet og starter tidtakeren. Det er tre checkpoints på brettet, og alle spillerne bytter plass med nye 12 spillere ved hvert checkpoint, slik at totalt 36 personer får spilt.\nNår labyrinten er fullført eller tiden er ute, plasserer deltakerne brettet rolig ned på bakken.",
-    "human_shuffleboard": "På denne posten skal 2 lag konkurrer mot hverandre i hvert sitt “Hamsterhjul”. Laget som er raskest gjennom løypa uten å tråkke utenfor hjulet vinner. Det spilles 1 omgang, men det gjøres bytte av alle deltakere etter 1 runde. Førstemann i mål etter 2 runder vinner. Tiden lagene bruker vil også medregnes antall poeng de får på posten."
+    "hamster_wheel": "På denne posten skal 2 lag konkurrer mot hverandre i hvert sitt “Hamsterhjul”. Laget som er raskest gjennom løypa uten å tråkke utenfor hjulet vinner. Det spilles 1 omgang, men det gjøres bytte av alle deltakere etter 1 runde. Førstemann i mål etter 2 runder vinner. Tiden lagene bruker vil også medregnes antall poeng de får på posten."
   },
   "points": "M £",
   "pointexplenation": {
@@ -34,21 +34,21 @@
     "labyrinth": "Poeng gis etter antall klarte checkpoints samt tid på å fullføre labyrinten.",
     "mastermind": "Poengene tildeles basert på antall runder laget bruker på å løse fargekoden.",
     "land_water_beach": "Laget får ett poeng for hvert signal de vinner. Begge lag får ett poeng dersom lagene er like raske",
-    "human_shuffleboard": "Poengene tildeles basert på om laget vinner og tiden de brukte på runden. "
+    "hamster_wheel": "Poengene tildeles basert på om laget vinner og tiden de brukte på runden. "
   },
   "category": {
     "iron_grip": "Styrke",
     "labyrinth": "Samarbeid",
     "mastermind": "Logikk",
     "land_water_beach": "Reaksjon",
-    "human_shuffleboard": "X-faktor"
+    "hamster_wheel": "X-faktor"
   },
   "rules": {
     "iron_grip": "• Deltakerne må henge med håndflaten frem\n• Tiden stoppes av dommer (a) når ikke alle ni deltakere henger samtidig.",
     "labyrinth": "Spillet starter da dommeren har plassert kula på brettet.\n• 12 personer må holde rundt brettet mens spillet pågår.\n• Det er ikke tillatt å berøre ballen med hendene når den er på brettet, og heller ikke å krabbe under labyrinten mens spillet pågår, med mindre ballen faller gjennom et hull.\n• Hvis ballen faller ned i et hull, må den plukkes opp og plasseres tilbake ved forrige checkpoint eller startpunkt.\n• Ballen må alltid være på brettet, og det er ikke tillatt å kaste ballen opp for å forsøke å overvinne hindringer.\n• For hvert checkpoint kula kommer til, må alle 12 deltakere byttes ut til 12 nye.",
     "land_water_beach": "De må reagere raskt på tre ulike signaler:\n• Gult signal: Stå stille som en strand.\n• Grønt signal: Flytt deg bakover til 'land' sonen.\n• Blått signal: Flytt deg fremover til 'vann' sonen.",
     "mastermind": "• Laget har 10 minutter på å løse fargekoden.\n• Bare de utnevnte codebreakers har tillatelse til å sette opp brikkene og foreslå løsninger.\n• Laget sier i fra til hoveddommer når de har avgitt svaret sitt.",
-    "human_shuffleboard": "Lagene har 15-20 deltakere hver, inne i hamsterhjulet.\n• Det er +10 sek tilleggstid om laget tråkker på utsiden av hjulet.\n• Hele laget på 15 stk byttes ut etter 1 runde med 15 nye deltakere.\n• Hele hjulet må være over linjen for å kunne gjøre bytte.\nHele hjulet må over linjen for at tiden stoppes."
+    "hamster_wheel": "Lagene har 15-20 deltakere hver, inne i hamsterhjulet.\n• Det er +10 sek tilleggstid om laget tråkker på utsiden av hjulet.\n• Hele laget på 15 stk byttes ut etter 1 runde med 15 nye deltakere.\n• Hele hjulet må være over linjen for å kunne gjøre bytte.\nHele hjulet må over linjen for at tiden stoppes."
   },
   "general_error": "Noe gikk galt",
   "pleaserefresh": "Prøv å oppdatere siden",

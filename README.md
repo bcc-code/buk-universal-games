@@ -72,8 +72,7 @@ Note: If you're running multiple docker-compose configurations with custom netwo
 
 ## Adding Database Migrations
 
-In backend/Buk.UniversalGames.Api:
-
+`cd .\backend\Buk.UniversalGames.Data\`
 `dotnet tool install --global dotnet-ef`  
 `dotnet ef migrations add [Migration Name]`
 

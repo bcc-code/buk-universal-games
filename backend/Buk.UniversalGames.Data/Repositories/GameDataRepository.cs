@@ -120,7 +120,7 @@ namespace Buk.UniversalGames.Data.Repositories
                 else
                 {
                     //set winner and save
-                    if (match.GameId == 2 || match.GameId == 3) //labyrinth + human shuffle board: higher is better
+                    if (match.GameId == 2 || match.GameId == 3) //labyrinth + hamster wheel: higher is better
                     {
                         match.WinnerId = measuredResult > otherTeamResult.Points ? teamId : otherTeamResult.TeamId;
                     }
