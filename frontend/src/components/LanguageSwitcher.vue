@@ -1,7 +1,7 @@
 <template>
   <div class="locale-changer">
     <div class="dropdown" :class="{ open: isOpen }">
-      <div class="bg-white rounded-md p-2 btn" @click="toggleDropdown(null)">
+      <div class="bg-white rounded-md p-2 btn shadow-md" @click="toggleDropdown(null)">
         {{ selectedLanguage.toUpperCase() }}
       </div>
       <div class="background" v-if="isOpen" @click="toggleDropdown(null)"></div>
@@ -20,9 +20,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { ref, computed, onMounted, onUnmounted,watch } from 'vue';
 import { useI18n } from 'vue-i18n';
+// 🧹 use pinia
 import { useStore } from 'vuex';
+import { setI18nLanguage} from "../libs/i18n"
 
 // 🧹 get this from libs/i18n
 const locales = {
@@ -46,7 +48,8 @@ const locales = {
 const order:Array<keyof typeof locales> = ['nb', 'en', 'de', 'es', 'nl', 'pl'];
 
 const store = useStore();
-const { locale, t } = useI18n();
+const i18n = useI18n()
+const { locale, t } = i18n;
 
 const selectedLanguage = ref(locale.value);
 const isOpen = ref(false);
@@ -66,7 +69,7 @@ const toggleDropdown = (override: boolean | null = null) => {
 
 const changeLanguage = (locale: string) => {
   store.commit('setUserLanguage', locale);
-  setI18nLanguage(locale);
+  setI18nLanguage(i18n, locale);
   selectedLanguage.value = locale;
   localStorage.setItem('userLanguage', locale);
   toggleDropdown(false);
@@ -89,10 +92,6 @@ const sortedLocales = computed(() => {
     .sort((a, b) => locales[a].localeCompare(locales[b]));
 
   return [...order, ...remainingLocales];
-});
-
-onMounted(() => {
-  document.addEventListener('click', closeDropdown);
 });
 
 onUnmounted(() => {

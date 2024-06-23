@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white rounded-md p-2 btn" @click="logout">
+  <div class="bg-white rounded-md p-2 btn shadow-md" @click="logout">
     <ArrowRightStartOnRectangleIcon class="h-5 text-label-1" />
   </div>
 </template>
