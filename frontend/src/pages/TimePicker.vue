@@ -173,10 +173,4 @@ const submitForm = () => {
   
 }
 // 🧹 if the component is rendered and the score are already set, then show a confirmation before registering scores. We press it first to allow overwriting scores.
-
 </script>
-<style>
-.dp__theme_light {
-    --dp-disabled-color-text: #00000000;
-}
-</style>

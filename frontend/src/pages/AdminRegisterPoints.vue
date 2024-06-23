@@ -6,8 +6,11 @@
     <div class="alert alert-success block">Lagret</div>
   </div>
 
+
+
+  <TimePicker v-if="gameType==='iron_grip'" :match="match"></TimePicker>
+  <TimePickerShit v-else-if="gameType==='land_water_beach'" :match="match"></TimePickerShit>
   
-  <TimePicker :match="match"></TimePicker>
   
 <!-- 🧹remove -->
   <!-- <div class="teams">
@@ -65,17 +68,25 @@
     </div> 
   </div>
   -->
+  
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { useConfirmTeamResult } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';
+// 🧹rename
 import TimePicker from "./TimePicker.vue"
+import type { GameType } from './GameType';
+// 🧹rename
+import TimePickerShit from './TimePickerShit.vue';
+
 
 const props = defineProps<{
   match: MatchListItemEntity;
+  gameType: GameType;
 }>();
+
 
 const { mutate: confirmResult, isPending } = useConfirmTeamResult();
 

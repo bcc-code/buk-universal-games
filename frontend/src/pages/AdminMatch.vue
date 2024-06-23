@@ -4,7 +4,7 @@
 
     <AdminMatchInfo v-if="match && gameType" :match="match" :gameType="gameType" />
 
-    <AdminRegisterPoints v-if="match" :match="match" />
+    <AdminRegisterPoints v-if="match && gameType" :match="match" :gameType="gameType" />
   </AdminPageLayout>
 </template>
 

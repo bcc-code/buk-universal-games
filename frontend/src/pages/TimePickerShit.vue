@@ -1,73 +1,51 @@
 <template>
-  
+
   <div class="p-4 bg-white rounded-md">
 
     <form @submit.prevent="submitForm">
       <div class="mb-4">
-
-        Henge-tid:
-        <div
-        class="w-64  inline-block   shadow-md"
-        >
-        <VueDatePicker 
-        v-model="date"
-        required
-        auto-apply
-        enable-seconds
-        time-picker
-        no-hours-overlay
-        :min-time="{hours:0, minutes:0, seconds:1}"
-        :max-time="{hours:0, minutes:10, seconds:0}"
-        :start-time="{hours:0, minutes:0, seconds:1}"
-        minutes-grid-increment="1" 
-        format="mm:ss"
-        :clearable="false"
-        :ui="{input:'h-14 inline'}"
-        placeholder="Henge-tid"
-        ></VueDatePicker>
-      </div>
+        Poeng Team 1:
+        <input
+          class="shadow-md border-solid border-2 border-slate-200 rounded-md"
+          type="number"
+          v-model="pointsTeam1"
+          min="0"
+          max="9"
+          :placeholder="'Poeng for Team 1'"
+          required
+        />
       </div>
       <div class="mb-4">
-        
-        Juks:
+        Poeng Team 2:
         <input
-              class="shadow-md border-solid border-2 border-slate-200 rounded-md"
-              type="number"
-              v-model="cheats"
-              :placeholder="'Antall juks'"
-              required
-            />
-
+          class="shadow-md border-solid border-2 border-slate-200 rounded-md"
+          type="number"
+          v-model="pointsTeam2"
+          min="0"
+          max="9"
+          :placeholder="'Poeng for Team 2'"
+          required
+        />
       </div>
-
-      <div class = 'mb-4' v-if="typeof calculatedResult ==='number'">
-        Beregnet score: {{calculatedResult}}
+      <div class="mb-4" v-if="calculatedResult">
+        Beregnet score: Team 1: {{calculatedResult.team1Result}}, Team 2: {{calculatedResult.team2Result}}
       </div>
-      
-      <button type="submit" class="btn btn-success btn-blank h-14 p-4 shadow-md"
-      :disabled="isPending"
-      
-      >Lagre</button>
-  </form>
-</div>
-<div class="toast toast-center toast-bottom pb-24 z-20" v-if="error">
-    <!-- 🧹test error from backend, it should show a good message. maybe do 0-20 validation. -->
+      <button type="submit" class="btn btn-success btn-blank h-14 p-4 shadow-md" :disabled="isPending">
+        Lagre
+      </button>
+    </form>
+  </div>
+  <div class="toast toast-center toast-bottom pb-24 z-20" v-if="error">
     <div class="alert alert-error block">{{ error.message }}</div>
   </div>
   <div class="toast toast-center toast-bottom pb-24 z-20" v-if="showSuccess">
     <div class="alert alert-success block">Lagret</div>
   </div>
-
-
 </template>
 
 <script setup lang="ts">
-import { ref, watch ,computed} from 'vue';
-import VueDatePicker from '@vuepic/vue-datepicker';
-import '@vuepic/vue-datepicker/dist/main.css'
-import z from 'zod'
-// 🧹 throw err on unused imports or variables
-import { toRaw } from 'vue';
+import { ref, computed, watch } from 'vue';
+import z from 'zod';
 import { useConfirmTeamResult } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';
 
@@ -75,70 +53,37 @@ const props = defineProps<{
   match: MatchListItemEntity;
 }>();
 
-const date = ref<unknown>();
-const cheats= ref<""|number>("");
+const pointsTeam1 = ref<number | ''>('');
+const pointsTeam2 = ref<number | ''>('');
 
-const timeSchema = z.object({
-  hours: z.number(),
-  minutes: z.number(),
-  seconds: z.number(),
+const scoreSchema = z.object({
+  pointsTeam1: z.number().min(0).max(9),
+  pointsTeam2: z.number().min(0).max(9),
 }).optional();
 
-// 🧹 move to time picker component. it should be used inside a form. Create that as a comment. 
-const validatedDate = computed(()=>{
-  return timeSchema.parse(date.value)
-})
-
-// 🧹remove
-// watch(validatedDate,(val)=>console.log(toRaw(val) ),{immediate:true})
-// watch(cheats,(val)=>console.log(toRaw(val),typeof val ),{immediate:true})
-
-// 🧹 the number should be returned from each registration component.
-// 🧹 remove comments
-const calculatedResult = computed<number | undefined>(() => {
-
-  // 🧹handle time to number conversion centrally? a date should just be a number, and the size of the date object should never be relevant.
-  const timePenaltyPerCheat = 10 / (24 * 60 * 60); // Convert 10 seconds to fraction of a day
-  const lowerBoundEffectiveTime = 2 / (24 * 60); // Convert 2 minutes to fraction of a day
-  const upperBoundEffectiveTime = 7 / (24 * 60); // Convert 7 minutes to fraction of a day
-  const minScore = 1;
-  const maxScore = 20;
-  const minCheats = 0;
-  const maxCheats = 10;
-
-  if (typeof cheats.value !== 'number') return;
-  if (!validatedDate.value) return;
-
-  // 🧹use lerp
-  // Convert validatedDate to fractional minutes
-  const totalHengeTid =
-    (validatedDate.value.hours * 60 + validatedDate.value.minutes + validatedDate.value.seconds / 60) / (24 * 60);
-
-    // 🧹use clamp
-  // Calculate the time penalty
-  const timePenalty = Math.max(minCheats,Math.min(cheats.value,maxCheats)) * timePenaltyPerCheat;
-
-  // Calculate the effective henge-tid
-  const effectiveHengeTid = totalHengeTid - timePenalty;
-
-  // 🧹 create lerp func
-  // Calculate the unclamped score using LERP
-  const unclampedScore =
-    ((effectiveHengeTid - lowerBoundEffectiveTime) * (maxScore - minScore)) /
-      (upperBoundEffectiveTime - lowerBoundEffectiveTime) +
-    minScore;
-
-    // 🧹 create clamp func
-  // Clamp the score between minScore and maxScore
-  const clampedScore = Math.max(minScore, Math.min(unclampedScore, maxScore));
-
-  return floatToInt(clampedScore);
+const validatedScores = computed(() => {
+  const newLocal = scoreSchema.safeParse({ pointsTeam1: pointsTeam1.value, pointsTeam2: pointsTeam2.value });
+  return newLocal.success ? newLocal.data : undefined;
 });
 
-// 🧹 we should be able to take decimals on the backend, and save it. 
-function floatToInt(num:number):number{
-  return Math.round(num)
-}
+const calculatedResult = computed<{ team1Result: number; team2Result: number } | undefined>(() => {
+  if (!validatedScores.value) return;
+
+  const minScore = 1;
+  const maxScore = 20;
+  const minPoints = 0;
+  const maxPoints = 9;
+
+  const lerp = (min: number, max: number, t: number) => min + t * (max - min);
+
+  const team1Result = lerp(minScore, maxScore, (validatedScores.value.pointsTeam1 - minPoints) / (maxPoints - minPoints));
+  const team2Result = lerp(minScore, maxScore, (validatedScores.value.pointsTeam2 - minPoints) / (maxPoints - minPoints));
+
+  return {
+    team1Result: Math.round(team1Result),
+    team2Result: Math.round(team2Result),
+  };
+});
 
 const showSuccess = ref<boolean>(false);
 
@@ -149,33 +94,34 @@ const showSuccessToast = () => {
   }, 3000);
 };
 
-// 🧹 move form and its submission to parent component. it should still include button, mutation, toasts, wrapper div.
-const { mutate: confirmResult, isPending, error } = useConfirmTeamResult();
-// 🧹remove
-watch(error,(val)=>console.log("error",toRaw(val),JSON.stringify(toRaw(val)) ),{immediate:true})
+const { mutate: confirmResultTeam1, isPending: isPendingTeam1, error: errorTeam1 } = useConfirmTeamResult();
+const { mutate: confirmResultTeam2, isPending: isPendingTeam2, error: errorTeam2 } = useConfirmTeamResult();
+
+const error = computed(() => errorTeam1.value || errorTeam2.value);
+const isPending = computed(() => isPendingTeam1.value || isPendingTeam2.value);
 
 const submitForm = () => {
-  const matchId:number =props.match.matchId;
-  
-  if(! calculatedResult.value) throw Error('CalculatedResult returned undefined. The form is involid even if it can be submitted. You might be missing some validation on the form fields.')
+  if (!calculatedResult.value) throw Error('CalculatedResult returned undefined. The form is invalid even if it can be submitted. You might be missing some validation on the form fields.');
 
-  const result = calculatedResult.value;
+  const matchId = props.match.matchId;
 
-  const teamId :number= props.match.team1Id;
+  const resultTeam1 = calculatedResult.value.team1Result;
+  const resultTeam2 = calculatedResult.value.team2Result;
 
-  const variables = { matchId: matchId, result: result, teamId: teamId };
-  console.log(variables)
-   confirmResult(variables,{
-    onSuccess(){
-    showSuccessToast()
-  }})
-  
-}
-// 🧹 if the component is rendered and the score are already set, then show a confirmation before registering scores. We press it first to allow overwriting scores.
+  const team1Id = props.match.team1Id;
+  const team2Id = props.match.team2Id;
 
+  const variablesTeam1 = { matchId: matchId, result: resultTeam1, teamId: team1Id };
+  const variablesTeam2 = { matchId: matchId, result: resultTeam2, teamId: team2Id };
+
+  confirmResultTeam1(variablesTeam1, {
+    onSuccess() {
+      confirmResultTeam2(variablesTeam2, {
+        onSuccess() {
+          showSuccessToast();
+        },
+      });
+    },
+  });
+};
 </script>
-<style>
-.dp__theme_light {
-    --dp-disabled-color-text: #00000000;
-}
-</style>

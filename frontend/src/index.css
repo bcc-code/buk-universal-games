@@ -102,6 +102,12 @@ p {
   }
 }
 
+/* Reduce size of date picker */
 .dp__overlay { 
  /* height: 200px !important;   */
  }
+
+ /* Remove arrows that cannot be pressed in date picker */
+ .dp__theme_light {
+  --dp-disabled-color-text: #00000000;
+}
