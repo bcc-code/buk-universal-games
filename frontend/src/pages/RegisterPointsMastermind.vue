@@ -29,12 +29,12 @@
           <button
             type="button"
             class="btn multiselect-button shadow-md m-2"
-            v-for="turn in 9"
+            v-for="turn in 8"
             :key="turn"
-            :class="turnsTaken === turn - 1 ? 'btn-success' : ''"
-            @click="turnsTaken = turn - 1"
+            :class="turnsTaken === turn ? 'btn-success' : ''"
+            @click="turnsTaken = turn"
           >
-            {{ turn - 1 }}
+            {{ turn }}
           </button>
         </div>
       </div>
