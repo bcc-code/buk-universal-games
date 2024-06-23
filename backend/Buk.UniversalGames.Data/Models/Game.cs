@@ -17,8 +17,6 @@ public class Game {
     {
         get
         {
-            Console.WriteLine($"Game type: {GameType}"); // Log the GameType value
-
             return GameType switch
             {
                 "landwaterbeach" => Library.Enums.GameType.LandWaterBeach,

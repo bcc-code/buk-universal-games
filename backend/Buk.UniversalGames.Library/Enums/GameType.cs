@@ -7,6 +7,5 @@
         HumanShuffleBoard = 3,
         Mastermind = 4,
         IronGrip = 5,
-
     }
 }
