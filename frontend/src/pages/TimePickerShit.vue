@@ -36,7 +36,6 @@
               v-model="cheats"
               :placeholder="'Antall juks'"
               required
-              name="reg" id="reg" 
             />
 
       </div>
