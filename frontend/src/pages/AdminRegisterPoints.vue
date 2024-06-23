@@ -8,67 +8,12 @@
 
 
 
-  <TimePicker v-if="gameType==='iron_grip'" :match="match"></TimePicker>
-  <TimePickerShit v-else-if="gameType==='land_water_beach'" :match="match"></TimePickerShit>
-  
-  
-<!-- 🧹remove -->
-  <!-- <div class="teams">
-    <div
-      :class="{
-        teamresult: true,
-      }"
-    >
-      <p>{{ match?.team1 }}</p>
-      <p v-if="match?.team1Result">
-        <strong>Score:</strong> {{ match?.team1Result }}
-      </p>
-      <div>
-        <input
-          class="bg-slate-100"
-          type="number"
-          v-model="team1Result"
-          :placeholder="'Input result'"
-        />
-        <button
-          class="btn btn-success btn-blank ml-3"
-          @click="confirmTeamResult(match?.team1Id, team1Result)"
-          :disabled="confirmDisabled"
-        >
-          Save
-        </button>
-      </div>
-    </div>
-    <div
-      v-if="match?.team1Id !== match?.team2Id"
-      :class="{
-        teamresult: true,
-      }"
-    >
-      <p>{{ match?.team2 }}</p>
-      <p v-if="match?.team2Result">
-        <strong>Score:</strong> {{ match?.team2Result }}
-      </p>
-
-      <div>
-        <input
-          class="bg-slate-100"
-          type="number"
-          v-model="team2Result"
-          :placeholder="'Input result'"
-        />
-        <button
-          class="btn btn-success btn-blank ml-3"
-          @click="confirmTeamResult(match?.team2Id, team2Result)"
-          :disabled="confirmDisabled"
-        >
-          Save
-        </button>
-      </div>
-    </div> 
+  <RegisterPointsIronGrip       v-if=     "gameType==='iron_grip'"        :match="match"></RegisterPointsIronGrip>
+  <RegisterPointsLandWaterBeach v-else-if="gameType==='land_water_beach'" :match="match"></RegisterPointsLandWaterBeach>
+  <div v-else>
+    <div class="alert alert-error block">Noe gikk galt</div>
   </div>
-  -->
-  
+    
 </template>
 
 <script setup lang="ts">
@@ -76,10 +21,10 @@ import { ref, computed } from 'vue';
 import { useConfirmTeamResult } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';
 // 🧹rename
-import TimePicker from "./TimePicker.vue"
+import RegisterPointsIronGrip from "./RegisterPointsIronGrip.vue"
 import type { GameType } from './GameType';
 // 🧹rename
-import TimePickerShit from './TimePickerShit.vue';
+import RegisterPointsLandWaterBeach from './RegisterPointsLandWaterBeach.vue';
 
 
 const props = defineProps<{
