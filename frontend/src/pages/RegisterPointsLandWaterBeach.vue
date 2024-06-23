@@ -56,7 +56,6 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import z from 'zod';
 import { useConfirmTeamResult } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';
 

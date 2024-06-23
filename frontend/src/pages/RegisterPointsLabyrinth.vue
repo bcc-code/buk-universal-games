@@ -108,7 +108,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, effect } from 'vue';
+import { ref, computed } from 'vue';
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
 import z from 'zod';

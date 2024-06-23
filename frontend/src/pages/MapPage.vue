@@ -11,7 +11,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import UserMenu from '../components/UserMenu.vue';
-import { useStore } from 'vuex';
 import { useSigninResponse } from '../hooks/hooks';
 
 const { data } = useSigninResponse();

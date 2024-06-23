@@ -9,6 +9,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "allowJs": true
+    "allowJs": true,
+    "noUnusedLocals": true
   }
 }

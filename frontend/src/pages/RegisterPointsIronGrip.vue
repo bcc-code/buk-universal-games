@@ -52,7 +52,6 @@
   </form>
 </div>
 <div class="toast toast-center toast-bottom pb-24 z-20" v-if="error">
-    <!-- 🧹test error from backend, it should show a good message. maybe do 0-20 validation. -->
     <div class="alert alert-error block">{{ error.message }}</div>
   </div>
   <div class="toast toast-center toast-bottom pb-24 z-20" v-if="showSuccess">
@@ -66,8 +65,6 @@
 import { ref, watch ,computed} from 'vue';
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css'
-import z from 'zod'
-// 🧹 throw err on unused imports or variables
 import { toRaw } from 'vue';
 import { useConfirmTeamResult } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';

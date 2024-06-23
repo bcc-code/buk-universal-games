@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted,watch } from 'vue';
+import { ref, computed, onUnmounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 import { SUPPORTED_LOCALES, setI18nLanguage, type Locale} from "../libs/i18n"
@@ -30,7 +30,6 @@ const order:Locale[] = ['nb', 'en', 'de', 'es', 'nl', 'pl'];
 
 const store = usePiniaStore()
 const i18n = useI18n()
-const { locale, t } = i18n;
 
 const isOpen = ref(false);
 const languagePickerMenu = ref<HTMLDivElement | null>(null);
