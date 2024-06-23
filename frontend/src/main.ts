@@ -17,28 +17,24 @@ import NotificationService from './services/notification.service';
 // ------------------ vuex section
 import initStore from './store';
 import createMatchNotifierPlugin from './plugins/match-notifier';
+import { usePiniaStore } from './store/piniaStore';
 
 const notificationService = new NotificationService();
 const matchNotifierPlugin = createMatchNotifierPlugin(notificationService);
 const vuexStore = initStore(matchNotifierPlugin);
 // ----------------
 
-const savedLanguage = localStorage.getItem('userLanguage');
-
-const language = (
-  savedLanguage ||
-  navigator.language ||
-  navigator.languages[0] ||
-  'en'
-).split('-')[0];
-
-const i18n = await setupI18n(language);
-
-createApp(App)
+const app = createApp(App)
   .use(piniaStore)
   .use(vuexStore)
   .use(initRouter(vuexStore))
-  .use(i18n)
   .use(VueQueryPlugin)
-  .provide('notificationService', notificationService)
-  .mount('#app');
+  .provide('notificationService', notificationService);
+  
+  const savedLanguage = usePiniaStore().userLanguage
+
+  const i18n = await setupI18n(savedLanguage);
+  
+  app.use(i18n)
+  
+  app.mount('#app');

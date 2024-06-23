@@ -22,9 +22,9 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted,watch } from 'vue';
 import { useI18n } from 'vue-i18n';
-// 🧹 use pinia
-import { useStore } from 'vuex';
+
 import { setI18nLanguage} from "../libs/i18n"
+import {usePiniaStore} from "../store/piniaStore"
 
 // 🧹 get this from libs/i18n
 const locales = {
@@ -47,7 +47,7 @@ const locales = {
 
 const order:Array<keyof typeof locales> = ['nb', 'en', 'de', 'es', 'nl', 'pl'];
 
-const store = useStore();
+const store = usePiniaStore()
 const i18n = useI18n()
 const { locale, t } = i18n;
 
@@ -67,11 +67,12 @@ const toggleDropdown = (override: boolean | null = null) => {
   }
 };
 
+
 const changeLanguage = (locale: string) => {
-  store.commit('setUserLanguage', locale);
+  store.setUserLanguage(locale)
   setI18nLanguage(i18n, locale);
+  // 🧹get from store
   selectedLanguage.value = locale;
-  localStorage.setItem('userLanguage', locale);
   toggleDropdown(false);
 };
 
