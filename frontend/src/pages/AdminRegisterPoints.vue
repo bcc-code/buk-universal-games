@@ -6,7 +6,7 @@
     <div class="alert alert-success block">Lagret</div>
   </div>
 
-  <TimePicker></TimePicker>
+  <TimePicker :match="match"></TimePicker>
   
 
   <div class="teams">
