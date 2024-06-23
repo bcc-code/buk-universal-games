@@ -2,29 +2,32 @@
   <dialog :style="state.style" ref="dialogue" @click="click()">
     <span class="close" @click="close()">×</span>
     <h2 :v-if="state.title" class="title">{{ state.title }}</h2>
-    <img :v-if="state.icon" class="icon" :src="state.icon" />
+    <img :v-if="state.icon" class="icon" :src="state.icon ?? undefined" />
     <p :v-if="state.body" class="body">{{ state.body }}</p>
   </dialog>
 </template>
 <script setup lang="ts">
+import type NotificationService from '@/services/notification.service';
 import { inject, reactive } from 'vue';
-const notificationService = inject('notificationService');
+
+const notificationService = inject<NotificationService>('notificationService');
+if(!notificationService) throw Error("notificationService not provided");
 
 const state = reactive({
   action: () => {},
-  body: null,
-  icon: null,
-  style: { visibility: 'hidden' },
-  title: null,
+  body: null as string|null|undefined,
+  icon: null as string|null|undefined,
+  style: { visibility: 'hidden' as "hidden"|"visible" },
+  title: null as string|null|undefined,
 });
 
-notificationService.registerInternalNotifier((title, options) => {
+notificationService.registerInternalNotifier((title: string|null|undefined, options:{onClick:()=>void,body:string|undefined,icon:string|undefined}) => {
   if (options.onClick) {
     state.action = options.onClick;
   }
   state.body = options.body;
   state.icon = options.icon;
-  state.style.visibility = 'visible';
+  state.style.visibility = 'visible' as const;
   state.title = title;
 });
 
@@ -37,7 +40,7 @@ function close() {
   state.action = () => {};
   state.body = null;
   state.icon = null;
-  state.style.visibility = 'hidden';
+  state.style.visibility = 'hidden' as const;
   state.title = null;
 }
 </script>
