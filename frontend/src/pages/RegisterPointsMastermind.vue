@@ -76,6 +76,7 @@
 import { ref, computed } from 'vue';
 import { useConfirmTeamResult } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';
+import { floatToInt, lerp } from './mathHelpers';
 
 const props = defineProps<{
   match: MatchListItemEntity;
@@ -89,20 +90,13 @@ const topScore = 20;
 const bottomScore = 6;
 const maxTurns = 8;
 
-const calculateScore = (turns: number | undefined, colors: number | undefined) => {
-  if (turns !== undefined) {
-    return bottomScore + ((maxTurns - turns) / (maxTurns - 1)) * (topScore - bottomScore);
-  } else if (colors !== undefined) {
-    return colors;
-  }
-  return undefined;
-};
-
 const calculatedResult = computed<number | undefined>(() => {
-  if (guessedAllColors.value === true && turnsTaken.value !== undefined) {
-    return calculateScore(turnsTaken.value, undefined);
+  if (guessedAllColors.value === true && turnsTaken.value !== undefined) {   
+      const turnPoints = lerp(1, maxTurns, bottomScore, topScore, turnsTaken.value);
+      
+      return floatToInt(turnPoints);
   } else if (guessedAllColors.value === false && correctColors.value !== undefined) {
-    return calculateScore(undefined, correctColors.value);
+    return floatToInt(correctColors.value);
   }
   return undefined;
 });

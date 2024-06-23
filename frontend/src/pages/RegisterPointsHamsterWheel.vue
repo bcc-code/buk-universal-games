@@ -77,8 +77,8 @@ import '@vuepic/vue-datepicker/dist/main.css';
 import { useConfirmTeamResult } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';
 import TimePicker from './TimePicker.vue';
-import type { TimeType } from './TimeType';
-import { clamp, floatToInt } from './mathHelpers';
+import { timeToNumber, type TimeType } from './TimeType';
+import { clamp, floatToInt, lerp } from './mathHelpers';
 
 const props = defineProps<{
   match: MatchListItemEntity;
@@ -98,27 +98,25 @@ const penaltyPerStep = 0.2;
 const minStepPenalties = 0;
 const maxStepPenalties = 10;
 
-const calculateScore = (time: NonNullable<TimeType>, steps: number):number => {
-  const totalHengeTid = (time.hours * 60 + time.minutes + time.seconds / 60) / (24 * 60);
-  const clampedTime = clamp(minTime,totalHengeTid, maxTime);
-  const timePoints = maxScore - ((clampedTime - minTime) * (maxScore - minScore)) / (maxTime - minTime);
-  const clampedSteps = clamp(minStepPenalties,steps, maxStepPenalties);
-  const penaltyPoints = clampedSteps * penaltyPerStep;
-  return timePoints - penaltyPoints;
+const calculateScore = (time: NonNullable<TimeType>, steps: number): number => {
+  const totalHengeTid = timeToNumber(time);
+  const clampedTime = clamp(minTime, totalHengeTid, maxTime);
+    const timePoints = lerp(minTime, maxTime, maxScore, minScore, clampedTime);
+    const clampedSteps = clamp(minStepPenalties, steps, maxStepPenalties);
+    const penaltyPoints = clampedSteps * penaltyPerStep;
+    return timePoints - penaltyPoints;
 };
 
 const calculatedResult = computed<{
   team1Score: number;
   team2Score: number;
 } | undefined>(() => {
-
   const team1StepsLocal = team1Steps.value;
   const team2StepsLocal = team2Steps.value;
-  if(!team1Time.value) return;
-  if(!team2Time.value) return;
-  if(typeof team1StepsLocal !== 'number') return;
-  if(typeof team2StepsLocal !== 'number') return;
-  console.log(team1Time.value, team2Time.value, team1Steps.value, team2Steps.value)
+  if (!team1Time.value) return;
+  if (!team2Time.value) return;
+  if (typeof team1StepsLocal !== 'number') return;
+  if (typeof team2StepsLocal !== 'number') return;
 
   const team1Score = calculateScore(team1Time.value, team1StepsLocal);
   const team2Score = calculateScore(team2Time.value, team2StepsLocal);

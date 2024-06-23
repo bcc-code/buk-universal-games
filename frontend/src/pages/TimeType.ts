@@ -10,3 +10,11 @@ export const timeSchema = timeSchemaRequired.optional();
 
 export type TimeType = z.infer<typeof timeSchema>;
 
+const daySchema = z.number().brand<"Day">()
+type Day = z.infer<typeof daySchema>
+
+
+export function timeToNumber(time: NonNullable<TimeType>): Day {
+  const hours = time.hours + time.minutes / 60 + time.seconds / (60*60);
+  return daySchema.parse(hours / 24);
+}

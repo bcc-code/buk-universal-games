@@ -58,7 +58,7 @@
 import { ref, computed } from 'vue';
 import { useConfirmTeamResult } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';
-import { floatToInt } from './mathHelpers';
+import { floatToInt, lerp } from './mathHelpers';
 
 const props = defineProps<{
   match: MatchListItemEntity;
@@ -70,24 +70,21 @@ const pointsTeam2 = ref<number | ''>('');
 const calculatedResult = computed<{ team1Result: number; team2Result: number } | undefined>(() => {
   const validatedPointsTeam1 = pointsTeam1.value;
   const validatedPointsTeam2 = pointsTeam2.value;
-  if (!(typeof validatedPointsTeam1==="number")) return;
-  if (!(typeof validatedPointsTeam2==="number")) return;
-
+  if (!(typeof validatedPointsTeam1 === "number")) return;
+  if (!(typeof validatedPointsTeam2 === "number")) return;
 
   const minScore = 1;
   const maxScore = 20;
   const minPoints = 0;
   const maxPoints = 9;
 
-  const lerp = (min: number, max: number, t: number) => min + t * (max - min);
+    const team1Result = lerp(minPoints, maxPoints, minScore, maxScore, validatedPointsTeam1);
+    const team2Result = lerp(minPoints, maxPoints, minScore, maxScore, validatedPointsTeam2);
 
-  const team1Result = lerp(minScore, maxScore, (validatedPointsTeam1 - minPoints) / (maxPoints - minPoints));
-  const team2Result = lerp(minScore, maxScore, (validatedPointsTeam2 - minPoints) / (maxPoints - minPoints));
-
-  return {
-    team1Result: floatToInt(team1Result),
-    team2Result: floatToInt(team2Result),
-  };
+    return {
+      team1Result: floatToInt(team1Result),
+      team2Result: floatToInt(team2Result),
+    };
 });
 
 const showSuccess = ref<boolean>(false);

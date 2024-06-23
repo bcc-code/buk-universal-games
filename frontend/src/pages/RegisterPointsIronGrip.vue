@@ -47,9 +47,9 @@ import '@vuepic/vue-datepicker/dist/main.css'
 import { toRaw } from 'vue';
 import { useConfirmTeamResult } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';
-import { type TimeType } from './TimeType';
+import { timeToNumber, type TimeType } from './TimeType';
 import TimePicker from './TimePicker.vue';
-import { clamp, floatToInt } from './mathHelpers';
+import { clamp, floatToInt, lerp } from './mathHelpers';
 
 const props = defineProps<{
   match: MatchListItemEntity;
@@ -58,14 +58,11 @@ const props = defineProps<{
 const date = ref<TimeType>();
 const cheats= ref<""|number>("");
 
-// 🧹 the number should be returned from each registration component.
-// 🧹 remove comments
+// 🧹 pass to parent which handles saving
 const calculatedResult = computed<number | undefined>(() => {
-
-  // 🧹handle time to number conversion centrally? a date should just be a number, and the size of the date object should never be relevant.
-  const timePenaltyPerCheat = 10 / (24 * 60 * 60); // Convert 10 seconds to fraction of a day
-  const lowerBoundEffectiveTime = 2 / (24 * 60); // Convert 2 minutes to fraction of a day
-  const upperBoundEffectiveTime = 7 / (24 * 60); // Convert 7 minutes to fraction of a day
+  const timePenaltyPerCheat = timeToNumber({hours:0,minutes:0,seconds:10}); 
+  const lowerBoundEffectiveHengeTid = timeToNumber({ hours: 0, minutes: 2, seconds: 0 }); 
+  const upperBoundEffectiveHengeTid = timeToNumber({ hours: 0, minutes: 7, seconds: 0 }); 
   const minScore = 1;
   const maxScore = 20;
   const minCheats = 0;
@@ -74,27 +71,21 @@ const calculatedResult = computed<number | undefined>(() => {
   if (typeof cheats.value !== 'number') return;
   if (!date.value) return;
 
-  // 🧹use lerp
-  // Convert validatedDate to fractional minutes
-  const totalHengeTid =
-    (date.value.hours * 60 + date.value.minutes + date.value.seconds / 60) / (24 * 60);
-
-  // Calculate the time penalty
-  const timePenalty = clamp(minCheats,cheats.value,maxCheats) * timePenaltyPerCheat;
-
-  // Calculate the effective henge-tid
+  const totalHengeTid = timeToNumber(date.value);
+  const timePenalty = clamp(minCheats, cheats.value, maxCheats) * timePenaltyPerCheat;
   const effectiveHengeTid = totalHengeTid - timePenalty;
 
-  // 🧹 create lerp func
-  // Calculate the unclamped score using LERP
-  const unclampedScore =
-    ((effectiveHengeTid - lowerBoundEffectiveTime) * (maxScore - minScore)) /
-      (upperBoundEffectiveTime - lowerBoundEffectiveTime) +
-    minScore;
+  const unclampedScore = lerp(
+      lowerBoundEffectiveHengeTid,
+      upperBoundEffectiveHengeTid,
+      minScore,
+      maxScore,
+      effectiveHengeTid
+    );
 
-  const clampedScore = clamp(minScore, unclampedScore, maxScore);
+    const clampedScore = clamp(minScore, unclampedScore, maxScore);
 
-  return floatToInt(clampedScore);
+    return floatToInt(clampedScore);
 });
 
 

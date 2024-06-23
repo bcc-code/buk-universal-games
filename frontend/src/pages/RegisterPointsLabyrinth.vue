@@ -95,9 +95,9 @@ import { ref, computed } from 'vue';
 import '@vuepic/vue-datepicker/dist/main.css';
 import { useConfirmTeamResult } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';
-import type { TimeType } from './TimeType';
+import { timeToNumber, type TimeType } from './TimeType';
 import TimePicker from './TimePicker.vue';
-import { clamp, floatToInt } from './mathHelpers';
+import { clamp, floatToInt, lerp } from './mathHelpers';
 
 const props = defineProps<{
   match: MatchListItemEntity;
@@ -117,37 +117,19 @@ const totalCheckpoints = 3;
 
 const calculatedResult = computed<number | undefined>(() => {
   if (finished.value === undefined) return undefined;
-  if (finished.value === false && checkpoints.value === undefined)
-    return undefined;
+  if (finished.value === false && checkpoints.value === undefined) return undefined;
   if (finished.value === true && !date.value) return undefined;
 
-  
-  const completedCheckpoints = finished.value
-  ? totalCheckpoints
-  : checkpoints.value ?? 0;
+  const completedCheckpoints = finished.value ? totalCheckpoints : checkpoints.value ?? 0;
   const completionBonusValue = finished.value ? completionBonus : 0;
-  
-  
+
   let effectiveTime = minTime;
   if (finished.value && date.value) {
-    effectiveTime = clamp(maxTime,
-      (date.value.hours * 60 +
-      date.value.minutes +
-      date.value.seconds / 60) /
-      (24 * 60)
-    ,minTime);
+    effectiveTime = clamp(maxTime, timeToNumber(date.value), minTime);
   }
 
-  const timePoints =
-    maxScore +
-    ((maxTime - effectiveTime) * (minScore - maxScore)) / (maxTime - minTime);
-  const totalScore =
-    completedCheckpoints * pointsPerCheckpoint +
-    completionBonusValue +
-    timePoints;
-
-  console.log({effectiveTime:effectiveTime*24*60, timePoints, totalScore, completedCheckpoints, completionBonusValue})
-
+  const timePoints = lerp(maxTime, minTime, minScore, maxScore, effectiveTime);
+  const totalScore = completedCheckpoints * pointsPerCheckpoint + completionBonusValue + timePoints;
   return floatToInt(totalScore);
 });
 
