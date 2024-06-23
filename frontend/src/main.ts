@@ -17,7 +17,6 @@ import NotificationService from './services/notification.service';
 // ------------------ vuex section
 import initStore from './store';
 import createMatchNotifierPlugin from './plugins/match-notifier';
-import { usePiniaStore } from './store/piniaStore';
 
 const notificationService = new NotificationService();
 const matchNotifierPlugin = createMatchNotifierPlugin(notificationService);
