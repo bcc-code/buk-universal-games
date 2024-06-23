@@ -31,7 +31,7 @@
 		<br />
 		<span>Ved spillets slutt:</span>
 		<ul class="list-disc list-inside">
-			<li>Registrer "henge-tiden" i appen. TODO FOR SIGURD</li>
+			<li>Registrer "henge-tiden" og juks i appen.</li>
 			<li>Sikkerhetsrutine: Gå over stillaset å sjekk at alt sitter godt fast etter hver runde.</li>
 		</ul>
 		</div>

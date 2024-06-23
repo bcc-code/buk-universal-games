@@ -12,6 +12,7 @@
   <RegisterPointsLandWaterBeach v-else-if="gameType==='land_water_beach'" :match="match"></RegisterPointsLandWaterBeach>
   <RegisterPointsLabyrinth v-else-if="gameType==='labyrinth'"        :match="match"></RegisterPointsLabyrinth>
   <RegisterPointsHamsterWheel v-else-if="gameType==='human_shuffleboard'"        :match="match"></RegisterPointsHamsterWheel>
+  <RegisterPointsMastermind v-else-if="gameType==='mastermind'"        :match="match"></RegisterPointsMastermind>
   <div v-else>
     <div class="alert alert-error block">Noe gikk galt</div>
   </div>
@@ -27,6 +28,7 @@ import RegisterPointsIronGrip from "./RegisterPointsIronGrip.vue"
 import RegisterPointsLandWaterBeach from './RegisterPointsLandWaterBeach.vue';
 import RegisterPointsLabyrinth from './RegisterPointsLabyrinth.vue';
 import RegisterPointsHamsterWheel from './RegisterPointsHamsterWheel.vue';
+import RegisterPointsMastermind from './RegisterPointsMastermind.vue';
 
 
 const props = defineProps<{
