@@ -7,7 +7,7 @@
       <div class="background" v-if="isOpen" @click="toggleDropdown(null)"></div>
       <div class="dropdown-menu" ref="languagePickerMenu">
         <div
-          v-for="locale in Object.keys(locales)"
+          v-for="locale in sortedLocales"
           :key="`locale-${locale}`"
           class="dropdown-item"
           @click="changeLanguage(locale)"
@@ -28,24 +28,44 @@ export default {
     return {
       selectedLanguage: this.$i18n.locale,
       locales: {
-        cn: '中文',
-        de: 'Deutsch',
+        nb: 'Norsk',
         en: 'English',
+        de: 'Deutsch',
         es: 'Español',
+        nl: 'Nederlands',
+        pl: 'Polski',
+        cn: '中文',
         fi: 'Suomi',
         fr: 'Français',
         hu: 'Magyar',
         it: 'Italiano',
-        nb: 'Norsk',
-        nl: 'Nederlands',
-        pl: 'Polski',
         ro: 'Română',
         ru: 'Русский',
         tr: 'Türkçe',
         ua: 'українська',
       },
+      order: ['nb', 'en', 'de', 'es', 'nl', 'pl'],
       isOpen: false,
     };
+  },
+  computed: {
+    sortedLocales() {
+      const orderedLocales = this.order.map(locale => ({
+        key: locale,
+        name: this.locales[locale]
+      }));
+      console.log(orderedLocales)
+      
+      const remainingLocales = Object.keys(this.locales)
+        .filter(locale => !this.order.includes(locale))
+        .map(locale => ({
+          key: locale,
+          name: this.locales[locale]
+        }))
+        .sort((a, b) => a.name.localeCompare(b.name));
+
+      return [...orderedLocales, ...remainingLocales].map(locale => locale.key);
+    }
   },
   methods: {
     toggleDropdown(override = null) {
@@ -132,4 +152,3 @@ export default {
   background-color: #f2f2f2;
 }
 </style>
-```
