@@ -6,6 +6,9 @@
     <div class="alert alert-success block">Lagret</div>
   </div>
 
+  <TimePicker></TimePicker>
+  
+
   <div class="teams">
     <div
       :class="{
@@ -63,9 +66,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, defineProps } from 'vue';
+import { ref, computed } from 'vue';
 import { useConfirmTeamResult } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';
+import TimePicker from "./TimePicker.vue"
 
 const props = defineProps<{
   match: MatchListItemEntity;
@@ -75,13 +79,13 @@ const { mutate: confirmResult, isPending } = useConfirmTeamResult();
 
 const isChangingScore1 = ref(false);
 const isChangingScore2 = ref(false);
-const showSuccess = ref<boolean>(false);
-const popupErrorMessage = ref<string | null>(null);
+ const showSuccess = ref<boolean>(false);
+ const popupErrorMessage = ref<string | null>(null);
 
-const confirmDisabled = computed(() => isPending.value);
-const showErrorPopup = computed(() => !!popupErrorMessage.value);
-const team1Result = ref(props.match.team1Result);
-const team2Result = ref(props.match.team2Result);
+ const confirmDisabled = computed(() => isPending.value);
+ const showErrorPopup = computed(() => !!popupErrorMessage.value);
+ const team1Result = ref(props.match.team1Result);
+ const team2Result = ref(props.match.team2Result);
 
 const showSuccessToast = () => {
   showSuccess.value = true;
@@ -90,7 +94,7 @@ const showSuccessToast = () => {
   }, 3000);
 };
 
-const confirmTeamResult = async (
+ const confirmTeamResult = async (
   teamId: number | undefined,
   result: number | null,
 ) => {
