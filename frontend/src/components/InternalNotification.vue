@@ -6,7 +6,7 @@
     <p :v-if="state.body" class="body">{{ state.body }}</p>
   </dialog>
 </template>
-<script setup>
+<script setup lang="ts">
 import { inject, reactive } from 'vue';
 const notificationService = inject('notificationService');
 

@@ -23,7 +23,6 @@
 
 <script setup lang="ts">
 import MatchListItem from '@/components/MatchListItem.vue';
-import { defineProps } from 'vue';
 import type { GameType } from './GameType';
 import type { MatchListItemEntity } from './MatchListItemEntity';
 import AdminRefereeInfoIronGrip from './AdminRefereeInfoIronGrip.vue';
