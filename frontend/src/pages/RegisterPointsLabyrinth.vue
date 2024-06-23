@@ -66,24 +66,7 @@
 
       <div v-if="finished === true" class="mb-4">
         Tid:
-        <div class="w-64 inline-block shadow-md">
-          <VueDatePicker
-            v-model="date"
-            required
-            auto-apply
-            enable-seconds
-            time-picker
-            no-hours-overlay
-            :min-time="{ hours: 0, minutes: 0, seconds: 1 }"
-            :max-time="{ hours: 0, minutes: 10, seconds: 0 }"
-            :start-time="{ hours: 0, minutes: 0, seconds: 1 }"
-            minutes-grid-increment="1"
-            format="mm:ss"
-            :clearable="false"
-            :ui="{ input: 'h-14 inline' }"
-            placeholder="Tid"
-          ></VueDatePicker>
-        </div>
+        <TimePicker v-model="date" placeholder="Tid"></TimePicker>
       </div>
 
       <div class="mb-4" v-if="typeof calculatedResult === 'number'">
@@ -109,12 +92,11 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
-import z from 'zod';
 import { useConfirmTeamResult } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';
 import type { TimeType } from './TimeType';
+import TimePicker from './TimePicker.vue';
 
 const props = defineProps<{
   match: MatchListItemEntity;
@@ -123,18 +105,6 @@ const props = defineProps<{
 const date = ref<TimeType>();
 const finished = ref<boolean | undefined>(undefined);
 const checkpoints = ref<0 | 1 | 2 | 3 | undefined>(undefined);
-
-const timeSchema = z
-  .object({
-    hours: z.number(),
-    minutes: z.number(),
-    seconds: z.number(),
-  })
-  .optional();
-
-const validatedDate = computed(() => {
-  return timeSchema.parse(date.value);
-});
 
 const minScore = 0;
 const maxScore = 10;
@@ -148,7 +118,7 @@ const calculatedResult = computed<number | undefined>(() => {
   if (finished.value === undefined) return undefined;
   if (finished.value === false && checkpoints.value === undefined)
     return undefined;
-  if (finished.value === true && !validatedDate.value) return undefined;
+  if (finished.value === true && !date.value) return undefined;
 
   
   const completedCheckpoints = finished.value
@@ -158,12 +128,12 @@ const calculatedResult = computed<number | undefined>(() => {
   
   
   let effectiveTime = minTime;
-  if (finished.value && validatedDate.value) {
+  if (finished.value && date.value) {
     effectiveTime = Math.max(maxTime,Math.min(
 
-      (validatedDate.value.hours * 60 +
-        validatedDate.value.minutes +
-        validatedDate.value.seconds / 60) /
+      (date.value.hours * 60 +
+      date.value.minutes +
+      date.value.seconds / 60) /
       (24 * 60)
     ,minTime));
   }
@@ -223,10 +193,5 @@ const submitForm = () => {
   width: 0;
   padding-left: 2rem;
   padding-right: 2rem;
-}
-</style>
-<style>
-.dp__theme_light {
-    --dp-disabled-color-text: #00000000;
 }
 </style>

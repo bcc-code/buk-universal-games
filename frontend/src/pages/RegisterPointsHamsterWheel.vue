@@ -9,24 +9,7 @@
           <br/>
           Tid:
           <br/>
-          <div class="inline-block shadow-md">
-            <VueDatePicker
-              v-model="team1Time"
-              required
-              auto-apply
-              enable-seconds
-              time-picker
-              no-hours-overlay
-              :min-time="{hours: 0, minutes: 0, seconds: 1}"
-              :max-time="{hours: 0, minutes: 10, seconds: 0}"
-              :start-time="{hours: 0, minutes: 0, seconds: 1}"
-              minutes-grid-increment="1"
-              format="mm:ss"
-              :clearable="false"
-              :ui="{input: 'h-14 inline'}"
-              placeholder="Tid"
-            ></VueDatePicker>
-          </div>
+          <TimePicker v-model="team1Time" placeholder="Tid"></TimePicker>
           <br/>
           <br/>
           Antall steg utenfor:
@@ -54,24 +37,7 @@
           <br/>
           Tid:
           <br/>
-          <div class="inline-block shadow-md">
-            <VueDatePicker
-              v-model="team2Time"
-              required
-              auto-apply
-              enable-seconds
-              time-picker
-              no-hours-overlay
-              :min-time="{hours: 0, minutes: 0, seconds: 1}"
-              :max-time="{hours: 0, minutes: 10, seconds: 0}"
-              :start-time="{hours: 0, minutes: 0, seconds: 1}"
-              minutes-grid-increment="1"
-              format="mm:ss"
-              :clearable="false"
-              :ui="{input: 'h-14 inline'}"
-              placeholder="Tid"
-            ></VueDatePicker>
-          </div>
+          <TimePicker v-model="team2Time" placeholder="Tid"></TimePicker>
           <br/>
           <br/>
           Antall steg utenfor:
@@ -107,11 +73,11 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
-import z from 'zod';
 import { useConfirmTeamResult } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';
+import TimePicker from './TimePicker.vue';
+import type { TimeType } from './TimeType';
 
 const props = defineProps<{
   match: MatchListItemEntity;
@@ -122,23 +88,6 @@ const team1Steps = ref<number | ''>('');
 const team2Time = ref<TimeType>();
 const team2Steps = ref<number | ''>('');
 
-const timeSchema = z.object({
-  hours: z.number(),
-  minutes: z.number(),
-  seconds: z.number(),
-});
-const timeSchemaOptional = timeSchema.optional()
-
-type TimeType = z.infer<typeof timeSchema>;
-
-const validatedTeam1Time = computed(() => {
-  return timeSchemaOptional.parse(team1Time.value);
-});
-
-const validatedTeam2Time = computed(() => {
-  return timeSchemaOptional.parse(team2Time.value);
-});
-
 const minScore = 2;
 const maxScore = 15;
 const minTime = 1 / (24 * 60); // Convert 1 minute to fraction of a day
@@ -148,7 +97,7 @@ const penaltyPerStep = 0.2;
 const minStepPenalties = 0;
 const maxStepPenalties = 10;
 
-const calculateScore = (time: TimeType, steps: number):number => {
+const calculateScore = (time: NonNullable<TimeType>, steps: number):number => {
   const totalHengeTid = (time.hours * 60 + time.minutes + time.seconds / 60) / (24 * 60);
   const clampedTime = Math.max(minTime, Math.min(totalHengeTid, maxTime));
   const timePoints = maxScore - ((clampedTime - minTime) * (maxScore - minScore)) / (maxTime - minTime);
@@ -164,14 +113,14 @@ const calculatedResult = computed<{
 
   const team1StepsLocal = team1Steps.value;
   const team2StepsLocal = team2Steps.value;
-  if(!validatedTeam1Time.value) return;
-  if(!validatedTeam2Time.value) return;
+  if(!team1Time.value) return;
+  if(!team2Time.value) return;
   if(typeof team1StepsLocal !== 'number') return;
   if(typeof team2StepsLocal !== 'number') return;
-  console.log(validatedTeam1Time.value, validatedTeam2Time.value, team1Steps.value, team2Steps.value)
+  console.log(team1Time.value, team2Time.value, team1Steps.value, team2Steps.value)
 
-  const team1Score = calculateScore(validatedTeam1Time.value, team1StepsLocal);
-  const team2Score = calculateScore(validatedTeam2Time.value, team2StepsLocal);
+  const team1Score = calculateScore(team1Time.value, team1StepsLocal);
+  const team2Score = calculateScore(team2Time.value, team2StepsLocal);
 
   const winnerBonus = team1Score > team2Score ? [winBonus, 0] : team2Score > team1Score ? [0, winBonus] : [0, 0];
 

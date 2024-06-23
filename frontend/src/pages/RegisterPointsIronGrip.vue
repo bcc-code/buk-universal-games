@@ -4,28 +4,8 @@
 
     <form @submit.prevent="submitForm">
       <div class="mb-4">
-
         Henge-tid:
-        <div
-        class="w-64  inline-block   shadow-md"
-        >
-        <VueDatePicker 
-        v-model="date"
-        required
-        auto-apply
-        enable-seconds
-        time-picker
-        no-hours-overlay
-        :min-time="{hours:0, minutes:0, seconds:1}"
-        :max-time="{hours:0, minutes:10, seconds:0}"
-        :start-time="{hours:0, minutes:0, seconds:1}"
-        minutes-grid-increment="1" 
-        format="mm:ss"
-        :clearable="false"
-        :ui="{input:'h-14 inline'}"
-        placeholder="Henge-tid"
-        ></VueDatePicker>
-      </div>
+        <TimePicker v-model="date" placeholder="Henge-tid"></TimePicker>
       </div>
       <div class="mb-4">
         
@@ -63,12 +43,12 @@
 
 <script setup lang="ts">
 import { ref, watch ,computed} from 'vue';
-import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css'
 import { toRaw } from 'vue';
 import { useConfirmTeamResult } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';
-import { timeSchema, type TimeType } from './TimeType';
+import { type TimeType } from './TimeType';
+import TimePicker from './TimePicker.vue';
 
 const props = defineProps<{
   match: MatchListItemEntity;
@@ -76,16 +56,6 @@ const props = defineProps<{
 
 const date = ref<TimeType>();
 const cheats= ref<""|number>("");
-
-
-// 🧹 move to time picker component. it should be used inside a form. Create that as a comment. 
-const validatedDate = computed(()=>{
-  return timeSchema.parse(date.value)
-})
-
-// 🧹remove
-// watch(validatedDate,(val)=>console.log(toRaw(val) ),{immediate:true})
-// watch(cheats,(val)=>console.log(toRaw(val),typeof val ),{immediate:true})
 
 // 🧹 the number should be returned from each registration component.
 // 🧹 remove comments
@@ -101,12 +71,12 @@ const calculatedResult = computed<number | undefined>(() => {
   const maxCheats = 10;
 
   if (typeof cheats.value !== 'number') return;
-  if (!validatedDate.value) return;
+  if (!date.value) return;
 
   // 🧹use lerp
   // Convert validatedDate to fractional minutes
   const totalHengeTid =
-    (validatedDate.value.hours * 60 + validatedDate.value.minutes + validatedDate.value.seconds / 60) / (24 * 60);
+    (date.value.hours * 60 + date.value.minutes + date.value.seconds / 60) / (24 * 60);
 
     // 🧹use clamp
   // Calculate the time penalty
@@ -167,9 +137,3 @@ const submitForm = () => {
 }
 // 🧹 if the component is rendered and the score are already set, then show a confirmation before registering scores. We press it first to allow overwriting scores.
 </script>
-<style>
-/* 🧹move to time picker component */
-.dp__theme_light {
-    --dp-disabled-color-text: #00000000;
-}
-</style>
