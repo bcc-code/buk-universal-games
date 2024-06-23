@@ -19,84 +19,84 @@
   </div>
 </template>
 
-<script>
-import { setI18nLanguage } from '@/libs/i18n';
+<script setup lang="ts">
+import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { useStore } from 'vuex';
 
-export default {
-  name: 'LanguageSwitcher',
-  data() {
-    return {
-      selectedLanguage: this.$i18n.locale,
-      locales: {
-        nb: 'Norsk',
-        en: 'English',
-        de: 'Deutsch',
-        es: 'Español',
-        nl: 'Nederlands',
-        pl: 'Polski',
-        cn: '中文',
-        fi: 'Suomi',
-        fr: 'Français',
-        hu: 'Magyar',
-        it: 'Italiano',
-        ro: 'Română',
-        ru: 'Русский',
-        tr: 'Türkçe',
-        ua: 'українська',
-      },
-      order: ['nb', 'en', 'de', 'es', 'nl', 'pl'],
-      isOpen: false,
-    };
-  },
-  computed: {
-    sortedLocales() {
-      const orderedLocales = this.order.map(locale => ({
-        key: locale,
-        name: this.locales[locale]
-      }));
-      console.log(orderedLocales)
-      
-      const remainingLocales = Object.keys(this.locales)
-        .filter(locale => !this.order.includes(locale))
-        .map(locale => ({
-          key: locale,
-          name: this.locales[locale]
-        }))
-        .sort((a, b) => a.name.localeCompare(b.name));
-
-      return [...orderedLocales, ...remainingLocales].map(locale => locale.key);
-    }
-  },
-  methods: {
-    toggleDropdown(override = null) {
-      this.isOpen = override || !this.isOpen;
-      if (this.isOpen) {
-        setTimeout(() => {
-          document.addEventListener('click', this.closeDropdown);
-        }, 100);
-      } else {
-        document.removeEventListener('click', this.closeDropdown);
-      }
-    },
-    changeLanguage(locale) {
-      this.$store.commit('setUserLanguage', locale);
-      setI18nLanguage(this.$i18n, locale);
-      this.selectedLanguage = locale;
-      localStorage.setItem('userLanguage', locale);
-      this.toggleDropdown(false);
-    },
-    closeDropdown(event) {
-      event.stopPropagation();
-      if (!this.$refs.languagePickerMenu) {
-        document.removeEventListener('click', this.closeDropdown);
-        return;
-      }
-      if (!this.$refs.languagePickerMenu.contains(event.target)) {
-        this.toggleDropdown(false);
-      }
-    },
-  },
+// 🧹 get this from libs/i18n
+const locales = {
+  nb: 'Norsk',
+  en: 'English',
+  de: 'Deutsch',
+  es: 'Español',
+  nl: 'Nederlands',
+  pl: 'Polski',
+  cn: '中文',
+  fi: 'Suomi',
+  fr: 'Français',
+  hu: 'Magyar',
+  it: 'Italiano',
+  ro: 'Română',
+  ru: 'Русский',
+  tr: 'Türkçe',
+  ua: 'українська',
 };
+
+const order:Array<keyof typeof locales> = ['nb', 'en', 'de', 'es', 'nl', 'pl'];
+
+const store = useStore();
+const { locale, t } = useI18n();
+
+const selectedLanguage = ref(locale.value);
+const isOpen = ref(false);
+const languagePickerMenu = ref<HTMLDivElement | null>(null);
+
+const toggleDropdown = (override: boolean | null = null) => {
+  isOpen.value = override ?? !isOpen.value;
+  if (isOpen.value) {
+    setTimeout(() => {
+      document.addEventListener('click', closeDropdown);
+    }, 100);
+  } else {
+    document.removeEventListener('click', closeDropdown);
+  }
+};
+
+const changeLanguage = (locale: string) => {
+  store.commit('setUserLanguage', locale);
+  // setI18nLanguage(locale);
+  selectedLanguage.value = locale;
+  localStorage.setItem('userLanguage', locale);
+  toggleDropdown(false);
+};
+
+const closeDropdown = (event: MouseEvent) => {
+  event.stopPropagation();
+  if (!languagePickerMenu.value) {
+    document.removeEventListener('click', closeDropdown);
+    return;
+  }
+  if (!languagePickerMenu.value.contains(event.target as Node)) {
+    toggleDropdown(false);
+  }
+};
+
+const sortedLocales = computed(() => {
+  const remainingLocales = (Object.keys(locales) as Array<keyof typeof locales>)
+    .filter((locale) => !order.includes(locale))
+    .sort((a, b) => locales[a].localeCompare(locales[b]));
+
+  return [...order, ...remainingLocales];
+});
+
+onMounted(() => {
+  document.addEventListener('click', closeDropdown);
+});
+
+onUnmounted(() => {
+  document.removeEventListener('click', closeDropdown);
+});
 </script>
 
 <style scoped>

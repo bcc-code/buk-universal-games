@@ -31,7 +31,8 @@ const language = (
   navigator.languages[0] ||
   'en'
 ).split('-')[0];
-const i18n = setupI18n({ locale: language });
+
+const i18n = await setupI18n(language);
 
 createApp(App)
   .use(piniaStore)
