@@ -49,6 +49,7 @@ import { useConfirmTeamResult } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';
 import { type TimeType } from './TimeType';
 import TimePicker from './TimePicker.vue';
+import { clamp, floatToInt } from './mathHelpers';
 
 const props = defineProps<{
   match: MatchListItemEntity;
@@ -78,9 +79,8 @@ const calculatedResult = computed<number | undefined>(() => {
   const totalHengeTid =
     (date.value.hours * 60 + date.value.minutes + date.value.seconds / 60) / (24 * 60);
 
-    // 🧹use clamp
   // Calculate the time penalty
-  const timePenalty = Math.max(minCheats,Math.min(cheats.value,maxCheats)) * timePenaltyPerCheat;
+  const timePenalty = clamp(minCheats,cheats.value,maxCheats) * timePenaltyPerCheat;
 
   // Calculate the effective henge-tid
   const effectiveHengeTid = totalHengeTid - timePenalty;
@@ -92,17 +92,11 @@ const calculatedResult = computed<number | undefined>(() => {
       (upperBoundEffectiveTime - lowerBoundEffectiveTime) +
     minScore;
 
-    // 🧹 create clamp func
-  // Clamp the score between minScore and maxScore
-  const clampedScore = Math.max(minScore, Math.min(unclampedScore, maxScore));
+  const clampedScore = clamp(minScore, unclampedScore, maxScore);
 
   return floatToInt(clampedScore);
 });
 
-// 🧹 we should be able to take decimals on the backend, and save it. 
-function floatToInt(num:number):number{
-  return Math.round(num)
-}
 
 const showSuccess = ref<boolean>(false);
 

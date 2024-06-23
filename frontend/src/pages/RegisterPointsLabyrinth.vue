@@ -97,6 +97,7 @@ import { useConfirmTeamResult } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';
 import type { TimeType } from './TimeType';
 import TimePicker from './TimePicker.vue';
+import { clamp, floatToInt } from './mathHelpers';
 
 const props = defineProps<{
   match: MatchListItemEntity;
@@ -129,13 +130,12 @@ const calculatedResult = computed<number | undefined>(() => {
   
   let effectiveTime = minTime;
   if (finished.value && date.value) {
-    effectiveTime = Math.max(maxTime,Math.min(
-
+    effectiveTime = clamp(maxTime,
       (date.value.hours * 60 +
       date.value.minutes +
       date.value.seconds / 60) /
       (24 * 60)
-    ,minTime));
+    ,minTime);
   }
 
   const timePoints =
@@ -148,7 +148,7 @@ const calculatedResult = computed<number | undefined>(() => {
 
   console.log({effectiveTime:effectiveTime*24*60, timePoints, totalScore, completedCheckpoints, completionBonusValue})
 
-  return Math.round(totalScore);
+  return floatToInt(totalScore);
 });
 
 const showSuccess = ref<boolean>(false);

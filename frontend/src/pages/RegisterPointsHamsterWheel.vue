@@ -78,6 +78,7 @@ import { useConfirmTeamResult } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';
 import TimePicker from './TimePicker.vue';
 import type { TimeType } from './TimeType';
+import { clamp, floatToInt } from './mathHelpers';
 
 const props = defineProps<{
   match: MatchListItemEntity;
@@ -99,9 +100,9 @@ const maxStepPenalties = 10;
 
 const calculateScore = (time: NonNullable<TimeType>, steps: number):number => {
   const totalHengeTid = (time.hours * 60 + time.minutes + time.seconds / 60) / (24 * 60);
-  const clampedTime = Math.max(minTime, Math.min(totalHengeTid, maxTime));
+  const clampedTime = clamp(minTime,totalHengeTid, maxTime);
   const timePoints = maxScore - ((clampedTime - minTime) * (maxScore - minScore)) / (maxTime - minTime);
-  const clampedSteps = Math.max(minStepPenalties, Math.min(steps, maxStepPenalties));
+  const clampedSteps = clamp(minStepPenalties,steps, maxStepPenalties);
   const penaltyPoints = clampedSteps * penaltyPerStep;
   return timePoints - penaltyPoints;
 };
@@ -125,8 +126,8 @@ const calculatedResult = computed<{
   const winnerBonus = team1Score > team2Score ? [winBonus, 0] : team2Score > team1Score ? [0, winBonus] : [0, 0];
 
   return {
-    team1Score: Math.round(team1Score + winnerBonus[0]),
-    team2Score: Math.round(team2Score + winnerBonus[1]),
+    team1Score: floatToInt(team1Score + winnerBonus[0]),
+    team2Score: floatToInt(team2Score + winnerBonus[1]),
   };
 });
 

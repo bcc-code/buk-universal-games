@@ -58,6 +58,7 @@
 import { ref, computed } from 'vue';
 import { useConfirmTeamResult } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';
+import { floatToInt } from './mathHelpers';
 
 const props = defineProps<{
   match: MatchListItemEntity;
@@ -84,8 +85,8 @@ const calculatedResult = computed<{ team1Result: number; team2Result: number } |
   const team2Result = lerp(minScore, maxScore, (validatedPointsTeam2 - minPoints) / (maxPoints - minPoints));
 
   return {
-    team1Result: Math.round(team1Result),
-    team2Result: Math.round(team2Result),
+    team1Result: floatToInt(team1Result),
+    team2Result: floatToInt(team2Result),
   };
 });
 
