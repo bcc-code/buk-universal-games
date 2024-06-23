@@ -10,6 +10,7 @@
 
   <RegisterPointsIronGrip       v-if=     "gameType==='iron_grip'"        :match="match"></RegisterPointsIronGrip>
   <RegisterPointsLandWaterBeach v-else-if="gameType==='land_water_beach'" :match="match"></RegisterPointsLandWaterBeach>
+  <RegisterPointsLabyrinth v-else-if="gameType==='labyrinth'"        :match="match"></RegisterPointsLabyrinth>
   <div v-else>
     <div class="alert alert-error block">Noe gikk galt</div>
   </div>
@@ -25,6 +26,7 @@ import RegisterPointsIronGrip from "./RegisterPointsIronGrip.vue"
 import type { GameType } from './GameType';
 // 🧹rename
 import RegisterPointsLandWaterBeach from './RegisterPointsLandWaterBeach.vue';
+import RegisterPointsLabyrinth from './RegisterPointsLabyrinth.vue';
 
 
 const props = defineProps<{
