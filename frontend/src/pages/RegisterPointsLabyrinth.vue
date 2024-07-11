@@ -81,13 +81,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, toRaw, watch } from 'vue';
+import { ref, computed, watch } from 'vue';
 import '@vuepic/vue-datepicker/dist/main.css';
 import { useConfirmTeamResult } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';
 import { timeToNumber, type TimeType } from './TimeType';
 import TimePicker from './TimePicker.vue';
 import { clamp, floatToInt, lerp } from './mathHelpers';
+// 🧹🪲 when one of the buttons get pressed, the computed function doesn't run.
+// Helper function to replace array element
+function replaceArrayElement<T>(array: T[], index: number, newValue: T): T[] {
+  return [...array.slice(0, index), newValue, ...array.slice(index + 1)];
+}
 
 const props = defineProps<{
   match: MatchListItemEntity;
@@ -107,19 +112,13 @@ const pointsPerCheckpoint = 2;
 const totalCheckpoints = 3;
 
 const calculatedResult = computed<number | undefined>(() => {
-  finished.value.every((val)=>console.log(val))
-  checkpoints.value.every((val)=>console.log(val))
-  dates.value.every((val)=>console.log(val))
+  if (finished.value.some(f => f === undefined)) return undefined;
+  if (finished.value.includes(false) && checkpoints.value.some(c => c === undefined)) return undefined;
+  if (finished.value.includes(true) && dates.value.some(d => !d)) return undefined;
 
   const scores: number[] = [];
 
   for (let i = 0; i < labyrinthCount.value; i++) {
-    console.log(toRaw(finished.value))
-    if (finished.value[i] === undefined) return undefined;
-    if (finished.value[i] === false && checkpoints.value[i] === undefined)
-      return undefined;
-    if (finished.value[i] === true && !dates.value[i]) return undefined;
-
     const completedCheckpoints = finished.value[i] ? totalCheckpoints : checkpoints.value[i] ?? 0;
     const completionBonusValue = finished.value[i] ? completionBonus : 0;
 
@@ -171,6 +170,19 @@ const submitForm = () => {
       showSuccessToast();
     },
   });
+};
+
+// Update handlers
+const handleFinishedClick = (index: number, value: boolean) => {
+  finished.value = replaceArrayElement(finished.value, index, value);
+};
+
+const handleCheckpointsClick = (index: number, value: 0 | 1 | 2 | 3) => {
+  checkpoints.value = replaceArrayElement(checkpoints.value, index, value);
+};
+
+const handleDateChange = (index: number, value: TimeType) => {
+  dates.value = replaceArrayElement(dates.value, index, value);
 };
 </script>
 
