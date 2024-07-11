@@ -2,7 +2,7 @@
     <form @submit.prevent="submitForm">
 
       <div class="p-4 bg-white rounded-md mb-4">
-        <div class="block">Er laget så stort at det trenger 2 labyrinter?</div>
+        <div class="block">Er laget så stort at de bruker 2 labyrinter?</div>
         <div class="flex space-x-4">
           <button type="button" class="btn multiselect-button shadow-md"
             :class="labyrinthCount === 2 ? 'btn-success' : ''" @click="labyrinthCount = 2">
@@ -81,13 +81,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue';
+import { ref, computed, } from 'vue';
 import '@vuepic/vue-datepicker/dist/main.css';
 import { useConfirmTeamResult } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';
 import { timeToNumber, type TimeType } from './TimeType';
 import TimePicker from './TimePicker.vue';
 import { clamp, floatToInt, lerp } from './mathHelpers';
+
 // 🧹🪲 when one of the buttons get pressed, the computed function doesn't run.
 // Helper function to replace array element
 function replaceArrayElement<T>(array: T[], index: number, newValue: T): T[] {
