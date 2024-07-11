@@ -37,69 +37,61 @@
           <button
             type="button"
             class="btn multiselect-button shadow-md"
-            :class="finished[index] === true ? 'btn-success' : ''"
-            @click="finished[index] = true"
+            :class="finished[index - 1] === true ? 'btn-success' : ''"
+            @click="finished[index - 1] = true"
           >
             Ja
           </button>
           <button
             type="button"
             class="btn multiselect-button shadow-md"
-            :class="finished[index] === false ? 'btn-success' : ''"
-            @click="finished[index] = false"
+            :class="finished[index - 1] === false ? 'btn-success' : ''"
+            @click="finished[index - 1] = false"
           >
             Nei
           </button>
         </div>
       </div>
 
-      <div v-if="finished[index] === false" class="mb-4">
+      <div v-if="finished[index - 1] === false" class="mb-4">
         <label>Hvor mange checkpoints klarte de å nå?</label>
         <div class="flex space-x-4">
           <button
             type="button"
             class="btn multiselect-button shadow-md"
-            :class="checkpoints[index] === 0 ? 'btn-success' : ''"
-            @click="checkpoints[index] = 0"
+            :class="checkpoints[index - 1] === 0 ? 'btn-success' : ''"
+            @click="checkpoints[index - 1] = 0"
           >
             0
           </button>
           <button
             type="button"
             class="btn multiselect-button shadow-md"
-            :class="checkpoints[index] === 1 ? 'btn-success' : ''"
-            @click="checkpoints[index] = 1"
+            :class="checkpoints[index - 1] === 1 ? 'btn-success' : ''"
+            @click="checkpoints[index - 1] = 1"
           >
             1
           </button>
           <button
             type="button"
             class="btn multiselect-button shadow-md"
-            :class="checkpoints[index] === 2 ? 'btn-success' : ''"
-            @click="checkpoints[index] = 2"
+            :class="checkpoints[index - 1] === 2 ? 'btn-success' : ''"
+            @click="checkpoints[index - 1] = 2"
           >
             2
-          </button>
-          <button
-            type="button"
-            class="btn multiselect-button shadow-md"
-            :class="checkpoints[index] === 3 ? 'btn-success' : ''"
-            @click="checkpoints[index] = 3"
-          >
-            3
           </button>
         </div>
       </div>
 
-      <div v-if="finished[index] === true" class="mb-4">
+      <div v-if="finished[index - 1] === true" class="mb-4">
         Tid:
-        <TimePicker v-model="dates[index]" placeholder="Tid"></TimePicker>
+        <TimePicker v-model="dates[index - 1]" placeholder="Tid"></TimePicker>
       </div>
     </div>
 
     <div class="p-4 bg-white rounded-md mb-4">
-      <div class="mb-4" v-if="typeof calculatedResult === 'number'">
-        Beregnet score: {{ calculatedResult }}
+      <div class="mb-4" v-if="typeof calculatedResult() === 'number'">
+        Beregnet score: {{ calculatedResult() }}
       </div>
 
       <button
@@ -120,19 +112,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import '@vuepic/vue-datepicker/dist/main.css';
 import { useConfirmTeamResult } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';
 import { timeToNumber, type TimeType } from './TimeType';
 import TimePicker from './TimePicker.vue';
 import { clamp, floatToInt, lerp } from './mathHelpers';
-
-// 🧹🪲 when one of the buttons get pressed, the computed function doesn't run.
-// Helper function to replace array element
-function replaceArrayElement<T>(array: T[], index: number, newValue: T): T[] {
-  return [...array.slice(0, index), newValue, ...array.slice(index + 1)];
-}
 
 const props = defineProps<{
   match: MatchListItemEntity;
@@ -148,28 +134,28 @@ const maxScore = 10;
 const minTime = timeToNumber({ hours: 0, minutes: 10, seconds: 0 });
 const maxTime = timeToNumber({ hours: 0, minutes: 2, seconds: 0 });
 const completionBonus = 4;
-const pointsPerCheckpoint = 2;
-const totalCheckpoints = 3;
+const pointsPerCheckpoint = 3;
+const totalCheckpoints = 2;
 
-const calculatedResult = computed<number | undefined>(() => {
-  if (finished.value.some((f) => f === undefined)) return undefined;
-  if (
-    finished.value.includes(false) &&
-    checkpoints.value.some((c) => c === undefined)
-  )
-    return undefined;
-  if (finished.value.includes(true) && dates.value.some((d) => !d))
-    return undefined;
-
+const calculatedResult = () => {
   const scores: number[] = [];
 
   for (let i = 0; i < labyrinthCount.value; i++) {
+    if (finished.value[i] === undefined) return undefined;
+
+    if (finished.value[i] === false && checkpoints.value[i] === undefined)
+      return undefined;
+
+    if (finished.value[i] === true && !dates.value[i]) return undefined;
+
     const completedCheckpoints = finished.value[i]
       ? totalCheckpoints
       : checkpoints.value[i] ?? 0;
+
     const completionBonusValue = finished.value[i] ? completionBonus : 0;
 
     let effectiveTime = minTime;
+
     if (finished.value[i] && dates.value[i]) {
       effectiveTime = clamp(maxTime, timeToNumber(dates.value[i]!), minTime);
     }
@@ -181,16 +167,19 @@ const calculatedResult = computed<number | undefined>(() => {
       minScore,
       effectiveTime,
     );
+
     const totalScore =
       completedCheckpoints * pointsPerCheckpoint +
       completionBonusValue +
       timePoints;
+
     scores.push(floatToInt(totalScore));
   }
 
   const averageScore = scores.reduce((a, b) => a + b, 0) / scores.length;
+
   return floatToInt(averageScore);
-});
+};
 
 const showSuccess = ref<boolean>(false);
 
@@ -203,22 +192,20 @@ const showSuccessToast = () => {
 
 const { mutate: confirmResult, isPending, error } = useConfirmTeamResult();
 
-const isValid = computed(
-  () =>
-    finished.value.every((f) => f !== undefined) &&
-    (finished.value.includes(true) ||
-      checkpoints.value.every((c) => c !== undefined)),
-);
+const isValid = () =>
+  finished.value.every((f) => f !== undefined) &&
+  (finished.value.includes(true) ||
+    checkpoints.value.every((c) => c !== undefined));
 
 const submitForm = () => {
-  if (!calculatedResult.value)
+  const result = calculatedResult();
+  if (!result)
     throw Error(
       'CalculatedResult returned undefined. The form is invalid even if it can be submitted. You might be missing some validation on the form fields.',
     );
 
   const matchId = props.match.matchId;
 
-  const result = calculatedResult.value;
   const teamId = props.match.team1Id;
 
   const variables = { matchId: matchId, result: result, teamId: teamId };
@@ -227,19 +214,6 @@ const submitForm = () => {
       showSuccessToast();
     },
   });
-};
-
-// Update handlers
-const handleFinishedClick = (index: number, value: boolean) => {
-  finished.value = replaceArrayElement(finished.value, index, value);
-};
-
-const handleCheckpointsClick = (index: number, value: 0 | 1 | 2 | 3) => {
-  checkpoints.value = replaceArrayElement(checkpoints.value, index, value);
-};
-
-const handleDateChange = (index: number, value: TimeType) => {
-  dates.value = replaceArrayElement(dates.value, index, value);
 };
 </script>
 
