@@ -97,7 +97,7 @@
       <button
         type="submit"
         class="btn btn-success btn-blank h-14 p-4 shadow-md"
-        :disabled="isPending || !isValid"
+        :disabled="isPending || !(typeof calculatedResult() === 'number')"
       >
         Lagre
       </button>
@@ -191,11 +191,6 @@ const showSuccessToast = () => {
 };
 
 const { mutate: confirmResult, isPending, error } = useConfirmTeamResult();
-
-const isValid = () =>
-  finished.value.every((f) => f !== undefined) &&
-  (finished.value.includes(true) ||
-    checkpoints.value.every((c) => c !== undefined));
 
 const submitForm = () => {
   const result = calculatedResult();
