@@ -1,77 +1,116 @@
 <template>
-    <form @submit.prevent="submitForm">
+  <form @submit.prevent="submitForm">
+    <div class="p-4 bg-white rounded-md mb-4">
+      <div class="block">Er laget så stort at de bruker 2 labyrinter?</div>
+      <div class="flex space-x-4">
+        <button
+          type="button"
+          class="btn multiselect-button shadow-md"
+          :class="labyrinthCount === 2 ? 'btn-success' : ''"
+          @click="labyrinthCount = 2"
+        >
+          Ja
+        </button>
+        <button
+          type="button"
+          class="btn multiselect-button shadow-md"
+          :class="labyrinthCount === 1 ? 'btn-success' : ''"
+          @click="labyrinthCount = 1"
+        >
+          Nei
+        </button>
+      </div>
+    </div>
 
-      <div class="p-4 bg-white rounded-md mb-4">
-        <div class="block">Er laget så stort at de bruker 2 labyrinter?</div>
+    <div
+      v-for="index in labyrinthCount"
+      :key="index"
+      class="p-4 bg-white rounded-md mb-4"
+    >
+      <div class="mb-4">
+        <div class="block">
+          Klarte laget å få ballen gjennom hele labyrinten {{ index }} på under
+          10 minutter?
+        </div>
+
         <div class="flex space-x-4">
-          <button type="button" class="btn multiselect-button shadow-md"
-            :class="labyrinthCount === 2 ? 'btn-success' : ''" @click="labyrinthCount = 2">
+          <button
+            type="button"
+            class="btn multiselect-button shadow-md"
+            :class="finished[index] === true ? 'btn-success' : ''"
+            @click="finished[index] = true"
+          >
             Ja
           </button>
-          <button type="button" class="btn multiselect-button shadow-md"
-            :class="labyrinthCount === 1 ? 'btn-success' : ''" @click="labyrinthCount = 1">
+          <button
+            type="button"
+            class="btn multiselect-button shadow-md"
+            :class="finished[index] === false ? 'btn-success' : ''"
+            @click="finished[index] = false"
+          >
             Nei
           </button>
         </div>
       </div>
 
-      <div v-for="index in labyrinthCount" :key="index" class="p-4 bg-white rounded-md mb-4">
-        <div class="mb-4">
-          <div class="block">
-            Klarte laget å få ballen gjennom hele labyrinten {{ index }} på under 10 minutter?
-          </div>
-
-          <div class="flex space-x-4">
-            <button type="button" class="btn multiselect-button shadow-md"
-              :class="finished[index] === true ? 'btn-success' : ''" @click="finished[index] = true">
-              Ja
-            </button>
-            <button type="button" class="btn multiselect-button shadow-md"
-              :class="finished[index] === false ? 'btn-success' : ''" @click="finished[index] = false">
-              Nei
-            </button>
-          </div>
-        </div>
-
-        <div v-if="finished[index] === false" class="mb-4">
-          <label>Hvor mange checkpoints klarte de å nå?</label>
-          <div class="flex space-x-4">
-            <button type="button" class="btn multiselect-button shadow-md"
-              :class="checkpoints[index] === 0 ? 'btn-success' : ''" @click="checkpoints[index] = 0">
-              0
-            </button>
-            <button type="button" class="btn multiselect-button shadow-md"
-              :class="checkpoints[index] === 1 ? 'btn-success' : ''" @click="checkpoints[index] = 1">
-              1
-            </button>
-            <button type="button" class="btn multiselect-button shadow-md"
-              :class="checkpoints[index] === 2 ? 'btn-success' : ''" @click="checkpoints[index] = 2">
-              2
-            </button>
-            <button type="button" class="btn multiselect-button shadow-md"
-              :class="checkpoints[index] === 3 ? 'btn-success' : ''" @click="checkpoints[index] = 3">
-              3
-            </button>
-          </div>
-        </div>
-
-        <div v-if="finished[index] === true" class="mb-4">
-          Tid:
-          <TimePicker v-model="dates[index]" placeholder="Tid"></TimePicker>
+      <div v-if="finished[index] === false" class="mb-4">
+        <label>Hvor mange checkpoints klarte de å nå?</label>
+        <div class="flex space-x-4">
+          <button
+            type="button"
+            class="btn multiselect-button shadow-md"
+            :class="checkpoints[index] === 0 ? 'btn-success' : ''"
+            @click="checkpoints[index] = 0"
+          >
+            0
+          </button>
+          <button
+            type="button"
+            class="btn multiselect-button shadow-md"
+            :class="checkpoints[index] === 1 ? 'btn-success' : ''"
+            @click="checkpoints[index] = 1"
+          >
+            1
+          </button>
+          <button
+            type="button"
+            class="btn multiselect-button shadow-md"
+            :class="checkpoints[index] === 2 ? 'btn-success' : ''"
+            @click="checkpoints[index] = 2"
+          >
+            2
+          </button>
+          <button
+            type="button"
+            class="btn multiselect-button shadow-md"
+            :class="checkpoints[index] === 3 ? 'btn-success' : ''"
+            @click="checkpoints[index] = 3"
+          >
+            3
+          </button>
         </div>
       </div>
 
-      <div class="p-4 bg-white rounded-md mb-4">
+      <div v-if="finished[index] === true" class="mb-4">
+        Tid:
+        <TimePicker v-model="dates[index]" placeholder="Tid"></TimePicker>
+      </div>
+    </div>
 
+    <div class="p-4 bg-white rounded-md mb-4">
       <div class="mb-4" v-if="typeof calculatedResult === 'number'">
         Beregnet score: {{ calculatedResult }}
       </div>
 
-      <button type="submit" class="btn btn-success btn-blank h-14 p-4 shadow-md" :disabled="isPending || !isValid">
+      <button
+        type="submit"
+        class="btn btn-success btn-blank h-14 p-4 shadow-md"
+        :disabled="isPending || !isValid"
+      >
         Lagre
       </button>
     </div>
-    </form>
+  </form>
   <div class="toast toast-center toast-bottom pb-24 z-20" v-if="error">
     <div class="alert alert-error block">{{ error.message }}</div>
   </div>
@@ -81,7 +120,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, } from 'vue';
+import { ref, computed } from 'vue';
 import '@vuepic/vue-datepicker/dist/main.css';
 import { useConfirmTeamResult } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';
@@ -113,14 +152,21 @@ const pointsPerCheckpoint = 2;
 const totalCheckpoints = 3;
 
 const calculatedResult = computed<number | undefined>(() => {
-  if (finished.value.some(f => f === undefined)) return undefined;
-  if (finished.value.includes(false) && checkpoints.value.some(c => c === undefined)) return undefined;
-  if (finished.value.includes(true) && dates.value.some(d => !d)) return undefined;
+  if (finished.value.some((f) => f === undefined)) return undefined;
+  if (
+    finished.value.includes(false) &&
+    checkpoints.value.some((c) => c === undefined)
+  )
+    return undefined;
+  if (finished.value.includes(true) && dates.value.some((d) => !d))
+    return undefined;
 
   const scores: number[] = [];
 
   for (let i = 0; i < labyrinthCount.value; i++) {
-    const completedCheckpoints = finished.value[i] ? totalCheckpoints : checkpoints.value[i] ?? 0;
+    const completedCheckpoints = finished.value[i]
+      ? totalCheckpoints
+      : checkpoints.value[i] ?? 0;
     const completionBonusValue = finished.value[i] ? completionBonus : 0;
 
     let effectiveTime = minTime;
@@ -128,8 +174,17 @@ const calculatedResult = computed<number | undefined>(() => {
       effectiveTime = clamp(maxTime, timeToNumber(dates.value[i]!), minTime);
     }
 
-    const timePoints = lerp(maxTime, minTime, maxScore, minScore, effectiveTime);
-    const totalScore = completedCheckpoints * pointsPerCheckpoint + completionBonusValue + timePoints;
+    const timePoints = lerp(
+      maxTime,
+      minTime,
+      maxScore,
+      minScore,
+      effectiveTime,
+    );
+    const totalScore =
+      completedCheckpoints * pointsPerCheckpoint +
+      completionBonusValue +
+      timePoints;
     scores.push(floatToInt(totalScore));
   }
 
@@ -150,8 +205,9 @@ const { mutate: confirmResult, isPending, error } = useConfirmTeamResult();
 
 const isValid = computed(
   () =>
-    finished.value.every(f => f !== undefined) &&
-    (finished.value.includes(true) || checkpoints.value.every(c => c !== undefined)),
+    finished.value.every((f) => f !== undefined) &&
+    (finished.value.includes(true) ||
+      checkpoints.value.every((c) => c !== undefined)),
 );
 
 const submitForm = () => {
