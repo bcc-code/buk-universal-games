@@ -33,7 +33,7 @@ namespace Buk.UniversalGames.Services
         {
             var games = await _gameRepository.GetGames();
 
-            // shit should the key to this be string or gametype? 
+            // 🧹 should the key to this be string or gametype? 
             var dict = new Dictionary<string, List<TeamStatus>>();
 
             foreach (var game in games)
@@ -77,12 +77,12 @@ namespace Buk.UniversalGames.Services
             return teamScores.Select(score => new TeamStatus(score.TeamId, score.Name, score.Points, score.FamilyId)).ToList();
         }
 
-        // shit make private and rename
+        // 🧹 make private and rename
         public async Task<List<TeamStatus>> BuildAndCacheLeagueRanking(int leagueId)
         {
             var teams = await _leagueLeagueRepository.GetTeams(leagueId);
 
-            // shit replace with query to game
+            // 🧹 replace with query to game
             var landWaterBeach = (await GetGameRanking(GameType.LandWaterBeach, leagueId)).ToDictionary(x => x.TeamId);
             var hamsterWheel = (await GetGameRanking(GameType.HamsterWheel, leagueId)).ToDictionary(x => x.TeamId);
             var labyrinth = (await GetGameRanking(GameType.Labyrinth, leagueId)).ToDictionary(x => x.TeamId);

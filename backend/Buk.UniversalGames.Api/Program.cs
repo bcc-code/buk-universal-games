@@ -32,7 +32,7 @@ builder.Services.AddScoped<IGameRepository, GameDataRepository>();
 builder.Services.AddScoped<IStatusRepository, StatusCacheRepository>();
 builder.Services.AddScoped<ISettingsRepository, SettingsCacheRepository>();
 
-// shit can this be removed when validating cache is the only one left usage of icachecontext?
+// 🧹 can this be removed when validating cache is the only one left usage of icachecontext?
 builder.Services.AddScoped<ICacheContext, CacheContext>();
 builder.Services.AddScoped<ValidatingCacheService>();
 
