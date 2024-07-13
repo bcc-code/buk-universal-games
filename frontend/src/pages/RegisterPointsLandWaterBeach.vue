@@ -87,6 +87,7 @@ const calculatedResult = computed<
     minScore,
     maxScore,
     validatedPointsTeam1,
+    'clamp',
   );
   const team2Result = lerp(
     minPoints,
@@ -94,6 +95,7 @@ const calculatedResult = computed<
     minScore,
     maxScore,
     validatedPointsTeam2,
+    'clamp',
   );
 
   return {
