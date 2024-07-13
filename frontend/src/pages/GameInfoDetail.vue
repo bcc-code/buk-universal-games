@@ -18,12 +18,9 @@
       </h1>
     </div>
     <div class="mb-5">
-      <!-- 
       <div class="banner">
-        <video autoplay muted playsinline controls>
-          <source :src="`/video/${gameParsed.gameType.replaceAll('_','')}.mp4`" type="video/mp4" />
-        </video>
-      </div> -->
+        <GameVideo v-if="gameParsed" :gameType="gameParsed.gameType" />
+      </div>
     </div>
     <div class="bg-ice-blue rounded-md p-4">
       <p class="text-dark-blue flex mt-4 whitespace-pre-line">
@@ -71,6 +68,7 @@
 <script>
 import UserPageLayout from '@/components/UserPageLayout.vue';
 import MatchListItem from '@/components/MatchListItem.vue';
+import GameVideo from '@/components/GameVideo.vue';
 import { ArrowLeftIcon } from '@heroicons/vue/24/solid';
 
 export default {
@@ -78,7 +76,7 @@ export default {
   props: {
     game: String,
   },
-  components: { UserPageLayout, MatchListItem, ArrowLeftIcon },
+  components: { UserPageLayout, MatchListItem, GameVideo, ArrowLeftIcon },
   data() {
     return {
       gameParsed: {},
