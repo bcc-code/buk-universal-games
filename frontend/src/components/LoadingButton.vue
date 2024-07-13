@@ -3,19 +3,20 @@
     :class="[
       'btn',
       isLoading
-        ? 'py-2.5 px-5 me-2 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 inline-flex items-center'
+        ? 'text-white bg-white border border-gray-200 shadow-none text-sm px-5 py-2.5 me-2 rounded-lg inline-flex items-center'
         : 'shadow-md',
-      isLoading ? '' : '',
       ...classes,
     ]"
     :disabled="isLoading"
     v-bind="buttonProps"
   >
+    <span v-if="isLoading">{{ $t('loading') }}</span>
+    <span v-else><slot /></span>
     <svg
       v-if="isLoading"
       aria-hidden="true"
       role="status"
-      class="inline w-4 h-4 me-3 text-gray-200 animate-spin dark:text-gray-600"
+      class="inline w-4 h-4 ms-3 text-gray-200 animate-spin dark:text-gray-600"
       viewBox="0 0 100 101"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -29,8 +30,6 @@
         fill="currentColor"
       />
     </svg>
-    <span v-if="isLoading">{{ $t('loading') }}</span>
-    <span v-else><slot /></span>
   </button>
 </template>
 
@@ -48,6 +47,7 @@ const props = defineProps({
   },
 });
 
+
 const buttonProps = computed(() => {
   const { isLoading, classes, ...otherProps } = props;
   return otherProps;
@@ -60,5 +60,8 @@ const buttonProps = computed(() => {
 }
 .me-3 {
   margin-right: 0.75rem;
+}
+.ms-3 {
+  margin-left: 0.75rem;
 }
 </style>

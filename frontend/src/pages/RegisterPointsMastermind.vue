@@ -60,13 +60,13 @@
         Beregnet score: {{ calculatedResult }}
       </div>
 
-      <button
+      <LoadingButton
+        :is-loading="isPending || calculatedResult === undefined"
         type="submit"
-        class="btn btn-success btn-blank h-14 p-4 shadow-md"
-        :disabled="isPending || calculatedResult === undefined"
+        class="btn-success btn-blank h-14 p-4"
       >
         Lagre
-      </button>
+      </LoadingButton>
     </form>
   </div>
   <div class="toast toast-center toast-bottom pb-24 z-20" v-if="error">
@@ -82,6 +82,7 @@ import { ref, computed } from 'vue';
 import { useConfirmTeamResult } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';
 import { floatToInt, lerp } from './mathHelpers';
+import LoadingButton from '@/components/LoadingButton.vue';
 
 const props = defineProps<{
   match: MatchListItemEntity;

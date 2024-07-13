@@ -37,13 +37,13 @@
         </div>
       </div>
 
-      <button
+      <LoadingButton
         type="submit"
-        class="btn btn-success btn-blank h-14 p-4 shadow-md"
-        :disabled="isPending"
+        class="btn-success btn-blank h-14 p-4"
+        :is-loading="isPending"
       >
         Lagre
-      </button>
+      </LoadingButton>
     </form>
   </div>
   <!-- 🧹move to parent where we save. -->
@@ -60,6 +60,7 @@ import { ref, computed } from 'vue';
 import { useConfirmTeamResult } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';
 import { floatToInt, lerp } from './mathHelpers';
+import LoadingButton from '@/components/LoadingButton.vue';
 
 const props = defineProps<{
   match: MatchListItemEntity;

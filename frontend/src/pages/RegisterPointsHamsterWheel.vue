@@ -58,13 +58,13 @@
         </div>
       </div>
 
-      <button
+      <LoadingButton
         type="submit"
-        class="btn btn-success btn-blank h-14 p-4 shadow-md"
-        :disabled="isPending"
+        class="btn-success btn-blank h-14 p-4"
+        :is-loading="isPending"
       >
         Lagre
-      </button>
+      </LoadingButton>
     </form>
   </div>
   <div class="toast toast-center toast-bottom pb-24 z-20" v-if="error">
@@ -83,6 +83,7 @@ import type { MatchListItemEntity } from './MatchListItemEntity';
 import TimePicker from './TimePicker.vue';
 import { timeToNumber, type TimeType } from './TimeType';
 import { clamp, floatToInt, lerp } from './mathHelpers';
+import LoadingButton from '@/components/LoadingButton.vue';
 
 const props = defineProps<{
   match: MatchListItemEntity;

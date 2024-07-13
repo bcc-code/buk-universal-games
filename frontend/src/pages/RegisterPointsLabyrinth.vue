@@ -94,13 +94,13 @@
         Beregnet score: {{ calculatedResult() }}
       </div>
 
-      <button
+      <LoadingButton
         type="submit"
-        class="btn btn-success btn-blank h-14 p-4 shadow-md"
-        :disabled="isPending || !(typeof calculatedResult() === 'number')"
+        class="btn-success btn-blank h-14 p-4"
+        :is-loading="isPending"
       >
         Lagre
-      </button>
+      </LoadingButton>
     </div>
   </form>
   <div class="toast toast-center toast-bottom pb-24 z-20" v-if="error">
@@ -119,6 +119,7 @@ import type { MatchListItemEntity } from './MatchListItemEntity';
 import { timeToNumber, type TimeType } from './TimeType';
 import TimePicker from './TimePicker.vue';
 import { clamp, floatToInt, lerp } from './mathHelpers';
+import LoadingButton from '@/components/LoadingButton.vue';
 
 const props = defineProps<{
   match: MatchListItemEntity;
@@ -129,7 +130,7 @@ const finished = ref<(boolean | undefined)[]>([undefined, undefined]);
 const checkpoints = ref<(0 | 1 | 2 | 3 | undefined)[]>([undefined, undefined]);
 const dates = ref<(TimeType | undefined)[]>([undefined, undefined]);
 
-const minScore = 0;
+const minScore = 1;
 const maxScore = 10;
 const minTime = timeToNumber({ hours: 0, minutes: 10, seconds: 0 });
 const maxTime = timeToNumber({ hours: 0, minutes: 2, seconds: 0 });
@@ -194,7 +195,7 @@ const { mutate: confirmResult, isPending, error } = useConfirmTeamResult();
 
 const submitForm = () => {
   const result = calculatedResult();
-  if (!result)
+  if (result === undefined)
     throw Error(
       'CalculatedResult returned undefined. The form is invalid even if it can be submitted. You might be missing some validation on the form fields.',
     );
