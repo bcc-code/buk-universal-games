@@ -11,17 +11,15 @@
         :placeholder="$t('login.teamcode')"
         v-model="teamCode"
       />
-      <button
-        class="btn btn-primary"
+      <LoadingButton
+        :isLoading="isSigningIn"
         :class="[
           teamCode.length < 3 ? 'opacity-0 btn-disabled' : 'opacity-100',
-          isSigningIn ? 'btn-disabled bg-' : '',
         ]"
-        type="submit"
-        :disabled="isSigningIn"
+        class="btn-primary"
       >
         {{ $t('login.login_button') }}
-      </button>
+      </LoadingButton>
 
       <div v-if="errorMessage" class="alert alert-error">
         <svg
@@ -51,6 +49,7 @@ import { ref, onMounted, computed } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useSigninResponse } from '../hooks/hooks';
 import BigLogo from '@/components/BigLogo.vue';
+import LoadingButton from '@/components/LoadingButton.vue';
 
 const route = useRoute();
 const code = route.params.code as string | undefined;

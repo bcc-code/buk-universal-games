@@ -178,5 +178,6 @@
   "familyBalance": "Familie saldo",
   "results": "Resultater for dette spillet",
   "pointstitle": "Poeng",
-  "categorytitle": "Kategori"
+  "categorytitle": "Kategori",
+  "loading": "Laster..."
 }
