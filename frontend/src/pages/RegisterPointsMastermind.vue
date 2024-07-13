@@ -40,7 +40,8 @@
       </div>
 
       <div class="mb-4" v-if="guessedAllColors === false">
-        Hvor mange riktige farger (røde og hvite pinner) hadde laget på sitt siste forsøk?
+        Hvor mange riktige farger (røde og hvite pinner) hadde laget på sitt
+        siste forsøk?
         <div class="flex -m-2 flex-wrap">
           <button
             type="button"
@@ -59,7 +60,11 @@
         Beregnet score: {{ calculatedResult }}
       </div>
 
-      <button type="submit" class="btn btn-success btn-blank h-14 p-4 shadow-md" :disabled="isPending || calculatedResult === undefined">
+      <button
+        type="submit"
+        class="btn btn-success btn-blank h-14 p-4 shadow-md"
+        :disabled="isPending || calculatedResult === undefined"
+      >
         Lagre
       </button>
     </form>
@@ -91,11 +96,20 @@ const bottomScore = 6;
 const maxTurns = 8;
 
 const calculatedResult = computed<number | undefined>(() => {
-  if (guessedAllColors.value === true && turnsTaken.value !== undefined) {   
-      const turnPoints = lerp(1, maxTurns, bottomScore, topScore, turnsTaken.value);
-      
-      return floatToInt(turnPoints);
-  } else if (guessedAllColors.value === false && correctColors.value !== undefined) {
+  if (guessedAllColors.value === true && turnsTaken.value !== undefined) {
+    const turnPoints = lerp(
+      1,
+      maxTurns,
+      bottomScore,
+      topScore,
+      turnsTaken.value,
+    );
+
+    return floatToInt(turnPoints);
+  } else if (
+    guessedAllColors.value === false &&
+    correctColors.value !== undefined
+  ) {
     return floatToInt(correctColors.value);
   }
   return undefined;
@@ -113,7 +127,10 @@ const showSuccessToast = () => {
 const { mutate: confirmResult, isPending, error } = useConfirmTeamResult();
 
 const submitForm = () => {
-  if (calculatedResult.value === undefined) throw Error('CalculatedResult returned undefined. The form is invalid even if it can be submitted. You might be missing some validation on the form fields.');
+  if (calculatedResult.value === undefined)
+    throw Error(
+      'CalculatedResult returned undefined. The form is invalid even if it can be submitted. You might be missing some validation on the form fields.',
+    );
 
   const matchId = props.match.matchId;
   const result = calculatedResult.value;
