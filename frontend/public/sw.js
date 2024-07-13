@@ -55,8 +55,9 @@ self.addEventListener('install', (e) => {
             console.error(
               'sw.js: Failed when adding',
               url,
-              'to service worker cache. Check urlsToCache.',
+              'to service worker cache. Check urlsToCache and error below.',
             );
+            console.error(err);
           }
         }
       }
