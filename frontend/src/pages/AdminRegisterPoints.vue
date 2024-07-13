@@ -1,9 +1,9 @@
 <template>
   <RegisterPointsIronGrip       v-if=     "gameType==='iron_grip'"        :match="match"></RegisterPointsIronGrip>
   <RegisterPointsLandWaterBeach v-else-if="gameType==='land_water_beach'" :match="match"></RegisterPointsLandWaterBeach>
-  <RegisterPointsLabyrinth v-else-if="gameType==='labyrinth'"        :match="match"></RegisterPointsLabyrinth>
-  <RegisterPointsHamsterWheel v-else-if="gameType==='hamster_wheel'"        :match="match"></RegisterPointsHamsterWheel>
-  <RegisterPointsMastermind v-else-if="gameType==='mastermind'"        :match="match"></RegisterPointsMastermind>
+  <RegisterPointsLabyrinth      v-else-if="gameType==='labyrinth'"        :match="match"></RegisterPointsLabyrinth>
+  <RegisterPointsHamsterWheel   v-else-if="gameType==='hamster_wheel'"    :match="match"></RegisterPointsHamsterWheel>
+  <RegisterPointsMastermind     v-else-if="gameType==='mastermind'"       :match="match"></RegisterPointsMastermind>
   <div v-else>
     <div class="alert alert-error block">Noe gikk galt</div>
   </div>

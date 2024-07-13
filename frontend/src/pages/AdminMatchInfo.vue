@@ -15,11 +15,10 @@
   />
 
   <div class="rounded-md bg-white p-4 mb-4 bg-green-50 italic">
-    Spør hvilket lag de er og sørg for at det er riktig lag på rett plass, og at det stemmer overens med laget som står over.
+    Spør hvilket lag de er og sørg for at det er riktig lag på rett plass, og at
+    det stemmer overens med laget som står over.
   </div>
-  
-  <AdminRefereeInfo/>
-
+  <AdminRefereeInfo />
 </template>
 
 <script setup lang="ts">
