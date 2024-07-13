@@ -32,6 +32,11 @@ const urlsToCache = [
   'splashscreen/1536x2048.png',
   'splashscreen/1668x2224.png',
   'splashscreen/2048x2732.png',
+  'videos/hamster_wheel.mp4',
+  'videos/iron_grip.mp4',
+  'videos/labyrinth.mp4',
+  'videos/land_water_beach.mp4',
+  'videos/mastermind.mp4',
 ];
 
 self.addEventListener('install', (e) => {
