@@ -17,33 +17,10 @@
         <span>{{ $t(`games.${gameParsed.gameType}`) }}</span>
       </h1>
     </div>
+
     <div class="mb-5">
       <div class="banner">
         <GameVideo v-if="gameParsed" :gameType="gameParsed.gameType" />
-      </div>
-    </div>
-    <div class="bg-ice-blue rounded-md p-4">
-      <p class="text-dark-blue flex mt-4 whitespace-pre-line">
-        <img class="w-5 h-5 mr-3" src="/icon/circle-info.svg" />
-        {{ $t('explanation.' + gameParsed.gameType) }}
-      </p>
-      <div class="mt-3 mb-1">
-        <span class="font-bold">{{ $t('rulestitle') }}</span>
-        <p class="text-dark-blue whitespace-pre-wrap">
-          {{ $t('rules.' + gameParsed.gameType) }}
-        </p>
-      </div>
-      <div class="mt-3 mb-1">
-        <span class="font-bold">{{ $t('categorytitle') }}</span>
-        <p class="text-dark-blue whitespace-pre-wrap">
-          {{ $t('category.' + gameParsed.gameType) }}
-        </p>
-      </div>
-      <div class="mt-3 mb-1">
-        <span class="font-bold">{{ $t('pointstitle') }}</span>
-        <p class="text-dark-blue whitespace-pre-wrap">
-          {{ $t('pointexplenation.' + gameParsed.gameType) }}
-        </p>
       </div>
     </div>
 
