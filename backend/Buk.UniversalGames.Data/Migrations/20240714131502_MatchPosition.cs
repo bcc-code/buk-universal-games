@@ -13,6 +13,16 @@ namespace Buk.UniversalGames.Api.Migrations
             migrationBuilder.Sql(@"
                 DO $$
                 BEGIN
+                    IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='matches' AND column_name='position') THEN
+                        ALTER TABLE matches ADD COLUMN position text NOT NULL DEFAULT '';
+                    END IF;
+                END
+                $$;
+            ");
+
+            migrationBuilder.Sql(@"
+                DO $$
+                BEGIN
                     IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'game_type') THEN
                         CREATE TYPE game_type AS ENUM ('land_water_beach', 'labyrinth', 'hamster_wheel', 'mastermind', 'iron_grip');
                     END IF;
@@ -21,13 +31,6 @@ namespace Buk.UniversalGames.Api.Migrations
 
                 ALTER TYPE game_type ADD VALUE IF NOT EXISTS 'hamster_wheel';
             ");
-
-            migrationBuilder.AddColumn<string>(
-                name: "position",
-                table: "matches",
-                type: "text",
-                nullable: false,
-                defaultValue: "");
 
             migrationBuilder.Sql(@"
                 -- Remove enum value in a safe manner using a custom function
@@ -52,9 +55,9 @@ namespace Buk.UniversalGames.Api.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "position",
-                table: "matches");
+            migrationBuilder.Sql(@"
+                ALTER TABLE matches DROP COLUMN IF EXISTS position;
+            ");
 
             migrationBuilder.Sql(@"
                 ALTER TYPE game_type ADD VALUE IF NOT EXISTS 'human_shuffle_board';
