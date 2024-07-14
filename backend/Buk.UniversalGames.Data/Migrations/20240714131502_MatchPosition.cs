@@ -31,11 +31,6 @@ namespace Buk.UniversalGames.Api.Migrations
                 CREATE TYPE game_type AS ENUM ('land_water_beach', 'labyrinth', 'hamster_wheel', 'mastermind', 'iron_grip');
             ");
 
-            // Update the matches table to use the new game_type enum
-            migrationBuilder.Sql(@"
-                ALTER TABLE matches ALTER COLUMN game_type TYPE game_type USING game_type::text::game_type;
-            ");
-
             // Drop the old game_type enum
             migrationBuilder.Sql(@"
                 DROP TYPE game_type_old;
@@ -48,11 +43,6 @@ namespace Buk.UniversalGames.Api.Migrations
             // Recreate the old game_type enum if needed (optional)
             migrationBuilder.Sql(@"
                 CREATE TYPE game_type_old AS ENUM ('unknown', 'nerve_spiral', 'ticket_twist', 'monkey_bars', 'mine_field', 'table_surfing', 'land_water_beach', 'labyrinth', 'mastermind', 'iron_grip', 'hamster_wheel');
-            ");
-
-            // Revert the matches table to use the old game_type enum
-            migrationBuilder.Sql(@"
-                ALTER TABLE matches ALTER COLUMN game_type TYPE game_type_old USING game_type::text::game_type_old;
             ");
 
             // Drop the new game_type enum
