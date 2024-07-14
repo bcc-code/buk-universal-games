@@ -13,7 +13,6 @@ public class Match
     public int Team1Id { get; set; }
 
     public int Team2Id { get; set; }
-
     public int GameId { get; set; }
 
     public int LeagueId { get; set; }
@@ -23,6 +22,8 @@ public class Match
     public DateTime Start { get; set; }
 
     public int? WinnerId { get; set; }
+
+    public string Position { get; set; }
 
     [JsonIgnore]
     public Team Team1 { get; set; }
