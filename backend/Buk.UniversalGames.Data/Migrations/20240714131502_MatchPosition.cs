@@ -21,9 +21,25 @@ namespace Buk.UniversalGames.Api.Migrations
                 $$;
             ");
 
-            // Rename the existing game_type enum
+            // Drop the old game_type enum if it exists
             migrationBuilder.Sql(@"
-                ALTER TYPE game_type RENAME TO game_type_old;
+                DO $$
+                BEGIN
+                    IF EXISTS (SELECT 1 FROM pg_type WHERE typname = 'game_type_old') THEN
+                        DROP TYPE game_type_old;
+                    END IF;
+                END
+                $$;
+            ");
+            // Rename the existing game_type enum if it exists
+            migrationBuilder.Sql(@"
+                DO $$
+                BEGIN
+                    IF EXISTS (SELECT 1 FROM pg_type WHERE typname = 'game_type') THEN
+                        ALTER TYPE game_type RENAME TO game_type_old;
+                    END IF;
+                END
+                $$;
             ");
 
             // Create the new game_type enum with the required values
@@ -31,16 +47,22 @@ namespace Buk.UniversalGames.Api.Migrations
                 CREATE TYPE game_type AS ENUM ('land_water_beach', 'labyrinth', 'hamster_wheel', 'mastermind', 'iron_grip');
             ");
 
-            // Drop the old game_type enum
+            // Drop the old game_type enum if it exists
             migrationBuilder.Sql(@"
-                DROP TYPE game_type_old;
+                DO $$
+                BEGIN
+                    IF EXISTS (SELECT 1 FROM pg_type WHERE typname = 'game_type_old') THEN
+                        DROP TYPE game_type_old;
+                    END IF;
+                END
+                $$;
             ");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            // Recreate the old game_type enum if needed (optional)
+            // Recreate the old game_type enum if needed
             migrationBuilder.Sql(@"
                 CREATE TYPE game_type_old AS ENUM ('unknown', 'nerve_spiral', 'ticket_twist', 'monkey_bars', 'mine_field', 'table_surfing', 'land_water_beach', 'labyrinth', 'mastermind', 'iron_grip', 'hamster_wheel');
             ");
