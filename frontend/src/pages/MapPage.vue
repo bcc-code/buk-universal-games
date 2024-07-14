@@ -1,11 +1,14 @@
 <template>
   <div class="root">
-    <a :href="map" target="_blank">
-      <img ref="mapImage" :src="map" alt="map" />
-    </a>
+    <div class="scroll-container">
+      <a :href="map" target="_blank">
+        <img ref="mapImage" :src="map" alt="map" />
+      </a>
+    </div>
     <UserMenu />
   </div>
 </template>
+
 <script setup lang="ts">
 import { computed } from 'vue';
 import UserMenu from '../components/UserMenu.vue';
@@ -22,15 +25,25 @@ const map = computed(() => {
   return localLeagueId ? `/image/Sone ${localLeagueId}.jpg` : undefined;
 });
 </script>
+
 <style scoped>
 .root {
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.root img {
+.scroll-container {
   width: 100%;
-  height: auto;
+  height: 100%;
+  overflow: auto;
+}
+
+.scroll-container img {
+  width: 2000px; /* Fixed large width */
+  height: auto; /* Maintain aspect ratio */
   object-fit: contain;
+  max-width: unset;
 }
 </style>
