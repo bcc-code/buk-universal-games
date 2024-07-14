@@ -15,7 +15,7 @@ public class Team
 
     public string Code { get; set; }
 
-    public string Color { get; set; }
+    public string? Color { get; set; }
 
 
     public virtual TeamType Type => TeamType switch
