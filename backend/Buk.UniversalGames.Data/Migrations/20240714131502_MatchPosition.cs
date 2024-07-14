@@ -10,6 +10,7 @@ namespace Buk.UniversalGames.Api.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            // Add the new column 'position' if it does not already exist
             migrationBuilder.Sql(@"
                 DO $$
                 BEGIN
@@ -20,47 +21,59 @@ namespace Buk.UniversalGames.Api.Migrations
                 $$;
             ");
 
+            // Rename the existing game_type enum
             migrationBuilder.Sql(@"
-                DO $$
-                BEGIN
-                    IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'game_type') THEN
-                        CREATE TYPE game_type AS ENUM ('land_water_beach', 'labyrinth', 'hamster_wheel', 'mastermind', 'iron_grip');
-                    END IF;
-                END
-                $$;
-
-                ALTER TYPE game_type ADD VALUE IF NOT EXISTS 'hamster_wheel';
+                ALTER TYPE game_type RENAME TO game_type_old;
             ");
 
+            // Create the new game_type enum with the required values
             migrationBuilder.Sql(@"
-                -- Remove enum value in a safe manner using a custom function
-                CREATE OR REPLACE FUNCTION remove_enum_value(enum_name text, value text) RETURNS void AS $$
-                DECLARE
-                    old_val text;
-                BEGIN
-                    EXECUTE format('ALTER TYPE %I RENAME VALUE %L TO %L', enum_name, value, 'old_' || value);
-                    EXECUTE format('ALTER TYPE %I RENAME TO %I_old', enum_name, enum_name);
-                    EXECUTE format('CREATE TYPE %I AS ENUM', enum_name) || (SELECT string_agg(quote_literal(enumlabel), ',') FROM pg_enum WHERE enumtypid = (SELECT oid FROM pg_type WHERE typname = enum_name || '_old') AND enumlabel != 'old_' || value);
-                    EXECUTE format('ALTER TABLE matches ALTER COLUMN game_type TYPE %I USING game_type::text::%I', enum_name, enum_name);
-                    EXECUTE format('DROP TYPE %I_old', enum_name);
-                END;
-                $$ LANGUAGE plpgsql;
-                
-                SELECT remove_enum_value('game_type', 'human_shuffle_board');
+                CREATE TYPE game_type AS ENUM ('land_water_beach', 'labyrinth', 'hamster_wheel', 'mastermind', 'iron_grip');
+            ");
 
-                DROP FUNCTION remove_enum_value;
+            // Update the matches table to use the new game_type enum
+            migrationBuilder.Sql(@"
+                ALTER TABLE matches ALTER COLUMN game_type TYPE game_type USING game_type::text::game_type;
+            ");
+
+            // Drop the old game_type enum
+            migrationBuilder.Sql(@"
+                DROP TYPE game_type_old;
             ");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            // Recreate the old game_type enum if needed (optional)
             migrationBuilder.Sql(@"
-                ALTER TABLE matches DROP COLUMN IF EXISTS position;
+                CREATE TYPE game_type_old AS ENUM ('unknown', 'nerve_spiral', 'ticket_twist', 'monkey_bars', 'mine_field', 'table_surfing', 'land_water_beach', 'labyrinth', 'mastermind', 'iron_grip', 'hamster_wheel');
             ");
 
+            // Revert the matches table to use the old game_type enum
             migrationBuilder.Sql(@"
-                ALTER TYPE game_type ADD VALUE IF NOT EXISTS 'human_shuffle_board';
+                ALTER TABLE matches ALTER COLUMN game_type TYPE game_type_old USING game_type::text::game_type_old;
+            ");
+
+            // Drop the new game_type enum
+            migrationBuilder.Sql(@"
+                DROP TYPE game_type;
+            ");
+
+            // Rename the old game_type enum back to its original name
+            migrationBuilder.Sql(@"
+                ALTER TYPE game_type_old RENAME TO game_type;
+            ");
+
+            // Remove the column 'position' if it exists
+            migrationBuilder.Sql(@"
+                DO $$
+                BEGIN
+                    IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='matches' AND column_name='position') THEN
+                        ALTER TABLE matches DROP COLUMN position;
+                    END IF;
+                END
+                $$;
             ");
         }
     }
