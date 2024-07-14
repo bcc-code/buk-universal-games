@@ -2,7 +2,6 @@
   <div class="root">
     <div ref="map" class="map-wrapper relative">
       <img :src="map" alt="" />
-      <img :src="icons" class="absolute" alt="" />
     </div>
     <UserMenu />
   </div>
@@ -14,16 +13,14 @@ import UserMenu from '../components/UserMenu.vue';
 import { useSigninResponse } from '../hooks/hooks';
 
 const { data } = useSigninResponse();
-const league = computed(() =>
-  data.value?.league?.substring(0, 1).toLowerCase(),
-);
 
-const map = computed(() => {
-  return `/image/ubg-arena-small.png`;
+const leagueId = computed(() => {
+  return data.value?.leagueId;
 });
 
-const icons = computed(() => {
-  return `/image/ubg-${league.value}-liga-icons.svg`;
+const map = computed(() => {
+  const localLeagueId = leagueId.value;
+  return localLeagueId ? `/image/Sone ${localLeagueId}.jpg` : undefined;
 });
 
 // import PinchZoom from 'pinch-zoom-js'
