@@ -21,7 +21,7 @@
     </div>
     <div class="flex flex-col items-center space-y-2">
       <LanguageSwitcher />
-      <LogOutButton />
+      <!-- <LogOutButton /> -->
     </div>
   </section>
 </template>
