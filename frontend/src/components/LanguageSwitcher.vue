@@ -1,7 +1,10 @@
 <template>
-  <div class="locale-changer">
+  <div class="">
     <div class="dropdown" :class="{ open: isOpen }">
-      <div class="bg-white rounded-md p-2 btn shadow-md" @click="toggleDropdown(null)">
+      <div
+        class="bg-white rounded-md p-2 btn shadow-md locale-changer"
+        @click="toggleDropdown(null)"
+      >
         {{ store.userLanguage.toUpperCase() }}
       </div>
       <div class="background" v-if="isOpen" @click="toggleDropdown(null)"></div>
@@ -23,19 +26,19 @@
 import { ref, computed, onUnmounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 
-import { SUPPORTED_LOCALES, setI18nLanguage, type Locale} from "../libs/i18n"
-import {usePiniaStore} from "../store/piniaStore"
+import { SUPPORTED_LOCALES, setI18nLanguage, type Locale } from '../libs/i18n';
+import { usePiniaStore } from '../store/piniaStore';
 
-const order:Locale[] = ['nb', 'en', 'de', 'es', 'nl', 'pl'];
+const order: Locale[] = ['nb', 'en', 'de', 'es', 'nl', 'pl'];
 
-const store = usePiniaStore()
-const i18n = useI18n()
+const store = usePiniaStore();
+const i18n = useI18n();
 
 const isOpen = ref(false);
 const languagePickerMenu = ref<HTMLDivElement | null>(null);
 
 const toggleDropdown = (override: boolean | null = null) => {
-  console.log(override, isOpen.value)
+  console.log(override, isOpen.value);
   isOpen.value = override ?? !isOpen.value;
   if (isOpen.value) {
     setTimeout(() => {
@@ -45,7 +48,6 @@ const toggleDropdown = (override: boolean | null = null) => {
     document.removeEventListener('click', closeDropdown);
   }
 };
-
 
 const changeLanguage = (locale: string) => {
   setI18nLanguage(i18n, locale);
@@ -64,8 +66,10 @@ const closeDropdown = (event: MouseEvent) => {
 };
 
 const sortedLocales = computed(() => {
-  const remainingLocales = (Object.keys(SUPPORTED_LOCALES) as (keyof typeof SUPPORTED_LOCALES)[])
-    .filter((locale) => !order.includes(locale)) 
+  const remainingLocales = (
+    Object.keys(SUPPORTED_LOCALES) as (keyof typeof SUPPORTED_LOCALES)[]
+  )
+    .filter((locale) => !order.includes(locale))
     .sort((a, b) => SUPPORTED_LOCALES[a].localeCompare(SUPPORTED_LOCALES[b]));
 
   return [...order, ...remainingLocales];
@@ -127,5 +131,9 @@ onUnmounted(() => {
 
 .dropdown-item:hover {
   background-color: #f2f2f2;
+}
+.locale-changer {
+  background-color: #f8fafc;
+  border: solid 2px #e2e8f0;
 }
 </style>

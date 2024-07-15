@@ -2,17 +2,17 @@
   <section
     class="bg-white p-6 border border-gray-200 flex items-center justify-between w-full rounded-md shadow-sm"
   >
-    <div class="flex items-center space-x-4">
-      <img src="/image/logo_icon.png" class="h-16 w-16 rounded-md" />
+    <div class="flex space-x-4 items-start">
+      <img src="/icon/ubg_logo.svg" class="h-16 w-16 rounded-md" />
       <div>
-        <p class="text-xs uppercase text-gray-500">{{ $t('team') }}</p>
+        <p class="text-xs uppercase text-red-500">{{ $t('team') }}</p>
         <h2 class="text-xl font-bold text-gray-800">{{ teamName ?? '-' }}</h2>
         <p class="text-lg font-semibold text-gray-600">
           {{ formatPoints(teamPoints) ?? '-' }}
         </p>
       </div>
       <div class="ml-8">
-        <p class="text-xs uppercase text-gray-500">{{ $t('family') }}</p>
+        <p class="text-xs uppercase text-red-500">{{ $t('family') }}</p>
         <h2 class="text-xl font-bold text-gray-800">{{ familyName ?? '-' }}</h2>
         <p class="text-lg font-semibold text-gray-600">
           {{ formatPoints(familyPoints) ?? '-' }}
