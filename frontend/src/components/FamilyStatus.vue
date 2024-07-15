@@ -1,5 +1,6 @@
 <template>
   <div class="pt-6">
+    update 3
     <div v-if="isLoading" class="text-center text-gray-500">Loading...</div>
     <div v-else-if="error" class="text-center text-red-500">
       Scream in panic! <br />
