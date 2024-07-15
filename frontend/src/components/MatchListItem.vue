@@ -20,7 +20,7 @@
           class="w-10 h-10"
           :src="`icon/game-${gameType.replace(/_/g, '')}.svg`"
         />
-        <p class="text font-bold">{{ $t(`games.${gameType}`) }} {{ position}}</p>
+        <p class="text font-bold">{{ $t(`games.${gameType}`) }} - {{ position}}</p>
       </div>
       <div class="flex items-center space-x-3 flex-col">
         <p class="text-right">
