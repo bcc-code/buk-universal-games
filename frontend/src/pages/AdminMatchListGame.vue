@@ -50,8 +50,7 @@
         :key="matchGroupKey"
       >
         <h2
-          class="text-white mb-3"
-          v-if="Object.keys(adminMatchGroups)[0] !== matchGroupKey"
+          class="text-black text-bold mb-3 text-center"
         >
           {{ matchGroupKey }}
         </h2>
@@ -70,13 +69,15 @@
             :start="match.start"
             :winner="match.winner"
             :clickFunc="() => matchClicked(match)"
+            :position="match.position"
+            class="mb-4"
           />
         </div>
       </div>
     </section>
   </AdminPageLayout>
 </template>
-
+<!-- 🧹 make script setup lang ts -->
 <script>
 import AdminPageLayout from '@/components/AdminPageLayout.vue';
 import MatchListItem from '@/components/MatchListItem.vue';
