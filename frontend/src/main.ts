@@ -3,6 +3,7 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import { initRouter } from './router';
 import { setupI18n } from './libs/i18n';
+import '@coddicat/vue-pinch-scroll-zoom/style.css';
 
 // ------------------ pinia section
 import { createPinia } from 'pinia';
@@ -29,12 +30,8 @@ const app = createApp(App)
   .use(initRouter(vuexStore))
   .use(VueQueryPlugin)
   .provide('notificationService', notificationService);
-  
 
-setupI18n().then(
-  (i18n)=>{
-    app.use(i18n)
-    app.mount('#app');
-  }
-);
-  
+setupI18n().then((i18n) => {
+  app.use(i18n);
+  app.mount('#app');
+});
