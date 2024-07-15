@@ -10,38 +10,29 @@ namespace Buk.UniversalGames.Api.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<string>(
-                name: "color",
-                table: "teams",
-                type: "text",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldType: "text");
+            // Make the 'color' column in the 'teams' table nullable
+            migrationBuilder.Sql(@"
+                ALTER TABLE teams ALTER COLUMN color DROP NOT NULL;
+            ");
 
-            migrationBuilder.AddColumn<string>(
-                name: "color",
-                table: "families",
-                type: "text",
-                nullable: false,
-                defaultValue: "");
+            // Add the 'color' column to the 'families' table if it does not exist
+            migrationBuilder.Sql(@"
+                ALTER TABLE families ADD COLUMN IF NOT EXISTS color text NOT NULL DEFAULT '';
+            ");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "color",
-                table: "families");
+            // Drop the 'color' column from the 'families' table if it exists
+            migrationBuilder.Sql(@"
+                ALTER TABLE families DROP COLUMN IF EXISTS color;
+            ");
 
-            migrationBuilder.AlterColumn<string>(
-                name: "color",
-                table: "teams",
-                type: "text",
-                nullable: false,
-                defaultValue: "",
-                oldClrType: typeof(string),
-                oldType: "text",
-                oldNullable: true);
+            // Make the 'color' column in the 'teams' table not nullable
+            migrationBuilder.Sql(@"
+                ALTER TABLE teams ALTER COLUMN color SET NOT NULL;
+            ");
         }
     }
 }
