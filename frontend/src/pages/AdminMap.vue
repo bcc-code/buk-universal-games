@@ -1,89 +1,126 @@
 <template>
   <div class="root">
-    <div ref="mapB" class="map-wrapper">
-      <img src="/image/ubg-arena-small.png" alt="" />
-      <img
-        src="/image/ubg-b-liga-icons.svg"
-        style="position: absolute"
-        alt=""
-      />
-      <span class="overlay-title-label">B-League - Arena</span>
+    <div class="p-4">
+      <div class="filters">
+        <div class="filter">
+          <p>Zone:</p>
+          <div class="single-filter flex">
+            <button
+              v-for="league in adminLeagues"
+              :key="league.id"
+              :class="[
+                'px-4 py-2 m-2 rounded',
+                league.id === currentLeague
+                  ? 'bg-dark-brown text-white'
+                  : 'bg-vanilla',
+              ]"
+              @click="selectLeague(league.id)"
+            >
+              {{ league.name }}
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div ref="mapU" class="map-wrapper">
-      <img src="/image/ubg-arena-small.png" alt="" />
-      <img
-        src="/image/ubg-u-liga-icons.svg"
-        style="position: absolute"
-        alt=""
-      />
-      <span class="overlay-title-label">U-League - Arena</span>
+
+    <div class="scroll-container" ref="scrollContainer">
+      <PinchScrollZoom
+        ref="zoomer"
+        :width="containerWidth"
+        :height="containerHeight"
+        :min-scale="0.3"
+        :max-scale="6"
+        :content-width="500"
+        :content-height="500"
+        key-actions
+        :within="false"
+      >
+        <img ref="mapImage" :src="map" alt="map" />
+      </PinchScrollZoom>
     </div>
-    <div ref="mapK" class="map-wrapper">
-      <img src="/image/ubg-beach-small.png" alt="" />
-      <img
-        src="/image/ubg-k-liga-icons.svg"
-        style="position: absolute"
-        alt=""
-      />
-      <span class="overlay-title-label">K-League - Beach</span>
-    </div>
+
     <AdminMenu />
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
+import { ref, computed, onMounted, watch } from 'vue';
+import { useStore } from 'vuex';
 import AdminMenu from '@/components/AdminMenu.vue';
+import PinchScrollZoom, {
+  type PinchScrollZoomExposed,
+} from '@coddicat/vue-pinch-scroll-zoom';
 
-export default {
-  name: 'MapPage',
-  components: { AdminMenu },
-  data() {
-    return {
-      loginError: 'Map',
-    };
-  },
-  mounted() {},
-  methods: {},
+const store = useStore();
+const currentLeague = computed(() => store.state.adminLeagueSelected);
+const adminLeagues = computed(() => store.state.adminLeagues);
+
+const map = computed(() => {
+  const leagueId = currentLeague.value;
+  return leagueId ? `/image/Sone ${leagueId}.jpg` : undefined;
+});
+
+const scrollContainer = ref<HTMLDivElement | null>(null);
+const containerWidth = ref(0);
+const containerHeight = ref(0);
+const zoomer = ref<PinchScrollZoomExposed>();
+
+const selectLeague = async (id: number) => {
+  await store.dispatch('setAdminLeagueSelected', id);
+  resetZoom();
 };
+
+const resetZoom = () => {
+  zoomer.value?.setData({
+    scale: 1,
+    originX: containerWidth.value / 2,
+    originY: containerHeight.value / 2,
+    translateX: 0,
+    translateY: 0,
+  });
+};
+
+onMounted(() => {
+  if (scrollContainer.value) {
+    containerWidth.value = scrollContainer.value.clientWidth;
+    containerHeight.value = scrollContainer.value.clientHeight;
+  }
+});
+
+watch(currentLeague, () => {
+  resetZoom();
+});
 </script>
 
 <style scoped>
 .root {
   width: 100%;
-  background-color: #5fa46e;
-  background-image: linear-gradient(135deg, #5fa46e, #118144);
-  padding-top: 1em;
-  padding-bottom: 10em;
-}
-.map-wrapper {
-  width: 100%;
   height: 100%;
-  position: relative;
-  margin-bottom: 1em;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #5fa46e;
-  background-image: linear-gradient(135deg, #5fa46e, #118144);
+  flex-direction: column;
 }
 
-.map-wrapper img {
-  height: 100%;
+.scroll-container {
   width: 100%;
-  object-fit: contain;
+  height: 100vh;
+  overflow: auto;
 }
 
-.overlay-title-label {
-  position: absolute;
-  background-color: var(--dark);
-  top: 1em;
-  right: 1em;
-  text-align: center;
-  padding: 1em;
-  font-size: 0.5em;
-  border-radius: 0.5em;
-  color: #fff;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
-  font-weight: bold;
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+}
+
+.single-filter {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  overflow: auto;
 }
 </style>
