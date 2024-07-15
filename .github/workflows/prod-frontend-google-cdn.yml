@@ -31,9 +31,6 @@ jobs:
         with:
           credentials_json: "${{ secrets.GOOGLE_CREDENTIALS }}"
 
-      - name: "Set up Cloud SDK"
-        uses: "google-github-actions/setup-gcloud@v0"
-
       - name: Build Frontend
         shell: bash
         run: |-
@@ -41,8 +38,17 @@ jobs:
           npm install
           npm run build
 
-      - name: "Validate directory not empty"
-        run: '[ "$(ls -A frontend/dist)" ] && echo "Files exist - all good." || (echo "Directory is empty - aborting." && exit 1)'
+      - name: Clear Bucket
+        run: gsutil -m rm -r gs://${{ secrets.PROD_SITE_BUCKET_NAME }}/*
 
-      - name: "Upload Site"
-        run: "gsutil -m rsync -R -d frontend/dist gs://${{ env.BUCKET }}"
+      - id: "upload-files"
+        name: Upload Files to GCP
+        uses: "google-github-actions/upload-cloud-storage@v1"
+        with:
+          path: "frontend/dist/**"
+          destination: "${{ env.BUCKET }}"
+          parent: false
+          gzip: true
+          resumable: true
+          concurrency: 100
+          process_gcloudignore: true
