@@ -38,11 +38,19 @@
                 </div>
               </div>
               <img
-                src="/image/mafia_family.png"
+                :src="'/image/mafia_family.png'"
                 alt="Family Icon"
                 class="w-12"
+                :style="{
+                  filter: `sepia(1) saturate(10000%) hue-rotate(${getHue(family.color ?? '#000000')}deg)`,
+                }"
               />
-              <h2 class="text-2xl font-bold">{{ family.name }}</h2>
+              <h2
+                class="text-2xl font-bold"
+                :style="{ color: family.color ?? '#000000' }"
+              >
+                {{ family.name }}
+              </h2>
             </div>
             <div class="flex items-center space-x-2">
               <div class="text-2xl font-bold text-gray-700">
@@ -54,7 +62,9 @@
           <div
             v-for="team in family.teams"
             :key="team.teamId"
-            :class="{ 'bg-yellow-100': team.teamId === currentTeamId() }"
+            :class="{
+              'bg-yellow-100 -mx-6 px-10': team.teamId === currentTeamId(),
+            }"
             class="flex items-center justify-between p-4 border-b border-gray-200 last:border-0"
           >
             <div class="flex items-center space-x-4">
@@ -70,6 +80,7 @@
     </div>
   </div>
 </template>
+
 <script setup lang="ts">
 import { useFamilyStatus, useSigninResponse } from '../hooks/hooks';
 import { formatPoints } from './formatPoints';
@@ -77,5 +88,61 @@ import { formatPoints } from './formatPoints';
 const { data: familyStatus, isLoading, error } = useFamilyStatus();
 const { data: signinData } = useSigninResponse();
 
-const currentTeamId = ()=>signinData.value?.teamId;
+const currentTeamId = () => signinData.value?.teamId;
+
+const getHue = (hexColor: string) => {
+  const rgb = hexToRgb(hexColor);
+  const hsv = rgbToHsv(rgb.r, rgb.g, rgb.b);
+  return hsv.h;
+};
+
+const hexToRgb = (hex: string) => {
+  const bigint = parseInt(hex.slice(1), 16);
+  return {
+    r: (bigint >> 16) & 255,
+    g: (bigint >> 8) & 255,
+    b: bigint & 255,
+  };
+};
+
+const rgbToHsv = (r: number, g: number, b: number) => {
+  r /= 255;
+  g /= 255;
+  b /= 255;
+  const max = Math.max(r, g, b),
+    min = Math.min(r, g, b);
+  let h = 0,
+    s,
+    v = max;
+
+  const d = max - min;
+  s = max === 0 ? 0 : d / max;
+
+  if (max !== min) {
+    switch (max) {
+      case r:
+        h = (g - b) / d + (g < b ? 6 : 0);
+        break;
+      case g:
+        h = (b - r) / d + 2;
+        break;
+      case b:
+        h = (r - g) / d + 4;
+        break;
+    }
+    h /= 6;
+  }
+
+  return {
+    h: Math.round(h * 360),
+    s: Math.round(s * 100),
+    v: Math.round(v * 100),
+  };
+};
 </script>
+
+<style scoped>
+.bg-yellow-100 {
+  background-color: #fefcbf;
+}
+</style>

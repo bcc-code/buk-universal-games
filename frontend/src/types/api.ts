@@ -86,6 +86,7 @@ const FamilyStatus = z.object({
   id: z.number().int(),
   name: z.string().nullable(),
   points: z.number().int(),
+  color: z.string().nullable(),
   teams: z.array(TeamFamilyStatus).nullable(),
 });
 const MyStatus = z.object({

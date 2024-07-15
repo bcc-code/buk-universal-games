@@ -27,6 +27,7 @@ namespace Buk.UniversalGames.Data.Repositories
                 {
                     Id = family.FamilyId,
                     Name = family.Name,
+                    Color = family.Color,
                     Teams = family.Teams.Select(team => new TeamFamilyStatus
                     {
                         TeamId = team.TeamId,
