@@ -67,6 +67,7 @@ namespace Buk.UniversalGames.Data.Repositories
                     Start = match.Start.ToLocalTime().ToString("HH:mm"),
                     Team1Result = pointsreg1.Points,
                     Team2Result = pointsreg2.Points,
+                    Position = match.Position,
                 }).ToListAsync();
         }
         public async Task<List<MatchListItem>> GetMatches(int leagueId, int? gameId = null)
@@ -92,6 +93,7 @@ namespace Buk.UniversalGames.Data.Repositories
                     Team1Result = pointsreg1.Points,
                     Team2Result = pointsreg2.Points,
                     Start = match.Start.ToLocalTime().ToString("HH:mm"),
+                    Position = match.Position,
                 }).ToListAsync();
         }
 
@@ -143,6 +145,9 @@ namespace Buk.UniversalGames.Data.Repositories
                 Team1Result = teamId == match.Team1Id ? measuredResult : otherTeamResult?.Points,
                 Team2Result = teamId == match.Team2Id ? measuredResult : otherTeamResult?.Points,
                 Start = match.Start.ToLocalTime().ToString("HH:mm"),
+                Position = match.Position,
+                Team1 = match.Team1.Name,
+                Team2 = match.Team2.Name,
             };
         }
     }

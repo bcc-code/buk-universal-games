@@ -15,5 +15,7 @@
 
         public int? Team1Result { get; set; }
         public int? Team2Result { get; set; }
+
+        public string Position { get; set; }
     }
 }

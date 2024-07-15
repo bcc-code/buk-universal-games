@@ -12,6 +12,7 @@
     :gameType="gameType"
     addOn=""
     gameAddOn=""
+    :position="match.position ?? ''"
   />
 
   <div class="rounded-md bg-white p-4 mb-4 bg-green-50 italic">

@@ -37,11 +37,12 @@
         :team2result="match.team2Result"
         :start="match.start"
         :winner="match.winner"
+        :position="match.position"
       />
     </section>
   </UserPageLayout>
 </template>
-
+<!-- 🧹move to script setup lang ts -->
 <script>
 import UserPageLayout from '@/components/UserPageLayout.vue';
 import MatchListItem from '@/components/MatchListItem.vue';

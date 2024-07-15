@@ -37,6 +37,7 @@
         :clickFunc="() => matchClicked(match)"
         :currentActiveMatch="initMatch(match)"
         @click="gameClicked(match.gameId)"
+        :position="match.position"
       />
     </section>
   </UserPageLayout>

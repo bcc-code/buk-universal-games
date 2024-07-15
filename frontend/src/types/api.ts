@@ -39,6 +39,7 @@ const MatchListItem = z.object({
   winner: z.string().nullable(),
   team1Result: z.number().int().nullable(),
   team2Result: z.number().int().nullable(),
+  position: z.string().nullable(),
 });
 const MatchResultDto = z.object({
   matchId: z.number().int(),
