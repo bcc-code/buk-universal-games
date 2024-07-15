@@ -29,7 +29,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import LanguageSwitcher from './LanguageSwitcher.vue';
-import LogOutButton from './LogOutButton.vue';
 import { useFamilyStatus, useSigninResponse } from '@/hooks/hooks';
 import { formatPoints } from './formatPoints';
 

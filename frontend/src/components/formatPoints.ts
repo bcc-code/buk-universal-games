@@ -3,9 +3,11 @@ export function formatPoints(points: number | undefined): string {
     return '£ ?';
   }
 
-  if (points < 1000) {
-    return `£ ${points.toFixed(0)}k`;
+  const lire = points * 100000;
+
+  if (lire < 1000000) {
+    return `£ ${(lire / 1000).toFixed(0)}k`;
   } else {
-    return `£ ${(points / 1000).toFixed(2)}M`;
+    return `£ ${(lire / 1000000).toFixed(2)}M`;
   }
 }
