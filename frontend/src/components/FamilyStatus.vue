@@ -41,9 +41,6 @@
                 :src="'/image/mafia_family.png'"
                 alt="Family Icon"
                 class="w-12"
-                :style="{
-                  filter: `sepia(1) saturate(10000%) hue-rotate(${getHue(family.color ?? '#000000')}deg)`,
-                }"
               />
               <h2
                 class="text-2xl font-bold"
@@ -89,56 +86,6 @@ const { data: familyStatus, isLoading, error } = useFamilyStatus();
 const { data: signinData } = useSigninResponse();
 
 const currentTeamId = () => signinData.value?.teamId;
-
-const getHue = (hexColor: string) => {
-  const rgb = hexToRgb(hexColor);
-  const hsv = rgbToHsv(rgb.r, rgb.g, rgb.b);
-  return hsv.h;
-};
-
-const hexToRgb = (hex: string) => {
-  const bigint = parseInt(hex.slice(1), 16);
-  return {
-    r: (bigint >> 16) & 255,
-    g: (bigint >> 8) & 255,
-    b: bigint & 255,
-  };
-};
-
-const rgbToHsv = (r: number, g: number, b: number) => {
-  r /= 255;
-  g /= 255;
-  b /= 255;
-  const max = Math.max(r, g, b),
-    min = Math.min(r, g, b);
-  let h = 0,
-    s,
-    v = max;
-
-  const d = max - min;
-  s = max === 0 ? 0 : d / max;
-
-  if (max !== min) {
-    switch (max) {
-      case r:
-        h = (g - b) / d + (g < b ? 6 : 0);
-        break;
-      case g:
-        h = (b - r) / d + 2;
-        break;
-      case b:
-        h = (r - g) / d + 4;
-        break;
-    }
-    h /= 6;
-  }
-
-  return {
-    h: Math.round(h * 360),
-    s: Math.round(s * 100),
-    v: Math.round(v * 100),
-  };
-};
 </script>
 
 <style scoped>
