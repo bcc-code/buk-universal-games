@@ -69,6 +69,7 @@ const LeagueStatusReport = z.object({
 const SignInSuccessResponse = z.object({
   code: z.string().nullable(),
   team: z.string().nullable(),
+  teamId: z.number().int(),
   access: z.string().nullable(),
   leagueId: z.number().int().nullable(),
   league: z.string().nullable(),

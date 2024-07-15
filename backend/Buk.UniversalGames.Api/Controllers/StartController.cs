@@ -30,7 +30,8 @@ public class StartController : ControllerBase
 
         return new SignInSuccessResponse(
             team.Code,
-            team.Name,
+            team.Name, 
+            team.TeamId,
             team.TeamType,
             team.LeagueId,
             team.LeagueId switch

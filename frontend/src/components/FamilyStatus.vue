@@ -37,7 +37,11 @@
                   {{ familyIndex + 1 }}
                 </div>
               </div>
-              <img src="/image/mafia_family.png" alt="Family Icon" class="w-12" />
+              <img
+                src="/image/mafia_family.png"
+                alt="Family Icon"
+                class="w-12"
+              />
               <h2 class="text-2xl font-bold">{{ family.name }}</h2>
             </div>
             <div class="flex items-center space-x-2">
@@ -50,6 +54,7 @@
           <div
             v-for="team in family.teams"
             :key="team.teamId"
+            :class="{ 'bg-yellow-100': team.teamId === currentTeamId() }"
             class="flex items-center justify-between p-4 border-b border-gray-200 last:border-0"
           >
             <div class="flex items-center space-x-4">
@@ -65,10 +70,12 @@
     </div>
   </div>
 </template>
-
 <script setup lang="ts">
-import { useFamilyStatus } from '../hooks/hooks';
+import { useFamilyStatus, useSigninResponse } from '../hooks/hooks';
 import { formatPoints } from './formatPoints';
 
 const { data: familyStatus, isLoading, error } = useFamilyStatus();
+const { data: signinData } = useSigninResponse();
+
+const currentTeamId = ()=>signinData.value?.teamId;
 </script>
