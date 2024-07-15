@@ -4,33 +4,42 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - "frontend/**"
-      - ".github/workflows/prod-frontend-google-cdn.yml"
+      - 'frontend/**'
+      - '.github/workflows/prod-frontend-google-cdn.yml'
     branches:
       - master
 
 env:
-  PROJECT_ID: ${{ secrets.GOOGLE_PROJECT_ID }}
-  BUCKET: ${{ secrets.PROD_SITE_BUCKET_NAME }}
-  REGION: ${{ secrets.GOOGLE_REGION }}
+  PROJECT_ID: ${{ secrets.GOOGLE_PROJECT_ID }} 
+  BUCKET:  ${{ secrets.PROD_SITE_BUCKET_NAME }} 
+  REGION: ${{ secrets.GOOGLE_REGION }} 
+  
+# defaults:
+#   run:
+#     working-directory: backend/Buk.UniversalGames.Api
 
 jobs:
   deploy:
+    # Add 'id-token' with the intended permissions for workload identity federation
     permissions:
-      contents: "read"
-      id-token: "write"
+      contents: 'read'
+      id-token: 'write'
 
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
+       # NOTE: Alternative option - authentication via credentials json
       - name: Google Auth
         id: auth
-        uses: "google-github-actions/auth@v0"
+        uses: 'google-github-actions/auth@v0'
         with:
-          credentials_json: "${{ secrets.GOOGLE_CREDENTIALS }}"
+          credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
 
+      # BEGIN - Docker auth and build (NOTE: If you already have a container image, these Docker steps can be omitted)
+
+      # Authenticate Docker to Google Cloud Artifact Registry
       - name: Build Frontend
         shell: bash
         run: |-
@@ -38,17 +47,11 @@ jobs:
           npm install
           npm run build
 
-      - name: Clear Bucket
-        run: gsutil -m rm -r gs://${{ secrets.PROD_SITE_BUCKET_NAME }}/*
 
-      - id: "upload-files"
+      - id: 'upload-files'
         name: Upload Files to GCP
-        uses: "google-github-actions/upload-cloud-storage@v1"
+        uses: 'google-github-actions/upload-cloud-storage@v1'
         with:
-          path: "frontend/dist/**"
-          destination: "${{ env.BUCKET }}"
+          path: 'frontend/dist'
+          destination: '${{ env.BUCKET }}'
           parent: false
-          gzip: true
-          resumable: true
-          concurrency: 100
-          process_gcloudignore: true
