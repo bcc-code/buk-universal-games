@@ -1,12 +1,6 @@
 <template>
   <UserPageLayout>
-    <PointsAndStickers
-      :loading="loading"
-      :points="teamStatus?.points"
-      :stickers="coins.length"
-      :refresh="refresh"
-      :teamName="teamName"
-    />
+    <PointsAndStickers />
     <div v-if="matches.error">
       <h2>{{ $t('general_error') }}</h2>
       <div class="message">
