@@ -31,7 +31,6 @@ public class StatusController : ControllerBase
         await _statusService.ClearStatusAndMatches();
     }
 
-
     [HttpGet("Export")]
     public async Task<IActionResult> GetStatus()
     {

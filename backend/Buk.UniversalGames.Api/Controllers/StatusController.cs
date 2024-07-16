@@ -75,20 +75,35 @@ public class StatusController : ControllerBase
         return "LeagueStatus_leagueId_" + leagueId;
     }
 
-    // [TeamType(TeamType.Admin, TeamType.SystemAdmin, TeamType.Participant)]
     [HttpGet("Family")]
     public async Task<ActionResult<FamilyStatusReport>> FamilyStatus()
     {
         var hideHighScore = await _settingsService.GetSetting("hide_highscore");
+        var now = DateTime.UtcNow;
+        bool isFrozen = false;
+
         if (!string.IsNullOrEmpty(hideHighScore))
         {
-            var now = DateTime.UtcNow;
             var beginAndEnd = hideHighScore.Split("|");
 
-            if (DateTime.TryParse(beginAndEnd[0], out var hideHighScoreDate) && hideHighScoreDate < now
-                && (beginAndEnd.Length < 2 || !DateTime.TryParse(beginAndEnd[1], out var showAgainDate) || showAgainDate > now))
+            if (DateTime.TryParse(beginAndEnd[0], out var hideHighScoreDate))
             {
-                return new ExceptionResult(Strings.HighScoreHidden, 406);
+                _logger.LogInformation($"HideHighScoreDate (begin): {hideHighScoreDate}");
+                _logger.LogInformation($"Now: {now}");
+                _logger.LogInformation($"Is hideHighScoreDate < now: {hideHighScoreDate < now}");
+            }
+
+            if (beginAndEnd.Length < 2)
+            {
+                isFrozen = hideHighScoreDate < now;
+            }
+            else if (DateTime.TryParse(beginAndEnd[1], out var showAgainDate))
+            {
+                _logger.LogInformation($"ShowAgainDate (end): {showAgainDate}");
+                _logger.LogInformation($"Now: {now}");
+                _logger.LogInformation($"Is showAgainDate > now: {showAgainDate > now}");
+
+                isFrozen = hideHighScoreDate < now && showAgainDate > now;
             }
         }
 
@@ -110,6 +125,8 @@ public class StatusController : ControllerBase
             report.MyStatus.TeamPoints = currentTeamStatus?.Points ?? 0;
             report.MyStatus.FamilyPoints = currentFamilyStatus?.Points ?? 0;
         }
+
+        report.IsFrozen = isFrozen;
 
         return report;
     }

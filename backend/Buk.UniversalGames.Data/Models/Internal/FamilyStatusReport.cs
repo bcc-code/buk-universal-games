@@ -4,6 +4,8 @@
     {
         public List<FamilyStatus> Families { get; set; } = new List<FamilyStatus>();
         public MyStatus MyStatus { get; set; } = new MyStatus();
+
+        public bool IsFrozen { get; set; } = false;
     }
 
     public class MyStatus
