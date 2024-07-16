@@ -49,10 +49,6 @@ export default {
   padding-bottom: 5em;
 }
 
-.custom-background {
-  /* background-color: v-bind(backgroundColor); */
-}
-
 .content-area {
   width: 100%;
   height: auto;
