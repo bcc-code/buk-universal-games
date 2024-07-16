@@ -2,8 +2,8 @@
   <section
     class="bg-white p-6 border border-gray-200 flex items-center justify-between w-full rounded-md shadow-sm"
   >
-    <div class="flex space-x-4 items-start">
-      <img src="/icon/ubg_logo.svg" class="h-16 w-16 rounded-md" />
+  <img src="/icon/ubg_logo.svg" class="h-16 w-16 rounded-md" />
+    <div class="flex space-x-4 items-start justify-evenly w-full">
       <div>
         <p class="text-xs uppercase text-red-500">{{ $t('team') }}</p>
         <h2 class="text-xl font-bold text-gray-800">{{ teamName ?? '-' }}</h2>
