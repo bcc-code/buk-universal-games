@@ -6,6 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationInsightsResourceId>/subscriptions/a77a3461-9212-44cf-bc6a-11c6281797e9/resourceGroups/buk-universal-games/providers/microsoft.insights/components/buk-universal-games</ApplicationInsightsResourceId>
     <UserSecretsId>e5e7d1a8-ee2c-4ca2-87aa-5f8a669467a6</UserSecretsId>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
