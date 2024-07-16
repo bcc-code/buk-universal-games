@@ -80,7 +80,7 @@ namespace Buk.UniversalGames.Data.Repositories
                 join pointsreg2 in _db.Points on new { MatchId = (int?)match.MatchId, TeamId = match.Team2Id } equals new { pointsreg2.MatchId, pointsreg2.TeamId } into joinedPoints2
                 from pointsreg2 in joinedPoints2.DefaultIfEmpty()
                 where match.LeagueId == leagueId && (!gameId.HasValue || match.GameId == gameId.Value)
-                orderby match.Start, match.GameId, match.Team1.Name
+                orderby match.Start, match.GameId, match.Position
                 select new MatchListItem
                 {
                     MatchId = match.MatchId,
