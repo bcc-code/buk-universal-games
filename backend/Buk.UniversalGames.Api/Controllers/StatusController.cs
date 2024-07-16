@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Buk.UniversalGames.Data.Models.Internal;
 using Buk.UniversalGames.Data.Repositories;
 using Buk.UniversalGames.Library.Enums;
+using System.Globalization;
 
 namespace Buk.UniversalGames.Api.Controllers;
 
@@ -23,17 +24,17 @@ public class StatusController : ControllerBase
     private readonly ISettingsService _settingsService;
     private readonly ValidatingCacheService _validatingCacheService;
     private readonly IFamilyRepository _familyRepository;
+    private readonly ICacheContext _cacheContext;
 
-
-    public StatusController(ILogger<StatusController> logger, StatusService statusService, ISettingsService settingsService, ValidatingCacheService validatingCacheService, IFamilyRepository familyRepository)
+    public StatusController(ILogger<StatusController> logger, StatusService statusService, ISettingsService settingsService, ValidatingCacheService validatingCacheService, IFamilyRepository familyRepository, ICacheContext cacheContext)
     {
         _logger = logger;
         _statusService = statusService;
         _settingsService = settingsService;
         _validatingCacheService = validatingCacheService;
         _familyRepository = familyRepository;
+        _cacheContext = cacheContext;
     }
-
 
     [Obsolete("Deprecated")]
     [HttpGet]
@@ -57,8 +58,8 @@ public class StatusController : ControllerBase
             var now = DateTime.UtcNow;
             var beginAndEnd = hideHighScore.Split("|");
 
-            if (DateTime.TryParse(beginAndEnd[0], out var hideHighScoreDate) && hideHighScoreDate < now
-                && (beginAndEnd.Length < 2 || !DateTime.TryParse(beginAndEnd[1], out var showAgainDate) || showAgainDate > now))
+            if (DateTime.TryParse(beginAndEnd[0], null, DateTimeStyles.AdjustToUniversal, out var hideHighScoreDate) && hideHighScoreDate < now
+                && (beginAndEnd.Length < 2 || !DateTime.TryParse(beginAndEnd[1], null, DateTimeStyles.AdjustToUniversal, out var showAgainDate) || showAgainDate > now))
             {
                 return new ExceptionResult(Strings.HighScoreHidden, 406);
             }
@@ -78,38 +79,64 @@ public class StatusController : ControllerBase
     public async Task<ActionResult<FamilyStatusReport>> FamilyStatus()
     {
         var hideHighScore = await _settingsService.GetSetting("hide_highscore");
-        var now = DateTime.UtcNow;
-        bool isFrozen = false;
-
-        if (!string.IsNullOrEmpty(hideHighScore))
+        if (string.IsNullOrEmpty(hideHighScore))
         {
-            var beginAndEnd = hideHighScore.Split("|");
-
-            if (DateTime.TryParse(beginAndEnd[0], null, System.Globalization.DateTimeStyles.AdjustToUniversal, out var hideHighScoreDate))
-            {
-                _logger.LogInformation($"HideHighScoreDate (begin): {hideHighScoreDate}");
-                _logger.LogInformation($"Now: {now}");
-                _logger.LogInformation($"Is hideHighScoreDate < now: {hideHighScoreDate < now}");
-            }
-
-            if (beginAndEnd.Length < 2)
-            {
-                isFrozen = hideHighScoreDate < now;
-            }
-            else if (DateTime.TryParse(beginAndEnd[1], null, System.Globalization.DateTimeStyles.AdjustToUniversal, out var showAgainDate))
-            {
-                _logger.LogInformation($"ShowAgainDate (end): {showAgainDate}");
-                _logger.LogInformation($"Now: {now}");
-                _logger.LogInformation($"Is showAgainDate > now: {showAgainDate > now}");
-
-                isFrozen = hideHighScoreDate < now && showAgainDate > now;
-            }
+            throw new Exception("hide_highscore setting is required");
         }
 
-        FamilyStatusReport report = await _validatingCacheService.WriteThrough("FamilyStatusCacheKey", async () =>
+        var now = DateTime.UtcNow;
+        bool isFrozen = false;
+        string frozenCacheKey = "FamilyStatusFrozenCacheKey";
+
+        var beginAndEnd = hideHighScore.Split("|");
+
+        if (!DateTime.TryParse(beginAndEnd[0], null, DateTimeStyles.AdjustToUniversal, out var hideHighScoreDate))
         {
-            return await _familyRepository.GetFamilyStatus();
-        });
+            throw new Exception("Invalid hide_highscore start date format");
+        }
+
+        DateTime? showAgainDate = null;
+        if (beginAndEnd.Length > 1 && DateTime.TryParse(beginAndEnd[1], null, DateTimeStyles.AdjustToUniversal, out var parsedShowAgainDate))
+        {
+            showAgainDate = parsedShowAgainDate;
+        }
+
+        if (hideHighScoreDate > now || (showAgainDate.HasValue && showAgainDate <= now))
+        {
+            isFrozen = false;
+        }
+        else
+        {
+            isFrozen = true;
+        }
+
+        FamilyStatusReport report;
+
+        if (isFrozen)
+        {
+            report = await _cacheContext.Get<FamilyStatusReport>(frozenCacheKey);
+            if (report == null)
+            {
+                report = await _validatingCacheService.WriteThrough("FamilyStatusCacheKey", async () =>
+                {
+                    return await _familyRepository.GetFamilyStatus();
+                });
+
+                await _cacheContext.Set(frozenCacheKey, report);
+            }
+        }
+        else
+        {
+            report = await _validatingCacheService.WriteThrough("FamilyStatusCacheKey", async () =>
+            {
+                return await _familyRepository.GetFamilyStatus();
+            });
+
+            if (hideHighScoreDate > now)
+            {
+                await _cacheContext.Set(frozenCacheKey, report);
+            }
+        }
 
         var team = HttpContext.Items["ValidatedTeam"] as Team;
         if (team != null)
