@@ -74,7 +74,6 @@ public class StatusController : ControllerBase
     {
         return "LeagueStatus_leagueId_" + leagueId;
     }
-
     [HttpGet("Family")]
     public async Task<ActionResult<FamilyStatusReport>> FamilyStatus()
     {
@@ -86,7 +85,7 @@ public class StatusController : ControllerBase
         {
             var beginAndEnd = hideHighScore.Split("|");
 
-            if (DateTime.TryParse(beginAndEnd[0], out var hideHighScoreDate))
+            if (DateTime.TryParse(beginAndEnd[0], null, System.Globalization.DateTimeStyles.AdjustToUniversal, out var hideHighScoreDate))
             {
                 _logger.LogInformation($"HideHighScoreDate (begin): {hideHighScoreDate}");
                 _logger.LogInformation($"Now: {now}");
@@ -97,7 +96,7 @@ public class StatusController : ControllerBase
             {
                 isFrozen = hideHighScoreDate < now;
             }
-            else if (DateTime.TryParse(beginAndEnd[1], out var showAgainDate))
+            else if (DateTime.TryParse(beginAndEnd[1], null, System.Globalization.DateTimeStyles.AdjustToUniversal, out var showAgainDate))
             {
                 _logger.LogInformation($"ShowAgainDate (end): {showAgainDate}");
                 _logger.LogInformation($"Now: {now}");
