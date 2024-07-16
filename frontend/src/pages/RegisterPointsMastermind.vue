@@ -61,9 +61,10 @@
       </div>
 
       <LoadingButton
-        :is-loading="isPending || calculatedResult === undefined"
+        :is-loading="isPending"
         type="submit"
         class="btn-success btn-blank h-14 p-4"
+        :disabled="calculatedResult === undefined || isPending"
       >
         Lagre
       </LoadingButton>
