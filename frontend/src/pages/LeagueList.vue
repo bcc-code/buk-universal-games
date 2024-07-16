@@ -25,14 +25,6 @@ export default {
       loading: false,
     };
   },
-  created() {
-    this.getLeagueStatus(false);
-  },
-  methods: {
-    getLeagueStatus(override) {
-      this.$store.dispatch('getLeagueStatus', override);
-    },
-  },
   computed: {
     teamStatus() {
       return this?.leagueStatus?.status?.total?.find(
