@@ -100,6 +100,8 @@ namespace Buk.UniversalGames.Data.Repositories
 
         public async Task<MatchListItem> StoreMatchResult(Match match, int teamId, int measuredResult)
         {
+            if (match == null) throw new ArgumentNullException(nameof(match), "Match cannot be null");
+
             var existingRegistrations = await _db.Points.Where(s => s.MatchId == match.MatchId).AsTracking().ToListAsync();
             var currentTeamResult = existingRegistrations.FirstOrDefault(x => x.TeamId == teamId);
             var otherTeamResult = existingRegistrations.FirstOrDefault(x => x.TeamId != teamId);
@@ -110,7 +112,18 @@ namespace Buk.UniversalGames.Data.Repositories
             }
             else
             {
-                var addedEntry = _db.Points.Add(new PointsRegistration { MatchId = match.MatchId, TeamId = teamId, Team = match.Team1, GameId = match.GameId, Points = measuredResult });
+                if (match.Team1 == null) throw new InvalidOperationException("match.Team1 is null");
+                if (match.GameId == 0) throw new InvalidOperationException("match.GameId is not set");
+
+                var addedEntry = _db.Points.Add(new PointsRegistration
+                {
+                    MatchId = match.MatchId,
+                    TeamId = teamId,
+                    Team = match.Team1,
+                    GameId = match.GameId,
+                    Points = measuredResult
+                });
+
                 currentTeamResult = addedEntry.Entity;
             }
 
@@ -135,6 +148,9 @@ namespace Buk.UniversalGames.Data.Repositories
             }
             await _db.SaveChangesAsync();
 
+            if (match.Team1 == null) throw new InvalidOperationException("match.Team1 is null after save");
+            if (match.Team2 == null) throw new InvalidOperationException("match.Team2 is null after save");
+
             return new MatchListItem
             {
                 MatchId = match.MatchId,
@@ -147,8 +163,8 @@ namespace Buk.UniversalGames.Data.Repositories
                 Team2Result = teamId == match.Team2Id ? measuredResult : otherTeamResult?.Points,
                 Start = match.Start.ToLocalTime().ToString("HH:mm"),
                 Position = match.Position,
-                Team1 = match.Team1.Name,
-                Team2 = match.Team2.Name,
+                Team1 = match.Team1?.Name ?? "Unknown",  // Safeguard for null
+                Team2 = match.Team2?.Name ?? "Unknown",  // Safeguard for null
             };
         }
     }
