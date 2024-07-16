@@ -61,6 +61,20 @@ namespace Buk.UniversalGames.Services
             return matchResult;
         }
 
+        public async Task<MatchListItem> ReportTeamMatchResults(int matchId, int team1Result, int team2Result)
+        {
+            var match = await _db.Matches
+                .AsTracking()
+                .Include(x => x.Game)
+                .Include(x => x.Team1)
+                .Include(x => x.Team2)
+                .SingleOrDefaultAsync(x => x.MatchId == matchId)
+                ?? throw new ArgumentException("No match found", nameof(matchId));
+
+            var matchResult = await _gameRepository.StoreMatchResults(match, team1Result, team2Result);
+
+            return matchResult;
+        }
 
         public async Task<byte[]> GetMatchExport()
         {

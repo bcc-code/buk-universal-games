@@ -78,7 +78,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import '@vuepic/vue-datepicker/dist/main.css';
-import { useConfirmTeamResult } from '@/hooks/hooks';
+import { useConfirmBothTeamResults } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';
 import TimePicker from './TimePicker.vue';
 import { timeToNumber, type TimeType } from './TimeType';
@@ -159,18 +159,10 @@ const showSuccessToast = () => {
 };
 
 const {
-  mutate: confirmResultTeam1,
-  isPending: isPendingTeam1,
-  error: errorTeam1,
-} = useConfirmTeamResult();
-const {
-  mutate: confirmResultTeam2,
-  isPending: isPendingTeam2,
-  error: errorTeam2,
-} = useConfirmTeamResult();
-
-const error = computed(() => errorTeam1.value || errorTeam2.value);
-const isPending = computed(() => isPendingTeam1.value || isPendingTeam2.value);
+  mutate: confirmBothTeamResults,
+  isPending,
+  error,
+} = useConfirmBothTeamResults();
 
 const submitForm = () => {
   if (!calculatedResult.value)
@@ -179,31 +171,18 @@ const submitForm = () => {
     );
 
   const matchId = props.match.matchId;
-
   const resultTeam1 = calculatedResult.value.team1Score;
   const resultTeam2 = calculatedResult.value.team2Score;
 
-  const team1Id = props.match.team1Id;
-  const team2Id = props.match.team2Id;
-
-  const variablesTeam1 = {
+  const variables = {
     matchId: matchId,
-    result: resultTeam1,
-    teamId: team1Id,
-  };
-  const variablesTeam2 = {
-    matchId: matchId,
-    result: resultTeam2,
-    teamId: team2Id,
+    team1Result: resultTeam1,
+    team2Result: resultTeam2,
   };
 
-  confirmResultTeam1(variablesTeam1, {
+  confirmBothTeamResults(variables, {
     onSuccess() {
-      confirmResultTeam2(variablesTeam2, {
-        onSuccess() {
-          showSuccessToast();
-        },
-      });
+      showSuccessToast();
     },
   });
 };

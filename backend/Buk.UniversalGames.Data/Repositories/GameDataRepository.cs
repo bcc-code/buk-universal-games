@@ -148,5 +148,69 @@ namespace Buk.UniversalGames.Data.Repositories
                 Team2 = match.Team2?.Name ?? "Unknown",  // Safeguard for null
             };
         }
+
+        public async Task<MatchListItem> StoreMatchResults(Match match, int team1Result, int team2Result)
+        {
+            if (match == null) throw new ArgumentNullException(nameof(match), "Match cannot be null");
+
+            var existingRegistrations = await _db.Points.Where(s => s.MatchId == match.MatchId).AsTracking().ToListAsync();
+            if (existingRegistrations.Count != 0 && existingRegistrations.Count != 2)
+            {
+                throw new InvalidOperationException("There must be either 0 or 2 existing points entries for the match.");
+            }
+
+            PointsRegistration team1Points, team2Points;
+
+            if (existingRegistrations.Count == 0)
+            {
+                team1Points = _db.Points.Add(new PointsRegistration
+                {
+                    MatchId = match.MatchId,
+                    TeamId = match.Team1Id,
+                    Team = match.Team1,
+                    GameId = match.GameId,
+                    Points = team1Result,
+                    Added = DateTime.UtcNow
+                }).Entity;
+
+                team2Points = _db.Points.Add(new PointsRegistration
+                {
+                    MatchId = match.MatchId,
+                    TeamId = match.Team2Id,
+                    Team = match.Team2,
+                    GameId = match.GameId,
+                    Points = team2Result,
+                    Added = DateTime.UtcNow
+                }).Entity;
+            }
+            else
+            {
+                team1Points = existingRegistrations.First(x => x.TeamId == match.Team1Id);
+                team1Points.Points = team1Result;
+                team1Points.Added = DateTime.UtcNow;
+
+                team2Points = existingRegistrations.First(x => x.TeamId == match.Team2Id);
+                team2Points.Points = team2Result;
+                team2Points.Added = DateTime.UtcNow;
+            }
+
+            await _db.SaveChangesAsync();
+
+            return new MatchListItem
+            {
+                MatchId = match.MatchId,
+                GameId = match.GameId,
+                AddOn = match.AddOn,
+                Team1Id = match.Team1Id,
+                Team2Id = match.Team2Id,
+                WinnerId = match.WinnerId.GetValueOrDefault(),
+                Team1Result = team1Result,
+                Team2Result = team2Result,
+                Start = match.Start.ToLocalTime().ToString("HH:mm"),
+                Position = match.Position,
+                Team1 = match.Team1?.Name ?? "Unknown",
+                Team2 = match.Team2?.Name ?? "Unknown",
+            };
+        }
     }
 }

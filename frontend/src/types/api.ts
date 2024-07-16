@@ -46,6 +46,11 @@ const MatchResultDto = z.object({
   teamId: z.number().int(),
   result: z.number().int(),
 });
+const MatchResultsDto = z.object({
+  matchId: z.number().int(),
+  team1Result: z.number().int(),
+  team2Result: z.number().int(),
+});
 const League = z.object({
   id: z.number().int(),
   name: z.string().nullable(),
@@ -105,6 +110,7 @@ export const schemas = {
   TeamStatus,
   MatchListItem,
   MatchResultDto,
+  MatchResultsDto,
   League,
   TeamType,
   Team,
@@ -412,6 +418,25 @@ const endpoints = makeApi([
         name: 'matchId',
         type: 'Path',
         schema: z.string(),
+      },
+      {
+        name: 'x-ubg-teamcode',
+        type: 'Header',
+        schema: z.unknown(),
+      },
+    ],
+    response: MatchListItem,
+  },
+  {
+    method: 'post',
+    path: '/matches/bothresults',
+    alias: 'postMatchesbothresults',
+    requestFormat: 'json',
+    parameters: [
+      {
+        name: 'body',
+        type: 'Body',
+        schema: MatchResultsDto,
       },
       {
         name: 'x-ubg-teamcode',

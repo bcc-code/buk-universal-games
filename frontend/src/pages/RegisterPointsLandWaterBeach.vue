@@ -57,7 +57,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import { useConfirmTeamResult } from '@/hooks/hooks';
+import { useConfirmBothTeamResults } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';
 import { floatToInt, lerp } from './mathHelpers';
 import LoadingButton from '@/components/LoadingButton.vue';
@@ -114,20 +114,11 @@ const showSuccessToast = () => {
   }, 3000);
 };
 
-// 🧹 create a new endpoint which both of these, or at least create a hook so we know what interface we want.
 const {
-  mutate: confirmResultTeam1,
-  isPending: isPendingTeam1,
-  error: errorTeam1,
-} = useConfirmTeamResult();
-const {
-  mutate: confirmResultTeam2,
-  isPending: isPendingTeam2,
-  error: errorTeam2,
-} = useConfirmTeamResult();
-
-const error = computed(() => errorTeam1.value || errorTeam2.value);
-const isPending = computed(() => isPendingTeam1.value || isPendingTeam2.value);
+  mutate: confirmBothTeamResults,
+  isPending,
+  error,
+} = useConfirmBothTeamResults();
 
 const submitForm = () => {
   if (!calculatedResult.value)
@@ -140,27 +131,15 @@ const submitForm = () => {
   const resultTeam1 = calculatedResult.value.team1Result;
   const resultTeam2 = calculatedResult.value.team2Result;
 
-  const team1Id = props.match.team1Id;
-  const team2Id = props.match.team2Id;
-
-  const variablesTeam1 = {
+  const variables = {
     matchId: matchId,
-    result: resultTeam1,
-    teamId: team1Id,
-  };
-  const variablesTeam2 = {
-    matchId: matchId,
-    result: resultTeam2,
-    teamId: team2Id,
+    team1Result: resultTeam1,
+    team2Result: resultTeam2,
   };
 
-  confirmResultTeam1(variablesTeam1, {
+  confirmBothTeamResults(variables, {
     onSuccess() {
-      confirmResultTeam2(variablesTeam2, {
-        onSuccess() {
-          showSuccessToast();
-        },
-      });
+      showSuccessToast();
     },
   });
 };

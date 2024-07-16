@@ -62,5 +62,17 @@ namespace Buk.UniversalGames.Data.CacheRepositories
 
             return teamResult;
         }
+
+        public async Task<MatchListItem> StoreMatchResults(Match match, int team1Result, int team2Result)
+        {
+            var matchResult = await _data.StoreMatchResults(match, team1Result, team2Result);
+
+            var leagueId = match.LeagueId;
+            await _cache.Remove($"Matches_{leagueId}");
+            await _cache.Remove($"LeagueStatus_{leagueId}");
+
+            return matchResult;
+        }
+
     }
 }

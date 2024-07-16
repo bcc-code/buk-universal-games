@@ -106,13 +106,39 @@ export const useConfirmTeamResult = () => {
       teamId: number;
       result: number;
     }) =>
-      api.post(
-        `/matches/:matchId/results`,
+      api.postMatchesMatchIdresults(
         { result, matchId: matchId, teamId: teamId },
         {
           params: {
             matchId: matchId.toString(),
           },
+          headers: {
+            'x-ubg-teamcode': getTeamCode(),
+          },
+        },
+      ),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['adminMatches'] });
+    },
+  });
+};
+
+export const useConfirmBothTeamResults = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({
+      matchId,
+      team1Result,
+      team2Result,
+    }: {
+      matchId: number;
+      team1Result: number;
+      team2Result: number;
+    }) =>
+      api.postMatchesbothresults(
+        { matchId, team1Result, team2Result },
+        {
           headers: {
             'x-ubg-teamcode': getTeamCode(),
           },

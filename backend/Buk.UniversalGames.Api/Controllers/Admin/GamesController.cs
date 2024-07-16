@@ -38,4 +38,17 @@ public class GamesController : ControllerBase
         return teamMatchResult;
     }
 
+    [HttpPost("matches/bothresults")]
+    public async Task<ActionResult<MatchListItem>> PostMatchResults([FromBody] MatchResultsDto matchResults)
+    {
+        ActionResult<MatchListItem> matchResult = await _gameService.ReportTeamMatchResults(matchResults.MatchId, matchResults.Team1Result, matchResults.Team2Result);
+        var match = await _gameRepository.GetMatch(matchResults.MatchId);
+        var leagueId = match.LeagueId;
+
+        await _validatingCacheService.Remove(StatusController.LeagueStatusCacheKey(leagueId));
+
+        return matchResult;
+    }
+
+
 }
