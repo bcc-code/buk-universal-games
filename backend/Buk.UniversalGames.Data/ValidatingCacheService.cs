@@ -16,30 +16,30 @@ namespace Buk.UniversalGames.Data
             // 🧹 disable in prod
             var databaseData = await fetchFromDatabase();
             return databaseData;
-            var cachedData = await _cacheContext.Get<T>(key);
+            // var cachedData = await _cacheContext.Get<T>(key);
 
-            if (cachedData == null)
-            {
-                if (databaseData == null)
-                {
-                    throw new Exception("database returned null value, we will be refetching this every time the function is run.");
-                }
-                await _cacheContext.Set(key, databaseData);
-                return databaseData;
+            // if (cachedData == null)
+            // {
+            //     if (databaseData == null)
+            //     {
+            //         throw new Exception("database returned null value, we will be refetching this every time the function is run.");
+            //     }
+            //     await _cacheContext.Set(key, databaseData);
+            //     return databaseData;
 
-            }
+            // }
 
 
-            if (!JsonSerializer.Serialize(cachedData).Equals(JsonSerializer.Serialize(databaseData)))
-            {
-                string prettyPrintedDifferenceString = JsonSerializer.Serialize(
-                    new { cache = cachedData, database = databaseData },
-                    new JsonSerializerOptions() { WriteIndented = true }
-                );
-                throw new InvalidOperationException($"Cache data mismatch for key {key}:\n{prettyPrintedDifferenceString}");
-            }
+            // if (!JsonSerializer.Serialize(cachedData).Equals(JsonSerializer.Serialize(databaseData)))
+            // {
+            //     string prettyPrintedDifferenceString = JsonSerializer.Serialize(
+            //         new { cache = cachedData, database = databaseData },
+            //         new JsonSerializerOptions() { WriteIndented = true }
+            //     );
+            //     throw new InvalidOperationException($"Cache data mismatch for key {key}:\n{prettyPrintedDifferenceString}");
+            // }
 
-            return cachedData;
+            // return cachedData;
         }
 
         public Task Clear()
