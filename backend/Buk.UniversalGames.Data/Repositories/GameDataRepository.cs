@@ -160,6 +160,7 @@ namespace Buk.UniversalGames.Data.Repositories
             }
 
             PointsRegistration team1Points, team2Points;
+            var currentTime = DateTime.Now; // Use local time
 
             if (existingRegistrations.Count == 0)
             {
@@ -170,7 +171,7 @@ namespace Buk.UniversalGames.Data.Repositories
                     Team = match.Team1,
                     GameId = match.GameId,
                     Points = team1Result,
-                    Added = DateTime.UtcNow
+                    Added = currentTime
                 }).Entity;
 
                 team2Points = _db.Points.Add(new PointsRegistration
@@ -180,19 +181,20 @@ namespace Buk.UniversalGames.Data.Repositories
                     Team = match.Team2,
                     GameId = match.GameId,
                     Points = team2Result,
-                    Added = DateTime.UtcNow
+                    Added = currentTime
                 }).Entity;
             }
             else
             {
                 team1Points = existingRegistrations.First(x => x.TeamId == match.Team1Id);
                 team1Points.Points = team1Result;
-                team1Points.Added = DateTime.UtcNow;
+                team1Points.Added = currentTime;
 
                 team2Points = existingRegistrations.First(x => x.TeamId == match.Team2Id);
                 team2Points.Points = team2Result;
-                team2Points.Added = DateTime.UtcNow;
+                team2Points.Added = currentTime;
             }
+
 
             await _db.SaveChangesAsync();
 
