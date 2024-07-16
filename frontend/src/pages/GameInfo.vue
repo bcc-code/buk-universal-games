@@ -33,11 +33,6 @@ export default {
     }
   },
   methods: {
-    async refresh() {
-      this.$store.commit('setGamesLoading', true);
-      await this.$store.dispatch('getLeagueStatus', true);
-      this.$store.commit('setGamesLoading', false);
-    },
     gameClicked(game) {
       this.$router.push({
         name: 'GameInfoDetail',

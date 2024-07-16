@@ -43,5 +43,5 @@ public class Team
 
     public required List<PointsRegistration> Points { get; set; }
     [JsonIgnore]
-    public required List<StickerScan> StickerScans { get; set; }
+    public List<StickerScan>? StickerScans { get; set; }
 }

@@ -3,11 +3,12 @@ using System.Text.Json.Serialization;
 
 namespace Buk.UniversalGames.Data.Models;
 
-public class StickerScan {
+public class StickerScan
+{
 
     [Key]
     [JsonPropertyName("id")]
-    public int StickerScanId{ get; set; }
+    public int StickerScanId { get; set; }
 
     public int StickerId { get; set; }
 
@@ -16,7 +17,7 @@ public class StickerScan {
     public DateTime At { get; set; }
 
     [JsonIgnore]
-    public required Team Team { get; set; }
+    public Team? Team { get; set; }
     [JsonIgnore]
-    public required Sticker Sticker { get; set; }
+    public Sticker? Sticker { get; set; }
 }

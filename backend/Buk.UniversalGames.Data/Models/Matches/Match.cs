@@ -30,7 +30,7 @@ public class Match
     [JsonIgnore]
     public required Team Team2 { get; set; }
     [JsonIgnore]
-    public required Game Game { get; set; }
+    public Game? Game { get; set; }
     [JsonIgnore]
     public Team? Winner { get; set; }
 

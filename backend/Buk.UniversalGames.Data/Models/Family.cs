@@ -10,7 +10,7 @@ public class Family
     public int FamilyId { get; set; }
 
     public required string Name { get; set; }
-    
+
     public required string Color { get; set; }
 
     [JsonIgnore]

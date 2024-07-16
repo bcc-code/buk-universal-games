@@ -241,33 +241,6 @@ export default function (...plugins) {
           return 'failed';
         }
       },
-      async getLeagueStatus(ctx, override) {
-        const cacheAge = getCachedDataAge('leagueStatus');
-        let leagueStatus;
-
-        if (
-          !ctx.state.gotCoins &&
-          ctx.state.coins.length == 0 &&
-          ctx.state.loginData?.coins?.length > 0
-        ) {
-          ctx.commit('initializeCoins', ctx.state.loginData.coins);
-        }
-
-        if (cacheAge === null || cacheAge > 30 || (cacheAge > 5 && override)) {
-          leagueStatus = await getData(store, 'status/league');
-          if (!leagueStatus.error) {
-            cacheData('leagueStatus', leagueStatus);
-          }
-        }
-
-        if (!leagueStatus) {
-          leagueStatus = getFromCache('leagueStatus', {});
-        }
-
-        ctx.commit('setLeagueStatus', leagueStatus);
-
-        return leagueStatus;
-      },
       async getAdminLeagueStatus(ctx) {
         if (!ctx.state.adminLeagueSelected) return;
 

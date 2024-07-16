@@ -72,14 +72,6 @@ export default {
     getTeamStatus(override) {
       this.$store.dispatch('getTeamStatus', override);
     },
-    refresh() {
-      this.loading = true;
-      this.getLeagueStatus(true);
-
-      setTimeout(() => {
-        this.loading = false;
-      }, 1000);
-    },
     async getMatches() {
       let minutesBeforeNow = 20;
       let now = new Date(new Date().getTime() - minutesBeforeNow * 60 * 1000);
