@@ -15,6 +15,7 @@ namespace Buk.UniversalGames.Data
         {
             // 🧹 disable in prod
             var databaseData = await fetchFromDatabase();
+            return databaseData;
             var cachedData = await _cacheContext.Get<T>(key);
 
             if (cachedData == null)
