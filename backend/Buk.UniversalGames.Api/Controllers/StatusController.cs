@@ -68,6 +68,7 @@ public class StatusController : ControllerBase
     {
         return "LeagueStatus_leagueId_" + leagueId;
     }
+    public static string FamilyStatusCacheKey => "FamilyStatusCacheKey";
 
     [HttpGet("Family")]
     public async Task<ActionResult<FamilyStatusReport>> FamilyStatus()
@@ -116,7 +117,7 @@ public class StatusController : ControllerBase
         }
         else
         {
-            report = await _validatingCacheService.WriteThrough("FamilyStatusCacheKey", _familyRepository.GetFamilyStatus);
+            report = await _validatingCacheService.WriteThrough(FamilyStatusCacheKey, _familyRepository.GetFamilyStatus);
 
             if (hideHighScoreDate > now)
             {

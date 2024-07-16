@@ -29,26 +29,26 @@ public class GamesController : ControllerBase
     [HttpPost("matches/{matchId}/results")]
     public async Task<ActionResult<MatchListItem>> PostMatchResult([FromBody] MatchResultDto matchResult)
     {
-        ActionResult<MatchListItem> teamMatchResult = await _gameService.ReportTeamMatchResult(matchResult.MatchId, matchResult.TeamId, matchResult.Result);
+        var teamMatchResult = await _gameService.ReportTeamMatchResult(matchResult.MatchId, matchResult.TeamId, matchResult.Result);
         var match = await _gameRepository.GetMatch(matchResult.MatchId);
         var leagueId = match.LeagueId;
 
         await _validatingCacheService.Remove(StatusController.LeagueStatusCacheKey(leagueId));
+        await _validatingCacheService.Remove(StatusController.FamilyStatusCacheKey);
 
         return teamMatchResult;
     }
 
-    [HttpPost("matches/bothresults")]
+    [HttpPost("matches/{matchId}/results/both")]
     public async Task<ActionResult<MatchListItem>> PostMatchResults([FromBody] MatchResultsDto matchResults)
     {
-        ActionResult<MatchListItem> matchResult = await _gameService.ReportTeamMatchResults(matchResults.MatchId, matchResults.Team1Result, matchResults.Team2Result);
+        var matchResult = await _gameService.ReportTeamMatchResults(matchResults.MatchId, matchResults.Team1Result, matchResults.Team2Result);
         var match = await _gameRepository.GetMatch(matchResults.MatchId);
         var leagueId = match.LeagueId;
 
         await _validatingCacheService.Remove(StatusController.LeagueStatusCacheKey(leagueId));
+        await _validatingCacheService.Remove(StatusController.FamilyStatusCacheKey);
 
         return matchResult;
     }
-
-
 }
