@@ -25,6 +25,7 @@ const urlsToCache = [
   'image/ubg-logo.svg',
   'image/ubg-u-liga-icons.svg',
   'image/watermark.svg',
+  'image/frozen-overlay.png',
   'splashscreen/640x1136.png',
   'splashscreen/750x1334.png',
   'splashscreen/1125x2436.png',

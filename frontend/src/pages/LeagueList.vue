@@ -9,11 +9,6 @@
       </div>
     </section>
     <FamilyStatus></FamilyStatus>
-    <div>
-      <div class="rankingfrozen-message" v-if="$store.getters.currentRound > 3">
-        <p>{{ $t('league.ranking-frozen') }}</p>
-      </div>
-    </div>
   </UserPageLayout>
 </template>
 

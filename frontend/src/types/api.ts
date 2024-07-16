@@ -96,6 +96,7 @@ const MyStatus = z.object({
 const FamilyStatusReport = z.object({
   families: z.array(FamilyStatus).nullable(),
   myStatus: MyStatus,
+  isFrozen: z.boolean(),
 });
 
 export const schemas = {
