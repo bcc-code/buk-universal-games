@@ -127,25 +127,6 @@ namespace Buk.UniversalGames.Data.Repositories
                 currentTeamResult = addedEntry.Entity;
             }
 
-            if (otherTeamResult is not null)
-            {
-                if (measuredResult == otherTeamResult.Points)
-                {
-                    match.WinnerId = null; //no winner
-                }
-                else
-                {
-                    //set winner and save
-                    if (match.GameId == 2 || match.GameId == 3) //labyrinth + hamster wheel: higher is better
-                    {
-                        match.WinnerId = measuredResult > otherTeamResult.Points ? teamId : otherTeamResult.TeamId;
-                    }
-                    else
-                    {
-                        match.WinnerId = measuredResult < otherTeamResult.Points ? teamId : otherTeamResult.TeamId;
-                    }
-                }
-            }
             await _db.SaveChangesAsync();
 
             if (match.Team1 == null) throw new InvalidOperationException("match.Team1 is null after save");
