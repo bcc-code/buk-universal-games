@@ -57,15 +57,19 @@ export const useAdminMatches = (leagueId: number) => {
   const teamCode = getTeamCode();
   return useQuery({
     queryKey: ['adminMatches', leagueId, teamCode],
-    queryFn: () =>
-      api.get(`/admin/leagues/:leagueId/matches`, {
+    queryFn: () => {
+      console.log('getting matches', leagueId);
+      const responseMatches = api.get(`/admin/leagues/:leagueId/matches`, {
         params: {
           leagueId,
         },
         headers: {
           'x-ubg-teamcode': teamCode,
         },
-      }),
+      });
+      console.log(responseMatches)
+      return responseMatches;
+    },
   });
 };
 
