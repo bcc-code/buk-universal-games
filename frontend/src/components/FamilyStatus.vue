@@ -7,7 +7,8 @@
     </div>
     <div v-else>
       <div v-if="familyStatus?.isFrozen" class="frozen-banner w-full mb-4">
-        <span class="emoji">🥶</span> The leaderboards are frozen
+        <span class="emoji">🥶</span> The leaderboards are frozen. You can still
+        earn points.
       </div>
       <div class="relative">
         <img
