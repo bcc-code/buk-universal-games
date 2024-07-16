@@ -20,7 +20,7 @@
         public required string Name { get; set; }
         public int Points { get; set; }
         public required string Color { get; set; }
-        public List<TeamFamilyStatus> Teams { get; set; } = new();
+        public required List<TeamFamilyStatus> Teams { get; set; }
     }
 
     public class TeamFamilyStatus
