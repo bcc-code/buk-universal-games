@@ -48,11 +48,19 @@ namespace Buk.UniversalGames.Services
 
         public async Task<ActionResult<MatchListItem>> ReportTeamMatchResult(int matchId, int teamId, int result)
         {
-            var match = _db.Matches.AsTracking().Include(x => x.Game).Single(x => x.MatchId == matchId) ?? throw new ArgumentException("No match found", nameof(matchId));
-            if (match.Team1 == null) throw new InvalidOperationException("match.Team1 is null");
+            var match = _db.Matches
+                .AsTracking()
+                .Include(x => x.Game)
+                .Include(x => x.Team1)
+                .Include(x => x.Team2)
+                .SingleOrDefault(x => x.MatchId == matchId)
+                ?? throw new ArgumentException("No match found", nameof(matchId));
+
             var matchResult = await _gameRepository.StoreMatchResult(match, teamId, result);
+
             return matchResult;
         }
+
 
         public async Task<byte[]> GetMatchExport()
         {
