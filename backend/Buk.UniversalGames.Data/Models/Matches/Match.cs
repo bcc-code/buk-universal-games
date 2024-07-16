@@ -17,22 +17,22 @@ public class Match
 
     public int LeagueId { get; set; }
 
-    public string AddOn { get; set; }
+    public required string AddOn { get; set; }
 
     public DateTime Start { get; set; }
 
     public int? WinnerId { get; set; }
 
-    public string Position { get; set; }
+    public required string Position { get; set; }
 
     [JsonIgnore]
-    public Team Team1 { get; set; }
+    public required Team Team1 { get; set; }
     [JsonIgnore]
-    public Team Team2 { get; set; }
+    public required Team Team2 { get; set; }
     [JsonIgnore]
-    public Game Game { get; set; }
+    public required Game Game { get; set; }
     [JsonIgnore]
     public Team? Winner { get; set; }
 
-    public League League { get; set; }
+    public required League League { get; set; }
 }

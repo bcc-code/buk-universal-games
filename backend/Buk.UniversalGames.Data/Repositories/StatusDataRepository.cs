@@ -14,11 +14,6 @@ namespace Buk.UniversalGames.Data.Repositories
             _db = db;
         }
 
-        public async Task<TeamStatus?> GetTeamStatus(Team team)
-        {
-            var points = await _db.Points.Where(p => p.TeamId == team.TeamId).ToListAsync();
-            return new TeamStatus(team.TeamId, team.Name, points.Sum(s => s.Points), team.FamilyId);
-        }
 
         public async Task<List<TeamStatus>> GetLeagueStatus(int leagueId)
         {

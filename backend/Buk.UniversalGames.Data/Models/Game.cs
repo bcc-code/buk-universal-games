@@ -33,7 +33,7 @@ public class Game {
     }
 
     [Column("type")]
-    public string GameType { get; set; }
+    public required string GameType { get; set; }
 
     public string Description { get; set; } = "";
 

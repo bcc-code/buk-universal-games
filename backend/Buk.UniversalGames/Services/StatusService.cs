@@ -110,16 +110,6 @@ namespace Buk.UniversalGames.Services
                 => subRanking.TryGetValue(team.TeamId, out var status) ? status.Points : 0;
         }
 
-        public async Task<TeamStatusReport> GetTeamStatus(Team team)
-        {
-            if (team is null) throw new ArgumentNullException(nameof(team));
-
-            return new TeamStatusReport
-            {
-                Status = await _statusRepository.GetTeamStatus(team),
-                StatusAt = DateTime.Now
-            };
-        }
 
         public async Task<LeagueStatusReport> GetLeagueStatus(int leagueId)
         {

@@ -5,7 +5,7 @@ namespace Buk.UniversalGames.Models
     public class TeamStatusReport
     {
         public DateTime StatusAt { get; set; }
-        
-        public TeamStatus Status { get; set; }
+
+        public required TeamStatus Status { get; set; }
     }
 }

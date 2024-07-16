@@ -44,8 +44,10 @@ public class GamesController : ControllerBase
     [HttpGet("/matches")]
     public async Task<ActionResult<List<MatchListItem>>> GetMatches()
     {
-        var team = HttpContext.Items["ValidatedTeam"] as Team;
-        // 🧹 this should be cached.
+        if (HttpContext.Items["ValidatedTeam"] is not Team team)
+        {
+            return BadRequest("Team not found");
+        }
         return await _gameService.GetMatches(team);
     }
 }

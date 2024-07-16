@@ -13,12 +13,12 @@ public class Sticker {
 
     public int LeagueId{ get; set; }
 
-    public string Code { get; set; }
+    public required string Code { get; set; }
 
     public int Points{ get; set; }
 
     [JsonIgnore]
-    public League League { get; set; }
+    public required League League { get; set; }
 
     [NotMapped]
     public string Link => LinkHelper.GetStickerLink(Code);

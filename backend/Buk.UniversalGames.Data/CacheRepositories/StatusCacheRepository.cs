@@ -19,17 +19,6 @@ namespace Buk.UniversalGames.Data.CacheRepositories
             _cache = cache;
         }
 
-        public async Task<TeamStatus?> GetTeamStatus(Team team)
-        {
-            // we want league status always calculated and set in cache, so get league status
-            var leagueStatuses = await GetLeagueStatus(team.LeagueId.GetValueOrDefault());
-
-            // find team status
-            var status = leagueStatuses.FirstOrDefault(s=>s.TeamId == team.TeamId);
-
-            // fallback to calculation
-            return status ?? await _data.GetTeamStatus(team);
-        }
 
         public async Task<List<TeamStatus>> GetLeagueStatus(int leagueId)
         {
@@ -39,7 +28,7 @@ namespace Buk.UniversalGames.Data.CacheRepositories
             if (leagueStatus == null)
             {
                 // fallback to db and set in cache
-                leagueStatus = await _data.GetLeagueStatus(leagueId); 
+                leagueStatus = await _data.GetLeagueStatus(leagueId);
                 await _cache.Set(cacheKey, leagueStatus);
             }
             return leagueStatus;

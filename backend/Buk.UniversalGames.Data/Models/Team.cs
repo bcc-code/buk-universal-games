@@ -11,9 +11,9 @@ public class Team
     [JsonPropertyName("id")]
     public int TeamId { get; set; }
 
-    public string Name { get; set; }
+    public required string Name { get; set; }
 
-    public string Code { get; set; }
+    public required string Code { get; set; }
 
     public string? Color { get; set; }
 
@@ -22,13 +22,14 @@ public class Team
     {
         "participant" => Library.Enums.TeamType.Participant,
         "admin" => Library.Enums.TeamType.Admin,
-        "system_admin" => Library.Enums.TeamType.SystemAdmin
+        "system_admin" => Library.Enums.TeamType.SystemAdmin,
+        _ => Library.Enums.TeamType.Participant
     };
 
     public int MemberCount { get; set; }
 
     [Column("type")]
-    public string TeamType { get; set; }
+    public required string TeamType { get; set; }
 
 
     public int? LeagueId { get; set; }
@@ -40,7 +41,7 @@ public class Team
     public Family? Family { get; set; }
     [JsonIgnore]
 
-    public List<PointsRegistration> Points { get; set; }
+    public required List<PointsRegistration> Points { get; set; }
     [JsonIgnore]
-    public List<StickerScan> StickerScans { get; set; }
+    public required List<StickerScan> StickerScans { get; set; }
 }

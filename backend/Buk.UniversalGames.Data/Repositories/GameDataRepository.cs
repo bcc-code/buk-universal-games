@@ -39,7 +39,8 @@ namespace Buk.UniversalGames.Data.Repositories
                     Start = match.Start.ToLocalTime(),
                     Game = match.Game,
                     League = match.League,
-                    LeagueId = match.LeagueId
+                    LeagueId = match.LeagueId,
+                    Position = match.Position
                 }
             ).FirstAsync();
         }
@@ -109,7 +110,7 @@ namespace Buk.UniversalGames.Data.Repositories
             }
             else
             {
-                var addedEntry = _db.Points.Add(new PointsRegistration { MatchId = match.MatchId, TeamId = teamId, GameId = match.GameId, Points = measuredResult });
+                var addedEntry = _db.Points.Add(new PointsRegistration { MatchId = match.MatchId, TeamId = teamId, Team = match.Team1, GameId = match.GameId, Points = measuredResult });
                 currentTeamResult = addedEntry.Entity;
             }
 

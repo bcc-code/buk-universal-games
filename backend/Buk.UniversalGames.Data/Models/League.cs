@@ -9,13 +9,13 @@ public class League {
     [JsonPropertyName("id")]
     public int LeagueId { get; set; }
 
-    public string Name{ get; set; }
+    public required string Name{ get; set; }
 
-    public string Color { get; set; }
+    public required string Color { get; set; }
 
 
     [JsonIgnore]
-    public List<Team> Teams { get; set; }
+    public required List<Team> Teams { get; set; }
     [JsonIgnore]
-    public List<Sticker> Stickers { get; set; }
+    public required List<Sticker> Stickers { get; set; }
 }

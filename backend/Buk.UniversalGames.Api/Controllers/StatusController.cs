@@ -36,13 +36,6 @@ public class StatusController : ControllerBase
         _cacheContext = cacheContext;
     }
 
-    [Obsolete("Deprecated")]
-    [HttpGet]
-    public async Task<ActionResult<TeamStatusReport>> Status()
-    {
-        var team = HttpContext.Items["ValidatedTeam"] as Team;
-        return await _statusService.GetTeamStatus(team);
-    }
 
     [HttpGet("League")]
     public async Task<ActionResult<LeagueStatusReport>> LeagueStatus()
@@ -75,6 +68,7 @@ public class StatusController : ControllerBase
     {
         return "LeagueStatus_leagueId_" + leagueId;
     }
+
     [HttpGet("Family")]
     public async Task<ActionResult<FamilyStatusReport>> FamilyStatus()
     {
@@ -110,27 +104,19 @@ public class StatusController : ControllerBase
             isFrozen = true;
         }
 
-        FamilyStatusReport report;
+        FamilyStatusReport? report = null;
 
         if (isFrozen)
         {
             report = await _cacheContext.Get<FamilyStatusReport>(frozenCacheKey);
             if (report == null)
             {
-                report = await _validatingCacheService.WriteThrough("FamilyStatusCacheKey", async () =>
-                {
-                    return await _familyRepository.GetFamilyStatus();
-                });
-
-                await _cacheContext.Set(frozenCacheKey, report);
+                throw new Exception("Frozen leaderboard data is not available.");
             }
         }
         else
         {
-            report = await _validatingCacheService.WriteThrough("FamilyStatusCacheKey", async () =>
-            {
-                return await _familyRepository.GetFamilyStatus();
-            });
+            report = await _validatingCacheService.WriteThrough("FamilyStatusCacheKey", _familyRepository.GetFamilyStatus);
 
             if (hideHighScoreDate > now)
             {
@@ -156,4 +142,5 @@ public class StatusController : ControllerBase
 
         return report;
     }
+
 }
