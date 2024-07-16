@@ -1,17 +1,23 @@
 ﻿using System.Text;
 using System.Text.Json;
 using Microsoft.Extensions.Caching.Distributed;
+using StackExchange.Redis;
+using Microsoft.Extensions.Options;
 
 namespace Buk.UniversalGames.Data
 {
     public class CacheContext : ICacheContext
     {
         private readonly IDistributedCache _cache;
+        private readonly ConnectionMultiplexer _redis;
+        private readonly IDatabase _db;
         private static readonly Encoding _keysEncoding = Encoding.UTF8;
 
-        public CacheContext(IDistributedCache cache)
+        public CacheContext(IDistributedCache cache, IOptions<RedisOptions> redisOptions)
         {
             _cache = cache ?? throw new ArgumentNullException(nameof(cache));
+            _redis = ConnectionMultiplexer.Connect(redisOptions.Value.Configuration);
+            _db = _redis.GetDatabase();
         }
 
         public Task<T?> Get<T>(string key)
@@ -75,20 +81,19 @@ namespace Buk.UniversalGames.Data
             });
 
         }
-
         public Task Clear()
         {
             return Retry(async () =>
-            {
-                var cacheKeys = await GetCacheKeys();
-                foreach (var cacheKey in cacheKeys)
-                    await _cache.RemoveAsync(cacheKey);
-                await _cache.RemoveAsync("CacheKeys");
-                return true;
-            });
-
+               {
+                   var endpoints = _redis.GetEndPoints();
+                   foreach (var endpoint in endpoints)
+                   {
+                       var server = _redis.GetServer(endpoint);
+                       await server.FlushDatabaseAsync();
+                   }
+                   return true;
+               });
         }
-
 
         Task<List<string>> GetCacheKeys()
         {
@@ -135,4 +140,9 @@ namespace Buk.UniversalGames.Data
             }
         }
     }
+    public class RedisOptions
+    {
+        public string? Configuration { get; set; }
+    }
+
 }

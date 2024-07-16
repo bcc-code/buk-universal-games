@@ -75,6 +75,7 @@ else
               .WithMethods("GET", "POST", "OPTIONS").Build();
     }));
 }
+builder.Services.Configure<RedisOptions>(builder.Configuration.GetSection("Redis"));
 
 // Ensure cookies work across all container instances
 //var redis = ConnectionMultiplexer.Connect(builder.Configuration.GetValue<string>("REDIS_CONNECTION_STRING"));
