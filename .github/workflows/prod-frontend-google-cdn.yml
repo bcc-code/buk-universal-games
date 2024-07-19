@@ -49,6 +49,14 @@ jobs:
           destination: "${{ env.BUCKET }}"
           parent: false
 
+      - name: Remove gzip content-encoding from MP4 files
+        run: |
+          gsutil setmeta -h "Content-Encoding:" gs://${{ env.BUCKET }}/videos/hamster_wheel.mp4
+          gsutil setmeta -h "Content-Encoding:" gs://${{ env.BUCKET }}/videos/iron_grip.mp4
+          gsutil setmeta -h "Content-Encoding:" gs://${{ env.BUCKET }}/videos/labyrinth.mp4
+          gsutil setmeta -h "Content-Encoding:" gs://${{ env.BUCKET }}/videos/land_water_beach.mp4
+          gsutil setmeta -h "Content-Encoding:" gs://${{ env.BUCKET }}/videos/mastermind.mp4
+
       - name: Set Cache-Control for index.html
         run: |
           gsutil setmeta -h "Cache-Control:no-cache, max-age=0" gs://${{ env.BUCKET }}/index.html
