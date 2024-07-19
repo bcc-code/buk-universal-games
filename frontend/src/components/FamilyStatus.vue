@@ -115,6 +115,6 @@ const currentTeamId = () => signinData.value?.teamId;
 }
 
 .frozen-overlay {
-  filter: hue-rotate(343deg) saturate(0.6);
+filter: hue-rotate(12deg) saturate(1.4);
 }
 </style>
