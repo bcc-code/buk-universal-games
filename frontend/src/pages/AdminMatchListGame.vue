@@ -1,5 +1,5 @@
 <template>
-  <AdminPageLayout title="{{ $t('match-list') }}">
+  <AdminPageLayout >
     <section class="filters">
       <div class="filter">
         <p>Zone:</p>

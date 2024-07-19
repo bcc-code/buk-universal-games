@@ -1,5 +1,5 @@
 <template>
-  <AdminPageLayout title="{{ $t('league-status') }}">
+  <AdminPageLayout >
     <div class="flex justify-end">
       <div class="max-w-10 shadow-lg ml-4">
         <LogOutButton></LogOutButton>

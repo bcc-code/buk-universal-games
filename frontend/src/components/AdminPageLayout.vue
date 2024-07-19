@@ -1,7 +1,6 @@
 <template>
   <section class="admin-page-layout">
     <div class="content-area">
-      <h1 v-if="false" class="title">{{ title }}</h1>
       <slot />
     </div>
     <AdminMenu />
@@ -14,7 +13,6 @@ import AdminMenu from '../components/AdminMenu.vue';
 export default {
   name: 'AdminPageLayout',
   components: { AdminMenu },
-  props: { title: String },
   mounted() {
     // if (Object.keys(this.$store.state.loginData).length === 0) {
     //   this.$store.dispatch("getLoginData");
