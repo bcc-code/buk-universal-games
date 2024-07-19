@@ -29,7 +29,7 @@
     >
       <div class="mb-4">
         <div class="block">
-          Klarte laget å få ballen gjennom hele labyrinten {{ index }} på under
+          Klarte laget å få ballen gjennom hele labyrinten på under
           10 minutter?
         </div>
 
