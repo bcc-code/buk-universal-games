@@ -50,9 +50,11 @@ import { useRouter, useRoute } from 'vue-router';
 import { useSigninResponse } from '../hooks/hooks';
 import BigLogo from '@/components/BigLogo.vue';
 import LoadingButton from '@/components/LoadingButton.vue';
+import { useI18n } from 'vue-i18n';
 
 const route = useRoute();
 const code = route.params.code as string | undefined;
+const { t } = useI18n();
 
 const teamCode = ref(code ?? '');
 const router = useRouter();
@@ -71,7 +73,7 @@ const errorMessage = computed(() => {
     const errorMessage = (error?.value as any)?.response?.data?.error;
     return (
       errorMessage ??
-       "$t('something-went-wrong-we-could-not-log-you-in-please-try-again') "
+      t('something-went-wrong-we-could-not-log-you-in-please-try-again')
     );
   }
   return null;
