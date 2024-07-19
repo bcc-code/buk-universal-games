@@ -1,0 +1,16 @@
+{
+        "team_id": 5,
+        "name": "System Admin",
+        "code": "OVERLORDS",
+        "league_id": null,
+        "type": "system_admin",
+        "color": ""
+    },
+    {
+        "team_id": 6,
+        "name": "Admin",
+        "code": "MOTHERLOAD",
+        "league_id": null,
+        "type": "admin",
+        "color": ""
+    }

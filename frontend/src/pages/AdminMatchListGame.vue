@@ -1,5 +1,5 @@
 <template>
-  <AdminPageLayout title="Match list">
+  <AdminPageLayout title="{{ $t('match-list') }}">
     <section class="filters">
       <div class="filter">
         <p>Zone:</p>
@@ -16,7 +16,7 @@
         </div>
       </div>
       <div class="filter">
-        <p>Post type:</p>
+        <p>{{ $t('post-type') }}</p>
         <div class="single-filter flex">
           <AdminLeagueSelector
             :isSelected="$store.state.adminFilterGameSelected === null"
@@ -42,7 +42,7 @@
         class="w-full text-center mt-24"
         v-if="Object.keys(adminMatchGroups).length === 0"
       >
-        No matches for this filter
+        {{ $t('no-matches-for-this-filter') }}
       </div>
       <div
         v-else

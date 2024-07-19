@@ -5,7 +5,7 @@
   <RegisterPointsHamsterWheel   v-else-if="gameType==='hamster_wheel'"    :match="match"></RegisterPointsHamsterWheel>
   <RegisterPointsMastermind     v-else-if="gameType==='mastermind'"       :match="match"></RegisterPointsMastermind>
   <div v-else>
-    <div class="alert alert-error block">Noe gikk galt</div>
+    <div class="alert alert-error block">{{ $t('something-went-wrong') }}</div>
   </div>
 </template>
 

@@ -71,7 +71,7 @@ const errorMessage = computed(() => {
     const errorMessage = (error?.value as any)?.response?.data?.error;
     return (
       errorMessage ??
-      'Something went wrong, we could not log you in. Please try again.'
+       "$t('something-went-wrong-we-could-not-log-you-in-please-try-again') "
     );
   }
   return null;

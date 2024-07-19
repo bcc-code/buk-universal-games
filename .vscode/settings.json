@@ -1,0 +1,13 @@
+{
+    "i18n-ally.localesPaths": [
+      "frontend/src/locales"    ],
+    "i18n-ally.enabledFrameworks": [
+      "vue",
+      "react"
+    ],
+    "i18n-ally.keystyle": "nested",
+    "i18n-ally.sourceLanguage": "no",
+    "i18n-ally.displayLanguage": "no",
+    "i18n-ally.annotation": true
+  }
+  

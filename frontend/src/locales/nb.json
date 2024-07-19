@@ -74,104 +74,10 @@
     },
     "select_game": {
       "intro": "Velg hvilken lek du skal dømme"
-    }
+    },
+    "intro": "Spør hvilket lag de er og sørg for at det er riktig lag på rett plass, og at det stemmer overens med laget som står over."
   },
   "yourmatch": "Ditt spill",
-  "sidequest": {
-    "thanks": "Takk, svaret ditt er registrert",
-    "timeranout": "Tiden gikk ut, bedre lykke neste gang",
-    "areyouready": "Er du klar?",
-    "checkanswerlater": "Sjekk svaret når spillet er over",
-    "question_locked": "Utgått",
-    "youhaveunsubmittedanswers": "Du har {numAnswers} svar. Vil du sende dem nå?",
-    "submityouranswers": "Send inn svarene dine",
-    "gameroundtitle": "Runde {round}",
-    "back_to_overview": "Tilbake til oversikten",
-    "alreadyAnswered": "Du har allerede svart på dette spørsmålet",
-    "noroundyet": "Ikke tilgjengelig ennå. Kom tilbake etter kampen.",
-    "submitfailed": "Kunne ikke sende inn svarene dine. Sjekk at du har tilkobling og prøv igjen",
-    "no_coins": "Du har ingen mynter igjen. Du kan ikke svare på flere spørsmål",
-    "explanation": "Forklaring",
-    "explanation_text": "Etter hver kamp, bortsett fra den siste, vil 2 spørsmål bli låst opp i tilfeldig rekkefølge, totalt 8 spørsmål. Du har 10 minutter til å svare på dem, til neste kamp begynner.\nDu har totalt 8 mynter. Hver spørsmål du starter koster en mynt, selv om du ikke svarer på det. Så, hvis du prøver å svare på samme spørsmål på nytt, må du hoppe over et annet spørsmål.\nNår du har svart på et spørsmål, kan du ikke svare på det igjen.\n\nLaget ditt tjener bonuspoeng basert på hvor mange av laget ditt som sender inn et riktig svar for hvert spørsmål.\nSjekk tilbake etter hver kamp for å tjene flere poeng for laget ditt!",
-    "questiontypes": {
-      "math": "Matematikk",
-      "knowledge": "Kunnskap",
-      "recognize": "Gjenkjenne",
-      "insight": "Innsikt",
-      "remember": "Huske",
-      "guess": "Gjette"
-    }
-  },
-  "questions": {
-    "guesshowmany1": {
-      "q": "Hvor mange timer har Fra Kåre blitt hørt i år?",
-      "intro": "Har du hørt på Fra Kåre i år?"
-    },
-    "guesshowmany2": {
-      "q": "Hvor mange personer har besøkt campene i 2023?",
-      "intro": "Er du flink til å telle?"
-    },
-    "remember": {
-      "q": "Hva er riktig rekkefølge på dansetrinnene i Herman Shuffle?",
-      "intro": "Danset du med på dette i morges?",
-      "a": {
-        "lwd": "Lean, Wave, Drift ",
-        "wld": "Wave, Lean, Drift",
-        "ldw": "Lean, Drift, Wave",
-        "wdl": "Wave, Drift, Lean"
-      }
-    },
-    "insight": {
-      "q": "Hvilken berg-og-dal-banevogn vil nå bunnen først?",
-      "intro": "Se på bildet. Hvilken berg-og-dal-banevogn vil nå bunnen først?",
-      "a": {
-        "red": "Rød",
-        "green": "Grønn",
-        "yellow": "Gul",
-        "sametime": "De når bunnen samtidig"
-      }
-    },
-    "recognize1": {
-      "q": "Gjenkjenner du eller husker du hvem dette er?",
-      "intro": "Vet du hvem vi ser (ikke) på dette bildet?",
-      "a": {
-        "opta": "Gershon Twilley",
-        "optb": "Harald Kronstad",
-        "optc": "Gunnar Gangsø",
-        "optd": "Bernt-Aksel Larsen"
-      }
-    },
-    "recognize2": {
-      "q": "Husker du hvem dette er?",
-      "intro": "Har du fulgt med på prosjektene i år? Se på bildet.",
-      "a": {
-        "peter": "Peter",
-        "john": "Johannes",
-        "matthew": "Matteus",
-        "paul": "Paulus"
-      }
-    },
-    "math": {
-      "q": "Hvilket tall skal stå på spørsmålstegnet?",
-      "intro": "Se på bildet. Hvilket tall skal stå på spørsmålstegnet?",
-      "a": {
-        "30": "30",
-        "67": "67",
-        "81": "81",
-        "200": "200"
-      }
-    },
-    "knowledge": {
-      "q": "I hvilket land har BCC ingen menigheter?",
-      "intro": "Hvor er du fra?",
-      "a": {
-        "singapore": "Singapore",
-        "serbia": "Serbia",
-        "japan": "Japan",
-        "peru": "Peru"
-      }
-    }
-  },
   "back": "Tilbake",
   "teamName": "Lag",
   "family": "Familie",
@@ -179,5 +85,24 @@
   "results": "Resultater for dette spillet",
   "pointstitle": "Poeng",
   "categorytitle": "Kategori",
-  "loading": "Laster..."
+  "loading": "Laster...",
+  "match-list": "Match List",
+  "no-matches-for-this-filter": "No matches for this filter",
+  "please_refresh": "Vennligst reload",
+  "something-went-wrong": "Vennligst reload siden",
+  "league-status": "Leauge status",
+  "something-went-wrong-we-could-not-log-you-in-please-try-again": "Noe gikk galt, vi kunne ikke logge deg inn - prøv igjen.",
+  "point": "Poeng",
+  "calculated-score": "Beregnet score",
+  "save": "Lagre",
+  "saved": "Lagret",
+  "points-registration-error": "Kalkulert resultat returnerte undefined. Skjemaet er ugyldig selv om det kan sendes inn. Du mangler kanskje noen validering på skjemafelt.",
+  "couldnt-load-the-video": "Kan ikke laste inn videoen",
+  "details": "Detaljer",
+  "total-nr-of-bars": "Total antall bars",
+  "nr-of-participants": "Antall deltagere",
+  "team": "Lag",
+  "minutes": "Minutter",
+  "seconds": "Sekunder",
+  "penalty-points": "Straffepoeng"
 }

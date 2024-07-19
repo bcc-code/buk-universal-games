@@ -4,13 +4,13 @@
       type="number"
       v-model="totalNrOfBars"
       @input="updateTotal"
-      :placeholder="'Total nr of bars'"
+      :placeholder="$t('total-nr-of-bars') "
     />
     <input
       type="number"
       v-model="nrOfParticipants"
       @input="updateTotal"
-      :placeholder="'Nr of participants'"
+      :placeholder="$t('nr-of-participants')"
     />
   </div>
 </template>

@@ -28,7 +28,7 @@
           <span class="text-xs">{{ start }}</span>
         </p>
         <div v-if="clickFunc" class="flex items-center space-x-1">
-          <p class="text-xs">Details</p>
+          <p class="text-xs">{{ $t('details') }}</p>
           <ArrowRightIcon class="h-4 w-4" />
         </div>
       </div>

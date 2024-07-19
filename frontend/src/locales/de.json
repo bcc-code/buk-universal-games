@@ -1,50 +1,57 @@
 {
-  "install_hint": "Hinweis:\nInstallieren Sie diese Web-App auf Ihrem Startbildschirm, sie funktioniert besser!",
+  "install_hint": "Hinweis:\nInstalliere diese Web-App auf deinem Startbildschirm, damit sie besser funktioniert!",
   "menu": {
-    "home": "Home",
+    "home": "Startseite",
     "league": "Liga",
-    "sidequest": "Sidequest",
+    "sidequest": "Nebenquest",
     "games": "Spiele",
     "map": "Karte"
   },
   "games": {
-    "monkeybars": "Monkeybars",
-    "nervespiral": "Nervenspirale",
-    "tickettwist": "Ticketdreher",
-    "minefield": "Minenfeld",
-    "tablesurfing": "Crowdsurfen"
+    "iron_grip": "Eisengriff",
+    "land_water_beach": "Land, Wasser, Strand",
+    "mastermind": "Mastermind",
+    "hamster_wheel": "Hamsterrad",
+    "labyrinth": "Labyrinth"
   },
   "score": {
-    "monkeybars": "{score} Stangen",
-    "nervespiral": "{score} Sekunden",
-    "tickettwist": "{score} Tickets",
-    "minefield": "{score} Sekunden",
-    "tablesurfing": "{score} Sekunden"
-  },
-  "leadstory": {
-    "monkeybars": "Kann dein Team bei der Rettung von Menschen helfen, die in einem defekten Riesenrad feststecken? Das Klettern auf einem Riesenrad kann herausfordernd sein, und es ist wichtig, die Bedeutung des Mitführens von Erste-Hilfe-Materialien zu beachten. Bringe dein Team auf die andere Seite und rette diese hilflosen Menschen in Not.",
-    "nervespiral": "Während du geduldig auf deinen Platz in der Schlange für die nächste Fahrt wartest, tritt plötzlich ein Stromausfall auf. Keine Panik nötig. Kann dein Team geschickt mit dieser unerwarteten Situation umgehen und die Schlange sicher verlassen, ohne einen Stromschlag zu erleiden? Bleibt ruhig und vertraut darauf, dass dein Team die Herausforderung mit Besonnenheit und Anmut meistern kann.",
-    "tickettwist": "Die Leute stehen in der Schlange, um ihre Eintrittskarten zu erhalten. Kann dein Team mit der Geschwindigkeit und dem Stress umgehen, der an der Kasse aufkommt? Dieses Spiel kombiniert schnelles Denken, Ausdauer, Geschwindigkeit und Teamarbeit. Bleibt konzentriert und dreht möglichst viele Tickets in die Farbe eures Teams um. Seid ihr bereit für die Herausforderung?",
-    "minefield": "Dein Team steht vor einer schwierigen Situation, bei der es auf die andere Seite gelangen muss und gleichzeitig auf wilden Tieren achtgeben muss, die entkommen sind. Das Ziel ist es, das Ziel zu erreichen, ohne von diesen Tieren angegriffen zu werden.",
-    "tablesurfing": "Die Gleise der Eisenbahn sind beschädigt, was ein ernsthaftes Problem verursacht. Dein Team kann diese Situation jedoch bewältigen, indem es als Team zusammenarbeitet. Kombiniert eure Fähigkeiten, koordiniert eure Aktionen und findet einen Weg, den Zug reibungslos in Bewegung zu halten."
+    "monkey_bars": "{score} Stangen",
+    "nerve_spiral": "{score} Sekunden",
+    "ticket_twist": "{score} Tickets",
+    "mine_field": "{score} Sekunden",
+    "table_surfing": "{score} Sekunden"
   },
   "explanation": {
-    "monkeybars": "Spieler eins beginnt, die Monkeybars so weit wie möglich zu erklimmen. Sobald er die 12. Stange erreicht hat, kann der nächste Spieler von vorne beginnen.\n\nBeispiel: Spieler eins hat als Letzter die 26. Stange berührt, daher beträgt seine Punktzahl 26 Punkte. Spieler zwei ist an der 18. Stange gefallen, daher beträgt seine Punktzahl 18 Punkte. Die Punktzahlen aller Spieler werden addiert und durch die Gesamtzahl der Spieler im Team geteilt. Das ergibt die Gesamtpunktzahl deines Teams.",
-    "nervespiral": "Wenn das Startsignal ertönt, können die ersten beiden Spieler zur Nervenspirale gehen. Beide nehmen eine Seite des Metallrings und versuchen, bis zur ersten Checkpoint zu gelangen, ohne das Rohr zu berühren.\n\nSobald die beiden Spieler einen Checkpoint erreicht haben, kehren sie zurück, und zwei neue Spieler betreten das Spiel. Wenn diese beiden Spieler die Nervenspirale berühren, kehren sie zum Team zurück, und zwei neue Spieler setzen ab dem letzten Checkpoint fort. Ihr setzt dies fort, bis ihr das Ende der Nervenspirale erreicht habt. Das Team, das zuerst fertig wird, gewinnt.",
-    "tickettwist": "Für dieses Spiel müssen alle teilnehmenden Spieler ein Band in der Farbe ihres Teams tragen. Je zehn Spieler pro Team treten auf dem Spielfeld gegeneinander an. Das Ziel dieses Spiels ist es, so viele Kacheln wie möglich in die Farbe deines Teams zu drehen. Die Spieler auf dem Spielfeld können so oft wechseln, wie sie möchten, solange der neue Spieler ein Band des 'alten' Spielers erhält und dann das Spiel fortsetzen kann. Das Spiel besteht aus einer Runde von 8 Minuten. Wenn die Zeit abgelaufen ist, verlassen alle Spieler das Spielfeld, und die Kacheln werden nach Farben gezählt. Das Team, das die meisten Kacheln in seine Farbe gedreht hat, gewinnt das Spiel.",
-    "minefield": "Dieses Spiel findet auf einem großen Feld mit kleinen Abschnitten statt. Jedes Team hat zwei Kapitäne an der Seitenlinie, die die Spieler ohne die Verwendung von Handys oder anderen Hilfsmitteln durch den Parcours führen. Spieler eins beginnt und versucht, durch das Feld zu gehen, ohne in ein falsches Feld zu treten. Um festzustellen, ob du dich in einem richtigen oder falschen Feld befindest, benutzt du ein Piepgerät in jedem Feld. Wenn das Piepgerät Alarm schlägt, bist du in einem falschen Feld und musst den Spieler gegen einen neuen Spieler austauschen. Jeder Spieler überprüft jedes Feld, selbst wenn du zu 100% sicher bist, dass es keine Mine ist. Die Kapitäne helfen dabei, sich an den richtigen Weg zu erinnern. Ihr geht weiter, bis ihr das Ziel erreicht habt, und dann wird die Zeit gestoppt. Das Team mit der schnellsten Zeit gewinnt das Spiel.",
-    "tablesurfing": "Das Ziel dieses Spiels ist es, eine Person auf der anderen Seite der Strecke auf dem Flamingo über rollende Personen zu bringen. Mit deinem Team musst du mehrere Runden drehen und versuchen, zu verhindern, dass die Person oben auf den Boden fällt. Am Ende der Strecke findest du eine Steigung. Sobald die Jungen die Steigung erklommen haben, ertönt die Glocke und die Teams wechseln. Das zweite Team (Mädchen) legt die gleiche Strecke auf dem Rückweg aus, indem es die Steigung hinunterfährt und alle Kurven umrundet. Das Team, das als erstes die Ziellinie überquert, gewinnt."
+    "iron_grip": "Im Wettbewerb 'Eisengriff' treten neun Teilnehmer gegeneinander an, um zu sehen, wer am längsten an einem Gerüst hängen kann, innerhalb einer Zeitspanne von zehn Minuten. Alle Teilnehmer beginnen gleichzeitig zu hängen, mit den Handflächen nach vorne, wenn der Countdown beginnt. \n\nEin Schiedsrichter, der als Schiedsrichter (a) bezeichnet wird, ist für das Stoppen und Starten der Uhr verantwortlich. Die Uhr stoppt, wenn alle neun Teilnehmer an ihrem Platz sind und am Gerüst hängen, und sie startet erneut, sobald jemand loslässt. Ein anderer Schiedsrichter, Schiedsrichter (b), überwacht die gesamte verfügbare Zeit von zehn Minuten. \n\nTeilnehmer können mit Teamkollegen wechseln, die in der Nähe warten, bereit, die Leiter hinaufzuklettern und zu übernehmen. Es gibt keine Beschränkungen für die Anzahl der Wechsel oder wie oft ein Teilnehmer hängen kann. Der Wettbewerb dreht sich darum, in der vorgegebenen Zeitspanne von zehn Minuten so viel Zeit wie möglich hängend am Gerüst zu verbringen.",
+    "land_water_beach": "Dieser Posten ist ein Reaktionsposten, bei dem Teams gegeneinander antreten. Zehn Teilnehmer jedes Teams beginnen in der Zone in der Mitte.\nIn dieser Herausforderung erhält das Team, bei dem alle 10 Teilnehmer am schnellsten in die richtige Zone wechseln, einen Punkt. Bei gleicher Reaktionszeit erhalten beide Teams einen Punkt. Es ist daher entscheidend, schnell zu reagieren und sich in die richtige Zone zu bewegen. Falsche Bewegungen führen dazu, dass das andere Team einen Punkt erhält. Nach drei Signalen werden die zehn Teilnehmer durch zehn neue Teilnehmer aus dem Team ersetzt. Dies wird über drei Runden wiederholt.\nDie Reaktionszeit ist entscheidend, um zu gewinnen.",
+    "mastermind": "Der Posten ist inspiriert vom Konzept des Spiels Mastermind.\n\nDas Team muss einen Farbcode lösen, der in einer Box versteckt ist. Fünf Teilnehmer werden als Codeknacker bestimmt, während der Rest des Teams als Farbsteine fungiert.\n\nCodeknacker platzieren ihre Lösungen auf dem Spielbrett und kontaktieren dann den Schiedsrichter. Der Schiedsrichter platziert 'Antwortstifte' in der Box neben jeder Reihe. Diese Stifte zeigen an, wie viele Farben die richtige Farbe und korrekt platziert sind (rot) und wie viele Farben die richtige Farbe, aber nicht korrekt platziert sind (weiß) im Vorschlag der Codeknacker.",
+    "labyrinth": "Bei diesem Posten wird das Team herausgefordert, zusammenzuarbeiten, indem sie eine Kugel durch ein Labyrinth auf einer Platte navigieren.\nDer Schiedsrichter startet das Spiel, indem er die Kugel auf den Startpunkt legt und den Timer startet. Es gibt drei Kontrollpunkte auf dem Brett, und alle Spieler wechseln an jedem Kontrollpunkt mit neuen 12 Spielern, sodass insgesamt 36 Personen spielen können.\nWenn das Labyrinth abgeschlossen ist oder die Zeit abgelaufen ist, legen die Teilnehmer das Brett ruhig auf den Boden.",
+    "hamster_wheel": "Bei diesem Posten treten 2 Teams gegeneinander in ihren jeweiligen 'Hamsterrädern' an. Das Team, das den Parcours am schnellsten durchläuft, ohne außerhalb des Rades zu treten, gewinnt. Es wird eine Runde gespielt, aber alle Teilnehmer werden nach 1 Runde ausgetauscht. Der erste, der nach 2 Runden das Ziel erreicht, gewinnt. Die Zeit, die die Teams verwenden, wird auch in die Anzahl der Punkte eingerechnet, die sie am Posten erhalten."
+  },
+  "points": "Punkte",
+  "pointexplenation": {
+    "iron_grip": "Die Punkte werden nach dem Wettbewerb basierend darauf vergeben, wer am längsten hängen konnte. Als Schiedsrichter (a) ist es deine Aufgabe, die Zeit zu notieren, wenn alle 9 Teilnehmer gleichzeitig hängen.",
+    "labyrinth": "Punkte werden basierend auf der Anzahl der erreichten Kontrollpunkte und der Zeit für die Fertigstellung des Labyrinths vergeben.",
+    "mastermind": "Die Punkte werden basierend auf der Anzahl der Runden vergeben, die das Team benötigt, um den Farbcode zu lösen.",
+    "land_water_beach": "Das Team erhält einen Punkt für jedes gewonnene Signal. Beide Teams erhalten einen Punkt, wenn sie gleich schnell sind.",
+    "hamster_wheel": "Punkte werden basierend darauf vergeben, ob das Team gewinnt und der Zeit, die sie für die Runde benötigt haben."
+  },
+  "category": {
+    "iron_grip": "Stärke",
+    "labyrinth": "Zusammenarbeit",
+    "mastermind": "Logik",
+    "land_water_beach": "Reaktion",
+    "hamster_wheel": "X-Faktor"
   },
   "rules": {
-    "monkeybars": "Alle Mitglieder des Teams nehmen teil",
-    "nervespiral": "30 - 50 Teammitglieder nehmen teil (in 15-25 Paaren)",
-    "tickettwist": "Nur die Personen mit einem Teamband dürfen das Spielfeld betreten (10 pro Team)|Es ist erlaubt, die Teilnehmer beliebig oft zu wechseln, solange sie beim Betreten des Spielfelds ein Teamband tragen",
-    "minefield": "Etwa 30 Teammitglieder nehmen teil|Es ist nur eine Person gleichzeitig auf dem Parcours erlaubt|2 Teamkapitäne führen die Teilnehmer durch den Parcours|Die Teamkapitäne dürfen keine Hilfsmittel verwenden, um sich an die Route zu erinnern",
-    "tablesurfing": "16 Jungen und 16 Mädchen nehmen teil, 1 Surfer und 15 Rollende|Es ist nicht erlaubt, den Boden zu berühren (sowohl der Surfer als auch die Rollenden)|Die Hindernisse dürfen nicht bewegt werden, und die Rollenden dürfen das markierte Gebiet nicht verlassen"
+    "iron_grip": "• Die Teilnehmer müssen mit den Handflächen nach vorne hängen\n• Die Zeit wird von Schiedsrichter (a) gestoppt, wenn nicht alle neun Teilnehmer gleichzeitig hängen.",
+    "labyrinth": "Das Spiel beginnt, wenn der Schiedsrichter die Kugel auf das Brett gelegt hat.\n• 12 Personen müssen während des Spiels um das Brett stehen.\n• Es ist nicht erlaubt, die Kugel mit den Händen zu berühren, wenn sie sich auf dem Brett befindet, noch unter dem Labyrinth durchzukriechen, während das Spiel läuft, es sei denn, die Kugel fällt durch ein Loch.\n• Wenn die Kugel in ein Loch fällt, muss sie aufgehoben und zum vorherigen Kontrollpunkt oder Startpunkt zurückgelegt werden.\n• Die Kugel muss immer auf dem Brett bleiben und es ist nicht erlaubt, die Kugel hochzuwerfen, um Hindernisse zu überwinden.\n• Für jeden erreichten Kontrollpunkt müssen alle 12 Teilnehmer durch 12 neue ersetzt werden.",
+    "land_water_beach": "Sie müssen schnell auf drei verschiedene Signale reagieren:\n• Gelbes Signal: Stillstehen wie ein Strand.\n• Grünes Signal: Rückwärts in die 'Land'-Zone bewegen.\n• Blaues Signal: Vorwärts in die 'Wasser'-Zone bewegen.",
+    "mastermind": "• Das Team hat 10 Minuten, um den Farbcode zu lösen.\n• Nur die ernannten Codeknacker dürfen die Steine setzen und Lösungen vorschlagen.\n• Das Team informiert den Hauptschiedsrichter, wenn sie ihre Antwort abgegeben haben.",
+    "hamster_wheel": "Teams haben jeweils 15-20 Teilnehmer im Hamsterrad.\n• Es gibt eine +10 Sekunden Strafe, wenn das Team außerhalb des Rades tritt.\n• Das gesamte Team von 15 wird nach 1 Runde durch 15 neue Teilnehmer ersetzt.\n• Das gesamte Rad muss über der Linie sein, um den Wechsel zu ermöglichen.\nDas gesamte Rad muss über der Linie sein, damit die Zeit gestoppt wird."
   },
-  "general_error": "Etwas ist schiefgelaufen",
-  "pleaserefresh": "Bitte versuche die Seite neu zu laden",
-  "points": "Punkte",
+  "general_error": "Etwas ist schief gelaufen",
+  "pleaserefresh": "Versuche die Seite zu aktualisieren",
   "coins": "Münzen",
   "game": "Spiel",
   "team1team2": "Team 1 / Team 2",
@@ -52,115 +59,50 @@
   "rulestitle": "Regeln",
   "login": {
     "login_button": "Anmelden",
-    "teamcode": "Team-Code",
-    "teamcode_invalid": "Entschuldigung, dein Team-Code ist ungültig"
+    "teamcode": "Teamcode",
+    "teamcode_invalid": "Entschuldigung, dein Teamcode ist ungültig"
   },
   "league": {
-    "rankingisempty": "Kein Team hat bisher Punkte registriert. Schau nach der ersten Runde hier wieder vorbei.",
-    "viewgamerankings": "Zeige Rangliste für jedes Spiel an",
-    "viewgamerankings-title": "Sie können die Rangliste pro Spiel auf den Detailseiten des Spiels anzeigen.",
+    "rankingisempty": "Es wurden noch keine Punkte erzielt. Schau nach der ersten Runde wieder vorbei.",
+    "viewgamerankings": "Rangliste für jedes Spiel anzeigen",
+    "viewgamerankings-title": "Du kannst die Ranglisten pro Spiel auf den Spieldetailseiten sehen.",
     "ranking-frozen": "Die Rangliste ist jetzt eingefroren, bis die Gewinner bekannt gegeben werden"
   },
   "admin": {
     "select_league": {
-      "intro": "Wähle die Liga aus, die du verwalten möchtest"
-    }
+      "intro": "Wähle deine Zone"
+    },
+    "select_game": {
+      "intro": "Wähle welches Spiel du bewertest"
+    },
+    "intro": "Frage, welches Team sie sind und stelle sicher, dass das richtige Team am richtigen Ort ist und dass es mit dem Team übereinstimmt, das oben steht."
   },
   "yourmatch": "Dein Spiel",
-  "sidequest": {
-    "thanks": "Vielen Dank, deine Antwort wurde registriert",
-    "timeranout": "Die Zeit ist abgelaufen, beim nächsten Mal klappt es vielleicht besser",
-    "areyouready": "Bist du bereit?",
-    "checkanswerlater": "Überprüfe die Antwort, wenn das Spiel vorbei ist",
-    "question_locked": "Abgelaufen",
-    "youhaveunsubmittedanswers": "Du hast {numAnswers} Antworten. Möchtest du sie jetzt senden?",
-    "submityouranswers": "Sende deine Antworten",
-    "gameroundtitle": "Runde {round}",
-    "back_to_overview": "Zurück zur Übersicht",
-    "alreadyAnswered": "Du hast diese Frage bereits beantwortet",
-    "noroundyet": "Noch nicht verfügbar. Komm nach dem Match zurück.",
-    "submitfailed": "Das Abschicken deiner Antworten hat nicht geklappt. Stell sicher, dass du eine Verbindung hast und probiere es erneut",
-    "no_coins": "Du hast keine Münzen mehr übrig. Du kannst keine weiteren Fragen beantworten",
-    "explanation": "Erklärung",
-    "explanation_text": "Nach jedem Match, außer dem letzten, werden 2 Fragen in zufälliger Reihenfolge freigeschaltet, insgesamt also 8 Fragen. Sie haben 10 Minuten Zeit, um sie zu beantworten, bis das nächste Match beginnt.\nSie haben insgesamt 8 Münzen. Jede Frage, die Sie beginnen, kostet eine Münze, auch wenn Sie sie nicht beantworten. Also, wenn Sie dieselbe Frage erneut versuchen, müssen Sie eine andere Frage überspringen.\nSobald Sie eine Frage beantwortet haben, können Sie sie nicht erneut beantworten.\n\nIhr Team erhält Bonuspunkte basierend darauf, wie viele Mitglieder Ihres Teams eine richtige Antwort für jede Frage einsenden.\nKommen Sie nach jedem Match zurück, um mehr Punkte für Ihr Team zu verdienen!",
-    "questiontypes": {
-      "math": "Mathe",
-      "knowledge": "Wissen",
-      "recognize": "Erkennen",
-      "insight": "Einsicht",
-      "remember": "Erinnern",
-      "guess": "Raten"
-    }
-  },
-  "questions": {
-    "guesshowmany1": {
-      "q": "Wie viele Stunden wurde Fra Kåre in diesem Jahr gehört?",
-      "intro": "Hast du Fra Kåre in diesem Jahr gehört?"
-    },
-    "guesshowmany2": {
-      "q": "Wie viele Personen haben die Camps im Jahr 2023 besucht?",
-      "intro": "Bist du gut im Zählen?"
-    },
-    "remember": {
-      "q": "Was ist die richtige Reihenfolge der Tanzbewegungen von Herman Shuffle?",
-      "intro": "Hast du heute Morgen dazu getanzt?",
-      "a": {
-        "lwd": "Lean, Wave, Drift",
-        "wld": "Wave, Lean, Drift",
-        "ldw": "Lean, Drift, Wave",
-        "wdl": "Wave, Drift, Lean"
-      }
-    },
-    "insight": {
-      "q": "Welcher Achterbahnwagen wird als erster unten ankommen?",
-      "intro": "Schau dir das Bild an. Welcher Achterbahnwagen wird als erster unten ankommen?",
-      "a": {
-        "red": "Rot",
-        "green": "Grün",
-        "yellow": "Gelb",
-        "sametime": "Sie kommen gleichzeitig unten an"
-      }
-    },
-    "recognize1": {
-      "q": "Erkennst du oder erinnerst du dich, wer das ist?",
-      "intro": "Wissen Sie, wen wir auf diesem Bild (nicht) sehen?",
-      "a": {
-        "opta": "Gershon Twilley",
-        "optb": "Harald Kronstad",
-        "optc": "Gunnar Gangsø",
-        "optd": "Bernt-Aksel Larsen"
-      }
-    },
-    "recognize2": {
-      "q": "Kannst du dich daran erinnern, wer diese Person ist?",
-      "intro": "Hast du die Projekte in diesem Jahr verfolgt? Schau dir das Bild an.",
-      "a": {
-        "peter": "Peter",
-        "john": "Johannes",
-        "matthew": "Matthäus",
-        "paul": "Paulus"
-      }
-    },
-    "math": {
-      "q": "Welche Zahl sollte im Fragezeichen stehen?",
-      "intro": "Schau dir das Bild an. Welche Zahl sollte im Fragezeichen stehen?",
-      "a": {
-        "30": "30",
-        "81": "81",
-        "200": "200",
-        "67": "67"
-      }
-    },
-    "knowledge": {
-      "q": "In welchem Land hat BCC keine Kirche?",
-      "intro": "Woher kommst du?",
-      "a": {
-        "singapore": "Singapur",
-        "serbia": "Serbien",
-        "japan": "Japan",
-        "peru": "Peru"
-      }
-    }
-  },
-  "back": "Zurück"
+  "back": "Zurück",
+  "teamName": "Team",
+  "family": "Familie",
+  "familyBalance": "Familienguthaben",
+  "results": "Ergebnisse für dieses Spiel",
+  "pointstitle": "Punkte",
+  "categorytitle": "Kategorie",
+  "loading": "Laden...",
+  "match-list": "Spielübersicht",
+  "no-matches-for-this-filter": "Keine Spiele für diesen Filter",
+  "please_refresh": "Bitte aktualisieren",
+  "something-went-wrong": "Bitte aktualisieren Sie die Seite",
+  "league-status": "Ligastatus",
+  "something-went-wrong-we-could-not-log-you-in-please-try-again": "Etwas ist schief gelaufen, wir konnten dich nicht anmelden - bitte versuche es erneut.",
+  "point": "Punkt",
+  "calculated-score": "Berechnete Punktzahl",
+  "save": "Speichern",
+  "saved": "Gespeichert",
+  "points-registration-error": "Berechnetes Ergebnis ergab undefined. Das Formular ist ungültig, obwohl es eingereicht werden kann. Möglicherweise fehlt eine Validierung des Formularfelds.",
+  "couldnt-load-the-video": "Video konnte nicht geladen werden",
+  "details": "Details",
+  "total-nr-of-bars": "Gesamtanzahl der Stangen",
+  "nr-of-participants": "Anzahl der Teilnehmer",
+  "team": "Team",
+  "minutes": "Minuten",
+  "seconds": "Sekunden",
+  "penalty-points": "Strafpunkte"
 }

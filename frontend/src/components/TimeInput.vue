@@ -5,7 +5,7 @@
       type="number"
       v-model="minutes"
       @input="updateTotal"
-      :placeholder="'Minutes'"
+      :placeholder="$t('minutes')"
     />
     <span>&nbsp;:&nbsp;</span>
     <input
@@ -13,7 +13,7 @@
       type="number"
       v-model="seconds"
       @input="updateTotal"
-      :placeholder="'Seconds'"
+      :placeholder="$t('seconds')"
     />
   </div>
 </template>

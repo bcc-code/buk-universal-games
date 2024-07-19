@@ -3,7 +3,7 @@
     <form @submit.prevent="submitForm">
       <div class="flex justify-evenly">
         <div class="mb-4">
-          Poeng {{ match.team1 }}:
+          {{ $t(`point`) }} {{ match.team1 }}:
           <br />
 
           <input
@@ -12,15 +12,15 @@
             v-model="pointsTeam1"
             min="0"
             max="9"
-            :placeholder="'Poeng'"
+            :placeholder="$t(`point`)"
             required
           />
           <div v-if="calculatedResult">
-            Beregnet score: {{ calculatedResult.team1Result }}
+            {{ $t(`calculated-score`) }} {{ calculatedResult.team1Result }}
           </div>
         </div>
         <div class="mb-4">
-          Poeng {{ match.team2 }}:
+          {{ $t(`point`) }} {{ match.team2 }}:
           <br />
           <input
             class="shadow-md border-solid border-2 border-slate-200 rounded-md w-36"
@@ -28,11 +28,11 @@
             v-model="pointsTeam2"
             min="0"
             max="9"
-            :placeholder="'Poeng'"
+            :placeholder="$t(`point`)"
             required
           />
           <div v-if="calculatedResult">
-            Beregnet score: {{ calculatedResult.team2Result }}
+            {{ $t(`calculated-score`) }} {{ calculatedResult.team2Result }}
           </div>
         </div>
       </div>
@@ -42,7 +42,7 @@
         class="btn-success btn-blank h-14 p-4"
         :is-loading="isPending"
       >
-        Lagre
+      {{ $t(`save`) }}
       </LoadingButton>
     </form>
   </div>
@@ -51,7 +51,7 @@
     <div class="alert alert-error block">{{ error.message }}</div>
   </div>
   <div class="toast toast-center toast-bottom pb-24 z-20" v-if="showSuccess">
-    <div class="alert alert-success block">Lagret</div>
+    <div class="alert alert-success block">{{ $t(`saved`) }}</div>
   </div>
 </template>
 
@@ -123,7 +123,7 @@ const {
 const submitForm = () => {
   if (!calculatedResult.value)
     throw Error(
-      'CalculatedResult returned undefined. The form is invalid even if it can be submitted. You might be missing some validation on the form fields.',
+      "$t('points-registration-error')",
     );
 
   const matchId = props.match.matchId;
