@@ -6,7 +6,7 @@
         <button
           type="button"
           class="btn multiselect-button shadow-md"
-          :class="labyrinthCount === 2 ? 'btn-success' : ''"
+          :class="labyrinthCount === 2 ? selectedButton : ''"
           @click="labyrinthCount = 2"
         >
           Ja
@@ -14,7 +14,7 @@
         <button
           type="button"
           class="btn multiselect-button shadow-md"
-          :class="labyrinthCount === 1 ? 'btn-success' : ''"
+          :class="labyrinthCount === 1 ? selectedButton : ''"
           @click="labyrinthCount = 1"
         >
           Nei
@@ -37,7 +37,7 @@
           <button
             type="button"
             class="btn multiselect-button shadow-md"
-            :class="finished[index - 1] === true ? 'btn-success' : ''"
+            :class="finished[index - 1] === true ? selectedButton : ''"
             @click="finished[index - 1] = true"
           >
             Ja
@@ -45,7 +45,7 @@
           <button
             type="button"
             class="btn multiselect-button shadow-md"
-            :class="finished[index - 1] === false ? 'btn-success' : ''"
+            :class="finished[index - 1] === false ? selectedButton : ''"
             @click="finished[index - 1] = false"
           >
             Nei
@@ -59,7 +59,7 @@
           <button
             type="button"
             class="btn multiselect-button shadow-md"
-            :class="checkpoints[index - 1] === 0 ? 'btn-success' : ''"
+            :class="checkpoints[index - 1] === 0 ? selectedButton : ''"
             @click="checkpoints[index - 1] = 0"
           >
             0
@@ -67,7 +67,7 @@
           <button
             type="button"
             class="btn multiselect-button shadow-md"
-            :class="checkpoints[index - 1] === 1 ? 'btn-success' : ''"
+            :class="checkpoints[index - 1] === 1 ? selectedButton : ''"
             @click="checkpoints[index - 1] = 1"
           >
             1
@@ -75,7 +75,7 @@
           <button
             type="button"
             class="btn multiselect-button shadow-md"
-            :class="checkpoints[index - 1] === 2 ? 'btn-success' : ''"
+            :class="checkpoints[index - 1] === 2 ? selectedButton : ''"
             @click="checkpoints[index - 1] = 2"
           >
             2
@@ -120,7 +120,7 @@ import { timeToNumber, type TimeType } from './TimeType';
 import TimePicker from './TimePicker.vue';
 import { clamp, floatToInt, lerp } from './mathHelpers';
 import LoadingButton from '@/components/LoadingButton.vue';
-
+const selectedButton = "btn-accent shadow-none text-white"
 const props = defineProps<{
   match: MatchListItemEntity;
 }>();

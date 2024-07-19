@@ -7,7 +7,7 @@
           <button
             type="button"
             class="btn multiselect-button shadow-md"
-            :class="guessedAllColors === true ? 'btn-success' : ''"
+            :class="guessedAllColors === true ? selectedButton: ''"
             @click="guessedAllColors = true"
           >
             Ja
@@ -15,7 +15,7 @@
           <button
             type="button"
             class="btn multiselect-button shadow-md"
-            :class="guessedAllColors === false ? 'btn-success' : ''"
+            :class="guessedAllColors === false ? selectedButton: ''"
             @click="guessedAllColors = false"
           >
             Nei
@@ -31,7 +31,7 @@
             class="btn multiselect-button shadow-md m-2"
             v-for="turn in 8"
             :key="turn"
-            :class="turnsTaken === turn ? 'btn-success' : ''"
+            :class="turnsTaken === turn ? selectedButton: ''"
             @click="turnsTaken = turn"
           >
             {{ turn }}
@@ -48,7 +48,7 @@
             class="btn multiselect-button shadow-md m-2"
             v-for="color in 5"
             :key="color"
-            :class="correctColors === color - 1 ? 'btn-success' : ''"
+            :class="correctColors === color - 1 ? selectedButton: ''"
             @click="correctColors = color - 1"
           >
             {{ color - 1 }}
@@ -88,7 +88,7 @@ import LoadingButton from '@/components/LoadingButton.vue';
 const props = defineProps<{
   match: MatchListItemEntity;
 }>();
-
+const selectedButton = "btn-accent shadow-none text-white"
 const guessedAllColors = ref<boolean | undefined>(undefined);
 const turnsTaken = ref<number | undefined>(undefined);
 const correctColors = ref<number | undefined>(undefined);
