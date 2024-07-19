@@ -2,7 +2,7 @@
   <div class="">
     <div class="dropdown" :class="{ open: isOpen }">
       <div
-        class="bg-white rounded-md p-2 btn shadow-md locale-changer"
+        class="bg-vanilla rounded-md p-1 align-middle shadow-md"
         @click="toggleDropdown(null)"
       >
         {{ store.userLanguage.toUpperCase() }}
@@ -131,9 +131,5 @@ onUnmounted(() => {
 
 .dropdown-item:hover {
   background-color: #f2f2f2;
-}
-.locale-changer {
-  background-color: #f8fafc;
-  border: solid 2px #e2e8f0;
 }
 </style>

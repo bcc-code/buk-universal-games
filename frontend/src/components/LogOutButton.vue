@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-white rounded-md p-2 btn shadow-md" @click="logout">
-    <ArrowRightStartOnRectangleIcon class="h-5 text-label-1" />
+  <div class="bg-vanilla rounded-md p-2 align-middle justify-center shadow-md" @click="logout">
+    <ArrowRightStartOnRectangleIcon class="h-4 text-label-1" />
   </div>
 </template>
 

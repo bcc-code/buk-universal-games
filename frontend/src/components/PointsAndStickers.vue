@@ -1,8 +1,17 @@
 <template>
   <section
-    class="bg-white p-6 border border-gray-200 flex items-center justify-between w-full rounded-md shadow-sm"
+    class="bg-white border border-gray-200 items-center justify-between w-full rounded-md shadow-sm"
   >
-  <img src="/icon/ubg_logo.svg" class="h-16 w-16 rounded-md" />
+  <div class="flex w-full justify-end space-y-2">
+    <div class="mx-auto justify-center">
+      <img src="/icon/ubg_logo.svg" class="h-16 w-16 rounded-md" />
+    </div>
+    <div class="absolute top-10 right-10 flex space-x-1">
+      <LanguageSwitcher  />
+      <LogOutButton  />
+    </div>
+  </div>
+  <div class="flex mx-auto  justify-evenly w-full pb-3">
     <div class="flex space-x-4 items-start justify-evenly w-full">
       <div>
         <p class="text-xs uppercase text-red-500">{{ $t('team') }}</p>
@@ -19,10 +28,7 @@
         </p>
       </div>
     </div>
-    <div class="flex flex-col items-center space-y-2">
-      <LanguageSwitcher />
-      <LogOutButton />
-    </div>
+  </div>
   </section>
 </template>
 

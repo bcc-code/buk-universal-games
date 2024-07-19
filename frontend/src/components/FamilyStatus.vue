@@ -23,7 +23,8 @@
           class="mb-8"
         >
           <div class="bg-white p-6 rounded-lg border border-slate">
-            <div class="flex items-center space-x-4 justify-between mb-4">
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex space-x-1" >
               <div class="h-8 w-8 ml-3">
                 <img
                   v-if="familyIndex === 0"
@@ -40,24 +41,25 @@
                   src="/image/3_place.png"
                   alt="Bronze Medal"
                 />
-                <div v-else class="text-2xl font-bold text-gray-500 h-8 w-8">
+                <div v-else class="text-xl font-bold text-gray-500 h-8 w-8">
                   {{ familyIndex + 1 }}
                 </div>
               </div>
               <div class="flex items-center space-x-2">
-                <img
+               <!--<img
                   :src="'/image/mafia_family.png'"
                   alt="Family Icon"
-                  class="w-12"
-                />
+                  class="w-8"
+                />--> 
                 <h2
-                  class="text-2xl font-bold"
+                  class="text-xl font-bold pt-1"
                   :style="{ color: family.color ?? '#000000' }"
                 >
                   {{ family.name }}
                 </h2>
               </div>
-              <div class="text-2xl font-bold text-gray-700">
+              </div>
+              <div class="text-xl font-bold text-gray-700">
                 {{ formatPoints(family.points) }}
               </div>
             </div>
