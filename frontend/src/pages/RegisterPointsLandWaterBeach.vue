@@ -42,7 +42,7 @@
         class="btn-success btn-blank h-14 p-4"
         :is-loading="isPending"
       >
-      {{ $t(`save`) }}
+        {{ $t(`save`) }}
       </LoadingButton>
     </form>
   </div>
@@ -61,6 +61,7 @@ import { useConfirmBothTeamResults } from '@/hooks/hooks';
 import type { MatchListItemEntity } from './MatchListItemEntity';
 import { floatToInt, lerp } from './mathHelpers';
 import LoadingButton from '@/components/LoadingButton.vue';
+import { useI18n } from 'vue-i18n';
 
 const props = defineProps<{
   match: MatchListItemEntity;
@@ -119,12 +120,9 @@ const {
   isPending,
   error,
 } = useConfirmBothTeamResults();
-
+const { t } = useI18n();
 const submitForm = () => {
-  if (!calculatedResult.value)
-    throw Error(
-      "$t('points-registration-error')",
-    );
+  if (!calculatedResult.value) throw Error(t('points-registration-error'));
 
   const matchId = props.match.matchId;
 
