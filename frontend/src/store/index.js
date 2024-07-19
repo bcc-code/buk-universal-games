@@ -241,17 +241,6 @@ export default function (...plugins) {
           return 'failed';
         }
       },
-      async getAdminLeagueStatus(ctx) {
-        if (!ctx.state.adminLeagueSelected) return;
-
-        let leagueStatus = await getData(
-          store,
-          'admin/leagues/' + ctx.state.adminLeagueSelected + '/status',
-        );
-
-        ctx.commit('setAdminLeagueStatus', leagueStatus);
-        return leagueStatus;
-      },
       async getAdminLeagues(ctx) {
         const leagues = await getData(store, 'admin/leagues/');
         ctx.commit('setAdminLeagues', leagues);
