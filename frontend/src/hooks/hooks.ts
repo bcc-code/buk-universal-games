@@ -68,7 +68,6 @@ export const useAdminMatches = (leagueId: number) => {
           'x-ubg-teamcode': teamCode,
         },
       });
-      console.log(responseMatches)
       return responseMatches;
     },
   });
