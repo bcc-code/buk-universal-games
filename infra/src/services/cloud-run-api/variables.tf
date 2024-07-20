@@ -16,7 +16,7 @@ variable "service-name" {
 }
 variable "max-scale" {
   type    = string
-  default = "10"
+  default = "50"
 }
 
 variable "sql-instance-connection-name" {
