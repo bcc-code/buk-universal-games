@@ -81,7 +81,13 @@ namespace Buk.UniversalGames.Data
             {
                 var cacheKeys = await GetCacheKeys();
                 foreach (var cacheKey in cacheKeys)
-                    await _cache.RemoveAsync(cacheKey);
+                {
+                    if (cacheKey != StatusController.FrozenCacheKey)
+                    {
+                        await _cache.RemoveAsync(cacheKey);
+                    }
+                }
+
                 await _cache.RemoveAsync("CacheKeys");
                 return true;
             });

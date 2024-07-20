@@ -69,6 +69,7 @@ public class StatusController : ControllerBase
         return "LeagueStatus_leagueId_" + leagueId;
     }
     public static string FamilyStatusCacheKey => "FamilyStatusCacheKey";
+    public static string FrozenCacheKey =>  "FamilyStatusFrozenCacheKey";
 
     [HttpGet("Family")]
     public async Task<ActionResult<FamilyStatusReport>> FamilyStatus()
@@ -81,7 +82,6 @@ public class StatusController : ControllerBase
 
         var now = DateTime.UtcNow;
         bool isFrozen = false;
-        string frozenCacheKey = "FamilyStatusFrozenCacheKey";
 
         var beginAndEnd = hideHighScore.Split("|");
 
@@ -109,7 +109,7 @@ public class StatusController : ControllerBase
 
         if (isFrozen)
         {
-            report = await _cacheContext.Get<FamilyStatusReport>(frozenCacheKey);
+            report = await _cacheContext.Get<FamilyStatusReport>(FrozenCacheKey);
             if (report == null)
             {
                 throw new Exception("Frozen leaderboard data is not available.");
@@ -121,7 +121,7 @@ public class StatusController : ControllerBase
 
             if (hideHighScoreDate > now)
             {
-                await _cacheContext.Set(frozenCacheKey, report);
+                await _cacheContext.Set(FrozenCacheKey, report);
             }
         }
 
