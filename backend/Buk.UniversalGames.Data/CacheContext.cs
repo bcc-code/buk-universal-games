@@ -27,8 +27,8 @@ namespace Buk.UniversalGames.Data
         {
             var expirationOptions = new DistributedCacheEntryOptions
             {
-                AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(250),
-                SlidingExpiration = TimeSpan.FromHours(250)
+                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5),
+                SlidingExpiration = TimeSpan.FromHours(5)
             };
             string setValue = JsonSerializer.Serialize(value);
 
@@ -104,8 +104,8 @@ namespace Buk.UniversalGames.Data
             {
                 var timeOut = new DistributedCacheEntryOptions
                 {
-                    AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(250),
-                    SlidingExpiration = TimeSpan.FromHours(250),
+                    AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5),
+                    SlidingExpiration = TimeSpan.FromMinutes(5),
                 };
 
                 var keysString = String.Join('|', keys.Distinct());
