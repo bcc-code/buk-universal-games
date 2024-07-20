@@ -1,4 +1,4 @@
-using System.Text;
+﻿using System.Text;
 using System.Text.Json;
 using Microsoft.Extensions.Caching.Distributed;
 
@@ -37,10 +37,14 @@ namespace Buk.UniversalGames.Data
                 await _cache.SetStringAsync(key, setValue, expirationOptions);
 
                 var cacheKeys = await GetCacheKeys();
-                cacheKeys.Add(key);
-                await SetCacheKeys(cacheKeys);
+                if (!cacheKeys.Contains(key))
+                {
+                    cacheKeys.Add(key);
+                    await SetCacheKeys(cacheKeys);
+                    
+                    LogSetOperation(key, setValue, cacheKeys);
+                }
 
-                LogSetOperation(key, setValue, cacheKeys);
 
                 return value;
             });
@@ -104,7 +108,7 @@ namespace Buk.UniversalGames.Data
                     SlidingExpiration = TimeSpan.FromHours(250),
                 };
 
-                var keysString = String.Join('|', keys);
+                var keysString = String.Join('|', keys.Distinct());
                 await _cache.SetAsync("CacheKeys", _keysEncoding.GetBytes(keysString), timeOut);
                 return true;
             });
