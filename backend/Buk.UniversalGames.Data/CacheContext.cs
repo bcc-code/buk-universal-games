@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using System.Text.Json;
 using Microsoft.Extensions.Caching.Distributed;
 
@@ -21,7 +21,6 @@ namespace Buk.UniversalGames.Data
                 var value = await _cache.GetStringAsync(key);
                 return value != null ? JsonSerializer.Deserialize<T>(value) : default;
             });
-
         }
 
         public Task<T> Set<T>(string key, T value)
@@ -35,7 +34,6 @@ namespace Buk.UniversalGames.Data
 
             return Retry(async () =>
             {
-
                 await _cache.SetStringAsync(key, setValue, expirationOptions);
 
                 var cacheKeys = await GetCacheKeys();
@@ -46,7 +44,6 @@ namespace Buk.UniversalGames.Data
 
                 return value;
             });
-
         }
 
         private static void LogSetOperation<T>(string key, T value, List<string> cacheKeys)
@@ -61,7 +58,6 @@ namespace Buk.UniversalGames.Data
             }
         }
 
-
         public Task Remove(string key)
         {
             return Retry(async () =>
@@ -73,7 +69,6 @@ namespace Buk.UniversalGames.Data
                 await SetCacheKeys(cacheKeys);
                 return true;
             });
-
         }
 
         public Task Clear()
@@ -86,9 +81,7 @@ namespace Buk.UniversalGames.Data
                 await _cache.RemoveAsync("CacheKeys");
                 return true;
             });
-
         }
-
 
         Task<List<string>> GetCacheKeys()
         {
