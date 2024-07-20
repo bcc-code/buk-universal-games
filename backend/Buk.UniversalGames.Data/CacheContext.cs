@@ -42,9 +42,9 @@ namespace Buk.UniversalGames.Data
                     cacheKeys.Add(key);
                     await SetCacheKeys(cacheKeys);
                     
-                    LogSetOperation(key, setValue, cacheKeys);
                 }
 
+                LogSetOperation(key, setValue, cacheKeys);
 
                 return value;
             });
