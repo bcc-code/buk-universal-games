@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Text.Json;
+using Buk.UniversalGames.Library.Constants;
 using Microsoft.Extensions.Caching.Distributed;
 
 namespace Buk.UniversalGames.Data
@@ -82,7 +83,7 @@ namespace Buk.UniversalGames.Data
                 var cacheKeys = await GetCacheKeys();
                 foreach (var cacheKey in cacheKeys)
                 {
-                    if (cacheKey != StatusController.FrozenCacheKey)
+                    if (cacheKey != CacheKeys.FrozenCacheKey)
                     {
                         await _cache.RemoveAsync(cacheKey);
                     }

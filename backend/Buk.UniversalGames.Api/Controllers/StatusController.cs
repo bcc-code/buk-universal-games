@@ -11,6 +11,7 @@ using Buk.UniversalGames.Data.Models.Internal;
 using Buk.UniversalGames.Data.Repositories;
 using Buk.UniversalGames.Library.Enums;
 using System.Globalization;
+using Buk.UniversalGames.Library.Constants;
 
 namespace Buk.UniversalGames.Api.Controllers;
 
@@ -68,8 +69,6 @@ public class StatusController : ControllerBase
     {
         return "LeagueStatus_leagueId_" + leagueId;
     }
-    public static string FamilyStatusCacheKey => "FamilyStatusCacheKey";
-    public static string FrozenCacheKey =>  "FamilyStatusFrozenCacheKey";
 
     [HttpGet("Family")]
     public async Task<ActionResult<FamilyStatusReport>> FamilyStatus()
@@ -109,7 +108,7 @@ public class StatusController : ControllerBase
 
         if (isFrozen)
         {
-            report = await _cacheContext.Get<FamilyStatusReport>(FrozenCacheKey);
+            report = await _cacheContext.Get<FamilyStatusReport>(CacheKeys.FrozenCacheKey);
             if (report == null)
             {
                 throw new Exception("Frozen leaderboard data is not available.");
@@ -117,11 +116,11 @@ public class StatusController : ControllerBase
         }
         else
         {
-            report = await _validatingCacheService.WriteThrough(FamilyStatusCacheKey, _familyRepository.GetFamilyStatus);
+            report = await _validatingCacheService.WriteThrough(CacheKeys.FamilyStatusCacheKey, _familyRepository.GetFamilyStatus);
 
             if (hideHighScoreDate > now)
             {
-                await _cacheContext.Set(FrozenCacheKey, report);
+                await _cacheContext.Set(CacheKeys.FrozenCacheKey, report);
             }
         }
 
