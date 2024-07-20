@@ -27,7 +27,6 @@ public class GamesController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<List<Game>>> GetGames()
     {
-        // 🧹 this should be cached
         var games = await _gameService.GetGames();
         return games;
     }
