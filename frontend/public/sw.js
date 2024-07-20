@@ -65,35 +65,43 @@ self.addEventListener('install', (e) => {
 
 // Fetch resources from cache or network
 self.addEventListener('fetch', function (event) {
-  event.respondWith(
-    caches.match(event.request).then(function (response) {
-      // Cache hit - return response
-      if (response) {
-        return response;
-      }
+  const url = new URL(event.request.url);
 
-      // Clone the request
-      var fetchRequest = event.request.clone();
-
-      // Fetch request from network
-      return fetch(fetchRequest).then(function (response) {
-        // Check if we received a valid response
-        if (!response || response.status !== 200 || response.type !== 'basic') {
+  if (urlsToCache.includes(url.pathname)) {
+    event.respondWith(
+      caches.match(event.request).then(function (response) {
+        // Cache hit - return response
+        if (response) {
           return response;
         }
 
-        // Clone the response
-        var responseToCache = response.clone();
+        // Clone the request
+        var fetchRequest = event.request.clone();
 
-        // Cache the fetched response
-        caches.open(CACHE_NAME).then(function (cache) {
-          cache.put(event.request, responseToCache);
+        // Fetch request from network
+        return fetch(fetchRequest).then(function (response) {
+          // Check if we received a valid response
+          if (
+            !response ||
+            response.status !== 200 ||
+            response.type !== 'basic'
+          ) {
+            return response;
+          }
+
+          // Clone the response
+          var responseToCache = response.clone();
+
+          // Cache the fetched response
+          caches.open(CACHE_NAME).then(function (cache) {
+            cache.put(event.request, responseToCache);
+          });
+
+          return response;
         });
-
-        return response;
-      });
-    }),
-  );
+      }),
+    );
+  }
 });
 
 // Remove old caches
