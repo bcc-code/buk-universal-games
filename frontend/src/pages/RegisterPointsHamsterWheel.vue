@@ -1,7 +1,7 @@
 <template>
   <div class="p-4 bg-white rounded-md">
     <form @submit.prevent="submitForm">
-      <div class="flex justify-evenly gap-4">
+      <div class="justify-evenly border-t-1 ">
         <div>
           <div class="font-bold">
             {{ match.team1 }}
