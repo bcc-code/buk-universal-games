@@ -13,7 +13,7 @@ namespace Buk.UniversalGames.Data
 
         public async Task<T> WriteThrough<T>(string key, Func<Task<T>> fetchFromDatabase)
         {
-            var validateCache= false;
+            var validateCache = false;
             if (validateCache)
             {
                 // Fetch from database and cache, compare them
@@ -24,7 +24,7 @@ namespace Buk.UniversalGames.Data
                 {
                     if (databaseData == null)
                     {
-                        throw new Exception("database returned null value, we will be refetching this every time the function is run.");
+                        return databaseData;
                     }
                     await _cacheContext.Set(key, databaseData);
                     return databaseData;
@@ -53,7 +53,7 @@ namespace Buk.UniversalGames.Data
                 var databaseData = await fetchFromDatabase();
                 if (databaseData == null)
                 {
-                    throw new Exception("database returned null value, we will be refetching this every time the function is run.");
+                    return databaseData;
                 }
 
                 await _cacheContext.Set(key, databaseData);
