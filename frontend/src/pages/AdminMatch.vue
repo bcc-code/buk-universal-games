@@ -2,9 +2,17 @@
   <AdminPageLayout>
     <BackButton />
 
-    <AdminMatchInfo v-if="match && gameType" :match="match" :gameType="gameType" />
+    <AdminMatchInfo
+      v-if="match && gameType"
+      :match="match"
+      :gameType="gameType"
+    />
 
-    <AdminRegisterPoints v-if="match && gameType" :match="match" :gameType="gameType" />
+    <AdminRegisterPoints
+      v-if="match && gameType"
+      :match="match"
+      :gameType="gameType"
+    />
   </AdminPageLayout>
 </template>
 
@@ -34,7 +42,7 @@ const { data: games } = useGames();
 
 const gameType = computed(() => {
   const game = games.value?.find((g) => g.id == match.value?.gameId);
-  if(!game) return null;
+  if (!game) return null;
   return gameTypeSchema.parse(game?.gameType);
 });
 
