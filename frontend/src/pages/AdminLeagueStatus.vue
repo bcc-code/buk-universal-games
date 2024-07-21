@@ -1,8 +1,11 @@
 <template>
-  <AdminPageLayout >
+  <AdminPageLayout>
     <div class="flex justify-end">
       <div class="max-w-10 shadow-lg ml-4">
-        <LogOutButton></LogOutButton>
+        <div class="flex space-x-1">
+          <LanguageSwitcher />
+          <LogOutButton />
+        </div>
       </div>
     </div>
     <FamilyStatus></FamilyStatus>
@@ -12,6 +15,7 @@
 <script setup lang="ts">
 import AdminPageLayout from '@/components/AdminPageLayout.vue';
 import FamilyStatus from '@/components/FamilyStatus.vue';
+import LanguageSwitcher from '@/components/LanguageSwitcher.vue';
 import LogOutButton from '@/components/LogOutButton.vue';
 </script>
 
