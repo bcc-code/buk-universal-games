@@ -9,14 +9,20 @@ namespace Buk.UniversalGames.Data.CacheRepositories
     {
         private readonly ILogger<LeagueCacheRepository> _logger;
         private readonly LeagueDataRepository _data;
-        private readonly ICacheContext _cache;
+        private readonly ValidatingCacheService _validatingCacheService;
 
-        public LeagueCacheRepository(ILogger<LeagueCacheRepository> logger, DataContext dataContext, ICacheContext cache)
+        public LeagueCacheRepository(ILogger<LeagueCacheRepository> logger, DataContext dataContext, ValidatingCacheService validatingCacheService)
         {
             _logger = logger;
             _data = new LeagueDataRepository(dataContext);
-            _cache = cache;
+            _validatingCacheService = validatingCacheService;
         }
+
+        private static string LeagueCacheKey(int leagueId) => $"League_{leagueId}";
+        private static string LeaguesCacheKey() => "Leagues";
+        private static string TeamCacheKey(int teamId) => $"TeamId_{teamId}";
+        private static string TeamByCodeCacheKey(string code) => $"Team_{code}";
+        private static string TeamsCacheKey(int leagueId) => $"Teams_{leagueId}";
 
         public async Task<League?> GetLeague(int leagueId)
         {
@@ -27,62 +33,22 @@ namespace Buk.UniversalGames.Data.CacheRepositories
 
         public async Task<List<League>> GetLeagues()
         {
-            // get from cache
-            var cacheKey = "Leagues";
-            var result = await _cache.Get<List<League>>(cacheKey);
-            if (result == null)
-            {
-                // fallback to db and set in cache
-                result = await _data.GetLeagues();
-                await _cache.Set(cacheKey, result);
-            }
-            return result;
+            return await _validatingCacheService.WriteThrough(LeaguesCacheKey(), _data.GetLeagues);
         }
 
         public async Task<Team?> GetTeam(int teamId)
         {
-            var cacheKey = $"TeamId_{teamId}";
-            var team = await _cache.Get<Team>(cacheKey);
-            if (team == null)
-            {
-                team = await _data.GetTeam(teamId);
-                if (team != null)
-                    await _cache.Set(cacheKey, team);
-            }
-            return team;
+            return await _validatingCacheService.WriteThrough(TeamCacheKey(teamId), () => _data.GetTeam(teamId));
         }
 
         public async Task<Team?> GetTeamByCode(string code)
         {
-            var cacheKey = $"Team_{code}";
-            var team = await _cache.Get<Team>(cacheKey);
-            if (team == null)
-            {
-                team = await _data.GetTeamByCode(code);
-                if (team != null)
-                    await _cache.Set(cacheKey, team);
-            }
-            return team;
+            return await _validatingCacheService.WriteThrough(TeamByCodeCacheKey(code), () => _data.GetTeamByCode(code));
         }
 
         public async Task<List<Team>> GetTeams(int leagueId)
         {
-            // get from cache
-            var cacheKey = $"Teams_{leagueId}";
-            var teams = await _cache.Get<List<Team>>(cacheKey);
-            if (teams == null)
-            {
-                // fallback to db and set in cache
-                teams = await _data.GetTeams(leagueId);
-                await _cache.Set(cacheKey, teams);
-
-                foreach (var team in teams)
-                {
-                    await _cache.Set($"TeamId_{team.TeamId}", team);
-                    await _cache.Set($"Team_{team.Code}", team);
-                }
-            }
-            return teams;
+            return await _validatingCacheService.WriteThrough(TeamsCacheKey(leagueId), () => _data.GetTeams(leagueId));
         }
     }
 }

@@ -24,12 +24,12 @@ namespace Buk.UniversalGames.Data
             });
         }
 
-        public Task<T> Set<T>(string key, T value)
+        public Task<T> Set<T>(string key, T value, double? cacheMinutes = 5)
         {
             var expirationOptions = new DistributedCacheEntryOptions
             {
-                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5),
-                SlidingExpiration = TimeSpan.FromHours(5)
+                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(cacheMinutes ??5 ),
+                SlidingExpiration = TimeSpan.FromMinutes(cacheMinutes ?? 5)
             };
             string setValue = JsonSerializer.Serialize(value);
 

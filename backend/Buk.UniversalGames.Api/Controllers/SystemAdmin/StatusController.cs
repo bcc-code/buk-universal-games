@@ -14,21 +14,20 @@ public class StatusController : ControllerBase
 {
     private readonly ILogger<StatusController> _logger;
     private readonly StatusService _statusService;
-    private readonly ILeagueRepository _leagueRepository;
-    private readonly IGameRepository _gameRepository;
+    private readonly ICacheContext _cache;
 
-    public StatusController(ILogger<StatusController> logger, StatusService statusService, ILeagueRepository leagueRepository, IGameRepository gameRepository)
+    public StatusController(ILogger<StatusController> logger, StatusService statusService,  IGameRepository gameRepository, ICacheContext cache)
     {
         _logger = logger;
         _statusService = statusService;
-        _leagueRepository = leagueRepository;
-        _gameRepository = gameRepository;
+        _cache = cache;
     }
 
     [HttpGet("ClearStatusAndMatches")]
     public async Task ClearStatusAndMatches()
     {
         await _statusService.ClearStatusAndMatches();
+        await _cache.Clear();
     }
 
     [HttpGet("Export")]
@@ -38,5 +37,3 @@ public class StatusController : ControllerBase
         return File(xls, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
     }
 }
-
-

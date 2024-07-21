@@ -120,6 +120,7 @@ namespace Buk.UniversalGames.Services
         {
             var leagues = await _leagueLeagueRepository.GetLeagues();
             await _statusRepository.ClearStatus(leagues);
+            
         }
 
 

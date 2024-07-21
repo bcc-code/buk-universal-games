@@ -120,7 +120,7 @@ public class StatusController : ControllerBase
 
             if (hideHighScoreDate > now)
             {
-                await _cacheContext.Set(CacheKeys.FrozenCacheKey, report);
+                await _cacheContext.Set(CacheKeys.FrozenCacheKey, report, 4500);
             }
         }
 
