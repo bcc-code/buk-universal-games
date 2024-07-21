@@ -13,7 +13,7 @@ namespace Buk.UniversalGames.Data
 
         public async Task<T> WriteThrough<T>(string key, Func<Task<T>> fetchFromDatabase)
         {
-            var validateCache= true;
+            var validateCache= false;
             if (validateCache)
             {
                 // Fetch from database and cache, compare them
