@@ -30,8 +30,10 @@ namespace Buk.UniversalGames.Data.Repositories
 
         public async Task<Team?> GetTeamByCode(string code)
         {
-            return await _db.Teams.AsTracking().Include(t => t.Family)
-.FirstOrDefaultAsync(s => s.Code == code);
+            return await _db.Teams.AsTracking()
+                .Include(t => t.Family)
+                .Include(t => t.League)
+                .FirstOrDefaultAsync(s => s.Code == code);
         }
 
         public async Task<List<Team>> GetTeams(int leagueId)

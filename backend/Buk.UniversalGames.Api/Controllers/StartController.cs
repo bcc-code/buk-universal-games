@@ -34,13 +34,7 @@ public class StartController : ControllerBase
             team.TeamId,
             team.TeamType,
             team.LeagueId,
-            team.LeagueId switch
-            {
-                4 => "B-League",
-                5 => "U-League",
-                6 => "K-League",
-                _ => null
-            },
+            team.League?.Name,
             Enumerable.Range(0, 8).Select(x => GetCoins()),
             team.FamilyId,
             team.Family?.Name
