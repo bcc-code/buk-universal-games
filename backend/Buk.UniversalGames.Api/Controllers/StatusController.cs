@@ -12,6 +12,7 @@ using Buk.UniversalGames.Data.Repositories;
 using Buk.UniversalGames.Library.Enums;
 using System.Globalization;
 using Buk.UniversalGames.Library.Constants;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Buk.UniversalGames.Api.Controllers;
 
@@ -73,7 +74,7 @@ public class StatusController : ControllerBase
     [HttpGet("Family")]
     public async Task<ActionResult<FamilyStatusReport>> FamilyStatus()
     {
-        var hideHighScore = await _settingsService.GetSetting("hide_highscore");
+        var hideHighScore = await _validatingCacheService.WriteThrough("FrozenInterval", ()=>_settingsService.GetSetting("hide_highscore"));
         if (string.IsNullOrEmpty(hideHighScore))
         {
             throw new Exception("hide_highscore setting is required");
