@@ -27,8 +27,8 @@ export const useFamilyStatus = () => {
         },
       }),
     // don't re-run requests unless this amount of milliseconds have passed
-    staleTime: 1000 * 10,
-    gcTime: 1000 * 10,
+    staleTime: 1000 * 60 * 3,
+    gcTime: 1000 * 60 * 3,
     retry: 2,
   });
 };
