@@ -48,7 +48,7 @@ const gameType = computed(() => {
 
 const router = useRouter();
 
-if (!matchId) {
+if (typeof matchId !== 'number') {
   router.back();
 }
 </script>
