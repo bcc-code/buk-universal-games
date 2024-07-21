@@ -6,9 +6,9 @@
 		<ul class="list-disc list-inside">
 			<li>På denne posten skal dere konkurrere mot et annet lag i en stafett. Laget som vinner og har best tid får flest poeng.</li>
 			<li>Lagene skal på kortest mulig tid komme til den ene siden og tilbake.</li>
-			<li>Et lag må ha 14 deltakere i hjulet samtidig. Det skal gjennom hele løypen være 14 deltakere inne i hjulet.</li>
+			<li>Et lag må ha 15 deltakere i hjulet samtidig. Det skal gjennom hele løypen være 15 deltakere inne i hjulet.</li>
 			<li>Hele laget skal samlet utføre stafetten. Laget må gå innenfor teppet med teppet over hodet gjennom hele løypa.</li>
-			<li>Såfremt laget har nok deltakere kan personene i hjulet byttes ut med 14 nye personer når laget er halvveis.</li>
+			<li>Såfremt laget har nok deltakere kan personene i hjulet byttes ut med 15 nye personer når laget er halvveis.</li>
 			<li>Laget må over streken med hele hjulet før laget kan bytte deltakerne.</li>
 			<li>Det laget som er først tilbake med hele laget over startstreken vinner. Tiden vil også bli registrert, så her gjelder det for begge lag å gjøre det raskest mulig selv om en ikke kommer først i mål.</li>
 			<li>Laget må holde seg innenfor teppet gjennom hele løypen. Hver fot som treffer bakken utenfor teppet gir tilleggstid. Dette gjelder også dersom duken ikke er over hodet på deltakerne.</li>
