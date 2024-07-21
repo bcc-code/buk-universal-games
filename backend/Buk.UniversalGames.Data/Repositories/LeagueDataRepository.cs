@@ -27,13 +27,32 @@ namespace Buk.UniversalGames.Data.Repositories
         {
             return await _db.Teams.FirstOrDefaultAsync(s => s.TeamId == teamId);
         }
-
-        public async Task<Team?> GetTeamByCode(string code)
+        public async Task<TeamDto?> GetTeamByCode(string code)
         {
-            return await _db.Teams.AsTracking()
+            var team = await _db.Teams.AsTracking()
                 .Include(t => t.Family)
                 .Include(t => t.League)
                 .FirstOrDefaultAsync(s => s.Code == code);
+
+            if (team == null)
+                return null;
+
+            return new TeamDto
+            {
+                TeamId = team.TeamId,
+                Name = team.Name,
+                Code = team.Code,
+                Color = team.Color,
+                Type = team.Type,
+                MemberCount = team.MemberCount,
+                TeamType = team.TeamType,
+                LeagueId = team.LeagueId,
+                LeagueName = team.League?.Name,
+                FamilyId = team.FamilyId,
+                FamilyName = team.Family?.Name,
+                Points = team.Points,
+                StickerScans = team.StickerScans
+            };
         }
 
         public async Task<List<Team>> GetTeams(int leagueId)

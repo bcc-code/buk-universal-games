@@ -41,7 +41,7 @@ namespace Buk.UniversalGames.Data.CacheRepositories
             return await _validatingCacheService.WriteThrough(TeamCacheKey(teamId), () => _data.GetTeam(teamId));
         }
 
-        public async Task<Team?> GetTeamByCode(string code)
+        public async Task<TeamDto?> GetTeamByCode(string code)
         {
             return await _validatingCacheService.WriteThrough(TeamByCodeCacheKey(code), () => _data.GetTeamByCode(code));
         }

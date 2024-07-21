@@ -30,7 +30,7 @@ namespace Buk.UniversalGames.Services
             return await _leagueRepository.GetLeagues();
         }
 
-        public async Task<Team?> GetTeamByCode(string code)
+        public async Task<TeamDto?> GetTeamByCode(string code)
         {
             return await _leagueRepository.GetTeamByCode(code);
         }

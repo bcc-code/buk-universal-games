@@ -10,7 +10,7 @@ namespace Buk.UniversalGames.Data.Interfaces
 
         Task<Team?> GetTeam(int teamId);
 
-        Task<Team?> GetTeamByCode(string code);
+        Task<TeamDto?> GetTeamByCode(string code);
 
         Task<List<Team>> GetTeams(int leagueId);
     }

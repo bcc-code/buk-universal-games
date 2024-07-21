@@ -34,10 +34,10 @@ public class StartController : ControllerBase
             team.TeamId,
             team.TeamType,
             team.LeagueId,
-            team.League?.Name,
+            team.LeagueName,
             Enumerable.Range(0, 8).Select(x => GetCoins()),
             team.FamilyId,
-            team.Family?.Name
+            team.FamilyName
             );
     }
 
