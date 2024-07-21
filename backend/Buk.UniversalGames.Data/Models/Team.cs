@@ -41,7 +41,7 @@ public class Team
     public Family? Family { get; set; }
     [JsonIgnore]
 
-    public List<PointsRegistration>? Points { get; set; }
+    public List<PointsRegistration> Points { get; set; } = new List<PointsRegistration>();
     [JsonIgnore]
     public List<StickerScan>? StickerScans { get; set; }
 }
