@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using Buk.UniversalGames.Data;
+using Buk.UniversalGames.Data.Models;
 using Buk.UniversalGames.Data.Models.Internal;
 using Microsoft.EntityFrameworkCore;
 
@@ -32,11 +33,11 @@ namespace Buk.UniversalGames.Data.Repositories
                     {
                         TeamId = team.TeamId,
                         Team = team.Name,
-                        Points = team.Points.Sum(p => p.Points)
+                        Points = team.Points != null ? team.Points.Sum(p => p.Points) : 0
                     })
                     .OrderByDescending(team => team.Points)
                     .ToList(),
-                    Points = family.Teams.SelectMany(team => team.Points).Sum(p => p.Points)
+                    Points = family.Teams.SelectMany(team => team.Points != null ? team.Points : Enumerable.Empty<PointsRegistration>()).Sum(p => p.Points)
                 })
                 .OrderByDescending(family => family.Points)
                 .ToListAsync();
