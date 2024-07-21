@@ -13,6 +13,23 @@
       :match="match"
       :gameType="gameType"
     />
+
+    <MatchListItem
+      class="mt-5"
+      v-if="match && match.team1 && match.team2 && gameType"
+      :key="match.matchId"
+      :team1="match.team1"
+      :team2="match.team2"
+      :team1result="match.team1Result ?? null"
+      :team2result="match.team2Result ?? null"
+      :start="match.start ?? ''"
+      :winner="match.winner"
+      :gameType="gameType"
+      addOn=""
+      gameAddOn=""
+      :position="match.position ?? ''"
+      
+    />
   </AdminPageLayout>
 </template>
 
@@ -27,6 +44,7 @@ import { gameTypeSchema } from './GameType';
 import BackButton from './BackButton.vue';
 import { z } from 'zod';
 import AdminRegisterPoints from './AdminRegisterPoints.vue';
+import MatchListItem from '@/components/MatchListItem.vue';
 
 const route = useRoute();
 
