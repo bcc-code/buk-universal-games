@@ -1,0 +1,17 @@
+[
+	{
+		"league_id": 1,
+		"name": "Arena",
+		"color": "#000000"
+	},
+	{
+		"league_id": 2,
+		"name": "Festplassen",
+		"color": "#000000"
+	},
+	{
+		"league_id": 3,
+		"name": "Forplassen",
+		"color": "#000000"
+	}
+]

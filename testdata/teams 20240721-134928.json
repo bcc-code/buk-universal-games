@@ -1,0 +1,622 @@
+[
+	{
+		"team_id": 1,
+		"name": "Måløy/Valdres",
+		"code": "S4YB6XJM",
+		"league_id": 3,
+		"type": "participant",
+		"family_id": 0,
+		"member_count": 34,
+		"color": ""
+	},
+	{
+		"team_id": 2,
+		"name": "New Zealand/Huntworth",
+		"code": "239KNTAH",
+		"league_id": 3,
+		"type": "participant",
+		"family_id": 1,
+		"member_count": 48,
+		"color": ""
+	},
+	{
+		"team_id": 3,
+		"name": "Detroit/Syracuse",
+		"code": "JGGKM3MN",
+		"league_id": 3,
+		"type": "participant",
+		"family_id": 2,
+		"member_count": 39,
+		"color": ""
+	},
+	{
+		"team_id": 4,
+		"name": "Australia",
+		"code": "5Y5X4ET2",
+		"league_id": 3,
+		"type": "participant",
+		"family_id": 3,
+		"member_count": 54,
+		"color": ""
+	},
+	{
+		"team_id": 5,
+		"name": "Connecticut/Paradera",
+		"code": "2FG5SM6S",
+		"league_id": 3,
+		"type": "participant",
+		"family_id": 0,
+		"member_count": 49,
+		"color": ""
+	},
+	{
+		"team_id": 6,
+		"name": "France",
+		"code": "3KM3EJKU",
+		"league_id": 3,
+		"type": "participant",
+		"family_id": 1,
+		"member_count": 36,
+		"color": ""
+	},
+	{
+		"team_id": 7,
+		"name": "Turkey/Italy/China/Hong Kong/Singapore",
+		"code": "VF7RHCRS",
+		"league_id": 3,
+		"type": "participant",
+		"family_id": 2,
+		"member_count": 32,
+		"color": ""
+	},
+	{
+		"team_id": 8,
+		"name": "Canada/Africa",
+		"code": "J2LYYCU7",
+		"league_id": 3,
+		"type": "participant",
+		"family_id": 3,
+		"member_count": 27,
+		"color": ""
+	},
+	{
+		"team_id": 9,
+		"name": "Fulda",
+		"code": "GB757X4P",
+		"league_id": 3,
+		"type": "participant",
+		"family_id": 0,
+		"member_count": 35,
+		"color": ""
+	},
+	{
+		"team_id": 10,
+		"name": "Lilienhof",
+		"code": "Y8FNGDVV",
+		"league_id": 3,
+		"type": "participant",
+		"family_id": 1,
+		"member_count": 34,
+		"color": ""
+	},
+	{
+		"team_id": 11,
+		"name": "Waltrop",
+		"code": "CWCGKTTG",
+		"league_id": 3,
+		"type": "participant",
+		"family_id": 2,
+		"member_count": 26,
+		"color": ""
+	},
+	{
+		"team_id": 12,
+		"name": "Bucharest",
+		"code": "3NZBHYUH",
+		"league_id": 3,
+		"type": "participant",
+		"family_id": 3,
+		"member_count": 40,
+		"color": ""
+	},
+	{
+		"team_id": 13,
+		"name": "Austria",
+		"code": "62AW6AUF",
+		"league_id": 3,
+		"type": "participant",
+		"family_id": 0,
+		"member_count": 41,
+		"color": ""
+	},
+	{
+		"team_id": 14,
+		"name": "Moldova/Ukraine",
+		"code": "RNYAUANZ",
+		"league_id": 3,
+		"type": "participant",
+		"family_id": 1,
+		"member_count": 32,
+		"color": ""
+	},
+	{
+		"team_id": 15,
+		"name": "Didcot",
+		"code": "64Y2YL53",
+		"league_id": 3,
+		"type": "participant",
+		"family_id": 2,
+		"member_count": 37,
+		"color": ""
+	},
+	{
+		"team_id": 16,
+		"name": "Hamburg",
+		"code": "JQ2S8V64",
+		"league_id": 3,
+		"type": "participant",
+		"family_id": 3,
+		"member_count": 40,
+		"color": ""
+	},
+	{
+		"team_id": 17,
+		"name": "Molde",
+		"code": "A8FMCGBK",
+		"league_id": 3,
+		"type": "participant",
+		"family_id": 0,
+		"member_count": 47,
+		"color": ""
+	},
+	{
+		"team_id": 18,
+		"name": "Poland",
+		"code": "WN65CWHU",
+		"league_id": 3,
+		"type": "participant",
+		"family_id": 1,
+		"member_count": 54,
+		"color": ""
+	},
+	{
+		"team_id": 19,
+		"name": "Urbana",
+		"code": "A4ZQGK7R",
+		"league_id": 2,
+		"type": "participant",
+		"family_id": 2,
+		"member_count": 47,
+		"color": ""
+	},
+	{
+		"team_id": 20,
+		"name": "Hallingdal",
+		"code": "NETXE6HP",
+		"league_id": 2,
+		"type": "participant",
+		"family_id": 3,
+		"member_count": 38,
+		"color": ""
+	},
+	{
+		"team_id": 21,
+		"name": "Harstad/Hønefoss",
+		"code": "WKDPWDYQ",
+		"league_id": 2,
+		"type": "participant",
+		"family_id": 0,
+		"member_count": 44,
+		"color": ""
+	},
+	{
+		"team_id": 22,
+		"name": "Finland/Estonia",
+		"code": "FBP77KVH",
+		"league_id": 2,
+		"type": "participant",
+		"family_id": 1,
+		"member_count": 48,
+		"color": ""
+	},
+	{
+		"team_id": 23,
+		"name": "Toronto/Winnipeg",
+		"code": "XEMZ6ZBK",
+		"league_id": 2,
+		"type": "participant",
+		"family_id": 2,
+		"member_count": 52,
+		"color": ""
+	},
+	{
+		"team_id": 24,
+		"name": "India/UAE/Sri Lanka",
+		"code": "QKSQ329V",
+		"league_id": 2,
+		"type": "participant",
+		"family_id": 3,
+		"member_count": 45,
+		"color": ""
+	},
+	{
+		"team_id": 25,
+		"name": "Romania",
+		"code": "LTN4UHCK",
+		"league_id": 2,
+		"type": "participant",
+		"family_id": 0,
+		"member_count": 58,
+		"color": ""
+	},
+	{
+		"team_id": 26,
+		"name": "Holstebro",
+		"code": "YEHWAFZS",
+		"league_id": 2,
+		"type": "participant",
+		"family_id": 1,
+		"member_count": 64,
+		"color": ""
+	},
+	{
+		"team_id": 27,
+		"name": "Vácduka",
+		"code": "HSU858U6",
+		"league_id": 2,
+		"type": "participant",
+		"family_id": 2,
+		"member_count": 78,
+		"color": ""
+	},
+	{
+		"team_id": 28,
+		"name": "South America/Spain",
+		"code": "A9CSY83K",
+		"league_id": 2,
+		"type": "participant",
+		"family_id": 3,
+		"member_count": 65,
+		"color": ""
+	},
+	{
+		"team_id": 29,
+		"name": "Hessenhöfe",
+		"code": "RXWJ983H",
+		"league_id": 2,
+		"type": "participant",
+		"family_id": 0,
+		"member_count": 63,
+		"color": ""
+	},
+	{
+		"team_id": 30,
+		"name": "Delaware/Seattle",
+		"code": "DAT696WA",
+		"league_id": 2,
+		"type": "participant",
+		"family_id": 1,
+		"member_count": 71,
+		"color": ""
+	},
+	{
+		"team_id": 31,
+		"name": "Groningen",
+		"code": "N8XFP2GB",
+		"league_id": 2,
+		"type": "participant",
+		"family_id": 2,
+		"member_count": 76,
+		"color": ""
+	},
+	{
+		"team_id": 32,
+		"name": "Dürrmenz",
+		"code": "P8FNYJRG",
+		"league_id": 2,
+		"type": "participant",
+		"family_id": 3,
+		"member_count": 63,
+		"color": ""
+	},
+	{
+		"team_id": 33,
+		"name": "Stord",
+		"code": "BS6HJHFX",
+		"league_id": 2,
+		"type": "participant",
+		"family_id": 0,
+		"member_count": 94,
+		"color": ""
+	},
+	{
+		"team_id": 34,
+		"name": "Exter",
+		"code": "A7Y9P8XA",
+		"league_id": 2,
+		"type": "participant",
+		"family_id": 1,
+		"member_count": 82,
+		"color": ""
+	},
+	{
+		"team_id": 35,
+		"name": "Maubach",
+		"code": "86D6KX6T",
+		"league_id": 2,
+		"type": "participant",
+		"family_id": 2,
+		"member_count": 63,
+		"color": ""
+	},
+	{
+		"team_id": 36,
+		"name": "Salem",
+		"code": "HEPUQSBZ",
+		"league_id": 2,
+		"type": "participant",
+		"family_id": 3,
+		"member_count": 83,
+		"color": ""
+	},
+	{
+		"team_id": 37,
+		"name": "Ottawa",
+		"code": "2V5BLJHE",
+		"league_id": 1,
+		"type": "participant",
+		"family_id": 0,
+		"member_count": 72,
+		"color": ""
+	},
+	{
+		"team_id": 38,
+		"name": "Oslo og Follo 2",
+		"code": "HF6VQJJ4",
+		"league_id": 1,
+		"type": "participant",
+		"family_id": 1,
+		"member_count": 169,
+		"color": ""
+	},
+	{
+		"team_id": 39,
+		"name": "Nancy",
+		"code": "U4NWR7SB",
+		"league_id": 1,
+		"type": "participant",
+		"family_id": 2,
+		"member_count": 84,
+		"color": ""
+	},
+	{
+		"team_id": 40,
+		"name": "Linnenbach",
+		"code": "FMTRQBZT",
+		"league_id": 1,
+		"type": "participant",
+		"family_id": 3,
+		"member_count": 94,
+		"color": ""
+	},
+	{
+		"team_id": 41,
+		"name": "A-team",
+		"code": "RJZWJRGY",
+		"league_id": 1,
+		"type": "participant",
+		"family_id": 0,
+		"member_count": 273,
+		"color": ""
+	},
+	{
+		"team_id": 42,
+		"name": "Gelderland",
+		"code": "2N79499K",
+		"league_id": 1,
+		"type": "participant",
+		"family_id": 1,
+		"member_count": 112,
+		"color": ""
+	},
+	{
+		"team_id": 43,
+		"name": "Tønsberg 1",
+		"code": "R9EPUYKT",
+		"league_id": 1,
+		"type": "participant",
+		"family_id": 2,
+		"member_count": 87,
+		"color": ""
+	},
+	{
+		"team_id": 44,
+		"name": "Bergen",
+		"code": "AF4G9FNE",
+		"league_id": 1,
+		"type": "participant",
+		"family_id": 1,
+		"member_count": 121,
+		"color": ""
+	},
+	{
+		"team_id": 45,
+		"name": "Sørlandet",
+		"code": "VLK7GUHU",
+		"league_id": 1,
+		"type": "participant",
+		"family_id": 0,
+		"member_count": 106,
+		"color": ""
+	},
+	{
+		"team_id": 46,
+		"name": "Stavanger",
+		"code": "BD4NMA6G",
+		"league_id": 1,
+		"type": "participant",
+		"family_id": 1,
+		"member_count": 104,
+		"color": ""
+	},
+	{
+		"team_id": 47,
+		"name": "Waldhausen",
+		"code": "9QT8SVLU",
+		"league_id": 1,
+		"type": "participant",
+		"family_id": 2,
+		"member_count": 104,
+		"color": ""
+	},
+	{
+		"team_id": 48,
+		"name": "Grenland 2",
+		"code": "3HVD5LX2",
+		"league_id": 1,
+		"type": "participant",
+		"family_id": 3,
+		"member_count": 140,
+		"color": ""
+	},
+	{
+		"team_id": 49,
+		"name": "Horten",
+		"code": "K5AZHTRG",
+		"league_id": 1,
+		"type": "participant",
+		"family_id": 0,
+		"member_count": 123,
+		"color": ""
+	},
+	{
+		"team_id": 50,
+		"name": "Twente",
+		"code": "QK5L2HEE",
+		"league_id": 1,
+		"type": "participant",
+		"family_id": 1,
+		"member_count": 108,
+		"color": ""
+	},
+	{
+		"team_id": 51,
+		"name": "Drammen Sande",
+		"code": "YM2LVWEP",
+		"league_id": 1,
+		"type": "participant",
+		"family_id": 2,
+		"member_count": 121,
+		"color": ""
+	},
+	{
+		"team_id": 52,
+		"name": "Grenland 1",
+		"code": "KTAGPYQZ",
+		"league_id": 1,
+		"type": "participant",
+		"family_id": 3,
+		"member_count": 140,
+		"color": ""
+	},
+	{
+		"team_id": 53,
+		"name": "West-Nederland",
+		"code": "83N5EB9Z",
+		"league_id": 1,
+		"type": "participant",
+		"family_id": 3,
+		"member_count": 104,
+		"color": ""
+	},
+	{
+		"team_id": 54,
+		"name": "Østfold",
+		"code": "AZMWVHUU",
+		"league_id": 1,
+		"type": "participant",
+		"family_id": 0,
+		"member_count": 140,
+		"color": ""
+	},
+	{
+		"team_id": 55,
+		"name": "Sandefjord",
+		"code": "L5PKS6HJ",
+		"league_id": 1,
+		"type": "participant",
+		"family_id": 1,
+		"member_count": 146,
+		"color": ""
+	},
+	{
+		"team_id": 56,
+		"name": "Eiker",
+		"code": "YG3XW8AF",
+		"league_id": 1,
+		"type": "participant",
+		"family_id": 2,
+		"member_count": 136,
+		"color": ""
+	},
+	{
+		"team_id": 57,
+		"name": "København",
+		"code": "44XYTGB9",
+		"league_id": 1,
+		"type": "participant",
+		"family_id": 3,
+		"member_count": 164,
+		"color": ""
+	},
+	{
+		"team_id": 58,
+		"name": "Schweiz",
+		"code": "CBA3FZMA",
+		"league_id": 1,
+		"type": "participant",
+		"family_id": 0,
+		"member_count": 167,
+		"color": ""
+	},
+	{
+		"team_id": 59,
+		"name": "Oslo og Follo 1",
+		"code": "YDWDC7GH",
+		"league_id": 1,
+		"type": "participant",
+		"family_id": 1,
+		"member_count": 168,
+		"color": ""
+	},
+	{
+		"team_id": 60,
+		"name": "Tønsberg 2",
+		"code": "QJ45NHRD",
+		"league_id": 1,
+		"type": "participant",
+		"family_id": 2,
+		"member_count": 87,
+		"color": ""
+	},
+	{
+		"team_id": 999,
+		"name": "Admin",
+		"code": "K4MER4TENE",
+		"league_id": null,
+		"type": "admin",
+		"family_id": null,
+		"member_count": 0,
+		"color": ""
+	},
+	{
+		"team_id": 1000,
+		"name": "System Admin",
+		"code": "MOTHERLOAD",
+		"league_id": null,
+		"type": "system_admin",
+		"family_id": null,
+		"member_count": 0,
+		"color": ""
+	}
+]

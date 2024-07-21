@@ -1,0 +1,52 @@
+[
+	{
+		"game_id": 1,
+		"name": "Land, water, beach",
+		"type": "land_water_beach",
+		"winner_points": 3,
+		"looser_points": 0,
+		"description": "Denne posten er en reaksjonspost, hvor dere konkurrerer mot et annet lag. Ti deltakere fra hvert lag starter i sonen i midten, og skal reagere så raskt som mulig på tre ulike signaler:\n\nGult signal betyr at man skal bli stående stille, strand\nGrønt signal betyr at man skal flytte seg til sonen bak, land\nBlått signal betyr at man skal flytte seg til sonen foran, vann\n\nDet laget hvor alle 10 deltakere flytter seg raskest til riktig sone, er det laget som får poeng. Hvis dere er like raske, får begge lag ett poeng. Altså må man reagere raskt, og bevege seg til riktig sone. Hvis man beveger seg til feil sone, får det andre laget ett poeng. Etter tre signal, skal dere bytte ut de ti deltakerne med ti nye deltakere fra laget. Dette gjennomføres tre runder.\n\nPoeng:\n-\tLaget får ett poeng for hvert signal de vinner\n-\tBegge lag får ett poeng dersom lagene er like raske",
+		"participants_info": ".",
+		"safety_info": "."
+	},
+	{
+		"game_id": 2,
+		"name": "Hamster Wheel",
+		"type": "hamster_wheel",
+		"winner_points": 3,
+		"looser_points": 0,
+		"description": "1.\tTo lag konkurrer mot hverandre.\n2.\tLagene stiller med 9 deltakere per omgang. \n3.\tDet skal sitte en person i baderingen til enhver tid, armer og ben kan ikke touche bakken eller aktivt skyve på andre baderinger som er i spill. \n4.\tLaget med blå baderinger starter første omgang. Det spilles annenhver farge inntil alle baderinger er spilt.\n5.\tI omgang nr. 2 starter rødt lag.\n6.\tStein, saks, papir avgjør hvem som starter omgang nr. 3. \n7.\tSpillet starter med at en deltaker plassers i baderingen, mens to personer skal dytte baderingen, de kan ikke passere den røde streken (slipp sone) på banen. \n8.\tEtter at alle har skjøvet sine tre baderinger, telles scoren på alle baderinger som ligger innenfor scoringsområdet. \n9.\tHele baderingen må ligge innenfor poengområdet for at det skal telles med. \n10.\tHvis baderingen berører streken, er det den bakerste poengsonen som er tellende.\n11.\tDet spilles 3 omganger, med 3 skyv av baderinger per omgang. \n12.\tPoengene fra hver omgang telles opp til en totalsum.  \n13.\tDet laget med flest poeng vinner konkurransen. \n",
+		"participants_info": ".",
+		"safety_info": "."
+	},
+	{
+		"game_id": 3,
+		"name": "Iron grip",
+		"type": "iron_grip",
+		"winner_points": 3,
+		"looser_points": 0,
+		"description": "1.\tNi deltakere går opp på platået, og gjør seg klar til konkurransen.\n2.\tNår nedtellingen starter ( 10 min), skal samtlige deltakere begynne å henge i hendene.(håndflaten frem) \n3.\tNår dommeren ser at alle de 9 deltakerne henger skal  stoppe klokken for poeng begynne. \n4.\tSå snart ikke samtlige deltakere henger (9) skal stoppeklokken for poeng stanse. \n5.\tResten av laget kan stå klare for bytte av deltakere ved stigen opp til platået. \n6.\tDet er ingen begrensning hvor mange ganger deltakerne kan henge i jerngrep. \n7.\tKonkurransen fortsetter til 10 min er talt.  \n",
+		"participants_info": ".",
+		"safety_info": "."
+	},
+	{
+		"game_id": 4,
+		"name": "Mastermind",
+		"type": "mastermind",
+		"winner_points": 3,
+		"looser_points": 0,
+		"description": "På denne posten skal laget finne ut av hvilken fargekode som skjuler seg i boksen. Laget skal ha plukket ut 5 deltakere til å være deres «Codebreakers». Resten av laget brukes som fargebrikker i spillet etter hvert som «Codebreakers» plasser sine løsninger på spillbrettet.\nNår «Codebreakers» har lagt ut et forslag på løsning, kontakter de dommeren som vil plassere «svar-pinner» i boksen plassert ved siden av hver rad. «Svar-pinnene» viser hvor mange riktige farger (svart) og riktig farge som er riktig plassert (rød) «Codebreakers» har plassert ut i sitt forslag. \n\nPoeng gis etter antall runder brukt på å løse fargekoden. \n",
+		"participants_info": "Tid: 10 min\nAntall deltakere: 5 stk codebreakers + 32 stk fargebrikker (maksimalt).",
+		"safety_info": "Regels    \n - 1 deelnemer moet altijd in het karretje zitten (deze persoon mag evt wisselen bovenaan de helling) \n - 30 deelnemers worden aangewezen als rollers, 15 voor de heenweg, 15 voor de terugweg (deze mogen overlappen).\n - Het karretje moet voortbewogen worden door te rollen. \n - Het karretje moet binnen de baan blijven.\n - De rollers mogen wel buiten de baan komen. \n - De baan mag niet veranderd worden. \n - Het karretje of de deelnemer in het karretje mag de grond niet raken. \n - De route volgt het parcours heen en weer terug. \n - De deelnemer in het karretje moet bovenaan de helling op een knop (?) drukken."
+	},
+	{
+		"game_id": 5,
+		"name": "Labyrinth",
+		"type": "labyrinth",
+		"winner_points": 3,
+		"looser_points": 0,
+		"description": "Velkommen\n\nBallen skal igjennom labyrinten. Det er hull og checkpoints på brettet\n\n12 personer kan holde rundt brettet \n\nSpillet er igang da dommer plasserer ballen på start. \n\nIkke lov å bevege ballen med hendene når den er i spill på brettet.\n\nIkke lov å krabbe under labyrint når spillet er igang. Det er kun lov når ballen fallet gjennom et hull\n\nFaller ballen ned i et hull, må den plukkes opp og legges tilbake til siste checkpoint eller \nstart \n\nBallen skal alltid ligge på brettet. Ikke lov å kaste ballen opp med brettet for å prøve å komme over hinder på brettet \n\nDet er 3 checkpoints på brettet. Alle spillerne bytter plass med nye spillere. Totalt 36 personer får spilt. \n\nNår labyrinten er ferdig eller tiden er ute, plasserer deltakerne brettet rolig ned på bakken\n\n",
+		"participants_info": ".",
+		"safety_info": "."
+	}
+]

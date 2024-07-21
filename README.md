@@ -27,11 +27,12 @@ Start-Process "C:\Program Files\Google\Chrome\Application\chrome.exe" -ArgumentL
 
 You can import the test data files in Directus in this order:
 
-1. games…json
-2. leagues…json
-3. teams…json
-4. matches…json
-5. settings…json
+1. families...json
+2. games...json
+3. leagues...json
+4. teams...json
+5. matches...json
+6. settings...json
 
 ### Accessing Database
 
