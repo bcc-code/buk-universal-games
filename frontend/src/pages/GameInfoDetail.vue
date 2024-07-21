@@ -2,13 +2,8 @@
   <UserPageLayout :showTitle="false">
     <div class="flex">
       <nav class="text-dark mr-4">
-        <div
-          @click="$router.back()"
-          class="p-1 bg-ice-blue cursor-pointer rounded-md hover:bg-vanilla text-label-1"
-        >
-          <ArrowLeftIcon class="h-5" />
-        </div>
-      </nav>
+         <BackButton />
+        </nav>
       <h1 class="text-label-1 font-bold py-2 px-2 rounded-md flex space-x-3">
         <img
           class="h-10 w-10"
@@ -48,13 +43,14 @@ import UserPageLayout from '@/components/UserPageLayout.vue';
 import MatchListItem from '@/components/MatchListItem.vue';
 import GameVideo from '@/components/GameVideo.vue';
 import { ArrowLeftIcon } from '@heroicons/vue/24/solid';
+import BackButton from './BackButton.vue';
 
 export default {
   name: 'GameInfoDetail',
   props: {
     game: String,
   },
-  components: { UserPageLayout, MatchListItem, GameVideo, ArrowLeftIcon },
+  components: { UserPageLayout, MatchListItem, GameVideo, ArrowLeftIcon,BackButton },
   data() {
     return {
       gameParsed: {},
