@@ -50,7 +50,7 @@ export const useSigninResponse = (teamCode?: () => Ref<string>) => {
     // don't re-run requests unless this amount of milliseconds have passed
     staleTime: 1000 * 60 * 60 * 2,
     gcTime: 1000 * 60 * 60 * 2,
-    retry: 1,
+    retry: 2,
   });
 };
 
