@@ -2,33 +2,35 @@
   <section
     class="bg-white border border-gray-200 items-center justify-between w-full rounded-md shadow-sm"
   >
-  <div class="flex w-full justify-end space-y-2">
-    <div class="mx-auto justify-center">
-      <img src="/icon/ubg_logo.svg" class="h-16 w-16 rounded-md" />
-    </div>
-    <div class="absolute top-10 right-10 flex space-x-1">
-      <LanguageSwitcher  />
-      <LogOutButton  />
-    </div>
-  </div>
-  <div class="flex mx-auto  justify-evenly w-full pb-3">
-    <div class="flex space-x-4 items-start justify-evenly w-full">
-      <div>
-        <p class="text-xs uppercase text-red-500">{{ $t('team') }}</p>
-        <h2 class="text-xl font-bold text-gray-800">{{ teamName ?? '-' }}</h2>
-        <p class="text-lg font-semibold text-gray-600">
-          {{ formatPoints(teamPoints) ?? '-' }}
-        </p>
+    <div class="flex w-full justify-end space-y-2">
+      <div class="mx-auto justify-center">
+        <img src="/icon/ubg_logo.svg" class="h-16 w-16 rounded-md" />
       </div>
-      <div class="ml-8">
-        <p class="text-xs uppercase text-red-500">{{ $t('family') }}</p>
-        <h2 class="text-xl font-bold text-gray-800">{{ familyName ?? '-' }}</h2>
-        <p class="text-lg font-semibold text-gray-600">
-          {{ formatPoints(familyPoints) ?? '-' }}
-        </p>
+      <div class="absolute top-10 right-10 flex space-x-1">
+        <LanguageSwitcher />
+        <LogOutButton />
       </div>
     </div>
-  </div>
+    <div class="flex mx-auto justify-evenly w-full pb-3">
+      <div class="flex space-x-4 items-start justify-evenly w-full">
+        <div>
+          <p class="text-xs uppercase text-red-500">{{ $t('team') }}</p>
+          <h2 class="text-xl font-bold text-gray-800">{{ teamName ?? '-' }}</h2>
+          <p class="text-lg font-semibold text-gray-600">
+            {{ formatPoints(teamPoints) ?? '-' }}
+          </p>
+        </div>
+        <div class="ml-8">
+          <p class="text-xs uppercase text-red-500">{{ $t('family') }}</p>
+          <h2 class="text-xl font-bold text-gray-800">
+            {{ familyName ?? '-' }}
+          </h2>
+          <p class="text-lg font-semibold text-gray-600">
+            {{ formatPoints(familyPoints) ?? '-' }}
+          </p>
+        </div>
+      </div>
+    </div>
   </section>
 </template>
 
