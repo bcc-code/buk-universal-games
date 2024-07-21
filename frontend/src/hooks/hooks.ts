@@ -123,6 +123,7 @@ export const useConfirmTeamResult = () => {
       ),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['adminMatches'] });
+      queryClient.invalidateQueries({ queryKey: ['familyStatus'] });
     },
     retry: 5,
   });
@@ -151,6 +152,7 @@ export const useConfirmBothTeamResults = () => {
       ),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['adminMatches'] });
+      queryClient.invalidateQueries({ queryKey: ['familyStatus'] });
     },
     retry: 5,
   });
