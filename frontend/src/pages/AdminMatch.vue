@@ -1,5 +1,8 @@
 <template>
   <AdminPageLayout>
+    <div class="absolute top-10 right-10 flex space-x-1">
+      <LanguageSwitcher />
+    </div>
     <BackButton />
 
     <AdminMatchInfo
@@ -45,6 +48,7 @@ import BackButton from './BackButton.vue';
 import { z } from 'zod';
 import AdminRegisterPoints from './AdminRegisterPoints.vue';
 import MatchListItem from '@/components/MatchListItem.vue';
+import LanguageSwitcher from '@/components/LanguageSwitcher.vue';
 
 const route = useRoute();
 
