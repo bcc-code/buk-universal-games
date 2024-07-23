@@ -15,29 +15,10 @@
     "land_water_beach": "<div class='rounded-md p-4 mb-4 bg-amber-50'> <span class='font-bold'>Manus:</span> <br /> Velkommen til Land, vann, strand.  <ul class='list-disc list-inside'> <li>På denne posten skal dere konkurrere mot et annet lag om å reagere raskest mulig og flytte dere mellom tre soner på tre ulike signaler.</li> <li>Ti personer fra hvert lag starter i den midterste sonen, strand.</li> <li>De tre signalene dere skal reagere på er: <ul> <li>Rødt signal betyr at dere skal bevege dere til den bakerste sonen, land.</li> <li>Gult signal er sonen i midten, strand.</li> <li>Blått signal er sonen foran, vann.</li> </ul> </li> <li>Det laget hvor alle ti spillere beveger seg først til riktig sone, får ett poeng. Hvis begge lag er like raske, får begge lag ett poeng.</li> <li>Spillerne skal bli stående i den sonen de flytter seg til.</li> <li>Det vises tre signaler, før de ti spillerne byttes ut med ti nye spillere. Og dette skal gjennomføres totalt tre omganger.</li> <li>Dere får poeng etter hvor mange runder dere vinner.</li> <li>Er oppgaven forstått?</li> <li>Da kan ti spillere starte i den midterste sonen, og resten av laget kan stå der, og være klare for å bytte ut de ti spillerne. (peker der det er best at resten av laget står)</li> <li>Da setter vi i gang. Klar, ferdig, gå!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Til dommere:</span> <ul class='list-disc list-inside'> <li>Passe på at resten av laget står et passende sted, og er klare til å bytte inn ti nye spillere for hver omgang.</li> <li>Passe på at tiden ikke overstiger 15 minutter totalt på posten.</li> <li>Hoveddommer viser poeng på poengtavle.</li> <li>To linjedommere med flagg, tar rask avgjørelse om hvem som får poeng.</li> <li>Personen i signalboksen må variere signal og tiden mellom signalene.</li> </ul> <br /> <span>Ved spillets slutt:</span> <ul class='list-disc list-inside'> <li>Sørge for at sonene fortsatt er tydelig oppmerket.</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Helse, miljø og sikkerhet:</span> <ul class='list-disc list-inside'> <li>Det er liten risiko knyttet til denne posten, eventuelt kan snubling, overtråkk eller fall forekomme. Vær obs på dette.</li> </ul> </div>",
     "mastermind": "<div class='rounded-md p-4 mb-4 bg-amber-50'> <span class='font-bold'>Manus:</span> <br /> Velkommen til Mastermind.  <ul class='list-disc list-inside'> <li>Målet med denne posten er å finne ut hvilken fargekode som befinner seg i kofferten.</li> <li>Dere får 8 runder og en makstid på 10 minutter på å løse oppgaven.</li> <li>Dere får flere poeng jo færre runder dere bruker på å komme til riktig kode.</li> <li>Dere skal nå plukke ut 5 Codebreakers.</li> <li>Disse 5 har i hovedoppgave å løse oppgaven.</li> <li>Resten får utdelt hver sin farge (Durag - hodeplagg) som representerer en spillbrikke som Codebreakers kan plassere ut på brettet.</li> <li>Alle deltakere som er spillbrikker må ha hodeplagget på hodet til en hver tid under spillet. (Ha med/på duragen for å vise frem)</li> <li>Codebreakers henter de spillbrikkene (deltakere med hodeplagg) som de ønsker å bruke og plasserer dem på en sort spillbrikke på spillbrettet.</li> <li>Når Codebreakers har avgitt sitt svar, vil en dommer plassere ut «svar-pinner» som forteller Codebreakers hvor nærme de er svaret.  <ul> <li>Rød pinne = riktig farge på riktig plass</li> <li>Hvit pinne = riktig farge på feil plass</li> </ul> (Ha med pinnene i hånden og vis de frem) </li> <li>Når Codebreakers har gjettet riktig fargekode, vil en dommer gå frem og åpne boksen.</li> <li>Resten av laget står på siden av spillbrettet.</li> <li>Er oppgaven forstått?</li> <li>Da kan Codebreakers gå til den dommeren der (peker og viser).</li> <li>Alle de som skal være spillbrikker, kan stå over der (peker og viser).</li> <li>Da setter vi i gang. Klar, ferdig, gå!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Til dommer:</span> <ul class='list-disc list-inside'> <li>Sørg for at publikum, spillbrikker og codebreakers har tydelige plasseringer ovenfor spillbrettet med tanke på spillopplevelse, innsyn og engasjement.</li> </ul> <br /> <span>Ved spillets slutt:</span> <ul class='list-disc list-inside'> <li>Samle inn alle hodeplagg.</li> <li>Samle inn svar-pinner.</li> <li>Endre fargekode i boksen.</li> <li>Juster spillbrettet om nødvendig.</li> <li>Gjør klar for nye grupper!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Helse, miljø og sikkerhet:</span> <ul class='list-disc list-inside'> <li>Risiko knyttet til denne posten er at deltakere kan snuble i spillbrikkene på spillbrettet. Dette anses som svært lav til lav risiko.</li> </ul> </div> "
   },
-  "back": "Tilbake",
   "calculated-score": "Beregnet score",
-  "category": {
-    "hamster_wheel": "X-faktor",
-    "iron_grip": "Styrke",
-    "labyrinth": "Samarbeid",
-    "land_water_beach": "Reaksjon",
-    "mastermind": "Logikk"
-  },
-  "categorytitle": "Kategori",
-  "coins": "Mynter",
   "couldnt-load-the-video": "Kan ikke laste inn videoen",
   "details": "Detaljer",
-  "explanation": {
-    "hamster_wheel": "På denne posten skal 2 lag konkurrer mot hverandre i hvert sitt “Hamsterhjul”. Laget som er raskest gjennom løypa uten å tråkke utenfor hjulet vinner. Det spilles 1 omgang, men det gjøres bytte av alle deltakere etter 1 runde. Førstemann i mål etter 2 runder vinner. Tiden lagene bruker vil også medregnes antall poeng de får på posten.",
-    "iron_grip": "I konkurransen 'Jerngrepet' møter ni deltakere hverandre i en utfordring der målet er å henge i et stillas så lenge som mulig i løpet av en ti-minutters periode. Alle deltakerne begynner å henge samtidig, med håndflaten vendt fremover, når nedtellingen starter. \n\nEn dommer, referert til som dommer (a), har ansvaret for å stoppe og starte klokken. Klokken stoppes når alle ni deltakere er på plass og henger fra stillaset, og den startes på nytt hver gang noen slipper taket. En annen dommer, dommer (b), holder øye med den totale tiden på ti minutter som deltakerne har til rådighet. \n\nDeltakerne kan bytte med lagkamerater som venter ved siden av, klar til å klatre opp stigen og ta over. Det er ingen begrensninger på antall bytter eller hvor mange ganger en deltaker kan henge. Konkurransen dreier seg om å akkumulere mest mulig tid hengende fra stillaset innenfor den gitte tidsrammen på ti minutter.",
-    "labyrinth": "På denne posten vil laget bli utfordret til å samarbeide ved å navigere en kule gjennom en labyrint på en plate.\nDommeren starter spillet ved å plassere ballen på startpunktet og starter tidtakeren. Det er tre checkpoints på brettet, og alle spillerne bytter plass med nye 12 spillere ved hvert checkpoint, slik at totalt 36 personer får spilt.\nNår labyrinten er fullført eller tiden er ute, plasserer deltakerne brettet rolig ned på bakken.",
-    "land_water_beach": "Denne posten er en reaksjonspost der lagene konkurrerer mot hverandre. Ti deltakere fra hvert lag starter i sonen i midten.\nI denne utfordringen får det laget hvor alle 10 deltakere flytter seg raskest til riktig sone, ett poeng. Ved lik reaksjonstid får begge lag ett poeng. Det er derfor avgjørende å reagere raskt og bevege seg til riktig sone. Feil bevegelser resulterer i at det andre laget får ett poeng. Etter tre signaler bytter dere ut de ti deltakerne med ti nye deltakere fra laget. Dette gjentas over tre runder.\nReaksjonstiden er avgjørende for å vinne.",
-    "mastermind": "Posten er inspirert av konseptet fra spillet Mastermind.\n\nLaget skal løse en fargekode skjult i en boks. Fem deltakere er utpekt som Codebreakers, mens resten av laget fungerer som fargebrikker.\n\nCodebreakers plasserer sine løsninger på spillbrettet, og kontakter deretter dommeren. Dommeren plasserer 'svar-pinner' i boksen ved siden av hver rad. Disse pinnene viser hvor mange farger som er riktig farge og riktig plassert (rød) og hvor mange farger som er riktig farge, men ikke riktig plassert (hvit) i Codebreakers sitt forslag."
-  },
   "family": "Familie",
-  "familyBalance": "Familie saldo",
-  "game": "Spill",
   "games": {
     "hamster_wheel": "Hamsterhjulet",
     "iron_grip": "Jerngrepet",
@@ -46,69 +27,25 @@
     "mastermind": "Mastermind"
   },
   "general_error": "Noe gikk galt",
-  "install_hint": "Hint:\nInstaller denne webappen på startskjermen din, den vil fungere bedre!",
-  "league": {
-    "ranking-frozen": "Rangeringen er nå frosset til vinnerne blir kunngjort",
-    "rankingisempty": "Ingen poeng er opptjent enda. Sjekk tilbake her etter første runde.",
-    "viewgamerankings": "Se rangering for hvert spill",
-    "viewgamerankings-title": "Du kan se rangeringene per spill på spilldetaljsidene."
-  },
   "loading": "Laster...",
   "login": {
     "login_button": "Logg inn",
-    "teamcode": "Lagkode",
-    "teamcode_invalid": "Beklager, lagkoden din er ikke gyldig"
+    "teamcode": "Lagkode"
   },
-  "match-list": "Match List",
   "menu": {
-    "games": "Spill",
-    "home": "Hjem",
-    "league": "Liga",
-    "map": "Kart",
-    "sidequest": "Sidequest"
+    "games": "Spill"
   },
   "minutes": "Minutter",
   "no-matches-for-this-filter": "No matches for this filter",
-  "nr-of-participants": "Antall deltagere",
-  "penalty-points": "Straffepoeng",
-  "please_refresh": "Vennligst reload",
-  "pleaserefresh": "Prøv å oppdatere siden",
+  "please_refresh": "Prøv å oppdatere siden",
   "point": "Poeng",
-  "pointexplenation": {
-    "hamster_wheel": "Poengene tildeles basert på om laget vinner og tiden de brukte på runden. ",
-    "iron_grip": "Poengene rangeres etter konkurransen basert på hvem som klarte å henge lengst. Som dommer a, er det din oppgave å notere tiden der alle 9 deltakere henger samtidig.",
-    "labyrinth": "Poeng gis etter antall klarte checkpoints samt tid på å fullføre labyrinten.",
-    "land_water_beach": "Laget får ett poeng for hvert signal de vinner. Begge lag får ett poeng dersom lagene er like raske",
-    "mastermind": "Poengene tildeles basert på antall runder laget bruker på å løse fargekoden."
-  },
-  "points": "M £",
   "points-registration-error": "Kalkulert resultat returnerte undefined. Skjemaet er ugyldig selv om det kan sendes inn. Du mangler kanskje noen validering på skjemafelt.",
-  "pointstitle": "Poeng",
-  "results": "Resultater for dette spillet",
-  "rules": {
-    "hamster_wheel": "Lagene har 15-20 deltakere hver, inne i hamsterhjulet.\n• Det er +10 sek tilleggstid om laget tråkker på utsiden av hjulet.\n• Hele laget på 15 stk byttes ut etter 1 runde med 15 nye deltakere.\n• Hele hjulet må være over linjen for å kunne gjøre bytte.\nHele hjulet må over linjen for at tiden stoppes.",
-    "iron_grip": "• Deltakerne må henge med håndflaten frem\n• Tiden stoppes av dommer (a) når ikke alle ni deltakere henger samtidig.",
-    "labyrinth": "Spillet starter da dommeren har plassert kula på brettet.\n• 12 personer må holde rundt brettet mens spillet pågår.\n• Det er ikke tillatt å berøre ballen med hendene når den er på brettet, og heller ikke å krabbe under labyrinten mens spillet pågår, med mindre ballen faller gjennom et hull.\n• Hvis ballen faller ned i et hull, må den plukkes opp og plasseres tilbake ved forrige checkpoint eller startpunkt.\n• Ballen må alltid være på brettet, og det er ikke tillatt å kaste ballen opp for å forsøke å overvinne hindringer.\n• For hvert checkpoint kula kommer til, må alle 12 deltakere byttes ut til 12 nye.",
-    "land_water_beach": "De må reagere raskt på tre ulike signaler:\n• Gult signal: Stå stille som en strand.\n• Grønt signal: Flytt deg bakover til 'land' sonen.\n• Blått signal: Flytt deg fremover til 'vann' sonen.",
-    "mastermind": "• Laget har 10 minutter på å løse fargekoden.\n• Bare de utnevnte codebreakers har tillatelse til å sette opp brikkene og foreslå løsninger.\n• Laget sier i fra til hoveddommer når de har avgitt svaret sitt."
-  },
-  "rulestitle": "Regler",
+  "post-type": "Post type:",
   "save": "Lagre",
   "saved": "Lagret",
-  "score": {
-    "mine_field": "{score} seconds",
-    "monkey_bars": "{score} bars",
-    "nerve_spiral": "{score} seconds",
-    "table_surfing": "{score} seconds",
-    "ticket_twist": "{score} tickets"
-  },
   "seconds": "Sekunder",
   "something-went-wrong": "Vennligst reload siden",
   "something-went-wrong-we-could-not-log-you-in-please-try-again": "Noe gikk galt, vi kunne ikke logge deg inn - prøv igjen.",
-  "start": "Start",
   "team": "Lag",
-  "team1team2": "Lag 1 / Lag 2",
-  "teamName": "Lag",
-  "total-nr-of-bars": "Total antall bars",
   "yourmatch": "Ditt spill"
 }

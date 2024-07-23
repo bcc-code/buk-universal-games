@@ -95,9 +95,6 @@ export default {
       }
       return [];
     },
-    rules() {
-      return this.$t('rules.' + this.gameParsed.gameType).split('|');
-    },
     games() {
       return this?.$store.state.games;
     },

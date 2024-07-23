@@ -5,7 +5,7 @@
       <h2>{{ $t('general_error') }}</h2>
       <div class="message">
         <p class="message-text">{{ matches.error }}</p>
-        <p class="message-text">{{ $t('pleaserefresh') }}</p>
+        <p class="message-text">{{ $t('please_refresh') }}</p>
       </div>
     </div>
 
