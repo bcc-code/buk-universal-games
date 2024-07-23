@@ -64,18 +64,18 @@ namespace Buk.UniversalGames.Services
             return await BuildAndCacheLeagueRanking(leagueId);
         }
 
-        public async Task<List<TeamStatus>> BuildAndCacheRankingForGameInLeague(Game game, int leagueId)
+public async Task<List<TeamStatus>> BuildAndCacheRankingForGameInLeague(Game game, int leagueId)
+{
+    var teamScoresQuery = from score in _db.Points
+                          .Include(s => s.Team) 
+                          where score.Game == game && score.Match!.LeagueId == leagueId
+                          select new { score.TeamId, TeamName = score.Team != null ? score.Team.Name : "Unknown", score.Points, FamilyId = score.Team != null ? score.Team.FamilyId : (int?)null };
 
-        {
+    var teamScores = await teamScoresQuery.ToListAsync();
 
-            var teamScoresQuery = from score in _db.Points
-                                  where score.Game == game && score.Match!.LeagueId == leagueId
-                                  select new { score.TeamId, score.Team.Name, score.Points, score.Team.FamilyId };
+    return teamScores.Select(score => new TeamStatus(score.TeamId, score.TeamName, score.Points, score.FamilyId)).ToList();
+}
 
-            var teamScores = await teamScoresQuery.ToListAsync();
-
-            return teamScores.Select(score => new TeamStatus(score.TeamId, score.Name, score.Points, score.FamilyId)).ToList();
-        }
 
         // 🧹 make private and rename
         public async Task<List<TeamStatus>> BuildAndCacheLeagueRanking(int leagueId)

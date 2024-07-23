@@ -23,7 +23,7 @@ public class PointsRegistration {
     public DateTime Added { get; set; }
 
     [JsonIgnore]
-    public required Team Team { get; set; }
+    public  Team? Team { get; set; }
     [JsonIgnore]
     public Game? Game { get; set; }
     [JsonIgnore]
