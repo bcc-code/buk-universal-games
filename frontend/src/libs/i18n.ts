@@ -26,9 +26,10 @@ export async function setupI18n() {
     legacy: false,
     globalInjection: true,
     fallbackLocale: 'en',
+    warnHtmlMessage: false,
   });
 
-  const store = usePiniaStore()
+  const store = usePiniaStore();
 
   await setI18nLanguage(i18n.global, store.userLanguage);
 
@@ -38,10 +39,12 @@ export async function setupI18n() {
 export async function setI18nLanguage(i18n: Composer, locale: string) {
   let verifiedLocale: Locale;
 
-  if (locale && (locale in SUPPORTED_LOCALES)) {
+  if (locale && locale in SUPPORTED_LOCALES) {
     verifiedLocale = locale as Locale;
   } else {
-    console.warn(`The locale '${locale}' is not supported. Using 'en' as fallback.`);
+    console.warn(
+      `The locale '${locale}' is not supported. Using 'en' as fallback.`,
+    );
     verifiedLocale = 'en';
   }
 
@@ -54,5 +57,5 @@ export async function setI18nLanguage(i18n: Composer, locale: string) {
   if (!html) throw Error("Couldn't find html element");
   html.setAttribute('lang', verifiedLocale);
 
-  usePiniaStore().setUserLanguage(verifiedLocale)
+  usePiniaStore().setUserLanguage(verifiedLocale);
 }
