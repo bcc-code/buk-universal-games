@@ -57,7 +57,6 @@ export default {
     };
   },
   created() {
-    this.$store.dispatch('getLeagueStatus');
     if (this.game) {
       this.gameParsed = this.$store.state.games.find(
         (game) => game.id == this.game,
