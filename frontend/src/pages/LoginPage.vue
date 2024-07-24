@@ -51,6 +51,7 @@ import { useSigninResponse } from '../hooks/hooks';
 import BigLogo from '@/components/BigLogo.vue';
 import LoadingButton from '@/components/LoadingButton.vue';
 import { useI18n } from 'vue-i18n';
+import { setI18nLanguage } from '@/libs/i18n';
 
 const route = useRoute();
 const code = route.params.code as string | undefined;
@@ -79,6 +80,8 @@ const errorMessage = computed(() => {
   return null;
 });
 
+const i18n = useI18n();
+
 const tryLogin = async () => {
   if (!teamCode.value.toUpperCase()) return;
 
@@ -89,6 +92,7 @@ const tryLogin = async () => {
   if (signInResponse.value && !error.value && !response.isError) {
     if (signInResponse.value.access?.toLowerCase() === 'admin') {
       router.push({ name: 'AdminSelectGame' });
+      setI18nLanguage(i18n, 'nb');
     } else {
       router.push({ name: 'LeagueList' });
     }
