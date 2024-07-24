@@ -28,20 +28,25 @@ namespace Buk.UniversalGames.Api.Authorization
 
         public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
         {
+            Console.WriteLine("Entering OnAuthorizationAsync method.");
+
             if (_authorizedTeamTypes.Length > 0)
             {
                 string? code = default;
                 if (context.HttpContext.Request.Headers.TryGetValue("x-ubg-teamcode", out var codeFromHeader))
                 {
                     code = codeFromHeader;
+                    Console.WriteLine($"Team code found in headers: {code}");
                 }
                 else if (context.RouteData.Values.TryGetValue("code", out var codeFromRoute))
                 {
                     code = codeFromRoute?.ToString();
+                    Console.WriteLine($"Team code found in route data: {code}");
                 }
 
                 if (string.IsNullOrEmpty(code))
                 {
+                    Console.WriteLine("Team code is missing.");
                     context.Result = new ExceptionResult(Strings.MissingTeamCode, 401);
                 }
                 else
@@ -49,17 +54,24 @@ namespace Buk.UniversalGames.Api.Authorization
                     var team = await _leagueService.GetTeamByCode(code!);
                     if (team is null)
                     {
+                        Console.WriteLine($"Unknown team code: {code}");
                         context.Result = new ExceptionResult(Strings.UnknownTeamCode, 401);
                     }
                     else if (!_authorizedTeamTypes.Contains(team.Type))
                     {
+                        Console.WriteLine($"Team unauthorized. Team type: {team.Type}");
                         context.Result = new ExceptionResult(Strings.TeamUnathorized, 403);
                     }
-
-                    context.HttpContext.Items["ValidatedTeam"] = team;
+                    else
+                    {
+                        Console.WriteLine($"Team authorized: {team.TeamId}");
+                        context.HttpContext.Items["ValidatedTeam"] = team;
+                    }
                 }
             }
+            Console.WriteLine("Exiting OnAuthorizationAsync method.");
         }
+
     }
 
 }
