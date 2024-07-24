@@ -44,11 +44,19 @@ public class GamesController : ControllerBase
     public async Task<ActionResult<List<MatchListItem>>> GetMatches()
     {
         Console.WriteLine("Entering GetMatches method.");
-
-        if (HttpContext.Items["ValidatedTeam"] is not Team team)
+        if (!HttpContext.Items.ContainsKey("ValidatedTeam"))
         {
-            Console.WriteLine("Team not found in HttpContext.Items.");
-            return BadRequest("Team not found");
+            Console.WriteLine($"ValidatedTeam not found in HttpContext.Items.");
+            return BadRequest("Team not found 1");
+        }
+
+        var validatedTeam = HttpContext.Items["ValidatedTeam"];
+                Console.WriteLine($"Type of ValidatedTeam: {validatedTeam?.GetType()}");
+
+        if (validatedTeam is not Team team)
+        {
+            Console.WriteLine($"ValidatedTeam is not of type Team.");
+            return BadRequest("Team not found 2");
         }
 
         Console.WriteLine($"Team found: {team.Code} {team.Name} {team.TeamId}");

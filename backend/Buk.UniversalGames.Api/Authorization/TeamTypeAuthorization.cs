@@ -1,4 +1,5 @@
 ﻿using Buk.UniversalGames.Api.Exceptions;
+using Buk.UniversalGames.Data.Models;
 using Buk.UniversalGames.Interfaces;
 using Buk.UniversalGames.Library.Cultures;
 using Buk.UniversalGames.Library.Enums;
@@ -51,19 +52,33 @@ namespace Buk.UniversalGames.Api.Authorization
                 }
                 else
                 {
-                    var team = await _leagueService.GetTeamByCode(code!);
-                    if (team is null)
+                    var teamDto = await _leagueService.GetTeamByCode(code!);
+                    
+                    if (teamDto is null)
                     {
                         Console.WriteLine($"Unknown team code: {code}");
                         context.Result = new ExceptionResult(Strings.UnknownTeamCode, 401);
                     }
-                    else if (!_authorizedTeamTypes.Contains(team.Type))
+                    else if (!_authorizedTeamTypes.Contains(teamDto.Type))
                     {
-                        Console.WriteLine($"Team unauthorized. Team type: {team.Type}");
+                        Console.WriteLine($"Team unauthorized. Team type: {teamDto.Type}");
                         context.Result = new ExceptionResult(Strings.TeamUnathorized, 403);
                     }
                     else
                     {
+                        var team = new Team
+                    {
+                        TeamId = teamDto.TeamId,
+                        Name = teamDto.Name,
+                        Code = teamDto.Code,
+                        Color = teamDto.Color,
+                        MemberCount = teamDto.MemberCount,
+                        LeagueId = teamDto.LeagueId,
+                        FamilyId = teamDto.FamilyId,
+                        TeamType =teamDto.TeamType,
+                        // Map other necessary fields from TeamDto to Team
+                    };
+
                         Console.WriteLine($"Team authorized: {team.TeamId}");
                         context.HttpContext.Items["ValidatedTeam"] = team;
                     }
