@@ -1,166 +1,51 @@
 {
-  "install_hint": "Sugestie:\nInstalați această aplicație web pe ecranul de start, va funcționa mai bine!",
-  "menu": {
-    "home": "Acasă",
-    "league": "Ligă",
-    "sidequest": "Misiune Secundară",
-    "games": "Jocuri",
-    "map": "Hartă"
-  },
-  "games": {
-    "monkeybars": "Bară cu Maimuțe",
-    "nervespiral": "Spirală nervoasă",
-    "tickettwist": "Trucul cu Bilete",
-    "minefield": "Câmp Minat",
-    "tablesurfing": "Surf în Mulțime"
-  },
-  "score": {
-    "monkeybars": "{score} bare",
-    "nervespiral": "{score} secunde",
-    "tickettwist": "{score} bilete",
-    "minefield": "{score} secunde",
-    "tablesurfing": "{score} secunde"
-  },
-  "leadstory": {
-    "monkeybars": "Poate echipa ta oferi asistență pentru a salva oameni prinși pe o roată panoramică defectă? Să urci pe o roată panoramică poate fi provocator, și este crucial să nu uiți importanța de a avea provizii de prim ajutor. Fă-ți echipa să ajungă pe cealaltă parte și să salveze acești oameni neajutorați.",
-    "nervespiral": "În timp ce aștepți rândul tău în linia pentru următoarea atracție, se întâmplă brusc o cădere de curent. Nu intra în panică. Poate echipa ta naviga cu pricepere prin această situație neașteptată, părăsind în siguranță linia fără a experimenta șocuri electrice? Păstrează-ți calmul și încrederea în abilitatea echipei tale de a gestiona această provocare cu compoziție și eleganță.",
-    "tickettwist": "Oamenii stau în linie pentru a-și lua biletul. Este echipa ta capabilă să facă față vitezei și stresului din zona de vânzare a biletelor? Acest joc combină gândirea rapidă, rezistența, viteza și colaborarea. Concentrează-te și adună cât mai multe bilete în culoarea echipei tale. Ești pregătit pentru provocare?",
-    "minefield": "Echipa ta se confruntă cu o situație dificilă în care trebuie să traverseze spre cealaltă parte fiind atenți la animalele sălbatice care au scăpat. Scopul este de a ajunge la destinație fără a fi atacați de aceste animale.",
-    "tablesurfing": "Linia de cale ferată este deteriorată, provocând o problemă semnificativă. Cu toate acestea, echipa ta poate rezolva această situație lucrând împreună ca o echipă. Combină-vă abilitățile, coordonați-vă acțiunile și găsiți o modalitate de a menține trenul în mișcare lină."
-  },
-  "explanation": {
-    "monkeybars": "Jucătorul unu începe să urce pe barele cu maimuțe cât de mult poate. Odată ce a ajuns la a 12-a bară, următorul jucător poate începe de la început.\n\nExemplu: Jucătorul unu a atins ultima dată a 26-a bară, deci scorul lui va fi de 26 de puncte. Jucătorul doi a căzut la a 18-a bară, deci scorul ei este de 18 puncte. Punctele tuturor jucătorilor se vor aduna și se vor împărți la numărul total de jucători din echipă. Acesta va fi scorul total al echipei tale.",
-    "nervespiral": "Când se dă semnalul de start, primii doi jucători pot merge la spirală. Aceștia iau fiecare o parte a inelului de metal și încearcă să ajungă la primul punct de control fără să atingă tubul.\n\nCând cei doi jucători ajung la un punct de control, se întorc înapoi, iar doi jucători noi intră în joc. Când acești doi jucători ating spirală, se întorc la echipă, iar doi jucători noi continuă de la ultimul punct de control. Acest lucru continuă până când se ajunge la capătul spirală. Echipa care termină prima câștigă.",
-    "tickettwist": "Pentru acest joc, fiecare jucător care participă în joc trebuie să poarte o banderolă în culoarea echipei sale. 10 jucători din fiecare echipă vor concura unul împotriva celuilalt pe teren. Scopul acestui joc este să întorci cât mai multe cărămizi în culoarea echipei tale. Jucătorii de pe teren pot să schimbe cât de des doresc, dar noul jucător trebuie să primească banderola de la jucătorul „vechi” și apoi noul jucător poate continua jocul. Jocul constă într-o rundă de 8 minute. Când timpul a expirat, toți jucătorii părăsesc terenul, iar cărămizile vor fi numărate după culoare. Echipa care a întors cele mai multe cărămizi în culoarea sa câștigă jocul.",
-    "minefield": "Acest joc va avea loc pe un teren mare cu sectoare mici. Fiecare echipă are doi căpitani pe margine care ghidează jucătorii fără a folosi telefoane mobile sau alte ajutoare. Jucătorul unu începe și încearcă să treacă prin teren fără să calce într-o cutie greșită. Pentru a ști dacă te afli într-o cutie corectă sau greșită, folosești un dispozitiv sonor în fiecare cutie. Când dispozitivul sonor dă semnalul de alarmă, te afli într-o cutie greșită și trebuie să schimbi jucătorul cu un jucător nou. Fiecare jucător verifică fiecare cutie, chiar dacă este 100% sigur că nu este o mină. Căpitanii ajută la memorarea traseului corect. Continui până când ai ajuns la final, iar apoi timpul tău se oprește. Echipa cu cel mai rapid timp câștigă jocul.",
-    "tablesurfing": "Scopul acestui joc este să treci o persoană de pe o parte a traseului la alta pe o flamingo peste persoanele care se rostogolesc. Cu echipa ta trebuie să faci mai multe încercări și să nu lași persoana de sus să cadă pe pământ. La capătul traseului, vei găsi o pantă. Odată ce băieții au urcat pe pantă, se va auzi clopoțelul și echipele se vor schimba. A doua echipă (fetele) va stabili același traseu pe drumul înapoi, coborând pe pantă și trecând pe la toate curburile. Echipa care trece linia de sosire prima câștigă."
-  },
-  "rules": {
-    "monkeybars": "Participă toți membrii echipei",
-    "nervespiral": "Participă 30 - 50 de membri ai echipei (în 15-25 de perechi)",
-    "tickettwist": "Numai persoanele cu banderolă de echipă au voie să intre pe teren (10 pe echipă)|Este permis să schimbi participanții fără limită, atâta timp cât poartă o banderolă de echipă când intră pe teren",
-    "minefield": "Participă aproximativ 30 de membri ai echipei|Pe traseu este permisă o singură persoană odată|2 căpitani de echipă ghidează participanții prin traseu|Căpitanii de echipă nu au voie să folosească unelte pentru a-și aminti traseul",
-    "tablesurfing": "Participă 16 băieți și 16 fete, 1 persoană care stă pe flamingo și 15 persoane care se rostogolesc|Nu este permis să atingi pământul (atat cel care stă pe flamingo, cât și cei care se rostogolesc)|Obstacolele nu pot fi mutate, iar persoanele care se rostogolesc nu pot ieși din zona marcată"
-  },
-  "general_error": "Ceva nu a mers bine",
-  "pleaserefresh": "Vă rugăm să încercați să reîmprospătați pagina",
-  "points": "Puncte",
-  "coins": "Monezi",
-  "game": "Joc",
-  "team1team2": "Echipa 1 / Echipa 2",
-  "start": "Start",
-  "rulestitle": "Reguli",
-  "login": {
-    "login_button": "Autentificare",
-    "teamcode": "Cod echipă",
-    "teamcode_invalid": "Ne pare rău, codul echipei tale nu este valid"
-  },
-  "league": {
-    "rankingisempty": "Niciun echipă nu a înregistrat încă puncte. Verificați din nou după prima rundă.",
-    "viewgamerankings": "Vizualizează clasamentul pentru fiecare joc",
-    "viewgamerankings-title": "Poți vizualiza clasamentele pe jocuri pe paginile de detalii ale jocurilor",
-    "ranking-frozen": "Clasamentul este acum blocat până când câștigătorii vor fi anunțați"
-  },
   "admin": {
+    "intro": "Întreabă de la ce echipă fac parte și asigură-te că este echipa corectă la locul potrivit și că se potrivește cu echipa menționată mai sus.",
+    "select_game": {
+      "intro": "Selectează jocul pe care îl vei arbitra"
+    },
     "select_league": {
-      "intro": "Alege liga pe care dorești să o administrezi"
+      "intro": "Selectează zona ta"
     }
   },
-  "yourmatch": "Meciul tău",
-  "sidequest": {
-    "thanks": "Mulțumim, răspunsul tău a fost înregistrat",
-    "timeranout": "Timpul a expirat, noroc mai bun data viitoare",
-    "areyouready": "Ești pregătit?",
-    "checkanswerlater": "Verifică răspunsul când jocul s-a terminat",
-    "question_locked": "Expirat",
-    "youhaveunsubmittedanswers": "Ai {numAnswers} răspunsuri. Vrei să le trimiți acum?",
-    "submityouranswers": "Trimite răspunsurile tale",
-    "gameroundtitle": "Runda {round}",
-    "back_to_overview": "Înapoi la vedere de ansamblu",
-    "alreadyAnswered": "Ai răspuns deja la această întrebare",
-    "noroundyet": "Încă nu este disponibil. Reveniți după meci.",
-    "submitfailed": "Nu s-au putut trimite răspunsurile tale. Asigură-te că ai conexiune și încearcă din nou",
-    "no_coins": "Nu mai ai nicio monedă. Nu poți răspunde la alte întrebări",
-    "explanation": "Explicație",
-    "explanation_text": "După fiecare meci, cu excepția ultimului, vor fi deblocate 2 întrebări în ordine aleatoare, deci în total 8 întrebări. Ai 10 minute la dispoziție să le răspunzi, până când începe următorul meci.\nAi în total 8 monede. Fiecare întrebare pe care o începi costă o monedă, chiar dacă nu răspunzi la ea. Deci, dacă reîncerci aceeași întrebare, va trebui să sari peste o altă întrebare.\nOdată ce ai răspuns la o întrebare, nu o poți mai răspunde o dată.\n\nEchipa ta obține puncte bonus în funcție de câți membri ai echipei trimit un răspuns corect pentru fiecare întrebare.\nVerifică după fiecare meci pentru a câștiga mai multe puncte pentru echipa ta!",
-    "questiontypes": {
-      "math": "Mate",
-      "knowledge": "Cunoșt",
-      "recognize": "Recunoaște",
-      "insight": "Înțelege",
-      "remember": "Memorează",
-      "guess": "Ghicește"
-    }
+  "admin-referee-info": {
+    "hamster_wheel": "<div class='rounded-md p-4 mb-4 bg-amber-50'> <span class='font-bold'>Script:</span> <br /> Bun venit la Roata Hamsterului.  <ul class='list-disc list-inside'> <li>La această postare, veți concura împotriva unei alte echipe într-o ștafetă. Echipa care câștigă și obține cel mai bun timp primește cele mai multe puncte.</li> <li>Echipele trebuie să ajungă de la un capăt la altul și să se întoarcă în cel mai scurt timp posibil.</li> <li>O echipă trebuie să aibă 15 participanți în roată simultan. Trebuie să fie 15 participanți în roată pe tot parcursul traseului.</li> <li>Întreaga echipă trebuie să execute ștafeta împreună. Echipa trebuie să meargă în interiorul covorului cu covorul deasupra capului pe tot parcursul traseului.</li> <li>Cu condiția ca echipa să aibă suficienți participanți, persoanele din roată pot fi înlocuite cu 15 persoane noi când echipa este la jumătatea drumului.</li> <li>Echipa trebuie să treacă linia cu întreaga roată înainte de a putea schimba participanții.</li> <li>Echipa care se întoarce prima cu întreaga echipă peste linia de start câștigă. Timpul va fi, de asemenea, înregistrat, deci este important ca ambele echipe să execute traseul cât mai repede posibil, chiar dacă nu ajung primele la final.</li> <li>Echipa trebuie să rămână în interiorul covorului pe tot parcursul traseului. Fiecare picior care atinge solul în afara covorului adaugă timp suplimentar. Acest lucru se aplică și în cazul în care țesătura nu este deasupra capului participanților.</li> <li>Aveți 2 minute pentru a vă pregăti.</li> <li>Sarcina începe la semnalul meu (al arbitrului).</li> <li>Sarcina este înțeleasă?</li> <li>Atunci echipele se pot pregăti la linia de start. Grupul care trebuie să preia poate să se așeze de cealaltă parte a terenului. Numărătoarea inversă de 2 minute începe acum.</li> <li>Timpul s-a scurs. Toate echipele sunt gata?</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Pentru arbitru:</span> <ul class='list-disc list-inside'> <li>Doi arbitri se plasează de fiecare parte a echipelor și înregistrează pe telefon de câte ori echipele ies de pe bandă și de fiecare dată când echipa nu are țesătura deasupra capului.</li> <li>Asigură-te că participanții și publicul au poziții clare față de tabla de joc pentru experiența de joc, vizibilitate și angajament.</li> </ul> <br /> <span>La sfârșitul jocului:</span> <ul class='list-disc list-inside'> <li>Adună covoarele și distribuie-le clar pentru echipa următoare care vine.</li> <li>Îndreaptă linia de start și alte bariere, dacă este necesar.</li> <li>Pregătește-te pentru un nou grup!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Sănătate, Mediu și Securitate:</span> <ul class='list-disc list-inside'> <li>Fii atent că roata hamsterului implică multe persoane care merg într-un ritm rapid simultan și aproape una de alta, ceea ce poate duce la căderi. Acest lucru este considerat un risc mediu.</li> </ul> </div>",
+    "iron_grip": "<div class='rounded-md p-5 mb-4 bg-amber-50'> <span class='font-bold'>Script:</span> <br /> Bun venit la Prinderea de Fier.  <ul class='list-disc list-inside'> <li>Scopul acestei postări este să acumuleze cât mai mult 'timp de agățare' în 10 minute.</li> <li>Toată lumea poate participa, dar numai 9 persoane se pot agăța simultan.</li> <li>Echipa acumulează 'timp de agățare' atunci când 9 persoane din echipă se agăță simultan de schelă.</li> <li>Echipa are 10 minute pentru a finaliza postul.</li> <li>Când sunt mai puțin de 9 participanți care se agăță simultan, timpul acumulat pentru 'timpul de agățare' se oprește până când 9 participanți se agăță simultan din nou. Apoi timpul reîncepe.</li> <li>Participanții care nu mai pot să se agățe trebuie să se așeze la capătul cozii pe partea laterală a schelei.</li> <li>Doar participanții care se agăță au voie să fie pe schelă; restul echipei trebuie să stea la coadă, pe partea laterală a schelei (arată partea corectă).</li> <li>În caz de înșelăciune, echipa va pierde 10 secunde din timpul acumulat.</li> <li>Participanții se pot agăța doar cu mâinile, fără sprijinul picioarelor, altor participanți sau obiecte.</li> <li>Arbitrul decide dacă ceva este înșelăciune, dar orice ajută participanții să se agățe fără propria lor forță este considerat înșelăciune.</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Pentru arbitri:</span> <ul class='list-disc list-inside'> <li>Aveți un cronometru care numără 10 minute, care este pornit la începutul competiției.</li> <li>Aveți un cronometru folosit pentru 'timpul de agățare' acumulat, care se oprește de fiecare dată când sunt mai puțin de 9 participanți care se agăță simultan de schelă, și reîncepe când 9 persoane se agăță simultan.</li> <li>Un participant poate participa de câte ori dorește.</li> <li>Echipa decide singură ce participanți dorește să folosească pentru agățat, și acest lucru poate fi schimbat în timpul jocului.</li> <li>Participanții trebuie să se agățe cu mâinile direct de schelă și nu pot folosi picioarele, alți participanți, obiecte, etc. pentru a obține ajutor.</li> <li>Un arbitru urmărește înșelăciunea. IMPORTANT: indică echipei că aceasta este înșelăciune, apoi notează-o.</li> <li>Anunță următoarele timpuri: Mai sunt 5 minute, la jumătatea drumului! Mai sunt 2 minute, Mai este 1 minut!</li> </ul> <br /> <span>La sfârșitul jocului:</span> <ul class='list-disc list-inside'> <li>Înregistrează 'timpul de agățare' și înșelăciunea în aplicație.</li> <li>Procedură de securitate: Verifică schela pentru a te asigura că totul este bine fixat după fiecare rundă.</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Sănătate, Mediu și Securitate:</span> <ul class='list-disc list-inside'> <li>Risc de cădere de pe schelă, entorse la cădere, bășici pe mâini.</li> <li>Unde postul are asfalt, vor fi covorașe.</li> </ul> </div>",
+    "labyrinth": "<div class='rounded-md p-4 mb-4 bg-amber-50'> <span class='font-bold'>Script:</span> <br /> Bun venit la Labirint.  <ul class='list-disc list-inside'> <li>La această postare, trebuie să colaborați pentru a face o minge să treacă printr-un labirint.</li> <li>Până la 12 jucători colaborează simultan, și aveți un maximum de zece minute pentru a finaliza postul.</li> <li>Există două puncte de control în labirint unde cei 12 jucători trebuie înlocuiți cu 12 jucători noi.</li> <li>Nu este permis să atingeți mingea cu mâinile atunci când este pe tablă, nici să o aruncați în aer.</li> <li>Dacă mingea cade într-o gaură, unul dintre jucători trebuie să o ridice și să o pună înapoi la punctul de pornire sau la ultimul punct de control, dar este permis să fie sub labirint doar atunci când mingea cade printr-o gaură.</li> <li>Veți primi două puncte pentru fiecare punct de control pe care îl treceți, și mai multe puncte pe măsură ce completați mai repede.</li> <li>Când labirintul este complet sau timpul este scurs, puteți așeza labirintul încet pe pământ.</li> <li>Jocul începe când un arbitru plasează mingea la punctul de pornire.</li> <li>Sarcina este înțeleasă?</li> <li>Atunci 12 jucători se pot pregăti să înceapă în labirint, și restul echipei poate sta aici (arată unde este avantajos să stea restul echipei).</li> <li>12 jucători noi trebuie să fie pregătiți să preia la punctele de control.</li> <li>Atunci începem. Gata, start, du-te!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Pentru arbitru:</span> <ul class='list-disc list-inside'> <li>Controlează mulțimile și așează spectatorii în cea mai bună poziție posibilă.</li> <li>Fii pregătit să pornești numărătoarea inversă de 10 minute când echipa începe.</li> <li>Asigură-te că toți jucătorii sunt înlocuiți cu jucători noi la punctele de control.</li> <li>Asigură-te că participanții nu încalcă nici o regulă.</li> <li>Oprește jocul după 10 minute, dacă echipa nu a finalizat încă sarcina.</li> </ul> <br /> <span>La sfârșitul jocului:</span> <ul class='list-disc list-inside'> <li>Adună toate mingile care au fost folosite în joc.</li> <li>Pregătește-te pentru grupuri noi!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Sănătate, Mediu și Securitate:</span> <ul class='list-disc list-inside'> <li>Riscul asociat acestei postări este că participanții pot lăsa labirintul să cadă pe picioarele lor. Dacă mingea cade într-o gaură, participanții trebuie să fie atenți când o ridică, pentru a nu le cădea labirintul pe ei. Pot apărea așchii sau bășici în palmă.</li> </ul> </div>",
+    "land_water_beach": "<div class='rounded-md p-4 mb-4 bg-amber-50'> <span class='font-bold'>Script:</span> <br /> Bun venit la Pământ, Apă, Plajă.  <ul class='list-disc list-inside'> <li>La această postare, veți concura împotriva unei alte echipe pentru a reacționa cât mai rapid posibil și pentru a vă deplasa între trei zone pe trei semnale diferite.</li> <li>Zece persoane din fiecare echipă încep în zona din mijloc, plaja.</li> <li>Cele trei semnale la care trebuie să reacționați sunt: <ul> <li>Semnal roșu înseamnă că trebuie să vă deplasați în zona din spate, pământ.</li> <li>Semnal galben este zona din mijloc, plaja.</li> <li>Semnal albastru este zona din față, apă.</li> </ul> </li> <li>Echipa în care toți cei zece jucători se deplasează primii în zona corectă, primește un punct. Dacă ambele echipe sunt la fel de rapide, ambele echipe primesc un punct.</li> <li>Jucătorii trebuie să rămână în zona în care se deplasează.</li> <li>Se vor afișa trei semnale înainte ca cei zece jucători să fie înlocuiți de zece noi jucători. Acest lucru se face în trei runde totale.</li> <li>Veți primi puncte în funcție de câte runde câștigați.</li> <li>Sarcina este înțeleasă?</li> <li>Atunci zece jucători pot începe în zona din mijloc, iar restul echipei poate sta acolo și fi gata să înlocuiască cei zece jucători (arată unde este cel mai bine ca restul echipei să stea).</li> <li>Atunci începem. Gata, start, du-te!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Pentru arbitri:</span> <ul class='list-disc list-inside'> <li>Asigură-te că restul echipei este poziționat într-un loc adecvat și este gata să înlocuiască zece noi jucători în fiecare rundă.</li> <li>Asigură-te că timpul total la postare nu depășește 15 minute.</li> <li>Arbitrul principal afișează punctele pe tabloul de scor.</li> <li>Două linii arbitri cu steaguri iau rapid o decizie despre cine obține puncte.</li> <li>Persoana din cutia de semnale trebuie să varieze semnalul și timpul între semnale.</li> </ul> <br /> <span>La sfârșitul jocului:</span> <ul class='list-disc list-inside'> <li>Asigură-te că zonele sunt încă clar marcate.</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Sănătate, Mediu și Securitate:</span> <ul class='list-disc list-inside'> <li>Riscul asociat acestei postări este mic; pot apărea împiedicări, entorse sau căderi. Fii atent la acest lucru.</li> </ul> </div>",
+    "mastermind": "<div class='rounded-md p-4 mb-4 bg-amber-50'> <span class='font-bold'>Script:</span> <br /> Bun venit la Mastermind.  <ul class='list-disc list-inside'> <li>Scopul acestei postări este să descoperiți ce cod de culoare se află în valiză.</li> <li>Aveți 8 runde și un maximum de 10 minute pentru a rezolva sarcina.</li> <li>Veți primi mai multe puncte folosind mai puține runde pentru a găsi codul corect.</li> <li>Acum trebuie să alegeți 5 Spargători de Coduri.</li> <li>Acești 5 au sarcina principală de a rezolva sarcina.</li> <li>Ceilalți primesc fiecare o culoare (Durag - pălărie) care reprezintă o piesă de joc pe care Spargătorii de Coduri o pot plasa pe tabla de joc.</li> <li>Toți participanții care sunt piese de joc trebuie să poarte pălăria pe cap în orice moment în timpul jocului. (Țineți durag-ul la îndemână pentru a-l arăta)</li> <li>Spargătorii de Coduri adună piesele de joc (participanți cu pălării) pe care doresc să le folosească și le plasează pe o piesă neagră pe tabla de joc.</li> <li>Când Spargătorii de Coduri au dat răspunsul lor, un arbitru plasează 'bețele de răspuns' care le indică cât de aproape sunt de răspuns.  <ul> <li>Băț roșu = culoare corectă în poziția corectă</li> <li>Băț alb = culoare corectă în poziția greșită</li> </ul> (Țineți bețele la îndemână și arătați-le)</li> <li>Când Spargătorii de Coduri ghicesc codul de culoare corect, un arbitru merge înainte și deschide cutia.</li> <li>Restul echipei stă lângă tabla de joc.</li> <li>Sarcina este înțeleasă?</li> <li>Atunci Spargătorii de Coduri pot merge la acel arbitru (arată și indică).</li> <li>Toți cei care vor fi piese de joc pot sta acolo (arată și indică).</li> <li>Atunci începem. Gata, start, du-te!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Pentru arbitru:</span> <ul class='list-disc list-inside'> <li>Asigură-te că publicul, piesele de joc și Spargătorii de Coduri au poziții clare față de tabla de joc pentru experiența de joc, vizibilitate și angajament.</li> </ul> <br /> <span>La sfârșitul jocului:</span> <ul class='list-disc list-inside'> <li>Adună toate pălăriile.</li> <li>Adună toate bețele de răspuns.</li> <li>Schimbă codul de culoare în cutie.</li> <li>Ajustează tabla de joc, dacă este necesar.</li> <li>Pregătește-te pentru grupuri noi!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Sănătate, Mediu și Securitate:</span> <ul class='list-disc list-inside'> <li>Riscul asociat acestei postări este că participanții se pot împiedica de piesele de joc pe tabla de joc. Acest lucru este considerat un risc foarte mic până la mic.</li> </ul> </div>"
   },
-  "questions": {
-    "guesshowmany1": {
-      "q": "Câte ore de Fra Kåre au fost ascultate anul acesta?",
-      "intro": "Ai ascultat Fra Kåre anul acesta?"
-    },
-    "guesshowmany2": {
-      "q": "Câte persoane au vizitat taberele în 2023?",
-      "intro": "Ești bun la numărat?"
-    },
-    "remember": {
-      "q": "Care este ordinea corectă a mișcărilor de dans din Herman Shuffle?",
-      "intro": "Ai dansat alături de aceasta dimineață?",
-      "a": {
-        "lwd": "Lean, Wave, Drift",
-        "wld": "Wave, Lean, Drift",
-        "ldw": "Lean, Drift, Wave",
-        "wdl": "Wave, Drift, Lean"
-      }
-    },
-    "insight": {
-      "q": "Ce cărucior de montagne-russe va ajunge primul jos?",
-      "intro": "Uită-te la imagine. Ce cărucior de montagne-russe va ajunge primul jos?",
-      "a": {
-        "red": "Roșu",
-        "green": "Verde",
-        "yellow": "Galben",
-        "sametime": "Ajung jos în același timp"
-      }
-    },
-    "recognize1": {
-      "q": "Recunoști sau îți amintești cine este aceasta?",
-      "intro": "Știi pe cine (nu) vedem în această imagine?",
-      "a": {
-        "opta": "Gershon Twilley",
-        "optb": "Harald Kronstad",
-        "optc": "Gunnar Gangsø",
-        "optd": "Bernt-Aksel Larsen"
-      }
-    },
-    "recognize2": {
-      "q": "Poți să-ți amintești cine este acesta?",
-      "intro": "Ai urmărit proiectele anul acesta? Uită-te la imagine.",
-      "a": {
-        "peter": "Petru",
-        "john": "Ioan",
-        "matthew": "Matei",
-        "paul": "Pavel"
-      }
-    },
-    "math": {
-      "q": "Ce număr trebuie să fie pe semnul întrebării?",
-      "intro": "Uită-te la imagine. Ce număr trebuie să fie pe semnul întrebării?",
-      "a": {
-        "30": "30",
-        "81": "81",
-        "200": "200",
-        "67": "67"
-      }
-    },
-    "knowledge": {
-      "q": "În ce țară BCC nu are o biserică?",
-      "intro": "De unde ești?",
-      "a": {
-        "singapore": "Singapore",
-        "serbia": "Serbia",
-        "japan": "Japonia",
-        "peru": "Peru"
-      }
-    }
+  "calculated-score": "Scor calculat",
+  "couldnt-load-the-video": "Nu a fost posibil să se încarce videoclipul",
+  "details": "Detalii",
+  "family": "Familie",
+  "games": {
+    "hamster_wheel": "Roata Hamsterului",
+    "iron_grip": "Prinderea de Fier",
+    "labyrinth": "Labirint",
+    "land_water_beach": "Pământ, Apă, Plajă",
+    "mastermind": "Mastermind"
   },
-  "back": "Înapoi"
+  "general_error": "Ceva a mers prost",
+  "loading": "Încărcare...",
+  "login": {
+    "login_button": "Conectare",
+    "teamcode": "Cod echipă"
+  },
+  "menu": {
+    "games": "Jocuri"
+  },
+  "minutes": "Minute",
+  "no-matches-for-this-filter": "Niciun rezultat pentru acest filtru",
+  "please_refresh": "Reîncarcă pagina",
+  "point": "Punct",
+  "points-registration-error": "Rezultatul calculat a returnat undefined. Formularul este invalid, deși poate fi trimis. Este posibil să lipsească câteva validări la câmpurile formularului.",
+  "post-type": "Tip postare:",
+  "save": "Salvează",
+  "saved": "Salvat",
+  "seconds": "Secunde",
+  "something-went-wrong": "Reîncarcă pagina",
+  "something-went-wrong-we-could-not-log-you-in-please-try-again": "Ceva a mers prost, nu am putut să te conectăm - încearcă din nou.",
+  "team": "Echipă",
+  "yourmatch": "Jocul tău"
 }

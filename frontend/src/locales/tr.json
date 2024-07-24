@@ -1,167 +1,51 @@
 {
-  "install_hint": "İpucu:\nBu web uygulamasını ana ekranınıza kurun, daha iyi çalışacak!",
-  "menu": {
-    "home": "Ana Sayfa",
-    "league": "Lig",
-    "sidequest": "Yan Görev",
-    "games": "Oyunlar",
-    "map": "Harita"
-  },
-  "games": {
-    "monkeybars": "Maymun Barları",
-    "nervespiral": "Sinirli Spiral",
-    "tickettwist": "Bilet Kıvırma",
-    "minefield": "Mayın Tarlası",
-    "tablesurfing": "Kalabalık Sörf"
-  },
-  "score": {
-    "monkeybars": "{score} çubuk",
-    "nervespiral": "{score} saniye",
-    "tickettwist": "{score} bilet",
-    "minefield": "{score} saniye",
-    "tablesurfing": "{score} saniye"
-  },
-  "leadstory": {
-    "monkeybars": "Takımınız, arızalanan bir dönme dolapta mahsur kalmış kişilere yardım edebilir mi? Dönme dolaba tırmanmak zorlu olabilir ve ilk yardım malzemelerini taşımanın önemini unutmamak önemlidir. Lütfen takımınızın diğer tarafa ulaşmasını ve bu yardıma muhtaç kişileri kurtarmasını sağlayın.",
-    "nervespiral": "Sıranızın bir sonraki oyuna kadar sabırla beklerken, birdenbire bir güç arızası meydana gelir. Endişelenmeye gerek yok. Takımınız bu beklenmedik durumu ustaca yönlendirebilecek mi? Elektrik çarpması olmadan sıradan ayrılmak için takımınıza güvenin ve bu zorluğun üstesinden sakinlik ve nezaketle gelin.",
-    "tickettwist": "İnsanlar bilet almak için sırada bekliyor. Takımınız hız ve stresle başa çıkabilecek mi? Bu oyun hızlı düşünmeyi, dayanıklılığı, hızı ve takım çalışmasını birleştirir. Odaklanın ve mümkün olduğunca çok biletin rengini takımınıza çevirin. Bu zorluğa hazır mısınız?",
-    "minefield": "Takımınız, kaçan vahşi hayvanlara karşı dikkatli olmaları gereken zorlu bir durumla karşı karşıya. Hedefleri bu hayvanlar tarafından saldırıya uğramadan hedeflerine ulaşmaktır.",
-    "tablesurfing": "Tren rayları hasar gördü, önemli bir problem oluşturuyor. Ancak takımınız, birlikte çalışarak bu durumla başa çıkabilir. Yeteneklerinizi birleştirin, eylemlerinizi koordine edin ve trenin sorunsuz bir şekilde ilerlemesini sağlayacak bir yol bulun."
-  },
-  "explanation": {
-    "monkeybars": "Birinci oyuncu Maymun Barları'na tırmanmaya başlar ve yapabildiği kadar ilerler. 12. çubuğa ulaştığında, bir sonraki oyuncu başlangıçtan başlayabilir.\n\nÖrnek: Birinci oyuncu son olarak 26. çubuğa dokundu, bu nedenle puanı 26 olur. İkinci oyuncu 18. çubukta düştü, bu nedenle puanı 18 olur. Tüm oyuncuların puanları toplanır ve takımın toplam puanı takım üye sayısına bölünür.",
-    "nervespiral": "Başlangıç işareti seslendiğinde, ilk iki oyuncu spirale gidebilir, her biri metal halkanın bir tarafını alır ve tüpe temas etmeden ilk kontrol noktasına ulaşmaya çalışır.\n\n İki oyuncu bir kontrol noktasına ulaştığında geri dönerler ve iki yeni oyuncu oyunun içine girer. Bu iki oyuncu spiral dokunduğunda, takımlarına geri döner ve iki yeni oyuncu son kontrol noktasından devam eder. Bu şekilde, spiralin sonuna ulaşılana kadar devam edilir. İlk bitiren takım kazanır.",
-    "tickettwist": "Bu oyunda, oyuna katılan her oyuncu takımının renginde bir kurdele takmak zorundadır. Her takımdan 10 oyuncu alan oyunda, amacı takımının rengine mümkün olduğunca çok bilet çevirmektir. Oyuncular alan içinde diledikleri kadar değişebilir, ancak yeni oyuncu oyuna \"eski\" oyuncunun kurdelesini almalı ve ardından yeni oyuncu oyunu devam ettirebilir. Oyun 8 dakikalık 1 turdan oluşur. Süre dolduğunda, tüm oyuncular alanı terk eder ve biletler renklere göre sayılır. En çok bilet çeviren takım oyunu kazanır.",
-    "minefield": "Bu oyun büyük bir alanda küçük bölümler halinde gerçekleşir. Her takımın alanın kenarlarında iki kaptanı vardır ve bu kaptanlar telefon veya başka bir yardımcı araç kullanmadan katılımcıları yönlendirir. Birinci oyuncu başlar ve yanlış kutuya basmadan alana geçmeye çalışır. Doğru veya yanlış kutuda olduğunuzu anlamak için her kutuda sesli uyarı veren bir sinyalizatör kullanırsınız. Sinyalizatör alarm sinyali verdiğinde, yanlış kutuda olduğunuzu anlamış olursunuz ve yeni bir oyuncu için oyuncuyu değiştirmeniz gerekir. Her oyuncu her kutuyu kontrol eder, hatta bu kutunun kesinlikle bir mayın içermediğine yüzde 100 emin olsa bile. Kaptanlar doğru yolu hatırlamada yardımcı olur. Bitişe ulaşana kadar devam eder ve ardından zamanınız durur. En hızlı sürede bitiren takım oyunu kazanır.",
-    "tablesurfing": "Bu oyunun amacı, flamingo üzerindeki bir kişiyi diğer tarafa geçirmektir. Takımınızla birlikte birkaç tur almanız ve üstteki kişinin yere düşmemesini sağlamanız gerekir. Rota sonunda bir yokuş bulunur. Erkekler yokuşa tırmandıktan sonra zil çalar ve takımlar değişir. İkinci takım (kızlar) aynı rotayı geri dönerken, yokuşa iner ve tüm dönemeçlerden dolaşır. Finiş çizgisini ilk geçen takım oyunu kazanır."
-  },
-  "rules": {
-    "monkeybars": "Takımın tüm üyeleri katılır",
-    "nervespiral": "30 - 50 takım üyesi katılır (15-25 çift)",
-    "tickettwist": "Sadece takım kurdelesi taşıyan kişilere sahaya giriş izni vardır (takım başına 10)|Kurdele taşıyan katılımcılar sınırsız sayıda değiştirilebilir, ancak sahaya girerken takım kurdelesi takmalıdır",
-    "minefield": "Yaklaşık 30 takım üyesi katılır|Zaman içinde sadece 1 kişi alanda olabilir|2 takım kaptanı katılımcıları alanda yönlendirir|Takım kaptanları hatırlamak için araç kullanamaz",
-    "tablesurfing": "16 erkek ve 16 kız katılır, 1 sörfçü ve 15 yuvarlanan|Yere dokunmak yasaktır (hem yuvarlananlar hem de sörfçü)|Engeller hareket ettirilemez ve yuvarlananlar işaretlenen alanın dışına çıkamaz"
-  },
-  "general_error": "Bir şeyler ters gitti",
-  "pleaserefresh": "Lütfen sayfayı yeniden yüklemeyi deneyin",
-  "points": "Puanlar",
-  "coins": "Jetonlar",
-  "game": "Oyun",
-  "team1team2": "Takım 1 / Takım 2",
-  "start": "Başla",
-  "rulestitle": "Kurallar",
-  "login": {
-    "login_button": "Giriş",
-    "teamcode": "Takım kodu",
-    "teamcode_invalid": "Üzgünüz, takım anahtarınız geçersiz",
-    "viewgamerankings-title": "Oyun detay sayfalarında oyunlara göre sıralamaları görüntüleyebilirsiniz."
-  },
-  "league": {
-    "rankingisempty": "Henüz hiçbir takım puan kaydetmedi. İlk turdan sonra burayı kontrol edin.",
-    "viewgamerankings": "Her oyun için sıralamayı görüntüle",
-    "viewgamerankings-title": "Oyun ayrıntı sayfalarında her oyun için sıralamayı görebilirsin",
-    "ranking-frozen": "Sıralama şimdi kazananlar açıklanana kadar dondurulmuştur"
-  },
   "admin": {
+    "intro": "Hangi takımdan olduklarını sorun ve doğru takımın doğru yerde olduğundan ve yukarıda belirtilen takımla eşleştiğinden emin olun.",
+    "select_game": {
+      "intro": "Hakemlik yapacağınız oyunu seçin"
+    },
     "select_league": {
-      "intro": "Yönetmek istediğiniz ligi seçin"
+      "intro": "Bölgenizi seçin"
     }
   },
-  "yourmatch": "Maçınız",
-  "sidequest": {
-    "thanks": "Teşekkürler, yanıtınız kaydedildi",
-    "timeranout": "Süre doldu, bir sonraki sefere daha iyi şanslar",
-    "areyouready": "Hazır mısınız?",
-    "checkanswerlater": "Oyun bittikten sonra yanıtı kontrol edin",
-    "question_locked": "Süresi Dolmuş",
-    "youhaveunsubmittedanswers": "Gönderilmemiş {numAnswers} yanıtınız var. Şimdi göndermek ister misiniz?",
-    "submityouranswers": "Yanıtlarınızı gönderin",
-    "gameroundtitle": "Tur {round}",
-    "back_to_overview": "Genel Bakışa Dön",
-    "alreadyAnswered": "Bu soruyu zaten cevapladınız",
-    "noroundyet": "Henüz mevcut değil. Maçtan sonra geri gelin.",
-    "submitfailed": "Cevaplarını gönderme başarısız oldu. Bağlantınız olduğundan emin olun ve tekrar deneyin",
-    "no_coins": "Artık jetonun kalmadı. Daha fazla soru cevaplayamazsın",
-    "explanation": "Açıklama",
-    "explanation_text": "Son maç hariç her maçtan sonra, rastgele sırayla 2 soru açılacak, toplamda 8 soru olacak. Bu soruları yanıtlamak için 10 dakikanız var, sonraki maç başlayana kadar.\nToplamda 8 jetonunuz var. Başlattığınız her soru, ona cevap vermeseniz bile bir jetonunuzu tüketir. Bu nedenle aynı soruyu tekrar denerseniz, başka bir soruyu atlamak zorunda kalırsınız.\nBir soruya cevap verdikten sonra tekrar cevaplayamazsınız.\n\nTakımınız, her soru için kaç takım üyesinin doğru cevap gönderdiğine bağlı olarak bonus puanlar kazanır.\nTakımınıza daha fazla puan kazandırmak için her maçtan sonra geri dönün!",
-    "questiontypes": {
-      "math": "Mat",
-      "knowledge": "Bilgi",
-      "recognize": "Tani",
-      "insight": "Anlayış",
-      "remember": "Hatırla",
-      "guess": "Tahmin"
-    }
+  "admin-referee-info": {
+    "hamster_wheel": "<div class='rounded-md p-4 mb-4 bg-amber-50'> <span class='font-bold'>Senaryo:</span> <br /> Hamster Tekerleğine hoş geldiniz.  <ul class='list-disc list-inside'> <li>Bu istasyonda başka bir takımla bayrak yarışında yarışacaksınız. Kazanan ve en iyi zamanı elde eden takım en fazla puanı alır.</li> <li>Takımlar mümkün olan en kısa sürede bir taraftan diğerine gitmeli ve geri dönmelidir.</li> <li>Bir takımın tekerlekte aynı anda 15 katılımcı olması gerekmektedir. Tekerlek boyunca her zaman 15 katılımcı olmalıdır.</li> <li>Tüm takım birlikte bayrak yarışını gerçekleştirmelidir. Takım, tüm parkur boyunca başlarının üstünde halıyla halı içinde yürümelidir.</li> <li>Eğer takımda yeterli katılımcı varsa, tekerlekteki kişiler, takım yarı yolda olduğunda 15 yeni kişiyle değiştirilebilir.</li> <li>Takım, tekerlekle birlikte çizgiyi geçmeden önce katılımcıları değiştiremez.</li> <li>Tüm takım çizgiyi ilk olarak tamamladığında kazanan takım olur. Zaman da kaydedilecektir, bu nedenle her iki takımın da mümkün olan en kısa sürede tamamlaması önemlidir, ilk bitirmeseler bile.</li> <li>Takım, tüm parkur boyunca halının içinde kalmalıdır. Halının dışına çıkan her ayak, ek süre ekler. Bu durum, kumaş katılımcıların başının üzerinde değilse de geçerlidir.</li> <li>Hazırlanmak için 2 dakikanız var.</li> <li>Görev, benim (hakem) sinyalimle başlar.</li> <li>Görev anlaşıldı mı?</li> <li>O zaman takımlar başlangıç çizgisinde hazırlık yapabilirler. Yarışı devralacak grup sahadaki diğer tarafa yerleşebilir. 2 dakikalık geri sayım şimdi başlıyor.</li> <li>Süre doldu. Tüm takımlar hazır mı?</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Hakemler için:</span> <ul class='list-disc list-inside'> <li>İki hakem, takımların her iki tarafında yer alır ve takımların bant dışına ne kadar sık çıktığını ve takımın başlarının üzerinde kumaş olmadığında her defasında telefonu kaydeder.</li> <li>Katılımcıların ve seyircilerin oyun tahtasına göre net bir pozisyonda olduklarından emin olun, oyun deneyimi, görünürlük ve katılım açısından.</li> </ul> <br /> <span>Oyunun sonunda:</span> <ul class='list-disc list-inside'> <li>Halılaları toplayın ve gelen bir sonraki takım için açık bir şekilde dağıtın.</li> <li>Gerekirse başlangıç çizgisini ve diğer engelleri düzeltin.</li> <li>Yeni grup için hazırlık yapın!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Sağlık, Çevre ve Güvenlik:</span> <ul class='list-disc list-inside'> <li>Hamster tekerleği, birçok kişinin aynı anda ve birbirine yakın bir şekilde hızlı bir şekilde yürümesini içerdiğinden, düşme riski olabilir. Bu orta risk olarak kabul edilir.</li> </ul> </div>",
+    "iron_grip": "<div class='rounded-md p-5 mb-4 bg-amber-50'> <span class='font-bold'>Senaryo:</span> <br /> Demir Tutuş'a hoş geldiniz.  <ul class='list-disc list-inside'> <li>Bu istasyonda amacınız 10 dakika içinde mümkün olduğunca fazla 'asılı kalma süresi' biriktirmektir.</li> <li>Herkes katılabilir, ancak aynı anda yalnızca 9 kişi asılı kalabilir.</li> <li>Takım, 9 kişi aynı anda iskeleye asılı kaldığında 'asılı kalma süresi' biriktirir.</li> <li>Takımın görevi tamamlamak için 10 dakikası vardır.</li> <li>Aynı anda asılı kalan 9 kişiden az olduğunda, 'asılı kalma süresi' birikimi durur ve tekrar 9 kişi aynı anda asılı kaldığında süre yeniden başlar.</li> <li>Asılı kalamayan katılımcılar, iskelenin yanındaki sıranın sonuna geçmelidir.</li> <li>Sadece asılı kalan katılımcılar iskelede olabilir, geri kalan takım sıraya geçmelidir (doğru tarafı gösterin).</li> <li>Hile yapılırsa, takım biriktirdiği süreden 10 saniye kaybeder.</li> <li>Katılımcılar yalnızca elleriyle asılı kalabilir, bacaklarının, diğer katılımcıların veya nesnelerin desteği olmadan.</li> <li>Hakem, bir şeyin hile olup olmadığına karar verir, ancak katılımcıların kendi güçleri dışında asılı kalmalarına yardımcı olan her şey hile olarak kabul edilir.</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Hakemler için:</span> <ul class='list-disc list-inside'> <li>10 dakikadan geri sayan bir zamanlayıcı hazırlayın, yarışmanın başlangıcında başlatılacak.</li> <li>Biriktirilen 'asılı kalma süresi' için kullanılan bir zamanlayıcı hazırlayın, bu her defasında 9 kişiden az asılı kaldığında durur ve 9 kişi aynı anda asılı kaldığında yeniden başlar.</li> <li>Bir katılımcı istediği kadar katılabilir.</li> <li>Takım, hangi katılımcıları asılı kalma için kullanmak istediğine kendisi karar verir ve bu yarış sırasında değiştirilebilir.</li> <li>Katılımcılar iskeleden elleriyle doğrudan asılı kalmalı ve yardım için bacaklarını, diğer katılımcıları, nesneleri vb. kullanamazlar.</li> <li>Bir hakem hileyi takip eder. ÖNEMLİ: Takıma bunun hile olduğunu belirtin, ardından bunu not edin.</li> <li>Aşağıdaki zamanları duyurun: Şimdi 5 dakika kaldı, yarısı bitti! Şimdi 2 dakika kaldı, Şimdi 1 dakika kaldı!</li> </ul> <br /> <span>Oyunun sonunda:</span> <ul class='list-disc list-inside'> <li>'Asılı kalma süresi' ve hileyi uygulamada kaydedin.</li> <li>Güvenlik prosedürü: Her turdan sonra iskelenin iyi sabitlenmiş olduğundan emin olun.</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Sağlık, Çevre ve Güvenlik:</span> <ul class='list-disc list-inside'> <li>İskelelerden düşme riski, düşme sırasında burkulma, ellerde kabarcıklar.</li> <li>İstasyon asfalt kaplamaya sahipse, minderler olacaktır.</li> </ul> </div>",
+    "labyrinth": "<div class='rounded-md p-4 mb-4 bg-amber-50'> <span class='font-bold'>Senaryo:</span> <br /> Labirente hoş geldiniz.  <ul class='list-disc list-inside'> <li>Bu istasyonda, bir topu labirentten geçirerek birlikte çalışmanız gerekecek.</li> <li>Aynı anda en fazla 12 oyuncu birlikte çalışır ve istasyonu tamamlamak için en fazla on dakikanız vardır.</li> <li>Labirentte, 12 oyuncunun 12 yeni oyuncu ile değiştirilmesi gereken iki kontrol noktası vardır.</li> <li>Top tahtada iken topa elle dokunmak veya onu havaya fırlatmak yasaktır.</li> <li>Eğer top bir deliğe düşerse, oyunculardan biri onu almalı ve başlangıç noktasına veya son kontrol noktasına yerleştirmelidir, ancak top bir deliğe düştüğünde sadece labirentin altında olmak yasaldır.</li> <li>Geçtiğiniz her kontrol noktası için iki puan alırsınız ve daha hızlı tamamladıkça daha fazla puan alırsınız.</li> <li>Labirent tamamlandığında veya süre dolduğunda, labirenti yavaşça yere bırakabilirsiniz.</li> <li>Oyun, hakemin topu başlangıç noktasına yerleştirdiğinde başlar.</li> <li>Görev anlaşıldı mı?</li> <li>O zaman 12 oyuncu labirentte başlamaya hazır olabilir ve takımın geri kalanı burada durabilir (takımın geri kalanı için durmanın en uygun olduğu yeri gösterin).</li> <li>12 yeni oyuncu kontrol noktalarında devralmaya hazır olmalıdır.</li> <li>O zaman başlıyoruz. Hazır, başla, git!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Hakem için:</span> <ul class='list-disc list-inside'> <li>Kalabalığı kontrol edin ve izleyicileri en iyi şekilde yerleştirin.</li> <li>Takım başladığında 10 dakikalık geri sayımı başlatmaya hazır olun.</li> <li>Tüm oyuncuların kontrol noktalarında yeni oyuncularla değiştirildiğinden emin olun.</li> <li>Katılımcıların kuralları ihlal etmediğinden emin olun.</li> <li>Takım görevi tamamlamadıysa, 10 dakika sonra oyunu durdurun.</li> </ul> <br /> <span>Oyunun sonunda:</span> <ul class='list-disc list-inside'> <li>Oyunda kullanılan tüm topları toplayın.</li> <li>Yeni gruplar için hazırlanın!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Sağlık, Çevre ve Güvenlik:</span> <ul class='list-disc list-inside'> <li>Bu istasyonla ilgili risk, katılımcıların labirenti ayaklarına düşürebilmesidir. Top bir deliğe düşerse, katılımcılar labirenti üzerlerine düşürmemek için topu dikkatlice kaldırmalıdır. Avuçta kıymık veya kabarcık oluşabilir.</li> </ul> </div>",
+    "land_water_beach": "<div class='rounded-md p-4 mb-4 bg-amber-50'> <span class='font-bold'>Senaryo:</span> <br /> Kara, Su, Plaj'a hoş geldiniz.  <ul class='list-disc list-inside'> <li>Bu istasyonda, farklı üç sinyalde üç bölge arasında hareket etmek için başka bir takımla rekabet edeceksiniz.</li> <li>Her takımdan on kişi orta bölgeden, plajdan başlar.</li> <li>Tepki vermeniz gereken üç sinyal şunlardır: <ul> <li>Kırmızı sinyal, arka bölgeye, karaya geçmeniz gerektiği anlamına gelir.</li> <li>Sarı sinyal, orta bölge, plaj anlamına gelir.</li> <li>Mavi sinyal, ön bölge, su anlamına gelir.</li> </ul> </li> <li>Tüm on oyuncunun doğru bölgeye ilk hareket ettiği takım bir puan alır. Eğer her iki takım da aynı hızda olursa, her iki takım da bir puan alır.</li> <li>Oyuncular geçtikleri bölgede kalmalıdır.</li> <li>Her biri üç sinyal gösterilmeden önce on oyuncu on yeni oyuncu ile değiştirilir. Bu üç turda gerçekleştirilir.</li> <li>Kazandığınız turlara göre puan alırsınız.</li> <li>Görev anlaşıldı mı?</li> <li>O zaman on oyuncu orta bölgede başlayabilir ve takımın geri kalanı orada durabilir ve on oyuncuyu değiştirmek için hazır olabilir (takımın geri kalanı için durmanın en uygun olduğu yeri gösterin).</li> <li>O zaman başlıyoruz. Hazır, başla, git!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Hakemler için:</span> <ul class='list-disc list-inside'> <li>Takımın geri kalanı uygun bir yerde durduğundan ve her turda on yeni oyuncu değiştirmeye hazır olduğundan emin olun.</li> <li>İstasyon toplam süresinin 15 dakikayı geçmediğinden emin olun.</li> <li>Baş hakem puanları puan tahtasında gösterir.</li> <li>Bayraklı iki yan hakem, kimin puan aldığını hızlıca belirler.</li> <li>Sinyal kutusundaki kişi sinyali ve sinyaller arasındaki süreyi değiştirmelidir.</li> </ul> <br /> <span>Oyunun sonunda:</span> <ul class='list-disc list-inside'> <li>Bölgelerin hala açıkça işaretlendiğinden emin olun.</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Sağlık, Çevre ve Güvenlik:</span> <ul class='list-disc list-inside'> <li>Bu istasyonla ilgili risk azdır; takılmalar, burkulmalar veya düşmeler olabilir. Buna dikkat edin.</li> </ul> </div>",
+    "mastermind": "<div class='rounded-md p-4 mb-4 bg-amber-50'> <span class='font-bold'>Senaryo:</span> <br /> Mastermind'a hoş geldiniz.  <ul class='list-disc list-inside'> <li>Bu istasyondaki amacınız, valizde hangi renk kodunun olduğunu bulmaktır.</li> <li>Görevi tamamlamak için 8 tur ve maksimum 10 dakikanız var.</li> <li>Doğru kodu bulmak için daha az tur kullanarak daha fazla puan alırsınız.</li> <li>Şimdi 5 Kod Kırıcı seçmelisiniz.</li> <li>Bu 5 kişinin ana görevi görevi çözmektir.</li> <li>Geri kalanlar her biri bir renk (Durag - başlık) alır, bu da Kod Kırıcıların oyun tahtasına yerleştirebileceği bir oyun taşını temsil eder.</li> <li>Oyun taşları olan tüm katılımcılar oyun sırasında başlığını başlarının üzerinde tutmalıdır. (Durag'ı göstermek için yanında tut)</li> <li>Kod Kırıcılar, kullanmak istedikleri oyun taşlarını (başlıklı katılımcılar) toplar ve bunları oyun tahtasında siyah bir oyun taşına yerleştirir.</li> <li>Kod Kırıcılar cevaplarını verdiklerinde, bir hakem Kod Kırıcılara cevaplarına ne kadar yakın olduklarını gösteren 'cevap çubuklarını' yerleştirir.  <ul> <li>Kırmızı çubuk = doğru yerde doğru renk</li> <li>Beyaz çubuk = yanlış yerde doğru renk</li> </ul> (Çubukları elinizde tutun ve gösterin)</li> <li>Kod Kırıcılar doğru renk kodunu tahmin ettiğinde, bir hakem ileri gelir ve kutuyu açar.</li> <li>Takımın geri kalanı oyun tahtasının yanında durur.</li> <li>Görev anlaşıldı mı?</li> <li>O zaman Kod Kırıcılar o hakeme gidebilir (göster ve belirt).</li> <li>Oyun taşları olacak herkes orada durabilir (göster ve belirt).</li> <li>O zaman başlıyoruz. Hazır, başla, git!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Hakem için:</span> <ul class='list-disc list-inside'> <li>İzleyicilerin, oyun taşlarının ve Kod Kırıcıların oyun tahtasına göre net pozisyonlarda olduğundan emin olun, oyun deneyimi, görünürlük ve katılım açısından.</li> </ul> <br /> <span>Oyunun sonunda:</span> <ul class='list-disc list-inside'> <li>Tüm başlıkları toplayın.</li> <li>Tüm cevap çubuklarını toplayın.</li> <li>Kutudaki renk kodunu değiştirin.</li> <li>Gerekirse oyun tahtasını ayarlayın.</li> <li>Yeni gruplar için hazırlanın!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Sağlık, Çevre ve Güvenlik:</span> <ul class='list-disc list-inside'> <li>Bu istasyonla ilgili risk, katılımcıların oyun tahtasındaki oyun taşlarına takılıp düşmesidir. Bu çok düşük ila düşük bir risk olarak kabul edilir.</li> </ul> </div>"
   },
-  "questions": {
-    "guesshowmany1": {
-      "q": "Bu yıl Fra Kåre müziği kaç saat dinlendi?",
-      "intro": "Bu yıl Fra Kåre müziğini dinlediniz mi?"
-    },
-    "guesshowmany2": {
-      "q": "2023'te kamplara kaç kişi katıldı?",
-      "intro": "İyi sayma yapabiliyor musunuz?"
-    },
-    "remember": {
-      "q": "Herman Shuffle dans hareketlerinin doğru sırası nedir?",
-      "intro": "Bu sabah dans ettiniz mi?",
-      "a": {
-        "lwd": "Lean, Wave, Drift",
-        "wld": "Wave, Lean, Drift",
-        "ldw": "Lean, Drift, Wave",
-        "wdl": "Wave, Drift, Lean"
-      }
-    },
-    "insight": {
-      "q": "Hangi lunapark treni en önce aşağıya ulaşır?",
-      "intro": "Resme bakın. Hangi lunapark treni en önce aşağıya ulaşır?",
-      "a": {
-        "red": "Kırmızı",
-        "green": "Yeşil",
-        "yellow": "Sarı",
-        "sametime": "Aynı anda alt noktaya ulaşırlar"
-      }
-    },
-    "recognize1": {
-      "q": "Bunu tanıyor veya hatırlıyor musun?",
-      "intro": "Bu resimde kimleri görüyoruz (veya görmüyoruz) biliyor musun?",
-      "a": {
-        "opta": "Gershon Twilley",
-        "optb": "Harald Kronstad",
-        "optc": "Gunnar Gangsø",
-        "optd": "Bernt-Aksel Larsen"
-      }
-    },
-    "recognize2": {
-      "q": "Bu kim olduğunu hatırlayabilir misiniz?",
-      "intro": "Bu yılki projeleri takip ettiniz mi? Resme bakın.",
-      "a": {
-        "peter": "Peter",
-        "john": "John",
-        "matthew": "Matthew",
-        "paul": "Paul"
-      }
-    },
-    "math": {
-      "q": "Soru işareti kaç olmalıdır?",
-      "intro": "Resme bakın. Soru işareti kaç olmalıdır?",
-      "a": {
-        "30": "30",
-        "81": "81",
-        "200": "200",
-        "67": "67"
-      }
-    },
-    "knowledge": {
-      "q": "BCC'nin hangi ülkede kilisesi yok?",
-      "intro": "Nerelisiniz?",
-      "a": {
-        "singapore": "Singapur",
-        "serbia": "Sırbistan",
-        "japan": "Japonya",
-        "peru": "Peru"
-      }
-    }
+  "calculated-score": "Hesaplanan puan",
+  "couldnt-load-the-video": "Video yüklenemedi",
+  "details": "Detaylar",
+  "family": "Aile",
+  "games": {
+    "hamster_wheel": "Hamster Tekerleği",
+    "iron_grip": "Demir Tutuş",
+    "labyrinth": "Labirent",
+    "land_water_beach": "Kara, Su, Plaj",
+    "mastermind": "Mastermind"
   },
-  "back": "Geri"
+  "general_error": "Bir şeyler yanlış gitti",
+  "loading": "Yükleniyor...",
+  "login": {
+    "login_button": "Giriş yap",
+    "teamcode": "Takım kodu"
+  },
+  "menu": {
+    "games": "Oyunlar"
+  },
+  "minutes": "Dakika",
+  "no-matches-for-this-filter": "Bu filtre için eşleşme yok",
+  "please_refresh": "Sayfayı yenileyin",
+  "point": "Puan",
+  "points-registration-error": "Hesaplanan sonuç undefined döndürdü. Form geçersiz, ancak gönderilebilir. Form alanlarında bazı doğrulamalar eksik olabilir.",
+  "post-type": "Gönderi türü:",
+  "save": "Kaydet",
+  "saved": "Kaydedildi",
+  "seconds": "Saniye",
+  "something-went-wrong": "Sayfayı yenileyin",
+  "something-went-wrong-we-could-not-log-you-in-please-try-again": "Bir şeyler yanlış gitti, giriş yapamadık - tekrar deneyin.",
+  "team": "Takım",
+  "yourmatch": "Senin oyunun"
 }

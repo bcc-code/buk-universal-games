@@ -1,166 +1,51 @@
 {
-  "install_hint": "Pista:\nInstala esta web-app en tu pantalla de inicio, ¡funcionará mejor!",
-  "menu": {
-    "home": "Inicio",
-    "league": "Liga",
-    "sidequest": "Misión secundaria",
-    "games": "Juegos",
-    "map": "Mapa"
+  "admin": {
+    "intro": "Pregunte qué equipo son y asegúrese de que sea el equipo correcto en el lugar correcto, y que coincida con el equipo listado arriba.",
+    "select_game": {
+      "intro": "Seleccione el juego que va a arbitrar"
+    },
+    "select_league": {
+      "intro": "Seleccione su zona"
+    }
   },
+  "admin-referee-info": {
+    "hamster_wheel": "<div class='rounded-md p-4 mb-4 bg-amber-50'> <span class='font-bold'>Guion:</span> <br /> Bienvenido a la Rueda de Hamster.  <ul class='list-disc list-inside'> <li>En esta estación, competirán contra otro equipo en una carrera de relevos. El equipo que gane y tenga el mejor tiempo obtiene la mayor cantidad de puntos.</li> <li>Los equipos deben llegar a un lado y volver lo más rápido posible.</li> <li>Un equipo debe tener 15 participantes en la rueda al mismo tiempo. Deben haber 15 participantes dentro de la rueda durante todo el curso.</li> <li>Todo el equipo debe realizar el relevo juntos. El equipo debe ir dentro de la alfombra con la alfombra sobre sus cabezas durante todo el curso.</li> <li>Mientras el equipo tenga suficientes participantes, las personas en la rueda pueden ser reemplazadas por 15 personas nuevas cuando el equipo esté a mitad de camino.</li> <li>El equipo debe cruzar la línea con toda la rueda antes de poder cambiar a los participantes.</li> <li>El equipo que vuelva primero con todo el equipo sobre la línea de salida gana. El tiempo también se registrará, por lo que es importante que ambos equipos lo hagan lo más rápido posible, incluso si no llegan en primer lugar.</li> <li>El equipo debe permanecer dentro de la alfombra durante todo el curso. Cada pie que toque el suelo fuera de la alfombra añadirá tiempo extra. Esto también se aplica si la alfombra no está sobre las cabezas de los participantes.</li> <li>Tienen 2 minutos para prepararse.</li> <li>La tarea comienza con mi (el árbitro) señal.</li> <li>¿Se entiende la tarea?</li> <li>Entonces los equipos pueden prepararse en la línea de salida. El grupo que va a tomar el relevo puede colocarse al otro lado de la pista. El conteo regresivo de 2 minutos comienza ahora.</li> <li>El tiempo ha terminado. ¿Están todos los equipos listos?</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Para el árbitro:</span> <ul class='list-disc list-inside'> <li>Dos árbitros se colocan a cada lado de los equipos y registran en sus teléfonos con qué frecuencia los equipos pisan fuera de la banda y cada vez que el equipo no tiene la tela sobre sus cabezas.</li> <li>Asegúrese de que los participantes y espectadores tengan posiciones claras en relación con el tablero de juego para la experiencia de juego, visión y compromiso.</li> </ul> <br /> <span>Al final del juego:</span> <ul class='list-disc list-inside'> <li>Recoja las alfombras y distribúyalas claramente para el próximo equipo que venga.</li> <li>Enderece la línea de salida y otras vallas si es necesario.</li> <li>Prepárese para un nuevo grupo!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Salud, Medio Ambiente y Seguridad:</span> <ul class='list-disc list-inside'> <li>Tenga en cuenta que la rueda de hamster implica que muchas personas caminen a un ritmo rápido al mismo tiempo y cerca unas de otras, lo que puede hacer que algunas caigan. Esto se considera un riesgo medio.</li> </ul> </div>",
+    "iron_grip": "<div class='rounded-md p-5 mb-4 bg-amber-50'> <span class='font-bold'>Guion:</span> <br /> Bienvenido al Agarre de Hierro.  <ul class='list-disc list-inside'> <li>El objetivo de esta estación es acumular la mayor cantidad de 'tiempo de colgado' en 10 minutos.</li> <li>Todos pueden participar, pero solo 9 personas cuelgan al mismo tiempo.</li> <li>El equipo acumula 'tiempo de colgado' cuando 9 personas del equipo cuelgan simultáneamente del andamio.</li> <li>El equipo tiene 10 minutos para completar la estación.</li> <li>Cuando hay menos de 9 participantes colgando simultáneamente, el tiempo que se acumula para el 'tiempo de colgado' se detiene hasta que haya 9 participantes colgando simultáneamente nuevamente. Entonces el tiempo comienza de nuevo.</li> <li>Los participantes que ya no pueden colgar deben colocarse al final de la fila en el lado del andamio.</li> <li>Solo los participantes que están colgando pueden estar en el andamio; el resto del equipo debe hacer fila, en el lado del andamio (señale el lado correcto).</li> <li>Si se hace trampa, se descontarán 10 segundos del tiempo acumulado del equipo.</li> <li>Los participantes solo pueden colgar de sus manos, sin apoyo de sus piernas, otros participantes u objetos.</li> <li>El árbitro decide si algo es trampa, pero todo lo que ayude a los participantes a colgar sin su propia fuerza se considera trampa.</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Para los árbitros:</span> <ul class='list-disc list-inside'> <li>Tenga un temporizador que cuente hacia atrás desde 10 minutos listo, que se pondrá en marcha al comienzo de la competencia.</li> <li>Tenga un temporizador que se use para el 'tiempo de colgado' acumulado, que se detiene cada vez que hay menos de 9 participantes colgando del andamio simultáneamente, y se vuelve a poner en marcha cuando 9 personas cuelgan simultáneamente.</li> <li>Un participante puede participar tantas veces como quiera.</li> <li>El equipo decide qué participantes quieren usar para colgar, y esto también puede cambiar durante el transcurso.</li> <li>Los participantes deben colgar de sus manos, colgando rectos del andamio, y no pueden usar las piernas, otros participantes, objetos, etc., para ayudarse.</li> <li>Un árbitro supervisa la trampa. IMPORTANTE: señale al equipo que esto es trampa, y luego anótelo.</li> <li>Anuncie los siguientes tiempos: Quedan 5 minutos, ¡a mitad de camino! Quedan 2 minutos, ¡queda 1 minuto!</li> </ul> <br /> <span>Al final del juego:</span> <ul class='list-disc list-inside'> <li>Registre el 'tiempo de colgado' y la trampa en la aplicación.</li> <li>Rutina de seguridad: Verifique el andamio para asegurarse de que todo esté bien sujeto después de cada ronda.</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Salud, Medio Ambiente y Seguridad:</span> <ul class='list-disc list-inside'> <li>Riesgo de caída del andamio, esguinces por caídas, ampollas en las manos.</li> <li>Donde la estación tiene asfalto como superficie, habrá colchonetas.</li> </ul> </div>",
+    "labyrinth": "<div class='rounded-md p-4 mb-4 bg-amber-50'> <span class='font-bold'>Guion:</span> <br /> Bienvenido al Laberinto.  <ul class='list-disc list-inside'> <li>En esta estación, deben trabajar juntos para llevar una bola a través de un laberinto.</li> <li>Hasta 12 jugadores trabajan juntos al mismo tiempo, y tienen un máximo de diez minutos para completar la estación.</li> <li>Hay dos puntos de control en el laberinto donde los 12 jugadores serán reemplazados por 12 nuevos jugadores.</li> <li>No está permitido tocar la bola con las manos cuando está en el tablero ni lanzarla hacia arriba.</li> <li>Si la bola cae en un agujero, uno de los jugadores debe recogerla y colocarla de nuevo en el punto de inicio o en el punto de control anterior, pero solo se permite estar debajo del laberinto cuando la bola cae por un agujero.</li> <li>Obtienen dos puntos por cada punto de control que pasen, y más puntos cuanto más rápido completen.</li> <li>Cuando el laberinto esté completo o se acabe el tiempo, pueden colocar el laberinto en el suelo con calma.</li> <li>El juego comienza cuando un árbitro coloca la bola en el punto de inicio.</li> <li>¿Se entiende la tarea?</li> <li>Entonces, 12 jugadores pueden prepararse para comenzar en el laberinto, y el resto del equipo puede pararse aquí (señale dónde es beneficioso que el resto del equipo se pare).</li> <li>12 nuevos jugadores deben estar listos para tomar el relevo en los puntos de control.</li> <li>Entonces, comenzamos. ¡Listos, ya!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Para el árbitro:</span> <ul class='list-disc list-inside'> <li>Controle a las multitudes y coloque a los espectadores en la mejor posición posible.</li> <li>Esté listo para iniciar la cuenta regresiva de 10 minutos cuando el equipo comience.</li> <li>Asegúrese de que todos los jugadores cambien por nuevos jugadores en los puntos de control.</li> <li>Supervise que los participantes no rompan ninguna regla.</li> <li>Detenga el juego después de 10 minutos, si el equipo no ha completado ya la tarea.</li> </ul> <br /> <span>Al final del juego:</span> <ul class='list-disc list-inside'> <li>Recoja todas las bolas que han estado en juego.</li> <li>Prepárese para nuevos grupos!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Salud, Medio Ambiente y Seguridad:</span> <ul class='list-disc list-inside'> <li>El riesgo asociado a esta estación es que los participantes pueden dejar caer el laberinto en sus pies. Si la bola cae por un agujero, los participantes deben tener cuidado al recogerla para no dejar caer el laberinto sobre ellos. Pueden ocurrir astillas o ampollas en la palma de la mano.</li> </ul> </div>",
+    "land_water_beach": "<div class='rounded-md p-4 mb-4 bg-amber-50'> <span class='font-bold'>Guion:</span> <br /> Bienvenido a Tierra, Agua, Playa.  <ul class='list-disc list-inside'> <li>En esta estación, competirán contra otro equipo para reaccionar lo más rápido posible y moverse entre tres zonas en tres señales diferentes.</li> <li>Diez personas de cada equipo comienzan en la zona central, la playa.</li> <li>Las tres señales a las que deben reaccionar son: <ul> <li>Señal roja significa que deben moverse a la zona trasera, tierra.</li> <li>Señal amarilla es la zona central, playa.</li> <li>Señal azul es la zona delantera, agua.</li> </ul> </li> <li>El equipo en el que los diez jugadores se muevan primero a la zona correcta obtiene un punto. Si ambos equipos son igual de rápidos, ambos equipos obtienen un punto.</li> <li>Los jugadores deben permanecer en la zona a la que se mueven.</li> <li>Se muestran tres señales antes de que los diez jugadores sean reemplazados por diez nuevos jugadores. Esto se lleva a cabo en tres rondas en total.</li> <li>Obtienen puntos según cuántas rondas ganen.</li> <li>¿Se entiende la tarea?</li> <li>Entonces, diez jugadores pueden comenzar en la zona central, y el resto del equipo puede pararse allí y estar listos para reemplazar a los diez jugadores (señale el mejor lugar para que el resto del equipo se pare).</li> <li>Entonces, comenzamos. ¡Listos, ya!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Para los árbitros:</span> <ul class='list-disc list-inside'> <li>Asegúrese de que el resto del equipo esté en un lugar adecuado y esté listo para reemplazar a diez nuevos jugadores para cada ronda.</li> <li>Asegúrese de que el tiempo total en la estación no exceda los 15 minutos.</li> <li>El árbitro principal muestra los puntos en el marcador.</li> <li>Dos jueces de línea con banderas toman una decisión rápida sobre quién obtiene puntos.</li> <li>La persona en la caja de señales debe variar la señal y el tiempo entre las señales.</li> </ul> <br /> <span>Al final del juego:</span> <ul class='list-disc list-inside'> <li>Asegúrese de que las zonas aún estén claramente marcadas.</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Salud, Medio Ambiente y Seguridad:</span> <ul class='list-disc list-inside'> <li>Hay poco riesgo asociado con esta estación; pueden ocurrir tropiezos, esguinces o caídas. Esté atento a esto.</li> </ul> </div>",
+    "mastermind": "<div class='rounded-md p-4 mb-4 bg-amber-50'> <span class='font-bold'>Guion:</span> <br /> Bienvenido a Mastermind.  <ul class='list-disc list-inside'> <li>El objetivo de esta estación es averiguar qué código de colores está en la maleta.</li> <li>Tienen 8 rondas y un máximo de 10 minutos para resolver la tarea.</li> <li>Obtienen más puntos cuanto menos rondas usen para llegar al código correcto.</li> <li>Ahora deben elegir a 5 Descifradores de Códigos.</li> <li>Estos 5 tienen la tarea principal de resolver la tarea.</li> <li>El resto recibirá un color (Durag - gorro) que representa una pieza de juego que los Descifradores de Códigos pueden colocar en el tablero de juego.</li> <li>Todos los participantes que sean piezas de juego deben llevar el gorro en la cabeza en todo momento durante el juego. (Tenga el durag a mano para mostrarlo)</li> <li>Los Descifradores de Códigos recogerán las piezas de juego (participantes con gorro) que deseen usar y las colocarán en una pieza de juego negra en el tablero de juego.</li> <li>Cuando los Descifradores de Códigos hayan dado su respuesta, un árbitro colocará 'pines de respuesta' que indican a los Descifradores de Códigos cuán cerca están de la respuesta.  <ul> <li>Pin rojo = color correcto en el lugar correcto</li> <li>Pin blanco = color correcto en el lugar incorrecto</li> </ul> (Tenga los pines en la mano y muéstrelos)</li> <li>Cuando los Descifradores de Códigos hayan adivinado el código de colores correcto, un árbitro avanzará y abrirá la caja.</li> <li>El resto del equipo se coloca a un lado del tablero de juego.</li> <li>¿Se entiende la tarea?</li> <li>Entonces los Descifradores de Códigos pueden ir a ese árbitro (señale y muestre).</li> <li>Todos los que serán piezas de juego pueden pararse allí (señale y muestre).</li> <li>Entonces comenzamos. ¡Listos, ya!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Para el árbitro:</span> <ul class='list-disc list-inside'> <li>Asegúrese de que el público, las piezas de juego y los Descifradores de Códigos tengan posiciones claras en relación con el tablero de juego para la experiencia de juego, visión y compromiso.</li> </ul> <br /> <span>Al final del juego:</span> <ul class='list-disc list-inside'> <li>Recoja todos los gorros.</li> <li>Recoja todos los pines de respuesta.</li> <li>Cambie el código de colores en la caja.</li> <li>Ajuste el tablero de juego si es necesario.</li> <li>Prepárese para nuevos grupos!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Salud, Medio Ambiente y Seguridad:</span> <ul class='list-disc list-inside'> <li>El riesgo asociado a esta estación es que los participantes pueden tropezar con las piezas de juego en el tablero de juego. Esto se considera un riesgo muy bajo a bajo.</li> </ul> </div>"
+  },
+  "calculated-score": "Puntuación calculada",
+  "couldnt-load-the-video": "No se pudo cargar el video",
+  "details": "Detalles",
+  "family": "Familia",
   "games": {
-    "monkeybars": "Barras de mono",
-    "nervespiral": "Espiral de nervios",
-    "tickettwist": "Giro de boletos",
-    "minefield": "Campo de minas",
-    "tablesurfing": "Surf de multitudes"
-  },
-  "score": {
-    "monkeybars": "{score} barras",
-    "nervespiral": "{score} segundos",
-    "tickettwist": "{score} boletos",
-    "minefield": "{score} segundos",
-    "tablesurfing": "{score} segundos"
-  },
-  "leadstory": {
-    "monkeybars": "¿Puede tu equipo proporcionar asistencia para rescatar a personas atrapadas en una noria averiada? Escalar una noria puede ser un desafío, y es crucial recordar la importancia de llevar suministros de primeros auxilios. Lleva a tu equipo al otro lado y rescata a estas personas necesitadas.",
-    "nervespiral": "Mientras esperas pacientemente tu turno en la fila para la próxima atracción, de repente ocurre un fallo de energía. No hay necesidad de entrar en pánico. ¿Puede tu equipo navegar hábilmente por esta situación inesperada, saliendo de la fila sin experimentar ninguna descarga eléctrica? Mantén la calma y confía en la capacidad de tu equipo para manejar este desafío con compostura y gracia.",
-    "tickettwist": "Las personas están esperando en la fila para obtener su boleto. ¿Puede tu equipo manejar la velocidad y el estrés que viene en la taquilla? Este juego combina pensamiento rápido, resistencia, velocidad y trabajo en equipo. Mantén la concentración y cambia la mayor cantidad de boletos a tu color de equipo. ¿Estás listo para el desafío?",
-    "minefield": "Tu equipo se enfrenta a una situación difícil donde necesitan cruzar al otro lado teniendo cuidado con los animales salvajes que han escapado. El objetivo es llegar a su destino sin ser atacados por estos animales.",
-    "tablesurfing": "Las vías del tren están dañadas, lo que causa un problema importante. Sin embargo, tu equipo puede enfrentar esta situación trabajando juntos como un equipo. Combina tus habilidades, coordina tus acciones y encuentra una manera de mantener el tren en movimiento sin problemas."
-  },
-  "explanation": {
-    "monkeybars": "El jugador uno comienza a trepar las barras de mono todo lo que pueda. Una vez que ha alcanzado la barra número 12, el siguiente jugador puede comenzar desde el principio.\n\nEjemplo: El jugador uno tocó la barra número 26 por última vez, por lo que su puntuación será de 26 puntos. El jugador dos cayó en la barra número 18, por lo que su puntuación es de 18 puntos. Las puntuaciones de todos los jugadores se sumarán y se dividirán por el número total de jugadores en el equipo. Esa será la puntuación total de tu equipo.",
-    "nervespiral": "Cuando suena la señal de inicio, los primeros dos jugadores pueden ir a la espiral. Ambos toman un lado del anillo de metal e intentan llegar al primer punto de control sin tocar el tubo.\n\nCuando los dos jugadores llegan a un punto de control, regresan y entran dos nuevos jugadores al juego. Cuando estos dos jugadores tocan la espiral, regresan al equipo y dos nuevos jugadores continúan desde el último punto de control. Continúas hasta llegar al final de la espiral. El equipo que termine primero gana.",
-    "tickettwist": "Para este juego, cada jugador que participe debe llevar una cinta del color de su equipo. 10 jugadores de cada equipo competirán entre sí en el campo. El objetivo de este juego es cambiar la mayor cantidad de fichas al color de tu equipo. Los jugadores en el campo pueden cambiar tantas veces como deseen, pero el nuevo jugador debe recibir la cinta del jugador 'antiguo' y luego el nuevo jugador puede continuar con el juego. El juego consta de 1 ronda de 8 minutos. Cuando se acabe el tiempo, todos los jugadores abandonan el campo y las fichas se contarán por color. El equipo que haya cambiado más fichas a su color, gana el juego.",
-    "minefield": "Este juego se llevará a cabo en un gran campo con secciones pequeñas. Cada equipo tiene dos capitanes en las líneas laterales que guían a los jugadores sin usar teléfonos móviles u otras ayudas. El jugador uno comienza y trata de pasar por el campo sin pisar una casilla equivocada. Para saber si estás en una casilla correcta o equivocada, usas un dispositivo sonoro en cada casilla. Cuando el dispositivo sonoro da la señal de alarma, estás en una casilla equivocada y debes cambiar al jugador por un jugador nuevo. Cada jugador verifica cada casilla, incluso si estás 100% seguro de que no es una mina. Los capitanes ayudan a recordar el camino correcto. Continúas hasta que llegues al final y luego se detendrá tu tiempo. El equipo con el tiempo más rápido, gana el juego.",
-    "tablesurfing": "El objetivo de este juego es llevar a una persona al otro lado de la pista en un flamenco sobre personas rodantes. Con tu equipo, debes tomar varias vueltas y tratar de evitar que la persona de arriba caiga al suelo. Al final de la pista, encontrarás una pendiente. Una vez que los chicos hayan subido la pendiente, sonará el timbre y los equipos se cambiarán. El segundo equipo (las chicas) colocará la misma pista en el camino de regreso, pasando por la pendiente y alrededor de todas las curvas. El equipo que cruce la línea de meta primero, gana."
-  },
-  "rules": {
-    "monkeybars": "Participan todos los miembros del equipo",
-    "nervespiral": "Participan de 30 a 50 miembros del equipo (en 15-25 parejas)",
-    "tickettwist": "Solo las personas con una cinta del equipo tienen permitido ingresar al campo (10 por equipo)|Se permite cambiar de participantes sin limitación, siempre y cuando lleven una cinta del equipo al ingresar al campo",
-    "minefield": "Participan aproximadamente 30 miembros del equipo|Solo se permite una persona a la vez en el recorrido|2 capitanes del equipo guían a los participantes por el recorrido|Los capitanes del equipo no pueden usar herramientas para recordar la ruta",
-    "tablesurfing": "Participan 16 chicos y 16 chicas, 1 persona que está en el flamenco y 15 personas que ruedan|No se permite tocar el suelo (tanto el que está en el flamenco como los que ruedan)|No se pueden mover los obstáculos y los rodantes no pueden salir del área marcada"
+    "hamster_wheel": "Rueda de Hamster",
+    "iron_grip": "Agarre de Hierro",
+    "labyrinth": "Laberinto",
+    "land_water_beach": "Tierra, Agua, Playa",
+    "mastermind": "Mastermind"
   },
   "general_error": "Algo salió mal",
-  "pleaserefresh": "Por favor, intenta actualizar la página",
-  "points": "Puntos",
-  "coins": "Monedas",
-  "game": "Juego",
-  "team1team2": "Equipo 1 / Equipo 2",
-  "start": "Inicio",
-  "rulestitle": "Reglas",
+  "loading": "Cargando...",
   "login": {
     "login_button": "Iniciar sesión",
-    "teamcode": "Código de equipo",
-    "teamcode_invalid": "Lo sentimos, el código de equipo no es válido"
+    "teamcode": "Código de equipo"
   },
-  "league": {
-    "rankingisempty": "Ningún equipo ha registrado puntos todavía. Vuelve aquí después de la primera ronda.",
-    "viewgamerankings": "Ver clasificación para cada juego",
-    "viewgamerankings-title": "Puedes ver las clasificaciones por juego en las páginas de detalles del juego.",
-    "ranking-frozen": "La clasificación está congelada hasta que se anuncien los ganadores"
+  "menu": {
+    "games": "Juegos"
   },
-  "admin": {
-    "select_league": {
-      "intro": "Elige la liga que deseas administrar"
-    }
-  },
-  "yourmatch": "Tu partida",
-  "sidequest": {
-    "thanks": "Gracias, tu respuesta ha sido registrada",
-    "timeranout": "El tiempo se agotó, mejor suerte la próxima vez",
-    "areyouready": "¿Estás listo?",
-    "checkanswerlater": "Verifica la respuesta cuando termine el juego",
-    "question_locked": "Caducado",
-    "youhaveunsubmittedanswers": "Tienes {numAnswers} respuestas. ¿Quieres enviarlas ahora?",
-    "submityouranswers": "Enviar tus respuestas",
-    "gameroundtitle": "Ronda {round}",
-    "back_to_overview": "Volver a la vista general",
-    "alreadyAnswered": "Ya has respondido a esta pregunta",
-    "noroundyet": "Aún no disponible. Vuelve después del partido.",
-    "submitfailed": "Falló el envío de tus respuestas. Asegúrate de tener conexión e inténtalo de nuevo",
-    "no_coins": "Ya no tienes más monedas. No puedes responder más preguntas",
-    "explanation": "Explicación",
-    "explanation_text": "Después de cada partido, excepto el último, se desbloquearán 2 preguntas en orden aleatorio, un total de 8 preguntas. Tienes 10 minutos para responderlas, hasta que comience el siguiente partido.\nTienes un total de 8 monedas. Cada pregunta que comiences te costará una moneda, incluso si no la respondes. Así que, si vuelves a intentar la misma pregunta, deberás saltarte otra pregunta.\nUna vez que hayas respondido una pregunta, no podrás responderla de nuevo.\n\nTu equipo obtiene puntos extra según cuántos miembros de tu equipo envíen una respuesta correcta para cada pregunta.\n¡Vuelve después de cada partido para obtener más puntos para tu equipo!",
-    "questiontypes": {
-      "math": "Mates",
-      "knowledge": "Conocer",
-      "recognize": "Reconocer",
-      "insight": "Comprender",
-      "remember": "Recordar",
-      "guess": "Adivinar"
-    }
-  },
-  "questions": {
-    "guesshowmany1": {
-      "q": "¿Cuántas horas se ha escuchado a Fra Kåre este año?",
-      "intro": "¿Has estado escuchando a Fra Kåre este año?"
-    },
-    "guesshowmany2": {
-      "q": "¿Cuántas personas han visitado los campamentos en 2023?",
-      "intro": "¿Eres bueno contando?"
-    },
-    "remember": {
-      "q": "¿Cuál es el orden correcto de los movimientos de baile de Herman Shuffle?",
-      "intro": "¿Has bailado con esto esta mañana?",
-      "a": {
-        "lwd": "Lean, Wave, Drift",
-        "wld": "Wave, Lean, Drift",
-        "ldw": "Lean, Drift, Wave",
-        "wdl": "Wave, Drift, Lean"
-      }
-    },
-    "insight": {
-      "q": "¿Qué carro de montaña rusa llegará primero abajo?",
-      "intro": "Mira la imagen. ¿Qué carro de montaña rusa llegará primero abajo?",
-      "a": {
-        "red": "Rojo",
-        "green": "Verde",
-        "yellow": "Amarillo",
-        "sametime": "Llegan abajo al mismo tiempo"
-      }
-    },
-    "recognize1": {
-      "q": "¿Reconoces o recuerdas quién es esto?",
-      "intro": "¿Sabes a quién (no) vemos en esta imagen?",
-      "a": {
-        "opta": "Gershon Twilley",
-        "optb": "Harald Kronstad",
-        "optc": "Gunnar Gangsø",
-        "optd": "Bernt-Aksel Larsen"
-      }
-    },
-    "recognize2": {
-      "q": "¿Puedes recordar quién es esta persona?",
-      "intro": "¿Has seguido los proyectos este año? Mira la imagen.",
-      "a": {
-        "peter": "Pedro",
-        "john": "Juan",
-        "matthew": "Mateo",
-        "paul": "Pablo"
-      }
-    },
-    "math": {
-      "q": "¿Qué número debería estar en el signo de interrogación?",
-      "intro": "Mira la imagen. ¿Qué número debería estar en el signo de interrogación?",
-      "a": {
-        "30": "30",
-        "81": "81",
-        "200": "200",
-        "67": "67"
-      }
-    },
-    "knowledge": {
-      "q": "¿En qué país BCC no tiene una iglesia?",
-      "intro": "¿De dónde eres?",
-      "a": {
-        "singapore": "Singapur",
-        "serbia": "Serbia",
-        "japan": "Japón",
-        "peru": "Perú"
-      }
-    }
-  },
-  "back": "Volver"
+  "minutes": "Minutos",
+  "no-matches-for-this-filter": "No hay coincidencias para este filtro",
+  "please_refresh": "Por favor, actualice la página",
+  "point": "Punto",
+  "points-registration-error": "El resultado calculado devolvió indefinido. El formulario es inválido, aunque se pueda enviar. Puede que falten algunas validaciones en los campos del formulario.",
+  "post-type": "Tipo de publicación:",
+  "save": "Guardar",
+  "saved": "Guardado",
+  "seconds": "Segundos",
+  "something-went-wrong": "Por favor, recargue la página",
+  "something-went-wrong-we-could-not-log-you-in-please-try-again": "Algo salió mal, no pudimos iniciar sesión - por favor, intente de nuevo.",
+  "team": "Equipo",
+  "yourmatch": "Tu juego"
 }

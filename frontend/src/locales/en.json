@@ -2,7 +2,7 @@
   "admin": {
     "intro": "Ask which team they are and make sure that it is the right team in the right place, and that it matches the team listed above.",
     "select_game": {
-      "intro": "Select which game you are judging"
+      "intro": "Select the game you will referee"
     },
     "select_league": {
       "intro": "Select your zone"
@@ -47,5 +47,5 @@
   "something-went-wrong": "Please reload the page",
   "something-went-wrong-we-could-not-log-you-in-please-try-again": "Something went wrong, we could not log you in - please try again.",
   "team": "Team",
-  "yourmatch": "Your Game"
+  "yourmatch": "Your match"
 }

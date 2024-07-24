@@ -1,166 +1,51 @@
 {
-  "install_hint": "Wskazówka:\nZainstaluj tę aplikację na ekranie głównym swojego urządzenia, będzie działać lepiej!",
-  "menu": {
-    "home": "Strona główna",
-    "league": "Liga",
-    "sidequest": "Zadanie poboczne",
-    "games": "Gry",
-    "map": "Mapa"
+  "admin": {
+    "intro": "Zapytaj, z jakiej drużyny są i upewnij się, że to odpowiednia drużyna na właściwym miejscu, i że zgadza się z drużyną wymienioną powyżej.",
+    "select_game": {
+      "intro": "Wybierz grę, którą będziesz sędziować"
+    },
+    "select_league": {
+      "intro": "Wybierz swoją strefę"
+    }
   },
+  "admin-referee-info": {
+    "hamster_wheel": "<div class='rounded-md p-4 mb-4 bg-amber-50'> <span class='font-bold'>Skrypt:</span> <br /> Witamy w Kole chomika.  <ul class='list-disc list-inside'> <li>Na tej stacji będziecie rywalizować z inną drużyną w sztafecie. Drużyna, która wygra i będzie miała najlepszy czas, otrzyma najwięcej punktów.</li> <li>Drużyny powinny jak najszybciej dotrzeć na jedną stronę i z powrotem.</li> <li>Drużyna musi mieć jednocześnie 15 uczestników w kole. Musi być 15 uczestników w kole przez cały tor.</li> <li>Cała drużyna musi razem wykonać sztafetę. Drużyna musi przejść w dywanie z dywanem nad głowami przez cały tor.</li> <li>O ile drużyna ma wystarczającą liczbę uczestników, osoby w kole mogą być zastąpione przez 15 nowych osób, gdy drużyna jest w połowie drogi.</li> <li>Drużyna musi przekroczyć linię z całym kołem, zanim będzie mogła zmienić uczestników.</li> <li>Drużyna, która jako pierwsza wróci z całą drużyną nad linię startu, wygrywa. Czas również zostanie zarejestrowany, więc ważne jest, aby obie drużyny zrobiły to jak najszybciej, nawet jeśli nie zajmą pierwszego miejsca.</li> <li>Drużyna musi pozostać w dywanie przez cały tor. Każda stopa, która dotknie ziemi poza dywanem, doda dodatkowy czas. Dotyczy to również sytuacji, gdy dywan nie znajduje się nad głowami uczestników.</li> <li>Macie 2 minuty na przygotowanie się.</li> <li>Zadanie rozpoczyna się na mój (sędzia) sygnał.</li> <li>Czy zadanie jest zrozumiane?</li> <li>W takim razie drużyny mogą się przygotować na linii startu. Grupa, która przejmie, może stanąć po drugiej stronie toru. Odliczanie 2 minut zaczyna się teraz.</li> <li>Czas minął. Czy wszystkie drużyny są gotowe?</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Do sędziego:</span> <ul class='list-disc list-inside'> <li>Dwóch sędziów jest umieszczonych po obu stronach drużyn i rejestruje na swoich telefonach, jak często drużyny wychodzą poza taśmę i za każdym razem, gdy drużyna nie ma tkaniny nad głowami.</li> <li>Upewnij się, że uczestnicy i widzowie mają wyraźne miejsca w odniesieniu do planszy gry dla doświadczenia gry, wglądu i zaangażowania.</li> </ul> <br /> <span>Po zakończeniu gry:</span> <ul class='list-disc list-inside'> <li>Zbierz dywany i rozdaj je wyraźnie dla następnej drużyny, która przyjdzie.</li> <li>Wyprostuj linię startu i inne płoty w razie potrzeby.</li> <li>Przygotuj się na nową grupę!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Zdrowie, Środowisko i Bezpieczeństwo:</span> <ul class='list-disc list-inside'> <li>Pamiętaj, że koło chomika oznacza, że wiele osób będzie chodzić w szybkim tempie jednocześnie i blisko siebie, co może spowodować, że niektóre z nich upadną. Jest to uważane za ryzyko średnie.</li> </ul> </div>",
+    "iron_grip": "<div class='rounded-md p-5 mb-4 bg-amber-50'> <span class='font-bold'>Skrypt:</span> <br /> Witamy w Żelaznym Uścisku.  <ul class='list-disc list-inside'> <li>Celem tej stacji jest zgromadzenie jak największej ilości 'czasu wiszenia' w ciągu 10 minut.</li> <li>Wszyscy mogą uczestniczyć, ale jednocześnie wisi tylko 9 osób.</li> <li>Drużyna zbiera 'czas wiszenia', gdy 9 osób z drużyny wisi jednocześnie z rusztowania.</li> <li>Drużyna ma 10 minut na ukończenie stacji.</li> <li>Kiedy wisi mniej niż 9 uczestników jednocześnie, czas, który zbiera się na 'czas wiszenia', zatrzymuje się, aż ponownie wisi 9 uczestników jednocześnie. Wtedy czas zaczyna się ponownie.</li> <li>Uczestnicy, którzy nie mogą już wisieć, muszą ustawić się na końcu kolejki po stronie rusztowania.</li> <li>Tylko uczestnicy, którzy wiszą, mogą być na rusztowaniu; reszta drużyny musi stać w kolejce po stronie rusztowania (wskazać na właściwą stronę).</li> <li>W przypadku oszukiwania drużynie zostanie odjęte 10 sekund z zebranego czasu.</li> <li>Uczestnicy mogą wisieć tylko na rękach, bez wsparcia nóg, innych uczestników lub przedmiotów.</li> <li>Sędzia decyduje, czy coś jest oszustwem, ale wszystko, co pomaga uczestnikom wisieć bez własnej siły, jest uważane za oszustwo.</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Dla sędziów:</span> <ul class='list-disc list-inside'> <li>Miej timer, który odlicza od 10 minut gotowy, który zostanie uruchomiony na początku zawodów.</li> <li>Miej timer, który jest używany do zebranego 'czasu wiszenia', który zatrzymuje się za każdym razem, gdy mniej niż 9 uczestników wisi jednocześnie z rusztowania, i uruchamia się ponownie, gdy 9 osób wisi jednocześnie.</li> <li>Uczestnik może brać udział tyle razy, ile chce.</li> <li>Drużyna sama decyduje, których uczestników chce użyć do wiszenia, i to również może się zmieniać w trakcie trwania.</li> <li>Uczestnicy muszą wisieć na rękach, wisząc prosto z rusztowania, i nie mogą używać nóg, innych uczestników, przedmiotów itp. do pomocy.</li> <li>Sędzia nadzoruje oszukiwanie. WAŻNE: wskaż drużynie, że to jest oszustwo, a następnie zanotuj to.</li> <li>Ogłoś następujące czasy: Zostało jeszcze 5 minut, w połowie! Zostały jeszcze 2 minuty, Została 1 minuta!</li> </ul> <br /> <span>Po zakończeniu gry:</span> <ul class='list-disc list-inside'> <li>Zarejestruj 'czas wiszenia' i oszustwo w aplikacji.</li> <li>Procedura bezpieczeństwa: Sprawdź rusztowanie, aby upewnić się, że wszystko jest dobrze zamocowane po każdej rundzie.</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Zdrowie, Środowisko i Bezpieczeństwo:</span> <ul class='list-disc list-inside'> <li>Ryzyko upadku z rusztowania, skręcenia kostki przy upadku, pęcherzy na rękach.</li> <li>Gdzie stacja ma asfalt jako powierzchnię, będą maty.</li> </ul> </div>",
+    "labyrinth": "<div class='rounded-md p-4 mb-4 bg-amber-50'> <span class='font-bold'>Skrypt:</span> <br /> Witamy w Labiryncie.  <ul class='list-disc list-inside'> <li>Na tej stacji musicie współpracować, aby przeprowadzić kulkę przez labirynt.</li> <li>Do 12 graczy pracuje jednocześnie razem, i macie maksymalnie dziesięć minut na ukończenie stacji.</li> <li>Są dwa punkty kontrolne w labiryncie, gdzie 12 graczy zostanie zastąpionych przez 12 nowych graczy.</li> <li>Nie wolno dotykać kulki rękami, gdy jest na planszy, ani rzucać jej w górę.</li> <li>Jeśli kulka wpadnie do dziury, jeden z graczy musi ją podnieść i umieścić z powrotem na punkt startowy lub na poprzednim punkcie kontrolnym, ale tylko wtedy, gdy kulka wpadnie przez dziurę.</li> <li>Otrzymujecie dwa punkty za każdy punkt kontrolny, który przejdziecie, i więcej punktów, im szybciej ukończycie.</li> <li>Gdy labirynt jest ukończony lub czas się skończył, możecie spokojnie umieścić labirynt na ziemi.</li> <li>Gra zaczyna się, gdy sędzia umieszcza kulkę na punkcie startowym.</li> <li>Czy zadanie jest zrozumiane?</li> <li>W takim razie 12 graczy może przygotować się do rozpoczęcia w labiryncie, a reszta drużyny może stać tutaj (wskazać, gdzie jest korzystnie, aby reszta drużyny stała).</li> <li>12 nowych graczy musi być gotowych do przejęcia w punktach kontrolnych.</li> <li>W takim razie zaczynamy. Gotowi, start, idźcie!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Do sędziego:</span> <ul class='list-disc list-inside'> <li>Kontroluj tłumy i umieść widzów w najlepszej możliwej pozycji.</li> <li>Bądź gotów rozpocząć odliczanie 10 minut, gdy drużyna zacznie.</li> <li>Upewnij się, że wszyscy gracze są zastępowani przez nowych graczy przy przejściu przez punkty kontrolne.</li> <li>Upewnij się, że uczestnicy nie łamią żadnych zasad.</li> <li>Zatrzymaj grę po 10 minutach, jeśli drużyna nie ukończyła już zadania.</li> </ul> <br /> <span>Po zakończeniu gry:</span> <ul class='list-disc list-inside'> <li>Zbierz wszystkie kulki, które były w grze.</li> <li>Przygotuj się na nowe grupy!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Zdrowie, Środowisko i Bezpieczeństwo:</span> <ul class='list-disc list-inside'> <li>Ryzyko związane z tą stacją polega na tym, że uczestnicy mogą upuścić labirynt na swoje stopy. Jeśli kulka wpadnie do dziury, uczestnicy muszą być ostrożni, podnosząc ją, aby nie dostać labiryntu na siebie. Mogą wystąpić drzazgi lub pęcherze na dłoni.</li> </ul> </div>",
+    "land_water_beach": "<div class='rounded-md p-4 mb-4 bg-amber-50'> <span class='font-bold'>Skrypt:</span> <br /> Witamy na Lądzie, Wodzie, Plaży.  <ul class='list-disc list-inside'> <li>Na tej stacji będziecie rywalizować z inną drużyną o jak najszybszą reakcję i przemieszczenie się między trzema strefami na trzy różne sygnały.</li> <li>Dziesięć osób z każdej drużyny zaczyna w środkowej strefie, plaży.</li> <li>Trzy sygnały, na które musicie reagować, to: <ul> <li>Czerwony sygnał oznacza, że należy przenieść się do tylnej strefy, lądu.</li> <li>Żółty sygnał to środkowa strefa, plaża.</li> <li>Niebieski sygnał to przednia strefa, woda.</li> </ul> </li> <li>Drużyna, w której wszyscy dziesięciu graczy przenosi się jako pierwsi do odpowiedniej strefy, otrzymuje jeden punkt. Jeśli oba zespoły są tak samo szybkie, oba zespoły otrzymują jeden punkt.</li> <li>Gracze muszą pozostać w strefie, do której się przenoszą.</li> <li>Trzy sygnały są pokazywane, zanim dziesięciu graczy zostanie zastąpionych przez dziesięciu nowych graczy. Jest to realizowane w trzech rundach.</li> <li>Otrzymujecie punkty na podstawie liczby wygranych rund.</li> <li>Czy zadanie jest zrozumiane?</li> <li>W takim razie dziesięciu graczy może rozpocząć w środkowej strefie, a reszta drużyny może stać tam i być gotowa do zastąpienia dziesięciu graczy (wskazać najlepsze miejsce dla reszty drużyny).</li> <li>W takim razie zaczynamy. Gotowi, start, idźcie!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Dla sędziów:</span> <ul class='list-disc list-inside'> <li>Upewnij się, że reszta drużyny stoi w odpowiednim miejscu i jest gotowa do zastąpienia dziesięciu nowych graczy na każdą rundę.</li> <li>Upewnij się, że czas nie przekracza 15 minut w sumie na stacji.</li> <li>Główny sędzia pokazuje punkty na tablicy wyników.</li> <li>Dwóch sędziów linii z flagami szybko decyduje, kto zdobywa punkty.</li> <li>Osoba w skrzynce sygnałowej musi zmieniać sygnał i czas między sygnałami.</li> </ul> <br /> <span>Po zakończeniu gry:</span> <ul class='list-disc list-inside'> <li>Upewnij się, że strefy są nadal wyraźnie oznaczone.</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Zdrowie, Środowisko i Bezpieczeństwo:</span> <ul class='list-disc list-inside'> <li>Istnieje niewielkie ryzyko związane z tą stacją; mogą wystąpić potknięcia, skręcenia kostki lub upadki. Zwracaj na to uwagę.</li> </ul> </div>",
+    "mastermind": "<div class='rounded-md p-4 mb-4 bg-amber-50'> <span class='font-bold'>Skrypt:</span> <br /> Witamy w Mastermind.  <ul class='list-disc list-inside'> <li>Celem tej stacji jest dowiedzenie się, jaki kod kolorów znajduje się w walizce.</li> <li>Masz 8 rund i maksymalnie 10 minut na rozwiązanie zadania.</li> <li>Otrzymasz więcej punktów, im mniej rund użyjesz, aby znaleźć właściwy kod.</li> <li>Teraz powinieneś wybrać 5 Łamaczy Kodu.</li> <li>Ci 5 mają główne zadanie rozwiązania zadania.</li> <li>Pozostali otrzymają kolor (Durag - nakrycie głowy), który reprezentuje pionek, który Łamacze Kodu mogą umieścić na planszy gry.</li> <li>Wszyscy uczestnicy, którzy są pionkami, muszą mieć nakrycie głowy na głowie przez cały czas gry. (Miej durag pod ręką, aby go pokazać)</li> <li>Łamacze Kodu pobierają pionki (uczestników z nakryciem głowy), których chcą użyć i umieszczają je na czarnym pionku na planszy gry.</li> <li>Gdy Łamacze Kodu podadzą swoją odpowiedź, sędzia umieści 'szpilki odpowiedzi', które powiedzą Łamaczom Kodu, jak blisko są odpowiedzi.  <ul> <li>Czerwona szpilka = właściwy kolor na właściwym miejscu</li> <li>Biała szpilka = właściwy kolor na niewłaściwym miejscu</li> </ul> (Miej szpilki w ręku i pokaż je)</li> <li>Gdy Łamacze Kodu zgadną właściwy kod kolorów, sędzia podejdzie i otworzy pudełko.</li> <li>Pozostała część drużyny stoi z boku planszy gry.</li> <li>Czy zadanie jest zrozumiane?</li> <li>W takim razie Łamacze Kodu mogą przejść do tego sędziego (wskazać i pokazać).</li> <li>Wszyscy, którzy będą pionkami, mogą stać tam (wskazać i pokazać).</li> <li>W takim razie zaczynamy. Gotowi, start, idźcie!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Do sędziego:</span> <ul class='list-disc list-inside'> <li>Upewnij się, że publiczność, pionki i Łamacze Kodu mają wyraźne pozycje w odniesieniu do planszy gry dla doświadczenia gry, wglądu i zaangażowania.</li> </ul> <br /> <span>Po zakończeniu gry:</span> <ul class='list-disc list-inside'> <li>Zbierz wszystkie nakrycia głowy.</li> <li>Zbierz wszystkie szpilki odpowiedzi.</li> <li>Zmień kod kolorów w pudełku.</li> <li>Dostosuj planszę gry, jeśli to konieczne.</li> <li>Przygotuj się na nowe grupy!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Zdrowie, Środowisko i Bezpieczeństwo:</span> <ul class='list-disc list-inside'> <li>Ryzyko związane z tą stacją polega na tym, że uczestnicy mogą potknąć się o pionki na planszy gry. Jest to uważane za ryzyko bardzo niskie do niskiego.</li> </ul> </div>"
+  },
+  "calculated-score": "Obliczony wynik",
+  "couldnt-load-the-video": "Nie można załadować wideo",
+  "details": "Szczegóły",
+  "family": "Rodzina",
   "games": {
-    "monkeybars": "Drabinki małp",
-    "nervespiral": "Wiraż nerwów",
-    "tickettwist": "Zwariowane bilety",
-    "minefield": "Pole minowe",
-    "tablesurfing": "Crowdsurfing"
+    "hamster_wheel": "Koło chomika",
+    "iron_grip": "Żelazny Uścisk",
+    "labyrinth": "Labirynt",
+    "land_water_beach": "Ląd, Woda, Plaża",
+    "mastermind": "Mastermind"
   },
-  "score": {
-    "monkeybars": "{score} drabinek",
-    "nervespiral": "{score} sekundy",
-    "tickettwist": "{score} bilety",
-    "minefield": "{score} sekundy",
-    "tablesurfing": "{score} sekundy"
-  },
-  "leadstory": {
-    "monkeybars": "Czy twoja drużyna może pomóc w ratowaniu ludzi uwięzionych na awarii diabelskiego młyna? Wspinanie się na diabelskim młynie może być wyzwaniem, dlatego ważne jest pamiętanie o znaczeniu posiadania materiałów pierwszej pomocy. Przyprowadź swoją drużynę na drugą stronę i uratuj te bezradne osoby w potrzebie.",
-    "nervespiral": "Czekając cierpliwie na swoją kolej w kolejce do kolejnej przejażdżki, nagle występuje awaria prądu. Nie ma potrzeby panikować. Czy twoja drużyna potrafi sprawnie poradzić sobie z tą nieoczekiwaną sytuacją i bezpiecznie opuścić kolejkę, nie doznając wstrząsów elektrycznych? Zachowaj spokój i zaufaj umiejętnościom swojej drużyny w radzeniu sobie z tym wyzwaniem z opanowaniem i wdziękiem.",
-    "tickettwist": "Ludzie stoją w kolejce, aby zdobyć bilety. Czy twoja drużyna jest w stanie poradzić sobie z szybkością i stresem, który pojawia się przy kasie? Gra ta łączy szybkie myślenie, wytrzymałość, szybkość i współpracę zespołową. Skup się i przewróć jak najwięcej biletów na kolor swojej drużyny. Jesteś gotowy na wyzwanie?",
-    "minefield": "Twoja drużyna stoi w obliczu trudnej sytuacji, w której musi przejść na drugą stronę, jednocześnie uważając na dzikie zwierzęta, które uciekły. Celem jest dotarcie do celu, unikając ataków tych zwierząt.",
-    "tablesurfing": "Tory kolejowe są uszkodzone, co powoduje poważny problem. Jednak twoja drużyna może sobie poradzić z tą sytuacją, pracując razem jako zespół. Połącz swoje umiejętności, skoordynuj działania i znajdź sposób na płynne utrzymanie ruchu pociągu."
-  },
-  "explanation": {
-    "monkeybars": "Gracz numer jeden zaczyna wspinaczkę na drabinkach małp, jak najdalej, jak potrafi. Gdy osiągnie dwunastą drabinkę, następny gracz może rozpocząć od początku.\n\nPrzykład: Gracz numer jeden dotknął ostatniej dwudziestej szóstej drabinki, więc jego wynik wynosi 26 punktów. Gracz numer dwa upadł przy osiemnastej drabince, więc jego wynik wynosi 18 punktów. Punkty wszystkich graczy zostaną zsumowane i podzielone przez całkowitą liczbę graczy w drużynie. To będzie punktacja twojej drużyny.",
-    "nervespiral": "Po rozpoczęciu sygnału startowego pierwsza para dwóch graczy może podejść do wirażu nerwów. Obydwaj trzymają się jednej strony metalowego pierścienia i starają się dotrzeć do pierwszego punktu kontrolnego, nie dotykając rury.\n\nKiedy dwaj gracze dotrą do jednego punktu kontrolnego, wracają do drużyny, a dwóch nowych graczy wchodzi do gry. Kiedy ci dwaj gracze dotkną wirazu nerwów, wracają do drużyny, a dwóch nowych graczy kontynuuje od ostatniego punktu kontrolnego. Gra trwa, aż dotrzesz do końca wirazu nerwów. Drużyna, która jako pierwsza skończy, wygrywa.",
-    "tickettwist": "W tej grze wszyscy uczestniczący gracze muszą nosić opaskę w kolorze swojej drużyny. 10 graczy z każdej drużyny rywalizuje ze sobą na boisku. Celem tej gry jest przewrócenie jak największej liczby kafelków na kolor swojej drużyny. Gracze na boisku mogą się dowolnie wymieniać, ale nowy gracz musi otrzymać opaskę od 'starego' gracza i dopiero wtedy może kontynuować grę. Gra składa się z jednej rundy trwającej 8 minut. Po upływie czasu wszyscy gracze opuszczają boisko, a kafelki zostaną policzone według kolorów. Drużyna, która przewróciła najwięcej kafelków na swój kolor, wygrywa grę.",
-    "minefield": "Ta gra odbywa się na dużym polu z małymi sekcjami. Każda drużyna ma dwóch kapitanów na bocznej linii, którzy prowadzą uczestników bez używania telefonów ani innych pomocy. Gracz numer jeden zaczyna i stara się przejść przez pole, unikając wkroczenia na niewłaściwe pole. Aby dowiedzieć się, czy jesteś na właściwym czy złym polu, użyj sygnalizatora dźwiękowego w każdym polu. Gdy sygnalizator wydaje sygnał alarmowy, znalazłeś się na złym polu i musisz zmienić gracza na nowego. Każdy gracz sprawdza każde pole, nawet jeśli jest 100% pewny, że nie ma tam miny. Kapitanowie pomagają zapamiętać prawidłową trasę. Idziesz dalej, aż dojdziesz do mety, a następnie czas zostanie zatrzymany. Drużyna z najkrótszym czasem wygrywa grę.",
-    "tablesurfing": "Celem tej gry jest doprowadzenie jednej osoby na drugą stronę toru na flamingu, przechodząc przez towarzyszących graczy. Zespołowo musisz wykonać kilka kolejek i spróbować nie dopuścić, aby osoba na szczycie spadła na ziemię. Na końcu trasy znajduje się nachylenie. Gdy chłopcy pokonają nachylenie, dzwonek zadzwoni, a drużyny się zamieniają. Druga drużyna (dziewczęta) ułoży tę samą trasę w drodze powrotnej, przechodząc w dół nachylenia i wokół wszystkich zakrętów. Drużyna, która pierwsza przekroczy linię mety, wygrywa."
-  },
-  "rules": {
-    "monkeybars": "Wszyscy członkowie drużyny biorą udział",
-    "nervespiral": "Bierze udział 30-50 członków drużyny (w 15-25 parach)",
-    "tickettwist": "Na boisko mogą wejść tylko osoby z opaską drużyny (10 na drużynę)|Zamiana uczestników jest dozwolona, o ile noszą opaskę drużyny przy wejściu na boisko",
-    "minefield": "Bierze udział około 30 członków drużyny|Na polu minowym jednocześnie może być tylko 1 osoba|2 kapitanów drużyny prowadzą uczestników po polu|Kapitanowie nie mogą korzystać z narzędzi do zapamiętywania trasy",
-    "tablesurfing": "Bierze udział 16 chłopców i 16 dziewcząt, 1 surfer i 15 towarzyszących|Nie wolno dotykać ziemi (zarówno surfer, jak i towarzyszący)|Przeszkody nie mogą być przesuwane, a towarzyszący nie mogą opuszczać oznaczonego obszaru"
-  },
-  "general_error": "Wystąpił błąd",
-  "pleaserefresh": "Proszę spróbuj odświeżyć stronę",
-  "points": "Punkty",
-  "coins": "Monety",
-  "game": "Gra",
-  "team1team2": "Drużyna 1 / Drużyna 2",
-  "start": "Start",
-  "rulestitle": "Zasady",
+  "general_error": "Coś poszło nie tak",
+  "loading": "Ładowanie...",
   "login": {
     "login_button": "Zaloguj się",
-    "teamcode": "Kod drużyny",
-    "teamcode_invalid": "Przepraszamy, Twój kod drużyny jest nieprawidłowy"
+    "teamcode": "Kod zespołu"
   },
-  "league": {
-    "rankingisempty": "Żadna drużyna nie zarejestrowała jeszcze punktów. Sprawdź tutaj po pierwszej rundzie.",
-    "viewgamerankings": "Wyświetl ranking dla każdej gry",
-    "viewgamerankings-title": "Możesz zobaczyć rankingi na stronach szczegółów gry.",
-    "ranking-frozen": "Klasyfikacja jest teraz zamrożona do czasu ogłoszenia zwycięzców"
+  "menu": {
+    "games": "Gry"
   },
-  "admin": {
-    "select_league": {
-      "intro": "Wybierz ligę, którą chcesz zarządzać"
-    }
-  },
-  "yourmatch": "Twój mecz",
-  "sidequest": {
-    "thanks": "Dziękujemy, Twoja odpowiedź została zarejestrowana",
-    "timeranout": "Czas minął, powodzenia następnym razem",
-    "areyouready": "Czy jesteś gotowy?",
-    "checkanswerlater": "Sprawdź odpowiedź po zakończeniu gry",
-    "question_locked": "Wygasły",
-    "youhaveunsubmittedanswers": "Masz {numAnswers} odpowiedzi. Czy chcesz je teraz wysłać?",
-    "submityouranswers": "Wyślij swoje odpowiedzi",
-    "gameroundtitle": "Runda {round}",
-    "back_to_overview": "Powrót do przeglądu",
-    "alreadyAnswered": "Już odpowiedziałeś na to pytanie",
-    "noroundyet": "Nie dostępne jeszcze. Wróć po meczu.",
-    "submitfailed": "Ups! Nie udało się przesłać twoich odpowiedzi. Upewnij się, że masz połączenie i spróbuj ponownie",
-    "no_coins": "Nie masz już monet. Nie możesz odpowiedzieć na więcej pytań",
-    "explanation": "Wyjaśnienie",
-    "explanation_text": "Po każdym meczu, za wyjątkiem ostatniego, zostaną odblokowane 2 pytania w losowej kolejności, łącznie 8 pytań. Masz 10 minut na ich odpowiedź, do rozpoczęcia kolejnego meczu.\nMasz w sumie 8 monet. Każde pytanie, które zaczniesz, kosztuje monetę, nawet jeśli nie odpowiesz na nie. Więc, jeśli spróbujesz ponownie odpowiedzieć na to samo pytanie, będziesz musiał(a) pominąć inne pytanie.\nGdy już odpowiesz na pytanie, nie możesz odpowiedzieć na nie ponownie.\n\nTwój zespół zdobywa dodatkowe punkty za to, ile członków zespołu przesyła poprawne odpowiedzi na każde pytanie.\nSprawdź po każdym meczu, aby zdobyć więcej punktów dla swojego zespołu!",
-    "questiontypes": {
-      "math": "Mat",
-      "knowledge": "Wiedza",
-      "recognize": "Rozpoznaj",
-      "insight": "Intuicja",
-      "remember": "Zapamiętaj",
-      "guess": "Zgaduj"
-    }
-  },
-  "questions": {
-    "guesshowmany1": {
-      "q": "Ile godzin zostało przesłuchanych w tym roku słuchowisku \"Fra Kåre\"?",
-      "intro": "Czy słuchałeś w tym roku słuchowiska \"Fra Kåre\"?"
-    },
-    "guesshowmany2": {
-      "q": "Ile osób odwiedziło obozy w 2023 roku?",
-      "intro": "Czy jesteś dobry w liczeniu?"
-    },
-    "remember": {
-      "q": "Jaka jest prawidłowa kolejność ruchów tanecznych z tańca \"Herman Shuffle\"?",
-      "intro": "Czy tańczyłeś dziś rano?",
-      "a": {
-        "lwd": "Lean, Wave, Drift",
-        "wld": "Wave, Lean, Drift",
-        "ldw": "Lean, Drift, Wave",
-        "wdl": "Wave, Drift, Lean"
-      }
-    },
-    "insight": {
-      "q": "Która karta z kolejki górskiej dotrze na dół jako pierwsza?",
-      "intro": "Popatrz na obrazek. Która karta z kolejki górskiej dotrze na dół jako pierwsza?",
-      "a": {
-        "red": "Czerwona",
-        "green": "Zielona",
-        "yellow": "Żółta",
-        "sametime": "Dotrą na dół w tym samym czasie"
-      }
-    },
-    "recognize1": {
-      "q": "Czy rozpoznajesz lub pamiętasz, kim jest ta osoba?",
-      "intro": "Wiesz, kogo (nie) widzimy na tym obrazie?",
-      "a": {
-        "opta": "Gershon Twilley",
-        "optb": "Harald Kronstad",
-        "optc": "Gunnar Gangsø",
-        "optd": "Bernt-Aksel Larsen"
-      }
-    },
-    "recognize2": {
-      "q": "Pamiętasz, kto to?",
-      "intro": "Czy śledziłeś projekty w tym roku? Popatrz na obrazek.",
-      "a": {
-        "peter": "Piotr",
-        "john": "Jan",
-        "matthew": "Mateusz",
-        "paul": "Paweł"
-      }
-    },
-    "math": {
-      "q": "Jaka liczba powinna być na znaku zapytania?",
-      "intro": "Popatrz na obrazek. Jaka liczba powinna być na znaku zapytania?",
-      "a": {
-        "30": "30",
-        "81": "81",
-        "200": "200",
-        "67": "67"
-      }
-    },
-    "knowledge": {
-      "q": "W jakim kraju BCC nie ma kościoła?",
-      "intro": "Skąd jesteś?",
-      "a": {
-        "singapore": "Singapur",
-        "serbia": "Serbia",
-        "japan": "Japonia",
-        "peru": "Peru"
-      }
-    }
-  },
-  "back": "Powrót"
+  "minutes": "Minuty",
+  "no-matches-for-this-filter": "Brak wyników dla tego filtra",
+  "please_refresh": "Odśwież stronę",
+  "point": "Punkt",
+  "points-registration-error": "Obliczony wynik zwrócił undefined. Formularz jest nieprawidłowy, chociaż może zostać przesłany. Być może brakuje niektórych walidacji w polach formularza.",
+  "post-type": "Typ postu:",
+  "save": "Zapisz",
+  "saved": "Zapisane",
+  "seconds": "Sekundy",
+  "something-went-wrong": "Odśwież stronę",
+  "something-went-wrong-we-could-not-log-you-in-please-try-again": "Coś poszło nie tak, nie mogliśmy Cię zalogować - spróbuj ponownie.",
+  "team": "Zespół",
+  "yourmatch": "Twoja gra"
 }

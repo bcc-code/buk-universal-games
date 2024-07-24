@@ -1,166 +1,51 @@
 {
-  "install_hint": "Tipp:\nTelepítse ezt a web-alkalmazást a kezdőképernyőjére, jobban fog működni!",
-  "menu": {
-    "home": "Kezdőlap",
-    "league": "Liga",
-    "sidequest": "Mellékküldetés",
-    "games": "Játékok",
-    "map": "Térkép"
+  "admin": {
+    "intro": "Kérdezd meg, melyik csapatban vannak, és győződj meg róla, hogy a megfelelő csapat van a megfelelő helyen, és hogy megegyezik a fent említett csapattal.",
+    "select_game": {
+      "intro": "Válaszd ki, melyik játékot fogod bíráskodni"
+    },
+    "select_league": {
+      "intro": "Válaszd ki a zónádat"
+    }
   },
+  "admin-referee-info": {
+    "hamster_wheel": "<div class='rounded-md p-4 mb-4 bg-amber-50'> <span class='font-bold'>Forgatókönyv:</span> <br /> Üdvözöljük a Hörcsögkerékben.  <ul class='list-disc list-inside'> <li>Ezen az állomáson egy másik csapattal versenyeznek egy váltóversenyben. A győztes csapat, amelyik a legjobb időt éri el, kapja a legtöbb pontot.</li> <li>A csapatoknak a lehető legrövidebb idő alatt kell elérniük az egyik oldalra és vissza.</li> <li>Egy csapatnak egyszerre 15 résztvevőnek kell lennie a kerékben. A teljes pályán 15 résztvevőnek kell lennie a kerékben.</li> <li>Az egész csapatnak együtt kell végrehajtania a váltót. A csapatnak a szőnyegen belül kell maradnia, a szőnyegnek a fejük fölött kell lennie a teljes pályán.</li> <li>Ha a csapatnak elegendő résztvevője van, a kerékben lévő személyek cserélhetők 15 új személyre, amikor a csapat félúton van.</li> <li>A csapatnak a teljes kerékkel át kell lépnie a vonalon, mielőtt a résztvevőket cserélheti.</li> <li>Az a csapat nyer, amelyik először tér vissza a teljes csapattal a rajtvonalra. Az időt is rögzíteni fogják, ezért mindkét csapatnak a lehető leggyorsabban kell végrehajtania, még akkor is, ha nem érik el elsőként a célt.</li> <li>A csapatnak a szőnyegen belül kell maradnia a teljes pályán. Minden láb, amely a szőnyegen kívül érinti a talajt, extra időt ad hozzá. Ez vonatkozik arra az esetre is, ha a szövet nincs a résztvevők feje fölött.</li> <li>2 percet kapnak a felkészülésre.</li> <li>A feladat az én (a bíró) jelzésemre kezdődik.</li> <li>Értették a feladatot?</li> <li>Akkor a csapatok felkészülhetnek a rajtvonalnál. A váltásra váró csoport a pálya másik oldalára állhat. A 2 perces visszaszámlálás most kezdődik.</li> <li>Az idő lejárt. Minden csapat kész?</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>A bírónak:</span> <ul class='list-disc list-inside'> <li>Két bíró helyezkedik el a csapatok mindkét oldalán, és telefonjukon rögzítik, hogy hányszor lépnek ki a csapatok a szalagról, és minden alkalommal, amikor a csapatnak nincs szövet a feje fölött.</li> <li>Győződj meg arról, hogy a résztvevők és a nézők világos helyet foglalnak el a játéktáblával szemben a játékélmény, a láthatóság és az elkötelezettség szempontjából.</li> </ul> <br /> <span>A játék végén:</span> <ul class='list-disc list-inside'> <li>Gyűjtsd össze a szőnyegeket, és oszd szét egyértelműen a következő csapat számára, amelyik jön.</li> <li>Igazítsd meg a rajtvonalat és egyéb akadályokat, ha szükséges.</li> <li>Készülj fel egy új csoportra!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Egészség, környezet és biztonság:</span> <ul class='list-disc list-inside'> <li>Vedd figyelembe, hogy a hörcsögkerékben sok embernek kell gyors ütemben egyszerre és közel egymáshoz járnia, ami esésekhez vezethet. Ezt közepes kockázatnak tekintik.</li> </ul> </div>",
+    "iron_grip": "<div class='rounded-md p-5 mb-4 bg-amber-50'> <span class='font-bold'>Forgatókönyv:</span> <br /> Üdvözöljük a Vasmarkolatban.  <ul class='list-disc list-inside'> <li>Ennek az állomásnak a célja, hogy 10 perc alatt a lehető legtöbb 'függési időt' gyűjtsék össze.</li> <li>Mindenki részt vehet, de egyszerre csak 9 ember lóg.</li> <li>A csapat 'függési időt' gyűjt, amikor 9 ember a csapatból egyszerre lóg az állványról.</li> <li>A csapatnak 10 perce van az állomás befejezésére.</li> <li>Amikor kevesebb, mint 9 résztvevő lóg egyszerre, a 'függési idő' gyűjtése leáll, amíg ismét 9 résztvevő nem lóg egyszerre. Ekkor az idő újraindul.</li> <li>Azok a résztvevők, akik nem bírnak tovább lógni, az állvány oldalán a sor végére kell állniuk.</li> <li>Csak a lógó résztvevők lehetnek az állványon, a többi csapatnak az állvány oldalán kell állnia a sorban (mutasd meg a megfelelő oldalt).</li> <li>Ha csalnak, a csapat 10 másodpercet veszít az összegyűjtött időből.</li> <li>A résztvevők csak a kezükkel lógathatnak, lábak, más résztvevők vagy tárgyak támogatása nélkül.</li> <li>A bíró dönti el, hogy valami csalásnak minősül-e, de minden, ami segíti a résztvevőket a saját erejükön kívül lógni, csalásnak minősül.</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>A bíróknak:</span> <ul class='list-disc list-inside'> <li>Legyen egy időzítő, amely 10 percről visszaszámol, és indítsa el a verseny kezdetén.</li> <li>Legyen egy időzítő, amelyet az összegyűjtött 'függési időhöz' használnak, amely minden alkalommal leáll, amikor kevesebb, mint 9 résztvevő lóg egyszerre az állványról, és újraindul, amikor 9 ember lóg egyszerre.</li> <li>Egy résztvevő annyiszor vehet részt, ahányszor akar.</li> <li>A csapat maga dönti el, mely résztvevőket akarja használni a lógásra, és ez menet közben is változhat.</li> <li>A résztvevőknek a kezükkel kell lógniuk az állványról, és nem használhatják a lábukat, más résztvevőket, tárgyakat stb. segítségként.</li> <li>Egy bíró figyeli a csalást. FONTOS: figyelmeztesd a csapatot, hogy ez csalás, majd jegyezd fel.</li> <li>Jelentsd a következő időpontokat: Még 5 perc van hátra, félúton! Még 2 perc van hátra, Még 1 perc van hátra!</li> </ul> <br /> <span>A játék végén:</span> <ul class='list-disc list-inside'> <li>Regisztráld a 'függési időt' és a csalást az alkalmazásban.</li> <li>Biztonsági eljárás: Ellenőrizd az állványt, hogy minden jól rögzítve legyen minden kör után.</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Egészség, környezet és biztonság:</span> <ul class='list-disc list-inside'> <li>Az állványról való leesés, esés közben történő bokaficam, hólyagok a kezeken.</li> <li>Ha az állomás aszfalt borítással rendelkezik, akkor lesznek szőnyegek.</li> </ul> </div>",
+    "labyrinth": "<div class='rounded-md p-4 mb-4 bg-amber-50'> <span class='font-bold'>Forgatókönyv:</span> <br /> Üdvözöljük a Labirintusban.  <ul class='list-disc list-inside'> <li>Ezen az állomáson együtt kell működniük, hogy egy golyót végigvezessenek egy labirintuson.</li> <li>Legfeljebb 12 játékos dolgozik együtt egyszerre, és legfeljebb tíz perc áll rendelkezésükre az állomás befejezésére.</li> <li>A labirintusban két ellenőrzőpont található, ahol a 12 játékost 12 új játékosra kell cserélni.</li> <li>Nem szabad kézzel megérinteni a golyót, amikor az a táblán van, vagy feldobni azt.</li> <li>Ha a golyó beleesik egy lyukba, az egyik játékosnak fel kell vennie, és vissza kell helyeznie a kezdőpontra vagy az előző ellenőrzőpontra, de csak akkor szabad a labirintus alatt tartózkodni, ha a golyó egy lyukon keresztül esik.</li> <li>Két pontot kapnak minden egyes ellenőrzőpontért, amelyen áthaladnak, és több pontot kapnak, minél gyorsabban teljesítik a feladatot.</li> <li>Ha a labirintus teljesítve van, vagy az idő lejár, nyugodtan helyezhetik a labirintust a földre.</li> <li>A játék akkor kezdődik, amikor egy bíró a golyót a kezdőpontra helyezi.</li> <li>Értették a feladatot?</li> <li>Akkor 12 játékos felkészülhet a labirintus kezdetére, és a többi csapat itt állhat (mutasd meg, hol van előnyös, ha a többi csapat áll).</li> <li>12 új játékosnak készen kell állnia, hogy átvegye az ellenőrzőpontoknál.</li> <li>Akkor kezdhetünk. Kész, rajt, indulás!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>A bírónak:</span> <ul class='list-disc list-inside'> <li>Figyelj a tömegre, és helyezd el a nézőket a lehető legjobb helyre.</li> <li>Állj készen, hogy elindítsd a 10 perces visszaszámlálót, amikor a csapat elkezd játszani.</li> <li>Biztosítsd, hogy minden játékost új játékosokra cserélnek az ellenőrzőpontoknál.</li> <li>Ügyelj arra, hogy a résztvevők ne sértsenek meg semmilyen szabályt.</li> <li>Állítsd le a játékot 10 perc után, ha a csapat még nem teljesítette a feladatot.</li> </ul> <br /> <span>A játék végén:</span> <ul class='list-disc list-inside'> <li>Gyűjtsd össze az összes golyót, amely a játékban volt.</li> <li>Készülj fel új csoportokra!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Egészség, környezet és biztonság:</span> <ul class='list-disc list-inside'> <li>Ennek az állomásnak a kockázata, hogy a résztvevők a labirintust a lábukra ejthetik. Ha a golyó egy lyukon keresztül esik, a résztvevőknek óvatosan kell felvenniük, hogy ne ejtsék rájuk a labirintust. Szilánkok vagy hólyagok jelenhetnek meg a tenyéren.</li> </ul> </div>",
+    "land_water_beach": "<div class='rounded-md p-4 mb-4 bg-amber-50'> <span class='font-bold'>Forgatókönyv:</span> <br /> Üdvözöljük a Szárazföld, víz, strand játékban.  <ul class='list-disc list-inside'> <li>Ezen az állomáson egy másik csapattal versenyeznek, hogy a lehető leggyorsabban reagáljanak, és mozogjanak három zóna között három különböző jelre.</li> <li>Mindkét csapatból tíz ember kezd a középső zónában, a strandon.</li> <li>A három jel, amire reagálniuk kell: <ul> <li>Piros jel azt jelenti, hogy a hátsó zónába kell menni, a szárazföldre.</li> <li>Sárga jel a középső zóna, a strand.</li> <li>Kék jel az első zóna, a víz.</li> </ul> </li> <li>Az a csapat, amelynek mind a tíz játékosa először mozog a megfelelő zónába, egy pontot kap. Ha mindkét csapat ugyanolyan gyors, mindkét csapat egy pontot kap.</li> <li>A játékosoknak maradniuk kell abban a zónában, ahová mozognak.</li> <li>Három jel látható, mielőtt a tíz játékost tíz új játékosra cserélnék. Ezt összesen három körben hajtják végre.</li> <li>A nyert körök alapján kapják a pontokat.</li> <li>Értették a feladatot?</li> <li>Akkor tíz játékos kezdhet a középső zónában, és a csapat többi tagja ott állhat, és készen állhat a tíz játékos cseréjére (mutasd meg a legjobb helyet a többi csapat számára).</li> <li>Akkor kezdhetünk. Kész, rajt, indulás!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>A bíróknak:</span> <ul class='list-disc list-inside'> <li>Győződj meg arról, hogy a csapat többi tagja megfelelő helyen áll, és készen áll a tíz új játékos cseréjére minden körben.</li> <li>Győződj meg arról, hogy az állomáson töltött idő nem haladja meg a 15 percet összesen.</li> <li>A főbíró kijelzi a pontokat a ponttáblán.</li> <li>Két vonalbíró zászlókkal gyorsan dönt arról, ki kap pontot.</li> <li>A jelződobozban lévő személynek változtatnia kell a jelet és az időt a jelek között.</li> </ul> <br /> <span>A játék végén:</span> <ul class='list-disc list-inside'> <li>Győződj meg arról, hogy a zónák továbbra is jól láthatóak.</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Egészség, környezet és biztonság:</span> <ul class='list-disc list-inside'> <li>Ennek az állomásnak a kockázata kicsi; előfordulhatnak botlások, bokaficamok vagy esések. Légy óvatos.</li> </ul> </div>",
+    "mastermind": "<div class='rounded-md p-4 mb-4 bg-amber-50'> <span class='font-bold'>Forgatókönyv:</span> <br /> Üdvözöljük a Mastermindban.  <ul class='list-disc list-inside'> <li>Ennek az állomásnak a célja, hogy kitalálják, milyen színkód található a bőröndben.</li> <li>8 fordulójuk van és legfeljebb 10 percük van a feladat megoldására.</li> <li>Minél kevesebb fordulót használnak a helyes kód megtalálásához, annál több pontot kapnak.</li> <li>Most ki kell választaniuk 5 Kódfejtőt.</li> <li>Ezeknek az 5 fő feladata a feladat megoldása.</li> <li>A többiek mindegyike kap egy színt (Durag - fejpánt), amely egy játékkövet képvisel, amelyet a Kódfejtők a játéktáblára helyezhetnek.</li> <li>Minden résztvevő, aki játékkő, viselnie kell a fejpántot a fején a játék során. (Legyen nálad a durag és mutasd meg)</li> <li>A Kódfejtők összegyűjtik azokat a játékköveket (résztvevőket fejpánttal), amelyeket használni akarnak, és egy fekete játékkőre helyezik őket a játéktáblán.</li> <li>Amikor a Kódfejtők leadták a válaszukat, egy bíró elhelyezi a 'válaszpálcákat', amelyek megmondják a Kódfejtőknek, mennyire közel vannak a válaszhoz.  <ul> <li>Piros pálca = helyes szín a helyes helyen</li> <li>Fehér pálca = helyes szín a rossz helyen</li> </ul> (Legyenek nálad a pálcák és mutasd meg)</li> <li>Amikor a Kódfejtők kitalálják a helyes színkódot, egy bíró előrelép és kinyitja a dobozt.</li> <li>A csapat többi tagja a játéktábla mellett áll.</li> <li>Értették a feladatot?</li> <li>Akkor a Kódfejtők mehetnek ahhoz a bíróhoz (mutasd és jelöld).</li> <li>Akik játékkövek lesznek, ott állhatnak (mutasd és jelöld).</li> <li>Akkor kezdhetünk. Kész, rajt, indulás!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>A bírónak:</span> <ul class='list-disc list-inside'> <li>Győződj meg arról, hogy a közönség, a játékkövek és a Kódfejtők világos helyen vannak a játéktáblával szemben a játékélmény, a láthatóság és az elkötelezettség szempontjából.</li> </ul> <br /> <span>A játék végén:</span> <ul class='list-disc list-inside'> <li>Gyűjtsd össze az összes fejpántot.</li> <li>Gyűjtsd össze az összes válaszpálcát.</li> <li>Változtasd meg a színkódot a dobozban.</li> <li>Állítsd be a játéktáblát, ha szükséges.</li> <li>Készülj fel új csoportokra!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Egészség, környezet és biztonság:</span> <ul class='list-disc list-inside'> <li>Ennek az állomásnak a kockázata, hogy a résztvevők megbotolhatnak a játéktáblán lévő játékkövekben. Ezt nagyon alacsony vagy alacsony kockázatnak tekintik.</li> </ul> </div>"
+  },
+  "calculated-score": "Számított pontszám",
+  "couldnt-load-the-video": "Nem sikerült betölteni a videót",
+  "details": "Részletek",
+  "family": "Család",
   "games": {
-    "monkeybars": "Majomrudak",
-    "nervespiral": "Idegspirál",
-    "tickettwist": "Jegy Szédítés",
-    "minefield": "Aknamező",
-    "tablesurfing": "Tömegszörf"
-  },
-  "score": {
-    "monkeybars": "{score} rudak",
-    "nervespiral": "{score} másodperc",
-    "tickettwist": "{score} jegy",
-    "minefield": "{score} másodperc",
-    "tablesurfing": "{score} másodperc"
-  },
-  "leadstory": {
-    "monkeybars": "Vajon csapata segíthet-e az emberek megmentésében, akik beszorultak egy meghibásodott óriáskerékbe? Az óriáskeréken való mászás kihívást jelenthet, ezért fontos, hogy ne felejtsék el a elsősegély felszerelések fontosságát. Segítsen csapatának eljutni a másik oldalra és mentsen meg ezeket a segítségre szoruló embereket.",
-    "nervespiral": "Miközben türelmesen várja a következő körre való sorát, hirtelen meghibásodik az áram, de nincs szükség pánikra. Vajon csapata képes-e ügyesen navigálni ebben a váratlan helyzetben, biztonságosan kijutni a sorból anélkül, hogy elektromos sokkokat tapasztalnának? Maradjon nyugodt és bízzon csapata képességeiben, hogy megoldja ezt a kihívást megfontoltan és elegánsan.",
-    "tickettwist": "Az emberek sorban állnak a jegyekért. Vajon csapata képes kezelni a sebességet és a stresszt, amely a jegypénztárban jelentkezik? Ez a játék gyors gondolkodást, kitartást, sebességet és csapatmunkát kombinálja. Koncentráljon és fordítsa fel minél több jegyet csapatának színére. Készen áll a kihívásra?",
-    "minefield": "Csapatának nehéz helyzettel kell szembenéznie, amikor át kell jutnia a másik oldalra, miközben óvatosnak kell lennie a megszökött vadállatokkal szemben. A cél az, hogy elérjék úticéljukat anélkül, hogy ezek az állatok megtámadnák őket.",
-    "tablesurfing": "A vasúti sínek sérültek, ami jelentős problémát okoz. Azonban csapata képes megoldani ezt a helyzetet úgy, hogy együtt dolgozik csapatként. Kombinálja képességeiket, koordinálja cselekedeteiket és találjon megoldást, hogy a vonat gördülékenyen haladhasson."
-  },
-  "explanation": {
-    "monkeybars": "Az első játékos a Majomrudakon kezdi megmászni azokat, amennyire csak tudja. Amint elérte a 12. rudat, a következő játékos elkezdheti az elejéről.\n\nPélda: Az első játékos az 26. rudat érintette meg utoljára, így a pontszáma 26 pont. A második játékos a 18. rudon esett el, így pontszáma 18 pont. A játékosok összes pontszámát összeadjuk, majd elosztjuk a csapatban lévő játékosok összes számával. Ez lesz a csapat pontszáma.",
-    "nervespiral": "Amikor elhangzik a startjel, az első két játékos elindulhat a spirálra. Mindketten egy-egy oldalát fogják meg a fém karikának, és megpróbálják eljutni az első ellenőrzőpontig anélkül, hogy megérintenék a csövet.\n\nAmikor a két játékos eléri az egyik ellenőrzőpontot, visszatérnek, és két új játékos lép a játékba. Amikor ez a két játékos megérinti a spirált, visszatérnek a csapatukhoz, és két új játékos folytatja az utat az utolsó ellenőrzőpontig. Ezt addig folytatják, amíg el nem érik a spirál végét. A csapat, amelyik először fejezi be a játékot, nyer.",
-    "tickettwist": "Ehhez a játékhoz minden résztvevőnek csapatának színű szalagot kell viselnie. Minden csapatból 10 játékos versenyez a pályán. A játék célja az, hogy minél több lapot fordítsanak át a csapat színére. A játékosok bármikor cserélhetnek egymással, de ehhez az új játékosnak meg kell kapnia az \"öreg\" játékostól a szalagot, és csak utána folytathatja a játékot. A játék egy 8 perces körből áll. Amikor lejár az idő, az összes játékos elhagyja a pályát, és a lapokat színek szerint számolják. A csapat, amelyik a legtöbb lapot fordítja át a saját színére, nyeri a játékot.",
-    "minefield": "A játék egy nagy területen zajlik kis szakaszokkal. Minden csapatnak két kapitány van a pálya szélén, akik irányítják a játékosokat telefonok vagy más segédeszközök használata nélkül. Az első játékos kezdi, és megpróbál átmenni a mezőn anélkül, hogy rossz dobozba lépne. Annak megállapításához, hogy jó vagy rossz dobozban állsz, használj hangjelzőt, ami minden dobozban van. Ha a hangjelző riasztást ad, akkor rossz dobozban állsz, és új játékost kell váltanod. Minden játékos ellenőrzi minden dobozt, még akkor is, ha 100% biztos benne, hogy nem az akna. A kapitányok segítenek emlékezni a helyes útvonalra. Addig folytatod, amíg el nem éred a célt, majd leállítják az idődet. A csapat, amelyik a leggyorsabb idővel ér célba, nyeri a játékot.",
-    "tablesurfing": "A vasúti sínek sérültek, ami jelentős problémát okoz. Azonban csapata képes megoldani ezt a helyzetet úgy, hogy együtt dolgozik csapatként. Kombinálja képességeiket, koordinálja cselekedeteiket és találjon megoldást, hogy a vonat gördülékenyen haladhasson."
-  },
-  "rules": {
-    "monkeybars": "Az összes csapat tagja részt vesz",
-    "nervespiral": "30-50 csapattag vesz részt (15-25 párban)",
-    "tickettwist": "Csak azok az emberek léphetnek a pályára, akiknek van csapat színű szalagjuk (10 csapatonként)|Korlátlanul lehet cserélni a résztvevőket, amennyiben az új játékos szalaggal rendelkezik a pályára lépéskor",
-    "minefield": "Körülbelül 30 csapattag vesz részt|Egy időben csak 1 személy léphet a pályára|A pályán résztvevőket két csapatkapitány vezeti, akik nem használhatnak eszközöket az útvonal megjegyzéséhez",
-    "tablesurfing": "16 fiú és 16 lány vesz részt, 1 szörfös és 15 gördülőszemély|Nem szabad megérinteni a talajt (mind a szörfös, mind a gördülőszemélyek)|Az akadályokat nem lehet áthelyezni, és a gördülőszemélyek nem léphetnek ki az előre jelölt területről"
+    "hamster_wheel": "Hörcsögkerék",
+    "iron_grip": "Vasmarkolat",
+    "labyrinth": "Labirintus",
+    "land_water_beach": "Szárazföld, víz, strand",
+    "mastermind": "Mastermind"
   },
   "general_error": "Valami hiba történt",
-  "pleaserefresh": "Kérjük, próbálja újra frissíteni az oldalt",
-  "points": "Pontok",
-  "coins": "Érmék",
-  "game": "Játék",
-  "team1team2": "Csapat 1 / Csapat 2",
-  "start": "Indítás",
-  "rulestitle": "Szabályok",
+  "loading": "Betöltés...",
   "login": {
     "login_button": "Bejelentkezés",
-    "teamcode": "Csapat kód",
-    "teamcode_invalid": "Sajnáljuk, a csapat kulcsa érvénytelen"
+    "teamcode": "Csapatkód"
   },
-  "league": {
-    "rankingisempty": "Még egy csapat sem szerzett pontokat. Ellenőrizze vissza az első kör után.",
-    "viewgamerankings": "Nézze meg a ranglistát minden játékhoz",
-    "viewgamerankings-title": "A játék részletező oldalain megtekintheti az eredmények rangsorát.",
-    "ranking-frozen": "A ranglista most befagyasztva van, amíg a győztesek be nem jelentik"
+  "menu": {
+    "games": "Játékok"
   },
-  "admin": {
-    "select_league": {
-      "intro": "Válassza ki a ligát, amelyet kezelni szeretne"
-    }
-  },
-  "yourmatch": "A te meccsed",
-  "sidequest": {
-    "thanks": "Köszönjük, az ön válasza rögzítésre került",
-    "timeranout": "Lejárt az idő, legközelebb jobb szerencsét",
-    "areyouready": "Készen áll?",
-    "checkanswerlater": "Ellenőrizze a választ, amikor a játék véget ér",
-    "question_locked": "Lejárt",
-    "youhaveunsubmittedanswers": "Van {numAnswers} válasza. Szeretné most elküldeni őket?",
-    "submityouranswers": "Adja be a válaszait",
-    "gameroundtitle": "Kör {round}",
-    "back_to_overview": "Vissza az áttekintéshez",
-    "alreadyAnswered": "Már válaszoltál erre a kérdésre",
-    "noroundyet": "Még nem elérhető. Gyere vissza a mérkőzés után.",
-    "submitfailed": "Nem sikerült elküldeni a válaszaidat. Győződj meg róla, hogy van kapcsolat, és próbáld újra",
-    "no_coins": "Elfogytak a pénzed. Nem tudsz több kérdésre válaszolni",
-    "explanation": "Magyarázat",
-    "explanation_text": "Minden mérkőzés után, kivéve az utolsót, 2 kérdés lesz véletlenszerű sorrendben feloldva, összesen 8 kérdés. 10 perc áll rendelkezésedre válaszolni rájuk, a következő mérkőzés kezdetéig.\nÖsszesen 8 érméd van. Minden kérdés, amit elkezdesz, egy érmet kerül, még akkor is, ha nem válaszolsz rá. Tehát, ha újra megpróbálod ugyanazt a kérdést, egy másik kérdést kell kihagynod.\nMiután válaszoltál egy kérdésre, már nem válaszolhatsz rá újra.\n\nCsapatod bónuszpontokat szerez attól függően, hogy hány csapattag küld be helyes választ minden kérdésre.\nGyere vissza minden mérkőzés után, hogy még több pontot szerezz a csapatodnak!",
-    "questiontypes": {
-      "math": "Matematika",
-      "knowledge": "Ismeret",
-      "recognize": "Felismerés",
-      "insight": "Belátás",
-      "remember": "Emlékezés",
-      "guess": "Tippelés"
-    }
-  },
-  "questions": {
-    "guesshowmany1": {
-      "q": "Hány órányi Fra Kåre zenét hallgatták idén?",
-      "intro": "Hallgattál idén Fra Kåre zenét?"
-    },
-    "guesshowmany2": {
-      "q": "Hányan látogatták meg a táborokat 2023-ban?",
-      "intro": "Jól tudsz számolni?"
-    },
-    "remember": {
-      "q": "Mi a helyes sorrend a Herman Shuffle táncmozdulatokban?",
-      "intro": "Táncoltál ma reggel?",
-      "a": {
-        "lwd": "Lean, Wave, Drift",
-        "wld": "Wave, Lean, Drift",
-        "ldw": "Lean, Drift, Wave",
-        "wdl": "Wave, Drift, Lean"
-      }
-    },
-    "insight": {
-      "q": "Melyik hullámvasúti kocsi ér le először a mélypontra?",
-      "intro": "Nézze meg a képet. Melyik hullámvasúti kocsi ér le először a mélypontra?",
-      "a": {
-        "red": "Piros",
-        "green": "Zöld",
-        "yellow": "Sárga",
-        "sametime": "Egyidőben érnek le a mélypontra"
-      }
-    },
-    "recognize1": {
-      "q": "Felismered vagy emlékszel, hogy ki ő?",
-      "intro": "Tudod, kit (nem) látunk ezen a képen?",
-      "a": {
-        "opta": "Gershon Twilley",
-        "optb": "Harald Kronstad",
-        "optc": "Gunnar Gangsø",
-        "optd": "Bernt-Aksel Larsen"
-      }
-    },
-    "recognize2": {
-      "q": "Emlékszik, ki látható a képen?",
-      "intro": "Követte az idei projekteket? Nézze meg a képet.",
-      "a": {
-        "peter": "Péter",
-        "john": "János",
-        "matthew": "Máté",
-        "paul": "Pál"
-      }
-    },
-    "math": {
-      "q": "Milyen számot kell beírni a kérdőjel helyére?",
-      "intro": "Nézze meg a képet. Milyen számot kell beírni a kérdőjel helyére?",
-      "a": {
-        "30": "30",
-        "81": "81",
-        "200": "200",
-        "67": "67"
-      }
-    },
-    "knowledge": {
-      "q": "Melyik országban nincs BCC gyülekezet?",
-      "intro": "Honnan származik?",
-      "a": {
-        "singapore": "Szingapúr",
-        "serbia": "Szerbia",
-        "japan": "Japán",
-        "peru": "Peru"
-      }
-    }
-  },
-  "back": "Vissza"
+  "minutes": "Percek",
+  "no-matches-for-this-filter": "Nincs találat erre a szűrőre",
+  "please_refresh": "Frissítsd az oldalt",
+  "point": "Pont",
+  "points-registration-error": "A számított eredmény undefined értéket adott vissza. Az űrlap érvénytelen, bár be lehet nyújtani. Előfordulhat, hogy hiányzik néhány validálás az űrlapmezőkből.",
+  "post-type": "Bejegyzés típusa:",
+  "save": "Mentés",
+  "saved": "Mentve",
+  "seconds": "Másodpercek",
+  "something-went-wrong": "Frissítsd az oldalt",
+  "something-went-wrong-we-could-not-log-you-in-please-try-again": "Valami hiba történt, nem sikerült bejelentkezni - próbáld újra.",
+  "team": "Csapat",
+  "yourmatch": "A játékod"
 }

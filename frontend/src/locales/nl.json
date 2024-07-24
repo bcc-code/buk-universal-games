@@ -1,107 +1,51 @@
 {
-  "install_hint": "Hint:\nInstalleer deze webapp op je startscherm, dan werkt hij beter!",
-  "menu": {
-    "home": "Home",
-    "league": "Competitie",
-    "sidequest": "Sidequest",
-    "games": "Spellen",
-    "map": "Kaart"
-  },
-  "games": {
-    "iron_grip": "Ijzeren Greep",
-    "land_water_beach": "Land, water, strand",
-    "mastermind": "Mastermind",
-    "hamster_wheel": "Hamsterwiel",
-    "labyrinth": "Doolhof"
-  },
-  "score": {
-    "monkey_bars": "{score} stangen",
-    "nerve_spiral": "{score} seconden",
-    "ticket_twist": "{score} tickets",
-    "mine_field": "{score} seconden",
-    "table_surfing": "{score} seconden"
-  },
-  "explanation": {
-    "iron_grip": "In de competitie 'Ijzeren Greep' nemen negen deelnemers het tegen elkaar op in een uitdaging waarbij het doel is om zo lang mogelijk aan een steiger te hangen binnen een periode van tien minuten. Alle deelnemers beginnen tegelijkertijd te hangen, met hun handpalmen naar voren, wanneer de aftelling begint. \n\nEen scheidsrechter, aangeduid als scheidsrechter (a), is verantwoordelijk voor het stoppen en starten van de klok. De klok stopt wanneer alle negen deelnemers op hun plaats zijn en aan de steiger hangen, en hij start opnieuw elke keer dat iemand loslaat. Een andere scheidsrechter, scheidsrechter (b), houdt de totale tijd van tien minuten in de gaten die de deelnemers ter beschikking hebben. \n\nDeelnemers kunnen wisselen met teamgenoten die naast hen wachten, klaar om de ladder op te klimmen en over te nemen. Er zijn geen beperkingen op het aantal wissels of hoe vaak een deelnemer kan hangen. De competitie draait om het verzamelen van zoveel mogelijk tijd hangend aan de steiger binnen de gegeven tijdsperiode van tien minuten.",
-    "land_water_beach": "Dit onderdeel is een reactietest waarbij teams tegen elkaar strijden. Tien deelnemers van elk team starten in de zone in het midden.\nIn deze uitdaging krijgt het team waarbij alle 10 deelnemers zich het snelst naar de juiste zone verplaatsen, één punt. Bij gelijke reactietijd krijgen beide teams één punt. Het is daarom cruciaal om snel te reageren en naar de juiste zone te bewegen. Foute bewegingen resulteren in één punt voor het andere team. Na drie signalen wissel je de tien deelnemers met tien nieuwe deelnemers van het team. Dit wordt herhaald over drie rondes.\nReactietijd is cruciaal om te winnen.",
-    "mastermind": "Dit onderdeel is geïnspireerd op het concept van het spel Mastermind.\n\nHet team moet een kleurcode oplossen die verborgen is in een doos. Vijf deelnemers worden aangewezen als Codebreakers, terwijl de rest van het team fungeert als kleurstukken.\n\nCodebreakers plaatsen hun oplossingen op het speelbord en nemen vervolgens contact op met de scheidsrechter. De scheidsrechter plaatst 'antwoordpinnen' in de doos naast elke rij. Deze pinnen geven aan hoeveel kleuren de juiste kleur en correct geplaatst zijn (rood) en hoeveel kleuren de juiste kleur zijn, maar niet correct geplaatst (wit) in het voorstel van de Codebreakers.",
-    "labyrinth": "Bij dit onderdeel wordt het team uitgedaagd om samen te werken door een bal door een doolhof op een plaat te navigeren.\nDe scheidsrechter start het spel door de bal op het startpunt te plaatsen en de timer te starten. Er zijn drie controlepunten op het bord en alle spelers wisselen van plaats met 12 nieuwe spelers bij elk controlepunt, zodat in totaal 36 mensen kunnen spelen.\nWanneer het doolhof is voltooid of de tijd om is, plaatsen de deelnemers het bord rustig op de grond.",
-    "hamster_wheel": "Bij dit onderdeel strijden 2 teams tegen elkaar in hun respectievelijke “Hamsterwiel”. Het team dat het snelst door het parcours gaat zonder buiten het wiel te stappen, wint. Er wordt 1 ronde gespeeld, maar alle deelnemers worden na 1 ronde vervangen. De eerste die na 2 ronden de finish bereikt, wint. De tijd die de teams gebruiken, wordt ook meegerekend voor het aantal punten dat ze bij dit onderdeel verdienen."
-  },
-  "points": "Punten",
-  "pointexplenation": {
-    "iron_grip": "Punten worden gerangschikt na de competitie op basis van wie het langst kon hangen. Als scheidsrechter (a) is het jouw taak om de tijd te noteren wanneer alle 9 deelnemers tegelijkertijd hangen.",
-    "labyrinth": "Punten worden toegekend op basis van het aantal voltooide controlepunten en de tijd die nodig is om het doolhof te voltooien.",
-    "mastermind": "Punten worden toegekend op basis van het aantal rondes dat het team gebruikt om de kleurcode op te lossen.",
-    "land_water_beach": "Het team krijgt één punt voor elk signaal dat ze winnen. Beide teams krijgen één punt als ze even snel zijn.",
-    "hamster_wheel": "Punten worden toegekend op basis van of het team wint en de tijd die ze voor de ronde gebruikten."
-  },
-  "category": {
-    "iron_grip": "Kracht",
-    "labyrinth": "Samenwerking",
-    "mastermind": "Logica",
-    "land_water_beach": "Reactie",
-    "hamster_wheel": "X-factor"
-  },
-  "rules": {
-    "iron_grip": "• Deelnemers moeten hangen met hun handpalmen naar voren\n• De tijd wordt gestopt door scheidsrechter (a) wanneer niet alle negen deelnemers tegelijkertijd hangen.",
-    "labyrinth": "Het spel begint wanneer de scheidsrechter de bal op het bord heeft geplaatst.\n• 12 mensen moeten rond het bord staan terwijl het spel bezig is.\n• Het is niet toegestaan om de bal met je handen aan te raken wanneer deze op het bord ligt, noch om onder het doolhof door te kruipen terwijl het spel bezig is, tenzij de bal door een gat valt.\n• Als de bal in een gat valt, moet deze worden opgepakt en teruggeplaatst bij het vorige controlepunt of startpunt.\n• De bal moet altijd op het bord blijven liggen en het is niet toegestaan om de bal omhoog te gooien om obstakels te proberen te overwinnen.\n• Voor elk controlepunt dat de bal bereikt, moeten alle 12 deelnemers worden vervangen door 12 nieuwe deelnemers.",
-    "land_water_beach": "Ze moeten snel reageren op drie verschillende signalen:\n• Geel signaal: Blijf stilstaan als een strand.\n• Groen signaal: Ga achteruit naar de 'land' zone.\n• Blauw signaal: Ga vooruit naar de 'water' zone.",
-    "mastermind": "• Het team heeft 10 minuten om de kleurcode op te lossen.\n• Alleen de aangewezen Codebreakers mogen de stukken opzetten en oplossingen voorstellen.\n• Het team informeert de hoofdscheidsrechter wanneer ze hun antwoord hebben ingediend.",
-    "hamster_wheel": "Teams hebben elk 15-20 deelnemers in het hamsterwiel.\n• Er is een +10 seconden straf als het team buiten het wiel stapt.\n• Het hele team van 15 wordt na 1 ronde vervangen door 15 nieuwe deelnemers.\n• Het hele wiel moet over de lijn zijn om de wissel te kunnen maken.\nHet hele wiel moet over de lijn zijn om de tijd te stoppen."
-  },
-  "general_error": "Er is iets misgegaan",
-  "pleaserefresh": "Probeer de pagina te vernieuwen",
-  "coins": "Munten",
-  "game": "Spel",
-  "team1team2": "Team 1 / Team 2",
-  "start": "Start",
-  "rulestitle": "Regels",
-  "login": {
-    "login_button": "Inloggen",
-    "teamcode": "Teamcode",
-    "teamcode_invalid": "Sorry, je teamcode is niet geldig"
-  },
-  "league": {
-    "rankingisempty": "Er zijn nog geen punten behaald. Kijk hier terug na de eerste ronde.",
-    "viewgamerankings": "Bekijk ranglijsten per spel",
-    "viewgamerankings-title": "Je kunt de ranglijsten per spel bekijken op de spel detailpagina's.",
-    "ranking-frozen": "De ranglijst is nu bevroren totdat de winnaars worden bekendgemaakt"
-  },
   "admin": {
-    "select_league": {
-      "intro": "Kies je zone"
-    },
+    "intro": "Vraag welk team ze zijn en zorg ervoor dat het het juiste team op de juiste plaats is, en dat het overeenkomt met het team dat hierboven staat vermeld.",
     "select_game": {
-      "intro": "Kies welk spel je beoordeelt"
+      "intro": "Selecteer het spel dat u gaat fluiten"
     },
-    "intro": "Vraag welk team ze zijn en zorg ervoor dat het juiste team op de juiste plaats is, en dat het overeenkomt met het team dat boven staat."
+    "select_league": {
+      "intro": "Selecteer uw zone"
+    }
   },
-  "yourmatch": "Je spel",
-  "back": "Terug",
-  "teamName": "Team",
-  "family": "Familie",
-  "familyBalance": "Familie saldo",
-  "results": "Resultaten voor dit spel",
-  "pointstitle": "Punten",
-  "categorytitle": "Categorie",
-  "loading": "Laden...",
-  "match-list": "Wedstrijdenlijst",
-  "no-matches-for-this-filter": "Geen wedstrijden voor dit filter",
-  "please_refresh": "Ververs a.u.b.",
-  "something-went-wrong": "Ververs de pagina a.u.b.",
-  "something-went-wrong-we-could-not-log-you-in-please-try-again": "Er is iets misgegaan, we konden je niet inloggen - probeer opnieuw.",
-  "point": "Punt",
+  "admin-referee-info": {
+    "hamster_wheel": "<div class='rounded-md p-4 mb-4 bg-amber-50'> <span class='font-bold'>Script:</span> <br /> Welkom bij het Hamsterwiel.  <ul class='list-disc list-inside'> <li>Bij dit station strijden jullie tegen een ander team in een estafette. Het team dat wint en de beste tijd heeft, krijgt de meeste punten.</li> <li>De teams moeten zo snel mogelijk naar de ene kant en terug komen.</li> <li>Een team moet tegelijkertijd 15 deelnemers in het wiel hebben. Er moeten 15 deelnemers in het wiel zijn gedurende het hele parcours.</li> <li>Het hele team moet samen de estafette uitvoeren. Het team moet binnen het tapijt blijven met het tapijt over hun hoofd gedurende het hele parcours.</li> <li>Zolang het team voldoende deelnemers heeft, kunnen de personen in het wiel worden vervangen door 15 nieuwe personen wanneer het team halverwege is.</li> <li>Het team moet met het hele wiel over de streep gaan voordat ze van deelnemers kunnen wisselen.</li> <li>Het team dat als eerste met het hele team over de startlijn terugkomt, wint. De tijd wordt ook geregistreerd, dus het is belangrijk dat beide teams het zo snel mogelijk doen, zelfs als ze niet als eerste aankomen.</li> <li>Het team moet binnen het tapijt blijven gedurende het hele parcours. Elke voet die buiten het tapijt de grond raakt, levert extra tijd op. Dit geldt ook als het tapijt niet over de hoofden van de deelnemers zit.</li> <li>Jullie hebben 2 minuten om je voor te bereiden.</li> <li>De taak begint bij mijn (de scheidsrechter) signaal.</li> <li>Is de taak begrepen?</li> <li>Dan kunnen de teams zich klaarmaken bij de startlijn. De groep die het gaat overnemen, kan zich aan de andere kant van het veld opstellen. De aftelling van 2 minuten begint nu.</li> <li>De tijd is nu om. Zijn alle teams klaar?</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Voor de scheidsrechter:</span> <ul class='list-disc list-inside'> <li>Twee scheidsrechters staan aan elke kant van de teams en registreren op hun telefoon hoe vaak de teams buiten de band stappen en elke keer dat het team het doek niet over hun hoofd heeft.</li> <li>Zorg ervoor dat deelnemers en toeschouwers duidelijke posities hebben ten opzichte van het speelbord voor de spelervaring, inzicht en betrokkenheid.</li> </ul> <br /> <span>Aan het einde van het spel:</span> <ul class='list-disc list-inside'> <li>Verzamel de tapijten en verdeel ze duidelijk voor het volgende team dat komt.</li> <li>Richt de startlijn en andere hekken op indien nodig.</li> <li>Maak je klaar voor een nieuwe groep!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Gezondheid, Milieu en Veiligheid:</span> <ul class='list-disc list-inside'> <li>Wees je ervan bewust dat het hamsterwiel inhoudt dat veel mensen tegelijkertijd en dicht bij elkaar in een hoog tempo lopen, wat kan leiden tot vallen. Dit wordt beschouwd als een middelgroot risico.</li> </ul> </div>",
+    "iron_grip": "<div class='rounded-md p-5 mb-4 bg-amber-50'> <span class='font-bold'>Script:</span> <br /> Welkom bij de IJzeren Greep.  <ul class='list-disc list-inside'> <li>Het doel van dit station is om binnen 10 minuten de meeste 'hangtijd' te verzamelen.</li> <li>Iedereen kan meedoen, maar slechts 9 personen hangen tegelijkertijd.</li> <li>Het team verzamelt 'hangtijd' wanneer 9 personen van het team tegelijkertijd aan de steiger hangen.</li> <li>Het team heeft 10 minuten om het station te voltooien.</li> <li>Wanneer er minder dan 9 deelnemers tegelijkertijd hangen, stopt de tijd die wordt verzameld voor 'hangtijd' totdat er weer 9 deelnemers tegelijkertijd hangen. Dan start de tijd weer.</li> <li>Deelnemers die niet langer kunnen hangen, moeten achteraan in de rij aan de zijkant van de steiger gaan staan.</li> <li>Alleen de deelnemers die hangen, mogen op de steiger zijn; de rest van het team moet in de rij staan, aan de zijkant van de steiger (wijs naar de juiste kant).</li> <li>Bij valsspelen wordt 10 seconden van de verzamelde tijd van het team afgetrokken.</li> <li>Deelnemers mogen alleen aan hun handen hangen, zonder ondersteuning van hun benen, andere deelnemers of voorwerpen.</li> <li>De scheidsrechter beslist of iets valsspelen is, maar alles wat deelnemers helpt om zonder hun eigen kracht te hangen, wordt beschouwd als valsspelen.</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Voor de scheidsrechters:</span> <ul class='list-disc list-inside'> <li>Heb een timer die aftelt vanaf 10 minuten klaar, die wordt gestart bij het begin van de wedstrijd.</li> <li>Heb een timer die wordt gebruikt voor de verzamelde 'hangtijd', die stopt telkens wanneer er minder dan 9 deelnemers tegelijkertijd aan de steiger hangen, en weer start wanneer 9 mensen tegelijkertijd hangen.</li> <li>Een deelnemer kan zo vaak deelnemen als hij wil.</li> <li>Het team bepaalt zelf welke deelnemers ze willen gebruiken om te hangen, en dit kan ook onderweg veranderen.</li> <li>Deelnemers moeten aan hun handen hangen, recht naar beneden van de steiger, en mogen geen benen, andere deelnemers, voorwerpen, enz. gebruiken voor hulp.</li> <li>Een scheidsrechter houdt toezicht op valsspelen. BELANGRIJK: wijs het team erop dat dit valsspelen is, en noteer het dan.</li> <li>Maak de volgende tijden bekend: Nu zijn er nog 5 minuten, halverwege! Nu zijn er nog 2 minuten, Nu is het nog 1 minuut!</li> </ul> <br /> <span>Aan het einde van het spel:</span> <ul class='list-disc list-inside'> <li>Registreer de 'hangtijd' en het valsspelen in de app.</li> <li>Veiligheidsroutine: Controleer de steiger om ervoor te zorgen dat alles goed vastzit na elke ronde.</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Gezondheid, Milieu en Veiligheid:</span> <ul class='list-disc list-inside'> <li>Risico op vallen van de steiger, verstuikingen bij vallen, blaren op de handen.</li> <li>Waar het station asfalt als ondergrond heeft, zullen er matten zijn.</li> </ul> </div>",
+    "labyrinth": "<div class='rounded-md p-4 mb-4 bg-amber-50'> <span class='font-bold'>Script:</span> <br /> Welkom bij het Labyrint.  <ul class='list-disc list-inside'> <li>Bij dit station moeten jullie samenwerken om een bal door een labyrint te krijgen.</li> <li>Maximaal 12 spelers werken tegelijkertijd samen, en jullie hebben maximaal tien minuten om het station te voltooien.</li> <li>Er zijn twee controlepunten in het labyrint waar de 12 spelers worden vervangen door 12 nieuwe spelers.</li> <li>Het is niet toegestaan om de bal met de handen aan te raken wanneer deze op het bord is, of deze omhoog te gooien.</li> <li>Als de bal in een gat valt, moet een van de spelers deze oppakken en terugplaatsen op het startpunt of bij het vorige controlepunt, maar het is alleen toegestaan om onder het labyrint te zijn wanneer de bal door een gat valt.</li> <li>Jullie krijgen twee punten voor elk controlepunt dat jullie passeren, en meer punten naarmate jullie sneller voltooien.</li> <li>Wanneer het labyrint voltooid is of de tijd om is, kunnen jullie het labyrint rustig op de grond plaatsen.</li> <li>Het spel begint wanneer een scheidsrechter de bal op het startpunt plaatst.</li> <li>Is de taak begrepen?</li> <li>Dan kunnen 12 spelers zich klaarmaken om te beginnen bij het labyrint, en de rest van het team kan hier staan (wijs waar het gunstig is dat de rest van het team staat).</li> <li>12 nieuwe spelers moeten klaar staan om het over te nemen bij de controlepunten.</li> <li>Dan beginnen we. Klaar, start, gaan!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Voor de scheidsrechter:</span> <ul class='list-disc list-inside'> <li>Beheers de menigten en plaats de toeschouwers op de best mogelijke positie.</li> <li>Wees klaar om de aftelling van 10 minuten te starten wanneer het team begint.</li> <li>Zorg ervoor dat alle spelers worden vervangen door nieuwe spelers bij het passeren van de controlepunten.</li> <li>Zorg ervoor dat de deelnemers geen regels overtreden.</li> <li>Stop het spel na 10 minuten, als het team de taak nog niet heeft voltooid.</li> </ul> <br /> <span>Aan het einde van het spel:</span> <ul class='list-disc list-inside'> <li>Verzamel alle ballen die in het spel zijn geweest.</li> <li>Maak je klaar voor nieuwe groepen!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Gezondheid, Milieu en Veiligheid:</span> <ul class='list-disc list-inside'> <li>Het risico bij dit station is dat deelnemers het labyrint op hun voeten kunnen laten vallen. Als de bal door een gat valt, moeten de deelnemers voorzichtig zijn bij het oppakken om niet het labyrint over zich heen te krijgen. Splinters of blaren in de handpalm kunnen voorkomen.</li> </ul> </div>",
+    "land_water_beach": "<div class='rounded-md p-4 mb-4 bg-amber-50'> <span class='font-bold'>Script:</span> <br /> Welkom bij Land, Water, Strand.  <ul class='list-disc list-inside'> <li>Bij dit station strijden jullie tegen een ander team om zo snel mogelijk te reageren en je te verplaatsen tussen drie zones bij drie verschillende signalen.</li> <li>Tien personen van elk team beginnen in de middelste zone, het strand.</li> <li>De drie signalen waarop jullie moeten reageren zijn: <ul> <li>Rood signaal betekent dat jullie naar de achterste zone, land, moeten verplaatsen.</li> <li>Geel signaal is de middelste zone, strand.</li> <li>Blauw signaal is de voorste zone, water.</li> </ul> </li> <li>Het team waarbij alle tien spelers als eerste naar de juiste zone verplaatsen, krijgt een punt. Als beide teams even snel zijn, krijgen beide teams een punt.</li> <li>De spelers moeten blijven staan in de zone waarnaar ze zich verplaatsen.</li> <li>Er worden drie signalen getoond voordat de tien spelers worden vervangen door tien nieuwe spelers. Dit wordt in totaal drie rondes gedaan.</li> <li>Jullie krijgen punten op basis van hoeveel rondes jullie winnen.</li> <li>Is de taak begrepen?</li> <li>Dan kunnen tien spelers in de middelste zone beginnen, en de rest van het team kan daar staan en klaar zijn om de tien spelers te vervangen (wijs naar de beste plaats voor de rest van het team om te staan).</li> <li>Dan beginnen we. Klaar, start, gaan!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Voor de scheidsrechters:</span> <ul class='list-disc list-inside'> <li>Zorg ervoor dat de rest van het team op een geschikte plaats staat en klaar is om elke ronde tien nieuwe spelers te vervangen.</li> <li>Zorg ervoor dat de tijd niet meer dan 15 minuten in totaal op het station bedraagt.</li> <li>De hoofdscheidsrechter toont de punten op het scorebord.</li> <li>Twee lijnrechters met vlaggen nemen snel een beslissing over wie punten krijgt.</li> <li>De persoon in de signaalbox moet het signaal en de tijd tussen de signalen variëren.</li> </ul> <br /> <span>Aan het einde van het spel:</span> <ul class='list-disc list-inside'> <li>Zorg ervoor dat de zones nog steeds duidelijk gemarkeerd zijn.</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Gezondheid, Milieu en Veiligheid:</span> <ul class='list-disc list-inside'> <li>Er is weinig risico verbonden aan dit station; struikelen, verstuikingen of vallen kunnen voorkomen. Wees hierop attent.</li> </ul> </div>",
+    "mastermind": "<div class='rounded-md p-4 mb-4 bg-amber-50'> <span class='font-bold'>Script:</span> <br /> Welkom bij Mastermind.  <ul class='list-disc list-inside'> <li>Het doel van dit station is om erachter te komen welke kleurcode zich in de koffer bevindt.</li> <li>Jullie krijgen 8 rondes en een maximum van 10 minuten om de taak op te lossen.</li> <li>Jullie krijgen meer punten naarmate jullie minder rondes gebruiken om de juiste code te vinden.</li> <li>Jullie moeten nu 5 Codekrakers kiezen.</li> <li>Deze 5 hebben de hoofdtaak om de taak op te lossen.</li> <li>De rest krijgt elk een kleur (Durag - hoofdbedekking) die een speelstuk vertegenwoordigt dat de Codekrakers op het speelbord kunnen plaatsen.</li> <li>Alle deelnemers die speelstukken zijn, moeten de hoofdbedekking te allen tijde tijdens het spel op hun hoofd dragen. (Heb de durag bij je om te laten zien)</li> <li>De Codekrakers halen de speelstukken (deelnemers met hoofdbedekking) die ze willen gebruiken en plaatsen ze op een zwart speelstuk op het speelbord.</li> <li>Wanneer de Codekrakers hun antwoord hebben gegeven, zal een scheidsrechter 'antwoord-pinnen' plaatsen die de Codekrakers vertellen hoe dicht ze bij het antwoord zijn.  <ul> <li>Rode pin = juiste kleur op de juiste plaats</li> <li>Witte pin = juiste kleur op de verkeerde plaats</li> </ul> (Heb de pinnen in de hand en laat ze zien)</li> <li>Wanneer de Codekrakers de juiste kleurcode hebben geraden, zal een scheidsrechter naar voren komen en de doos openen.</li> <li>De rest van het team staat aan de zijkant van het speelbord.</li> <li>Is de taak begrepen?</li> <li>Dan kunnen de Codekrakers naar die scheidsrechter gaan (wijs en laat zien).</li> <li>Alle mensen die speelstukken zullen zijn, kunnen daar staan (wijs en laat zien).</li> <li>Dan beginnen we. Klaar, start, gaan!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Voor de scheidsrechter:</span> <ul class='list-disc list-inside'> <li>Zorg ervoor dat het publiek, de speelstukken en de Codekrakers duidelijke posities hebben ten opzichte van het speelbord voor de spelervaring, inzicht en betrokkenheid.</li> </ul> <br /> <span>Aan het einde van het spel:</span> <ul class='list-disc list-inside'> <li>Verzamel alle hoofdbedekkingen.</li> <li>Verzamel alle antwoord-pinnen.</li> <li>Verander de kleurcode in de doos.</li> <li>Pas het speelbord indien nodig aan.</li> <li>Maak je klaar voor nieuwe groepen!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Gezondheid, Milieu en Veiligheid:</span> <ul class='list-disc list-inside'> <li>Het risico bij dit station is dat deelnemers over de speelstukken op het speelbord kunnen struikelen. Dit wordt beschouwd als een zeer laag tot laag risico.</li> </ul> </div>"
+  },
   "calculated-score": "Berekende score",
-  "save": "Opslaan",
-  "saved": "Opgeslagen",
-  "points-registration-error": "Berekend resultaat gaf undefined terug. Het formulier is ongeldig, ook al kan het worden ingediend. Je mist mogelijk enige validatie op het formulier.",
   "couldnt-load-the-video": "Kon de video niet laden",
   "details": "Details",
-  "total-nr-of-bars": "Totaal aantal stangen",
-  "nr-of-participants": "Aantal deelnemers",
-  "team": "Team",
+  "family": "Familie",
+  "games": {
+    "hamster_wheel": "Hamsterwiel",
+    "iron_grip": "IJzeren Greep",
+    "labyrinth": "Labyrint",
+    "land_water_beach": "Land, Water, Strand",
+    "mastermind": "Mastermind"
+  },
+  "general_error": "Er is iets misgegaan",
+  "loading": "Laden...",
+  "login": {
+    "login_button": "Inloggen",
+    "teamcode": "Teamcode"
+  },
+  "menu": {
+    "games": "Spellen"
+  },
   "minutes": "Minuten",
+  "no-matches-for-this-filter": "Geen overeenkomsten voor dit filter",
+  "please_refresh": "Ververs de pagina",
+  "point": "Punt",
+  "points-registration-error": "Berekend resultaat gaf undefined terug. Het formulier is ongeldig, ook al kan het worden ingediend. Mogelijk missen er enkele validaties op formulier velden.",
+  "post-type": "Posttype:",
+  "save": "Opslaan",
+  "saved": "Opgeslagen",
   "seconds": "Seconden",
-  "penalty-points": "Strafpunten"
+  "something-went-wrong": "Ververs de pagina",
+  "something-went-wrong-we-could-not-log-you-in-please-try-again": "Er is iets misgegaan, we konden u niet inloggen - probeer het opnieuw.",
+  "team": "Team",
+  "yourmatch": "Uw spel"
 }

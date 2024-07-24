@@ -1,166 +1,51 @@
 {
-  "install_hint": "Vinkki:\nAsenna tämä web-sovellus kotinäytöllesi, se toimii paremmin!",
-  "menu": {
-    "home": "Koti",
-    "league": "Liiga",
-    "sidequest": "Sivutehtävä",
-    "games": "Pelit",
-    "map": "Kartta"
+  "admin": {
+    "intro": "Kysy, mikä joukkue he ovat, ja varmista, että se on oikea joukkue oikeassa paikassa ja että se vastaa yllä olevaa joukkuetta.",
+    "select_game": {
+      "intro": "Valitse peli, jota tuomitset"
+    },
+    "select_league": {
+      "intro": "Valitse alueesi"
+    }
   },
+  "admin-referee-info": {
+    "hamster_wheel": "<div class='rounded-md p-4 mb-4 bg-amber-50'> <span class='font-bold'>Käsikirjoitus:</span> <br /> Tervetuloa Hamsteripyörään.  <ul class='list-disc list-inside'> <li>Tällä asemalla kilpailette toista joukkuetta vastaan viestijuoksussa. Joukkue, joka voittaa ja jolla on paras aika, saa eniten pisteitä.</li> <li>Joukkueiden tulee päästä toiselle puolelle ja takaisin mahdollisimman nopeasti.</li> <li>Joukkueessa tulee olla samanaikaisesti 15 osallistujaa pyörässä. Pyörässä tulee olla 15 osallistujaa koko reitin ajan.</li> <li>Koko joukkueen tulee suorittaa viesti yhdessä. Joukkueen tulee kulkea maton sisällä maton ollessa päänsä päällä koko reitin ajan.</li> <li>Niin kauan kuin joukkueessa on tarpeeksi osallistujia, pyörässä olevat henkilöt voidaan vaihtaa 15 uuteen henkilöön, kun joukkue on puolivälissä.</li> <li>Joukkueen tulee ylittää viiva koko pyörän kanssa ennen kuin he voivat vaihtaa osallistujia.</li> <li>Joukkue, joka palaa ensin koko joukkueen kanssa lähtöviivan yli, voittaa. Aika rekisteröidään myös, joten on tärkeää, että molemmat joukkueet suorittavat sen mahdollisimman nopeasti, vaikka eivät tulisikaan ensimmäiseksi.</li> <li>Joukkueen tulee pysyä maton sisällä koko reitin ajan. Jokainen jalka, joka osuu maahan maton ulkopuolella, lisää lisäaikaa. Tämä koskee myös tilannetta, jossa matto ei ole osallistujien pään päällä.</li> <li>Teillä on 2 minuuttia valmistautua.</li> <li>Tehtävä alkaa minun (tuomarin) merkillä.</li> <li>Onko tehtävä ymmärretty?</li> <li>Sitten joukkueet voivat valmistautua lähtöviivalle. Ryhmä, joka ottaa vastaan, voi asettua kentän toiselle puolelle. 2 minuutin lähtölaskenta alkaa nyt.</li> <li>Aika on nyt loppu. Ovatko kaikki joukkueet valmiina?</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Tuomarille:</span> <ul class='list-disc list-inside'> <li>Kaksi tuomaria sijoitetaan kummallekin puolelle joukkueita ja rekisteröivät puhelimeensa kuinka usein joukkueet astuvat ulos nauhalta ja aina, kun joukkueella ei ole kangasta päänsä päällä.</li> <li>Varmista, että osallistujilla ja katsojilla on selkeät paikat pelikentän suhteen pelikokemuksen, näkymän ja sitoutumisen kannalta.</li> </ul> <br /> <span>Pelin lopussa:</span> <ul class='list-disc list-inside'> <li>Kerää matot ja jaa ne selvästi seuraavalle joukkueelle, joka tulee.</li> <li>Suorista lähtöviiva ja muut aidat tarvittaessa.</li> <li>Valmistaudu uuteen ryhmään!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Terveys, Ympäristö ja Turvallisuus:</span> <ul class='list-disc list-inside'> <li>Huomioi, että hamsteripyörä sisältää monia henkilöitä, jotka kulkevat nopeasti ja tiiviisti lähellä toisiaan, mikä voi aiheuttaa kaatumisia. Tämä katsotaan keskisuureksi riskiksi.</li> </ul> </div>",
+    "iron_grip": "<div class='rounded-md p-5 mb-4 bg-amber-50'> <span class='font-bold'>Käsikirjoitus:</span> <br /> Tervetuloa Rautagrippiin.  <ul class='list-disc list-inside'> <li>Tämän aseman tavoite on kerätä mahdollisimman paljon 'roikunta-aikaa' 10 minuutin aikana.</li> <li>Kaikki voivat osallistua, mutta vain 9 henkilöä roikkuu kerrallaan.</li> <li>Joukkue kerää 'roikunta-aikaa', kun 9 henkilöä joukkueesta roikkuu samanaikaisesti telineestä.</li> <li>Joukkueella on 10 minuuttia aikaa suorittaa asema.</li> <li>Kun vähemmän kuin 9 osallistujaa roikkuu samanaikaisesti, kerätty 'roikunta-aika' pysähtyy, kunnes jälleen 9 henkilöä roikkuu samanaikaisesti. Sitten aika alkaa uudelleen.</li> <li>Osallistujien, jotka eivät enää pysty roikkumaan, on asetuttava jonon hännille telineen sivulla.</li> <li>Vain roikkuvat osallistujat saavat olla telineellä; muun joukkueen on seisottava jonossa telineen sivulla (osoita oikea sivu).</li> <li>Huijaamisesta joukkueelle vähennetään 10 sekuntia kerätystä ajasta.</li> <li>Osallistujat voivat roikkua vain käsillään ilman jalkojen, muiden osallistujien tai esineiden tukea.</li> <li>Tuomari päättää, onko jokin huijaamista, mutta kaikki, mikä auttaa osallistujia roikkumaan ilman omaa voimaansa, katsotaan huijaamiseksi.</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Tuomareille:</span> <ul class='list-disc list-inside'> <li>Pidä valmiina ajastin, joka laskee 10 minuutista alaspäin, ja käynnistä se kilpailun alkaessa.</li> <li>Pidä ajastin, jota käytetään kerättyyn 'roikunta-aikaan', joka pysähtyy aina, kun vähemmän kuin 9 osallistujaa roikkuu samanaikaisesti telineestä, ja käynnistyy uudelleen, kun 9 henkilöä roikkuu samanaikaisesti.</li> <li>Yksi osallistuja voi osallistua niin monta kertaa kuin haluaa.</li> <li>Joukkue päättää itse, mitkä osallistujat he haluavat käyttää roikkumiseen, ja tämä voi myös muuttua kesken kaiken.</li> <li>Osallistujien on roikuttava käsillään suoraan telineestä ja he eivät saa käyttää jalkojaan, muita osallistujia, esineitä jne. apuna.</li> <li>Tuomari seuraa huijaamista. TÄRKEÄÄ: huomauta joukkueelle, että tämä on huijaamista, ja merkitse se sitten muistiin.</li> <li>Ilmoita seuraavat ajat: Nyt on jäljellä 5 minuuttia, puoliväli! Nyt on jäljellä 2 minuuttia, Nyt on jäljellä 1 minuutti!</li> </ul> <br /> <span>Pelin lopussa:</span> <ul class='list-disc list-inside'> <li>Rekisteröi 'roikunta-aika' ja huijaaminen sovellukseen.</li> <li>Turvarutiini: Tarkista teline varmistaaksesi, että kaikki on hyvin kiinnitetty jokaisen kierroksen jälkeen.</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Terveys, Ympäristö ja Turvallisuus:</span> <ul class='list-disc list-inside'> <li>Putominen telineeltä, nyrjähdykset kaatumisessa, rakot käsissä.</li> <li>Missä asemalla on asfalttialusta, siellä on mattoja.</li> </ul> </div>",
+    "labyrinth": "<div class='rounded-md p-4 mb-4 bg-amber-50'> <span class='font-bold'>Käsikirjoitus:</span> <br /> Tervetuloa Labyrinttiin.  <ul class='list-disc list-inside'> <li>Tällä asemalla teidän on tehtävä yhteistyötä saadaksenne pallon läpi labyrintin.</li> <li>Enintään 12 pelaajaa tekee yhteistyötä samanaikaisesti, ja teillä on enintään kymmenen minuuttia aikaa suorittaa asema.</li> <li>Labyrintissä on kaksi tarkistuspistettä, joissa 12 pelaajaa vaihdetaan 12 uuteen pelaajaan.</li> <li>Kun pallo on laudalla, sitä ei saa koskea käsin eikä heittää ylös.</li> <li>Jos pallo putoaa reikään, yhden pelaajan on nostettava se ja asetettava se takaisin lähtöpisteeseen tai edelliseen tarkistuspisteeseen, mutta vain silloin, kun pallo putoaa reiästä, on sallittua olla labyrintin alla.</li> <li>Saadut kaksi pistettä jokaisesta ohitetusta tarkistuspisteestä ja enemmän pisteitä, mitä nopeammin suoritette tehtävän.</li> <li>Kun labyrintti on suoritettu tai aika loppuu, voitte laskea labyrintin rauhallisesti maahan.</li> <li>Peli alkaa, kun tuomari asettaa pallon lähtöpisteeseen.</li> <li>Onko tehtävä ymmärretty?</li> <li>Sitten 12 pelaajaa voi valmistautua aloittamaan labyrintissä, ja muu joukkue voi seistä tässä (osoita, missä on suotuisinta, että muu joukkue seisoo).</li> <li>12 uutta pelaajaa on oltava valmiina ottamaan vastaan tarkistuspisteissä.</li> <li>Sitten aloitamme. Valmiina, valmiit, menkää!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Tuomarille:</span> <ul class='list-disc list-inside'> <li>Hallitse väkijoukkoja ja sijoita katsojat parhaaseen mahdolliseen paikkaan.</li> <li>Ole valmis aloittamaan 10 minuutin lähtölaskenta, kun joukkue aloittaa.</li> <li>Varmista, että kaikki pelaajat vaihdetaan uusiin pelaajiin tarkistuspisteissä.</li> <li>Varmista, että osallistujat eivät riko mitään sääntöjä.</li> <li>Pysäytä peli 10 minuutin kuluttua, jos joukkue ei ole vielä suorittanut tehtävää.</li> </ul> <br /> <span>Pelin lopussa:</span> <ul class='list-disc list-inside'> <li>Kerää kaikki pallot, jotka ovat olleet pelissä.</li> <li>Valmistaudu uusiin ryhmiin!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Terveys, Ympäristö ja Turvallisuus:</span> <ul class='list-disc list-inside'> <li>Tämän aseman riski on, että osallistujat voivat pudottaa labyrintin jaloilleen. Jos pallo putoaa reikään, osallistujien on oltava varovaisia nostaessaan sitä, jotta labyrintti ei putoa heidän päälleen. Kämmeneen voi tulla tikkuja tai rakkuloita.</li> </ul> </div>",
+    "land_water_beach": "<div class='rounded-md p-4 mb-4 bg-amber-50'> <span class='font-bold'>Käsikirjoitus:</span> <br /> Tervetuloa Maa, vesi, ranta.  <ul class='list-disc list-inside'> <li>Tällä asemalla kilpailette toista joukkuetta vastaan reagoidaksenne mahdollisimman nopeasti ja siirtyäksenne kolmen vyöhykkeen välillä kolmen eri signaalin perusteella.</li> <li>Kymmenen henkilöä jokaisesta joukkueesta aloittaa keskimmäisestä vyöhykkeestä, rannasta.</li> <li>Kolme signaalia, joihin teidän on reagoitava, ovat: <ul> <li>Punainen signaali tarkoittaa, että teidän tulee siirtyä taaimmaiseen vyöhykkeeseen, maalle.</li> <li>Keltainen signaali on keskimmäinen vyöhyke, ranta.</li> <li>Sininen signaali on etummainen vyöhyke, vesi.</li> </ul> </li> <li>Joukkue, jossa kaikki kymmenen pelaajaa siirtyvät ensin oikeaan vyöhykkeeseen, saa pisteen. Jos molemmat joukkueet ovat yhtä nopeita, molemmat joukkueet saavat pisteen.</li> <li>Pelaajien on pysyttävä vyöhykkeellä, jolle he siirtyvät.</li> <li>Kolmen signaalin jälkeen kymmenen pelaajaa vaihdetaan kymmeneen uuteen pelaajaan. Tämä suoritetaan yhteensä kolmessa erässä.</li> <li>Saatte pisteitä sen mukaan, kuinka monta erää voitatte.</li> <li>Onko tehtävä ymmärretty?</li> <li>Sitten kymmenen pelaajaa voi aloittaa keskimmäisellä vyöhykkeellä, ja muun joukkueen voi seistä siellä ja olla valmiina korvaamaan kymmenen pelaajaa (osoita, mihin on parasta, että muu joukkue asettuu).</li> <li>Sitten aloitamme. Valmiina, valmiit, menkää!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Tuomareille:</span> <ul class='list-disc list-inside'> <li>Varmista, että muu joukkue seisoo sopivassa paikassa ja on valmis vaihtamaan kymmenen uutta pelaajaa jokaiseen erään.</li> <li>Varmista, että aika ei ylitä 15 minuuttia yhteensä asemalla.</li> <li>Päätuomari näyttää pisteet tulostaululla.</li> <li>Kaksi linjatuomaria lipuilla tekevät nopean päätöksen siitä, kuka saa pisteitä.</li> <li>Signaaliboksin henkilö pitää vaihtaa signaalia ja aikaa signaalien välillä.</li> </ul> <br /> <span>Pelin lopussa:</span> <ul class='list-disc list-inside'> <li>Varmista, että vyöhykkeet ovat edelleen selvästi merkittyjä.</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Terveys, Ympäristö ja Turvallisuus:</span> <ul class='list-disc list-inside'> <li>Tämän aseman riski on pieni; saattaa esiintyä kompastumisia, nyrjähdyksiä tai kaatumisia. Ole tietoinen tästä.</li> </ul> </div>",
+    "mastermind": "<div class='rounded-md p-4 mb-4 bg-amber-50'> <span class='font-bold'>Käsikirjoitus:</span> <br /> Tervetuloa Mastermindiin.  <ul class='list-disc list-inside'> <li>Tämän aseman tavoite on selvittää, mikä värikoodi on salkussa.</li> <li>Teillä on 8 kierrosta ja enintään 10 minuuttia tehtävän ratkaisemiseksi.</li> <li>Saatte enemmän pisteitä, mitä vähemmän kierroksia tarvitsette löytääksenne oikean koodin.</li> <li>Nyt teidän tulisi valita 5 Koodinmurtajaa.</li> <li>Näillä 5 on päätehtävä ratkaista tehtävä.</li> <li>Muille annetaan jokaiselle yksi väri (Durag - päähuivi), joka edustaa pelinappulaa, jonka Koodinmurtajat voivat sijoittaa pelilaudalle.</li> <li>Kaikkien osallistujien, jotka ovat pelinappuloita, on pidettävä päähuivia päässään koko pelin ajan. (Pidä durag esillä ja näytä se)</li> <li>Koodinmurtajat hakevat pelinappulat (päähuivilla varustetut osallistujat), joita he haluavat käyttää, ja asettavat ne mustalle pelinappulalle pelilaudalla.</li> <li>Kun Koodinmurtajat ovat antaneet vastauksensa, tuomari asettaa 'vastausneulat', jotka kertovat Koodinmurtajille, kuinka lähellä he ovat vastausta.  <ul> <li>Punainen neula = oikea väri oikeassa paikassa</li> <li>Valkoinen neula = oikea väri väärässä paikassa</li> </ul> (Pidä neulat kädessä ja näytä ne)</li> <li>Kun Koodinmurtajat arvaavat oikean värikoodin, tuomari menee eteenpäin ja avaa laatikon.</li> <li>Muu joukkue seisoo pelilaudan sivulla.</li> <li>Onko tehtävä ymmärretty?</li> <li>Sitten Koodinmurtajat voivat mennä tuomarin luo (osoita ja näytä).</li> <li>Kaikki, jotka ovat pelinappuloita, voivat seistä siellä (osoita ja näytä).</li> <li>Sitten aloitamme. Valmiina, valmiit, menkää!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-blue-50'> <span class='font-bold'>Tuomarille:</span> <ul class='list-disc list-inside'> <li>Varmista, että yleisöllä, pelinappuloilla ja Koodinmurtajilla on selkeät paikat pelilaudan suhteen pelikokemuksen, näkymän ja sitoutumisen kannalta.</li> </ul> <br /> <span>Pelin lopussa:</span> <ul class='list-disc list-inside'> <li>Kerää kaikki päähuivit.</li> <li>Kerää kaikki vastausneulat.</li> <li>Vaihda laatikossa oleva värikoodi.</li> <li>Säädä pelilautaa tarvittaessa.</li> <li>Valmistaudu uusiin ryhmiin!</li> </ul> </div> <div class='rounded-md p-4 mb-4 bg-red-50'> <span class='font-bold'>Terveys, Ympäristö ja Turvallisuus:</span> <ul class='list-disc list-inside'> <li>Tämän aseman riski on, että osallistujat voivat kompastua pelilaudan pelinappuloihin. Tämä katsotaan erittäin alhaiseksi tai alhaiseksi riskiksi.</li> </ul> </div>"
+  },
+  "calculated-score": "Laskettu pisteet",
+  "couldnt-load-the-video": "Videota ei voitu ladata",
+  "details": "Yksityiskohdat",
+  "family": "Perhe",
   "games": {
-    "monkeybars": "Apinakeinut",
-    "nervespiral": "Hermospiraali",
-    "tickettwist": "Lippuväännä",
-    "minefield": "Miinakenttä",
-    "tablesurfing": "Joukkosurffaus"
+    "hamster_wheel": "Hamsteripyörä",
+    "iron_grip": "Rautagrippi",
+    "labyrinth": "Labyrintti",
+    "land_water_beach": "Maa, vesi, ranta",
+    "mastermind": "Mastermind"
   },
-  "score": {
-    "monkeybars": "{score} tankoa",
-    "nervespiral": "{score} sekuntia",
-    "tickettwist": "{score} lippua",
-    "minefield": "{score} sekuntia",
-    "tablesurfing": "{score} sekuntia"
-  },
-  "leadstory": {
-    "monkeybars": "Voiko tiimisi auttaa pelastamaan ihmisiä jumittuneesta viallisesta maailmanpyörästä? Maailmanpyörään kiipeäminen voi olla haastavaa, ja ensiapuvälineiden tärkeyden muistaminen on ratkaisevaa. Tavoitteena on päästä tiimisi kanssa toiselle puolelle ja pelastaa nämä avuttomat tarvitsevat.",
-    "nervespiral": "Kun odotat kärsivällisesti vuoroasi seuraavaan laitteeseen, yllättäen tapahtuu sähkökatkos, paniikkiin ei ole tarvetta. Voiko tiimisi taitavasti navigoida tämän odottamattoman tilanteen läpi, lähteä turvallisesti jonosta aiheuttamatta sähköiskuja? Pysy rauhallisena ja luota tiimisi kykyyn selviytyä tästä haasteesta tyynesti ja arvokkaasti.",
-    "tickettwist": "Ihmiset odottavat lippujen saamista jonossa. Onko tiimisi kykenevä käsittelemään nopeutta ja stressiä, joka liittyy lippuluukulle? Tämä peli yhdistää nopean ajattelun, kestävyyden, nopeuden ja tiimityön. Pysy keskittyneenä ja käännä mahdollisimman monta lippua tiimisi väriin. Oletko valmis haasteeseen?",
-    "minefield": "Tiimisi kohtaa vaikean tilanteen, jossa heidän on päästävä toiselle puolelle samalla kun he varovat karanneita villieläimiä. Tavoitteena on saavuttaa määränpää ilman, että nämä eläimet hyökkäävät heidän kimppuunsa.",
-    "tablesurfing": "Rautatiet ovat vaurioituneet, mikä aiheuttaa merkittävän ongelman. Tiimisi voi kuitenkin selviytyä tilanteesta työskennellen yhdessä tiiminä. Yhdistä taitosi, koordinoi toimintasi ja löydä tapa pitää juna liikkumassa sujuvasti."
-  },
-  "explanation": {
-    "monkeybars": "Pelaaja yksi alkaa kiivetä apinakeinuille niin pitkälle kuin pystyy. Kun hän on saavuttanut 12. tangon, seuraava pelaaja voi aloittaa alusta.\n\nEsimerkki: Pelaaja yksi kosketti viimeksi 26. tankoa, joten hänen pistemääränsä on 26 pistettä. Pelaaja kaksi putosi 18. tangolla, joten hänen pistemääränsä on 18 pistettä. Kaikkien pelaajien pisteet lasketaan yhteen ja jaetaan joukkueen pelaajien kokonaismäärällä. Se on teidän joukkueenne yhteispistemäärä.",
-    "nervespiral": "Kun aloitusmerkki kuuluu, kaksi ensimmäistä pelaajaa voi mennä spiraaliin, molemmat ottavat metallirenkaasta kiinni ja yrittävät päästä ensimmäiselle tarkistuspisteelle koskematta putkeen.\n\n Kun kaksi pelaajaa saavuttavat yhden tarkistuspisteen, he palaavat takaisin ja kaksi uutta pelaajaa astuvat peliin. Kun nämä kaksi pelaajaa koskettavat spiraalia, he palaavat takaisin joukkueeseen ja kaksi uutta pelaajaa jatkavat viimeiseltä tarkistuspisteeltä. Jatkatte kunnes saavutatte spiraalin loppuun. Joukkue, joka saavuttaa ensimmäisenä maalin, voittaa.",
-    "tickettwist": "Tässä pelissä jokaisen pelaajan, joka osallistuu peliin, on käytettävä joukkueensa värillistä nauhaa. 10 pelaajaa kustakin joukkueesta kilpailevat toisiaan vastaan kentällä. Tämän pelin tavoitteena on kääntää mahdollisimman monta laattaa joukkueesi väriin. Kentän pelaajat voivat vaihtaa paikkoja niin usein kuin haluavat, mutta uuden pelaajan on otettava 'vanhalta' pelaajalta nauha ja sen jälkeen uusi pelaaja voi jatkaa peliä. Peli koostuu 1 kierroksesta, joka kestää 8 minuuttia. Kun aika loppuu, kaikki pelaajat poistuvat kentältä ja laatat lasketaan värin mukaan. Joukkue, joka käänsi eniten laattoja oman värisiksi, voittaa pelin.",
-    "minefield": "Tämä peli pelataan suurella kentällä, jossa on pieniä osia. Kullakin joukkueella on kaksi kapteenia sivurajoilla, jotka opastavat pelaajaa ilman puhelimia tai muita apuvälineitä. Pelaaja yksi aloittaa ja yrittää kulkea kentän läpi astumatta väärään laatikkoon. Tietääksesi, oletko oikeassa vai väärässä laatikossa, käytät piipparia kussakin laatikossa. Kun piippari antaa hälytysmerkin, olet väärässä laatikossa ja sinun on vaihdettava pelaaja uuteen pelaajaan. Jokainen pelaaja tarkistaa jokaisen laatikon, vaikka olisikin 100-prosenttisen varma, ettei siinä ole miinaa. Kapteenit auttavat muistamaan oikean reitin. Jatkatte kunnes olette saavuttaneet maalin, ja sitten aikanne pysähtyy. Joukkue, jolla on nopein aika, voittaa pelin.",
-    "tablesurfing": "Tämän pelin tavoitteena on saada yksi henkilö toiselle puolelle rataa flamingon päällä pyörivien henkilöiden yli. Tiimisi tarvitsee ottaa useita vuoroja ja yrittää olla päästämättä henkilöä putoamaan maahan. Radan lopussa on rinne. Kun pojat ovat kiivenneet mäen, kello soi ja vaihdatte joukkueita. Toinen joukkue (tytöt) asettaa samanlaisen radan takaisin mennessä, laskeutuu rinnettä ja kiertää kaikki mutkat. Joukkue, joka ylittää maaliviivan ensimmäisenä, voittaa."
-  },
-  "rules": {
-    "monkeybars": "Kaikki tiimin jäsenet osallistuvat",
-    "nervespiral": "30 - 50 tiimin jäsentä osallistuu (15-25 paria)",
-    "tickettwist": "Vain joukkueen nauhaa käyttävät henkilöt saavat osallistua kentälle (10 per joukkue)|Osallistujia saa vaihtaa rajattomasti, kunhan heillä on joukkueen nauha tullessaan kentälle",
-    "minefield": "Noin 30 joukkueen jäsentä osallistuu|Vain yksi henkilö kerrallaan saa olla radalla|2 joukkueen kapteenia opastavat osallistujat radan läpi|Joukkueen kapteenit eivät saa käyttää työkaluja reitin muistamiseen",
-    "tablesurfing": "16 poikaa ja 16 tyttöä osallistuu, 1 surffaaja ja 15 pyörittäjää|Maata ei saa koskea (sekä ilmapallo että surffaaja)|Esteitä ei saa liikuttaa, eikä pyörittäjien saa liikkua merkityn alueen ulkopuolelle"
-  },
-  "general_error": "Jotain meni pieleen",
-  "pleaserefresh": "Yritä päivittää sivu",
-  "points": "Pisteet",
-  "coins": "Kolikot",
-  "game": "Peli",
-  "team1team2": "Joukkue 1 / Joukkue 2",
-  "start": "Aloita",
-  "rulestitle": "Säännöt",
+  "general_error": "Jokin meni pieleen",
+  "loading": "Ladataan...",
   "login": {
     "login_button": "Kirjaudu sisään",
-    "teamcode": "Joukkuekoodi",
-    "teamcode_invalid": "Valitettavasti joukkuekoodisi ei ole kelvollinen"
+    "teamcode": "Joukkueen koodi"
   },
-  "league": {
-    "rankingisempty": "Mikään joukkue ei ole vielä rekisteröinyt pisteitä. Tarkista tilanne uudelleen ensimmäisen kierroksen jälkeen.",
-    "viewgamerankings": "Näytä sijoitukset jokaiselle pelille",
-    "viewgamerankings-title": "Voit tarkastella sijoituksia pelikohtaisesti pelisivuilla.",
-    "ranking-frozen": "Sijoitus on nyt jäädytetty voittajien ilmoittamiseen asti"
+  "menu": {
+    "games": "Pelit"
   },
-  "admin": {
-    "select_league": {
-      "intro": "Valitse liiga, jonka haluat hallinnoida"
-    }
-  },
-  "yourmatch": "Sinun ottelu",
-  "sidequest": {
-    "thanks": "Kiitos, vastauksesi on tallennettu",
-    "timeranout": "Aika loppui, parempaa onnea ensi kerralla",
-    "areyouready": "Oletko valmis?",
-    "checkanswerlater": "Tarkista vastaus, kun peli päättyy",
-    "question_locked": "Vanhentunut",
-    "youhaveunsubmittedanswers": "Sinulla on {numAnswers} vastausta. Haluatko lähettää ne nyt?",
-    "submityouranswers": "Lähetä vastauksesi",
-    "gameroundtitle": "Kierros {round}",
-    "back_to_overview": "Palaa yleiskatsaukseen",
-    "alreadyAnswered": "Olet jo vastannut tähän kysymykseen",
-    "submitfailed": "Vastaustesi lähettäminen epäonnistui. Varmista, että sinulla on yhteys, ja yritä uudelleen",
-    "no_coins": "Sinulla ei ole enää kolikoita. Et voi vastata enää kysymyksiin",
-    "explanation": "Selitys",
-    "explanation_text": "Jokaisen kierroksen jälkeen, paitsi viimeisen, kaksi kysymystä avataan satunnaisessa järjestyksessä, yhteensä 8 kysymystä. Voit vastata niihin, kunnes seuraava ottelu alkaa.\n\nJos et vastaa kysymykseen tai poistut siitä, menetät yhden 8 kolikostasi. Jos yrität uudelleen samaa kysymystä, sinun on ohitettava toinen kysymys. \n\nTiimisi ansaitsee bonuspisteitä sen mukaan, kuinka monta joukkueen jäsentä lähettää oikean vastauksen kuhunkin kysymykseen.",
-    "noroundyet": "Ei vielä saatavilla. Palaa ottelun jälkeen",
-    "questiontypes": {
-      "math": "Matikka",
-      "knowledge": "Tietämys",
-      "recognize": "Tunnista",
-      "insight": "Oivallus",
-      "remember": "Muista",
-      "guess": "Arvaa"
-    }
-  },
-  "questions": {
-    "guesshowmany1": {
-      "q": "Kuinka monta tuntia Fra Kårea on kuunneltu tänä vuonna?",
-      "intro": "Oletko kuunnellut Fra Kårea tänä vuonna?"
-    },
-    "guesshowmany2": {
-      "q": "Kuinka monta ihmistä on vieraillut leireillä vuonna 2023?",
-      "intro": "Oletko hyvä laskemaan?"
-    },
-    "remember": {
-      "q": "Mikä on oikea järjestys Herman Shuffle -tanssiliikkeissä?",
-      "intro": "Tanssitko mukana tänä aamuna?",
-      "a": {
-        "lwd": "Lean, Wave, Drift",
-        "wld": "Wave, Lean, Drift",
-        "ldw": "Lean, Drift, Wave",
-        "wdl": "Wave, Drift, Lean"
-      }
-    },
-    "insight": {
-      "q": "Mikä vuoristoradan vaunuista saavuttaa pohjan ensin?",
-      "intro": "Katso kuvaa. Mikä vuoristoradan vaunuista saavuttaa pohjan ensin?",
-      "a": {
-        "red": "Punainen",
-        "green": "Vihreä",
-        "yellow": "Keltainen",
-        "sametime": "Ne saavuttavat pohjan samaan aikaan"
-      }
-    },
-    "recognize1": {
-      "q": "Tunnistatko tai muistatko, kuka tämä on?",
-      "intro": "Tiedätkö, keitä emme näe tässä kuvassa?",
-      "a": {
-        "opta": "Gershon Twilley",
-        "optb": "Harald Kronstad",
-        "optc": "Gunnar Gangsø",
-        "optd": "Bernt-Aksel Larsen"
-      }
-    },
-    "recognize2": {
-      "q": "Muistatko, kuka tämä on?",
-      "intro": "Seurasitko projekteja tänä vuonna? Katso kuvaa.",
-      "a": {
-        "peter": "Pietari",
-        "john": "Johannes",
-        "matthew": "Matteus",
-        "james": "Jaakob"
-      }
-    },
-    "math": {
-      "q": "Mikä numero tulisi kysymysmerkin paikalle?",
-      "intro": "Katso kuvaa. Mikä numero tulisi kysymysmerkin paikalle?",
-      "a": {
-        "30": "30",
-        "81": "81",
-        "200": "200",
-        "67": "67"
-      }
-    },
-    "knowledge": {
-      "q": "Missä maassa BCC:llä ei ole kirkkoa?",
-      "intro": "Mistä olet kotoisin?",
-      "a": {
-        "singapore": "Singapore",
-        "serbia": "Serbia",
-        "japan": "Japani",
-        "peru": "Peru"
-      }
-    }
-  },
-  "back": "Takaisin"
+  "minutes": "Minuutit",
+  "no-matches-for-this-filter": "Ei vastaavuuksia tälle suodattimelle",
+  "please_refresh": "Yritä päivittää sivu",
+  "point": "Piste",
+  "points-registration-error": "Laskettu tulos palautti määrittelemättömän arvon. Lomake on virheellinen, vaikka se voidaan lähettää. Joitakin lomakekenttien validointeja saattaa puuttua.",
+  "post-type": "Julkaisun tyyppi:",
+  "save": "Tallenna",
+  "saved": "Tallennettu",
+  "seconds": "Sekunnit",
+  "something-went-wrong": "Yritä päivittää sivu",
+  "something-went-wrong-we-could-not-log-you-in-please-try-again": "Jokin meni pieleen, emme voineet kirjata sinua sisään - yritä uudelleen.",
+  "team": "Joukkue",
+  "yourmatch": "Sinun pelisi"
 }
