@@ -2,21 +2,21 @@ import { usePiniaStore } from '@/store/piniaStore';
 import { createI18n, type Composer } from 'vue-i18n';
 
 export const SUPPORTED_LOCALES = {
-  nb: 'Norsk',
+  nb: 'Norwegian',
   en: 'English',
-  de: 'Deutsch',
-  es: 'Español',
-  nl: 'Nederlands',
-  pl: 'Polski',
-  cn: '中文',
-  fi: 'Suomi',
-  fr: 'Français',
-  hu: 'Magyar',
-  it: 'Italiano',
-  ro: 'Română',
-  ru: 'Русский',
-  tr: 'Türkçe',
-  ua: 'українська',
+  de: 'German',
+  es: 'Spanish',
+  nl: 'Dutch',
+  pl: 'Polish',
+  cn: 'Chinese',
+  fi: 'Finnish',
+  fr: 'French',
+  hu: 'Hungarian',
+  it: 'Italian',
+  ro: 'Romanian',
+  ru: 'Russian',
+  tr: 'Turkish',
+  ua: 'Ukrainian',
 } as const;
 
 export type Locale = keyof typeof SUPPORTED_LOCALES;
