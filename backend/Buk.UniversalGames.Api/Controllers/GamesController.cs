@@ -43,6 +43,7 @@ public class GamesController : ControllerBase
     [HttpGet("/matches")]
     public async Task<ActionResult<List<MatchListItem>>> GetMatches()
     {
+        // 🧹 remove logging
         Console.WriteLine("Entering GetMatches method.");
         if (!HttpContext.Items.ContainsKey("ValidatedTeam"))
         {

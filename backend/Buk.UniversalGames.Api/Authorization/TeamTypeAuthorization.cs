@@ -29,6 +29,7 @@ namespace Buk.UniversalGames.Api.Authorization
 
         public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
         {
+            // 🧹 remove logging
             Console.WriteLine("Entering OnAuthorizationAsync method.");
 
             if (_authorizedTeamTypes.Length > 0)
