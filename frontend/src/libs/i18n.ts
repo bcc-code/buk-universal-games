@@ -13,7 +13,7 @@ export const SUPPORTED_LOCALES = {
   fr: 'French',
   // hu: 'Hungarian',
   // it: 'Italian',
-  ro: 'Romanian',
+  // ro: 'Romanian',
   // ru: 'Russian',
   // tr: 'Turkish',
   ua: 'Ukrainian',
