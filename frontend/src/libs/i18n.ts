@@ -8,7 +8,14 @@ export const SUPPORTED_LOCALES = {
   es: 'Spanish',
   nl: 'Dutch',
   pl: 'Polish',
+  // cn: 'Chinese',
+  // fi: 'Finnish',
   fr: 'French',
+  // hu: 'Hungarian',
+  // it: 'Italian',
+  // ro: 'Romanian',
+  // ru: 'Russian',
+  // tr: 'Turkish',
   ua: 'Ukrainian',
 } as const;
 
