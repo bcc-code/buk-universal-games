@@ -8,7 +8,7 @@
       </div>
       <div class="absolute top-10 right-10 flex space-x-1">
         <LanguageSwitcher />
-        <LogOutButton />
+        <!-- <LogOutButton /> -->
       </div>
     </div>
     <div class="flex mx-auto justify-evenly w-full pb-3">
@@ -38,7 +38,6 @@
 import { computed } from 'vue';
 import { useFamilyStatus, useSigninResponse } from '@/hooks/hooks';
 import LanguageSwitcher from './LanguageSwitcher.vue';
-import LogOutButton from './LogOutButton.vue';
 import { formatPoints } from './formatPoints';
 
 const { data } = useSigninResponse();
