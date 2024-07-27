@@ -1,0 +1,2402 @@
+[
+	{
+		"game_id": 2,
+		"match_id": 41,
+		"point_id": 185,
+		"team_id": 9,
+		"points": 9,
+		"added": "2024-07-25T09:37:27"
+	},
+	{
+		"game_id": 2,
+		"match_id": 41,
+		"point_id": 186,
+		"team_id": 10,
+		"points": 13,
+		"added": "2024-07-25T09:37:27"
+	},
+	{
+		"game_id": 2,
+		"match_id": 108,
+		"point_id": 187,
+		"team_id": 25,
+		"points": 6,
+		"added": "2024-07-25T09:48:07"
+	},
+	{
+		"game_id": 2,
+		"match_id": 108,
+		"point_id": 188,
+		"team_id": 26,
+		"points": 11,
+		"added": "2024-07-25T09:48:07"
+	},
+	{
+		"game_id": 1,
+		"match_id": 117,
+		"point_id": 189,
+		"team_id": 29,
+		"points": 12,
+		"added": "2024-07-25T09:39:15"
+	},
+	{
+		"game_id": 1,
+		"match_id": 117,
+		"point_id": 190,
+		"team_id": 31,
+		"points": 14,
+		"added": "2024-07-25T09:39:15"
+	},
+	{
+		"game_id": 5,
+		"match_id": 234,
+		"point_id": 191,
+		"team_id": 60,
+		"points": 16,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 2,
+		"match_id": 36,
+		"point_id": 192,
+		"team_id": 7,
+		"points": 11,
+		"added": "2024-07-25T09:43:59"
+	},
+	{
+		"game_id": 2,
+		"match_id": 36,
+		"point_id": 193,
+		"team_id": 8,
+		"points": 5,
+		"added": "2024-07-25T09:43:59"
+	},
+	{
+		"game_id": 5,
+		"match_id": 126,
+		"point_id": 194,
+		"team_id": 33,
+		"points": 17,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 132,
+		"point_id": 195,
+		"team_id": 34,
+		"points": 15,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 54,
+		"point_id": 196,
+		"team_id": 15,
+		"points": 18,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 1,
+		"match_id": 177,
+		"point_id": 197,
+		"team_id": 45,
+		"points": 16,
+		"added": "2024-07-25T09:41:58"
+	},
+	{
+		"game_id": 1,
+		"match_id": 177,
+		"point_id": 198,
+		"team_id": 46,
+		"points": 9,
+		"added": "2024-07-25T09:41:58"
+	},
+	{
+		"game_id": 4,
+		"match_id": 90,
+		"point_id": 199,
+		"team_id": 22,
+		"points": 12,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 60,
+		"point_id": 200,
+		"team_id": 16,
+		"points": 15,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 228,
+		"point_id": 201,
+		"team_id": 59,
+		"points": 15,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 69,
+		"point_id": 202,
+		"team_id": 18,
+		"points": 15,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 1,
+		"match_id": 122,
+		"point_id": 203,
+		"team_id": 30,
+		"points": 14,
+		"added": "2024-07-25T09:44:29"
+	},
+	{
+		"game_id": 1,
+		"match_id": 122,
+		"point_id": 204,
+		"team_id": 32,
+		"points": 9,
+		"added": "2024-07-25T09:44:29"
+	},
+	{
+		"game_id": 5,
+		"match_id": 141,
+		"point_id": 205,
+		"team_id": 36,
+		"points": 7,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 1,
+		"match_id": 45,
+		"point_id": 206,
+		"team_id": 11,
+		"points": 7,
+		"added": "2024-07-25T09:44:41"
+	},
+	{
+		"game_id": 1,
+		"match_id": 45,
+		"point_id": 207,
+		"team_id": 13,
+		"points": 14,
+		"added": "2024-07-25T09:44:41"
+	},
+	{
+		"game_id": 3,
+		"match_id": 84,
+		"point_id": 208,
+		"team_id": 21,
+		"points": 16,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 78,
+		"point_id": 209,
+		"team_id": 20,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 162,
+		"point_id": 210,
+		"team_id": 40,
+		"points": 12,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 198,
+		"point_id": 211,
+		"team_id": 50,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 6,
+		"point_id": 212,
+		"team_id": 2,
+		"points": 14,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 2,
+		"match_id": 216,
+		"point_id": 213,
+		"team_id": 53,
+		"points": 8,
+		"added": "2024-07-25T09:47:24"
+	},
+	{
+		"game_id": 2,
+		"match_id": 216,
+		"point_id": 214,
+		"team_id": 54,
+		"points": 13,
+		"added": "2024-07-25T09:47:24"
+	},
+	{
+		"game_id": 4,
+		"match_id": 18,
+		"point_id": 215,
+		"team_id": 4,
+		"points": 12,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 2,
+		"match_id": 168,
+		"point_id": 216,
+		"team_id": 41,
+		"points": 14,
+		"added": "2024-07-25T09:49:37"
+	},
+	{
+		"game_id": 2,
+		"match_id": 168,
+		"point_id": 217,
+		"team_id": 42,
+		"points": 8,
+		"added": "2024-07-25T09:49:37"
+	},
+	{
+		"game_id": 1,
+		"match_id": 174,
+		"point_id": 218,
+		"team_id": 43,
+		"points": 18,
+		"added": "2024-07-25T09:48:03"
+	},
+	{
+		"game_id": 1,
+		"match_id": 174,
+		"point_id": 219,
+		"team_id": 44,
+		"points": 14,
+		"added": "2024-07-25T09:48:03"
+	},
+	{
+		"game_id": 2,
+		"match_id": 113,
+		"point_id": 220,
+		"team_id": 27,
+		"points": 11,
+		"added": "2024-07-25T09:48:10"
+	},
+	{
+		"game_id": 2,
+		"match_id": 113,
+		"point_id": 221,
+		"team_id": 28,
+		"points": 5,
+		"added": "2024-07-25T09:48:10"
+	},
+	{
+		"game_id": 1,
+		"match_id": 222,
+		"point_id": 222,
+		"team_id": 55,
+		"points": 9,
+		"added": "2024-07-25T09:48:13"
+	},
+	{
+		"game_id": 1,
+		"match_id": 222,
+		"point_id": 223,
+		"team_id": 56,
+		"points": 14,
+		"added": "2024-07-25T09:48:13"
+	},
+	{
+		"game_id": 3,
+		"match_id": 0,
+		"point_id": 224,
+		"team_id": 1,
+		"points": 12,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 24,
+		"point_id": 225,
+		"team_id": 5,
+		"points": 14,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 150,
+		"point_id": 226,
+		"team_id": 38,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 30,
+		"point_id": 227,
+		"team_id": 6,
+		"points": 3,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 138,
+		"point_id": 228,
+		"team_id": 35,
+		"points": 15,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 144,
+		"point_id": 229,
+		"team_id": 37,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 66,
+		"point_id": 230,
+		"team_id": 17,
+		"points": 7,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 72,
+		"point_id": 231,
+		"team_id": 19,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 96,
+		"point_id": 232,
+		"team_id": 23,
+		"points": 8,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 1,
+		"match_id": 50,
+		"point_id": 233,
+		"team_id": 12,
+		"points": 16,
+		"added": "2024-07-25T09:51:52"
+	},
+	{
+		"game_id": 1,
+		"match_id": 50,
+		"point_id": 234,
+		"team_id": 14,
+		"points": 9,
+		"added": "2024-07-25T09:51:52"
+	},
+	{
+		"game_id": 4,
+		"match_id": 156,
+		"point_id": 235,
+		"team_id": 39,
+		"points": 12,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 192,
+		"point_id": 236,
+		"team_id": 49,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 102,
+		"point_id": 237,
+		"team_id": 24,
+		"points": 3,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 186,
+		"point_id": 238,
+		"team_id": 48,
+		"points": 12,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 180,
+		"point_id": 239,
+		"team_id": 47,
+		"points": 16,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 12,
+		"point_id": 240,
+		"team_id": 3,
+		"points": 1,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 204,
+		"point_id": 241,
+		"team_id": 51,
+		"points": 14,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 1,
+		"match_id": 225,
+		"point_id": 242,
+		"team_id": 57,
+		"points": 12,
+		"added": "2024-07-25T09:54:05"
+	},
+	{
+		"game_id": 1,
+		"match_id": 225,
+		"point_id": 243,
+		"team_id": 58,
+		"points": 12,
+		"added": "2024-07-25T09:54:05"
+	},
+	{
+		"game_id": 5,
+		"match_id": 142,
+		"point_id": 244,
+		"team_id": 22,
+		"points": 19,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 210,
+		"point_id": 245,
+		"team_id": 52,
+		"points": 4,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 133,
+		"point_id": 246,
+		"team_id": 20,
+		"points": 18,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 2,
+		"match_id": 109,
+		"point_id": 247,
+		"team_id": 29,
+		"points": 12,
+		"added": "2024-07-25T09:57:30"
+	},
+	{
+		"game_id": 2,
+		"match_id": 109,
+		"point_id": 248,
+		"team_id": 30,
+		"points": 7,
+		"added": "2024-07-25T09:57:30"
+	},
+	{
+		"game_id": 4,
+		"match_id": 91,
+		"point_id": 249,
+		"team_id": 26,
+		"points": 12,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 139,
+		"point_id": 250,
+		"team_id": 21,
+		"points": 15,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 229,
+		"point_id": 251,
+		"team_id": 53,
+		"points": 16,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 2,
+		"match_id": 114,
+		"point_id": 252,
+		"team_id": 31,
+		"points": 13,
+		"added": "2024-07-25T09:59:45"
+	},
+	{
+		"game_id": 2,
+		"match_id": 114,
+		"point_id": 253,
+		"team_id": 32,
+		"points": 8,
+		"added": "2024-07-25T09:59:45"
+	},
+	{
+		"game_id": 1,
+		"match_id": 123,
+		"point_id": 254,
+		"team_id": 34,
+		"points": 16,
+		"added": "2024-07-25T10:00:39"
+	},
+	{
+		"game_id": 1,
+		"match_id": 123,
+		"point_id": 255,
+		"team_id": 36,
+		"points": 12,
+		"added": "2024-07-25T10:00:39"
+	},
+	{
+		"game_id": 5,
+		"match_id": 55,
+		"point_id": 256,
+		"team_id": 1,
+		"points": 18,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 235,
+		"point_id": 257,
+		"team_id": 54,
+		"points": 12,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 61,
+		"point_id": 258,
+		"team_id": 2,
+		"points": 13,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 127,
+		"point_id": 259,
+		"team_id": 19,
+		"points": 15,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 1,
+		"match_id": 46,
+		"point_id": 260,
+		"team_id": 15,
+		"points": 14,
+		"added": "2024-07-25T10:07:53"
+	},
+	{
+		"game_id": 1,
+		"match_id": 46,
+		"point_id": 261,
+		"team_id": 17,
+		"points": 18,
+		"added": "2024-07-25T10:07:53"
+	},
+	{
+		"game_id": 4,
+		"match_id": 163,
+		"point_id": 262,
+		"team_id": 46,
+		"points": 4,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 1,
+		"match_id": 175,
+		"point_id": 263,
+		"team_id": 39,
+		"points": 16,
+		"added": "2024-07-25T10:03:26"
+	},
+	{
+		"game_id": 1,
+		"match_id": 175,
+		"point_id": 264,
+		"team_id": 40,
+		"points": 12,
+		"added": "2024-07-25T10:03:26"
+	},
+	{
+		"game_id": 2,
+		"match_id": 217,
+		"point_id": 265,
+		"team_id": 49,
+		"points": 4,
+		"added": "2024-07-25T10:04:07"
+	},
+	{
+		"game_id": 2,
+		"match_id": 217,
+		"point_id": 266,
+		"team_id": 50,
+		"points": 10,
+		"added": "2024-07-25T10:04:07"
+	},
+	{
+		"game_id": 3,
+		"match_id": 85,
+		"point_id": 267,
+		"team_id": 25,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 1,
+		"match_id": 51,
+		"point_id": 268,
+		"team_id": 16,
+		"points": 16,
+		"added": "2024-07-25T10:04:10"
+	},
+	{
+		"game_id": 1,
+		"match_id": 51,
+		"point_id": 269,
+		"team_id": 18,
+		"points": 12,
+		"added": "2024-07-25T10:04:10"
+	},
+	{
+		"game_id": 5,
+		"match_id": 70,
+		"point_id": 270,
+		"team_id": 4,
+		"points": 7,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 97,
+		"point_id": 271,
+		"team_id": 27,
+		"points": 10,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 157,
+		"point_id": 272,
+		"team_id": 45,
+		"points": 14,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 19,
+		"point_id": 273,
+		"team_id": 8,
+		"points": 8,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 181,
+		"point_id": 274,
+		"team_id": 41,
+		"points": 17,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 145,
+		"point_id": 275,
+		"team_id": 43,
+		"points": 14,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 25,
+		"point_id": 276,
+		"team_id": 9,
+		"points": 14,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 7,
+		"point_id": 277,
+		"team_id": 6,
+		"points": 13,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 13,
+		"point_id": 278,
+		"team_id": 7,
+		"points": 13,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 187,
+		"point_id": 279,
+		"team_id": 42,
+		"points": 13,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 151,
+		"point_id": 280,
+		"team_id": 44,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 1,
+		"match_id": 223,
+		"point_id": 281,
+		"team_id": 51,
+		"points": 14,
+		"added": "2024-07-25T10:06:31"
+	},
+	{
+		"game_id": 1,
+		"match_id": 223,
+		"point_id": 282,
+		"team_id": 60,
+		"points": 16,
+		"added": "2024-07-25T10:06:31"
+	},
+	{
+		"game_id": 4,
+		"match_id": 205,
+		"point_id": 283,
+		"team_id": 57,
+		"points": 12,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 103,
+		"point_id": 284,
+		"team_id": 28,
+		"points": 14,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 193,
+		"point_id": 285,
+		"team_id": 55,
+		"points": 19,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 67,
+		"point_id": 286,
+		"team_id": 3,
+		"points": 7,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 1,
+		"point_id": 287,
+		"team_id": 5,
+		"points": 14,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 79,
+		"point_id": 288,
+		"team_id": 24,
+		"points": 19,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 1,
+		"match_id": 118,
+		"point_id": 289,
+		"team_id": 33,
+		"points": 9,
+		"added": "2024-07-25T10:09:50"
+	},
+	{
+		"game_id": 1,
+		"match_id": 118,
+		"point_id": 290,
+		"team_id": 35,
+		"points": 12,
+		"added": "2024-07-25T10:09:50"
+	},
+	{
+		"game_id": 3,
+		"match_id": 73,
+		"point_id": 291,
+		"team_id": 23,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 1,
+		"match_id": 178,
+		"point_id": 292,
+		"team_id": 47,
+		"points": 9,
+		"added": "2024-07-25T10:10:56"
+	},
+	{
+		"game_id": 1,
+		"match_id": 178,
+		"point_id": 293,
+		"team_id": 48,
+		"points": 12,
+		"added": "2024-07-25T10:10:56"
+	},
+	{
+		"game_id": 1,
+		"match_id": 226,
+		"point_id": 294,
+		"team_id": 52,
+		"points": 16,
+		"added": "2024-07-25T10:12:50"
+	},
+	{
+		"game_id": 1,
+		"match_id": 226,
+		"point_id": 295,
+		"team_id": 59,
+		"points": 12,
+		"added": "2024-07-25T10:12:50"
+	},
+	{
+		"game_id": 2,
+		"match_id": 42,
+		"point_id": 296,
+		"team_id": 13,
+		"points": 13,
+		"added": "2024-07-25T10:12:58"
+	},
+	{
+		"game_id": 2,
+		"match_id": 42,
+		"point_id": 297,
+		"team_id": 14,
+		"points": 7,
+		"added": "2024-07-25T10:12:58"
+	},
+	{
+		"game_id": 3,
+		"match_id": 199,
+		"point_id": 298,
+		"team_id": 56,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 2,
+		"match_id": 37,
+		"point_id": 299,
+		"team_id": 11,
+		"points": 3,
+		"added": "2024-07-25T10:14:11"
+	},
+	{
+		"game_id": 2,
+		"match_id": 37,
+		"point_id": 300,
+		"team_id": 12,
+		"points": 9,
+		"added": "2024-07-25T10:14:11"
+	},
+	{
+		"game_id": 2,
+		"match_id": 115,
+		"point_id": 301,
+		"team_id": 34,
+		"points": 12,
+		"added": "2024-07-25T10:15:00"
+	},
+	{
+		"game_id": 2,
+		"match_id": 115,
+		"point_id": 302,
+		"team_id": 36,
+		"points": 6,
+		"added": "2024-07-25T10:15:00"
+	},
+	{
+		"game_id": 4,
+		"match_id": 211,
+		"point_id": 303,
+		"team_id": 58,
+		"points": 8,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 20,
+		"point_id": 304,
+		"team_id": 1,
+		"points": 16,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 26,
+		"point_id": 305,
+		"team_id": 2,
+		"points": 12,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 31,
+		"point_id": 306,
+		"team_id": 10,
+		"points": 4,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 182,
+		"point_id": 307,
+		"team_id": 39,
+		"points": 18,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 140,
+		"point_id": 308,
+		"team_id": 31,
+		"points": 15,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 1,
+		"match_id": 224,
+		"point_id": 309,
+		"team_id": 49,
+		"points": 14,
+		"added": "2024-07-25T10:20:18"
+	},
+	{
+		"game_id": 1,
+		"match_id": 224,
+		"point_id": 310,
+		"team_id": 53,
+		"points": 16,
+		"added": "2024-07-25T10:20:18"
+	},
+	{
+		"game_id": 2,
+		"match_id": 110,
+		"point_id": 311,
+		"team_id": 22,
+		"points": 7,
+		"added": "2024-07-25T10:20:52"
+	},
+	{
+		"game_id": 2,
+		"match_id": 110,
+		"point_id": 312,
+		"team_id": 35,
+		"points": 13,
+		"added": "2024-07-25T10:20:52"
+	},
+	{
+		"game_id": 5,
+		"match_id": 128,
+		"point_id": 313,
+		"team_id": 29,
+		"points": 16,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 1,
+		"match_id": 124,
+		"point_id": 314,
+		"team_id": 24,
+		"points": 14,
+		"added": "2024-07-25T10:21:05"
+	},
+	{
+		"game_id": 1,
+		"match_id": 124,
+		"point_id": 315,
+		"team_id": 26,
+		"points": 12,
+		"added": "2024-07-25T10:21:05"
+	},
+	{
+		"game_id": 5,
+		"match_id": 134,
+		"point_id": 316,
+		"team_id": 30,
+		"points": 18,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 14,
+		"point_id": 317,
+		"team_id": 15,
+		"points": 5,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 188,
+		"point_id": 318,
+		"team_id": 46,
+		"points": 16,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 98,
+		"point_id": 319,
+		"team_id": 20,
+		"points": 3,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 8,
+		"point_id": 320,
+		"team_id": 9,
+		"points": 18,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 1,
+		"match_id": 176,
+		"point_id": 321,
+		"team_id": 38,
+		"points": 7,
+		"added": "2024-07-25T10:22:57"
+	},
+	{
+		"game_id": 1,
+		"match_id": 176,
+		"point_id": 322,
+		"team_id": 41,
+		"points": 16,
+		"added": "2024-07-25T10:22:57"
+	},
+	{
+		"game_id": 5,
+		"match_id": 230,
+		"point_id": 323,
+		"team_id": 51,
+		"points": 17,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 1,
+		"match_id": 119,
+		"point_id": 324,
+		"team_id": 23,
+		"points": 7,
+		"added": "2024-07-25T10:22:59"
+	},
+	{
+		"game_id": 1,
+		"match_id": 119,
+		"point_id": 325,
+		"team_id": 25,
+		"points": 16,
+		"added": "2024-07-25T10:22:59"
+	},
+	{
+		"game_id": 5,
+		"match_id": 143,
+		"point_id": 326,
+		"team_id": 32,
+		"points": 11,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 2,
+		"match_id": 170,
+		"point_id": 327,
+		"team_id": 40,
+		"points": 4,
+		"added": "2024-07-25T10:23:42"
+	},
+	{
+		"game_id": 2,
+		"match_id": 170,
+		"point_id": 328,
+		"team_id": 43,
+		"points": 12,
+		"added": "2024-07-25T10:23:42"
+	},
+	{
+		"game_id": 1,
+		"match_id": 52,
+		"point_id": 329,
+		"team_id": 6,
+		"points": 14,
+		"added": "2024-07-25T10:24:09"
+	},
+	{
+		"game_id": 1,
+		"match_id": 52,
+		"point_id": 330,
+		"team_id": 8,
+		"points": 9,
+		"added": "2024-07-25T10:24:09"
+	},
+	{
+		"game_id": 1,
+		"match_id": 47,
+		"point_id": 331,
+		"team_id": 5,
+		"points": 12,
+		"added": "2024-07-25T10:26:15"
+	},
+	{
+		"game_id": 1,
+		"match_id": 47,
+		"point_id": 332,
+		"team_id": 7,
+		"points": 14,
+		"added": "2024-07-25T10:26:15"
+	},
+	{
+		"game_id": 2,
+		"match_id": 38,
+		"point_id": 333,
+		"team_id": 4,
+		"points": 7,
+		"added": "2024-07-25T10:26:16"
+	},
+	{
+		"game_id": 2,
+		"match_id": 38,
+		"point_id": 334,
+		"team_id": 17,
+		"points": 12,
+		"added": "2024-07-25T10:26:16"
+	},
+	{
+		"game_id": 4,
+		"match_id": 104,
+		"point_id": 335,
+		"team_id": 21,
+		"points": 10,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 158,
+		"point_id": 336,
+		"team_id": 44,
+		"points": 14,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 152,
+		"point_id": 337,
+		"team_id": 45,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 92,
+		"point_id": 338,
+		"team_id": 19,
+		"points": 6,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 2,
+		"match_id": 218,
+		"point_id": 339,
+		"team_id": 52,
+		"points": 8,
+		"added": "2024-07-25T10:26:19"
+	},
+	{
+		"game_id": 2,
+		"match_id": 218,
+		"point_id": 340,
+		"team_id": 55,
+		"points": 13,
+		"added": "2024-07-25T10:26:19"
+	},
+	{
+		"game_id": 2,
+		"match_id": 43,
+		"point_id": 341,
+		"team_id": 16,
+		"points": 7,
+		"added": "2024-07-25T10:26:38"
+	},
+	{
+		"game_id": 2,
+		"match_id": 43,
+		"point_id": 342,
+		"team_id": 18,
+		"points": 13,
+		"added": "2024-07-25T10:26:38"
+	},
+	{
+		"game_id": 3,
+		"match_id": 80,
+		"point_id": 343,
+		"team_id": 27,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 86,
+		"point_id": 344,
+		"team_id": 33,
+		"points": 15,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 1,
+		"match_id": 179,
+		"point_id": 345,
+		"team_id": 37,
+		"points": 18,
+		"added": "2024-07-25T10:27:59"
+	},
+	{
+		"game_id": 1,
+		"match_id": 179,
+		"point_id": 346,
+		"team_id": 42,
+		"points": 5,
+		"added": "2024-07-25T10:27:59"
+	},
+	{
+		"game_id": 3,
+		"match_id": 74,
+		"point_id": 347,
+		"team_id": 28,
+		"points": 8,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 62,
+		"point_id": 348,
+		"team_id": 12,
+		"points": 19,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 236,
+		"point_id": 349,
+		"team_id": 58,
+		"points": 18,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 1,
+		"match_id": 227,
+		"point_id": 350,
+		"team_id": 50,
+		"points": 16,
+		"added": "2024-07-25T10:30:52"
+	},
+	{
+		"game_id": 1,
+		"match_id": 227,
+		"point_id": 351,
+		"team_id": 54,
+		"points": 14,
+		"added": "2024-07-25T10:30:52"
+	},
+	{
+		"game_id": 3,
+		"match_id": 200,
+		"point_id": 352,
+		"team_id": 57,
+		"points": 16,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 164,
+		"point_id": 353,
+		"team_id": 48,
+		"points": 2,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 146,
+		"point_id": 354,
+		"team_id": 47,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 129,
+		"point_id": 355,
+		"team_id": 26,
+		"points": 19,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 206,
+		"point_id": 356,
+		"team_id": 56,
+		"points": 14,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 212,
+		"point_id": 357,
+		"team_id": 60,
+		"points": 3,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 68,
+		"point_id": 358,
+		"team_id": 13,
+		"points": 15,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 71,
+		"point_id": 359,
+		"team_id": 14,
+		"points": 12,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 56,
+		"point_id": 360,
+		"team_id": 11,
+		"points": 7,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 21,
+		"point_id": 361,
+		"team_id": 15,
+		"points": 18,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 32,
+		"point_id": 362,
+		"team_id": 3,
+		"points": 6,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 99,
+		"point_id": 363,
+		"team_id": 31,
+		"points": 12,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 194,
+		"point_id": 364,
+		"team_id": 59,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 183,
+		"point_id": 365,
+		"team_id": 40,
+		"points": 19,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 2,
+		"match_id": 111,
+		"point_id": 366,
+		"team_id": 20,
+		"points": 14,
+		"added": "2024-07-25T10:36:07"
+	},
+	{
+		"game_id": 2,
+		"match_id": 111,
+		"point_id": 367,
+		"team_id": 23,
+		"points": 9,
+		"added": "2024-07-25T10:36:07"
+	},
+	{
+		"game_id": 1,
+		"match_id": 125,
+		"point_id": 368,
+		"team_id": 19,
+		"points": 16,
+		"added": "2024-07-25T10:38:22"
+	},
+	{
+		"game_id": 1,
+		"match_id": 125,
+		"point_id": 369,
+		"team_id": 28,
+		"points": 12,
+		"added": "2024-07-25T10:38:22"
+	},
+	{
+		"game_id": 2,
+		"match_id": 116,
+		"point_id": 370,
+		"team_id": 21,
+		"points": 6,
+		"added": "2024-07-25T10:39:12"
+	},
+	{
+		"game_id": 2,
+		"match_id": 116,
+		"point_id": 371,
+		"team_id": 24,
+		"points": 0,
+		"added": "2024-07-25T10:39:12"
+	},
+	{
+		"game_id": 2,
+		"match_id": 39,
+		"point_id": 372,
+		"team_id": 2,
+		"points": 13,
+		"added": "2024-07-25T10:40:33"
+	},
+	{
+		"game_id": 2,
+		"match_id": 39,
+		"point_id": 373,
+		"team_id": 5,
+		"points": 7,
+		"added": "2024-07-25T10:40:33"
+	},
+	{
+		"game_id": 5,
+		"match_id": 135,
+		"point_id": 374,
+		"team_id": 25,
+		"points": 13,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 189,
+		"point_id": 375,
+		"team_id": 43,
+		"points": 18,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 1,
+		"match_id": 120,
+		"point_id": 376,
+		"team_id": 22,
+		"points": 7,
+		"added": "2024-07-25T10:41:46"
+	},
+	{
+		"game_id": 1,
+		"match_id": 120,
+		"point_id": 377,
+		"team_id": 27,
+		"points": 14,
+		"added": "2024-07-25T10:41:46"
+	},
+	{
+		"game_id": 4,
+		"match_id": 207,
+		"point_id": 378,
+		"team_id": 49,
+		"points": 16,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 237,
+		"point_id": 379,
+		"team_id": 55,
+		"points": 13,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 231,
+		"point_id": 380,
+		"team_id": 52,
+		"points": 13,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 15,
+		"point_id": 381,
+		"team_id": 12,
+		"points": 13,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 75,
+		"point_id": 382,
+		"team_id": 34,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 213,
+		"point_id": 383,
+		"team_id": 50,
+		"points": 14,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 2,
+		"match_id": 219,
+		"point_id": 384,
+		"team_id": 56,
+		"points": 5,
+		"added": "2024-07-25T10:45:10"
+	},
+	{
+		"game_id": 2,
+		"match_id": 219,
+		"point_id": 385,
+		"team_id": 57,
+		"points": 11,
+		"added": "2024-07-25T10:45:10"
+	},
+	{
+		"game_id": 4,
+		"match_id": 93,
+		"point_id": 386,
+		"team_id": 33,
+		"points": 10,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 81,
+		"point_id": 387,
+		"team_id": 29,
+		"points": 18,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 63,
+		"point_id": 388,
+		"team_id": 7,
+		"points": 7,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 57,
+		"point_id": 389,
+		"team_id": 8,
+		"points": 14,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 165,
+		"point_id": 390,
+		"team_id": 38,
+		"points": 16,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 159,
+		"point_id": 391,
+		"team_id": 37,
+		"points": 10,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 87,
+		"point_id": 392,
+		"team_id": 30,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 3,
+		"point_id": 393,
+		"team_id": 16,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 1,
+		"match_id": 48,
+		"point_id": 394,
+		"team_id": 4,
+		"points": 12,
+		"added": "2024-07-25T10:47:36"
+	},
+	{
+		"game_id": 1,
+		"match_id": 48,
+		"point_id": 395,
+		"team_id": 9,
+		"points": 14,
+		"added": "2024-07-25T10:47:36"
+	},
+	{
+		"game_id": 3,
+		"match_id": 195,
+		"point_id": 396,
+		"team_id": 53,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 147,
+		"point_id": 397,
+		"team_id": 41,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 9,
+		"point_id": 398,
+		"team_id": 11,
+		"points": 2,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 105,
+		"point_id": 399,
+		"team_id": 32,
+		"points": 6,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 153,
+		"point_id": 400,
+		"team_id": 42,
+		"points": 12,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 201,
+		"point_id": 401,
+		"team_id": 54,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 27,
+		"point_id": 402,
+		"team_id": 13,
+		"points": 12,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 2,
+		"match_id": 220,
+		"point_id": 403,
+		"team_id": 58,
+		"points": 14,
+		"added": "2024-07-25T10:52:23"
+	},
+	{
+		"game_id": 2,
+		"match_id": 220,
+		"point_id": 404,
+		"team_id": 59,
+		"points": 5,
+		"added": "2024-07-25T10:52:23"
+	},
+	{
+		"game_id": 4,
+		"match_id": 33,
+		"point_id": 405,
+		"team_id": 14,
+		"points": 3,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 136,
+		"point_id": 406,
+		"team_id": 28,
+		"points": 14,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 2,
+		"match_id": 44,
+		"point_id": 407,
+		"team_id": 3,
+		"points": 0,
+		"added": "2024-07-25T10:54:16"
+	},
+	{
+		"game_id": 2,
+		"match_id": 44,
+		"point_id": 408,
+		"team_id": 6,
+		"points": 6,
+		"added": "2024-07-25T10:54:16"
+	},
+	{
+		"game_id": 2,
+		"match_id": 112,
+		"point_id": 409,
+		"team_id": 19,
+		"points": 4,
+		"added": "2024-07-25T10:56:35"
+	},
+	{
+		"game_id": 2,
+		"match_id": 112,
+		"point_id": 410,
+		"team_id": 33,
+		"points": 9,
+		"added": "2024-07-25T10:56:35"
+	},
+	{
+		"game_id": 1,
+		"match_id": 121,
+		"point_id": 411,
+		"team_id": 20,
+		"points": 14,
+		"added": "2024-07-25T10:58:03"
+	},
+	{
+		"game_id": 1,
+		"match_id": 121,
+		"point_id": 412,
+		"team_id": 21,
+		"points": 9,
+		"added": "2024-07-25T10:58:03"
+	},
+	{
+		"game_id": 5,
+		"match_id": 58,
+		"point_id": 413,
+		"team_id": 9,
+		"points": 19,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 2,
+		"match_id": 172,
+		"point_id": 414,
+		"team_id": 46,
+		"points": 12,
+		"added": "2024-07-25T11:00:13"
+	},
+	{
+		"game_id": 2,
+		"match_id": 172,
+		"point_id": 415,
+		"team_id": 47,
+		"points": 5,
+		"added": "2024-07-25T11:00:13"
+	},
+	{
+		"game_id": 5,
+		"match_id": 238,
+		"point_id": 416,
+		"team_id": 50,
+		"points": 16,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 209,
+		"point_id": 417,
+		"team_id": 55,
+		"points": 14,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 130,
+		"point_id": 418,
+		"team_id": 27,
+		"points": 7,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 137,
+		"point_id": 419,
+		"team_id": 24,
+		"points": 17,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 154,
+		"point_id": 420,
+		"team_id": 48,
+		"points": 16,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 190,
+		"point_id": 421,
+		"team_id": 38,
+		"points": 17,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 82,
+		"point_id": 422,
+		"team_id": 36,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 2,
+		"point_id": 423,
+		"team_id": 10,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 88,
+		"point_id": 424,
+		"team_id": 26,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 232,
+		"point_id": 425,
+		"team_id": 49,
+		"points": 14,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 22,
+		"point_id": 426,
+		"team_id": 7,
+		"points": 16,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 16,
+		"point_id": 427,
+		"team_id": 8,
+		"points": 4,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 203,
+		"point_id": 428,
+		"team_id": 52,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 184,
+		"point_id": 429,
+		"team_id": 37,
+		"points": 17,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 106,
+		"point_id": 430,
+		"team_id": 30,
+		"points": 12,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 148,
+		"point_id": 431,
+		"team_id": 39,
+		"points": 10,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 100,
+		"point_id": 432,
+		"team_id": 29,
+		"points": 8,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 1,
+		"match_id": 49,
+		"point_id": 433,
+		"team_id": 2,
+		"points": 9,
+		"added": "2024-07-25T11:07:16"
+	},
+	{
+		"game_id": 1,
+		"match_id": 49,
+		"point_id": 434,
+		"team_id": 3,
+		"points": 14,
+		"added": "2024-07-25T11:07:16"
+	},
+	{
+		"game_id": 4,
+		"match_id": 161,
+		"point_id": 435,
+		"team_id": 43,
+		"points": 8,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 10,
+		"point_id": 436,
+		"team_id": 18,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 76,
+		"point_id": 437,
+		"team_id": 35,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 2,
+		"match_id": 40,
+		"point_id": 438,
+		"team_id": 1,
+		"points": 11,
+		"added": "2024-07-25T11:09:01"
+	},
+	{
+		"game_id": 2,
+		"match_id": 40,
+		"point_id": 439,
+		"team_id": 15,
+		"points": 6,
+		"added": "2024-07-25T11:09:01"
+	},
+	{
+		"game_id": 4,
+		"match_id": 214,
+		"point_id": 440,
+		"team_id": 54,
+		"points": 10,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 94,
+		"point_id": 441,
+		"team_id": 25,
+		"points": 3,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 196,
+		"point_id": 442,
+		"team_id": 51,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 65,
+		"point_id": 443,
+		"team_id": 6,
+		"points": 14,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 34,
+		"point_id": 444,
+		"team_id": 12,
+		"points": 4,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 166,
+		"point_id": 445,
+		"team_id": 42,
+		"points": 2,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 59,
+		"point_id": 446,
+		"team_id": 5,
+		"points": 16,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 4,
+		"point_id": 447,
+		"team_id": 17,
+		"points": 18,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 155,
+		"point_id": 448,
+		"team_id": 40,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 28,
+		"point_id": 449,
+		"team_id": 11,
+		"points": 2,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 208,
+		"point_id": 450,
+		"team_id": 53,
+		"points": 2,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 83,
+		"point_id": 451,
+		"team_id": 32,
+		"points": 19,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 23,
+		"point_id": 452,
+		"team_id": 16,
+		"points": 18,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 89,
+		"point_id": 453,
+		"team_id": 22,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 202,
+		"point_id": 454,
+		"team_id": 60,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 95,
+		"point_id": 455,
+		"team_id": 34,
+		"points": 12,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 191,
+		"point_id": 456,
+		"team_id": 45,
+		"points": 7,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 2,
+		"match_id": 173,
+		"point_id": 457,
+		"team_id": 39,
+		"points": 11,
+		"added": "2024-07-25T11:23:31"
+	},
+	{
+		"game_id": 2,
+		"match_id": 173,
+		"point_id": 458,
+		"team_id": 48,
+		"points": 2,
+		"added": "2024-07-25T11:23:31"
+	},
+	{
+		"game_id": 3,
+		"match_id": 11,
+		"point_id": 459,
+		"team_id": 14,
+		"points": 18,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 101,
+		"point_id": 460,
+		"team_id": 35,
+		"points": 16,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 35,
+		"point_id": 461,
+		"team_id": 18,
+		"points": 14,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 77,
+		"point_id": 462,
+		"team_id": 31,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 149,
+		"point_id": 463,
+		"team_id": 46,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 64,
+		"point_id": 464,
+		"team_id": 10,
+		"points": 17,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 233,
+		"point_id": 465,
+		"team_id": 56,
+		"points": 19,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 107,
+		"point_id": 466,
+		"team_id": 36,
+		"points": 2,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 160,
+		"point_id": 467,
+		"team_id": 41,
+		"points": 3,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 239,
+		"point_id": 468,
+		"team_id": 57,
+		"points": 18,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 3,
+		"match_id": 197,
+		"point_id": 469,
+		"team_id": 58,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 2,
+		"match_id": 221,
+		"point_id": 470,
+		"team_id": 51,
+		"points": 8,
+		"added": "2024-07-25T11:28:48"
+	},
+	{
+		"game_id": 2,
+		"match_id": 221,
+		"point_id": 471,
+		"team_id": 60,
+		"points": 13,
+		"added": "2024-07-25T11:28:48"
+	},
+	{
+		"game_id": 3,
+		"match_id": 17,
+		"point_id": 472,
+		"team_id": 4,
+		"points": 20,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 5,
+		"match_id": 131,
+		"point_id": 473,
+		"team_id": 23,
+		"points": 16,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 2,
+		"match_id": 171,
+		"point_id": 474,
+		"team_id": 44,
+		"points": 3,
+		"added": "2024-07-25T11:31:16"
+	},
+	{
+		"game_id": 2,
+		"match_id": 171,
+		"point_id": 475,
+		"team_id": 45,
+		"points": 12,
+		"added": "2024-07-25T11:31:16"
+	},
+	{
+		"game_id": 3,
+		"match_id": 5,
+		"point_id": 476,
+		"team_id": 13,
+		"points": 19,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 1,
+		"match_id": 53,
+		"point_id": 477,
+		"team_id": 1,
+		"points": 12,
+		"added": "2024-07-25T11:32:15"
+	},
+	{
+		"game_id": 1,
+		"match_id": 53,
+		"point_id": 478,
+		"team_id": 10,
+		"points": 12,
+		"added": "2024-07-25T11:32:15"
+	},
+	{
+		"game_id": 4,
+		"match_id": 167,
+		"point_id": 479,
+		"team_id": 47,
+		"points": 4,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 2,
+		"match_id": 169,
+		"point_id": 480,
+		"team_id": 37,
+		"points": 8,
+		"added": "2024-07-25T11:35:08"
+	},
+	{
+		"game_id": 2,
+		"match_id": 169,
+		"point_id": 481,
+		"team_id": 38,
+		"points": 0,
+		"added": "2024-07-25T11:35:08"
+	},
+	{
+		"game_id": 5,
+		"match_id": 185,
+		"point_id": 482,
+		"team_id": 44,
+		"points": 12,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 29,
+		"point_id": 483,
+		"team_id": 17,
+		"points": 10,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	},
+	{
+		"game_id": 4,
+		"match_id": 215,
+		"point_id": 484,
+		"team_id": 59,
+		"points": 12,
+		"added": "NaN-NaN-NaNTNaN:NaN:NaN"
+	}
+]
