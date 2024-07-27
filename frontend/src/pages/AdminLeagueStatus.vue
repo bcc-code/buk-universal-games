@@ -4,7 +4,7 @@
       <div class="max-w-10 shadow-lg ml-4">
         <div class="flex space-x-1">
           <LanguageSwitcher />
-          <!-- <LogOutButton /> -->
+          <LogOutButton />
         </div>
       </div>
     </div>

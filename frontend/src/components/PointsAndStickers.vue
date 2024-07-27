@@ -8,7 +8,7 @@
       </div>
       <div class="absolute top-10 right-10 flex space-x-1">
         <LanguageSwitcher />
-        <!-- <LogOutButton /> -->
+        <LogOutButton />
       </div>
     </div>
     <div class="flex mx-auto justify-evenly w-full pb-3">
