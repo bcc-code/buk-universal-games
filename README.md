@@ -1,17 +1,12 @@
 # BUK Universal Games
 
-## Notes - if project ever re-used
+## Notes - if project is re-used
 
-1. Make it possible to clear a match result and to set a match to a draw (splitting winner points)
-2. Extra safety on point-and-match clearing function - not allowed after game started
-3. Hide highscore to keep things exciting failed because of missing check for timezone when parsing dates from settings (missed by some hours)
-4. Recommended: When signing in as systemadmin - everything should be similar as for an admin but with an additional screen for system admin features (clear cache, pre-cache and clear points and matches)
-5. Better info: If start links used through Telegram and if stickers scanned directly from phones camera and not camera button i app - user is not signed in because Telegram browser does not have same local storage as the browser used outside Telegram
-
+See issue https://github.com/bcc-code/buk-universal-games/issues/127
 ## Running Locally
 
-Run `docker-compose up --build -d` for the backend. Visit http://localhost:5127/ for the Directus UI, credentials are admin@admin.com:password
-Run `cd frontend; npm install; npm run dev` for the front-end. Visit https://localhost:8080 to view it. Bun is supported.
+Install docker desktop and run `cd backend; docker-compose up --build -d` to start the backend. Visit http://localhost:5127/ for the Directus UI, credentials are admin@admin.com:password. Go to http://localhost:5125/ to view swagger. 
+Run `cd frontend; npm install; npm run dev` for the front-end. This project also supports bun. Install bun and replace all usages of npm with bun.
 
 Note: To allow a PWA to work in development in Chromium browsers you must start it with an additional command line flag `--ignore-certificate-errors`:
 
@@ -34,7 +29,15 @@ You can import the test data files in Directus in this order:
 5. matches...json
 6. settings...json
 
-### Accessing Database
+There is a points json file, and you can import this to see what the actual points were at the end of ubg, but the points do not have to be imported, because this table will be populated during the game when scores are registered. 
+
+### Accessing Database in production
+Go to Google Cloud Console > sidebar > SQL >  buk-universal-games-pgsql-prod > sidebar > cloud SQL Studio
+1. Database: buk-universal-games-prod
+2. User: buk-universal-games-prod-default
+3. You can find the password by going to: Cloud run > buk-universal-games-api-prod > Revisions > Environment Variables > Press the link which says `buk-universal-games-api-prod-POSTGRES_PASSWORD` > Press 3 dots on the single row which shows up > View secret value. This is the password for the database user.
+
+### Accessing Database locally
 
 1. Visit: http://localhost:5126/
 2. Log in with: admin@admin.com / password (Note: You may get stuck in a redirect loop on Firefox, use Chrome instead)
@@ -79,29 +82,11 @@ Note: If you're running multiple docker-compose configurations with custom netwo
 
 Migrations are automatically applied when the a new version of the application is deployed.
 
-## Connect to the Remote Postgres Instance
-
-1. Generate a credentials key for the "remote-admin" user in Google Cloud Console
-2. Paste this key into 'credentials/gcp-remote-admin.json'
-3. Run `docker-compose -f docker-compose.yml -f docker-compose.proxy.yml up`
-4. Open pgAdmin: http://localhost:5126/
-5. Right click "Servers"->Register->Server...
-6. Add following parameters
-   1. Name: `buk-universal-games - PROD` (or similar)
-   2. (Under connection)
-      - Host name: `host.docker.internal` (on windows, can also try localhost on other platforms)
-      - Port: `5434`
-      - Username: `remote-admin`
-      - Password: `{***remote admin password***}`
-
-## Avoiding refresh loops in the frontend
-
-When having refresh loops in the frontend, go to devtools > Application > (in the sidebar) Service workers, and enable "Update on reload" and "Bypass for network".
-
-To log out or clear the cache because of changes to the source code, go to devtools > Application > (in the sidebar) Storage > Clear site data.
-
 ## Access directus in prod
 https://buk-universal-games-directus-prod-lo75nlp2va-ez.a.run.app/
 
-## Testing team code
-A84BQ9
+This link may change when a new server is made. Ask Reng for new url in this case.
+
+## Acces swagger in prod
+
+https://universalgames.buk.no/api

@@ -4,15 +4,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "serve": "vite",
     "dev": "vite",
     "build": "run-p type-check build-only",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "type-watch": "vue-tsc --noEmit --watch",
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
+    "type-watch": "vue-tsc --noEmit --watch",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
-    "generate:types": "openapi-zod-client http://localhost:5125/swagger/v1/swagger.json -o ./src/types/api.ts --implicit-required"
+    "generate-types": "openapi-zod-client http://localhost:5125/swagger/v1/swagger.json -o ./src/types/api.ts --implicit-required"
   },
   "dependencies": {
     "@coddicat/vue-pinch-scroll-zoom": "^4.7.1",
