@@ -2,7 +2,7 @@ import { createApiClient } from '@/types/api';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query';
 import type { Ref } from 'vue';
 
-const useProdDatabaseInDev = true;
+const useProdDatabaseInDev = false;
 export const rootUrl =
   location.hostname === 'universalgames.buk.no' || useProdDatabaseInDev
     ? 'https://universalgames.buk.no/api/'
